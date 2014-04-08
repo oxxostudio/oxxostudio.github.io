@@ -38,23 +38,107 @@ body {
   background:url(../img/bg1.jpg);
   background-attachment:fixed;
   background-size:100%;
+  font-family: Arial;
 }
 #bg {
   position: fixed;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
+  z-index:1;
   background:-webkit-linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(../img/bg2.png);
   background:-moz-linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(../img/bg2.png);
   background:linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(../img/bg2.png);
   background-attachment:fixed;
 }
-#container{
-  width:85%;
-  height:500px;
-  margin:100px auto 0;
-  max-width: 1200px;
-  background: #eee;
+#wrapper{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:2;
+}
+header{
+  width:890%;
+  height:40px;
+  margin:50px auto 0;
+  max-width: 1100px;
+  z-index:2;
+}
+header #logo{
+  color:#fff;
+  font-size:26px;
+  float:left;
+}
+header #logo span{
+  font-size:12px;
+  color:rgba(255,255,255,.4);
+  padding-left:0px;
+}
+header #main-menu{
+  float:right;
+}
+header #main-menu ul li{
+  color:rgba(255,255,255,.7);
+  font-size:15px;
+  float:left;
+  margin:8px 15px 0;
+  cursor:pointer;
+  -webkit-transition:.3s;
+  -moz-transition:.3s;
+  transition:.3s;
+}
+header #main-menu ul li:hover{
+  color:rgba(255,255,255,1);
+}
+#banner{
+  width:90%;
+  height:250px;
+  margin:0 auto 15px;
+  max-width: 1100px;
+  overflow: hidden;
   -webkit-box-shadow:0 0 20px rgba(0,0,0,.8);
   -moz-box-shadow:0 0 20px rgba(0,0,0,.8);
   box-shadow:0 0 20px rgba(0,0,0,.8);
+}
+#banner img{
+  width:100%;
+}
+#container{
+  width:90%;
+  display:table;
+  margin:0 auto;
+  max-width: 1100px;
+/*  background:#fff;
+  -webkit-box-shadow:0 0 20px rgba(0,0,0,.8);
+  -moz-box-shadow:0 0 20px rgba(0,0,0,.8);
+  box-shadow:0 0 20px rgba(0,0,0,.8);*/
+}
+#container #sub-menu{
+  width:300px;
+  height:800px;
+  float:left;
+  background:#00232e;
+  margin:0;
+  border:1px solid #001925;
+  -webkit-box-shadow:0 0 20px rgba(0,0,0,.8);
+  -moz-box-shadow:0 0 20px rgba(0,0,0,.8);
+  box-shadow:0 0 20px rgba(0,0,0,.8);
+}
+#container #content{
+  float:right;
+  background:#fff;
+  width:785px;
+  height:800px;
+  margin:00;
+  -webkit-box-shadow:0 0 20px rgba(0,0,0,.8);
+  -moz-box-shadow:0 0 20px rgba(0,0,0,.8);
+  box-shadow:0 0 20px rgba(0,0,0,.8);
+}
+footer{
+  width:90%;
+  height:100px;
+  margin:0 auto;
+  max-width: 1200px;
 }
