@@ -1,0 +1,45 @@
+@import "cssreset";
+
+body,html{
+	height: 100%;
+}
+body{
+  	background: #e7efeb;
+  	font-family: Arial;
+}
+
+$wrapper-shadow:0 0 10px rgba(0,0,0,.5);
+
+#wrapper{
+  	margin:0 auto;
+  	max-width:1200px;
+  	width: 95%;
+  	height:100%;
+  	background: #ebf3ef;
+	-webkit-box-shadow:$wrapper-shadow;
+	-moz-box-shadow:$wrapper-shadow;
+	box-shadow:$wrapper-shadow;
+}
+
+#sideMenu{
+	background: #0c0d0d;
+	height:100%;
+	width:225px;
+	float:left;
+	.profile,.line{
+		width:100%;
+	}
+	.profile{
+		height:150px;
+	}
+	.line{
+		height:3px;
+		background: #77c69f;
+	}
+}
+
+#container{
+	background:#fff;
+	float:right;
+	height:100%;
+}

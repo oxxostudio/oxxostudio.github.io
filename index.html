@@ -5,16 +5,21 @@
   <meta charset="UTF-8">
   <title>oxxo-studio</title>
   <script src="js/oxxo-init.js"></script>
-  <style>
-  </style>
+  <script>
+  $(function() {
+    $('body').load('http://opendata.cwb.gov.tw/opendata/DIV2/O-A0001-001.xml');
+  });
+  </script>
 </head>
 
 <body>
   <div id="wrapper">
+    <div id="sideMenu">
+      <div class="profile"></div>
+      <div class="line"></div>
+    </div>
     <div id="container">
     </div>
-  </div>
-  <div id="bg">
   </div>
 </body>
 
