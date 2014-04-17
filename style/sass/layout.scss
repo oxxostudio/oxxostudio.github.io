@@ -1,45 +1,160 @@
-@import "cssreset";
-
-body,html{
-	height: 100%;
+@import"cssreset";
+ @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+ @import url(http://fonts.googleapis.com/css?family=Raleway);
+ body, html {
+    font-family:'Open Sans', sans-serif;
+    height: 100%;
 }
-body{
-  	background: #e7efeb;
-  	font-family: Arial;
+body {
+    background: #e7efeb;
 }
-
-$wrapper-shadow:0 0 10px rgba(0,0,0,.5);
-
-#wrapper{
-  	margin:0 auto;
-  	max-width:1200px;
-  	width: 95%;
-  	height:100%;
-  	background: #ebf3ef;
-	-webkit-box-shadow:$wrapper-shadow;
-	-moz-box-shadow:$wrapper-shadow;
-	box-shadow:$wrapper-shadow;
+a {
+    text-decoration: none;
 }
-
-#sideMenu{
-	background: #0c0d0d;
-	height:100%;
-	width:225px;
-	float:left;
-	.profile,.line{
-		width:100%;
-	}
-	.profile{
-		height:150px;
-	}
-	.line{
-		height:3px;
-		background: #77c69f;
-	}
+$wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
+@mixin transition-time{
+	-webkit-transition:.2s;
+    -moz-transition:.2s;
+    transition:.2s;
 }
-
-#container{
-	background:#fff;
-	float:right;
-	height:100%;
+ #wrapper {
+    margin:0 auto;
+    max-width:1200px;
+    width: 95%;
+    height:100%;
+    background: #ebf3ef;
+    -webkit-box-shadow:$wrapper-shadow;
+    -moz-box-shadow:$wrapper-shadow;
+    box-shadow:$wrapper-shadow;
+}
+#sideMenu {
+    color:#fff;
+    background: #0c0d0d;
+    height:100%;
+    width:225px;
+    float:left;
+    #profile, .line, .license, .meunList {
+        display:table;
+    }
+    #profile {
+        padding:20px 25px 25px;
+        .title {
+            font-family:verdana;
+            font-size:15px;
+            margin:0 0 10px
+        }
+        .img {
+            float:left;
+            margin:0 10px 0 0;
+            img {
+                border:3px solid #77c69e;
+            }
+        }
+        .menu {
+            font-size:12px;
+            color:#77c69e;
+            float:left;
+            li {
+                margin:10px 0;
+            }
+            span {
+                margin-right:5px;
+            }
+        }
+        a {
+            color:#77c69e;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+    .line {
+        width:100%;
+        height:3px;
+        background: #77c69f;
+    }
+    .meunList {
+        font-family:'Raleway', sans-serif;
+        font-size:15px;
+        padding:25px;
+        li {
+            margin:25px 0;
+        }
+        li:first-child {
+            margin-top:5px;
+        }
+        a {
+            color:#fff;
+            @include transition-time;
+        }
+        a:hover {
+            color:#77c69f
+        }
+    }
+    .license {
+        width:100%;
+        span {
+            display:block;
+            float:left;
+            width:36px;
+            height:5px;
+            margin-right:1px;
+        }
+        span:nth-child(1) {
+            width:37px;
+            margin-left:1px;
+            background:#fda128;
+        }
+        span:nth-child(2) {
+            background:#fa4d2f;
+        }
+        span:nth-child(3) {
+            background:#0da2c8;
+        }
+        span:nth-child(4) {
+            background:#73c147;
+        }
+        span:nth-child(5) {
+            background:#6c726c;
+        }
+        span:nth-child(6) {
+            width:37px;
+            background:#a82a85;
+        }
+        span:nth-child(6)::after {
+            content:"";
+            display:block;
+            clear:both;
+        }
+        div {
+            width:100%;
+            text-align: center;
+        }
+        div:nth-child(7) {
+            background: #212624;
+            height:35px;
+            font-size:14px;
+            line-height: 30px;
+            color:rgba(255, 255, 255, .7);
+        }
+        div:last-child {
+            margin:5px auto 0;
+            width:85%;
+            font-size:12px;
+            color:#555;
+            line-height: 14px;
+        }
+        a {
+            color:#666;
+            text-decoration: underline;
+        }
+        a:hover {
+            color:#777;
+        }
+    }
+}
+#container {
+    background:#fff;
+    float:right;
+    height:100%;
 }
