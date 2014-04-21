@@ -1,44 +1,104 @@
 @import"cssreset";
  @import url(http://fonts.googleapis.com/css?family=Open+Sans);
  @import url(http://fonts.googleapis.com/css?family=Raleway);
- body, html {
-    font-family:'Open Sans', sans-serif;
+ @media screen and (max-width: 1025px) {
+    #sideMenu {
+        position: fixed;
+        z-index: 2;
+        width:100%!important;
+        min-height: 50px!important;
+        max-height:50px!important;
+        box-shadow: 0 0 10px #000;
+        top:0;
+        left:0;
+        #profile {
+            padding:18px 25px 0!important;
+            float:left;
+            width:auto!important;
+            div {
+                display:none;
+            }
+        }
+        .line, .license {
+            display:none!important;
+        }
+        .menuList {
+        	width:100%!important;
+        	height:30px!important;
+        	display:block;
+            padding:0!important;
+            margin-top:-50px;
+            background:rgba(0,0,0,.9)!important;
+            ul{
+            	width:100%;
+            	margin-top:20px;
+            	display:none;
+            }
+            li{
+				width:100%;
+				text-align: center;
+            }
+            div{
+            	margin:10px 20px 0 0;
+            	padding:0 0 20px 20px;
+            	display:block!important;
+            }
+        }
+    }
+    #container {
+        margin-top:30px!important;
+    }
+}
+body, html {
+    font-family:'Open Sans', 'PMingLiU', sans-serif;
     height: 100%;
 }
 body {
     background: #e7efeb;
+    -webkit-font-smoothing: antialiased !important;
+}
+div {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
 }
 a {
     text-decoration: none;
 }
 $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
-@mixin transition-time{
-	-webkit-transition:.2s;
+ @mixin transition-time {
+    -webkit-transition:.2s;
     -moz-transition:.2s;
     transition:.2s;
 }
- #wrapper {
+#wrapper {
+    display:table;
     margin:0 auto;
     max-width:1200px;
     width: 95%;
-    height:100%;
+    min-height:100%;
     background: #ebf3ef;
     -webkit-box-shadow:$wrapper-shadow;
     -moz-box-shadow:$wrapper-shadow;
     box-shadow:$wrapper-shadow;
 }
 #sideMenu {
+    min-height:100%;
     color:#fff;
     background: #0c0d0d;
-    height:100%;
     width:225px;
     float:left;
-    #profile, .line, .license, .meunList {
+    #profile, .line, .license, .menuList {
         display:table;
+        width:100%;
+    }
+    #profile, .license, .menuList {
+        background: #0c0d0d;
     }
     #profile {
         padding:20px 25px 25px;
-        .title {
+        h1 {
+            display:block;
             font-family:verdana;
             font-size:15px;
             margin:0 0 10px
@@ -69,11 +129,10 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
         }
     }
     .line {
-        width:100%;
         height:3px;
         background: #77c69f;
     }
-    .meunList {
+    .menuList {
         font-family:'Raleway', sans-serif;
         font-size:15px;
         padding:25px;
@@ -88,7 +147,23 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
             @include transition-time;
         }
         a:hover {
-            color:#77c69f
+            color:#77c69f;
+        }
+        a.active {
+            color:#77c69f;
+        }
+        div {
+            display:none;
+            position:absolute;
+            top:0;
+            right:0;
+            span{
+            	display:block;
+            	width:20px;
+            	height:3px;
+            	background: #aaa;
+            	margin:4px;
+            }
         }
     }
     .license {
@@ -138,7 +213,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
             color:rgba(255, 255, 255, .7);
         }
         div:last-child {
-            margin:5px auto 0;
+            margin:5px auto 30px;
             width:85%;
             font-size:12px;
             color:#555;
@@ -154,7 +229,29 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
     }
 }
 #container {
+    min-height:100%;
+    display:table;
     background:#fff;
     float:right;
-    height:100%;
+    padding:25px 25px 25px;
+    .container-title {
+        margin:30px 0 0;
+        h1 {
+            display: inline-block;
+            font-family:'Raleway', sans-serif;
+            font-size:32px;
+            color:#555;
+            font-weight: 600;
+            span {
+                font-size:50%;
+                color:#888;
+                font-weight: normal;
+            }
+        }
+    }
+    .line {
+        height:5px;
+        background: #ededed;
+        margin:15px 0 30px;
+    }
 }

@@ -1,0 +1,44 @@
+#container h2 {
+  font-family: 'Open Sans', 'Microsoft JhengHei';
+  color: #000;
+  font-size: 24px;
+  font-weight: 300;
+  margin: 0 0 20px;
+}
+#container h4 {
+  font-size: 15px;
+  color: #555;
+  line-height: 26px;
+}
+#container .about {
+  display: table;
+}
+#container .about .index-img {
+  width: 320px;
+  height: 320px;
+  float: right;
+  margin: 10px 0 0 30px;
+}
+#container .about .index-img img {
+  width: 100%;
+}
+#container .new-articles .list ul {
+  margin: -15px;
+}
+#container .new-articles .list li {
+  float: left;
+  width: 28%;
+  margin: 15px;
+}
+#container .new-articles .list li img {
+  width: 100%;
+}
+#container .new-articles .list li h3 {
+  font-size: 15px;
+  color: #000;
+  margin: 10px 0;
+}
+#container .new-articles .list li span {
+  font-size: 13px;
+  color: #666;
+}
