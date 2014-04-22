@@ -20,16 +20,36 @@ $(function() {
             });
         }
     }
+    var fn_sideMenuStatus = function() {
+        $('.menuList div').on('click', function() {
+          console.log('ok');
+            if ($('.menuList ul').hasClass('menuopen')) {
+                $('.menuList ul').css({
+                    'display': 'none'
+                }).removeClass('menuopen');
+                $('.menuList div span').css({
+                    'background': '#aaa'
+                });
+            } else {
+                $('.menuList ul').css({
+                    'display': 'table'
+                }).addClass('menuopen');
+                $(this).find('span').css({
+                    'background': '#fff'
+                });
+            }
+        });
+        $container.on('click', function() {
+            $('.menuList ul').css({
+                'display': 'none'
+            }).removeClass('menuopen');
+            $('.menuList div span').css({
+                'background': '#aaa'
+            });
+        });
+    }
     fn_changeSize();
     $(window).resize(fn_changeSize);
 
-    $('.menuList div').on('click', function() {
-        $('.menuList ul').css({'display':'table'});
-        $(this).find('span').css({'background':':#fff'});
-    });
-    $container.on('click',function(){
-        $('.menuList ul').css({'display':'none'});
-        $('.menuList div span').css({'background':':#aaa'});
-    });
-
+    fn_sideMenuStatus();
 });
