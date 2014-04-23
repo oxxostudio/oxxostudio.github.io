@@ -1,3 +1,42 @@
+@media screen and (max-width: 750px) {
+    #container {
+        .about {
+            .index-img {
+                float:none!important;
+                margin:0!important;
+            }
+        }
+    }
+}
+@media screen and (max-width: 660px) {
+    #container {
+        .new-articles {
+            .list {
+                li {
+                    width:44%!important;
+                	margin:10px!important;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+    #container {
+        .about {
+            .index-img {
+                width:100%!important;
+                height:auto!important;
+            }
+        }
+        .new-articles {
+            .list {
+                li {
+                	margin:7px!important;
+                }
+            }
+        }
+    }
+}
 #container {
     h2 {
         font-family:'Open Sans', 'Microsoft JhengHei';
@@ -25,22 +64,23 @@
     }
     .new-articles {
         .list {
-        	ul{
-        		margin:-15px;
-        	}
+            ul {
+                margin:-15px;
+            }
             li {
                 float:left;
                 width:28%;
+                min-width:142px;
                 margin:15px;
-                img{
-                	width:100%;
+                img {
+                    width:100%;
                 }
                 h3 {
                     font-size:15px;
                     color:#000;
                     margin:10px 0;
                 }
-                span{
+                span {
                     font-size:13px;
                     color:#666;
                 }

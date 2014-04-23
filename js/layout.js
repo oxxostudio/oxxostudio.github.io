@@ -48,6 +48,7 @@ $(function() {
             });
         });
     }
+    
     fn_changeSize();
     $(window).resize(fn_changeSize);
 

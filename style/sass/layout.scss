@@ -1,7 +1,7 @@
 @import"cssreset";
  @import url(http://fonts.googleapis.com/css?family=Open+Sans);
  @import url(http://fonts.googleapis.com/css?family=Raleway);
- @media screen and (max-width: 1025px) {
+ @media screen and (max-width: 1000px) {
     #sideMenu {
         position: fixed;
         z-index: 2;
@@ -12,12 +12,12 @@
         top:0;
         left:0;
         #profile {
-            padding:12px 25px 0!important;
+            padding:15px 25px 0!important;
             width:100%!important;
             h1 {
                 margin:0 auto!important;
                 text-align: center;
-                font-size:24px!important;
+                font-size:18px!important;
             }
             div {
                 display:none;
@@ -53,7 +53,10 @@
         }
     }
     #container {
-        margin-top:30px!important;
+        margin-top:0px!important;
+        .container-title{
+        	display:none;
+        }
     }
 }
 body, html {
@@ -81,7 +84,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
 #wrapper {
     display:table;
     margin:0 auto;
-    max-width:1200px;
+    max-width:1100px;
     width: 95%;
     min-height:100%;
     background: #ebf3ef;

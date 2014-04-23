@@ -37,7 +37,7 @@ table {
   border-spacing: 0;
 }
 
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 1000px) {
   #sideMenu {
     position: fixed;
     z-index: 2;
@@ -49,13 +49,13 @@ table {
     left: 0;
   }
   #sideMenu #profile {
-    padding: 12px 25px 0 !important;
+    padding: 15px 25px 0 !important;
     width: 100% !important;
   }
   #sideMenu #profile h1 {
     margin: 0 auto !important;
     text-align: center;
-    font-size: 24px !important;
+    font-size: 18px !important;
   }
   #sideMenu #profile div {
     display: none;
@@ -90,7 +90,10 @@ table {
   }
 
   #container {
-    margin-top: 30px !important;
+    margin-top: 0px !important;
+  }
+  #container .container-title {
+    display: none;
   }
 }
 body, html {
@@ -116,7 +119,7 @@ a {
 #wrapper {
   display: table;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1100px;
   width: 95%;
   min-height: 100%;
   background: #ebf3ef;

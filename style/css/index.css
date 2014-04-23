@@ -1,3 +1,24 @@
+@media screen and (max-width: 750px) {
+  #container .about .index-img {
+    float: none !important;
+    margin: 0 !important;
+  }
+}
+@media screen and (max-width: 660px) {
+  #container .new-articles .list li {
+    width: 44% !important;
+    margin: 10px !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  #container .about .index-img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  #container .new-articles .list li {
+    margin: 7px !important;
+  }
+}
 #container h2 {
   font-family: 'Open Sans', 'Microsoft JhengHei';
   color: #000;
@@ -28,6 +49,7 @@
 #container .new-articles .list li {
   float: left;
   width: 28%;
+  min-width: 142px;
   margin: 15px;
 }
 #container .new-articles .list li img {
