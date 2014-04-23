@@ -37,6 +37,19 @@
         }
     }
 }
+@media screen and (max-width: 380px) {
+    #container {
+        .new-articles {
+            .list {
+                li {
+                	width:90%!important;
+                	min-width:90%!important;
+                	margin-bottom:25px!important;
+                }
+            }
+        }
+    }
+}
 #container {
     h2 {
         font-family:'Open Sans', 'Microsoft JhengHei';
