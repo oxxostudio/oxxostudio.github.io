@@ -12,8 +12,7 @@
 }
 @media screen and (max-width: 400px) {
   #container .about .index-img {
-    width: 100% !important;
-    height: auto !important;
+    display: none !important;
   }
   #container .new-articles .list li {
     margin: 7px !important;

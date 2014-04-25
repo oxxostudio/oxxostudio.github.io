@@ -3,7 +3,6 @@
  @import url(http://fonts.googleapis.com/css?family=Raleway);
  @media screen and (max-width: 1000px) {
     #sideMenu {
-        position: fixed;
         z-index: 2;
         width:100%!important;
         min-height: 50px!important;
@@ -46,7 +45,7 @@
                 margin-top:25px!important;
             }
             div {
-                margin:10px 20px 0 0;
+                margin:12px 10px 0 0;
                 padding:0 0 20px 20px;
                 display:block!important;
             }

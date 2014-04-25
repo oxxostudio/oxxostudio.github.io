@@ -4,17 +4,30 @@ $(function() {
     var $wrapper = $('#wrapper');
     var $container = $('#container');
     var $sideMenu = $('#sideMenu');
+    var timer;
     var fn_changeSize = function() {
         if ($window.width() >= 1000) {
             var containerWidth = $wrapper.width() - 230;
             $container.css({
                 'width': containerWidth + 'px'
             });
-            var containerHeight = $container.height();
-            $sideMenu.css({
-                'height': containerHeight + 50 + 'px'
-            });
+            timer = setInterval(function() {
+                if ($('#container .new-articles .list ul li').length ==6) {
+                    var containerHeight = $container.height();
+                    console.log(containerHeight);
+                    $sideMenu.css({
+                        'height': containerHeight + 50 + 'px'
+                    });
+                    clearTimeout(timer);
+                }
+            }, 10);
+            $('.menuList ul').hasClass('menuopen') ? '' : $('.menuList ul').css({
+                'display': 'table'
+            }).addClass('menuopen');
         } else {
+            $('.menuList ul').css({
+                'display': 'none'
+            }).removeClass('menuopen');
             $container.css({
                 'width': '100%'
             });
@@ -22,7 +35,6 @@ $(function() {
     }
     var fn_sideMenuStatus = function() {
         $('.menuList div').on('click', function() {
-          console.log('ok');
             if ($('.menuList ul').hasClass('menuopen')) {
                 $('.menuList ul').css({
                     'display': 'none'
@@ -48,7 +60,7 @@ $(function() {
             });
         });
     }
-    
+
     fn_changeSize();
     $(window).resize(fn_changeSize);
 
