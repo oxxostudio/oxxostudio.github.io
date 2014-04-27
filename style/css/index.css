@@ -53,13 +53,29 @@
   margin: -15px;
 }
 #container .new-articles .list li {
+  cursor: pointer;
   float: left;
   width: 28%;
   min-width: 142px;
   margin: 15px;
+  overflow: hidden;
 }
-#container .new-articles .list li img {
+#container .new-articles .list li div {
   width: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+#container .new-articles .list li div .imghover {
+  width: 115%;
+  margin-top: -27px;
+  margin-left: -20px;
+  margin-bottom: -6px;
+}
+#container .new-articles .list li div img {
+  width: 100%;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  transition: .2s;
 }
 #container .new-articles .list li h3 {
   font-size: 15px;

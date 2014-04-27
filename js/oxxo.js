@@ -1,5 +1,5 @@
 $(function() {
-  $.getJSON('../pageList.json', function(data) {
+  $.getJSON('../json/pageList.json', function(data) {
   	var dataNum = data.length;
   	
       for (i = 0; i < 6; i++) {

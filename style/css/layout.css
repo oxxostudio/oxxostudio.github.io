@@ -40,6 +40,7 @@ table {
 @media screen and (max-width: 1000px) {
   #sideMenu {
     z-index: 2;
+    position: fixed !important;
     width: 100% !important;
     min-height: 50px !important;
     max-height: 50px !important;
@@ -118,7 +119,7 @@ a {
 #wrapper {
   display: table;
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1150px;
   width: 95%;
   min-height: 100%;
   background: #ebf3ef;
@@ -152,7 +153,7 @@ a {
 }
 #sideMenu #profile .img {
   float: left;
-  margin: 0 10px 0 0;
+  margin: 0 12px 0 0;
 }
 #sideMenu #profile .img img {
   border: 3px solid #77c69e;
@@ -163,15 +164,12 @@ a {
   float: left;
 }
 #sideMenu #profile .menu li {
-  margin: 10px 0;
+  margin: 5px 0 10px;
 }
-#sideMenu #profile .menu span {
-  margin-right: 5px;
-}
-#sideMenu #profile a {
+#sideMenu #profile .menu li a {
   color: #77c69e;
 }
-#sideMenu #profile a:hover {
+#sideMenu #profile .menu li a:hover {
   text-decoration: underline;
 }
 #sideMenu .line {
@@ -292,13 +290,14 @@ a {
 }
 #container .container-title {
   margin: 30px 0 0;
+  font-weight: blod;
 }
 #container .container-title h1 {
   display: inline-block;
   font-family: 'Raleway', sans-serif;
-  font-size: 32px;
+  font-size: 31.5px;
   color: #555;
-  font-weight: 600;
+  font-weight: 900;
 }
 #container .container-title h1 span {
   font-size: 50%;
@@ -309,4 +308,29 @@ a {
   height: 5px;
   background: #ededed;
   margin: 15px 0 30px;
+}
+
+.icon-sprite {
+  background-image: url(../../img/layout/icon-sprite.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.icon-menu {
+  width: 20px;
+  height: 20px;
+  margin-bottom: -5px;
+  margin-right: 1px;
+}
+
+.icon-menu-aboutme {
+  background-position: -3px -2px;
+}
+
+.icon-menu-picasa {
+  background-position: -3px -32px;
+}
+
+.icon-menu-contact {
+  background-position: -3px -61px;
 }

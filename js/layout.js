@@ -4,26 +4,20 @@ $(function() {
     var $wrapper = $('#wrapper');
     var $container = $('#container');
     var $sideMenu = $('#sideMenu');
-    var timer;
+    //RWD
     var fn_changeSize = function() {
-        if ($window.width() >= 1000) {
+        if ($window.width() >= 984) {
             var containerWidth = $wrapper.width() - 230;
             $container.css({
                 'width': containerWidth + 'px'
             });
-            timer = setInterval(function() {
-                if ($('#container .new-articles .list ul li').length ==6) {
-                    var containerHeight = $container.height();
-                    console.log(containerHeight);
-                    $sideMenu.css({
-                        'height': containerHeight + 50 + 'px'
-                    });
-                    clearTimeout(timer);
-                }
-            }, 10);
+            $sideMenu.css({
+                'height': $container.height()+50 + 'px'
+            });
             $('.menuList ul').hasClass('menuopen') ? '' : $('.menuList ul').css({
                 'display': 'table'
             }).addClass('menuopen');
+            $container.off('click');
         } else {
             $('.menuList ul').css({
                 'display': 'none'
@@ -31,38 +25,36 @@ $(function() {
             $container.css({
                 'width': '100%'
             });
+            $container.on('click', fn_menuListHide);
         }
-    }
+    };
+    var fn_menuListShow = function() {
+        $('.menuList ul').css({
+            'display': 'table'
+        }).addClass('menuopen');
+        $(this).find('span').css({
+            'background': '#fff'
+        });
+    };
+    var fn_menuListHide = function() {
+        $('.menuList ul').css({
+            'display': 'none'
+        }).removeClass('menuopen');
+        $('.menuList div span').css({
+            'background': '#aaa'
+        });
+    };
     var fn_sideMenuStatus = function() {
         $('.menuList div').on('click', function() {
             if ($('.menuList ul').hasClass('menuopen')) {
-                $('.menuList ul').css({
-                    'display': 'none'
-                }).removeClass('menuopen');
-                $('.menuList div span').css({
-                    'background': '#aaa'
-                });
+                fn_menuListHide();
             } else {
-                $('.menuList ul').css({
-                    'display': 'table'
-                }).addClass('menuopen');
-                $(this).find('span').css({
-                    'background': '#fff'
-                });
+                fn_menuListShow();
             }
         });
-        $container.on('click', function() {
-            $('.menuList ul').css({
-                'display': 'none'
-            }).removeClass('menuopen');
-            $('.menuList div span').css({
-                'background': '#aaa'
-            });
-        });
-    }
-
+        $container.on('click', fn_menuListHide);
+    };
+    fn_sideMenuStatus();
     fn_changeSize();
     $(window).resize(fn_changeSize);
-
-    fn_sideMenuStatus();
 });

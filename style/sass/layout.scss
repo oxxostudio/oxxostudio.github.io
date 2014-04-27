@@ -4,6 +4,7 @@
  @media screen and (max-width: 1000px) {
     #sideMenu {
         z-index: 2;
+        position:fixed!important;
         width:100%!important;
         min-height: 50px!important;
         max-height:50px!important;
@@ -53,8 +54,8 @@
     }
     #container {
         margin-top:0px!important;
-        .container-title{
-        	display:none;
+        .container-title {
+            display:none;
         }
     }
 }
@@ -83,7 +84,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
 #wrapper {
     display:table;
     margin:0 auto;
-    max-width:1100px;
+    max-width:1150px;
     width: 95%;
     min-height:100%;
     background: #ebf3ef;
@@ -114,7 +115,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
         }
         .img {
             float:left;
-            margin:0 10px 0 0;
+            margin:0 12px 0 0;
             img {
                 border:3px solid #77c69e;
             }
@@ -124,17 +125,14 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
             color:#77c69e;
             float:left;
             li {
-                margin:10px 0;
+                margin:5px 0 10px;
+                a {
+                    color:#77c69e;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
             }
-            span {
-                margin-right:5px;
-            }
-        }
-        a {
-            color:#77c69e;
-        }
-        a:hover {
-            text-decoration: underline;
         }
     }
     .line {
@@ -176,10 +174,10 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
                 @include transition-time;
             }
         }
-        div:hover{
-        	span{
+        div:hover {
+            span {
                 background: #fff;
-        	}
+            }
         }
     }
     .license {
@@ -252,12 +250,13 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
     padding:25px 25px 25px;
     .container-title {
         margin:30px 0 0;
+            font-weight: blod;
         h1 {
             display: inline-block;
             font-family:'Raleway', sans-serif;
-            font-size:32px;
+            font-size:31.5px;
             color:#555;
-            font-weight: 600;
+            font-weight: 900;
             span {
                 font-size:50%;
                 color:#888;
@@ -271,3 +270,24 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
         margin:15px 0 30px;
     }
 }
+.icon-sprite{
+	background-image:url(../../img/layout/icon-sprite.png);
+	background-repeat:no-repeat;
+	display: inline-block;
+}
+.icon-menu{
+	width:20px;
+	height:20px;
+	margin-bottom:-5px;
+	margin-right:1px;
+}
+.icon-menu-aboutme{
+	background-position:-3px -2px;
+}
+.icon-menu-picasa{
+	background-position:-3px -32px;
+}
+.icon-menu-contact{
+	background-position:-3px -61px;
+}
+

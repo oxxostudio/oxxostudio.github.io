@@ -14,7 +14,7 @@
             .list {
                 li {
                     width:44%!important;
-                	margin:10px!important;
+                    margin:10px!important;
                 }
             }
         }
@@ -30,7 +30,7 @@
         .new-articles {
             .list {
                 li {
-                	margin:7px!important;
+                    margin:7px!important;
                 }
             }
         }
@@ -41,13 +41,18 @@
         .new-articles {
             .list {
                 li {
-                	width:90%!important;
-                	min-width:90%!important;
-                	margin-bottom:25px!important;
+                    width:90%!important;
+                    min-width:90%!important;
+                    margin-bottom:25px!important;
                 }
             }
         }
     }
+}
+@mixin transition-time {
+    -webkit-transition:.2s;
+    -moz-transition:.2s;
+    transition:.2s;
 }
 #container {
     h2 {
@@ -80,12 +85,26 @@
                 margin:-15px;
             }
             li {
+                cursor: pointer;
                 float:left;
                 width:28%;
                 min-width:142px;
                 margin:15px;
-                img {
+                overflow: hidden;
+                div {
                     width:100%;
+                    overflow: hidden;
+                    padding:0;
+                    .imghover {
+                        width:115%;
+                        margin-top:-27px;
+                        margin-left:-20px;
+                        margin-bottom:-6px;
+                    }
+                    img {
+                        width:100%;
+                        @include transition-time;
+                    }
                 }
                 h3 {
                     font-size:15px;
