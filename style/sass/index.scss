@@ -13,8 +13,8 @@
         .new-articles {
             .list {
                 li {
-                    width:44%!important;
-                    margin:10px!important;
+                    width:43%!important;
+                    margin:5px 15px 25px 0!important;
                 }
             }
         }
@@ -30,20 +30,8 @@
         .new-articles {
             .list {
                 li {
-                    margin:7px!important;
-                }
-            }
-        }
-    }
-}
-@media screen and (max-width: 380px) {
-    #container {
-        .new-articles {
-            .list {
-                li {
-                    width:90%!important;
-                    min-width:90%!important;
-                    margin-bottom:25px!important;
+                    margin:5px 0 25px 0!important;
+                    min-width:95%!important;
                 }
             }
         }
@@ -82,7 +70,8 @@
     .new-articles {
         .list {
             ul {
-                margin:-15px;
+                margin:0;
+                width:100%;
             }
             li {
                 cursor: pointer;
@@ -96,10 +85,7 @@
                     overflow: hidden;
                     padding:0;
                     .imghover {
-                        width:115%;
-                        margin-top:-27px;
-                        margin-left:-20px;
-                        margin-bottom:-6px;
+                        width:110%;
                     }
                     img {
                         width:100%;
@@ -112,6 +98,8 @@
                     margin:10px 0;
                 }
                 span {
+                	display:block;
+                	height:26px;
                     font-size:13px;
                     color:#666;
                 }

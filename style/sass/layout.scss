@@ -86,14 +86,14 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
     margin:0 auto;
     max-width:1150px;
     width: 95%;
-    min-height:100%;
     background: #ebf3ef;
     -webkit-box-shadow:$wrapper-shadow;
     -moz-box-shadow:$wrapper-shadow;
     box-shadow:$wrapper-shadow;
 }
 #sideMenu {
-    min-height:100%;
+	position: fixed;
+	height:100%;
     color:#fff;
     background: #0c0d0d;
     width:225px;

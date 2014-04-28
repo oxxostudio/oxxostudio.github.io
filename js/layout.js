@@ -11,9 +11,6 @@ $(function() {
             $container.css({
                 'width': containerWidth + 'px'
             });
-            $sideMenu.css({
-                'height': $container.height()+50 + 'px'
-            });
             $('.menuList ul').hasClass('menuopen') ? '' : $('.menuList ul').css({
                 'display': 'table'
             }).addClass('menuopen');

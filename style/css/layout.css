@@ -121,7 +121,6 @@ a {
   margin: 0 auto;
   max-width: 1150px;
   width: 95%;
-  min-height: 100%;
   background: #ebf3ef;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -129,7 +128,8 @@ a {
 }
 
 #sideMenu {
-  min-height: 100%;
+  position: fixed;
+  height: 100%;
   color: #fff;
   background: #0c0d0d;
   width: 225px;
