@@ -3,14 +3,17 @@
  @import url(http://fonts.googleapis.com/css?family=Raleway);
  @media screen and (max-width: 1000px) {
     #sideMenu {
-        z-index: 2;
-        position:fixed!important;
+        z-index: 99;
         width:100%!important;
         min-height: 50px!important;
         max-height:50px!important;
+        height:50px!important;
         box-shadow: 0 0 10px #000;
         top:0;
         left:0;
+        overflow-y: visible!important;
+        overflow-x: visible!important;
+        // overflow-y:none!important;
         #profile {
             padding:15px 25px 0!important;
             width:100%!important;
@@ -37,6 +40,7 @@
                 margin-top:15px;
                 display:none;
                 border-top:1px solid #333;
+                box-shadow:0 2px 10px #000;
             }
             li {
                 width:100%;
@@ -76,10 +80,10 @@ a {
     text-decoration: none;
 }
 $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
- @mixin transition-time {
-    -webkit-transition:.2s;
-    -moz-transition:.2s;
-    transition:.2s;
+ @mixin transition-time($timer) {
+    -webkit-transition:$timer;
+    -moz-transition:$timer;
+    transition:$timer;
 }
 #wrapper {
     display:table;
@@ -91,9 +95,16 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
     -moz-box-shadow:$wrapper-shadow;
     box-shadow:$wrapper-shadow;
 }
+.icon-sprite {
+    background-image:url(../../img/layout/icon-sprite.png);
+    background-repeat:no-repeat;
+    display: inline-block;
+}
 #sideMenu {
-	position: fixed;
-	height:100%;
+    position: fixed;
+    overflow-y:auto;
+    overflow-x:hidden;
+    height:100%;
     color:#fff;
     background: #0c0d0d;
     width:225px;
@@ -115,7 +126,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
         }
         .img {
             float:left;
-            margin:0 12px 0 0;
+            margin:0 10px 0 0;
             img {
                 border:3px solid #77c69e;
             }
@@ -125,7 +136,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
             color:#77c69e;
             float:left;
             li {
-                margin:5px 0 10px;
+                margin:5px 0;
                 a {
                     color:#77c69e;
                 }
@@ -133,6 +144,21 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
                     text-decoration: underline;
                 }
             }
+        }
+        .icon-menu {
+            width:20px;
+            height:20px;
+            margin-bottom:-5px;
+            margin-right:0px;
+        }
+        .icon-menu-aboutme {
+            background-position:-3px -2px;
+        }
+        .icon-menu-picasa {
+            background-position:-3px -32px;
+        }
+        .icon-menu-contact {
+            background-position:-4px -61px;
         }
     }
     .line {
@@ -143,6 +169,12 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
         font-family:'Raleway', sans-serif;
         font-size:15px;
         padding:25px;
+        ul {
+            display:table;
+        }
+        .menuopen {
+            opacity:1;
+        }
         li {
             margin:25px 0;
         }
@@ -151,7 +183,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
         }
         a {
             color:#fff;
-            @include transition-time;
+            @include transition-time(.2s);
         }
         a:hover {
             color:#77c69f;
@@ -171,7 +203,10 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
                 height:3px;
                 background: #aaa;
                 margin:4px;
-                @include transition-time;
+                @include transition-time(.2s);
+            }
+            .span-hover {
+                background: #fff;
             }
         }
         div:hover {
@@ -250,7 +285,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
     padding:25px 25px 25px;
     .container-title {
         margin:30px 0 0;
-            font-weight: blod;
+        font-weight: blod;
         h1 {
             display: inline-block;
             font-family:'Raleway', sans-serif;
@@ -262,6 +297,12 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
                 color:#888;
                 font-weight: normal;
             }
+            .icon-title {
+                width:24px;
+                height:24px;
+                background-position: -28px -6px;
+                margin-right:5px;
+            }
         }
     }
     .line {
@@ -270,24 +311,3 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
         margin:15px 0 30px;
     }
 }
-.icon-sprite{
-	background-image:url(../../img/layout/icon-sprite.png);
-	background-repeat:no-repeat;
-	display: inline-block;
-}
-.icon-menu{
-	width:20px;
-	height:20px;
-	margin-bottom:-5px;
-	margin-right:1px;
-}
-.icon-menu-aboutme{
-	background-position:-3px -2px;
-}
-.icon-menu-picasa{
-	background-position:-3px -32px;
-}
-.icon-menu-contact{
-	background-position:-3px -61px;
-}
-

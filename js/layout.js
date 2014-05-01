@@ -11,14 +11,14 @@ $(function() {
             $container.css({
                 'width': containerWidth + 'px'
             });
-            $('.menuList ul').hasClass('menuopen') ? '' : $('.menuList ul').css({
-                'display': 'table'
-            }).addClass('menuopen');
+            if ($('.menuList ul').hasClass('menuopen')) {} else {
+                $('.menuList ul').css({'opacity':'1'}).show().addClass('menuopen');
+                $('.menuList ul li').css({'opacity':'1'}).show();
+            }
             $container.off('click');
         } else {
-            $('.menuList ul').css({
-                'display': 'none'
-            }).removeClass('menuopen');
+            $('.menuList ul li').hide();
+            $('.menuList ul').hide().removeClass('menuopen');
             $container.css({
                 'width': '100%'
             });
@@ -26,20 +26,14 @@ $(function() {
         }
     };
     var fn_menuListShow = function() {
-        $('.menuList ul').css({
-            'display': 'table'
-        }).addClass('menuopen');
-        $(this).find('span').css({
-            'background': '#fff'
-        });
+        $('.menuList ul').slideDown(200).animate({'opacity':'1'},{queue : false, duration : 200}).addClass('menuopen');
+        $('.menuList ul li').slideDown(200).animate({'opacity':'1'},{queue : false, duration : 200});
+        $('.menuList div span').addClass('span-hover');
     };
     var fn_menuListHide = function() {
-        $('.menuList ul').css({
-            'display': 'none'
-        }).removeClass('menuopen');
-        $('.menuList div span').css({
-            'background': '#aaa'
-        });
+        $('.menuList ul').slideUp(200).animate({'opacity':'0'},{queue : false, duration : 200}).removeClass('menuopen');
+        $('.menuList ul li').slideUp(200).animate({'opacity':'0'},{queue : false, duration :200});
+        $('.menuList div span').removeClass('span-hover');
     };
     var fn_sideMenuStatus = function() {
         $('.menuList div').on('click', function() {

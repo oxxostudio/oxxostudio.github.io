@@ -31,6 +31,10 @@
   color: #555;
   line-height: 26px;
 }
+#container h4 strong {
+  font-weight: 900;
+  color: #333;
+}
 #container .about {
   display: table;
 }
@@ -55,19 +59,77 @@
   margin: 15px;
   overflow: hidden;
 }
-#container .new-articles .list li div {
+#container .new-articles .list li .img-div {
   width: 100%;
   overflow: hidden;
   padding: 0;
+  position: relative;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
 }
-#container .new-articles .list li div .imghover {
-  width: 110%;
-}
-#container .new-articles .list li div img {
+#container .new-articles .list li .img-div div {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  -webkit-transition: .2s;
-  -moz-transition: .2s;
-  transition: .2s;
+}
+#container .new-articles .list li .img-div .img-cover-1 {
+  z-index: 2;
+  background: rgba(0, 0, 0, 0);
+  height: 300px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+#container .new-articles .list li .img-div .img-cover-1-hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+#container .new-articles .list li .img-div .img-cover-2 {
+  font-weight: bold;
+  top: 30px;
+  z-index: 3;
+  height: 40px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  line-height: 40px;
+  text-align: center;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+#container .new-articles .list li .img-div .img-cover-2-hover {
+  top: 40px;
+  opacity: 1;
+}
+#container .new-articles .list li .img-div .img-cover-3 {
+  top: 110px;
+  z-index: 4;
+  height: 50px;
+  line-height: 17px;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  padding: 0 20px;
+}
+#container .new-articles .list li .img-div .img-cover-3-hover {
+  top: 90px;
+  opacity: 1;
+}
+#container .new-articles .list li .img-div img {
+  width: 100%;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+#container .new-articles .list li .img-div .imghover {
+  width: 116%;
 }
 #container .new-articles .list li h3 {
   font-size: 15px;
@@ -76,7 +138,7 @@
 }
 #container .new-articles .list li span {
   display: block;
-  height: 26px;
+  height: 20px;
   font-size: 13px;
   color: #666;
 }

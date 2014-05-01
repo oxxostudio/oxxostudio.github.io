@@ -37,10 +37,15 @@
         }
     }
 }
-@mixin transition-time {
-    -webkit-transition:.2s;
-    -moz-transition:.2s;
-    transition:.2s;
+@mixin transition-time($timer) {
+    -webkit-transition:$timer;
+    -moz-transition:$timer;
+    transition:$timer;
+}
+@mixin div-radius($radius) {
+    -webkit-border-radius:$radius;
+    -moz-border-radius:$radius;
+    border-radius:$radius;
 }
 #container {
     h2 {
@@ -54,6 +59,10 @@
         font-size:15px;
         color:#555;
         line-height: 26px;
+        strong{
+        	font-weight: 900;
+        	color:#333;
+        }
     }
     .about {
         display:table;
@@ -80,16 +89,66 @@
                 min-width:142px;
                 margin:15px;
                 overflow: hidden;
-                div {
+                .img-div {
                     width:100%;
                     overflow: hidden;
                     padding:0;
-                    .imghover {
-                        width:110%;
+                    position:relative;
+                    @include div-radius(7px);
+                    div {
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        width:100%;
+                    }
+                    .img-cover-1 {
+                        z-index:2;
+                        background:rgba(0, 0, 0, 0);
+                        height:300px;
+                        @include transition-time(.3s);
+                    }
+                    .img-cover-1-hover {
+                        background:rgba(0, 0, 0, .5);
+                    }
+                    .img-cover-2 {
+                        font-weight: bold;
+                        top:30px;
+                        z-index:3;
+                        height:40px;
+                        color:#fff;
+                        background:rgba(0, 0, 0, .6);
+                        opacity:0;
+                        line-height: 40px;
+                        text-align: center;
+                        @include transition-time(.3s);
+                    }
+                    .img-cover-2-hover {
+                        top:40px;
+                        opacity:1;
+                    }
+                    .img-cover-3 {
+                        top:110px;
+                        z-index:4;
+                        height:50px;
+                        line-height:17px;
+                        color:#fff;
+                        font-size:13px;
+                        text-align: center;
+                        overflow: hidden;
+                        opacity:0;
+                        @include transition-time(.5s);
+                        padding:0 20px;
+                    }
+                    .img-cover-3-hover {
+                        top:90px;
+                        opacity:1;
                     }
                     img {
                         width:100%;
-                        @include transition-time;
+                        @include transition-time(.3s);
+                    }
+                    .imghover {
+                        width:116%;
                     }
                 }
                 h3 {
@@ -98,8 +157,8 @@
                     margin:10px 0;
                 }
                 span {
-                	display:block;
-                	height:26px;
+                    display:block;
+                    height:20px;
                     font-size:13px;
                     color:#666;
                 }
