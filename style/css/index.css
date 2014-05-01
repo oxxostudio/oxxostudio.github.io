@@ -45,7 +45,17 @@
   margin: 10px 0 0 30px;
 }
 #container .about .index-img img {
-  width: 100%;
+  width: 90%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+#container .about .index-img img:hover {
+  margin-top: -10px;
+  box-shadow: 0 5px 10px #000;
 }
 #container .new-articles .list ul {
   margin: 0;
@@ -56,7 +66,7 @@
   float: left;
   width: 28%;
   min-width: 142px;
-  margin: 15px;
+  margin: 0 30px 20px 0;
   overflow: hidden;
 }
 #container .new-articles .list li .img-div {
@@ -74,54 +84,6 @@
   left: 0;
   width: 100%;
 }
-#container .new-articles .list li .img-div .img-cover-1 {
-  z-index: 2;
-  background: rgba(0, 0, 0, 0);
-  height: 300px;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
-#container .new-articles .list li .img-div .img-cover-1-hover {
-  background: rgba(0, 0, 0, 0.5);
-}
-#container .new-articles .list li .img-div .img-cover-2 {
-  font-weight: bold;
-  top: 30px;
-  z-index: 3;
-  height: 40px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  line-height: 40px;
-  text-align: center;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
-#container .new-articles .list li .img-div .img-cover-2-hover {
-  top: 40px;
-  opacity: 1;
-}
-#container .new-articles .list li .img-div .img-cover-3 {
-  top: 110px;
-  z-index: 4;
-  height: 50px;
-  line-height: 17px;
-  color: #fff;
-  font-size: 13px;
-  text-align: center;
-  overflow: hidden;
-  opacity: 0;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
-  padding: 0 20px;
-}
-#container .new-articles .list li .img-div .img-cover-3-hover {
-  top: 90px;
-  opacity: 1;
-}
 #container .new-articles .list li .img-div img {
   width: 100%;
   -webkit-transition: 0.3s;
@@ -129,7 +91,7 @@
   transition: 0.3s;
 }
 #container .new-articles .list li .img-div .imghover {
-  width: 116%;
+  width: 110%;
 }
 #container .new-articles .list li h3 {
   font-size: 15px;

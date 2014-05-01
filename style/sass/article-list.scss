@@ -1,0 +1,100 @@
+@media screen and (max-width: 773px) {
+    #container {
+        .article-list {
+            li {
+            	width:28%!important;
+            }
+        }
+    }
+}
+@media screen and (max-width: 597px) {
+    #container {
+        .article-list {
+            li {
+            	width:40%!important;
+            }
+        }
+    }
+}
+@media screen and (max-width: 422px) {
+    #container {
+        .article-list {
+            li {
+            	width:25%!important;
+            	margin-right:15px!important;
+            }
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+    #container {
+        .article-list {
+            li {
+            	width:100%!important;
+            }
+        }
+    }
+}
+@mixin transition-time($timer) {
+    -webkit-transition:$timer;
+    -moz-transition:$timer;
+    transition:$timer;
+}
+@mixin div-radius($radius) {
+    -webkit-border-radius:$radius;
+    -moz-border-radius:$radius;
+    border-radius:$radius;
+}
+#container {
+    h2 {
+        font-family:'Open Sans', 'Microsoft JhengHei';
+        color:#000;
+        font-size:24px;
+        font-weight: 300;
+        margin:0 0 20px;
+    }
+    .article-list {
+        ul {
+            width:100%;
+        }
+        li {
+            cursor: pointer;
+            float:left;
+            width:16%;
+            min-width:142px;
+            margin:0 25px 20px 0;
+            overflow: hidden;
+            .img-div {
+                width:100%;
+                overflow: hidden;
+                padding:0;
+                position:relative;
+                @include div-radius(7px);
+                div {
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width:100%;
+                }
+                img {
+                    width:100%;
+                    @include transition-time(.3s);
+                }
+                .imghover {
+                    width:110%;
+                }
+            }
+            h3 {
+                font-size:15px;
+                color:#000;
+                margin:10px 0;
+            }
+            span {
+                display:block;
+                height:20px;
+                font-size:13px;
+                color:#666;
+            }
+        }
+    }
+}

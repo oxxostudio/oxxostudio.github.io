@@ -93,7 +93,7 @@ table {
   }
 
   #container {
-    margin-top: 0px !important;
+    margin-top: 5px !important;
   }
   #container .container-title {
     display: none;
@@ -348,5 +348,5 @@ a {
 #container .line {
   height: 5px;
   background: #ededed;
-  margin: 15px 0 30px;
+  margin: 15px 0 20px;
 }
