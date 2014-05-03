@@ -5,6 +5,9 @@
   }
 }
 @media screen and (max-width: 660px) {
+  #container .new-articles ul {
+    margin: 0 0 0 0 !important;
+  }
   #container .new-articles .list li {
     width: 43% !important;
     margin: 5px 15px 25px 0 !important;
@@ -15,8 +18,8 @@
     display: none !important;
   }
   #container .new-articles .list li {
-    margin: 5px 0 25px 0 !important;
-    min-width: 95% !important;
+    margin: 0 0 20px !important;
+    min-width: 100% !important;
   }
 }
 #container h2 {
@@ -58,25 +61,38 @@
   box-shadow: 0 5px 10px #000;
 }
 #container .new-articles .list ul {
-  margin: 0;
+  margin: 0 0 0 10px;
   width: 100%;
+}
+#container .new-articles .list li:hover .img-div div {
+  opacity: 1;
+  top: 0;
+}
+#container .new-articles .list li:hover .img-div img {
+  width: 105%;
+  opacity: .8;
+}
+#container .new-articles .list li:hover span {
+  background: #eee;
+}
+#container .new-articles .list li:hover h3 {
+  color: #000;
 }
 #container .new-articles .list li {
   cursor: pointer;
   float: left;
   width: 28%;
   min-width: 142px;
-  margin: 0 30px 20px 0;
+  margin: 0 25px 20px 0;
   overflow: hidden;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 }
 #container .new-articles .list li .img-div {
   width: 100%;
   overflow: hidden;
   padding: 0;
   position: relative;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
+  border-bottom: 1px solid #ddd;
 }
 #container .new-articles .list li .img-div img {
   position: absolute;
@@ -87,17 +103,59 @@
   -moz-transition: 0.3s;
   transition: 0.3s;
 }
-#container .new-articles .list li .img-div .imghover {
-  width: 110%;
+#container .new-articles .list li .img-div div {
+  color: #fff;
+  font-size: 13px;
+  padding: 10px;
+  width: 100%;
+  max-height: 120px;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: -10px;
+  left: 0;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  z-index: 20;
+  overflow: hidden;
+  line-height: 20px;
+  display: table;
 }
 #container .new-articles .list li h3 {
+  width: 100%;
   font-size: 15px;
-  color: #000;
-  margin: 10px 0;
+  color: #555;
+  margin: 12px 10px 15px;
+  height: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 #container .new-articles .list li span {
+  font-family: arial;
+  background: #f4f4f4;
+  padding: 8px 10px 0px;
+  border-top: 1px solid #e1e1e1;
   display: block;
   height: 20px;
-  font-size: 13px;
-  color: #666;
+  font-size: 12px;
+  color: #777;
+}
+#container .new-articles .list li span h5 {
+  display: block;
+  float: right;
+  font-size: 12px;
+}
+#container .new-articles .list li span .new-front-end {
+  color: #f90;
+}
+#container .new-articles .list li span .new-css {
+  color: #09c;
+}
+#container .new-articles .list li span .new-design {
+  color: #a00;
+}
+#container .new-articles .list li span .new-ui {
+  color: #0a0;
 }

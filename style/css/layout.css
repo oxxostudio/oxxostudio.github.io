@@ -99,6 +99,11 @@ table {
     display: none;
   }
 }
+@media screen and (max-width: 450px) {
+  #wrapper {
+    width: 100% !important;
+  }
+}
 body, html {
   font-family: 'Open Sans', 'PMingLiU', sans-serif;
   height: 100%;
@@ -367,7 +372,7 @@ a {
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%;
-  opacity: .7;
+  opacity: .5;
 }
 #container .container-title .icon-social:hover {
   margin-top: 4px;

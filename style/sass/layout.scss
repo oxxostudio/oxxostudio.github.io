@@ -63,6 +63,11 @@
         }
     }
 }
+ @media screen and (max-width: 450px){
+ 	#wrapper{
+ 		width:100%!important;
+ 	}
+ } 
 body, html {
     font-family:'Open Sans', 'PMingLiU', sans-serif;
     height: 100%;
@@ -327,7 +332,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
             float:right;
             @include transition-time(.2s);
             @include div-radius(100%);
-            opacity:.7;
+            opacity:.5;
         }
         .icon-social:hover {
             margin-top:4px;

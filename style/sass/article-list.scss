@@ -33,6 +33,9 @@
 @media screen and (max-width: 422px) {
     #container {
         .article-list {
+            ul {
+                margin:0 0 0 0!important;
+            }
             .grid-view {
                 li {
                     width:25%!important;
@@ -99,28 +102,35 @@
         ul {
             width:100%;
             display:table;
+            margin:0 0 0 10px;
         }
         .grid-view {
             a {
-                color:#333;
+                color:#555;
             }
-            a:visited {
-                color:#777;
+            a:hover {
+                color:#000;
+            }
+            li:hover {
+                box-shadow:0 0 10px #000;
+                img {
+                    opacity:.7;
+                }
             }
             li {
                 cursor: pointer;
                 float:left;
                 width:16%;
                 min-width:142px;
-                margin:0 25px 20px 0;
+                margin:0 20px 20px 0;
                 overflow: hidden;
                 display:block;
+                border:1px solid #e1e1e1;
                 .img-div {
                     width:100%;
                     overflow: hidden;
                     padding:0;
                     position:relative;
-                    @include div-radius(7px);
                     img {
                         position:absolute;
                         top:0;
@@ -128,64 +138,112 @@
                         width:100%;
                         @include transition-time(.3s);
                     }
-                    .imghover {
-                        width:110%;
-                    }
                 }
                 h3 {
-                    font-size:15px;
-                    margin:10px 0 0;
+                    font-size:13px;
+                    margin:10px 5px 0;
                     height:20px;
                     white-space:nowrap;
                     text-overflow:ellipsis;
                     overflow: hidden;
+                    i {
+                        display:none;
+                    }
+                }
+                i {
+                    display:block;
+                    font-size:12px;
+                    margin:5px 5px -5px;
+                }
+                .new-front-end {
+                    color:#f90;
+                }
+                .new-css {
+                    color:#09c;
+                }
+                .new-design {
+                    color:#a00;
+                }
+                .new-ui {
+                    color:#0a0;
                 }
                 span {
+                    font-family: arial;
                     display:block;
-                    height:20px;
-                    font-size:13px;
-                    color:#666;
+                    margin:0 5px 10px;
+                    font-size:12px;
+                    color:#999;
                 }
             }
         }
         .list-view {
-            a {
-                color:#333;
-            }
-            a:visited {
-                color:#777;
-            }
             li {
                 cursor: pointer;
                 width:100%;
                 margin:0 0 10px 0;
                 height:24px;
-                h3 {
-                    float:left;
-                    display: block;
-                    white-space:nowrap;
-                    text-overflow:ellipsis;
-                    white-space:nowrap;
-                    text-overflow:ellipsis;
-                    overflow: hidden;
-                    width:80%;
-                    height:24px;
-                    padding-left:20px;
-                    margin-right:-20px;
+                a {
+                    color:#000;
+                    @include transition-time(.3s);
+                    h3 {
+                        float:left;
+                        display: block;
+                        white-space:nowrap;
+                        text-overflow:ellipsis;
+                        overflow: hidden;
+                        width:80%;
+                        height:24px;
+                        padding-left:20px;
+                        margin-right:-20px;
+                        background:url(../../img/layout/icon-sprite.png) no-repeat -282px 0px;
+                        i {
+                            display:inline-block;
+                            font-size:12px;
+                            margin-left:15px;
+                        }
+                        .new-front-end {
+                            color:#f90;
+                        }
+                        .new-css {
+                            color:#09c;
+                        }
+                        .new-design {
+                            color:#a00;
+                        }
+                        .new-ui {
+                            color:#0a0;
+                        }
+                    }
+                    span {
+                        display: block;
+                        float:right;
+                        width:80px;
+                        margin-right:10px;
+                    }
+                    .img-div {
+                        display:none;
+                    }
                 }
-                span {
-                    display: block;
-                    float:right;
-                    width:80px;
-                    margin-right:10px;
+                a:visited {
+                    color:#999;
+                    h3 {
+                        background:url(../../img/layout/icon-sprite.png) no-repeat -282px -23px;
+                    }
                 }
-                .img-div {
+                a:hover {
+                    color:#17884f;
+                    h3 {
+                        background:url(../../img/layout/icon-sprite.png) no-repeat -282px -23px;
+                    }
+                }
+                i {
                     display:none;
                 }
             }
         }
     }
     .read-more {
+        display:none;
         width:100%;
         height:30px;
         background: #eee;

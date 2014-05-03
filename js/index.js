@@ -6,36 +6,25 @@ $(function() {
         var i;
         for (i = 0; i < 6; i++) {
             $('#container .new-articles .list ul').append(
-                '<li type="'+data[i].type+'">'+
+                '<li title="'+data[i].title+'">'+
                 '<a href="'+data[i].site+'">' +
                 '<div class="img-div">' +
+                '<div>'+data[i].desc+'</div>'+
                 '<img src="' + data[i].img + '">' +
                 '</div>' +
-                '<h3>' + data[i].title + '</h3>' +
-                '<span>' + data[i].date + '</span>' +
+                '<h3>' + data[i].title +'</h3>' +
+                '<span>' + data[i].date + 
+                '<h5 class="new-'+data[i].type+'">'+data[i].type+'</h5>'+
+                '</span>' +
                 '</a>'+
                 '</li>'
             );
             if (i == 5) {
                 fn_listHeight();
-                fn_imgHover();
+                // fn_imgHover();
             }
         }
     });
-
-    var fn_imgHover = function() {
-        $('.new-articles .list ul li').hover(function() {
-            $(this).find('img').addClass('imghover').css({
-                'margin-top': -imgHeightMargin + 'px',
-                'margin-left': -imgWidthMargin + 'px'
-            });
-        }, function() {
-            $(this).find('img').removeClass('imghover').css({
-                'margin-top': 0,
-                'margin-left': 0
-            });
-        });
-    }
 
     var fn_listHeight = function() {
         imgWidth = $('.new-articles .list .img-div').width();

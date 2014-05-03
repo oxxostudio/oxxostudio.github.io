@@ -15,6 +15,9 @@
   }
 }
 @media screen and (max-width: 422px) {
+  #container .article-list ul {
+    margin: 0 0 0 0 !important;
+  }
   #container .article-list .grid-view li {
     width: 25% !important;
     margin-right: 15px !important;
@@ -63,30 +66,35 @@
 #container .article-list ul {
   width: 100%;
   display: table;
+  margin: 0 0 0 10px;
 }
 #container .article-list .grid-view a {
-  color: #333;
+  color: #555;
 }
-#container .article-list .grid-view a:visited {
-  color: #777;
+#container .article-list .grid-view a:hover {
+  color: #000;
+}
+#container .article-list .grid-view li:hover {
+  box-shadow: 0 0 10px #000;
+}
+#container .article-list .grid-view li:hover img {
+  opacity: .7;
 }
 #container .article-list .grid-view li {
   cursor: pointer;
   float: left;
   width: 16%;
   min-width: 142px;
-  margin: 0 25px 20px 0;
+  margin: 0 20px 20px 0;
   overflow: hidden;
   display: block;
+  border: 1px solid #e1e1e1;
 }
 #container .article-list .grid-view li .img-div {
   width: 100%;
   overflow: hidden;
   padding: 0;
   position: relative;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
 }
 #container .article-list .grid-view li .img-div img {
   position: absolute;
@@ -97,28 +105,40 @@
   -moz-transition: 0.3s;
   transition: 0.3s;
 }
-#container .article-list .grid-view li .img-div .imghover {
-  width: 110%;
-}
 #container .article-list .grid-view li h3 {
-  font-size: 15px;
-  margin: 10px 0 0;
+  font-size: 13px;
+  margin: 10px 5px 0;
   height: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-#container .article-list .grid-view li span {
+#container .article-list .grid-view li h3 i {
+  display: none;
+}
+#container .article-list .grid-view li i {
   display: block;
-  height: 20px;
-  font-size: 13px;
-  color: #666;
+  font-size: 12px;
+  margin: 5px 5px -5px;
 }
-#container .article-list .list-view a {
-  color: #333;
+#container .article-list .grid-view li .new-front-end {
+  color: #f90;
 }
-#container .article-list .list-view a:visited {
-  color: #777;
+#container .article-list .grid-view li .new-css {
+  color: #09c;
+}
+#container .article-list .grid-view li .new-design {
+  color: #a00;
+}
+#container .article-list .grid-view li .new-ui {
+  color: #0a0;
+}
+#container .article-list .grid-view li span {
+  font-family: arial;
+  display: block;
+  margin: 0 5px 10px;
+  font-size: 12px;
+  color: #999;
 }
 #container .article-list .list-view li {
   cursor: pointer;
@@ -126,11 +146,15 @@
   margin: 0 0 10px 0;
   height: 24px;
 }
-#container .article-list .list-view li h3 {
+#container .article-list .list-view li a {
+  color: #000;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+#container .article-list .list-view li a h3 {
   float: left;
   display: block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -138,17 +162,51 @@
   height: 24px;
   padding-left: 20px;
   margin-right: -20px;
+  background: url(../../img/layout/icon-sprite.png) no-repeat -282px 0px;
 }
-#container .article-list .list-view li span {
+#container .article-list .list-view li a h3 i {
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 15px;
+}
+#container .article-list .list-view li a h3 .new-front-end {
+  color: #f90;
+}
+#container .article-list .list-view li a h3 .new-css {
+  color: #09c;
+}
+#container .article-list .list-view li a h3 .new-design {
+  color: #a00;
+}
+#container .article-list .list-view li a h3 .new-ui {
+  color: #0a0;
+}
+#container .article-list .list-view li a span {
   display: block;
   float: right;
   width: 80px;
   margin-right: 10px;
 }
-#container .article-list .list-view li .img-div {
+#container .article-list .list-view li a .img-div {
+  display: none;
+}
+#container .article-list .list-view li a:visited {
+  color: #999;
+}
+#container .article-list .list-view li a:visited h3 {
+  background: url(../../img/layout/icon-sprite.png) no-repeat -282px -23px;
+}
+#container .article-list .list-view li a:hover {
+  color: #17884f;
+}
+#container .article-list .list-view li a:hover h3 {
+  background: url(../../img/layout/icon-sprite.png) no-repeat -282px -23px;
+}
+#container .article-list .list-view li i {
   display: none;
 }
 #container .read-more {
+  display: none;
   width: 100%;
   height: 30px;
   background: #eee;

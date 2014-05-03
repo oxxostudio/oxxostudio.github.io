@@ -4,76 +4,112 @@ $(function() {
     var nowUrl = location.href;
     var urlParts = nowUrl.split("?");
     var readMore = 0;
-    var maxArticleNum = 8;
+    var maxArticleNum = 20;
 
     function fn_getJSON(type) {
         $.getJSON('../json/pageList.json', function(data) {
-            var i;
+            var i, n;
+            var j = 0;
+            var k = maxArticleNum;
             var dataNum = data.length;
-            fn_ajax(dataNum,type);
-            function fn_ajax(listNum, type) {
+            var classify = [];
+            var classifyNum = 0;
+            fn_getListNum(dataNum, type);
+            if (classifyNum > k) {
+                fn_ajax(j, k);
+            } else {
+                fn_ajax(j, classifyNum);
+                $('.read-more').hide();
+            }
+            $('.read-more').on('click', function() {
+                j = j + maxArticleNum;
+                k = k + maxArticleNum;
+                if (classifyNum > k) {
+                    fn_ajax(j, k);
+                    $('.read-more').show();
+                } else {
+                    fn_ajax(j, classifyNum);
+                    $('.read-more').hide();
+                }
+            });
+
+            function fn_getListNum(listNum, type) {
                 for (i = 0; i < listNum; i++) {
                     if (data[i].type == type) {
-                        $('#container .article-list ul').append(
-                            '<li type="' + data[i].type + '">' +
-                            '<a href="' + data[i].site + '">' +
-                            '<div class="img-div">' +
-                            '<img src="' + data[i].img + '">' +
-                            '</div>' +
-                            '<h3>' + data[i].title + '</h3>' +
-                            '<span>' + data[i].date + '</span>' +
-                            '</a>' +
-                            '</li>'
-                        );
+                        classify[classifyNum] = data[i];
+                        classifyNum = classifyNum + 1;
                     }
-                    if (i == (listNum - 1)) {
+                }
+            }
+
+            function fn_ajax(min, max) {
+                for (n = min; n < max; n++) {
+                    $('#container .article-list ul').append(
+                        '<li type="' + classify[n].type + '">' +
+                        '<a href="' + classify[n].site + '">' +
+                        '<div class="img-div">' +
+                        '<img src="' + classify[n].img + '">' +
+                        '</div>' +
+                        '<h3>' + classify[n].title + '</h3>' +
+                        '<span>' + classify[n].date + '</span>' +
+                        '</a>' +
+                        '</li>'
+                    );
+                    if (n == (max - 1)) {
                         fn_listHeight();
                         fn_listOrGrid();
-                        fn_imgHover();
                     }
                 }
             }
         });
     };
+
     function fn_getAll() {
         $.getJSON('../json/pageList.json', function(data) {
             var i;
             var dataNum = data.length;
-            fn_ajax(dataNum);
-            function fn_ajax(listNum) {
-                for (i = 0; i < listNum; i++) {
+            var j = 0;
+            var k = maxArticleNum;
+            if (dataNum > k) {
+                fn_ajax(j, k);
+                $('.read-more').show();
+            } else {
+                fn_ajax(j, dataNum);
+                $('.read-more').hide();
+            }
+            $('.read-more').on('click', function() {
+                j = j + maxArticleNum;
+                k = k + maxArticleNum;
+                if (dataNum > k) {
+                    fn_ajax(j, k);
+                } else {
+                    fn_ajax(j, dataNum);
+                    $('.read-more').hide();
+                }
+            });
+
+            function fn_ajax(min, max) {
+                for (i = min; i < max; i++) {
                     $('#container .article-list ul').append(
-                        '<li type="' + data[i].type + '">' +
+                        '<li>' +
                         '<a href="' + data[i].site + '">' +
                         '<div class="img-div">' +
                         '<img src="' + data[i].img + '">' +
                         '</div>' +
-                        '<h3>' + data[i].title + '</h3>' +
+                        '<i class="new-'+data[i].type+'">' + data[i].type + '</i>' +
+                        '<h3>' + data[i].title + 
+                        '<i class="new-'+data[i].type+'">' + data[i].type + '</i>' +
+                        '</h3>' +
                         '<span>' + data[i].date + '</span>' +
                         '</a>' +
                         '</li>'
                     );
-                    if (i == (listNum - 1)) {
+                    if (i == (max - 1)) {
                         fn_listHeight();
                         fn_listOrGrid();
-                        fn_imgHover();
                     }
                 }
             }
-        });
-    };
-
-    var fn_imgHover = function() {
-        $('.article-list .grid-view li').hover(function() {
-            $(this).find('img').addClass('imghover').css({
-                'margin-top': -imgHeightMargin + 'px',
-                'margin-left': -imgWidthMargin + 'px'
-            });
-        }, function() {
-            $(this).find('img').removeClass('imghover').css({
-                'margin-top': 0,
-                'margin-left': 0
-            });
         });
     };
 
@@ -123,46 +159,6 @@ $(function() {
             $('#container h2 .list-view').addClass('active');
             $('#container h2 .grid-view').removeClass('active');
             $('.menuList>ul').addClass('list-view');
-        });
-    };
-
-    var fn_readMore = function() {
-        $('.read-more').on('click', function() {
-            readMore = readMore + maxArticleNum;
-            $.getJSON('../json/pageList.json', function(data) {
-                var i;
-                var j = readMore + maxArticleNum;
-                var dataNum = data.length;
-                console.log(j);
-                if (dataNum > j) {
-                    fn_ajax(j);
-                    $('.read-more').show();
-                } else {
-                    fn_ajax(dataNum);
-                    $('.read-more').hide();
-                }
-                function fn_ajax(listNum) {
-                    for (i = readMore; i < listNum; i++) {
-                        $('#container .article-list ul').append(
-                            '<li type="' + data[i].type + '">' +
-                            '<a href="' + data[i].site + '">' +
-                            '<div class="img-div">' +
-                            '<img class="lazy" src="' + data[i].img + '">' +
-                            '</div>' +
-                            '<h3>' + data[i].title + '</h3>' +
-                            '<span>' + data[i].date + '</span>' +
-                            '</a>' +
-                            '</li>'
-                        );
-                        if (i == (listNum - 1)) {
-                            fn_listHeight();
-                            fn_contentFilter();
-                            fn_listOrGrid();
-                            fn_imgHover();
-                        }
-                    }
-                }
-            });
         });
     };
 
