@@ -1,21 +1,27 @@
 @media screen and (max-width: 773px) {
-  #container .article-list li {
+  #container .article-list .grid-view li {
     width: 28% !important;
   }
 }
 @media screen and (max-width: 597px) {
-  #container .article-list li {
+  #container .article-list .grid-view li {
     width: 40% !important;
+  }
+  #container .article-list .list-view li span {
+    display: none !important;
+  }
+  #container .article-list .list-view li h3 {
+    width: 100% !important;
   }
 }
 @media screen and (max-width: 422px) {
-  #container .article-list li {
+  #container .article-list .grid-view li {
     width: 25% !important;
     margin-right: 15px !important;
   }
 }
 @media screen and (max-width: 400px) {
-  #container .article-list li {
+  #container .article-list .grid-view li {
     width: 100% !important;
   }
 }
@@ -26,18 +32,54 @@
   font-weight: 300;
   margin: 0 0 20px;
 }
-#container .article-list ul {
+#container h2 i {
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  opacity: .2;
+  display: inline-block;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+  margin: 2px 4px;
+}
+#container h2 i:hover {
+  opacity: .7;
+}
+#container h2 .grid-view {
+  background-position: -7px -124px;
+  margin-left: 12px;
+}
+#container h2 .list-view {
+  background-position: -7px -94px;
+}
+#container h2 .active {
+  opacity: .7;
+}
+#container .article-list {
+  display: block;
   width: 100%;
 }
-#container .article-list li {
+#container .article-list ul {
+  width: 100%;
+  display: table;
+}
+#container .article-list .grid-view a {
+  color: #333;
+}
+#container .article-list .grid-view a:visited {
+  color: #777;
+}
+#container .article-list .grid-view li {
   cursor: pointer;
   float: left;
   width: 16%;
   min-width: 142px;
   margin: 0 25px 20px 0;
   overflow: hidden;
+  display: block;
 }
-#container .article-list li .img-div {
+#container .article-list .grid-view li .img-div {
   width: 100%;
   overflow: hidden;
   padding: 0;
@@ -46,29 +88,79 @@
   -moz-border-radius: 7px;
   border-radius: 7px;
 }
-#container .article-list li .img-div div {
+#container .article-list .grid-view li .img-div img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-}
-#container .article-list li .img-div img {
   width: 100%;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   transition: 0.3s;
 }
-#container .article-list li .img-div .imghover {
+#container .article-list .grid-view li .img-div .imghover {
   width: 110%;
 }
-#container .article-list li h3 {
+#container .article-list .grid-view li h3 {
   font-size: 15px;
-  color: #000;
-  margin: 10px 0;
+  margin: 10px 0 0;
+  height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
-#container .article-list li span {
+#container .article-list .grid-view li span {
   display: block;
   height: 20px;
   font-size: 13px;
   color: #666;
+}
+#container .article-list .list-view a {
+  color: #333;
+}
+#container .article-list .list-view a:visited {
+  color: #777;
+}
+#container .article-list .list-view li {
+  cursor: pointer;
+  width: 100%;
+  margin: 0 0 10px 0;
+  height: 24px;
+}
+#container .article-list .list-view li h3 {
+  float: left;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 80%;
+  height: 24px;
+  padding-left: 20px;
+  margin-right: -20px;
+}
+#container .article-list .list-view li span {
+  display: block;
+  float: right;
+  width: 80px;
+  margin-right: 10px;
+}
+#container .article-list .list-view li .img-div {
+  display: none;
+}
+#container .read-more {
+  width: 100%;
+  height: 30px;
+  background: #eee;
+  text-align: center;
+  line-height: 26px;
+  font-size: 13px;
+  margin: 10px auto 0;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+#container .read-more:hover {
+  background: #ddd;
 }

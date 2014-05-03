@@ -1,8 +1,10 @@
 @media screen and (max-width: 773px) {
     #container {
         .article-list {
-            li {
-            	width:28%!important;
+            .grid-view {
+                li {
+                    width:28%!important;
+                }
             }
         }
     }
@@ -10,8 +12,20 @@
 @media screen and (max-width: 597px) {
     #container {
         .article-list {
-            li {
-            	width:40%!important;
+            .grid-view {
+                li {
+                    width:40%!important;
+                }
+            }
+            .list-view {
+                li {
+                    span {
+                        display:none!important;
+                    }
+                    h3 {
+                        width:100%!important;
+                    }
+                }
             }
         }
     }
@@ -19,9 +33,11 @@
 @media screen and (max-width: 422px) {
     #container {
         .article-list {
-            li {
-            	width:25%!important;
-            	margin-right:15px!important;
+            .grid-view {
+                li {
+                    width:25%!important;
+                    margin-right:15px!important;
+                }
             }
         }
     }
@@ -29,8 +45,10 @@
 @media screen and (max-width: 400px) {
     #container {
         .article-list {
-            li {
-            	width:100%!important;
+            .grid-view {
+                li {
+                    width:100%!important;
+                }
             }
         }
     }
@@ -52,49 +70,133 @@
         font-size:24px;
         font-weight: 300;
         margin:0 0 20px;
+        i {
+            width:13px;
+            height:13px;
+            cursor:pointer;
+            opacity:.2;
+            display:inline-block;
+            @include transition-time(.3s);
+            margin:2px 4px;
+        }
+        i:hover {
+            opacity:.7;
+        }
+        .grid-view {
+            background-position:-7px -124px;
+            margin-left:12px;
+        }
+        .list-view {
+            background-position:-7px -94px;
+        }
+        .active {
+            opacity:.7;
+        }
     }
     .article-list {
+        display:block;
+        width:100%;
         ul {
             width:100%;
+            display:table;
         }
-        li {
-            cursor: pointer;
-            float:left;
-            width:16%;
-            min-width:142px;
-            margin:0 25px 20px 0;
-            overflow: hidden;
-            .img-div {
-                width:100%;
+        .grid-view {
+            a {
+                color:#333;
+            }
+            a:visited {
+                color:#777;
+            }
+            li {
+                cursor: pointer;
+                float:left;
+                width:16%;
+                min-width:142px;
+                margin:0 25px 20px 0;
                 overflow: hidden;
-                padding:0;
-                position:relative;
-                @include div-radius(7px);
-                div {
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    width:100%;
-                }
-                img {
-                    width:100%;
-                    @include transition-time(.3s);
-                }
-                .imghover {
-                    width:110%;
-                }
-            }
-            h3 {
-                font-size:15px;
-                color:#000;
-                margin:10px 0;
-            }
-            span {
                 display:block;
-                height:20px;
-                font-size:13px;
-                color:#666;
+                .img-div {
+                    width:100%;
+                    overflow: hidden;
+                    padding:0;
+                    position:relative;
+                    @include div-radius(7px);
+                    img {
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        width:100%;
+                        @include transition-time(.3s);
+                    }
+                    .imghover {
+                        width:110%;
+                    }
+                }
+                h3 {
+                    font-size:15px;
+                    margin:10px 0 0;
+                    height:20px;
+                    white-space:nowrap;
+                    text-overflow:ellipsis;
+                    overflow: hidden;
+                }
+                span {
+                    display:block;
+                    height:20px;
+                    font-size:13px;
+                    color:#666;
+                }
             }
         }
+        .list-view {
+            a {
+                color:#333;
+            }
+            a:visited {
+                color:#777;
+            }
+            li {
+                cursor: pointer;
+                width:100%;
+                margin:0 0 10px 0;
+                height:24px;
+                h3 {
+                    float:left;
+                    display: block;
+                    white-space:nowrap;
+                    text-overflow:ellipsis;
+                    white-space:nowrap;
+                    text-overflow:ellipsis;
+                    overflow: hidden;
+                    width:80%;
+                    height:24px;
+                    padding-left:20px;
+                    margin-right:-20px;
+                }
+                span {
+                    display: block;
+                    float:right;
+                    width:80px;
+                    margin-right:10px;
+                }
+                .img-div {
+                    display:none;
+                }
+            }
+        }
+    }
+    .read-more {
+        width:100%;
+        height:30px;
+        background: #eee;
+        text-align: center;
+        line-height: 26px;
+        font-size:13px;
+        margin:10px auto 0;
+        cursor:pointer;
+        @include transition-time(.3s);
+    }
+    .read-more:hover {
+        background: #ddd;
     }
 }
