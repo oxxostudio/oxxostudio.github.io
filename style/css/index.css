@@ -22,6 +22,9 @@
     min-width: 100% !important;
   }
 }
+#container {
+  padding-bottom: 30px;
+}
 #container h2 {
   font-family: 'Open Sans', 'Microsoft JhengHei';
   color: #000;

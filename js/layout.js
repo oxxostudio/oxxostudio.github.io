@@ -6,18 +6,18 @@ $(function() {
     var $sideMenu = $('#sideMenu');
     var nowUrl = location.href;
     var urlParts = nowUrl.split("?");
-    var fn_sideMenuContent = function() {
+    function fn_sideMenuContent() {
         $sideMenu.append(
             '<div id="profile">' +
             '<h1>OXXO.STUDIO</h1>' +
             '<div class="img">' +
-            '<img src="img/layout/profile-img.png" height="74" width="74">' +
+            '<img src="/img/layout/profile-img.png" height="74" width="74">' +
             '</div>' +
             '<div class="menu">' +
             '<ul>' +
             '<li>' +
             '<i class="icon-sprite icon-menu icon-menu-aboutme"></i>' +
-            '<a href="#">About Me</a>' +
+            '<a href="/articles/201405/about-me.html">About Me</a>' +
             '</li>' +
             '<li>' +
             '<i class="icon-sprite icon-menu icon-menu-picasa"></i>' +
@@ -38,12 +38,12 @@ $(function() {
             '<div class="menuList">' +
             '<div><span></span><span></span><span></span></div>' +
             '<ul>' +
-            '<li url="index"><a href="index.html">HOME</a></li>' +
-            '<li url="all-articles"><a href="articles.html?all-articles">ALL ARTICLES</a></li>' +
-            '<li url="front-end"><a href="articles.html?front-end">FRONT-END</a></li>' +
-            '<li url="css"><a href="articles.html?css">CSS CRAFTS</a></li>' +
-            '<li url="ui"><a href="articles.html?ui">UI & UX</a></li>' +
-            '<li url="design"><a href="articles.html?design">DESIGN</a></li>' +
+            '<li url="index"><a href="/index.html">HOME</a></li>' +
+            '<li url="all-articles"><a href="/articles.html?all-articles">ALL ARTICLES</a></li>' +
+            '<li url="front-end"><a href="/articles.html?front-end">FRONT-END</a></li>' +
+            '<li url="css"><a href="/articles.html?css">CSS CRAFTS</a></li>' +
+            '<li url="ui"><a href="/articles.html?ui">UI & UX</a></li>' +
+            '<li url="design"><a href="/articles.html?design">DESIGN</a></li>' +
             '</ul>' +
             '</div>'
         );
@@ -75,7 +75,7 @@ $(function() {
             $('.menuList li[url=' + $('body').attr('url') + ']').find('a').addClass('active');
         }
     }
-    var fn_changeSize = function() {
+    function fn_changeSize() {
         if ($container.height() < $window.height()) {
             $container.css({
                 'height': $(window).height() + 'px'
@@ -103,8 +103,8 @@ $(function() {
             });
             $container.on('click', fn_menuListHide);
         }
-    };
-    var fn_menuListShow = function() {
+    }
+    function fn_menuListShow() {
         $('.menuList ul').slideDown(200).animate({
             'opacity': '1'
         }, {
@@ -118,8 +118,8 @@ $(function() {
             duration: 200
         });
         $('.menuList div span').addClass('span-hover');
-    };
-    var fn_menuListHide = function() {
+    }
+    function fn_menuListHide() {
         $('.menuList ul').slideUp(200).animate({
             'opacity': '0'
         }, {
@@ -133,8 +133,8 @@ $(function() {
             duration: 200
         });
         $('.menuList div span').removeClass('span-hover');
-    };
-    var fn_sideMenuStatus = function() {
+    }
+    function fn_sideMenuStatus() {
         $('.menuList div').on('click', function() {
             if ($('.menuList ul').hasClass('menuopen')) {
                 fn_menuListHide();
@@ -143,8 +143,8 @@ $(function() {
             }
         });
         $container.on('click', fn_menuListHide);
-    };
-    var fn_socialShare = function(){
+    }
+    function fn_socialShare(){
       $('.icon-facebook').on('click',function(){
         window.open('http://www.facebook.com/share.php?u=' + urlParts);
       });
@@ -154,7 +154,8 @@ $(function() {
       $('.icon-twitter').on('click',function(){
         window.open('http://twitter.com/home/?status=' + urlParts);
       });
-    };
+    }
+
     fn_sideMenuContent();
     fn_sideMenuStatus();
     fn_changeSize();

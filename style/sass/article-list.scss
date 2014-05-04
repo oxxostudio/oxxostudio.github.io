@@ -112,9 +112,12 @@
                 color:#000;
             }
             li:hover {
-                box-shadow:0 0 10px #000;
-                img {
-                    opacity:.7;
+                box-shadow:0 0 5px #555;
+                .img-div {
+                    img {
+                        opacity:.7;
+                        width:105%;
+                    }
                 }
             }
             li {
@@ -199,7 +202,7 @@
                         i {
                             display:inline-block;
                             font-size:12px;
-                            margin-left:15px;
+                            margin-left:8px;
                         }
                         .new-front-end {
                             color:#f90;
@@ -219,6 +222,7 @@
                         float:right;
                         width:80px;
                         margin-right:10px;
+                        font-size:13px;
                     }
                     .img-div {
                         display:none;

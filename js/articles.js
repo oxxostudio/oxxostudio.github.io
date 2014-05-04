@@ -7,7 +7,7 @@ $(function() {
     var maxArticleNum = 20;
 
     function fn_getJSON(type) {
-        $.getJSON('../json/pageList.json', function(data) {
+        $.getJSON('/json/pageList.json', function(data) {
             var i, n;
             var j = 0;
             var k = maxArticleNum;
@@ -32,7 +32,6 @@ $(function() {
                     $('.read-more').hide();
                 }
             });
-
             function fn_getListNum(listNum, type) {
                 for (i = 0; i < listNum; i++) {
                     if (data[i].type == type) {
@@ -41,7 +40,6 @@ $(function() {
                     }
                 }
             }
-
             function fn_ajax(min, max) {
                 for (n = min; n < max; n++) {
                     $('#container .article-list ul').append(
@@ -62,10 +60,10 @@ $(function() {
                 }
             }
         });
-    };
+    }
 
     function fn_getAll() {
-        $.getJSON('../json/pageList.json', function(data) {
+        $.getJSON('/json/pageList.json', function(data) {
             var i;
             var dataNum = data.length;
             var j = 0;
@@ -87,7 +85,6 @@ $(function() {
                     $('.read-more').hide();
                 }
             });
-
             function fn_ajax(min, max) {
                 for (i = min; i < max; i++) {
                     $('#container .article-list ul').append(
@@ -111,9 +108,9 @@ $(function() {
                 }
             }
         });
-    };
+    }
 
-    var fn_listHeight = function() {
+    function fn_listHeight() {
         imgWidth = $('.article-list .grid-view .img-div').width();
         imgHeight = Math.round(imgWidth * 26 / 29);
         imgWidthMargin = imgWidth * 0.05;
@@ -121,9 +118,9 @@ $(function() {
         $('.article-list .grid-view .img-div').css({
             'height': imgHeight + 'px'
         });
-    };
+    }
 
-    var fn_contentFilter = function() {
+    function fn_contentFilter() {
         switch (urlParts[1]) {
             case 'all-articles':
                 fn_getAll();
@@ -146,9 +143,9 @@ $(function() {
                 $('.article-list h2 span').text('視覺設計');
                 break;
         }
-    };
+    }
 
-    var fn_listOrGrid = function() {
+    function fn_listOrGrid() {
         $('h2 .grid-view').on('click', function() {
             $('.article-list ul').removeClass('list-view').addClass('grid-view');
             $('#container h2 .grid-view').addClass('active');
@@ -160,7 +157,7 @@ $(function() {
             $('#container h2 .grid-view').removeClass('active');
             $('.menuList>ul').addClass('list-view');
         });
-    };
+    }
 
     fn_contentFilter();
     $window.resize(function() {

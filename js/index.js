@@ -2,7 +2,7 @@ $(function() {
     var $window = $(window);
     var imgWidth, imgHeight, imgWidthMargin, imgHeightMargin;
 
-    $.getJSON('../json/pageList.json', function(data) {
+    $.getJSON('/json/pageList.json', function(data) {
         var i;
         for (i = 0; i < 6; i++) {
             $('#container .new-articles .list ul').append(
@@ -21,12 +21,11 @@ $(function() {
             );
             if (i == 5) {
                 fn_listHeight();
-                // fn_imgHover();
             }
         }
     });
 
-    var fn_listHeight = function() {
+    function fn_listHeight() {
         imgWidth = $('.new-articles .list .img-div').width();
         imgHeight = Math.round(imgWidth * 26 / 29);
         imgWidthMargin = imgWidth * 0.05;

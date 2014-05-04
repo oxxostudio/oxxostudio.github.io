@@ -136,7 +136,7 @@ a {
 }
 
 .icon-sprite {
-  background-image: url(../../img/layout/icon-sprite.png);
+  background-image: url(/img/layout/icon-sprite.png);
   background-repeat: no-repeat;
   display: inline-block;
 }
