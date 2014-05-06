@@ -40,6 +40,7 @@ table {
 @media screen and (max-width: 1000px) {
   #sideMenu {
     z-index: 99;
+    background: #0a0a0a !important;
     width: 100% !important;
     min-height: 50px !important;
     max-height: 50px !important;
@@ -110,7 +111,7 @@ body, html {
 }
 
 body {
-  background: #e7efeb;
+  background: url(/img/layout/bg.png);
   -webkit-font-smoothing: antialiased !important;
 }
 
@@ -129,10 +130,9 @@ a {
   margin: 0 auto;
   max-width: 1150px;
   width: 95%;
-  background: #ebf3ef;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 20px black;
+  -moz-box-shadow: 0 0 20px black;
+  box-shadow: 0 0 20px black;
 }
 
 .icon-sprite {
@@ -147,16 +147,13 @@ a {
   overflow-x: hidden;
   height: 100%;
   color: #fff;
-  background: #0c0d0d;
+  background: rgba(10, 10, 10, 0.7);
   width: 225px;
   float: left;
 }
 #sideMenu #profile, #sideMenu .line, #sideMenu .license, #sideMenu .menuList {
   display: table;
   width: 100%;
-}
-#sideMenu #profile, #sideMenu .license, #sideMenu .menuList {
-  background: #0c0d0d;
 }
 #sideMenu #profile {
   padding: 20px 25px 25px;

@@ -4,6 +4,7 @@
  @media screen and (max-width: 1000px) {
     #sideMenu {
         z-index: 99;
+    	background:rgba(10,10,10,1)!important;
         width:100%!important;
         min-height: 50px!important;
         max-height:50px!important;
@@ -72,7 +73,8 @@ body, html {
     height: 100%;
 }
 body {
-    background: #e7efeb;
+    // background: #e7efeb;
+    background:url(/img/layout/bg.png);
     -webkit-font-smoothing: antialiased !important;
 }
 div {
@@ -83,7 +85,7 @@ div {
 a {
     text-decoration: none;
 }
-$wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
+$wrapper-shadow:0 0 20px #000;
 @mixin transition-time($timer) {
     -webkit-transition:$timer;
     -moz-transition:$timer;
@@ -99,7 +101,7 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
     margin:0 auto;
     max-width:1150px;
     width: 95%;
-    background: #ebf3ef;
+    // background: #ebf3ef;
     -webkit-box-shadow:$wrapper-shadow;
     -moz-box-shadow:$wrapper-shadow;
     box-shadow:$wrapper-shadow;
@@ -115,15 +117,13 @@ $wrapper-shadow:0 0 10px rgba(0, 0, 0, .5);
     overflow-x:hidden;
     height:100%;
     color:#fff;
-    background: #0c0d0d;
+    // background: #0c0d0d;
+    background:rgba(10,10,10,.7);
     width:225px;
     float:left;
     #profile, .line, .license, .menuList {
         display:table;
         width:100%;
-    }
-    #profile, .license, .menuList {
-        background: #0c0d0d;
     }
     #profile {
         padding:20px 25px 25px;
