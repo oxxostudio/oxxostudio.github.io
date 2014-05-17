@@ -1,164 +1,105 @@
 $(function() {
-    var $window = $(window);
-    var $body = $('body');
-    var $wrapper = $('#wrapper');
-    var $container = $('#container');
-    var $sideMenu = $('#sideMenu');
-    var nowUrl = location.href;
-    var urlParts = nowUrl.split("?");
-    function fn_sideMenuContent() {
-        $sideMenu.append(
-            '<div id="profile">' +
-            '<h1>OXXO.STUDIO</h1>' +
-            '<div class="img">' +
-            '<img src="/img/layout/profile-img.png" height="74" width="74">' +
-            '</div>' +
-            '<div class="menu">' +
-            '<ul>' +
-            '<li>' +
-            '<i class="icon-sprite icon-menu icon-menu-aboutme"></i>' +
-            '<a href="/articles/201405/about-me.html">About Me</a>' +
-            '</li>' +
-            '<li>' +
-            '<i class="icon-sprite icon-menu icon-menu-picasa"></i>' +
-            '<a href="#">Picasa</a>' +
-            '</li>' +
-            '<li>' +
-            '<i class="icon-sprite icon-menu icon-menu-contact"></i>' +
-            '<a href="#">Contact</a>' +
-            '</li>' +
-            '</ul>' +
-            '</div>' +
-            '</div>'
-        );
-        $sideMenu.append(
-            '<div class="line"></div>'
-        );
-        $sideMenu.append(
-            '<div class="menuList">' +
-            '<div><span></span><span></span><span></span></div>' +
-            '<ul>' +
-            '<li url="index"><a href="/index.html">HOME</a></li>' +
-            '<li url="all-articles"><a href="/articles.html?all-articles">ALL ARTICLES</a></li>' +
-            '<li url="front-end"><a href="/articles.html?front-end">FRONT-END</a></li>' +
-            '<li url="css"><a href="/articles.html?css">CSS CRAFTS</a></li>' +
-            '<li url="ui"><a href="/articles.html?ui">UI & UX</a></li>' +
-            '<li url="design"><a href="/articles.html?design">DESIGN</a></li>' +
-            '</ul>' +
-            '</div>'
-        );
-        $sideMenu.append(
-            '<div class="license">' +
-            '<span></span><span></span><span></span><span></span><span></span><span></span>' +
-            '<div>LICENSE</div>' +
-            '<div>This license lets others remix, tweak, ' +
-            'and build upon your work non-commercially, ' +
-            'as long as they credit you and license their ' +
-            'new creations under the identical terms.</div>' +
-            '</div>'
-        );
-        $container.prepend(
-            '<div class="container-title">' +
-            '<h1>' +
-            '<i class="icon-sprite icon-title"></i>' +
-            'OXXO.STUDIO<span> |&nbsp;&nbsp;Design thinking is everywhere</span>' +
-            '</h1>' +
-            '<i class="icon-sprite icon-social icon-twitter"></i>'+
-            '<i class="icon-sprite icon-social icon-googleplus"></i>'+
-            '<i class="icon-sprite icon-social icon-facebook"></i>'+
-            '</div>' +
-            '<div class="line"></div>'
-        );
-        if (urlParts[1]) {
-            $('.menuList li[url=' + urlParts[1] + ']').find('a').addClass('active');
-        } else {
-            $('.menuList li[url=' + $('body').attr('url') + ']').find('a').addClass('active');
-        }
-    }
-    function fn_changeSize() {
-        if ($container.height() < $window.height()) {
-            $container.css({
-                'height': $(window).height() + 'px'
-            });
-        }
-        if ($window.width() >= 984) {
-            var containerWidth = $wrapper.width() - 230;
-            $container.css({
-                'width': containerWidth + 'px'
-            });
-            if ($('.menuList ul').hasClass('menuopen')) {} else {
-                $('.menuList ul').css({
-                    'opacity': '1'
-                }).show().addClass('menuopen');
-                $('.menuList ul li').css({
-                    'opacity': '1'
-                }).show();
-            }
-            $container.off('click');
-        } else {
-            $('.menuList ul li').hide();
-            $('.menuList ul').hide().removeClass('menuopen');
-            $container.css({
-                'width': '100%'
-            });
-            $container.on('click', fn_menuListHide);
-        }
-    }
-    function fn_menuListShow() {
-        $('.menuList ul').slideDown(200).animate({
-            'opacity': '1'
-        }, {
-            queue: false,
-            duration: 200
-        }).addClass('menuopen');
-        $('.menuList ul li').slideDown(200).animate({
-            'opacity': '1'
-        }, {
-            queue: false,
-            duration: 200
-        });
-        $('.menuList div span').addClass('span-hover');
-    }
-    function fn_menuListHide() {
-        $('.menuList ul').slideUp(200).animate({
-            'opacity': '0'
-        }, {
-            queue: false,
-            duration: 200
-        }).removeClass('menuopen');
-        $('.menuList ul li').slideUp(200).animate({
-            'opacity': '0'
-        }, {
-            queue: false,
-            duration: 200
-        });
-        $('.menuList div span').removeClass('span-hover');
-    }
-    function fn_sideMenuStatus() {
-        $('.menuList div').on('click', function() {
-            if ($('.menuList ul').hasClass('menuopen')) {
-                fn_menuListHide();
-            } else {
-                fn_menuListShow();
-            }
-        });
-        $container.on('click', fn_menuListHide);
-    }
-    function fn_socialShare(){
-      $('.icon-facebook').on('click',function(){
-        window.open('http://www.facebook.com/share.php?u=' + urlParts);
-      });
-      $('.icon-googleplus').on('click',function(){
-        window.open('https://plus.google.com/share?url=' + urlParts);
-      });
-      $('.icon-twitter').on('click',function(){
-        window.open('http://twitter.com/home/?status=' + urlParts);
-      });
-    }
+  var $window = $(window);
+  var $body = $('body');
+  var $wrapper = $('#wrapper');
+  var $container = $('#container');
+  var nowUrl = location.href;
+  var urlParts = nowUrl.split("/");
+  var siteUrl = urlParts[0] + '//' + urlParts[2] + '/';
 
-    fn_sideMenuContent();
-    fn_sideMenuStatus();
-    fn_changeSize();
-    fn_socialShare();
-    $(window).resize(fn_changeSize);
+  $('#header').append(
+    '<div id="top-menu">' +
+    '<ul class="top-menu-left">' +
+    '<li class="home"><i></i>HOME</li>' +
+    '<li class="about"><i></i>ABOUT</li>' +
+    '<li class="contact"><i></i>CONTACT</li>' +
+    '</ul>' +
+    '<div class="link">' +
+    '<img src="img/layout/about.png">' +
+    '</div>' +
+    '<div class="search">' +
+    '<img src="img/layout/search.png">' +
+    '</div>' +
+    '</div>' +
+    '<div id="banner">' +
+    '<h1>OXXO.STUDIO</h1>' +
+    '<img src="img/layout/banner.png">' +
+    '<h2>Design thinking is everywhere</h2>' +
+    '</div>' +
+    '<div id="main-menu">' +
+    '<div class="mobile-menu">' +
+    '<span></span>' +
+    '<span></span>' +
+    '<span></span>' +
+    '</div>' +
+    '<ul>' +
+    '<li class="tag-all"><i></i>ALL</li>' +
+    '<li class="tag-design"><i></i>DESIGN</li>' +
+    '<li class="tag-ui"><i></i>UI & UX</li>' +
+    '<li class="tag-ill"><i></i>IllUSTRATION</li>' +
+    '<li class="tag-photo"><i></i>PHOTO</li>' +
+    '<li class="tag-css"><i></i>CSS</li>' +
+    '<li class="tag-web"><i></i>WEB TECH</li>' +
+    '<li class="tag-others"><i></i>OTHERS</li>' +
+    '</ul>' +
+    '</div>' +
+    '<div class="body-line"></div>'
+  );
+  $('#footer').append(
+    '<div class="footer-line"></div>' +
+    '<div class="footer-link">' +
+    '<ul>' +
+    '<li></li>' +
+    '<li></li>' +
+    '<li></li>' +
+    '<li></li>' +
+    '</ul>' +
+    '</div>' +
+    '<div class="license">Copyright 2014 | All Rights Reserved. Designed by OXXO.STUDIO</div>' +
+    '</div>'
+  );
+
+  $window.scroll(function() {
+    if ($window.scrollTop() > 160) {
+      $('#header').css({
+        'position': 'fixed',
+        'top': '-160px'
+      });
+      $('#container').css({
+        'margin-top': '258px'
+      });
+      $('#main-menu').css({
+        'box-shadow': '0 5px 5px rgba(0, 0, 0, .35)'
+      });
+      $('#main-menu>ul').css({
+        'margin-bottom': '5px'
+      });
+
+    } else {
+      $('#header').css({
+        'position': 'relative',
+        'top': '0'
+      });
+      $('#container').css({
+        'margin-top': '0'
+      });
+      $('#main-menu').css({
+        'box-shadow': '0 3px 3px rgba(0, 0, 0, .25)'
+      })
+      $('#main-menu>ul').css({
+        'margin-bottom': '20px'
+      });
+    }
+  });
+
+
+  $('#main-menu>ul>li').on('click', function() {
+    var linkPage = $(this).attr('class');
+    if (linkPage == 'tag-all') {
+      window.open(siteUrl, '_self');
+    } else {
+      window.open(siteUrl + 'index.html?' + linkPage, '_self');
+    }
+  });
+
 });
