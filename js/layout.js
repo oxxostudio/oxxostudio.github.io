@@ -12,7 +12,7 @@ $(function() {
     '<ul class="top-menu-left">' +
     '<li class="home"><i></i><a href="/">HOME</a></li>' +
     '<li class="about"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>' +
-    '<li class="contact"><i></i>CONTACT</li>' +
+    '<li class="contact"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>' +
     '</ul>' +
     // '<div class="link">' +
     // '<img src="/img/layout/about.png">' +

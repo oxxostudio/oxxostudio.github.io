@@ -106,6 +106,7 @@ $wrapper-shadow:0 0 20px #000;
   }
   h3 {
     font-size: 18px;
+    font-weight: 900;
   }
   h4 {
     font-size: 16px;
@@ -278,7 +279,9 @@ $wrapper-shadow:0 0 20px #000;
   /* IMAGES
 =============================================================================*/
   img {
-    max-width: 100%
+    max-width: 100%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .8);   
+    @include div-radius(5px); 
   }
   .article-date {
     display:inline-block;

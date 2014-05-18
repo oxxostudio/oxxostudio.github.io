@@ -102,6 +102,7 @@
 }
 .md h3 {
   font-size: 18px;
+  font-weight: 900;
 }
 .md h4 {
   font-size: 16px;
@@ -261,6 +262,10 @@
 }
 .md img {
   max-width: 100%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 .md .article-date {
   display: inline-block;
