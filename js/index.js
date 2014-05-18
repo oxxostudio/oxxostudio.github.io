@@ -11,26 +11,22 @@ $(function() {
     urlPages = urlParts1[1].split("=");
     pageTag = urlPages[0];
     pageNum = Number(urlPages[1]);
-    if (urlPages[0] == 'tag-all') {
-      _showAll(1);
-      if (pageNum) {
+    if (pageNum) {
+      if (urlPages[0] == '') {
         _showAll(pageNum);
       } else {
-        _showAll(1);
+        _showTag(pageTag, pageNum);
       }
     } else {
-      _showTag(pageTag, pageNum);
+      _showTag(pageTag, 1);
     }
   } else {
-    if (pageNum) {
-      _showAll(pageNum);
-    } else {
-      _showAll(1);
-    }
+    _showAll(1);
   }
 
   function _showAll(nowPageNum) {
     $.getJSON('/json/pageList.json', function(data) {
+      var maxNum;
       dataLength = data.length;
       dataLength < 6 ? maxNum = dataLength : maxNum = 6;
       var i = -1;
@@ -64,6 +60,7 @@ $(function() {
 
   function _showTag(tagName, nowPageNum) {
     $.getJSON('/json/pageList.json', function(data) {
+      var maxNum;
       dataLength = data.length;
       var classify = [];
       var classifyNum = 0;
@@ -76,24 +73,26 @@ $(function() {
       }
       classifyNum < 6 ? maxNum = classifyNum : maxNum = 6;
       var j = -1;
-      _renderContent(1);
+      _renderContent((j + nowPageNum) * 6);
 
       function _renderContent(Num) {
-        i = i + Num;
-        for (j = 0; j < maxNum; j++) {
+        var p, q;
+        q = Num + maxNum;
+        q < classifyNum ? '' : q = classifyNum;
+        for (p = Num; p < q; p++) {
           $('#content-grid>ul').append(
             '<li>' +
-            '<i class="' + classify[j].tag + '"></i>' +
-            '<h2>' + classify[j].title + '</h2>' +
-            '<h3><i class="icon-date"></i>' + classify[j].date + '</h3>' +
+            '<i class="' + classify[p].tag + '"></i>' +
+            '<h2>' + classify[p].title + '</h2>' +
+            '<h3><i class="icon-date"></i>' + classify[p].date + '</h3>' +
             '<h3><i class="icon-author"></i>OXXO.STUDIO</h3>' +
             '<div class="content-img">' +
             '<span></span>' +
-            '<img src="' + classify[j].img + '">' +
+            '<img src="' + classify[p].img + '">' +
             '</div>' +
             '<div class="content-grid-line"></div>' +
-            '<h4>' + classify[j].desc + '</h4>' +
-            '<a href="' + classify[j].site + '"><div class="read-more">Read more</div></a>' +
+            '<h4>' + classify[p].desc + '</h4>' +
+            '<a href="' + classify[p].site + '"><div class="read-more">Read more</div></a>' +
             '</li>'
           );
         }
@@ -110,6 +109,21 @@ $(function() {
         '<div>' + k + '</div>'
       );
     }
+    $('#page-num div').hide();
+    if ((nowPageNum - 3) >= 0) {
+      $('#page-num div').eq(nowPageNum - 3).show();
+    }
+    if ((nowPageNum - 2) >= 0) {
+      $('#page-num div').eq(nowPageNum - 2).show();
+    }
+    $('#page-num div').eq(nowPageNum - 1).show();
+    $('#page-num div').eq(nowPageNum).show();
+    $('#page-num div').eq(nowPageNum + 1).show();
+
+    $('#page-num div').eq(nowPageNum - 1).css({
+      'background': '#888',
+      'color': '#fff'
+    });
     $('#page-num div').on('click', function() {
       var divIndex = $(this).index() + 1;
       if (divIndex == 1) {
@@ -128,5 +142,23 @@ $(function() {
         '<div>' + k + '</div>'
       );
     }
+    $('#page-num div').eq(nowPageNum - 3).show();
+    $('#page-num div').eq(nowPageNum - 2).show();
+    $('#page-num div').eq(nowPageNum - 1).show();
+    $('#page-num div').eq(nowPageNum).show();
+    $('#page-num div').eq(nowPageNum + 1).show();
+
+    $('#page-num div').eq(nowPageNum - 1).css({
+      'background': '#888',
+      'color': '#fff'
+    });
+    $('#page-num div').on('click', function() {
+      var divIndex = $(this).index() + 1;
+      if (divIndex == 1) {
+        window.open(siteUrl + 'index.html?' + pageTag, '_self');
+      } else {
+        window.open(siteUrl + 'index.html?' + pageTag + '=' + divIndex, '_self');
+      }
+    });
   }
 });

@@ -32,7 +32,7 @@
        background:#fafafa;
        box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
        @include div-radius(15px);
-       margin:0 20px 10px 20px;
+       margin:0 10px 10px 25px;
        position: relative;
        h2 {
          font-size:24px;
@@ -155,7 +155,7 @@
        }
      }
      li:nth-child(even) {
-       margin:0 20px 10px 0;
+       margin:0 20px 10px 10px;
      }
    }
  }
@@ -169,10 +169,15 @@
      width:20px;
      height:20px;
      @include div-radius(100%);
-     background:#aaa;
-     font-size:13px;
+     background:#ccc;
+     font-size:12px;
      text-align: center;
      line-height: 19px;
      cursor:pointer;
+     @include transition-time(.3s);
+   }
+   div:hover {
+     background:#999;
+     color:#fff;
    }
  }

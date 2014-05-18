@@ -18,7 +18,7 @@
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  margin: 0 20px 10px 20px;
+  margin: 0 10px 10px 25px;
   position: relative;
 }
 #content-grid ul li h2 {
@@ -147,7 +147,7 @@
   opacity: .9;
 }
 #content-grid ul li:nth-child(even) {
-  margin: 0 20px 10px 0;
+  margin: 0 20px 10px 10px;
 }
 
 #page-num {
@@ -163,9 +163,16 @@
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%;
-  background: #aaa;
-  font-size: 13px;
+  background: #ccc;
+  font-size: 12px;
   text-align: center;
   line-height: 19px;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+#page-num div:hover {
+  background: #999;
+  color: #fff;
 }
