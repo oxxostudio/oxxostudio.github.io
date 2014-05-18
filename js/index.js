@@ -48,11 +48,13 @@ $(function() {
             '<img src="' + data[j].img + '">' +
             '</div>' +
             '<div class="content-grid-line"></div>' +
-            '<h4>' + data[j].desc + '</h4>' +
+            '<h4 content="' + data[j].tag + '"></h4>' +
             '<a href="' + data[j].site + '"><div class="read-more">Read more</div></a>' +
             '</li>'
           );
+          $('h4[content=' + data[j].tag + ']').load(data[j].site + ' .desc');
         }
+        _h4Content();
       }
       _allPageNum(dataLength, nowPageNum);
     });
@@ -91,11 +93,13 @@ $(function() {
             '<img src="' + classify[p].img + '">' +
             '</div>' +
             '<div class="content-grid-line"></div>' +
-            '<h4>' + classify[p].desc + '</h4>' +
+            '<h4 content="' + classify[p].tag + '"></h4>' +
             '<a href="' + classify[p].site + '"><div class="read-more">Read more</div></a>' +
             '</li>'
           );
+          $('h4[content=' + classify[p].tag + ']').load(classify[p].site + ' .desc');
         }
+        _h4Content();
       }
       _pageNum(classifyNum, nowPageNum);
     });
@@ -119,6 +123,8 @@ $(function() {
     $('#page-num div').eq(nowPageNum - 1).show();
     $('#page-num div').eq(nowPageNum).show();
     $('#page-num div').eq(nowPageNum + 1).show();
+    $('#page-num div').eq(nowPageNum + 2).show();
+    $('#page-num div').eq(nowPageNum + 3).show();
 
     $('#page-num div').eq(nowPageNum - 1).css({
       'background': '#888',
@@ -147,6 +153,8 @@ $(function() {
     $('#page-num div').eq(nowPageNum - 1).show();
     $('#page-num div').eq(nowPageNum).show();
     $('#page-num div').eq(nowPageNum + 1).show();
+    $('#page-num div').eq(nowPageNum + 2).show();
+    $('#page-num div').eq(nowPageNum + 3).show();
 
     $('#page-num div').eq(nowPageNum - 1).css({
       'background': '#888',
@@ -158,6 +166,18 @@ $(function() {
         window.open(siteUrl + 'index.html?' + pageTag, '_self');
       } else {
         window.open(siteUrl + 'index.html?' + pageTag + '=' + divIndex, '_self');
+      }
+    });
+  }
+
+  function _h4Content() {
+    $('#content-grid>ul h4').each(function() {
+      var h4Content = $(this).find('.desc').text();
+      if (h4Content != '') {
+        var hrContent25 = h4Content.substr(0, 105);
+        $(this).html(hrContent25 + '...');
+      } else {
+        setTimeout(_h4Content, 100);
       }
     });
   }

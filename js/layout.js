@@ -10,22 +10,24 @@ $(function() {
   $('#header').append(
     '<div id="top-menu">' +
     '<ul class="top-menu-left">' +
-    '<li class="home"><i></i>HOME</li>' +
-    '<li class="about"><i></i>ABOUT</li>' +
+    '<li class="home"><i></i><a href="/">HOME</a></li>' +
+    '<li class="about"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>' +
     '<li class="contact"><i></i>CONTACT</li>' +
     '</ul>' +
-    '<div class="link">' +
-    '<img src="img/layout/about.png">' +
-    '</div>' +
+    // '<div class="link">' +
+    // '<img src="/img/layout/about.png">' +
+    // '</div>' +
     '<div class="search">' +
-    '<img src="img/layout/search.png">' +
+    '<img src="/img/layout/search.png">' +
     '</div>' +
     '</div>' +
+    '<a href="/">'+
     '<div id="banner">' +
     '<h1>OXXO.STUDIO</h1>' +
-    '<img src="img/layout/banner.png">' +
+    '<img src="/img/layout/banner.png">' +
     '<h2>Design thinking is everywhere</h2>' +
     '</div>' +
+    '</a>'+
     '<div id="main-menu">' +
     '<div class="mobile-menu">' +
     '<span></span>' +
