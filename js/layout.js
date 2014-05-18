@@ -94,7 +94,6 @@ $(function() {
     }
   });
 
-
   $('#main-menu>ul>li').on('click', function() {
     var linkPage = $(this).attr('class');
     if (linkPage == 'tag-all') {

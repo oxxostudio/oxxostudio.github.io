@@ -92,9 +92,12 @@
          background:url(/img/layout/content_line.gif);
        }
        h4 {
+          display: inline-block;
          margin:20px 62px;
          line-height: 24px;
          font-size:15px;
+         height:125px;
+         overflow: hidden;
        }
        >i {
          display:inline-block;
