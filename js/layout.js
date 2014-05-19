@@ -21,13 +21,13 @@ $(function() {
     '<img src="/img/layout/search.png">' +
     '</div>' +
     '</div>' +
-    '<a href="/">'+
+    '<a href="/">' +
     '<div id="banner">' +
     '<h1>OXXO.STUDIO</h1>' +
     '<img src="/img/layout/banner.png">' +
     '<h2>Design thinking is everywhere</h2>' +
     '</div>' +
-    '</a>'+
+    '</a>' +
     '<div id="main-menu">' +
     '<div class="mobile-menu">' +
     '<span></span>' +
@@ -46,6 +46,9 @@ $(function() {
     '</ul>' +
     '</div>' +
     '<div class="body-line"></div>'
+  );
+  $('#other-articles').append(
+    '<h3>你可能對這些文章也感興趣</h3>'
   );
   $('#footer').append(
     '<div class="footer-line"></div>' +
