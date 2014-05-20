@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="description" content="自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
+  <link rel="author" href="https://plus.google.com/u/0/105185415102049371674/posts" />
+  <link rel="stylesheet" href="/style/css/layout.css">
+  <link rel="stylesheet" href="/style/css/articles-content.css">
+  <link rel="stylesheet" href="/style/lib/tomorrow.css">
+  <title>OXXO.STUDIO - Sublime Text Package</title>
+</head>
+
+<body onload="prettyPrint()">
+  <div id="header">
+  </div>
+  <div id="wrapper">
+    <div id="container">
+      <div class="content">
+        <i class="tag-web"></i>
+        <div class="md">
+          <h2>SublimeText Package
+            <span class="article-date"><i></i>MAY 20, 2014</span>
+          </h2>
+          <p>
+            <img src="/img/articles/201405/20140520_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">這一年多以來，
+            <span itemprop="description" class="desc">自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。</span>
+          </p>
+          <p>不過因為 SublimeText 的擴充特性，衍伸出有一大票的 Package，如果缺少了這些 Package 的輔助，SublimeText 可能就真的只是套好用的文字編輯器，有了這些 Package，SublimeText 則化身為超好用的開發工具！由於 Package 實在太多，我自己也裝了一大堆，為了避免每次重灌都要去想或去找，就用這篇文章做個紀錄。</p>
+          <p>在安裝之前，我們必須要先安裝 <kbd>Package Control</kbd>，按下
+            <strong>Ctrl+`</strong>，然後貼上這些程式碼，按下 Enter 就可以安裝。
+            <br />( 這裡是 SublimeText3 的版本使用的 )</p>
+          <p style="color:#09b;">import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+          </p>
+
+          <p>安裝完成後，只要按下
+            <strong>Ctrl + Shift + p</strong>，輸入 install package，點選後就可以看到一大堆可以安裝的 Package 列表囉！
+            <br/>
+            <br/>
+          </p>
+          <h3>我所安裝的 Package</h3>
+          <ul>
+            <li>
+              <strong>Emmet</strong>： 非常重要的套件，會有很多程式碼的提示以及快速產生程式碼的指令</li>
+            <li>
+              <strong>Scss</strong>： SCSS 的套件，也可同時安裝 Sass</li>
+            <li>
+              <strong>HTML5</strong>： 直接裝了吧</li>
+            <li>
+              <strong>JQuery</strong>： 直接裝了吧</li>
+            <li>
+              <strong>Git</strong>： 左側選單的 Git 功能</li>
+            <li>
+              <strong>GitGutter</strong>： 會及時呈現哪幾行有修改、新增或刪除 ( 因隨時在抓取變化，會有些效能問題 )</li>
+            <li>
+              <strong>DocBlockr</strong>： 自動產生註解的工具</li>
+            <li>
+              <strong>AutoFileName</strong>： 鍵盤敲出 src 或 href 時會自動帶出選單選擇檔案</li>
+            <li>
+              <strong>HTML-CSS-JS Prettify</strong>： 必裝的格式化工具</li>
+            <li>
+              <strong>Bracket​Highlighter</strong>： 標註出程式碼內各個 tag 區塊，相當方便</li>
+            <li>
+              <strong>JSHint</strong>： 寫 JS 一定要用 JSHint 的呀 ( 我的 JS 還真是錯誤百出~XD )</li>
+            <li>
+              <strong>JSHint Gutter</strong>： 搭配 JSHint</li>
+            <li>
+              <strong>Side Bar</strong>： 左側功能選單，方便開檔和瀏覽</li>
+            <li>
+              <strong>Side Bar Git</strong>： 搭配 Side Bar 服用</li>
+            <li>
+              <strong>Theme</strong>： 強烈推薦 Soda Dark 3.sublime-theme</li>
+            <li>
+              <strong>Color-Picker</strong>： 選擇顏色更容易
+              <br/>
+              <br/>
+            </li>
+          </ul>
+          <h3>補充說明</h3>
+          <p>補充上述的 Theme，安裝之後必須要手動添加相關的設定，重啟 SublimeText 之後才會生效喔！
+          </p>
+          <pre>{
+&quot;font_size&quot;: 12,
+&quot;ignored_packages&quot;:
+[
+    &quot;Vintage&quot;
+],
+&quot;margin&quot;: 2,
+&quot;soda_classic_tabs&quot;: true,
+&quot;soda_folder_icons&quot;: false,
+&quot;tab_size&quot;: 2,
+&quot;theme&quot;: &quot;Soda Dark 3.sublime-theme&quot;
+}
+</pre>
+
+          <p>以上就是我所使用的 Package，關於 SublimeText 的使用心得和經驗，會在日後慢慢分享。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="other-articles">
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+  </div>
+  <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+  <script src="/js/lib/prettify/prettify.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+
+</html>

@@ -2,6 +2,8 @@ $(function() {
   var j, tag = $('#container>.content>i').attr('class');
   _showTag(tag);
 
+  $('pre').addClass('prettyprint');
+
   function _showTag(tagName) {
     $.getJSON('/json/pageList.json', function(data) {
       dataLength = data.length;
