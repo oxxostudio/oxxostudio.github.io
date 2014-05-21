@@ -6,7 +6,8 @@
 在安裝之前，我們必須要先安裝 Package Control，按下 **Ctrl+`**，然後貼上這些程式碼，按下 Enter 就可以安裝。  
 ( 這裡是 SublimeText3 的版本使用的 )
 
-		import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) 
+>import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)  
+
 安裝完成後，只要按下 **Ctrl + Shift + p**，輸入 install package，點選後就可以看到一大堆可以安裝的 Package 列表囉！
 <br/>
 <br/>
@@ -34,7 +35,7 @@
 
 補充上述的 Theme，安裝之後必須要手動添加相關的設定，重啟 SublimeText 之後才會生效喔！  
 
-		{
+	{
 	"font_size": 12,
 	"ignored_packages":
 	[

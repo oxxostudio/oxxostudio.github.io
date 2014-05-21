@@ -36,12 +36,12 @@ $(function() {
     '</div>' +
     '<ul>' +
     '<li class="tag-all"><i></i>ALL</li>' +
-    '<li class="tag-design"><i></i>DESIGN</li>' +
+    '<li class="tag-creative"><i></i>Creative</li>' +
     '<li class="tag-ui"><i></i>UI & UX</li>' +
-    '<li class="tag-ill"><i></i>IllUSTRATION</li>' +
     '<li class="tag-photo"><i></i>PHOTO</li>' +
     '<li class="tag-css"><i></i>CSS</li>' +
     '<li class="tag-web"><i></i>WEB TECH</li>' +
+    '<li class="tag-share"><i></i>Share</li>' +
     '<li class="tag-others"><i></i>OTHERS</li>' +
     '</ul>' +
     '</div>' +
@@ -75,28 +75,20 @@ $(function() {
   );
 
   $window.scroll(function() {
-    if ($window.scrollTop() > 160) {
+    if ($window.scrollTop() > 150) {
       $('#header').css({
-        'position': 'fixed',
-        'top': '-160px'
-      });
-      $('#container').css({
-        'margin-top': '258px'
+        'top': '-150px'
       });
       $('#main-menu').css({
         'box-shadow': '0 5px 5px rgba(0, 0, 0, .35)'
       });
       $('#main-menu>ul').css({
-        'margin-bottom': '5px'
+        'margin-bottom': '2px'
       });
 
     } else {
       $('#header').css({
-        'position': 'relative',
-        'top': '0'
-      });
-      $('#container').css({
-        'margin-top': '0'
+        'top': -$window.scrollTop()+'px'
       });
       $('#main-menu').css({
         'box-shadow': '0 3px 3px rgba(0, 0, 0, .25)'
@@ -105,7 +97,7 @@ $(function() {
         'margin-bottom': '20px'
       });
     }
-  });
+  });150
 
   $('#main-menu>ul>li').on('click', function() {
     var linkPage = $(this).attr('class');

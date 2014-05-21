@@ -32,11 +32,16 @@
             <span itemprop="description" class="desc">自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。</span>
           </p>
           <p>不過因為 SublimeText 的擴充特性，衍伸出有一大票的 Package，如果缺少了這些 Package 的輔助，SublimeText 可能就真的只是套好用的文字編輯器，有了這些 Package，SublimeText 則化身為超好用的開發工具！由於 Package 實在太多，我自己也裝了一大堆，為了避免每次重灌都要去想或去找，就用這篇文章做個紀錄。</p>
-          <p>在安裝之前，我們必須要先安裝 <kbd>Package Control</kbd>，按下
+          <p>在安裝之前，我們必須要先安裝
+            <kbd>Package Control</kbd>，按下
             <strong>Ctrl+`</strong>，然後貼上這些程式碼，按下 Enter 就可以安裝。
             <br />( 這裡是 SublimeText3 的版本使用的 )</p>
-          <p style="color:#09b;">import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
-          </p>
+          <blockquote>
+            <p>import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed
+              <em>packages</em>path(); urllib.request.install
+              <em>opener( urllib.request.build</em>opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+            </p>
+          </blockquote>
 
           <p>安裝完成後，只要按下
             <strong>Ctrl + Shift + p</strong>，輸入 install package，點選後就可以看到一大堆可以安裝的 Package 列表囉！
@@ -110,8 +115,8 @@
   </div>
   <div id="footer">
   </div>
-  <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-  <script src="/js/lib/prettify/prettify.js"></script>
+  <script src="/js/lib/jquery-1.9.0.min.js"></script>
+  <script src="/js/lib/prettify.js"></script>
   <script src="/js/layout.js"></script>
   <script src="/js/articles.js"></script>
   <script src="/js/lib/disqus.js"></script>

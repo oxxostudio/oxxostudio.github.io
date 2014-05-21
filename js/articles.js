@@ -1,8 +1,65 @@
 $(function() {
   var j, tag = $('#container>.content>i').attr('class');
-  _showTag(tag);
+  var $window = $(window);
+  var $content = $('.content');
+  var windowWidth, contentWidth;
+  var nowUrl = location.href;
 
   $('pre').addClass('prettyprint');
+
+  $('#container').append(
+    '<div class="social-icon">' +
+    '<i class="icon-home"><i></i></i>' +
+    '<i class="icon-facebook"><i></i></i>' +
+    '<i class="icon-google"><i></i></i>' +
+    '<i class="icon-twitter"><i></i></i>' +
+    '<i class="goto-top"><i></i></i>' +
+    '</div>'
+  );
+
+  _showTag(tag);
+  _socialPosition();
+  _socialClick();
+
+  $window.resize(_socialPosition);
+
+  $window.scroll(function() {
+    if ($window.scrollTop() > 150) {
+      $('.social-icon').not('animated').fadeIn(300);
+    } else {
+      $('.social-icon').not('animated').fadeOut(300);
+    }
+  });
+
+  function _socialPosition() {
+    $window.width() > 1100 ? windowWidth = $window.width() : windowWidth = 1100;
+    contantWidth = $content.width();
+    var dx = windowWidth / 2 + contantWidth / 2 + 10;
+    $('.social-icon').css({
+      'left': dx + 'px'
+    });
+  }
+
+  function _socialClick() {
+    $('.icon-home').on('click', function() {
+      window.open('/index.html', '_self');
+    });
+    $('.icon-facebook').on('click', function() {
+      window.open('http://www.facebook.com/share.php?u=' + nowUrl, '_blank');
+    });
+    $('.icon-google').on('click', function() {
+      window.open('https://plus.google.com/share?url=' + nowUrl, '_blank');
+    });
+    $('.icon-twitter').on('click', function() {
+      window.open('http://twitter.com/home/?status=' + nowUrl, '_blank');
+    });
+    $('.goto-top').on('click', function() {
+      $("html,body").animate({
+        "scrollTop": "0"
+      }, 750);
+
+    });
+  }
 
   function _showTag(tagName) {
     $.getJSON('/json/pageList.json', function(data) {

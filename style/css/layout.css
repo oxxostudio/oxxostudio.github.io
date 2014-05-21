@@ -60,9 +60,10 @@ a {
 #header {
   background: #fff;
   width: 100%;
-  position: relative;
+  position: fixed;
   z-index: 100;
   min-width: 1100px;
+  top: 0;
 }
 
 #top-menu {
@@ -118,7 +119,7 @@ a {
 }
 
 #banner {
-  margin: 15px auto 0;
+  margin: 0 auto 0;
   width: 300px;
 }
 #banner a {
@@ -179,10 +180,10 @@ a {
   width: 18px;
   height: 18px;
 }
-#main-menu ul .tag-design {
+#main-menu ul .tag-creative {
   color: #74bc48;
 }
-#main-menu ul .tag-design > i {
+#main-menu ul .tag-creative > i {
   background: #74bc48;
 }
 #main-menu ul .tag-ui {
@@ -191,10 +192,10 @@ a {
 #main-menu ul .tag-ui > i {
   background: #eb6f70;
 }
-#main-menu ul .tag-ill {
+#main-menu ul .tag-share {
   color: #40a880;
 }
-#main-menu ul .tag-ill > i {
+#main-menu ul .tag-share > i {
   background: #40a880;
 }
 #main-menu ul .tag-photo {
@@ -232,6 +233,7 @@ a {
 #container {
   width: 100%;
   min-width: 1100px;
+  margin-top: 250px;
 }
 
 #footer {
