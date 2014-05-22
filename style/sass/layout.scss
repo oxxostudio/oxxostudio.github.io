@@ -2,8 +2,49 @@
  @import url(http://fonts.googleapis.com/css?family=Open+Sans);
  @import url(http://fonts.googleapis.com/css?family=Raleway);
  @media screen and (max-width: 1000px) {
+  #top-menu {
+    display:none!important;
+  }
+  #banner {
+    width:200px!important;
+    margin:10px auto 0!important;
+    h2 {
+      display:none!important;
+    }
+  }
+  #main-menu {
+    background:none!important;
+    .mobile-menu {
+      display:table!important;
+    }
+    ul {
+      width:100%;
+      margin:10px auto 0!important;
+    }
+    li {
+      float:none!important;
+      margin:15px auto!important;
+      font-size:18px!important;
+      >i {
+        display:none!important;
+      }
+    }
+  }
+  #container {
+    margin-top:80px!important;
+  }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
+  #banner {
+    width:150px!important;
+  }
+  .license {
+    margin-top:20px;
+    line-height: 25px!important;
+  }
+  #container {
+    margin-top:70px!important;
+  }
 }
 body, html {
   font-family:'Open Sans', 'PMingLiU', sans-serif;
@@ -42,7 +83,6 @@ $wrapper-shadow:0 0 20px #000;
   width:100%;
   position: fixed;
   z-index: 100;
-  min-width:1100px;
   top:0;
 }
 #top-menu {
@@ -103,6 +143,9 @@ $wrapper-shadow:0 0 20px #000;
 #banner {
   margin:0 auto 0;
   width:300px;
+  img {
+    width:100%;
+  }
   a {
     color:#666;
   }
@@ -126,6 +169,23 @@ $wrapper-shadow:0 0 20px #000;
   box-shadow:0 3px 3px rgba(0, 0, 0, .25);
   .mobile-menu {
     display:none;
+    position:absolute;
+    top:15px;
+    right:10px;
+    cursor:pointer;
+    span {
+      display:block;
+      width:20px;
+      height:3px;
+      background: #999;
+      margin:4px;
+      @include transition-time(.3s);
+    }
+  }
+  .mobile-menu:hover {
+    span {
+      background: #000;
+    }
   }
   ul {
     display:table;
@@ -200,6 +260,14 @@ $wrapper-shadow:0 0 20px #000;
       }
     }
   }
+  .mobile-menulist {
+    li {
+      float:none;
+      >i {
+        display:none;
+      }
+    }
+  }
 }
 .body-line {
   height:2px;
@@ -209,7 +277,6 @@ $wrapper-shadow:0 0 20px #000;
 }
 #container {
   width:100%;
-  min-width:1100px;
   margin-top:250px;
 }
 #footer {

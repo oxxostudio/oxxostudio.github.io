@@ -21,13 +21,13 @@ $(function() {
     '<img src="/img/layout/search.png">' +
     '</div>' +
     '</div>' +
-    '<a href="/">' +
     '<div id="banner">' +
     '<h1>OXXO.STUDIO</h1>' +
+    '<a href="/">' +
     '<img src="/img/layout/banner.png">' +
     '<h2>Design thinking is everywhere</h2>' +
-    '</div>' +
     '</a>' +
+    '</div>' +
     '<div id="main-menu">' +
     '<div class="mobile-menu">' +
     '<span></span>' +
@@ -73,31 +73,39 @@ $(function() {
     "ga('send', 'pageview');" +
     "</script>"
   );
+  _mainMenu();
+  _mobileMenu();
+  $window.resize(_mainMenu);
+  $window.resize(_mobileMenu);
 
-  $window.scroll(function() {
-    if ($window.scrollTop() > 150) {
-      $('#header').css({
-        'top': '-150px'
-      });
-      $('#main-menu').css({
-        'box-shadow': '0 5px 5px rgba(0, 0, 0, .35)'
-      });
-      $('#main-menu>ul').css({
-        'margin-bottom': '2px'
-      });
+  function _mainMenu() {
+    if ($window.width() > 1000) {
+      $window.scroll(function() {
+        if ($window.scrollTop() > 150) {
+          $('#header').css({
+            'top': '-150px'
+          });
+          $('#main-menu').css({
+            'box-shadow': '0 5px 5px rgba(0, 0, 0, .35)'
+          });
+          $('#main-menu>ul').css({
+            'margin-bottom': '2px'
+          });
 
-    } else {
-      $('#header').css({
-        'top': -$window.scrollTop()+'px'
-      });
-      $('#main-menu').css({
-        'box-shadow': '0 3px 3px rgba(0, 0, 0, .25)'
-      })
-      $('#main-menu>ul').css({
-        'margin-bottom': '20px'
+        } else {
+          $('#header').css({
+            'top': -$window.scrollTop() + 'px'
+          });
+          $('#main-menu').css({
+            'box-shadow': '0 3px 3px rgba(0, 0, 0, .25)'
+          })
+          $('#main-menu>ul').css({
+            'margin-bottom': '20px'
+          });
+        }
       });
     }
-  });150
+  }
 
   $('#main-menu>ul>li').on('click', function() {
     var linkPage = $(this).attr('class');
@@ -107,5 +115,24 @@ $(function() {
       window.open(siteUrl + 'index.html?' + linkPage, '_self');
     }
   });
+
+  function _mobileMenu() {
+    if ($window.width() < 1000) {
+      $('#main-menu>ul').removeClass('menuOpen').hide();
+      $('.mobile-menu').on('click', function() {
+        if ($('#main-menu>ul').hasClass('menuOpen')) {
+          $('#main-menu>ul').removeClass('menuOpen').hide();
+        } else {
+          $('#main-menu>ul').addClass('menuOpen').show();
+        }
+      });
+      $('#container').on('click', function() {
+        $('#main-menu>ul').removeClass('menuOpen').hide();
+      });
+    } else {
+      $('#main-menu>ul').addClass('menuOpen').show();
+      $('#container').off('click');
+    }
+  }
 
 });

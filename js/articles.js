@@ -1,6 +1,7 @@
 $(function() {
   var j, tag = $('#container>.content>i').attr('class');
   var $window = $(window);
+  var $document = $(document);
   var $content = $('.content');
   var windowWidth, contentWidth;
   var nowUrl = location.href;
@@ -9,11 +10,11 @@ $(function() {
 
   $('#container').append(
     '<div class="social-icon">' +
-    '<i class="icon-home"><i></i></i>' +
-    '<i class="icon-facebook"><i></i></i>' +
-    '<i class="icon-google"><i></i></i>' +
-    '<i class="icon-twitter"><i></i></i>' +
-    '<i class="goto-top"><i></i></i>' +
+    '<i class="icon-home"><i></i><span>Back Home</span></i>' +
+    '<i class="icon-facebook"><i></i><span>Share on Facebook</span></i>' +
+    '<i class="icon-google"><i></i><span>Share on Google+</span></i>' +
+    '<i class="icon-twitter"><i></i><span>Share on Twitter</span></i>' +
+    '<i class="goto-top"><i></i><span>Back to Top</span></i>' +
     '</div>'
   );
 
@@ -22,7 +23,6 @@ $(function() {
   _socialClick();
 
   $window.resize(_socialPosition);
-
   $window.scroll(function() {
     if ($window.scrollTop() > 150) {
       $('.social-icon').not('animated').fadeIn(300);

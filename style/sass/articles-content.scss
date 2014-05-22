@@ -1,8 +1,38 @@
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
+  #container {
+    .content {
+      width:90%!important;
+    }
+  }
+  #other-articles {
+    width:90%!important;
+    h3::after {
+      width:80%!important;
+    }
+  }
+  #disqus {
+    width:90%!important;
+  }
 }
-@media screen and (max-width: 660px) {
-}
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
+  .article-date {
+    display:none!important;
+  }
+  #disqus {
+    display:none!important;
+  }
+  .md {
+    padding: 0 20px 50px!important;
+  }
+  #other-articles{
+    padding: 20px!important;
+    h3::after{
+        left:30px!important;
+    }
+  }
+  .content>i {
+    display:none!important;
+  }
 }
 $wrapper-shadow:0 0 20px #000;
  @mixin transition-time($timer) {
@@ -89,16 +119,24 @@ $wrapper-shadow:0 0 20px #000;
       cursor:pointer;
       opacity:0;
     }
-    >i>i::after {
+    >i span {
       position:absolute;
-      width:120px;
+      width:0px;
       top:5px;
       left:27px;
       font-size:12px;
       color:#333;
+      opacity:0;
+      overflow:hidden;
+      @include transition-time(.3s);
+      white-space:nowrap;
     }
     >i>i:hover {
       opacity:1;
+    }
+    >i>i:hover + span {
+      opacity:1;
+      width:120px;
     }
     .icon-home {
       background-position:-128px 0;
@@ -106,17 +144,11 @@ $wrapper-shadow:0 0 20px #000;
     .icon-home>i {
       background-position:-99px 0;
     }
-    .icon-home>i::after {
-      content:'Back Home';
-    }
     .icon-facebook {
       background-position:-128px -28px;
     }
     .icon-facebook>i {
       background-position:-99px -28px;
-    }
-    .icon-facebook>i::after {
-      content:'Share on Facebook';
     }
     .icon-google {
       background-position:-128px -57px;
@@ -124,26 +156,17 @@ $wrapper-shadow:0 0 20px #000;
     .icon-google>i {
       background-position:-99px -57px;
     }
-    .icon-google>i::after {
-      content:'Share on Google+';
-    }
     .icon-twitter {
       background-position:-128px -86px;
     }
     .icon-twitter>i {
       background-position:-99px -86px;
     }
-    .icon-twitter>i::after {
-      content:'Share on Twitter';
-    }
     .goto-top {
       background-position:-128px -115px;
     }
     .goto-top>i {
       background-position:-99px -115px;
-    }
-    .goto-top>i::after {
-      content:'Back to Top';
     }
   }
 }
@@ -221,6 +244,9 @@ $wrapper-shadow:0 0 20px #000;
 =============================================================================*/
   p, blockquote, ul, ol, dl, table, pre {
     margin: 15px 0;
+    word-break:break-all;
+  }
+  p {
   }
   /* HEADERS
 =============================================================================*/
@@ -386,6 +412,8 @@ $wrapper-shadow:0 0 20px #000;
   /* QUOTES
 =============================================================================*/
   blockquote {
+    word-wrap: break-word;
+    word-break: normal;
     border-left: 4px solid #DDD;
     padding: 0 15px;
     color: #777;

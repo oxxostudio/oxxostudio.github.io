@@ -46,10 +46,12 @@ $(function() {
             '<h2>' + data[j].title + '</h2>' +
             '<h3><i class="icon-date"></i>' + data[j].date + '</h3>' +
             '<h3><i class="icon-author"></i>OXXO.STUDIO</h3>' +
+            '<a href="' + data[j].site + '">'+
             '<div class="content-img">' +
             '<span></span>' +
             '<img src="' + data[j].img + '">' +
             '</div>' +
+            '</a>'+
             '<div class="content-grid-line"></div>' +
             '<h4 content="' + data[j].site + '"></h4>' +
             '<a href="' + data[j].site + '"><div class="read-more">Read more</div></a>' +
@@ -91,10 +93,12 @@ $(function() {
             '<h2>' + classify[p].title + '</h2>' +
             '<h3><i class="icon-date"></i>' + classify[p].date + '</h3>' +
             '<h3><i class="icon-author"></i>OXXO.STUDIO</h3>' +
+            '<a href="' + classify[p].site + '">'+
             '<div class="content-img">' +
             '<span></span>' +
             '<img src="' + classify[p].img + '">' +
             '</div>' +
+            '</a>'+
             '<div class="content-grid-line"></div>' +
             '<h4 content="' + classify[p].site + '"></h4>' +
             '<a href="' + classify[p].site + '"><div class="read-more">Read more</div></a>' +

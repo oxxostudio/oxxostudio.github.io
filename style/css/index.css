@@ -1,3 +1,104 @@
+@media screen and (max-width: 1000px) {
+  #content-grid {
+    width: 95% !important;
+  }
+  #content-grid ul li {
+    width: 100% !important;
+    height: 250px !important;
+    margin: 0 auto 20px !important;
+  }
+  #content-grid ul li h2 {
+    margin: 30px 20px 0 280px !important;
+  }
+  #content-grid ul li h3 {
+    margin: 10px 20px 0 0 !important;
+  }
+  #content-grid ul li h3:nth-child(even) {
+    display: none;
+  }
+  #content-grid ul li .content-img {
+    float: left;
+    margin: -25px 20px 0 60px !important;
+    width: 200px !important;
+    height: auto !important;
+  }
+  #content-grid ul li .content-grid-line {
+    display: none;
+  }
+  #content-grid ul li h4 {
+    float: right;
+    margin: -70px 0 0 !important;
+    padding-left: 280px;
+    padding-right: 30px;
+  }
+  #content-grid ul li .read-more {
+    display: none;
+  }
+}
+@media screen and (max-width: 650px) {
+  #content-grid {
+    width: 90% !important;
+  }
+  #content-grid ul {
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  #content-grid ul li {
+    width: 100% !important;
+    display: table !important;
+    margin: 0 auto 18px !important;
+  }
+  #content-grid ul li h2 {
+    margin: 40px 0 0 62px !important;
+  }
+  #content-grid ul li h3 {
+    margin: 20px 0 0 62px !important;
+  }
+  #content-grid ul li h3:nth-child(even) {
+    display: none !important;
+  }
+  #content-grid ul li .content-img {
+    float: none !important;
+    margin: 20px auto 0 !important;
+    width: 80% !important;
+    min-width: 0 !important;
+    height: auto !important;
+  }
+  #content-grid ul li .content-grid-line {
+    width: 80% !important;
+    display: block !important;
+  }
+  #content-grid ul li h4 {
+    float: none !important;
+    margin: 20px 62px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  #content-grid ul li .read-more {
+    display: block !important;
+    margin-bottom: 20px !important;
+  }
+}
+@media screen and (max-width: 550px) {
+  #content-grid ul li h2 {
+    margin: 40px 0 0 30px !important;
+  }
+  #content-grid ul li h3 {
+    display: none !important;
+  }
+  #content-grid ul li h4 {
+    margin: 5px 22px 10px !important;
+  }
+  #content-grid ul li .content-grid-line {
+    margin: 15px 22px 5px !important;
+  }
+  #content-grid ul li .read-more {
+    margin: 5px 22px 20px !important;
+  }
+  #content-grid ul li > i {
+    display: none !important;
+  }
+}
 #content-grid {
   width: 1000px;
   margin: 20px auto 40px;
