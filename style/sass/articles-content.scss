@@ -458,6 +458,7 @@ $wrapper-shadow:0 0 20px #000;
     max-width: 100%;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .8);
     @include div-radius(5px);
+    margin:0 auto 20px;
   }
   .article-date {
     display:inline-block;
