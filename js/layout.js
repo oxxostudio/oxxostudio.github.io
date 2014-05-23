@@ -60,7 +60,7 @@ $(function() {
     '<li></li>' +
     '</ul>' +
     '</div>' +
-    '<div class="license">Copyright 2014 | All Rights Reserved. Designed by OXXO.STUDIO</div>' +
+    '<div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>' +
     '</div>'
   );
   $body.append(

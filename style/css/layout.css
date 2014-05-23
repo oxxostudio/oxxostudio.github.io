@@ -327,3 +327,10 @@ a {
   color: #666;
   text-align: center;
 }
+#footer .license a {
+  color: #666;
+  text-decoration: underline;
+}
+#footer .license a:hover {
+  color: #000;
+}

@@ -294,5 +294,12 @@ $wrapper-shadow:0 0 20px #000;
     line-height: 75px;
     color:#666;
     text-align: center;
+    a {
+      color:#666;
+      text-decoration: underline;
+    }
+    a:hover{
+      color:#000;
+    }
   }
 }
