@@ -62,6 +62,9 @@ table {
   #main-menu ul {
     width: 100%;
     margin: 10px auto 0 !important;
+    position: fixed;
+    background: white !important;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
   }
   #main-menu li {
     float: none !important;
@@ -276,7 +279,7 @@ a {
 #main-menu .mobile-menu {
   display: none;
   position: absolute;
-  top: -30px;
+  top: -25px;
   right: 10px;
   cursor: pointer;
 }

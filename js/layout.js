@@ -10,7 +10,6 @@ $(function() {
   var goodSentences = [
     'Design thinking is everywhere',
     'Good design is innovative',
-    'Less, but better',
     'I express myself with design',
     'Stay hungry, stay foolish'
   ]
@@ -80,10 +79,8 @@ $(function() {
     "</script>"
   );
   _mainMenu();
-  _mobileMenu();
   _goodSentences();
   $window.resize(_mainMenu);
-  $window.resize(_mobileMenu);
 
   $('#main-menu>ul>li').on('click', function() {
     var linkPage = $(this).attr('class');
@@ -102,7 +99,7 @@ $(function() {
     _bannerGif, function() {
       clearTimeout(timer);
     }
-  )
+  );
 
   function _bannerGif() {
     bannerGifPosition = bannerGifPosition - 18;
@@ -120,12 +117,14 @@ $(function() {
   }
 
   function _goodSentences() {
-    var randomWord = Math.floor(Math.random() * 5);
+    var randomWord = Math.floor(Math.random() * 4);
     $('#banner h2').text(goodSentences[randomWord]);
   }
 
   function _mainMenu() {
-    if ($window.width() > 1000) {
+    if ($window.width() >= 1000) {
+      $('#main-menu>ul').addClass('menuOpen').find('li').show();
+      $('#container').off('click');
       $window.scroll(function() {
         if ($window.scrollTop() > 150) {
           $('#header').css({
@@ -150,26 +149,22 @@ $(function() {
           });
         }
       });
-    }
-  }
-
-  function _mobileMenu() {
-    if ($window.width() < 1000) {
-      $('#main-menu>ul').removeClass('menuOpen').hide();
-      $('.mobile-menu').on('click', function() {
-        if ($('#main-menu>ul').hasClass('menuOpen')) {
-          $('#main-menu>ul').removeClass('menuOpen').hide();
-        } else {
-          $('#main-menu>ul').addClass('menuOpen').show();
-        }
-      });
-      $('#container').on('click', function() {
-        $('#main-menu>ul').removeClass('menuOpen').hide();
-      });
     } else {
-      $('#main-menu>ul').addClass('menuOpen').show();
-      $('#container').off('click');
+      $('#main-menu ul').removeClass('menuOpen').find('li').hide();
     }
   }
 
+  $('.mobile-menu').on('click', function() {
+    if ($('#main-menu ul').hasClass('menuOpen')) {
+      $('#main-menu ul').removeClass('menuOpen');
+      $('#main-menu ul li').hide();
+    } else {
+      $('#main-menu>ul').addClass('menuOpen');
+      $('#main-menu ul li').show();
+      $('#container').on('click', function() {
+        $(this).off('click');
+        $('#main-menu ul').removeClass('menuOpen').find('li').hide();
+      });
+    }
+  });
 });
