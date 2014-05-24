@@ -7,6 +7,13 @@ $(function() {
   var urlParts = nowUrl.split("/");
   var siteUrl = urlParts[0] + '//' + urlParts[2] + '/';
   var timer, bannerGifPosition = -4;
+  var goodSentences = [
+    'Design thinking is everywhere',
+    'Good design is innovative',
+    'Less, but better',
+    'I express myself with design',
+    'Stay hungry, stay foolish'
+  ]
 
   $('#header').append(
     '<div id="top-menu">' +
@@ -74,6 +81,7 @@ $(function() {
   );
   _mainMenu();
   _mobileMenu();
+  _goodSentences();
   $window.resize(_mainMenu);
   $window.resize(_mobileMenu);
 
@@ -109,6 +117,11 @@ $(function() {
       });
     }
     timer = setTimeout(_bannerGif, 100);
+  }
+
+  function _goodSentences() {
+    var randomWord = Math.floor(Math.random() * 5);
+    $('#banner h2').text(goodSentences[randomWord]);
   }
 
   function _mainMenu() {
