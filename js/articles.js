@@ -11,6 +11,7 @@ $(function() {
   $('#container').append(
     '<div class="social-icon">' +
     '<i class="icon-home"><i></i><span>Back Home</span></i>' +
+    '<i class="icon-list"><i></i><span>Article List</span></i>' +
     '<i class="icon-facebook"><i></i><span>Share on Facebook</span></i>' +
     '<i class="icon-google"><i></i><span>Share on Google+</span></i>' +
     '<i class="icon-twitter"><i></i><span>Share on Twitter</span></i>' +
@@ -43,6 +44,9 @@ $(function() {
   function _socialClick() {
     $('.icon-home').on('click', function() {
       window.open('/index.html', '_self');
+    });
+    $('.icon-list').on('click', function() {
+      window.open('/list.html', '_self');
     });
     $('.icon-facebook').on('click', function() {
       window.open('http://www.facebook.com/share.php?u=' + nowUrl, '_blank');

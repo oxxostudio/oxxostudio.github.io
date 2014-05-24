@@ -162,6 +162,12 @@
 #container .social-icon .icon-twitter > i {
   background-position: -99px -86px;
 }
+#container .social-icon .icon-list {
+  background-position: -128px -145px;
+}
+#container .social-icon .icon-list > i {
+  background-position: -99px -145px;
+}
 #container .social-icon .goto-top {
   background-position: -128px -115px;
 }

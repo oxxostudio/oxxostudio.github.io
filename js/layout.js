@@ -6,20 +6,23 @@ $(function() {
   var nowUrl = location.href;
   var urlParts = nowUrl.split("/");
   var siteUrl = urlParts[0] + '//' + urlParts[2] + '/';
+  var timer, bannerGifPosition = -4;
 
   $('#header').append(
     '<div id="top-menu">' +
     '<ul class="top-menu-left">' +
-    '<li class="home"><i></i><a href="/">HOME</a></li>' +
-    '<li class="about"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>' +
-    '<li class="contact"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>' +
+    '<li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>' +
+    '<li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>' +
+    '<li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>' +
     '</ul>' +
-    '<a href="/list.html"><div class="all-list"><i></i></div></a>' +
-    '<div class="search">SEARCH</div>' +
+    '<a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>' +
+    '<div class="search" title="站內搜尋">SEARCH</div>' +
     '</div>' +
     '<div id="banner">' +
     '<h1>OXXO.STUDIO</h1>' +
     '<a href="/">' +
+    '<i class="bubble"></i>' +
+    '<i class="hihi"></i>' +
     '<img src="/img/layout/banner.png">' +
     '<h2>Design thinking is everywhere</h2>' +
     '</a>' +
@@ -74,6 +77,40 @@ $(function() {
   $window.resize(_mainMenu);
   $window.resize(_mobileMenu);
 
+  $('#main-menu>ul>li').on('click', function() {
+    var linkPage = $(this).attr('class');
+    if (linkPage == 'tag-all') {
+      window.open(siteUrl, '_self');
+    } else {
+      window.open(siteUrl + 'index.html?' + linkPage, '_self');
+    }
+  });
+
+  $('.search').on('click', function() {
+    alert('搜尋功能趕工中 >_<')
+  });
+
+  $('#banner').hover(
+    _bannerGif, function() {
+      clearTimeout(timer);
+    }
+  )
+
+  function _bannerGif() {
+    bannerGifPosition = bannerGifPosition - 18;
+    if (bannerGifPosition > -347) {
+      $('.bubble').css({
+        'background-position': bannerGifPosition + 'px -390px'
+      });
+    } else {
+      bannerGifPosition = -4;
+      $('.bubble').css({
+        'background-position': bannerGifPosition + 'px -390px'
+      });
+    }
+    timer = setTimeout(_bannerGif, 100);
+  }
+
   function _mainMenu() {
     if ($window.width() > 1000) {
       $window.scroll(function() {
@@ -102,15 +139,6 @@ $(function() {
       });
     }
   }
-
-  $('#main-menu>ul>li').on('click', function() {
-    var linkPage = $(this).attr('class');
-    if (linkPage == 'tag-all') {
-      window.open(siteUrl, '_self');
-    } else {
-      window.open(siteUrl + 'index.html?' + linkPage, '_self');
-    }
-  });
 
   function _mobileMenu() {
     if ($window.width() < 1000) {
