@@ -11,10 +11,11 @@
     margin: 30px 20px 0 280px !important;
   }
   #content-grid ul li h3 {
-    margin: 10px 20px 0 0 !important;
+    display: block !important;
+    margin: 10px 20px 0 280px !important;
   }
   #content-grid ul li h3:nth-child(even) {
-    display: none;
+    display: none !important;
   }
   #content-grid ul li .content-img {
     float: left;
@@ -27,7 +28,7 @@
   }
   #content-grid ul li h4 {
     float: right;
-    margin: -70px 0 0 !important;
+    margin: -100px 0 0 !important;
     padding-left: 280px;
     padding-right: 30px;
   }

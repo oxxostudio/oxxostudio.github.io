@@ -14,6 +14,14 @@ $(function() {
 
   $window.resize(_toolPosition);
 
+  $window.scroll(function() {
+    if ($window.scrollTop() > 150) {
+      $('.tool-icon').not('animated').fadeIn(300);
+    } else {
+      $('.tool-icon').not('animated').fadeOut(300);
+    }
+  });
+
   function _showAll() {
     $.getJSON('/json/pageList.json', function(data) {
       for (var i = 0; i < data.length; i++) {
@@ -29,14 +37,6 @@ $(function() {
       }
     });
   }
-
-  $window.scroll(function() {
-    if ($window.scrollTop() > 150) {
-      $('.tool-icon').not('animated').fadeIn(300);
-    } else {
-      $('.tool-icon').not('animated').fadeOut(300);
-    }
-  });
 
   function _toolPosition() {
     $window.width() > 1000 ? windowWidth = $window.width() : windowWidth = 1000;
@@ -55,7 +55,6 @@ $(function() {
       $("html,body").animate({
         "scrollTop": "0"
       }, 750);
-
     });
   }
 });

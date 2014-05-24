@@ -10,10 +10,11 @@
            margin:30px 20px 0 280px!important;
          }
          h3 {
-           margin:10px 20px 0 0!important;
+          display:block!important;
+           margin:10px 20px 0 280px!important;
          }
          h3:nth-child(even) {
-           display:none;
+           display:none!important;
          }
          .content-img {
            float:left;
@@ -26,7 +27,7 @@
          }
          h4 {
            float:right;
-           margin:-70px 0 0!important;
+           margin:-100px 0 0!important;
            padding-left:280px;
            padding-right:30px;
          }
