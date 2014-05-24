@@ -14,12 +14,8 @@ $(function() {
     '<li class="about"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>' +
     '<li class="contact"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>' +
     '</ul>' +
-    // '<div class="link">' +
-    // '<img src="/img/layout/about.png">' +
-    // '</div>' +
-    '<div class="search">' +
-    '<img src="/img/layout/search.png">' +
-    '</div>' +
+    '<a href="/list.html"><div class="all-list"><i></i></div></a>' +
+    '<div class="search">SEARCH</div>' +
     '</div>' +
     '<div id="banner">' +
     '<h1>OXXO.STUDIO</h1>' +

@@ -89,7 +89,6 @@ table {
 }
 body, html {
   font-family: 'Open Sans', 'PMingLiU', sans-serif;
-  height: 100%;
 }
 
 body {
@@ -121,7 +120,7 @@ a {
 }
 #top-menu .top-menu-left {
   float: left;
-  margin: 10px 20px;
+  margin: 10px 10px;
 }
 #top-menu .top-menu-left li {
   float: left;
@@ -159,8 +158,44 @@ a {
   opacity: 1;
 }
 #top-menu .search {
-  margin: 10px 10px 10px 0;
+  margin: 10px 5px 10px 0;
   float: right;
+  background: url(/img/layout/sprites.png) no-repeat -157px 0;
+  width: 175px;
+  height: 23px;
+  color: #aaa;
+  font-size: 12px;
+  padding: 5px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+#top-menu .search:hover {
+  opacity: .5;
+}
+#top-menu .all-list {
+  float: right;
+  margin: 10px 30px 20px 0;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 23px;
+  height: 23px;
+  background: #e9e9e9;
+}
+#top-menu .all-list > i {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: 6px;
+  background: url(/img/layout/sprites.png) no-repeat -71px -117px;
+  opacity: .8;
+}
+#top-menu .all-list:hover {
+  opacity: .5;
 }
 #top-menu .link {
   margin: 10px 20px 10px 0;

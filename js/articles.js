@@ -32,7 +32,7 @@ $(function() {
   });
 
   function _socialPosition() {
-    $window.width() > 1100 ? windowWidth = $window.width() : windowWidth = 1100;
+    $window.width() > 1000 ? windowWidth = $window.width() : windowWidth = 1000;
     contantWidth = $content.width();
     var dx = windowWidth / 2 + contantWidth / 2 + 10;
     $('.social-icon').css({
