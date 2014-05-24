@@ -11,7 +11,8 @@ $(function() {
     'Design thinking is everywhere',
     'Good design is innovative',
     'I express myself with design',
-    'Stay hungry, stay foolish'
+    'Stay hungry, stay foolish',
+    ':::::: www.oxxostudio.tw ::::::',
   ]
 
   $('#header').append(
@@ -117,7 +118,7 @@ $(function() {
   }
 
   function _goodSentences() {
-    var randomWord = Math.floor(Math.random() * 4);
+    var randomWord = Math.floor(Math.random() * goodSentences.length);
     $('#banner h2').text(goodSentences[randomWord]);
   }
 
