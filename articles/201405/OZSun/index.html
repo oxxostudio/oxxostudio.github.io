@@ -1,69 +1,152 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
-<meta property="og:title" content="oxxo人中伯貼圖設計36P"/>
-<meta property="og:image" content="img/b/OZSun_27.png"/>
-<title>OXXO.STUDIO - 人中伯貼圖設計 36P</title>
-    <script src="/js/lib/jquery.min.js"></script>
 
-<style>
-	body{margin:0; padding:0; background:url(img/loading.gif) center 150px no-repeat;}
-	ul,li{padding:0; margin:0; list-style: none;}
-	#content{width:1150px; margin:-20px auto 0; display: none;}
-	#imgMenu{width:630px; float:left;}
-	#imgMenu #title{width:630px; height:70px; margin-top:80px;}
-	#imgMenu #title img{display:block; margin:0 auto;}
-	#imgMenu ul{width:630px; margin-top:30px;}
-	#imgMenu ul li{float:left; margin:10px; cursor:pointer; width:82px; height:82px; overflow: hidden;}
-	#imgMenu ul li img{margin:1px 0 0 1px;}
-	#chatroomImg{width:520px; float:right; position:relative; overflow: hidden;}
-	#chatroomImg #OZSun{width:175px; height:175px;  position:absolute; bottom:205px; right:125px; z-index:2; overflow: hidden;}
-	#chatroomImg #OZSun img{position:absolute; display:none;}
-</style>
-<script>
-	$(function(){
-		var imgNum=0;
-		for(var i=1; i<=36; i++){
-			$('#imgMenu ul').append('<li><img src="img/s/OZSun_'+i+'s.png"></li>');
-			$('#OZSun').append('<img src="img/m/OZSun_'+i+'m.png">');
-		}
-		$('img').load(function(){
-			imgNum = imgNum+1;
-			if(imgNum>=72){
-				$('#content').show();
-				$('body').css({'background':'none'});
-			}
-		})
-		$('#chatroomImg #OZSun img:eq(0)').fadeIn(200);
-		$('#imgMenu ul li:eq(0)').css({'background':'#ddd'});
-		$('#imgMenu ul li').click(function(){
-			var num = $(this).index();
-			$('#chatroomImg #OZSun img').fadeOut(200);
-			$('#chatroomImg #OZSun img:eq('+num+')').fadeIn(200);
-			$('#imgMenu ul li').css({'background':'none'});
-			$(this).css({'background':'#ddd'});
-		}).hover(function(){
-			$(this).find('img').css({'border':'1px solid #f80','margin':'0'});
-		},function(){
-			$(this).find('img').css({'border':'none','margin':'1px 0 0 1px'});
-		});
-	})
-</script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+  <meta property="og:title" content="oxxo人中伯貼圖設計36P" />
+  <meta property="og:image" content="img/b/OZSun_27.png" />
+  <title>OXXO.STUDIO - 人中伯貼圖設計 36P</title>
+  <script src="/js/lib/jquery.min.js"></script>
+
+  <style>
+  body {
+    margin:0;
+    padding:0;
+    background:url(img/loading.gif) center 150px no-repeat;
+  }
+  ul, li {
+    padding:0;
+    margin:0;
+    list-style: none;
+  }
+  #content {
+    width:1150px;
+    margin:-20px auto 0;
+    display: none;
+  }
+  #imgMenu {
+    width:630px;
+    float:left;
+  }
+  #imgMenu #title {
+    width:630px;
+    height:70px;
+    margin-top:80px;
+  }
+  #imgMenu #title img {
+    display:block;
+    margin:0 auto;
+  }
+  #imgMenu ul {
+    width:630px;
+    margin-top:30px;
+  }
+  #imgMenu ul li {
+    float:left;
+    margin:10px;
+    cursor:pointer;
+    width:82px;
+    height:82px;
+    overflow: hidden;
+  }
+  #imgMenu ul li img {
+    margin:1px 0 0 1px;
+  }
+  #chatroomImg {
+    width:520px;
+    float:right;
+    position:relative;
+    overflow: hidden;
+  }
+  #chatroomImg #OZSun {
+    width:175px;
+    height:175px;
+    position:absolute;
+    bottom:205px;
+    right:125px;
+    z-index:2;
+    overflow: hidden;
+  }
+  #chatroomImg #OZSun img {
+    position:absolute;
+    display:none;
+  }
+  </style>
+  <script>
+  $(function() {
+    var imgNum = 0;
+    for (var i = 1; i <= 36; i++) {
+      $('#imgMenu ul').append('<li><img src="img/s/OZSun_' + i + 's.png"></li>');
+      $('#OZSun').append('<img src="img/m/OZSun_' + i + 'm.png">');
+    }
+    $('img').load(function() {
+      imgNum = imgNum + 1;
+      if (imgNum >= 72) {
+        $('#content').show();
+        $('body').css({
+          'background': 'none'
+        });
+      }
+    });
+    $('#chatroomImg #OZSun img:eq(0)').fadeIn(200);
+    $('#imgMenu ul li:eq(0)').css({
+      'background': '#ddd'
+    });
+    $('#imgMenu ul li').click(function() {
+      var num = $(this).index();
+      $('#chatroomImg #OZSun img').fadeOut(200);
+      $('#chatroomImg #OZSun img:eq(' + num + ')').fadeIn(200);
+      $('#imgMenu ul li').css({
+        'background': 'none'
+      });
+      $(this).css({
+        'background': '#ddd'
+      });
+    }).hover(function() {
+      $(this).find('img').css({
+        'border': '1px solid #f80',
+        'margin': '0'
+      });
+    }, function() {
+      $(this).find('img').css({
+        'border': 'none',
+        'margin': '1px 0 0 1px'
+      });
+    });
+  });
+  </script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-2708968-3', 'oxxostudio.github.io');
+  ga('send', 'pageview');
+  </script>
 </head>
 
 <body>
-	<div id='content'>
-		<div id='imgMenu'>
-			<img src='img/b/OZSun_27.png' style='margin-top:-1000px;'>
-			<div id='title'><img src='img/title.png'></div>
-			<ul></ul>
-		</div>
-		<div id='chatroomImg'>
-			<div id='OZSun'></div>
-			<img src='img/chatroom.jpg' style='margin-left:-80px;'>
-		</div>
-	</div>
+  <div id='content'>
+    <div id='imgMenu'>
+      <img src='img/b/OZSun_27.png' style='margin-top:-1000px;'>
+      <div id='title'>
+        <img src='img/title.png'>
+      </div>
+      <ul></ul>
+    </div>
+    <div id='chatroomImg'>
+      <div id='OZSun'></div>
+      <img src='img/chatroom.jpg' style='margin-left:-80px;'>
+    </div>
+  </div>
 </body>
+
 </html>

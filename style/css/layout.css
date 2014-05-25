@@ -330,16 +330,16 @@ a {
   height: 18px;
 }
 #main-menu ul .tag-creative {
-  color: #74bc48;
-}
-#main-menu ul .tag-creative > i {
-  background: #74bc48;
-}
-#main-menu ul .tag-ui {
   color: #eb6f70;
 }
-#main-menu ul .tag-ui > i {
+#main-menu ul .tag-creative > i {
   background: #eb6f70;
+}
+#main-menu ul .tag-ui {
+  color: #74bc48;
+}
+#main-menu ul .tag-ui > i {
+  background: #74bc48;
 }
 #main-menu ul .tag-share {
   color: #40a880;

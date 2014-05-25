@@ -46,7 +46,7 @@ $(function() {
             '<h2>' + data[j].title + '</h2>' +
             '<h3><i class="icon-date"></i>' + data[j].date + '</h3>' +
             '<h3><i class="icon-author"></i>OXXO.STUDIO</h3>' +
-            '<a href="' + data[j].site + '">'+
+            '<a href="' + data[j].site + '" title="' + data[j].title + '">'+
             '<div class="content-img">' +
             '<span></span>' +
             '<img src="' + data[j].img + '">' +
