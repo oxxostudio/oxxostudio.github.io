@@ -173,7 +173,7 @@ $(function() {
       var h4Content = $(this).find('.desc').text();
       if (h4Content != '') {
         stopTimer = stopTimer + 1;
-        $(this).html(h4Content.substr(0, 111) + ' ...');
+        $(this).html(h4Content.substr(0, 105) + ' ...');
         if (stopTimer >= $('#content-grid>ul h4').length) {
           clearTimeout(timer);
         }
