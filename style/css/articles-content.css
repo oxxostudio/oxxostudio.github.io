@@ -227,9 +227,13 @@
 }
 #other-articles div h4 {
   width: 100%;
+  height: 16px;
   font-size: 13px;
   text-align: center;
   margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 #other-articles div:hover img {
   margin: -2px 0 2px;
