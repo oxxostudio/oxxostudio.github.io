@@ -74,17 +74,19 @@ $wrapper-shadow:0 0 20px #000;
         }
       }
       .tag-creative {
-        color:#74bc48;
-        >i {
-          background:#74bc48;
-        }
-      }
-      .tag-ui {
         h3 {
           color:#eb6f70;
         }
         >i {
           background:#eb6f70;
+        }
+      }
+      .tag-ui {
+        h3{
+        color:#74bc48;
+        }
+        >i {
+          background:#74bc48;
         }
       }
       .tag-share {

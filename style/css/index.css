@@ -202,13 +202,13 @@
   background-image: url(/img/layout/sprites.png);
 }
 #content-grid ul li .tag-ui {
-  background-position: 0 0;
+  background-position: 0 -88px;
 }
 #content-grid ul li .tag-others {
   background-position: 0 -44px;
 }
-#content-grid ul li .tag-design {
-  background-position: 0 -88px;
+#content-grid ul li .tag-creative {
+  background-position: 0 0;
 }
 #content-grid ul li .tag-photo {
   background-position: 0 -132px;
@@ -216,7 +216,7 @@
 #content-grid ul li .tag-web {
   background-position: 0 -176px;
 }
-#content-grid ul li .tag-ill {
+#content-grid ul li .tag-share {
   background-position: 0 -220px;
 }
 #content-grid ul li .tag-css {

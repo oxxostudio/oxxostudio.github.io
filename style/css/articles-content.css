@@ -66,13 +66,13 @@
   background-image: url(/img/layout/sprites.png);
 }
 #container .content .tag-ui {
-  background-position: 0 0;
+  background-position: 0 -88px;
 }
 #container .content .tag-others {
   background-position: 0 -44px;
 }
-#container .content .tag-design {
-  background-position: 0 -88px;
+#container .content .tag-creative {
+  background-position: 0 0;
 }
 #container .content .tag-photo {
   background-position: 0 -132px;
@@ -80,7 +80,7 @@
 #container .content .tag-web {
   background-position: 0 -176px;
 }
-#container .content .tag-ill {
+#container .content .tag-share {
   background-position: 0 -220px;
 }
 #container .content .tag-css {
@@ -484,7 +484,6 @@
 }
 .md img {
   max-width: 100%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;

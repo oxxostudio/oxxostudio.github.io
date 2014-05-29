@@ -48,4 +48,10 @@
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
+<url>
+<loc>http://www.oxxostudio.tw/articles/201405/remote-control-ui.html</loc>
+<lastmod>2014-05-29</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>
