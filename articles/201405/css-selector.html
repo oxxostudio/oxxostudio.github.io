@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta name="description" content="大家好，我叫 oxxo ，是一個熱愛學習和創作的即將邁入中年的年輕人~ 我畢業於台灣藝術大學多媒體動畫藝術研究所，專長是 UI 與 UX 設計、網頁設計...等視覺設計領域，凡是眼睛所見關於「美」的東西，都是我所熱愛與追求的！">
+  <meta name="description" content="對於 CSS 的初學者而言，比較不容易理解的大概就是偽類以及偽元素，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，偽類分為四大類，第一大類就是剛剛所提到的「錨點偽類」，第二類是「狀態偽類」，而另外兩類則是 -child 和 of-type，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。">
   <link rel="author" href="https://plus.google.com/u/0/105185415102049371674/posts" />
   <link rel="stylesheet" href="/style/css/layout.css">
   <link rel="stylesheet" href="/style/css/articles-content.css">
@@ -25,16 +25,19 @@
         <div class="md">
           <h2>CSS 偽類 child 和 of-type</h2>
           <p>
-            <img src="/img/articles/201405/20140527_1_01.jpg" style="float:right; width:300px; margin-left:10px;"><span itemprop="description" class="desc">對於 CSS 的初學者而言，通常比較常用到的偽類大概就是超連結的錨點偽類：<code>a:link</code>、<code>a:hover</code>、<code>a:active</code> 和 <code>a:visited</code> 這四種，但偽類真正的精華在於可以比較精準地控制 HTML 當中的各個 DOM，不僅僅只有這四種而已，偽類分為四大類，第一大類就是剛剛所提到的「<strong>錨點偽類</strong>」，也就是跟隨在超連結後的這四種，第二類是「<strong>狀態偽類</strong>」，就是描述 <code>:checked</code>、<code>unchecked</code>、<code>:enabled</code>、<code>:disabled</code> 這幾種，而另外兩類則是 <code>-child</code> 和 <code>of-type</code>，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。</span></p>
-            <br/>
+            <img src="/img/articles/201405/20140527_1_01.jpg" style="float:right; width:300px; margin-left:10px;">
+            <span itemprop="description" class="desc">對於 CSS 的初學者而言，比較不容易理解的大概就是<strong>偽類</strong>以及<strong>偽元素</strong>，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，這篇文章主要介紹偽類，偽元素的部分會在其他文章中再度提及。通常比較常用到的偽類大概就是超連結的錨點偽類：<code>a:link</code>、<code>a:hover</code>、<code>a:active</code>和<code>a:visited</code>這四種，但偽類真正的精華在於可以比較精準地控制 HTML 當中的各個 DOM，不僅僅只有這四種而已，偽類分為四大類，第一大類就是剛剛所提到的「<strong>錨點偽類</strong>」，也就是跟隨在超連結後的這四種，第二類是「<strong>狀態偽類</strong>」，就是描述<code>:checked</code>、<code>unchecked</code>、<code>:enabled</code>、<code>:disabled</code>這幾種，而另外兩類則是<code>-child</code>和<code>of-type</code>，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。</p>
           <p>
-            <code>child</code> 顧名思義，就是小孩子的意思，換句話說，凡是套上 child 的 DOM，外頭的 DOM 就是他的爸爸 ( 父元素 )，不管裏頭的元素是甚麼，都是 child，而
-            <code>child</code> 又有以下幾種：</p>
+            <br/>
+            <code>child</code>顧名思義，就是小孩子的意思，換句話說，凡是套上 child 的 DOM，外頭的 DOM 就是他的爸爸 ( 父元素 )，不管裏頭的元素是甚麼，都是 child，而
+            <code>child</code>又有以下幾種：</p>
           <ul>
             <li>:first-child：第一個子元素</li>
             <li>:last-child：最後一個子元素</li>
             <li>:nth-child(數字)：第幾個子元素</li>
-            <li>:nth-last-child()：從後面數來第幾個子元素</li>
+            <li>:nth-child(2n)：挑出偶數的元素(2的倍數)</li>
+            <li>:nth-child(2n+1)：挑出奇數的元素</li>
+            <li>:nth-last-child(數字)：從後面數來第幾個子元素</li>
             <li>:only-child：只有一個子元素</li>
           </ul>
           <p>光是列出來可能還沒有感覺，直接來看看效果，假設你的程式碼如下：
@@ -59,6 +62,7 @@
     margin:5px;
 }
 </code></pre>
+
           <p>那麼出來的長相應該會是這樣：
             <br />
             <img src="https://lh5.googleusercontent.com/-1I9-Y9CJLx4/U4X8lBZ_-KI/AAAAAAAA32U/foW6Xfgyd8Y/s000/20140527_1_02.png" alt="img01" />
@@ -159,7 +163,6 @@
     margin:5px;
 }
 </code></pre>
-
           <p>
           </p>
           <p>長相會是這樣：</p>
@@ -172,7 +175,8 @@
 }
 </code></pre>
 
-          <p>就會發現<strong>完全沒有反應！？</strong>為什麼呢？因為
+          <p>就會發現
+            <strong>完全沒有反應！？</strong>為什麼呢？因為
             <code>child</code>是只所有的子元素，裏頭的
             <code>:first-child</code>表示
             <code>div</code>，但又因為我們指向

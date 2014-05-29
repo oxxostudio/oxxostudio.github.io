@@ -33,6 +33,11 @@
   .content>i {
     display:none!important;
   }
+  .md {
+    h2::after {
+      display:none;
+    }
+  }
 }
 $wrapper-shadow:0 0 20px #000;
  @mixin transition-time($timer) {
@@ -250,6 +255,8 @@ $wrapper-shadow:0 0 20px #000;
   color: #333;
   padding: 20px 60px 50px;
   width: 100%;
+  word-break: break-all;
+  overflow: hidden;
   /* BLOCKS
 =============================================================================*/
   p, blockquote, ul, ol, dl, table, pre {
@@ -375,11 +382,11 @@ $wrapper-shadow:0 0 20px #000;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
   }
   code, tt {
-    margin: 0 0px;
-    padding: 0px 0px;
+    margin: 0 5px;
+    padding: 2px 2px;
     white-space: nowrap;
-    border: 1px solid #eaeaea;
-    background-color: #f8f8f8;
+    border: 1px solid #aaa;
+    background-color: #ddd;
     border-radius: 3px;
   }
   pre>code {
