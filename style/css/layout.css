@@ -113,6 +113,11 @@ a {
   text-decoration: none;
 }
 
+#author {
+  position: fixed;
+  top: -100px;
+}
+
 #header {
   background: #fff;
   width: 100%;
