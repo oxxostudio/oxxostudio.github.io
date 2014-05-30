@@ -254,6 +254,7 @@ $wrapper-shadow:0 0 20px #000;
   line-height: 1.6;
   color: #333;
   padding: 20px 60px 50px;
+  max-width: 850px;
   width: 100%;
   word-break: break-all;
   overflow: hidden;
@@ -264,6 +265,7 @@ $wrapper-shadow:0 0 20px #000;
     word-break:break-all;
   }
   p {
+    max-width:100%;
   }
   /* HEADERS
 =============================================================================*/
