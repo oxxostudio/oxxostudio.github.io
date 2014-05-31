@@ -21,7 +21,7 @@ $(function() {
 
   _showTag(tag);
   _socialPosition();
-  _socialClick();
+  _socialClick(nowUrl);
 
   $window.resize(_socialPosition);
   $window.scroll(function() {
@@ -41,7 +41,7 @@ $(function() {
     });
   }
 
-  function _socialClick() {
+  function _socialClick(pageURL) {
     $('.icon-home').on('click', function() {
       window.open('/index.html', '_self');
     });
@@ -49,13 +49,13 @@ $(function() {
       window.open('/list.html', '_self');
     });
     $('.icon-facebook').on('click', function() {
-      window.open('http://www.facebook.com/share.php?u=' + nowUrl, '_blank');
+      window.open('http://www.facebook.com/share.php?u=' + pageURL, '_blank');
     });
     $('.icon-google').on('click', function() {
-      window.open('https://plus.google.com/share?url=' + nowUrl, '_blank');
+      window.open('https://plus.google.com/share?url=' + pageURL, '_blank');
     });
     $('.icon-twitter').on('click', function() {
-      window.open('http://twitter.com/home/?status=' + nowUrl, '_blank');
+      window.open('http://twitter.com/home/?status=' + pageURL, '_blank');
     });
     $('.goto-top').on('click', function() {
       $("html,body").animate({
