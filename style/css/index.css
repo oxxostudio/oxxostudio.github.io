@@ -23,6 +23,9 @@
     width: 200px !important;
     height: auto !important;
   }
+  #content-grid ul li .content-img span {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.75) !important;
+  }
   #content-grid ul li .content-grid-line {
     display: none;
   }
