@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
+  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
+  <meta name="description" content="本篇主要在介紹，如何正確設定分享文章到 google plus 以及 facebook 的標題、縮圖與內文概要，因為有了這些正確的設定，分享到社群網站就不會跳出莫名其妙的縮圖，同時在 google 的搜尋，也會呈現作者的大頭照與姓名，這些都是會吸引更多使用者瀏覽的好方法。">
+
+  <meta itemprop="name" content="結構化資料 SEO 與 meta 標籤 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140601_1_01.jpg">
+  <meta itemprop="description" content="本篇主要在介紹，如何正確設定分享文章到 google plus 以及 facebook 的標題、縮圖與內文概要，因為有了這些正確的設定，分享到社群網站就不會跳出莫名其妙的縮圖，同時在 google 的搜尋，也會呈現作者的大頭照與姓名，這些都是會吸引更多使用者瀏覽的好方法。">
+
+  <meta property="og:title" content="結構化資料 SEO 與 meta 標籤 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/social-meta.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140601_1_01.jpg">
+  <meta property="og:description" content="本篇主要在介紹，如何正確設定分享文章到 google plus 以及 facebook 的標題、縮圖與內文概要，因為有了這些正確的設定，分享到社群網站就不會跳出莫名其妙的縮圖，同時在 google 的搜尋，也會呈現作者的大頭照與姓名，這些都是會吸引更多使用者瀏覽的好方法。">
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+  <link rel="stylesheet" href="/style/css/articles-content.css">
+  <link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+  <title>結構化資料 SEO 與 meta 標籤 - OXXO.STUDIO</title>
+</head>
+
+<body onload="prettyPrint()">
+  <div id="header">
+  </div>
+  <div id="wrapper">
+    <div id="container">
+      <div class="content">
+        <i class="tag-web"></i>
+        <div class="md">
+          <h2>結構化資料 SEO 與 meta 標籤</h2>
+          <p>
+            <img src="/img/articles/201406/20140601_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">隨著這個 blog 放到網路上開始，SEO 也變得重要起來，而在 SEO 裏頭，最重要的第一項重點就是 meta 標籤，這也是要告訴搜尋引擎和社群網站，你的 blog 或是網站主旨是什麼，作者是誰，分享的縮圖是什麼...等這些我們認為理所當然的資訊，畢竟這些搜尋引擎的蜘蛛和社群網站的人工智慧，現在還無法分辨你我網站內容的重點，因此我們必須靠這些 meta 或結構化資料 itemprop，來告訴它們。</p>
+          <p><span itemprop="description" class="desc">本篇主要在介紹，如何正確的設定分享文章到 google plus 以及 facebook 的標題、縮圖與內文概要，因為有了這些正確的設定，分享到社群網站就不會跳出莫名其妙的縮圖，同時在 google 的搜尋，也會呈現作者的大頭照與姓名，這些都是會吸引更多使用者瀏覽的好方法。</span></p>
+          <p>這是在我的網站 header 裏頭，所加入的 meta 標籤：</p>
+          <pre><code>&lt;meta name=&quot;author&quot; content=&quot;作者名稱&quot;&gt;
+&lt;meta name=&quot;copyright&quot; content=&quot;版權所有人名稱&quot;&gt;
+
+&lt;link rel=&quot;author&quot; href=&quot;google plus 個人頁網址/posts&quot;&gt;
+&lt;link rel=&quot;publisher&quot; href=&quot;google plus 個人頁網址&quot;&gt;
+&lt;meta name=&quot;description&quot; content=&quot;網頁描述&quot;&gt;
+
+&lt;meta itemprop=&quot;name&quot; content=&quot;網站名稱或標題&quot;&gt;
+&lt;meta itemprop=&quot;image&quot; content=&quot;要顯示的縮圖網址&quot;&gt;
+&lt;meta itemprop=&quot;description&quot; content=&quot;網頁描述&quot;&gt;
+
+&lt;meta property=&quot;og:title&quot; content=&quot;網站名稱或標題&quot; &gt;
+&lt;meta property=&quot;og:url&quot; content=&quot;網址&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;要顯示的縮圖網址&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;網頁描述&quot; &gt;
+</code></pre>
+
+          <p>
+            <br/>其中以下這三行，是寫給搜尋引擎看的 ( 特別是 google )，當中最重要的，就是<code>rel=&quot;author&quot;</code>這一句，有寫這一段，接下來我們就可以去去 google plus 進行互相認證的作業 ( 也就是要讓 google plus 確認這個網頁的作者是你 )</p>
+          <pre><code>&lt;link rel=&quot;author&quot; href=&quot;google plus 個人頁網址/posts&quot;&gt;
+&lt;link rel=&quot;publisher&quot; href=&quot;google plus 個人頁網址&quot;&gt;
+&lt;meta name=&quot;description&quot; content=&quot;網頁描述&quot;&gt;
+</code></pre>
+
+          <p>而認證的過程，可以點選 <a href="http://www.google.com/webmasters/tools/richsnippets" target="_blank">google 結構化資料測試工具</a> 連結，進行相關的認證作業，認證的過程其實也很簡單，就是進入 google plus 的個人頁面，點選「帳戶」，點選「編輯個人資料」，接著將「連結」裏頭的「作品刊載於」，新增目前的網站，接著 google plus 就會去查詢你的網站是否有放上<code>rel=&quot;author&quot;</code>，如果有，就完成囉！</p>
+          <p>
+            <br/>而這三行是寫給 google plus 看的，分享到 google plus 上頭，就會正確顯示</p>
+          <pre><code>&lt;meta itemprop=&quot;name&quot; content=&quot;網站名稱或標題&quot;&gt;
+&lt;meta itemprop=&quot;image&quot; content=&quot;要顯示的縮圖網址&quot;&gt;
+&lt;meta itemprop=&quot;description&quot; content=&quot;網頁描述&quot;&gt;
+</code></pre>
+
+          <p>
+            <br/>而這四行是寫給 facebook 看的，分享到 facebook 上頭，就會正確顯示，如果發現都已經照著設定了，分享時仍有問題，可以點選 <a href="https://developers.facebook.com/tools/debug" target="_blank">Facebook Debugger</a> 進行查詢和重新設定，完成後再次分享應該就不會有問題囉！</p>
+          <pre><code>&lt;meta property=&quot;og:title&quot; content=&quot;網站名稱或標題&quot; &gt;
+&lt;meta property=&quot;og:url&quot; content=&quot;網址&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;要顯示的縮圖網址&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;網頁描述&quot; &gt;
+</code></pre>
+
+          <p>
+            <br/>當然 meta 標籤絕對不止這一些，因為除了 facebook 和 google plus，還有一個世界前三大的社群平台 twitter，以下列出在這些平台上完整的 meta 標籤語法，如果有需要也可以都加進自己的網站喔！</p>
+          <pre><code>&lt;!-- Update your html tag to include the itemscope and itemtype attributes. --&gt; 
+&lt;html itemscope itemtype=&quot;http://schema.org/Article&quot;&gt;
+
+&lt;!-- Place this data between the &lt;head&gt; tags of your website --&gt; 
+&lt;title&gt;Page Title. Maximum length 60-70 characters&lt;/title&gt; 
+&lt;meta name=&quot;description&quot; content=&quot;Page description. No longer than 155 characters.&quot; /&gt;
+
+&lt;!-- Google Authorship and Publisher Markup --&gt; 
+&lt;link rel=&quot;author&quot; href=&quot; https://plus.google.com/[Google+_Profile]/posts&quot;/&gt;
+&lt;link rel=&quot;publisher&quot; href=” https://plus.google.com/[Google+_Page_Profile]&quot;/&gt;
+
+&lt;!-- Schema.org markup for Google+ --&gt; 
+&lt;meta itemprop=&quot;name&quot; content=&quot;The Name or Title Here&quot;&gt; 
+&lt;meta itemprop=&quot;description&quot; content=&quot;This is the page description&quot;&gt; 
+&lt;meta itemprop=&quot;image&quot; content=&quot; http://www.example.com/image.jpg&quot;&gt;
+
+&lt;!-- Twitter Card data --&gt; 
+&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt; 
+&lt;meta name=&quot;twitter:site&quot; content=&quot;@publisher_handle&quot;&gt; 
+&lt;meta name=&quot;twitter:title&quot; content=&quot;Page Title&quot;&gt; 
+&lt;meta name=&quot;twitter:description&quot; content=&quot;Page description less than 200 characters&quot;&gt; 
+&lt;meta name=&quot;twitter:creator&quot; content=&quot;@author_handle&quot;&gt; 
+&lt;!-- Twitter summary card with large image must be at least 280x150px --&gt; 
+&lt;meta name=&quot;twitter:image:src&quot; content=&quot; http://www.example.com/image.html&quot;&gt;
+
+&lt;!-- Open Graph data --&gt; 
+&lt;meta property=&quot;og:title&quot; content=&quot;Title Here&quot; /&gt; 
+&lt;meta property=&quot;og:type&quot; content=&quot;article&quot; /&gt; 
+&lt;meta property=&quot;og:url&quot; content=&quot; http://www.example.com/&quot; /&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot; http://example.com/image.jpg&quot; /&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;Description Here&quot; /&gt; 
+&lt;meta property=&quot;og:site_name&quot; content=&quot;Site Name, i.e. Moz&quot; /&gt; 
+&lt;meta property=&quot;article:published_time&quot; content=&quot;2013-09-17T05:59:00+01:00&quot; /&gt; 
+&lt;meta property=&quot;article:modified_time&quot; content=&quot;2013-09-16T19:08:47+01:00&quot; /&gt; 
+&lt;meta property=&quot;article:section&quot; content=&quot;Article Section&quot; /&gt; 
+&lt;meta property=&quot;article:tag&quot; content=&quot;Article Tag&quot; /&gt; 
+&lt;meta property=&quot;fb:admins&quot; content=&quot;Facebook numberic ID&quot; /&gt;
+</code></pre>
+
+          <p>更多的資訊也可以參考 <a href="http://moz.com/blog/meta-data-templates-123" target="_blank">這個網站</a>，會更有幫助和收穫喔！
+            <br />^____^
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="other-articles">
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+  </div>
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/prettify.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+
+</html>

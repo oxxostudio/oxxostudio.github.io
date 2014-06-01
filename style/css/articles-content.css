@@ -291,7 +291,6 @@
 }
 .md p, .md blockquote, .md ul, .md ol, .md dl, .md table, .md pre {
   margin: 15px 0;
-  word-break: break-all;
 }
 .md p {
   max-width: 100%;
@@ -403,6 +402,9 @@
 .md pre, .md code, .md tt {
   font-size: 12px;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
+  word-break: break-all !important;
+  word-wrap: break-word !important;
+  white-space: pre-wrap !important;
 }
 .md code, .md tt {
   margin: 0 5px;
@@ -427,6 +429,9 @@
   overflow: auto;
   padding: 6px 10px;
   border-radius: 3px;
+}
+.md pre strong {
+  background: #fc0;
 }
 .md pre code, .md pre tt {
   background-color: transparent;

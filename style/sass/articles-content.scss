@@ -262,7 +262,6 @@ $wrapper-shadow:0 0 20px #000;
 =============================================================================*/
   p, blockquote, ul, ol, dl, table, pre {
     margin: 15px 0;
-    word-break:break-all;
   }
   p {
     max-width:100%;
@@ -382,6 +381,9 @@ $wrapper-shadow:0 0 20px #000;
   pre, code, tt {
     font-size: 12px;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
+    word-break:break-all!important;
+    word-wrap : break-word!important;
+    white-space: pre-wrap!important;
   }
   code, tt {
     margin: 0 5px;
@@ -406,6 +408,9 @@ $wrapper-shadow:0 0 20px #000;
     overflow: auto;
     padding: 6px 10px;
     border-radius: 3px;
+    strong{
+      background:#fc0;
+    }
   }
   pre code, pre tt {
     background-color: transparent;
