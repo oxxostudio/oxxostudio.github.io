@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-05-01T00:00:00+01:00" >
+
+  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
+  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
+  <meta name="description" content="這是之前前替公司所設計的產品網頁，介紹 Dreamsmile 這套目標紀錄的 app，版面的配置採用現在比較流行的單頁式網頁設計，搭配卷軸滾動的小特效。">
+
+  <meta itemprop="name" content="Dreamsmile 網頁設計 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140602_1_01.jpg">
+  <meta itemprop="description" content="這是之前前替公司所設計的產品網頁，介紹 Dreamsmile 這套目標紀錄的 app，版面的配置採用現在比較流行的單頁式網頁設計，搭配卷軸滾動的小特效。">
+
+  <meta property="og:title" content="Dreamsmile 網頁設計 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/dreamsmile-web.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140602_1_01.jpg">
+  <meta property="og:description" content="這是之前前替公司所設計的產品網頁，介紹 Dreamsmile 這套目標紀錄的 app，版面的配置採用現在比較流行的單頁式網頁設計，搭配卷軸滾動的小特效。">
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+  <link rel="stylesheet" href="/style/css/articles-content.css">
+  <link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+  <title>Dreamsmile 網頁設計 - OXXO.STUDIO</title>
+</head>
+
+<body onload="prettyPrint()">
+  <div id="header">
+  </div>
+  <div id="wrapper">
+    <div id="container">
+      <div class="content">
+        <i class="tag-ui"></i>
+        <div class="md">
+          <h2>Dreamsmile 網頁設計</h2>
+          <p><a href="https://dl.dropboxusercontent.com/u/59597657/worktest/dreamsmile/zh-tw/index.html" target="_blank">點選我看範例網站</a>
+          </p>
+          <p>
+            <img src="/img/articles/201406/20140602_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+            <span itemprop="description" class="desc">這是之前替公司所設計的產品網頁，介紹 Dreamsmile 這套目標紀錄的 app，版面的配置採用現在比較流行的單頁式網頁設計，搭配卷軸滾動的小特效 ( 卷軸捲到哪邊就會出現一些效果 ) ，只是比較可惜的那時候對於 RWD 的技術還不熟練，加上時間比較緊迫，就快速地做出了這個版本，也因為沒有響應式，手機版本也是用 javascript 硬刻出來的。</span>
+          </p>
+          <p>裏頭花費最多時間的地方，就在上方滑鼠移動的特效，為了讓看起來真的像手機拍攝，除了背景和滑鼠移動必須連動，手機裡頭的圖片也必須連動，而兩者連動的位移比例也要不同，這也是自己第一次嘗試這種作法，但做出來感覺還滿特別，也頗受好評的。程式的部分沒有太特別的，主要就使用<code>e.pageX</code>和<code>e.pageY</code>來抓取滑鼠的位置，由圖片的中心點出發，計算水平和垂直的位移，進一步乘上或除以固定的比例，就能夠有類似的效果。</p>
+          <p>至於卷軸的部分就更簡單了，直接利用<code>scrollTop()</code>的方式就能夠抓取卷軸的數值，接著用各個 DOM 的<code>offset().top</code>就能讀取垂直的位置，就能輕鬆做出卷軸的效果。</p>
+          <p>最後，這套 app 產品：Dreamsmile，這裡也稍微做一點點宣傳，畢竟也是之前同事努力的結晶，自己也負責了許多在行銷相關的工作，也從中對於行銷有更深一層的了解，雖然我認為在很多方面都還需要改善 ( 例如 UI 的設計、在市場上功能的定位、行銷的手法...等 )，不過如果能夠在未來改善，也不失為一套不錯使用的產品喔！</p>
+          <p><a href="https://itunes.apple.com/tw/app/dreamsmile-pai-zhao-ji-lu/id656664291?l=zh&amp;mt=8" target="_blank">點選下載 Dreamsmile</a>
+          </p>
+          <p>
+            <a href="https://dl.dropboxusercontent.com/u/59597657/worktest/dreamsmile/zh-tw/index.html" target="_blank">
+              <img src="https://lh6.googleusercontent.com/-jtxZw9RdEvM/U4x-uv0zuEI/AAAAAAAA39o/4jAaTZlrHt0/s000/20140602_1_02.jpg" alt="Dreamsmile" />
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="other-articles">
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+  </div>
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/prettify.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+
+</html>
