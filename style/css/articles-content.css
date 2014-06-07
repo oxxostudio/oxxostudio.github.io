@@ -13,6 +13,10 @@
   #disqus {
     width: 90% !important;
   }
+
+  .md iframe {
+    height: 400px !important;
+  }
 }
 @media screen and (max-width: 600px) {
   .article-date {
@@ -40,6 +44,9 @@
 
   .md h2::after {
     display: none;
+  }
+  .md iframe {
+    height: 260px !important;
   }
 }
 #container .content {
@@ -514,4 +521,8 @@
   background-image: url(/img/layout/sprites.png);
   background-repeat: no-repeat;
   background-position: -69px -61px;
+}
+.md iframe {
+  width: 100%;
+  height: 450px;
 }

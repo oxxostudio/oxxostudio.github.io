@@ -13,6 +13,11 @@
   #disqus {
     width:90%!important;
   }
+  .md {
+    iframe{
+      height:400px!important;
+    }
+  }
 }
 @media screen and (max-width: 600px) {
   .article-date {
@@ -36,6 +41,9 @@
   .md {
     h2::after {
       display:none;
+    }
+    iframe{
+      height:260px!important;
     }
   }
 }
@@ -500,5 +508,9 @@ $wrapper-shadow:0 0 20px #000;
       background-repeat: no-repeat;
       background-position: -69px -61px;
     }
+  }
+  iframe{
+    width:100%;
+    height:450px;
   }
 }
