@@ -492,6 +492,9 @@ $wrapper-shadow:0 0 20px #000;
     @include div-radius(5px);
     margin:0 auto 20px;
   }
+  svg {
+    max-width: 100%;
+  }
   .article-date {
     display:inline-block;
     font-size:14px;
