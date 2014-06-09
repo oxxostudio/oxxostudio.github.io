@@ -126,4 +126,10 @@
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
+<url>
+<loc>http://www.oxxostudio.tw/articles/201406/svg-03-basic-shapes.html</loc>
+<lastmod>2014-06-09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>
