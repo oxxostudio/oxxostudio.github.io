@@ -183,7 +183,6 @@ $(function() {
 
   function _trackGA(peopleEvent){
     ga('send', 'event', peopleEvent, peopleEvent);
-    console.log(peopleEvent);
   }
 
 });
