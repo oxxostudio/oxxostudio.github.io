@@ -93,14 +93,20 @@ $(function() {
   });
 
   $('.search').on('click', function() {
-    alert('搜尋功能趕工中 >_<')
+      _trackGA('search_click');
+    alert('搜尋功能趕工中 >_<');
   });
 
   $('#banner').hover(
     _bannerGif, function() {
       clearTimeout(timer);
+      _trackGA('banner_hover');
     }
   );
+
+  $('#banner').on('click',function(){_trackGA('banner_click')});
+  $('.top-menu-left .home').on('click',function(){_trackGA('topmenu_home')});
+  $('#footer .license a').on('click',function(){_trackGA('footer_click')});
 
   $('.mobile-menu').on('click', function() {
     if ($('#main-menu ul').hasClass('menuOpen')) {
@@ -114,6 +120,7 @@ $(function() {
         $('#main-menu ul').removeClass('menuOpen').find('li').hide();
       });
     }
+     _trackGA('mobilemenu_click');
   });
 
   function _bannerGif() {
@@ -173,4 +180,10 @@ $(function() {
       });
     }
   }
+
+  function _trackGA(peopleEvent){
+    ga('send', 'event', peopleEvent, peopleEvent);
+    console.log(peopleEvent);
+  }
+
 });

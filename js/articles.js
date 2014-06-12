@@ -50,18 +50,21 @@ $(function() {
     });
     $('.icon-facebook').on('click', function() {
       window.open('http://www.facebook.com/share.php?u=' + pageURL, '_blank');
+      _trackGA('share_to_facebook');
     });
     $('.icon-google').on('click', function() {
       window.open('https://plus.google.com/share?url=' + pageURL, '_blank');
+      _trackGA('share_to_google');
     });
     $('.icon-twitter').on('click', function() {
       window.open('http://twitter.com/home/?status=' + pageURL, '_blank');
+      _trackGA('share_to_twitter');
     });
     $('.goto-top').on('click', function() {
       $("html,body").animate({
         "scrollTop": "0"
       }, 750);
-
+      _trackGA('goto_top');
     });
   }
 
@@ -102,5 +105,9 @@ $(function() {
         }
       }
     });
+  }
+
+  function _trackGA(peopleEvent){
+    ga('send', 'event', peopleEvent, peopleEvent);
   }
 });
