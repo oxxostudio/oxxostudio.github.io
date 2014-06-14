@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-06-14T23:55:00+01:00">
+
+  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
+  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
+  <meta name="description" content="fill 填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩。">
+
+  <meta itemprop="name" content="SVG 研究之路 (7) - fill 填色 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140614_1_01.jpg">
+  <meta itemprop="description" content="fill 填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩。">
+
+  <meta property="og:title" content="SVG 研究之路 (7) - fill 填色 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140614_1_01.jpg">
+  <meta property="og:description" content="fill 填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩。">
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link rel="stylesheet" href="/style/css/layout.css">
+  <link rel="stylesheet" href="/style/css/articles-content.css">
+  <link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+  <title>SVG 研究之路 (7) - fill 填色 - OXXO.STUDIO</title>
+</head>
+
+<body>
+  <div id="header">
+  </div>
+  <div id="wrapper">
+    <div id="container">
+      <div class="content">
+        <i class="tag-web"></i>
+        <div class="md">
+          <h2>SVG 研究之路 (7) - fill 填色</h2>
+          <p><img src="/img/articles/201406/20140614_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          介紹過了 stroke 邊框之後，接下來就要介紹 fill 填色，<span itemprop="description" class="desc">填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩，以下將分別介紹三種填色的方式：</span></p>
+          <ul>
+            <li>
+              <p><strong>基本純色</strong>
+                <br />基本純色其實沒什麼特別的，只需要在 fill 裏頭加上顏色的名稱或是色碼，就可以完成</p>
+              <p>
+                <img src="https://lh6.googleusercontent.com/-GQjX8LBU5oM/U5x4ZgT3CdI/AAAAAAAA4II/1yttmojzuns/s000/20140614_1_02.png" alt="SVG-fill" style="margin-bottom:0; margin-top:10px;" />
+              </p>
+              <pre><code>&lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; fill=&quot;#f40&quot;&gt;&lt;/rect&gt;
+&lt;rect x=&quot;170&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; fill=&quot;#0f5&quot;&gt;&lt;/rect&gt;
+&lt;rect x=&quot;290&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; fill=&quot;#09f&quot;&gt;&lt;/rect&gt;
+</code></pre>
+
+              <p>
+                <br/>
+              </p>
+            </li>
+            <li>
+              <p><strong>漸層</strong>
+                <br />SVG 裏頭的漸層做法比較特殊，首先要先建立一個漸層的定義檔，接著讓需要漸層的元件，指向這個定義檔，就可以讓元件具有漸層，除了漸層是這麼做的，SVG 文字的變化也有一部分是使用定義檔來表現，會之後的篇幅提到。至於定義檔的寫法，會在外層統一用一個<code>&lt;defs&gt;&lt;/defs&gt;</code>( definitions ) 的標籤包著，這樣也方便識別當中的標籤是定義檔 ( 我測試過不包也是可以，不過基於 W3C 的定義規則，還是包起來吧 )，接著在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭加入<code>&lt;linearGradient&gt;&lt;/linearGradient&gt;</code>的標籤，這就完成了<strong>線性漸層</strong>漸層定義檔的架構 ( 放射狀漸層使用<code>&lt;radialGradient&gt;&lt;/radialGradient&gt;</code> ) ，不過別急，還沒結束，<code>&lt;linearGradient&gt;&lt;/linearGradient&gt;</code>裏頭還有漸層顏色的設定，就是使用<code>&lt;stop&gt;</code>的標籤來設定，可以看看下面的設定：</p>
+              <pre><code>&lt;defs&gt;
+   &lt;linearGradient id=&quot;a1&quot;&gt;
+     &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
+     &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+   &lt;/linearGradient&gt;
+&lt;/defs&gt;
+</code></pre>
+
+              <p>
+                <br/>
+              </p>
+              <p>由上面的定義檔可以看到，我們給<code>&lt;linearGradient&gt;&lt;/linearGradient&gt;</code>加上了<code>id</code>，這是為了讓要套用這個定義檔的元件可以有一個指向的參考，這樣不同的元件只要套用同一個定義檔，就可以套用同樣的漸層，而<code>stop</code>裏頭的<code>offset</code>，使用百分比進行設定，<code>stop-color</code>則是該位置的顏色，可以自行添加<code>stop</code>的數量決定漸層顏色的數量。</p>
+              <p>
+                <img src="https://lh4.googleusercontent.com/-SEKUCHfwzw0/U5x4ZoFJcvI/AAAAAAAA4Hk/oU0RJ5zpn78/s000/20140614_1_03.png" alt="SVG-fill" style="margin-bottom:0; margin-top:10px;" />
+              </p>
+              <pre><code>&lt;rect x=&quot;50&quot; y=&quot;250&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;5&quot; fill=&quot;url(#a1)&quot;&gt;&lt;/rect&gt;
+&lt;circle cx=&quot;220&quot; cy=&quot;300&quot; r=&quot;50&quot; stroke=&quot;#000&quot; stroke-width=&quot;5&quot; <strong>fill=&quot;url(#a1)&quot;</strong>&gt;&lt;/circle&gt;
+&lt;rect x=&quot;290&quot; y=&quot;250&quot; width=&quot;100&quot; height=&quot;100&quot; <strong>stroke=&quot;url(#a1)&quot;</strong> stroke-width=&quot;5&quot; fill=&quot;none&quot;&gt;&lt;/rect&gt;
+</code></pre>
+
+              <p>
+                <br/>
+              </p>
+              <p>我們也可以設定剛剛提過了<code>&lt;radialGradient&gt;&lt;/radialGradient&gt;</code>的<strong>放射狀</strong>漸層。</p>
+              <p>
+                <img src="https://lh4.googleusercontent.com/-zvdEPjKlSdY/U5x4ZoAxI1I/AAAAAAAA4Ho/DBHPcWeeNXE/s000/20140614_1_04.png" alt="SVG-fill" style="margin-bottom:0; margin-top:10px;" />
+              </p>
+              <pre><code>&lt;defs&gt;
+   &lt;radialGradient id=&quot;a1&quot;&gt;
+     &lt;stop offset=&quot;5%&quot; stop-color=&quot;#ff0&quot; /&gt;
+     &lt;stop offset=&quot;95%&quot; stop-color=&quot;#f00&quot; /&gt;
+   &lt;/radialGradient&gt;
+&lt;/defs&gt;
+</code></pre>
+
+              <p>
+                <br/>
+              </p>
+              <p>如果看到這邊你認為結束了，那就太小看 SVG 漸層了，<code>linearGradient</code>與<code>radialGradient</code>標籤裏頭其實還有很多的屬性可以設定，可以設定線性漸層的方向，以及放射狀漸層的圓心。( 別忘了也都是用百分比設定 )</p>
+              <ul>
+                <li>
+                  <p>換成垂直的漸層：</p>
+                  <p>
+                    <img src="https://lh3.googleusercontent.com/-IMOPAQgqvKo/U5x4aLTuiJI/AAAAAAAA4Hs/CtdHEWQFdMY/s000/20140614_1_05.png" alt="SVG-fill" style="margin-bottom:0; margin-top:10px;" />
+                  </p>
+                  <pre><code>&lt;defs&gt;
+   &lt;linearGradient id=&quot;a1&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;100%&quot;&gt;
+     &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
+     &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+   &lt;/linearGradient&gt;
+&lt;/defs&gt;
+</code></pre>
+
+                  <p>
+                    <br/>
+                  </p>
+                </li>
+                <li>
+                  <p>換成傾斜的漸層</p>
+                  <p>
+                    <img src="https://lh5.googleusercontent.com/-bGFFlBxlm2E/U5x4aVPzTYI/AAAAAAAA4IE/fJX6jDtxv90/s000/20140614_1_06.png" alt="SVG-fill" style="margin-bottom:0; margin-top:10px;" />
+                  </p>
+                  <pre><code>&lt;defs&gt;
+   &lt;linearGradient id=&quot;a1&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;&gt;
+     &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
+     &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+   &lt;/linearGradient&gt;
+&lt;/defs&gt;
+</code></pre>
+
+                  <p>
+                    <br/>
+                  </p>
+                </li>
+                <li>
+                  <p>改變中心點的漸層</p>
+                  <p>
+                    <img src="https://lh3.googleusercontent.com/-rO9c5erqQ34/U5x4anDUYSI/AAAAAAAA4IA/0b2e-qTUb1M/s000/20140614_1_07.png" alt="SVG-fill" style="margin-bottom:0; margin-top:10px;" />
+                  </p>
+                  <pre><code>&lt;defs&gt;
+   &lt;radialGradient id=&quot;a1&quot; cx=&quot;20%&quot; cy=&quot;40%&quot;&gt;
+     &lt;stop offset=&quot;5%&quot; stop-color=&quot;#ff0&quot; /&gt;
+     &lt;stop offset=&quot;95%&quot; stop-color=&quot;#f00&quot; /&gt;
+   &lt;/radialGradient&gt;
+&lt;/defs&gt;
+</code></pre>
+
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            <br/>
+          </p>
+          <ul>
+            <li>
+              <p><strong>圖案</strong>
+                <br />看完了漸層，最後一個就是利用圖案來表現 fill ，要利用圖案來填色，第一步仍然是和漸層使用相同的做法，就是先建立一個定義檔，接著在<code>defs</code>裡加入<code>&lt;pattern&gt;&lt;/pattern&gt;</code>的標籤，<code>pattern</code>表示的是一個圖案的區域，會用這個區域進行重複排列圖案的動作，因此我們要重複的圖案，必須要比<code>pattern</code>小，不然就會被裁切掉了。</p>
+              <pre><code>&lt;defs&gt;
+  &lt;pattern id=&quot;a2&quot; patternUnits=&quot;userSpaceOnUse&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;30&quot; height=&quot;30&quot;&gt;
+    &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;25&quot; height=&quot;25&quot; stroke=&quot;#none&quot; fill=&quot;#09f&quot;&gt;&lt;/rect&gt;
+  &lt;/pattern&gt; 
+&lt;/defs&gt;
+</code></pre>
+
+              <p>接著在我們要填色的區域和定義檔連結就可以完成圖案的填色</p>
+              <p>
+                <img src="https://lh6.googleusercontent.com/-3cCIxre2taE/U5x4awjaIPI/AAAAAAAA4H8/9mSKA0RrJVg/s000/20140614_1_08.png" alt="SVG-fill" style="margin-bottom:0; margin-top:10px;" />
+              </p>
+              <pre><code>&lt;circle cx=&quot;220&quot; cy=&quot;300&quot; r=&quot;50&quot; stroke=&quot;#000&quot; stroke-width=&quot;5&quot; fill=&quot;url(#a2)&quot;&gt;&lt;/circle&gt;
+</code></pre>
+
+              <p>
+                <br/>
+              </p>
+            </li>
+          </ul>
+          <p>其實填色是千變萬化的，這裡只是將填色的方式做了一個最基本的介紹，至於如何能填出漂亮的顏色，就真的要看個人的經驗和練習囉！( 更詳細的設定可以參考 <a href="http://www.w3.org/TR/SVG/pservers.html" target="_blank">W3C 的介紹</a> )</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="other-articles">
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+  </div>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+
+</html>
