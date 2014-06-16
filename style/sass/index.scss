@@ -8,6 +8,10 @@
          margin:0 auto 20px!important;
          h2 {
            margin:30px 20px 0 280px!important;
+           display:inherit!important;
+           overflow:inherit!important;
+           text-overflow:inherit!important;
+           white-space:inherit!important;
          }
          h3 {
           display:block!important;
@@ -146,6 +150,11 @@
        h2 {
          font-size:24px;
          margin:40px 62px 0;
+         line-height:30px;
+         display:block;
+         overflow:hidden;
+         text-overflow:ellipsis;
+         white-space:nowrap;
        }
        h3 {
          display:inline-block;
