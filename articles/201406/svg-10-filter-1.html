@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-06-18T23:55:00+01:00">
+
+  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
+  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
+  <meta name="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
+
+  <meta itemprop="name" content="SVG 研究之路 (10) - filter part 1 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140618_1_01.jpg">
+  <meta itemprop="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
+
+  <meta property="og:title" content="SVG 研究之路 (10) - filter part 1 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-10-filter-1.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140618_1_01.jpg">
+  <meta property="og:description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link rel="stylesheet" href="/style/css/layout.css">
+  <link rel="stylesheet" href="/style/css/articles-content.css">
+  <link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+  <title>SVG 研究之路 (10) - filter part 1 - OXXO.STUDIO</title>
+</head>
+
+<body>
+  <div id="header">
+  </div>
+  <div id="wrapper">
+    <div id="container">
+      <div class="content">
+        <i class="tag-web"></i>
+        <div class="md">
+          <h2>SVG 研究之路 (10) - filter part 1</h2>
+          <p><img src="/img/articles/201406/20140618_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <span itemprop="description" class="desc">這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( <a href="http://caniuse.com/svg-filters" target="_blank">各家瀏覽器 SVG 支援度</a> )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。</span></p>
+          <p>一如往常，第一步，在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭，加入<code>&lt;filter&gt;&lt;/filter&gt;</code>的標籤，然後給它一個 id 作為識別，接著就是要在<code>filter</code>裏頭放入濾鏡，在此之前，<code>filter</code>除了 x、y、width、height 幾個基本屬性外，也幾個比較特別的屬性需要設定：</p>
+          <ul>
+            <li><strong>filterUnits</strong> ：&quot;userSpaceOnUse | objectBoundingBox&quot; ( 位置以 SVG 畫面為主，還是以套用的物件為主 )</li>
+            <li><strong>primitiveUnits</strong> ： &quot;userSpaceOnUse | objectBoundingBox&quot; ( 預設 userSpaceOnUse )</li>
+            <li><strong>filterRes</strong> ： 該屬性定義了中間緩存區域的大小，通常不需要提供</li>
+          </ul>
+          <p>因此濾鏡的程式通常都會寫成：</p>
+          <pre><code>  &lt;defs&gt;
+    &lt;filter id=&quot;id名&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;100%&quot; height=&quot;100%&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
+      濾鏡
+    &lt;/filter&gt;
+  &lt;/defs&gt;
+</code></pre>
+
+          <p>
+            <br/>
+          </p>
+          <p>因為我自己也還沒搞清楚一些濾鏡的用法，如果對濾鏡有興趣，可以閱讀這幾篇文章：<a href="http://www.w3.org/TR/SVG/filters.html" target="_blank">W3C SVG Filters</a>、<a href="http://srufaculty.sru.edu/david.dailey/svg/SVGOpen2010/Filters2.htm" target="_blank">Filter Effects in SVG</a>，以下是濾鏡的列表：</p>
+          <ul>
+            <li><strong>feBlend</strong> ：使用不同的混合模式把兩個對象合成在一起。</li>
+            <li><strong>feColorMatrix</strong> ：應用矩陣轉換。( <a href="http://en.wikipedia.org/wiki/Matrix_multiplication" target="_blank">Matrix multiplication</a> )</li>
+            <li>
+              <strong>feComponentTransfer</strong> ：允許圖片由四個色彩通道重新定義
+              <ul>
+                <li>feFuncA、feFuncB、feFuncG、feFuncR</li>
+              </ul>
+            </li>
+            <li><strong>feComposite</strong> ：混合圖片，可以以百分比的方式進行混合</li>
+            <li><strong>feConvolveMatrix</strong> ：透過矩陣運算，做出模糊，邊緣檢測，銳化，浮雕和斜角...等效果。</li>
+            <li><strong>feDiffuseLighting</strong> ：使用 alpha channel 計算凹凸</li>
+            <li><strong>feDisplacementMap</strong> ：置換每一英吋的圖像</li>
+            <li>
+              <strong>feDistantLight</strong> ：定義光源
+              <ul>
+                <li>fePointLight、feSpecularLighting、feSpotLight</li>
+              </ul>
+            </li>
+            <li><strong>feFlood</strong> ：重新繪製矩形並和其他物件結合</li>
+            <li><strong>feGaussianBlur</strong> ：高斯模糊</li>
+            <li><strong>feImage</strong> ：插入一張圖片成為濾鏡</li>
+            <li>
+              <strong>feMerge</strong> ：不同濾鏡的組合 ( merge )
+              <ul>
+                <li>feMergeNode</li>
+              </ul>
+            </li>
+            <li><strong>feMorphology</strong>
+            </li>
+            <li><strong>feOffset</strong> ：移動套用濾鏡的物件位置位置</li>
+            <li><strong>feTile</strong> ：讓圖像以重複模式進入濾鏡</li>
+            <li><strong>feTurbulence</strong> ：創建震盪與紋理</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="other-articles">
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+  </div>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+
+</html>
