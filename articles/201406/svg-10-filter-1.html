@@ -39,7 +39,9 @@
       <div class="content">
         <i class="tag-web"></i>
         <div class="md">
-          <h2>SVG 研究之路 (10) - filter part 1</h2>
+          <h2>SVG 研究之路 (10) - filter part 1
+            <span class="article-date">JUN 18, 2014</span>
+          </h2>
           <p><img src="/img/articles/201406/20140618_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           <span itemprop="description" class="desc">這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( <a href="http://caniuse.com/svg-filters" target="_blank">各家瀏覽器 SVG 支援度</a> )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。</span></p>
           <p>一如往常，第一步，在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭，加入<code>&lt;filter&gt;&lt;/filter&gt;</code>的標籤，然後給它一個 id 作為識別，接著就是要在<code>filter</code>裏頭放入濾鏡，在此之前，<code>filter</code>除了 x、y、width、height 幾個基本屬性外，也幾個比較特別的屬性需要設定：</p>

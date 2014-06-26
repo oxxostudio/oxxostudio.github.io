@@ -17,6 +17,9 @@
   .md iframe {
     height: 400px !important;
   }
+  .md .article-date {
+    display: none !important;
+  }
 }
 @media screen and (max-width: 600px) {
   .article-date {
