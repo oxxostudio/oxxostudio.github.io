@@ -81,6 +81,7 @@ $(function() {
         }
       }
       var maxNum;
+      var randomNumA = [];
       if (classifyNum <= 5) {
         for (j = 0; j < classifyNum; j++) {
           $('#other-articles').append(
@@ -93,12 +94,14 @@ $(function() {
           );
         }
       } else {
-        for (j = 1; j < 6; j++) {
+        for (j = classifyNum; j >= (classifyNum-4); j--) {
+          var k=Math.floor(j*Math.random(j));  
+          randomNumA[j-5]=classify.splice(k,1); 
           $('#other-articles').append(
-            '<a href="' + classify[j].site + '">' +
+            '<a href="' + randomNumA[j-5][0].site + '">' +
             '<div>' +
-            '<img src="' + classify[j].img + '">' +
-            '<h4>' + classify[j].title + '</h4>' +
+            '<img src="' + randomNumA[j-5][0].img + '">' +
+            '<h4>' + randomNumA[j-5][0].title + '</h4>' +
             '</div>' +
             '</a>'
           );
@@ -107,7 +110,7 @@ $(function() {
     });
   }
 
-  function _trackGA(peopleEvent){
+  function _trackGA(peopleEvent) {
     ga('send', 'event', peopleEvent, peopleEvent);
   }
 });
