@@ -61,7 +61,7 @@ $(function() {
       }
       _h4Content();
       _pageNum(dataLength, nowPageNum);
-      _allPages()
+      _allPages();
     });
   }
 
