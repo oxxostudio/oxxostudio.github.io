@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="oxxo.studio">
+    <meta name="copyright" content="oxxo.studio">
+    <meta name="keywords" content="google,google Material Design,Material Design,css,oxxo,css3,svg">
+    <meta property="article:published_time" content="2014-07-10T23:35:00+01:00">
+
+    <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
+    <link rel="publisher" href="https://plus.google.com/105185415102049371674">
+    <meta name="description" content="這是一個利用 CSS 與 SVG 所做出來的進度條，仿照 Google Material Design 的設計風格設計！">
+
+    <meta itemprop="name" content="Material Design - Progress and Activity - OXXO.STUDIO">
+    <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140710_1_01.jpg">
+    <meta itemprop="description" content="這是一個利用 CSS 與 SVG 所做出來的進度條，仿照 Google Material Design 的設計風格設計！">
+
+    <meta property="og:title" content="Material Design - Progress and Activity - OXXO.STUDIO">
+    <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/svg-progress-bar.html">
+    <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140710_1_01.jpg">
+    <meta property="og:description" content="這是一個利用 CSS 與 SVG 所做出來的進度條，仿照 Google Material Design 的設計風格設計！">
+
+    <script src="/js/lib/jquery.min.js"></script>
+    <script src="/js/lib/run_prettify.js"></script>
+    <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
+
+    <title>Material Design - Progress and Activity - OXXO.STUDIO</title>
+
+    <style>
+    .sd {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    .loading-red circle {
+        stroke: #f99;
+    }
+    .loading-circle {
+        -webkit-animation: c1_1 1.5s infinite linear;
+        -moz-animation: c1_1 1.5s infinite linear;
+        animation: c1_1 1.5s infinite linear;
+    }
+    .loading-circle circle {
+        -webkit-animation: c1_2 9s linear infinite, c1_3 4.5s infinite;
+        -moz-animation: c1_2 9s linear infinite, c1_3 4.5s infinite;
+        animation: c1_2 9s linear infinite, c1_3 4.5s infinite;
+    }
+    .loading-bg-red circle {
+        stroke-dashoffset: 100;
+        -webkit-animation: b1 9s linear infinite, br1_1 9s infinite;
+        -moz-animation: b1 9s linear infinite, br1_1 9s infinite;
+        animation: b1 9s linear infinite, br1_1 9s infinite;
+    }
+    @-webkit-keyframes c1_1 {
+        0%, 100% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(-360deg);
+        }
+    }
+    @-webkit-keyframes c1_2 {
+        0% {
+            stroke-width: 0;
+        }
+        10% {
+            stroke-width: 8;
+        }
+        75% {
+            stroke-width: 8;
+        }
+        90% {
+            stroke-width: 0;
+        }
+        100% {
+            stroke-width: 0;
+        }
+    }
+    @-webkit-keyframes c1_3 {
+        0% {
+            stroke-dasharray: 104, 156;
+            stroke-dashoffset: -52;
+        }
+        16% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: -52;
+        }
+        16.01% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: -208;
+        }
+        33% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: -104;
+        }
+        33.01% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: -104;
+        }
+        49% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: -104;
+        }
+        49.01% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: 52;
+        }
+        66% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: 156;
+        }
+        66.01% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: 156;
+        }
+        82% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: 156;
+        }
+        82.01% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: 156;
+        }
+        99.99% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: 256;
+        }
+    }
+    @-webkit-keyframes b1 {
+        0% {
+            stroke-dashoffset: -156;
+        }
+        5% {
+            stroke-dashoffset: 0;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+    @-webkit-keyframes br1_1 {
+        0% {
+            stroke-width: 0;
+            stroke: rgba(255, 100, 120, 0);
+        }
+        5% {
+            stroke-width: 18;
+            stroke: rgba(255, 100, 120, .2);
+        }
+        7% {
+            stroke-width: 13;
+            stroke: rgba(255, 100, 120, .2);
+        }
+        10% {
+            stroke-width: 16;
+            stroke: rgba(255, 100, 120, .1);
+        }
+        80% {
+            stroke-width: 16;
+            stroke: rgba(255, 100, 120, .1);
+        }
+        100% {
+            stroke-width: 0;
+            stroke: rgba(255, 100, 120, 0);
+        }
+    }
+    @keyframes c1_1 {
+        0%, 100% {
+            -moz-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -moz-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+        }
+    }
+    @keyframes c1_2 {
+        0% {
+            stroke-width: 0;
+        }
+        10% {
+            stroke-width: 8;
+        }
+        75% {
+            stroke-width: 8;
+        }
+        90% {
+            stroke-width: 0;
+        }
+        100% {
+            stroke-width: 0;
+        }
+    }
+    @keyframes c1_3 {
+        0% {
+            stroke-dasharray: 104, 156;
+            stroke-dashoffset: -52;
+        }
+        16% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: -52;
+        }
+        16.01% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: -208;
+        }
+        33% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: -104;
+        }
+        33.01% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: -104;
+        }
+        49% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: -104;
+        }
+        49.01% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: 52;
+        }
+        66% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: 156;
+        }
+        66.01% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: 156;
+        }
+        82% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: 156;
+        }
+        82.01% {
+            stroke-dasharray: 1, 156;
+            stroke-dashoffset: 156;
+        }
+        99.99% {
+            stroke-dasharray: 104, 52;
+            stroke-dashoffset: 256;
+        }
+    }
+    @keyframes b1 {
+        0% {
+            stroke-dashoffset: -156;
+        }
+        5% {
+            stroke-dashoffset: 0;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+    @keyframes br1_1 {
+        0% {
+            stroke-width: 0;
+            stroke: rgba(255, 100, 120, 0);
+        }
+        5% {
+            stroke-width: 18;
+            stroke: rgba(255, 100, 120, .2);
+        }
+        7% {
+            stroke-width: 13;
+            stroke: rgba(255, 100, 120, .2);
+        }
+        10% {
+            stroke-width: 16;
+            stroke: rgba(255, 100, 120, .1);
+        }
+        80% {
+            stroke-width: 16;
+            stroke: rgba(255, 100, 120, .1);
+        }
+        100% {
+            stroke-width: 0;
+            stroke: rgba(255, 100, 120, 0);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+    </div>
+    <div id="wrapper">
+        <div id="container">
+            <div class="content">
+                <i class="tag-web"></i>
+                <div class="md">
+                    <h2>Material Design - Progress and Activity</h2>
+                    <p>
+                        <span itemprop="description" class="desc">這是一個利用 CSS 與 SVG 所做出來的進度條，仿照 Google Material Design 的設計風格設計，雖然 Google 有提供一系列的扁平風格樣式，但是由於技術尚未完全成熟，沒有相關的程式可以參考和套用，就自己寫了一個類似的，雖然還沒有模擬到百分之百，但已經是百分之八十接近了，分享一下。</span>
+                    </p>
+                    <p>我所做的 Progress and Activity 結構其實很簡單，就是使用 SVG 內部的 Circle 進行虛線的長度和間距變換，然後外層的 SVG 進行 360 度的旋轉，再搭配另外一個 SVG Circle 就可以做出頗炫的動態效果，整個效果完全不需要用到 JS, 只需要撰寫 CSS 就完成囉！</p>
+                    <div class="sd">
+                        <svg class="loading-bg-red" width="100" height="100" x="0" y="0" style="position:absolute; top:0; left:0;">
+                            <circle cx="50" cy="50" r="25" stroke="rgba(255,100,120,.2)" stroke-width="0" fill="none" stroke-dasharray="156,156" stroke-dashoffset="0" stroke-linecap="round" />
+                        </svg>
+
+                        <svg width="100" height="100" class="loading-circle loading-red" x="100" y="100" style="position:absolute; top:0; left:0;">
+                            <circle cx="50" cy="50" r="25" stroke="#f99" stroke-width="1" fill="none" stroke-dasharray="104,156" stroke-linecap="round" stroke-dashoffset="-52" />
+                        </svg>
+                    </div>
+                    <p>首先看到 SVG 的結構，第一個 SVG 名為 loading-bg-red ，內容的 Circle 是背景的大圈圈，因此它的背景是半透明的
+                        <code>rgba(255,100,120,.2)</code>,因為我是使用虛線的外框 ( stroke )，至於為什麼
+                        <code>stroke-width</code>設為 0 呢？因為一開始是沒有大圈圈的，所以設為 0，再使用 CSS 進行漸變，再來看到第二個 SVG，就是內容旋轉的進度條，最重要的是
+                        <code>stroke-dasharray</code>和
+                        <code>stroke-dashoffset</code>兩個屬性，主要掌管了這個虛線的長度以及虛線要跑去哪裡。 ( 可以參考我之前的 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html">SVG 研究之路 (6) - stroke 邊框</a> )</p>
+                    <pre><code>&lt;svg class=&quot;loading-bg-red&quot; width=&quot;100&quot; height=&quot;100&quot; x=&quot;0&quot; y=&quot;0&quot; style=&quot;position:absolute; top:0; left:0;&quot;&gt;
+    &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;25&quot; stroke=&quot;rgba(255,100,120,.2)&quot; stroke-width=&quot;0&quot; fill=&quot;none&quot; stroke-dasharray=&quot;156,156&quot; stroke-dashoffset=&quot;0&quot; stroke-linecap=&quot;round&quot;&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+
+&lt;svg width=&quot;100&quot; height=&quot;100&quot; class=&quot;loading-circle loading-red&quot; x=&quot;100&quot; y=&quot;100&quot; style=&quot;position:absolute; top:0; left:0;&quot;&gt;
+    &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;25&quot; stroke=&quot;#f99&quot; stroke-width=&quot;1&quot; fill=&quot;none&quot; stroke-dasharray=&quot;104,156&quot; stroke-linecap=&quot;round&quot; stroke-dashoffset=&quot;-52&quot;&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+</code></pre>
+
+                    <p>
+                        <br/>
+                    </p>
+                    <p>知道了 SVG 的結構，再來就看看要如何做出讓虛線一長一短的效果，首先要注意就是虛線的長度，因為要一長一短，起點和終點的位置要相同，所以我們可以用一個簡單的規則來設計相關的 CSS，規則就是如果虛線最長的長度是圓周的一半，則必須使用 2x2=4 也就是四個 CSS 來描述四段虛線，若長度為 2/3，則必須使用 2x3=6 六段 CSS 來描述六段虛線，同理，若為 3/4，就必須使用八段 CSS，至於為什麼要這麼多段呢？因為一段為收合，一段為延長，每段的虛線起始點都不同，所以必須這麼進行，也因此盡量讓虛線長度為 1/2 或 2/3 或 3/4，不然大概會寫 CSS 寫到天荒地老吧！以下列出我寫的虛線 ( 2/3 長度 ) 的 CSS。</p>
+                    <pre><code>.loading-circle circle{ 
+  -webkit-animation:c1_2 9s linear infinite,c1_3 4.5s infinite; 
+  -moz-animation:c1_2 9s linear infinite,c1_3 4.5s infinite; 
+  animation:c1_2 9s linear infinite,c1_3 4.5s infinite; 
+}
+
+/*控制粗細*/
+@-webkit-keyframes c1_2{
+  0%{
+    stroke-width:0;
+  }
+  10%{
+    stroke-width:8;  
+  }
+  75%{
+    stroke-width:8;  
+  }
+  90%{
+    stroke-width:0;  
+  }
+  100%{
+    stroke-width:0;  
+  }
+}
+
+/*控制段落*/
+@-webkit-keyframes c1_3{
+  /*第一段*/
+  0%{
+    stroke-dasharray:104,156;
+    stroke-dashoffset:-52;
+  }
+  16%{
+    stroke-dasharray:1,156;
+    stroke-dashoffset:-52;
+  }
+  /*第二段*/
+  16.01%{
+    stroke-dasharray:1,156;
+    stroke-dashoffset:-208;
+  }
+  33%{
+    stroke-dasharray:104,52;
+    stroke-dashoffset:-104;
+  }
+  /*第三段*/
+  33.01%{
+    stroke-dasharray:104,52;
+    stroke-dashoffset:-104;
+  }
+  49%{
+    stroke-dasharray:1,156;
+    stroke-dashoffset:-104;
+  }
+  /*第四段*/
+  49.01%{
+    stroke-dasharray:1,156;
+    stroke-dashoffset:52;
+  }
+  66%{
+    stroke-dasharray:104,52;
+    stroke-dashoffset:156;
+  }
+  /*第五段*/
+  66.01%{
+    stroke-dasharray:104,52;
+    stroke-dashoffset:156;
+  }
+  82%{
+    stroke-dasharray:1,156;
+    stroke-dashoffset:156;
+  }
+  /*第六段*/
+  82.01%{
+    stroke-dasharray:1,156;
+    stroke-dashoffset:156;
+  }
+  99.99%{
+    stroke-dasharray:104,52;
+    stroke-dashoffset:256;
+  }
+}
+</code></pre>
+
+                    <p>如果還是對於分成六段有疑問，可以參考下圖，主要就是要將這三個圈圈組合起來，每個圈圈會收會放，換成這樣子思考，就會必較簡單。
+                        <br />
+                        <img src="https://lh6.googleusercontent.com/-Lp67-kdmSXY/U76uBfG6XPI/AAAAAAAA6jA/XpR4c_DM1Fc/s000/20140710_1_02.png" alt="Material Design - Progress and Activity" />
+                        <br/>
+                    </p>
+                    <p>了解了整體的運作模式之後，最後一個步驟就是讓整個 SVG 進行旋轉，因此加上旋轉的 CSS 動畫，就可以做出相當不錯的特效囉！</p>
+                    <pre><code>@-webkit-keyframes c1_1{
+  0%,100%{
+    -webkit-transform:rotate(0deg);
+  }
+  100%{
+    -webkit-transform:rotate(-360deg);
+  }
+}
+</code></pre>
+
+                    <p>
+                        <br/>
+                    </p>
+                    <p>完整的程式碼可以參考下列的 <a href="http://goo.gl/adm32D" target="_blank">EZoApp 範例連結</a> ( 看不到效果可以點選 preview )，或 <a href="http://jsbin.com/moyiyi/12" target="_blank">jsbin 範例連結</a>。
+                    </p>
+                    <p>
+                        <img src="https://lh3.googleusercontent.com/-t1d1D9q169w/U76uBXLbY2I/AAAAAAAA6jE/pXM-Lg60t3Q/s000/20140710_1_03.gif" alt="Material Design - Progress and Activity" />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="other-articles">
+    </div>
+    <div id="disqus">
+        <div id="disqus_thread"></div>
+    </div>
+    <div id="footer">
+    </div>
+    <script src="/js/mergedJS_article.min.js"></script>
+    <script src="/js/lib/disqus.js"></script>
+</body>
+
+</html>
