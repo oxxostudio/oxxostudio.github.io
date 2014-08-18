@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
@@ -8,39 +7,82 @@
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
   <meta property="article:published_time" content="2014-06-18T23:55:00+01:00">
+  <meta name="keywords" content="SVG,filter,濾鏡,向量">
 
-  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
   <meta name="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
 
-  <meta itemprop="name" content="SVG 研究之路 (10) - filter part 1 - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140618_1_01.jpg">
+  <meta itemprop="name" content="SVG 研究之路 (10) - filter - OXXO.STUDIO">
+  <meta itemprop="image" content="https://lh4.googleusercontent.com/-2M_CJyrONug/U_IVWA8JlHI/AAAAAAAA95s/ZRCQfIW839M/s000/20140618_1_01.jpg">
   <meta itemprop="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
 
-  <meta property="og:title" content="SVG 研究之路 (10) - filter part 1 - OXXO.STUDIO">
+  <meta property="og:title" content="SVG 研究之路 (10) - filter - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-10-filter-1.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140618_1_01.jpg">
+  <meta property="og:image" content="https://lh4.googleusercontent.com/-2M_CJyrONug/U_IVWA8JlHI/AAAAAAAA95s/ZRCQfIW839M/s000/20140618_1_01.jpg">
   <meta property="og:description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
 
+
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
 
-  <title>SVG 研究之路 (10) - filter part 1 - OXXO.STUDIO</title>
+
+
+
+  <title>SVG 研究之路 (10) - filter - OXXO.STUDIO</title>
+
 </head>
-
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
       <div class="content">
         <i class="tag-web"></i>
         <div class="md">
-          <h2>SVG 研究之路 (10) - filter part 1
+          <h2>SVG 研究之路 (10) - filter
             <span class="article-date">JUN 18, 2014</span>
           </h2>
-          <p><img src="/img/articles/201406/20140618_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="https://lh4.googleusercontent.com/-2M_CJyrONug/U_IVWA8JlHI/AAAAAAAA95s/ZRCQfIW839M/s000/20140618_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           <span itemprop="description" class="desc">這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( <a href="http://caniuse.com/svg-filters" target="_blank">各家瀏覽器 SVG 支援度</a> )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。</span></p>
           <p>一如往常，第一步，在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭，加入<code>&lt;filter&gt;&lt;/filter&gt;</code>的標籤，然後給它一個 id 作為識別，接著就是要在<code>filter</code>裏頭放入濾鏡，在此之前，<code>filter</code>除了 x、y、width、height 幾個基本屬性外，也幾個比較特別的屬性需要設定：</p>
           <ul>
@@ -96,17 +138,54 @@
           </ul>
         </div>
       </div>
+
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
     </div>
-  </div>
+
   <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-  <div id="footer">
-  </div>
-  <script src="/js/mergedJS_article.min.js"></script>
-  <script src="/js/lib/disqus.js"></script>
-</body>
 
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+
+</body>
 </html>

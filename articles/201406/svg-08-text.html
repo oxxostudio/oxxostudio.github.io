@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
@@ -8,39 +7,82 @@
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
   <meta property="article:published_time" content="2014-06-15T16:55:00+01:00">
+  <meta name="keywords" content="SVG,text,向量,文字">
 
-  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
   <meta name="description" content="「文字」雖然字面上的解釋很簡單，但深入研究之後，發現 SVG 對於文字的設定，比我想像的複雜得多，但也因為有了這些我所不知道的設定和屬性，讓原本單純樸實的文字，更添加了幾分華麗的色彩和變化，這篇將介紹文字基本的屬性設定，以及一些進階的文字用法，學完之後，也就更能使用程式來控制文字，製作出與眾不同的動畫和特效了。">
 
   <meta itemprop="name" content="SVG 研究之路 (8) - text 文字 - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140615_1_01.jpg">
+  <meta itemprop="image" content="https://lh3.googleusercontent.com/-BDVg4LzwOKw/U_IVVeDH9rI/AAAAAAAA98E/JKr3XNYSxOw/s000/20140615_1_01.jpg">
   <meta itemprop="description" content="「文字」雖然字面上的解釋很簡單，但深入研究之後，發現 SVG 對於文字的設定，比我想像的複雜得多，但也因為有了這些我所不知道的設定和屬性，讓原本單純樸實的文字，更添加了幾分華麗的色彩和變化，這篇將介紹文字基本的屬性設定，以及一些進階的文字用法，學完之後，也就更能使用程式來控制文字，製作出與眾不同的動畫和特效了。">
 
   <meta property="og:title" content="SVG 研究之路 (8) - text 文字 - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-08-text.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140615_1_01.jpg">
+  <meta property="og:image" content="https://lh3.googleusercontent.com/-BDVg4LzwOKw/U_IVVeDH9rI/AAAAAAAA98E/JKr3XNYSxOw/s000/20140615_1_01.jpg">
   <meta property="og:description" content="「文字」雖然字面上的解釋很簡單，但深入研究之後，發現 SVG 對於文字的設定，比我想像的複雜得多，但也因為有了這些我所不知道的設定和屬性，讓原本單純樸實的文字，更添加了幾分華麗的色彩和變化，這篇將介紹文字基本的屬性設定，以及一些進階的文字用法，學完之後，也就更能使用程式來控制文字，製作出與眾不同的動畫和特效了。">
 
+
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
+
+
+
 
   <title>SVG 研究之路 (8) - text 文字 - OXXO.STUDIO</title>
-</head>
 
+</head>
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
       <div class="content">
         <i class="tag-web"></i>
         <div class="md">
           <h2>SVG 研究之路 (8) - text 文字
             <span class="article-date">JUN 15, 2014</span>
           </h2>
-          <p><img src="/img/articles/201406/20140615_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="https://lh3.googleusercontent.com/-BDVg4LzwOKw/U_IVVeDH9rI/AAAAAAAA98E/JKr3XNYSxOw/s000/20140615_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           <span itemprop="description" class="desc">「文字」雖然字面上的解釋很簡單，但深入研究之後，發現 SVG 對於文字的設定，比我想像的複雜得多，但也因為有了這些我所不知道的設定和屬性，讓原本單純樸實的文字，更添加了幾分華麗的色彩和變化，這篇將介紹文字基本的屬性設定，以及一些進階的文字用法，學完之後，也就更能使用程式來控制文字，製作出與眾不同的動畫和特效了。</span></p>
           <ul>
             <li>
@@ -195,17 +237,54 @@
           <p>以上就是 SVG 文字的介紹，在 <a href="http://www.w3.org/TR/SVG/text.html" target="_blank">W3C 的 SVG TEXT 文章</a> 裏頭有更完整豐富的說明，真的是比我想像的複雜太多了！不過其實你只要學會以上幾招，對於文字的應用已經相當足夠囉！</p>
         </div>
       </div>
+
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
     </div>
-  </div>
+
   <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-  <div id="footer">
-  </div>
-  <script src="/js/mergedJS_article.min.js"></script>
-  <script src="/js/lib/disqus.js"></script>
-</body>
 
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+
+</body>
 </html>

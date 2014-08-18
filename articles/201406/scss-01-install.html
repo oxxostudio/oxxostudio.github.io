@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
@@ -8,40 +7,83 @@
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
   <meta property="article:published_time" content="2014-06-04T22:00:00+01:00">
+  <meta name="keywords" content="scss,sass,scss install">
 
-  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
   <meta name="description" content="這篇在介紹如何安裝和執行 SCSS，因為這個動作基本上只會進行一次，導致我如果要重新安裝，又必須上網找相關的安裝步驟，因此做一下筆記，未來我也會再分享自己的一些使用心得。">
 
   <meta itemprop="name" content="SCSS 安裝與執行 - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140604_1_01.jpg">
+  <meta itemprop="image" content="https://lh6.googleusercontent.com/-k4ui-e0P18s/U_IVOb82MfI/AAAAAAAA934/dxCgwQznv_w/s000/20140604_1_01.jpg">
   <meta itemprop="description" content="這篇在介紹如何安裝和執行 SCSS，因為這個動作基本上只會進行一次，導致我如果要重新安裝，又必須上網找相關的安裝步驟，因此做一下筆記，未來我也會再分享自己的一些使用心得。">
 
 
   <meta property="og:title" content="SCSS 安裝與執行 - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/scss-01-install.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140604_1_01.jpg">
+  <meta property="og:image" content="https://lh6.googleusercontent.com/-k4ui-e0P18s/U_IVOb82MfI/AAAAAAAA934/dxCgwQznv_w/s000/20140604_1_01.jpg">
   <meta property="og:description" content="這篇在介紹如何安裝和執行 SCSS，因為這個動作基本上只會進行一次，導致我如果要重新安裝，又必須上網找相關的安裝步驟，因此做一下筆記，未來我也會再分享自己的一些使用心得。">
 
-  <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
-  
-  <title>SCSS 安裝與執行 - OXXO.STUDIO</title>
-</head>
 
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+
+  <title>SCSS 安裝與執行 - OXXO.STUDIO</title>
+
+</head>
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
       <div class="content">
         <i class="tag-css"></i>
         <div class="md">
           <h2>SCSS 安裝與執行
             <span class="article-date">JUN 4, 2014</span>
           </h2>
-          <p><img src="/img/articles/201406/20140604_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="https://lh6.googleusercontent.com/-k4ui-e0P18s/U_IVOb82MfI/AAAAAAAA934/dxCgwQznv_w/s000/20140604_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           SCSS 是我在 2013 年才接觸到的技術，其實也不算新，因為在我學習這門技術的時候，已經有不少相對應的工具與文章誕生，也因為看了這些教學和工具，才讓我深入地去學習一套好用的工具！</p>
           <p>SCSS 其實也是常聽到的 SASS，兩者的差異只在於 SCSS 和原本的 CSS 寫法一樣都有大括號，而 SASS 則沒有大括號，單純使用縮排來進行巢狀結構，也因為大括號的差異，讓我毅然決然地選擇 SCSS，坦白說也沒有哪種好或哪種壞，SCSS 寫起來反而還多了不少行數 ( 因為大括號也占一行 )，個人喜好還是喜歡有大括號區隔。</p>
           <p><span itemprop="description" class="desc">這篇在介紹如何安裝和執行 SCSS，因為這個動作基本上只會進行一次，導致我如果要重新安裝，又必須上網找相關的安裝步驟，因此做一下筆記，而更詳細的資料也可以參考 <a href="http://sass-lang.com/" target="_blank">SASS 官方網站</a>，未來我也會再分享自己的一些使用心得。</span></p>
@@ -103,17 +145,54 @@ javascripts_dir = &quot;javascripts&quot;
               <p>如果我們要更新 compass 或 sass，只需要輸入<code>gem update compass</code>或<code>gem update sass</code>就可以囉！</p>
         </div>
       </div>
+
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
     </div>
-  </div>
+
   <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-  <div id="footer">
-  </div>
-  <script src="/js/mergedJS_article.min.js"></script>
-  <script src="/js/lib/disqus.js"></script>
-</body>
 
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+
+</body>
 </html>

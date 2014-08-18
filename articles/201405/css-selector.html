@@ -1,39 +1,82 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  
-  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
+  <meta property="article:published_time" content="2014-05-27T17:25:00+01:00">
+  <meta name="keywords" content="css,css3,css child,css type,偽類,偽元素">
+
   <meta name="description" content="對於 CSS 的初學者而言，比較不容易理解的大概就是偽類以及偽元素，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，偽類分為四大類，第一大類就是剛剛所提到的「錨點偽類」，第二類是「狀態偽類」，而另外兩類則是 -child 和 of-type，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。">
 
   <meta itemprop="name" content="CSS 偽類 child 和 of-type - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201405/20140527_1_01.jpg">
+  <meta itemprop="image" content="https://lh3.googleusercontent.com/-DYJBq-DVV90/U_IVKyhVI7I/AAAAAAAA93M/GKCdaJyCGf8/s000/20140527_1_01.jpg">
   <meta itemprop="description" content="對於 CSS 的初學者而言，比較不容易理解的大概就是偽類以及偽元素，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，偽類分為四大類，第一大類就是剛剛所提到的「錨點偽類」，第二類是「狀態偽類」，而另外兩類則是 -child 和 of-type，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。">
 
 
   <meta property="og:title" content="CSS 偽類 child 和 of-type - OXXO.STUDIO" >
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201405/css-selector.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/20140527_1_01.jpg">
+  <meta property="og:image" content="https://lh3.googleusercontent.com/-DYJBq-DVV90/U_IVKyhVI7I/AAAAAAAA93M/GKCdaJyCGf8/s000/20140527_1_01.jpg">
   <meta property="og:description" content="對於 CSS 的初學者而言，比較不容易理解的大概就是偽類以及偽元素，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，偽類分為四大類，第一大類就是剛剛所提到的「錨點偽類」，第二類是「狀態偽類」，而另外兩類則是 -child 和 of-type，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。" >
 
-  <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
-  
-  <title>CSS 偽類 child 和 of-type - OXXO.STUDIO</title>
-</head>
 
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+
+  <title>CSS 偽類 child 和 of-type - OXXO.STUDIO</title>
+
+</head>
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
       <div class="content">
         <i class="tag-css"></i>
         <div class="md">
@@ -41,8 +84,22 @@
             <span class="article-date">MAY 27, 2014</span>
           </h2>
           <p>
-            <img src="/img/articles/201405/20140527_1_01.jpg" style="float:right; width:300px; margin-left:10px;">
-            <span itemprop="description" class="desc">對於 CSS 的初學者而言，比較不容易理解的大概就是<strong>偽類</strong>以及<strong>偽元素</strong>，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，這篇文章主要介紹偽類，偽元素的部分會在其他文章中再度提及。通常比較常用到的偽類大概就是超連結的錨點偽類：<code>a:link</code>、<code>a:hover</code>、<code>a:active</code>和<code>a:visited</code>這四種，但偽類真正的精華在於可以比較精準地控制 HTML 當中的各個 DOM，不僅僅只有這四種而已，偽類分為四大類，第一大類就是剛剛所提到的「<strong>錨點偽類</strong>」，也就是跟隨在超連結後的這四種，第二類是「<strong>狀態偽類</strong>」，就是描述<code>:checked</code>、<code>unchecked</code>、<code>:enabled</code>、<code>:disabled</code>這幾種，而另外兩類則是<code>-child</code>和<code>of-type</code>，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。</p>
+            <img src="https://lh3.googleusercontent.com/-DYJBq-DVV90/U_IVKyhVI7I/AAAAAAAA93M/GKCdaJyCGf8/s000/20140527_1_01.jpg" style="float:right; width:300px; margin-left:10px;">
+            <span itemprop="description" class="desc">對於 CSS 的初學者而言，比較不容易理解的大概就是
+              <strong>偽類</strong>以及
+              <strong>偽元素</strong>，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，這篇文章主要介紹偽類，偽元素的部分會在其他文章中再度提及。通常比較常用到的偽類大概就是超連結的錨點偽類：
+              <code>a:link</code>、
+              <code>a:hover</code>、
+              <code>a:active</code>和
+              <code>a:visited</code>這四種，但偽類真正的精華在於可以比較精準地控制 HTML 當中的各個 DOM，不僅僅只有這四種而已，偽類分為四大類，第一大類就是剛剛所提到的「
+              <strong>錨點偽類</strong>」，也就是跟隨在超連結後的這四種，第二類是「
+              <strong>狀態偽類</strong>」，就是描述
+              <code>:checked</code>、
+              <code>unchecked</code>、
+              <code>:enabled</code>、
+              <code>:disabled</code>這幾種，而另外兩類則是
+              <code>-child</code>和
+              <code>of-type</code>，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。</p>
           <p>
             <br/>
             <code>child</code>顧名思義，就是小孩子的意思，換句話說，凡是套上 child 的 DOM，外頭的 DOM 就是他的爸爸 ( 父元素 )，不管裏頭的元素是甚麼，都是 child，而
@@ -223,18 +280,53 @@
             <code>span</code>就變色了，也因如此，善用這些好用的偽類，我們更可以精準地控制我們所要控制的元素囉！</p>
         </div>
       </div>
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
     </div>
-  </div>
+
   <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-  <div id="footer">
-  </div>
 
-  <script src="/js/mergedJS_article.min.js"></script>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
-</body>
 
+</body>
 </html>

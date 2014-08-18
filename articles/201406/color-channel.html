@@ -1,46 +1,88 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2014-06-21T22:45:00+01:00">
+  <meta property="article:published_time" content="2014-05-21T22:25:00+01:00">
+  <meta name="keywords" content="photoshop,位元色版,HDR,64 bit,32 bit,EXR,修圖,影像處理">
 
-  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
   <meta name="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
 
   <meta itemprop="name" content="淺談位元色版 color channel - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140621_2_01.jpg">
+  <meta itemprop="image" content="https://lh3.googleusercontent.com/-2xQl0TseZBo/U_IVWqSqfaI/AAAAAAAA958/JTYyjv0YjLU/s000/20140621_2_01.jpg">
   <meta itemprop="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
 
   <meta property="og:title" content="淺談位元色版 color channel - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/color-channel.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140621_2_01.jpg">
+  <meta property="og:image" content="https://lh3.googleusercontent.com/-2xQl0TseZBo/U_IVWqSqfaI/AAAAAAAA958/JTYyjv0YjLU/s000/20140621_2_01.jpg">
   <meta property="og:description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
 
+
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
+
+
+
 
   <title>淺談位元色版 color channel - OXXO.STUDIO</title>
-</head>
 
+</head>
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
       <div class="content">
         <i class="tag-photo"></i>
         <div class="md">
           <h2>淺談位元色版 color channel
             <span class="article-date">JUN 21, 2014</span>
           </h2>
-          <p><img src="/img/articles/201406/20140621_2_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="https://lh3.googleusercontent.com/-2xQl0TseZBo/U_IVWqSqfaI/AAAAAAAA958/JTYyjv0YjLU/s000/20140621_2_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           <span itemprop="description" class="desc">這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。</span></p>
           <p>首先介紹一下色彩的解析度，這其實在大學一年級必修的計算機概論中，都會多少提到這觀念，如同 2^8 ( 2 的 8 次方 ) = 256 色的色彩資訊，也就是八位元的色彩資訊，而我們所知的螢幕解析度「高彩」，則是 2^16 = 65536 種顏色，16位元的色彩資訊，全彩則是 2^24 = 16777216，24 位元的色彩資訊。</p>
           <p>看完上面這段，或許你會有個疑問，這與 photoshop 中的位元色版有什麼不同，或是看到 photoshop 中 8 位元，16 位元與32 位元你已經混亂了，這裡面不同的可大了！那什麼是 photoshop 中的 8 位元 16 位元與 32 位元呢？</p>
@@ -60,17 +102,54 @@
           </p>
         </div>
       </div>
+
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
     </div>
-  </div>
+
   <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-  <div id="footer">
-  </div>
-  <script src="/js/mergedJS_article.min.js"></script>
-  <script src="/js/lib/disqus.js"></script>
-</body>
 
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+
+</body>
 </html>

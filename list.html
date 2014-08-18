@@ -1,16 +1,16 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+
   <meta property="article:published_time" content="2014-05-01T00:00:00+01:00" >
   <meta property="article:modified_time" content="2014-07-29T22:55:00+01:00" >
   <meta name="keywords" content="oxxo,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,frontend,css3">
-
+  
   <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
   <link rel="publisher" href="https://plus.google.com/105185415102049371674">
   <meta name="description" content="OXXO.STUDIO  包含了視覺創作、網頁前端程式、UI & UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！">
@@ -19,33 +19,124 @@
   <meta itemprop="image" content="http://www.oxxostudio.tw">
   <meta itemprop="description" content="OXXO.STUDIO  包含了視覺創作、網頁前端程式、UI & UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！">
 
-  <meta property="og:title" content="OXXO.STUDIO">
+  <meta property="og:title" content="OXXO.STUDIO" >
   <meta property="og:url" content="http://www.oxxostudio.tw">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/layout/social.png">
-  <meta property="og:description" content="OXXO.STUDIO  包含了視覺創作、網頁前端程式、UI & UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！">
+  <meta property="og:description" content="OXXO.STUDIO  包含了視覺創作、網頁前端程式、UI & UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！" >
 
-  <link rel="stylesheet" href="/style/css/mergedCSS_list.min.css">
+
+  <link rel="stylesheet" href="/css/layout.css">
+
+
+  <link rel="stylesheet" href="/css/list.css">
+
 
   <script src="/js/lib/jquery.min.js"></script>
 
-  <title>OXXO.STUDIO - 所有文章列表</title>
-</head>
 
+
+
+
+  <title>OXXO.STUDIO - 所有文章列表</title>
+
+</head>
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+
+
+
       <div class="content">
         <h1>所有文章列表</h1>
         <ul>
         </ul>
       </div>
-    </div>
-  </div>
-  <div id="footer">
-  </div>
-    <script src="/js/mergedJS_list.min.js"></script>
-</body>
 
+
+
+
+
+
+
+
+      
+      <div class="tool-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+
+
+        </div>  
+    </div>
+
+
+
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+
+  <script src="/js/list.min.js"></script>
+
+
+</body>
 </html>

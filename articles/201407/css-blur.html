@@ -1,47 +1,88 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="author" content="oxxo.studio">
-    <meta name="copyright" content="oxxo.studio">
-    <meta name="keywords" content="Design,css,oxxo,css3,clock">
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
     <meta property="article:published_time" content="2014-07-26T17:25:00+01:00">
+    <meta name="keywords" content="css,css3,css blur,blur,css 模糊,模糊">
 
-    <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-    <link rel="publisher" href="https://plus.google.com/105185415102049371674">
     <meta name="description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
 
     <meta itemprop="name" content="CSS 模糊效果 - OXXO.STUDIO">
-    <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_1_01.jpg">
+    <meta itemprop="image" content="https://lh5.googleusercontent.com/-q7cse7A9y3c/U_IVcOEas_I/AAAAAAAA97k/j1cZln9pOyY/s000/20140726_1_01.jpg">
     <meta itemprop="description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
 
     <meta property="og:title" content="CSS 模糊效果 - OXXO.STUDIO">
     <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-blur.html">
-    <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_1_01.jpg">
+    <meta property="og:image" content="https://lh5.googleusercontent.com/-q7cse7A9y3c/U_IVcOEas_I/AAAAAAAA97k/j1cZln9pOyY/s000/20140726_1_01.jpg">
     <meta property="og:description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
 
-    <script src="/js/lib/jquery.min.js"></script>
-    <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
 
-    <title>CSS 模糊效果 - OXXO.STUDIO</title>
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+
+  <title>CSS 模糊效果 - OXXO.STUDIO</title>
+
 </head>
-
 <body>
     <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
     </div>
     <div id="wrapper">
         <div id="container">
+
             <div class="content">
                 <i class="tag-css"></i>
                 <div class="md">
                     <h2>CSS 模糊效果
                         <span class="article-date">JUL 26, 2014</span>
                         </h2>
-                    <p><img src="/img/articles/201407/20140726_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+                    <p><img src="https://lh5.googleusercontent.com/-q7cse7A9y3c/U_IVcOEas_I/AAAAAAAA97k/j1cZln9pOyY/s000/20140726_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
                     一直以來 CSS 的效果就受到於瀏覽器的限制，例如超強大的 webkit filter，到了 chrome 以外的瀏覽器幾乎完全沒有用武之地，不過<span itemprop="description" class="desc">隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。( 當然，圖片的模糊就非得借用 webkit filter 或 SVG filter 了 )</span></p>
                     <p>首先看到文字的模糊，先解釋一下文字模糊的原理，第一步將文字本身的顏色設為透明 ( 利用 rgba(0,0,0,0) )，接著設定 text shadow，我們知道 text shadow 具有以下四個屬性：<strong>x 偏移、y 偏移、模糊程度、模糊顏色</strong>，當我們設定偏移為 0，模糊的程度也為0，就可以發現透明顏色的文字變成了具有 shadow 顏色的文字，從下圖可以看到，原本應該透明的字，變成了紅色的字。
                     </p>
@@ -220,17 +261,54 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="other-articles">
-    </div>
-    <div id="disqus">
-        <div id="disqus_thread"></div>
-    </div>
-    <div id="footer">
-    </div>
-  <script src="/js/mergedJS_article.min.js"></script>
-    <script src="/js/lib/disqus.js"></script>
-</body>
 
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
+    </div>
+
+  <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+
+</body>
 </html>

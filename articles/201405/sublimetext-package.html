@@ -1,38 +1,81 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-05-20T22:25:00+01:00">
+  <meta name="keywords" content="Sublime Text,Sublime Text 2,Sublime Text 3,Sublime Text package">
 
-  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
-  <meta name="description" content="自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
+  <meta name="description" content="自己一直是使用 Sublime Text 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
 
   <meta itemprop="name" content="Sublime Text Package - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201405/20140520_1_01.jpg">
-  <meta itemprop="description" content="自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
+  <meta itemprop="image" content="https://lh6.googleusercontent.com/-YGd8S6YKZpQ/U_IVGcby06I/AAAAAAAA92A/yP6DyQl26KI/s000/20140520_1_01.jpg">
+  <meta itemprop="description" content="自己一直是使用 Sublime Text 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
 
   <meta property="og:title" content="Sublime Text Package - OXXO.STUDIO" >
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201405/sublimetext-package.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/20140520_1_01.jpg">
-  <meta property="og:description" content="自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。" >
+  <meta property="og:image" content="https://lh6.googleusercontent.com/-YGd8S6YKZpQ/U_IVGcby06I/AAAAAAAA92A/yP6DyQl26KI/s000/20140520_1_01.jpg">
+  <meta property="og:description" content="自己一直是使用 Sublime Text 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。" >
+
+
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
 
   <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
 
-  <title>Sublime Text Package - OXXO.STUDIO</title>
+
+
+
+  <title>SublimeText Package - OXXO.STUDIO</title>
+
 </head>
-
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
       <div class="content">
         <i class="tag-web"></i>
         <div class="md">
@@ -40,7 +83,7 @@
             <span class="article-date"><i></i>MAY 20, 2014</span>
           </h2>
           <p>
-            <img src="/img/articles/201405/20140520_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+            <img src="https://lh6.googleusercontent.com/-YGd8S6YKZpQ/U_IVGcby06I/AAAAAAAA92A/yP6DyQl26KI/s000/20140520_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
             <span itemprop="description" class="desc">自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。</span>
           </p>
           <p>不過因為 SublimeText 的擴充特性，衍伸出有一大票的 Package，如果缺少了這些 Package 的輔助，SublimeText 可能就真的只是套好用的文字編輯器，有了這些 Package，SublimeText 則化身為超好用的開發工具！由於 Package 實在太多，我自己也裝了一大堆，為了避免每次重灌都要去想或去找，就用這篇文章做個紀錄。</p>
@@ -118,18 +161,54 @@
           <p>以上就是我所使用的 Package，關於 SublimeText 的使用心得和經驗，會在日後慢慢分享。</p>
         </div>
       </div>
+
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
     </div>
-  </div>
+
   <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-  <div id="footer">
-  </div>
 
-  <script src="/js/mergedJS_article.min.js"></script>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
-</body>
 
+</body>
 </html>

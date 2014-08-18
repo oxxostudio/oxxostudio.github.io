@@ -1,47 +1,88 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="author" content="oxxo.studio">
-    <meta name="copyright" content="oxxo.studio">
-    <meta name="keywords" content="Design,css,oxxo,css3,clock">
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
     <meta property="article:published_time" content="2014-07-29T22:55:00+01:00">
+  <meta name="keywords" content="css,css3,css wave,water wave,css 水波">
 
-    <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-    <link rel="publisher" href="https://plus.google.com/105185415102049371674">
     <meta name="description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
 
     <meta itemprop="name" content="CSS Water Wave (水波效果) - OXXO.STUDIO">
-    <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140729_1_01.gif">
+    <meta itemprop="image" content="https://lh3.googleusercontent.com/-DbXqj5CHQa4/U_IVdp2-CWI/AAAAAAAA978/eNGtkOvZbeU/s000/20140729_1_01.gif">
     <meta itemprop="description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
 
     <meta property="og:title" content="CSS Water Wave (水波效果) - OXXO.STUDIO">
     <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-water-wave.html">
-    <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140729_1_01.gif">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/-DbXqj5CHQa4/U_IVdp2-CWI/AAAAAAAA978/eNGtkOvZbeU/s000/20140729_1_01.gif">
     <meta property="og:description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
 
-    <script src="/js/lib/jquery.min.js"></script>
-    <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
 
-    <title>CSS Water Wave (水波效果) - OXXO.STUDIO</title>
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+
+  <title>CSS Water Wave (水波效果) - OXXO.STUDIO</title>
+
 </head>
-
 <body>
     <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
     </div>
     <div id="wrapper">
         <div id="container">
+
             <div class="content">
                 <i class="tag-css"></i>
                 <div class="md">
                     <h2>CSS Water Wave (水波效果)
                         <span class="article-date">JUL 29, 2014</span>
                         </h2>
-                    <p><a href="http://goo.gl/3VQRH7" target="_blank"><img src="/img/articles/201407/20140729_1_01.gif" style="float:right; width:300px; margin:0 10px 20px;"></a>
+                    <p><a href="http://goo.gl/3VQRH7" target="_blank"><img src="https://lh3.googleusercontent.com/-DbXqj5CHQa4/U_IVdp2-CWI/AAAAAAAA978/eNGtkOvZbeU/s000/20140729_1_01.gif" style="float:right; width:300px; margin:0 10px 20px;"></a>
                     <span itemprop="description" class="desc">以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。</span>範例：<a href="http://goo.gl/3VQRH7" target="_blank">CSS Water Wave</a> ( 使用 EZoApp 設計工具，點選 preview 可以看效果喔！ )</p>
                     <p>雖然 webkit 具有遮色片的能力 ( webkit mask )，不過就如同我之前在 <a href="http://www.oxxostudio.tw/articles/201407/css-blur.html">CSS 模糊效果</a> 所提到的，webkit 雖然強大，但在跨瀏覽器上總是它的罩門，況且在效能上也是往往會造成困擾 ( 這也是為什麼 chrome 要這麼吃資源了@@ )，因此撇開 webkit 不談，我們該用什麼方法，才可以做出像 flash 水波的效果呢？答案就是用「
                         <strong>疊</strong>」的，這個水波效果的原理其實就是用六個 div 疊在一起，接著最重要的就是將背景設為固定：
@@ -231,17 +272,54 @@ function _wave(i, j, k) {
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="other-articles">
-    </div>
-    <div id="disqus">
-        <div id="disqus_thread"></div>
-    </div>
-    <div id="footer">
-    </div>
-  <script src="/js/mergedJS_article.min.js"></script>
-    <script src="/js/lib/disqus.js"></script>
-</body>
 
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
+    </div>
+
+  <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+
+</body>
 </html>

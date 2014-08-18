@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
@@ -8,39 +7,82 @@
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
   <meta property="article:published_time" content="2014-06-09T22:00:00+01:00">
+  <meta name="keywords" content="SVG,illustrator,向量,layer,圖層">
 
-  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
   <meta name="description" content="許多的設計師談到向量繪圖，總是相當的興奮，但只要一提到向量繪圖裡的程式碼，馬上就暈頭轉向不知所云，這篇將要以 Illustrator 做為輔助工具出發，帶領大家能夠更了解 SVG 的架構。">
 
   <meta itemprop="name" content="SVG 研究之路 (2) - Layer - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140609_1_01.jpg">
+  <meta itemprop="image" content="https://lh6.googleusercontent.com/-il5m6njFaq0/U_IVRuah8jI/AAAAAAAA94s/kIe8waw4ftU/s000/20140609_1_01.jpg">
   <meta itemprop="description" content="許多的設計師談到向量繪圖，總是相當的興奮，但只要一提到向量繪圖裡的程式碼，馬上就暈頭轉向不知所云，這篇將要以 Illustrator 做為輔助工具出發，帶領大家能夠更了解 SVG 的架構。">
 
   <meta property="og:title" content="SVG 研究之路 (2) - Layer - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-02-layer.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140609_1_01.jpg">
+  <meta property="og:image" content="https://lh6.googleusercontent.com/-il5m6njFaq0/U_IVRuah8jI/AAAAAAAA94s/kIe8waw4ftU/s000/20140609_1_01.jpg">
   <meta property="og:description" content="許多的設計師談到向量繪圖，總是相當的興奮，但只要一提到向量繪圖裡的程式碼，馬上就暈頭轉向不知所云，這篇將要以 Illustrator 做為輔助工具出發，帶領大家能夠更了解 SVG 的架構。">
 
+
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
+
+
+
 
   <title>SVG 研究之路 (2) - Layer - OXXO.STUDIO</title>
-</head>
 
+</head>
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
       <div class="content">
         <i class="tag-web"></i>
         <div class="md">
           <h2>SVG 研究之路 (2) - Layer
             <span class="article-date">JUN 9, 2014</span>
           </h2>
-          <p><img src="/img/articles/201406/20140609_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="https://lh6.googleusercontent.com/-il5m6njFaq0/U_IVRuah8jI/AAAAAAAA94s/kIe8waw4ftU/s000/20140609_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           許多的設計師談到向量繪圖，總是相當的興奮，但只要一提到向量繪圖裡的程式碼，馬上就暈頭轉向不知所云，這篇將要以 Illustrator 做為輔助工具出發，帶領大家能夠更了解 SVG 的架構。</p>
           <p><span itemprop="description" class="desc">首先我們看到<strong>「圖層」( Layer )</strong> 這個東西，相信只要是設計師，對於「圖層」的認識一定遠遠高過工程師，但這並不代表在程式領域沒有圖層的概念，在網頁裡頭圖片蓋在圖片上、文字蓋在圖片上、選單疊在內容上方，這些都是圖層的應用，只是往往沒有「圖」，只有「層」。在影像處理軟體中，為了方便理解由上到下的概念，在圖層面版中的圖層都是<strong>由上到下排列</strong> ，上層會蓋住下層，但是在程式裡頭，也因為邏輯規則，圖層則是<strong>由下而上排列</strong>，下層會蓋住上層 ( 除非特別去做設定 )。</span></p>
           <p>在 Illustrator 裏頭的圖層長這樣：</p>
@@ -87,17 +129,54 @@
             <br/>利用 illustrator 比較視覺化的方式，就更容易能了解 SVG 的架構囉！有興趣的人也可以發現，在 Adobe 裏頭也有 <a href="http://help.adobe.com/zh_TW/illustrator/cs/using/WS714a382cdf7d304e7e07d0100196cbc5f-6360a.html#WS714a382cdf7d304e7e07d0100196cbc5f-635fa" target="_blank">相關的介紹</a> 喔！</p>
         </div>
       </div>
+
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
     </div>
-  </div>
+
   <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-  <div id="footer">
-  </div>
-  <script src="/js/mergedJS_article.min.js"></script>
-  <script src="/js/lib/disqus.js"></script>
-</body>
 
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+
+</body>
 </html>

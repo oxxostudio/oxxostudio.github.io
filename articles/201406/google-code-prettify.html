@@ -1,6 +1,5 @@
-<!doctype html>
-<html lang="zh-tw">
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
@@ -8,39 +7,82 @@
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
   <meta property="article:published_time" content="2014-06-04T23:00:00+01:00">
+  <meta name="keywords" content="Google Code Prettify,Code Prettify,程式碼美化,程式碼上色">
 
-  <link rel="author" href="https://plus.google.com/105185415102049371674/posts">
-  <link rel="publisher" href="https://plus.google.com/105185415102049371674">
   <meta name="description" content="這是一套由 Google 出品的程式碼美化工具，主要用來美化分享在網站上的程式碼，Google Code Prettify 產生出來的美化效果也相當不錯，在此推薦給大家使用！">
 
   <meta itemprop="name" content="Google Code Prettify - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140604_2_01.jpg">
+  <meta itemprop="image" content="https://lh5.googleusercontent.com/-rYMtY4Zv0IM/U_IVPGqi-NI/AAAAAAAA94I/TtSisy6S7k8/s000/20140604_2_01.jpg">
   <meta itemprop="description" content="這是一套由 Google 出品的程式碼美化工具，主要用來美化分享在網站上的程式碼，Google Code Prettify 產生出來的美化效果也相當不錯，在此推薦給大家使用！">
 
   <meta property="og:title" content="Google Code Prettify - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/google-code-prettify.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140604_2_01.jpg">
+  <meta property="og:image" content="https://lh5.googleusercontent.com/-rYMtY4Zv0IM/U_IVPGqi-NI/AAAAAAAA94I/TtSisy6S7k8/s000/20140604_2_01.jpg">
   <meta property="og:description" content="這是一套由 Google 出品的程式碼美化工具，主要用來美化分享在網站上的程式碼，Google Code Prettify 產生出來的美化效果也相當不錯，在此推薦給大家使用！">
 
+
+  <link rel="stylesheet" href="/css/layout.css">
+
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link rel="stylesheet" href="/style/css/mergedCSS_article.min.css">
+
+
+
 
   <title>Google Code Prettify - OXXO.STUDIO</title>
-</head>
 
+</head>
 <body>
-  <div id="header">
-  </div>
-  <div id="wrapper">
-    <div id="container">
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
       <div class="content">
         <i class="tag-web"></i>
         <div class="md">
           <h2>Google Code Prettify
             <span class="article-date">JUN 4, 2014</span>
           </h2>
-          <p><img src="/img/articles/201406/20140604_2_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="https://lh5.googleusercontent.com/-rYMtY4Zv0IM/U_IVPGqi-NI/AAAAAAAA94I/TtSisy6S7k8/s000/20140604_2_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           <span itemprop="description" class="desc">這是一套由 Google 出品的程式碼美化工具，主要用來美化分享在網站上的程式碼，通常我們的程式碼會使用<code>pre</code>的標籤包覆，但內容的樣式卻是非常的死板，若自己進行樣式的編輯，而要使用各種不同的顏色來滿足各種不同的代碼，這項工程更比登天還難，這時候就很需要程式碼美化的工具。</span></p>
           <p>自己曾經使用過一套名為 SyntaxHighlighter 的程式碼美化工具，不過後來使用過 Google Code Prettify，整體而言比 SyntaxHighlighter 更為輕薄短小便利，產生出來的美化效果也相當不錯，在此推薦給大家使用！使用與安裝的方式如下：</p>
           <ul>
@@ -90,17 +132,54 @@
 </code></pre>
         </div>
       </div>
+
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+        </div>  
     </div>
-  </div>
+
   <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-  <div id="footer">
-  </div>
-  <script src="/js/mergedJS_article.min.js"></script>
-  <script src="/js/lib/disqus.js"></script>
-</body>
 
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+
+</body>
 </html>
