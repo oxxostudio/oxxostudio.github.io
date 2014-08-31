@@ -12,12 +12,12 @@
   <meta name="description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
 
   <meta itemprop="name" content="SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO">
-  <meta itemprop="image" content="https://lh5.googleusercontent.com/-AwjKkdflap4/U_IVXHESwZI/AAAAAAAA974/-tG5kZ6C6oU/s000/20140623_1_01.jpg">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140623_1_01.jpg">
   <meta itemprop="description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
 
   <meta property="og:title" content="SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html">
-  <meta property="og:image" content="https://lh5.googleusercontent.com/-AwjKkdflap4/U_IVXHESwZI/AAAAAAAA974/-tG5kZ6C6oU/s000/20140623_1_01.jpg">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140623_1_01.jpg">
   <meta property="og:description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -78,7 +78,7 @@
           <p>要繪製圓餅圖的第一步，我們先來使用 SVG path 的 A 參數繪製一個四分之一圓 ，四分之一圓的原理很簡單，就是將 A 參數的兩軸設為相等 ( 也就是圓形 )，接著只要知道頂點和側邊頂點的座標，就能夠畫出四分之一圓。
           </p>
           <p>
-            <img src="https://lh3.googleusercontent.com/-Zpt9DDQ6alA/U6mPtG-N7NI/AAAAAAAA46U/6LBhFd6frvo/s800/20140623_1_02.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
+            <img src="/img/articles/201406/20140623_1_02.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
           </p>
           <pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 0 0 50 100,Z&quot; fill=&quot;#fa0&quot;/&gt;
 </code></pre>
@@ -89,7 +89,7 @@
           <p>接下來我們來繪製一個四分之一圓，一個四分之三圓
           </p>
           <p>
-            <img src="https://lh5.googleusercontent.com/-1xMA03yVSiU/U6mPtF_nXKI/AAAAAAAA46Y/4P3DgclIk_E/s000/20140623_1_03.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
+            <img src="/img/articles/201406/20140623_1_03.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
           </p>
           <pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 0 0 50 100,Z&quot; fill=&quot;#fa0&quot;/&gt;
 &lt;path d=&quot;M100 100,L100 50,A50 50 0 1 1 50 100,Z&quot; fill=&quot;#09d&quot;/&gt;
@@ -101,7 +101,7 @@
           <p>從上圖我們可以發現，如果要繪製大於 180 度的圓，我們程式上必須要讓繪製的路徑角度弧線設為大角度弧線 ( 數字為 1 )，這也是在繪製圓餅圖的時候必須要注意的，不然就會變成下面這樣：
           </p>
           <p>
-            <img src="https://lh6.googleusercontent.com/-2Crjy4lMdWk/U6mQp42hVnI/AAAAAAAA46g/JhhtXGDtV_M/s000/20140623_1_04.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
+            <img src="/img/articles/201406/20140623_1_04.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
           </p>
           <pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 1 0 50 100,Z&quot; fill=&quot;#09d&quot;/&gt;
 &lt;path d=&quot;M100 100,L100 50,A50 50 0 0 0 50 100,Z&quot; fill=&quot;#fa0&quot;/&gt;
@@ -113,7 +113,7 @@
           <p>了解了圓餅圖的構造，現在我們要來繪製一個不同角度的圓餅圖 ( 剛剛都使用 90 度和 90 度的倍數 )，如果要繪製不同角度的圓餅圖，就必須要使用三角函數去計算起點和終點，有了起點和終點才能夠畫出弧線，舉例來說，要畫一個夾角 30 度的弧線，我就必須先用 javascript 計算：
           </p>
           <p>
-            <img src="https://lh6.googleusercontent.com/-34WolE6GNS4/U6mUDGi4qOI/AAAAAAAA46w/oNxUkwWM8a0/s000/20140623_1_05.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
+            <img src="/img/articles/201406/20140623_1_05.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
           </p>
           <p>JS：</p>
           <pre><code>$(function(){ 
@@ -137,7 +137,7 @@
           </p>
           <p>理解了圓餅圖的原理之後，我們就可以設定相關的參數，並且統一讓畫圓的方向固定為順時針或逆時針，就可以畫出漂亮的圓餅圖。( 當然，更進階的可以去做判斷，讓大於 180 度的圓餅使用大角度弧線，避免畫出來會很奇怪囉！ ) 當然，pie chart 也可以先變萬化，例如我們可以使用各種不同數值的半徑，就可以做出每個半徑都不盡相同的圓餅區塊，整體也會更具特色喔！</p>
           <p>
-            <img src="https://lh3.googleusercontent.com/-Na5ePGvCG5E/U6mVZ08OjzI/AAAAAAAA468/0d8NtxJNq5g/s000/20140623_1_06.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
+            <img src="/img/articles/201406/20140623_1_06.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
           </p>
           <p>JS：</p>
           <pre><code>$(function(){ 

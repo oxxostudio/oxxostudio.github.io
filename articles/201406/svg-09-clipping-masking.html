@@ -12,12 +12,12 @@
   <meta name="description" content="「文字」雖然字面上的解釋很簡單，但深入研究之後，發現 SVG 對於文字的設定，比我想像的複雜得多，但也因為有了這些我所不知道的設定和屬性，讓原本單純樸實的文字，更添加了幾分華麗的色彩和變化，這篇將介紹文字基本的屬性設定，以及一些進階的文字用法，學完之後，也就更能使用程式來控制文字，製作出與眾不同的動畫和特效了。">
 
   <meta itemprop="name" content="SVG 研究之路 (9) - Clipping and Masking - OXXO.STUDIO">
-  <meta itemprop="image" content="https://lh3.googleusercontent.com/-U7txATI9kOY/U_IVVdM7ctI/AAAAAAAA95g/jc6InZe5iDU/s000/20140616_1_01.jpg">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140616_1_01.jpg">
   <meta itemprop="description" content="「文字」雖然字面上的解釋很簡單，但深入研究之後，發現 SVG 對於文字的設定，比我想像的複雜得多，但也因為有了這些我所不知道的設定和屬性，讓原本單純樸實的文字，更添加了幾分華麗的色彩和變化，這篇將介紹文字基本的屬性設定，以及一些進階的文字用法，學完之後，也就更能使用程式來控制文字，製作出與眾不同的動畫和特效了。">
 
   <meta property="og:title" content="SVG 研究之路 (9) - Clipping and Masking - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html">
-  <meta property="og:image" content="https://lh3.googleusercontent.com/-U7txATI9kOY/U_IVVdM7ctI/AAAAAAAA95g/jc6InZe5iDU/s000/20140616_1_01.jpg">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140616_1_01.jpg">
   <meta property="og:description" content="「文字」雖然字面上的解釋很簡單，但深入研究之後，發現 SVG 對於文字的設定，比我想像的複雜得多，但也因為有了這些我所不知道的設定和屬性，讓原本單純樸實的文字，更添加了幾分華麗的色彩和變化，這篇將介紹文字基本的屬性設定，以及一些進階的文字用法，學完之後，也就更能使用程式來控制文字，製作出與眾不同的動畫和特效了。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -74,7 +74,7 @@
           <h2>SVG 研究之路 (9) - Clipping and Masking
             <span class="article-date">JUN 16, 2014</span>
           </h2>
-          <p><img src="https://lh3.googleusercontent.com/-U7txATI9kOY/U_IVVdM7ctI/AAAAAAAA95g/jc6InZe5iDU/s000/20140616_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="/img/articles/201406/20140616_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           <span itemprop="description" class="desc">使用過 Illustrator 的朋友應該都會知道，裏頭有一個重要的繪圖功能，就是剪裁和遮色片，這也是在圖形處理上頗為重要的兩個功能，而在 SVG 裏頭這兩個功能也沒有缺席，和之前 <a href="http://www.oxxostudio.tw/articles/201406/svg-08-text.html">製作文字跟隨路徑</a> 以及 <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">漸層填色</a> 相同的做法，在製作剪裁或遮色片的時候，我們也必須先建立定義檔<code>defs</code>，就可以輕鬆做出 Clipping ( 剪裁 ) 和 Masking ( 遮色片 ) 的效果囉！</span></p>
           <ul>
             <li>
@@ -82,7 +82,7 @@
                 <br />要建立一個 Clipping 的圖形，首先要在定義檔內放入<code>&lt;clipPath&gt;&lt;/clipPath&gt;</code>的標籤，記得要放入 id，這樣要被剪裁的圖形才能夠對應，接著在<code>&lt;clipPath&gt;&lt;/clipPath&gt;</code>裏頭放入一些圖形，這些圖形代表的是：<strong>這些圖形以外的都會被剪裁</strong>，可以看看下面的範例，圓形原本還有黃色線的面積，但是因為被藍色的矩形剪裁了，所以藍色區域以外的圓形都消失了。
               </p>
               <p>
-                <img src="https://lh3.googleusercontent.com/-9pChOoXnXm8/U58Uxrw9asI/AAAAAAAA4Qg/UnXWlB_RGKE/s000/20140616_1_02.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140616_1_02.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;defs&gt;  
   &lt;clipPath id=&quot;a1&quot;&gt;
@@ -98,7 +98,7 @@
               <p>而 clipping 裏頭還可以套用 clipping，就可以做出許多不同的變化。( 或是自己用 path 去畫也是可以 )
               </p>
               <p>
-                <img src="https://lh5.googleusercontent.com/-uA-J744NoOA/U58Uxubz7FI/AAAAAAAA4P4/z2a20C7gvyc/s000/20140616_1_03.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140616_1_03.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;clipPath id=&quot;a1&quot;&gt;
     &lt;polygon id=&quot;a1Shape&quot; points=&quot;100,10 40,180 190,60 10,60 160,180 100,10&quot; stroke=&quot;blue&quot; /&gt;        
@@ -134,7 +134,7 @@
               <p>上面的程式碼用到了一個很有趣的標籤：<code>&lt;use&gt;</code>，這個標籤其實用法就跟字面上一樣，就是去使用一個帶有 id 的物件，把這個物件放在<code>&lt;use&gt;</code>所指定的位置上，換句話說就是複製一個同樣的物件，但這個物件本體改了，<code>&lt;use&gt;</code>裏頭的也會被改掉，就像是火影忍者裏頭的鳴人的影分身一樣，如果把鳴人換成佐助，影分身出來的就會是佐助而不是鳴人了，如果鳴人本體死亡，影分身自然也就會死亡了，差不多的意思哈哈！
               </p>
               <p>
-                <img src="https://lh5.googleusercontent.com/-KPjyOwRcOgw/U58UxVE0OsI/AAAAAAAA4QI/lcKEQg8KFfM/s000/20140616_1_04.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140616_1_04.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;rect id=&quot;box&quot; x=&quot;50&quot; y=&quot;50&quot; width=&quot;50&quot; height=&quot;50&quot; fill=&quot;#069&quot;/&gt;
 &lt;use xlink:href=&quot;#box&quot; x=&quot;50&quot; y=&quot;50&quot; style=&quot;fill:#f00;&quot; /&gt;
@@ -146,7 +146,7 @@
               <p>如果物件的本體有設定 fill 或 stroke ，則<code>&lt;use&gt;</code>就無法使用 style 去控制，如果沒有設定，則可以使用 style 控制樣式。
               </p>
               <p>
-                <img src="https://lh6.googleusercontent.com/-cXprswWnCk4/U58UyWNRMGI/AAAAAAAA4P8/wVZmEDIDzrE/s000/20140616_1_05.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140616_1_05.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;rect id=&quot;box&quot; x=&quot;50&quot; y=&quot;50&quot; width=&quot;50&quot; height=&quot;50&quot;/&gt;
 &lt;use xlink:href=&quot;#box&quot; x=&quot;50&quot; y=&quot;50&quot; style=&quot;fill:#f00;&quot; /&gt;
@@ -162,7 +162,7 @@
               <p>有了觀念之後，就來看看程式怎麼寫，和<code>Cliping</code>相同的作法，在<code>defs</code>裏頭寫下<code>&lt;mask&gt;&lt;/mask&gt;</code>的標籤並給它一個 id，接著在裡面放入要當成遮色片的圖形，接著再用需要遮色片的物件去跟這個遮色片連結即可。
               </p>
               <p>
-                <img src="https://lh3.googleusercontent.com/-8ypGBJvjRgI/U58Uy6y8UXI/AAAAAAAA4QU/By2gLoDxzKk/s000/20140616_1_06.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140616_1_06.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;defs&gt;
   &lt;mask id=&quot;mask1&quot;&gt; 
@@ -180,7 +180,7 @@
               <p>從上面我們可以看到，比較灰色的部分 ( #ccc )，透明度就比較高，如果還是不太清楚，可以參考下面的範例，用不同灰階的遮色片，做出不同的透明度。
               </p>
               <p>
-                <img src="https://lh3.googleusercontent.com/-8hF8j_9gj3g/U58UzMaDlwI/AAAAAAAA4QQ/p_rYgHTQ1A8/s000/20140616_1_07.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140616_1_07.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;defs&gt;
   &lt;mask id=&quot;mask1&quot;&gt; 
@@ -212,7 +212,7 @@
               <p>除了純色，遮色片也可以做漸層的變化。
               </p>
               <p>
-                <img src="https://lh5.googleusercontent.com/-KogLUqDq0Is/U58UzgnfIQI/AAAAAAAA4QY/PbS0NuysujE/s000/20140616_1_08.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140616_1_08.png" alt="SVG-Clipping and Masking" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;defs&gt;
   &lt;linearGradient id=&quot;Gradient&quot;&gt;

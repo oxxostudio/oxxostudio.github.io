@@ -12,12 +12,12 @@
   <meta name="description" content="接下來要談談 SVG 裡頭最為重要的元素：Path，因為SVG 是向量圖，所有的物件和元素都是由 Path ( 路徑 ) 所組成，所以 Path 就具有相當多的指令讓使用者設定， 換句話說，搞懂了 Path 就等於搞定了SVG ( 或是搞定 80% 的 SVG，不管啦 )。">
 
   <meta itemprop="name" content="SVG 研究之路 (4) - Path 基礎篇 - OXXO.STUDIO">
-  <meta itemprop="image" content="https://lh4.googleusercontent.com/-x2aJuqN3UrI/U_IVSn_H-zI/AAAAAAAA95Q/dRcENdWTrVw/s000/20140611_1_01.jpg">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140611_1_01.jpg">
   <meta itemprop="description" content="接下來要談談 SVG 裡頭最為重要的元素：Path，因為SVG 是向量圖，所有的物件和元素都是由 Path ( 路徑 ) 所組成，所以 Path 就具有相當多的指令讓使用者設定， 換句話說，搞懂了 Path 就等於搞定了SVG ( 或是搞定 80% 的 SVG，不管啦 )。">
 
   <meta property="og:title" content="SVG 研究之路 (4) - Path 基礎篇 - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html">
-  <meta property="og:image" content="https://lh4.googleusercontent.com/-x2aJuqN3UrI/U_IVSn_H-zI/AAAAAAAA95Q/dRcENdWTrVw/s000/20140611_1_01.jpg">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140611_1_01.jpg">
   <meta property="og:description" content="接下來要談談 SVG 裡頭最為重要的元素：Path，因為SVG 是向量圖，所有的物件和元素都是由 Path ( 路徑 ) 所組成，所以 Path 就具有相當多的指令讓使用者設定， 換句話說，搞懂了 Path 就等於搞定了SVG ( 或是搞定 80% 的 SVG，不管啦 )。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -74,7 +74,7 @@
           <h2>SVG 研究之路 (4) - Path 基礎篇
             <span class="article-date">JUN 11, 2014</span>
           </h2>
-          <p><img src="https://lh4.googleusercontent.com/-x2aJuqN3UrI/U_IVSn_H-zI/AAAAAAAA95Q/dRcENdWTrVw/s000/20140611_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="/img/articles/201406/20140611_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           <span itemprop="description" class="desc">接下來要談談 SVG 裡頭最為重要的元素：Path，因為SVG 是向量圖，所有的物件和元素都是由 Path ( 路徑 ) 所組成，所以 Path 就具有相當多的指令讓使用者設定， 換句話說，搞懂了 Path 就等於搞定了SVG ( 或是搞定 80% 的 SVG，不管啦 )。</span></p>
           <p>本篇文章先將 Path 的指令表列出來，方便之後查找有個列表整裡，其中一個非常需要注意的地方，參數大寫代表絕對座標，小寫代表與前一個座標的相對座標，要特別注意！然後介紹裏頭基本的指令，後續會用其他篇介紹進階的指令。</p>
           <p>
@@ -147,7 +147,7 @@
               <p><strong>M / m</strong>
                 <br />M 也就是起始點，因此所有的 Path 一定從 M 開始，M 也只有兩個參數，x 和 y ，下列程式表示 (0,0) 為起始點，但因為是起始點，所以看不到東西是正常的 ( 可以自己使用 Illustrator 的鋼筆工具點一個點，是看不到東西的 )
                 <br />
-                <img src="https://lh4.googleusercontent.com/-O9kGjBoqSzY/U5hzww64KOI/AAAAAAAA4EA/4yChU00VF3U/s000/20140611_1_02.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_02.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0&quot; stroke=&quot;black&quot;/&gt;
 </code></pre>
@@ -160,7 +160,7 @@
               <p><strong>H / h</strong>
                 <br />H 可以從目前的點畫水平線到某個 x 座標，只有一個參數，x 數字越大越往左，數字越小越往右。( 小寫則可視為長度 ) 下列程式為畫一條水平線到 (50,0)
                 <br />
-                <img src="https://lh5.googleusercontent.com/-YBXzNLg9VFA/U5hzw73xqdI/AAAAAAAA4E8/vvzB4p9AZDY/s000/20140611_1_03.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_03.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0 H50&quot; stroke=&quot;black&quot;/&gt;
 </code></pre>
@@ -173,7 +173,7 @@
               <p><strong>V / v</strong>
                 <br />V 可以從目前的點畫垂直線到某個 y 座標，只有一個參數，y 數字越大越往下，數字越小越往上。( 小寫則可視為長度 ) 下列程式為畫一條垂直線到 (0,50)
                 <br />
-                <img src="https://lh5.googleusercontent.com/-yrWwXWwGJBY/U5hzwxH5TUI/AAAAAAAA4EM/WIRwevdN7vA/s000/20140611_1_04.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_04.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0 V50&quot; stroke=&quot;black&quot;/&gt;
 </code></pre>
@@ -186,7 +186,7 @@
               <p><strong>L / l</strong>
                 <br />L 可以從目前的點畫垂直線到某個座標，有兩個參數個參數 x、y，也就是要移動到的座標點，下列程式為畫一條線到 (50,50)
                 <br />
-                <img src="https://lh6.googleusercontent.com/-RPbGC8aTm6E/U5hzxn3fG8I/AAAAAAAA4E0/9MPfeG2PkSU/s000/20140611_1_05.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_05.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0 L50 50&quot; stroke=&quot;black&quot;/&gt;
 </code></pre>
@@ -199,7 +199,7 @@
               <p><strong>C / c</strong>
                 <br />C 表示可以畫一個如下圖所示的三次貝茲曲線 ( 對於數學式想了解的可以參考 <a href="http://en.wikipedia.org/wiki/B%C3%A9zier_curve" target="_blank">這篇</a> )，因此總共會有六個控制點，分別是 x1,y1,x2,y2,x,y，當中 x1,y2 表示第一個貝茲曲線的控制點，x2,y2 表示第二個貝茲曲線的控制點，x,y 則是線段的結束點，這裡 C 和 c 的大小寫一定要搞清楚，如果是使用 Illustrator 畫出來的，c 是小寫喔！下面的程式就會畫出一個波浪型的線段
                 <br />
-                <img src="https://lh5.googleusercontent.com/-LGuXrkEX4WI/U5hzx-OVWpI/AAAAAAAA4EY/73xXsWhYBRY/s000/20140611_1_06.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_06.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0 C40 40,60 40,100,0&quot; stroke=&quot;black&quot; fill=&quot;none&quot;/&gt;
 </code></pre>
@@ -212,7 +212,7 @@
               <p><strong>S / s</strong>
                 <br />S 可以在原本的點後方建立一個帶有貝茲曲線控制點的點，然後原本的點會以同樣的斜率鏡射一個貝茲控制點，講得很像繞口令，可以可以看下圖就明白了
                 <br />
-                <img src="https://lh6.googleusercontent.com/-89aaA3TwW84/U5hzyVOYBcI/AAAAAAAA4Ew/ejNg7iMP9Ic/s000/20140611_1_07.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_07.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0 C40 40,60 40,100,0 S150 -40, 200 0&quot; stroke=&quot;black&quot; fill=&quot;none&quot;/&gt;
 </code></pre>
@@ -225,7 +225,7 @@
               <p><strong>Q / q</strong>
                 Q 就簡單多了，就是起點和終點的貝茲曲線共用同一個控制點，只需要有貝茲控制點的座標和終點座標即可
                 <br />
-                <img src="https://lh6.googleusercontent.com/-sgYafV8Eqwg/U5hzysyrGqI/AAAAAAAA4Es/gtnqEEpDids/s000/20140611_1_08.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_08.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0 Q50 50, 100 0&quot; stroke=&quot;black&quot; fill=&quot;none&quot;/&gt;
 </code></pre>
@@ -238,7 +238,7 @@
               <p><strong>T / t</strong>
                 T 只有一組參數 x,y ，表示終點的座標，所以 T 的前方要接上 Q 才能畫出對應的座標線
                 <br />
-                <img src="https://lh6.googleusercontent.com/-OBkb2yUw9hw/U5hzzMLFtCI/AAAAAAAA4Ek/fyxngKsHfyQ/s000/20140611_1_09.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_09.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0 Q50 50, 100 0 T200 0&quot; stroke=&quot;black&quot; fill=&quot;none&quot;/&gt;
 </code></pre>
@@ -251,7 +251,7 @@
               <p><strong>Z / z</strong>
                 Z 沒有參數，也是放在最後的，有加上 Z 的話，會從終點用一條線連回起點
                 <br />
-                <img src="https://lh6.googleusercontent.com/-bNCY9Gthxg0/U5hzzccUNtI/AAAAAAAA4Eo/HHsSjDqGz-o/s000/20140611_1_10.png" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140611_1_10.png" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;path d=&quot;M0 0 Q50 50, 100 0 T200 0 Z&quot; stroke=&quot;black&quot; fill=&quot;none&quot;/&gt;
 </code></pre>

@@ -12,12 +12,12 @@
   <meta name="description" content="這篇就來聊聊 stroke ( 邊框 ) 的設定，其實在 SVG 裏頭邊框的設定很簡單，如果手邊有 Illustrator 的，邊框的設定就像裏頭筆畫的線條設定一樣，只是一個由視覺化的面板控制，一個由程式碼撰寫，有興趣的話，可以直接繪製線段存成 SVG，就可以很清楚了解邊框的設定。">
 
   <meta itemprop="name" content="SVG 研究之路 (6) 邊框 - stroke - OXXO.STUDIO">
-  <meta itemprop="image" content="https://lh6.googleusercontent.com/-RrW0JfSviYc/U_IVTsVhTFI/AAAAAAAA95I/oclG1KAp46E/s000/20140613_1_01.jpg">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140613_1_01.jpg">
   <meta itemprop="description" content="這篇就來聊聊 stroke ( 邊框 ) 的設定，其實在 SVG 裏頭邊框的設定很簡單，如果手邊有 Illustrator 的，邊框的設定就像裏頭筆畫的線條設定一樣，只是一個由視覺化的面板控制，一個由程式碼撰寫，有興趣的話，可以直接繪製線段存成 SVG，就可以很清楚了解邊框的設定。">
 
   <meta property="og:title" content="SVG 研究之路 (6) 邊框 - stroke - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html">
-  <meta property="og:image" content="https://lh6.googleusercontent.com/-RrW0JfSviYc/U_IVTsVhTFI/AAAAAAAA95I/oclG1KAp46E/s000/20140613_1_01.jpg">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140613_1_01.jpg">
   <meta property="og:description" content="這篇就來聊聊 stroke ( 邊框 ) 的設定，其實在 SVG 裏頭邊框的設定很簡單，如果手邊有 Illustrator 的，邊框的設定就像裏頭筆畫的線條設定一樣，只是一個由視覺化的面板控制，一個由程式碼撰寫，有興趣的話，可以直接繪製線段存成 SVG，就可以很清楚了解邊框的設定。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -74,7 +74,7 @@
           <h2>SVG 研究之路 (6) - stroke 邊框
             <span class="article-date">JUN 13, 2014</span>
           </h2>
-          <p><img src="https://lh6.googleusercontent.com/-RrW0JfSviYc/U_IVTsVhTFI/AAAAAAAA95I/oclG1KAp46E/s000/20140613_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="/img/articles/201406/20140613_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           前面的章節都在介紹繪製形狀，而我都是使用單純的線條來描繪形狀的邊框，<span itemprop="description" class="desc">因此這篇就來聊聊 stroke ( 邊框 ) 的設定，其實在 SVG 裏頭邊框的設定很簡單，如果手邊有 Illustrator 的，邊框的設定就像裏頭筆畫的線條設定一樣，只是一個由視覺化的面板控制，一個由程式碼撰寫，有興趣的話，可以直接繪製線段存成 SVG，就可以很清楚了解邊框的設定。</span></p>
           <p>stroke 主要有五個設定：</p>
           <ul>
@@ -99,12 +99,12 @@
             <li><strong>stroke-dasharray</strong>：虛線</li>
           </ul>
           <p>
-            <img src="https://lh6.googleusercontent.com/-PJKAql4x18Y/U5swqzJfPuI/AAAAAAAA4G8/7X7I8KD9OQY/s000/20140613_1_02.png" alt="SVG-stroke" style="margin-bottom:0; margin-top:10px;" />
+            <img src="/img/articles/201406/20140613_1_02.png" alt="SVG-stroke" style="margin-bottom:0; margin-top:10px;" />
           </p>
           <p>
             <br/>上述的這些設定，我們都可以在 Illustrator 的屬性面板中看到，至於邊框的顏色和寬度就不提了 ( 應該沒有人看不懂中文吧 )，storke 最重要的只有剩下的三個屬性，首先我們看到<code>stroke-linecap</code>和<code>stroke-linejoin</code>，分別代表了兩個端點的屬性，以及兩條線段尖角接合處的屬性 ( 如果不是尖角，則必定是使用貝茲曲線劃出的曲線 )，下圖可以非常清楚的看出各個屬性所代表的意義，裏頭只有一個要注意的，<code>round</code>是有半徑的圓弧形，直徑就是我們所設定的寬度。</p>
           <p>
-            <img src="https://lh3.googleusercontent.com/-SBVNH2zvbCE/U5swqxGc3CI/AAAAAAAA4HE/5GJ3OaUn3Lc/s000/20140613_1_03.png" alt="SVG-stroke" style="margin-bottom:0; margin-top:10px;" />
+            <img src="/img/articles/201406/20140613_1_03.png" alt="SVG-stroke" style="margin-bottom:0; margin-top:10px;" />
           </p>
           <pre><code>&lt;polyline fill=&quot;none&quot; stroke=&quot;#000000&quot; stroke-width=&quot;10&quot; points=&quot;83.678,119.133 113.376,89.434 143.075,119.133 &quot;/&gt;
 &lt;polyline fill=&quot;none&quot; stroke=&quot;#000000&quot; stroke-width=&quot;10&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; points=&quot;193.546,119.133 
@@ -117,7 +117,7 @@
             <br/>最後一個屬性是
             <code>stroke-dasharray</code>，裏頭的值是一個陣列，代表線段長度與虛線間隔長度的交錯數字，通常是兩個數字一組 ( 長度和間隔 )，如果是奇數，則最後數字接續的間隔，長度會以第一個數字為預設值，下方的圖片可以看出不同設定所造成的差異：</p>
           <p>
-            <img src="https://lh6.googleusercontent.com/-2IjGm5C3lm4/U5swq49_NiI/AAAAAAAA4HA/EZhOzUu6sMM/s000/20140613_1_04.png" alt="SVG-stroke" style="margin-bottom:0; margin-top:10px;" />
+            <img src="/img/articles/201406/20140613_1_04.png" alt="SVG-stroke" style="margin-bottom:0; margin-top:10px;" />
           </p>
           <pre><code>&lt;line fill=&quot;none&quot; stroke=&quot;#000000&quot; stroke-dasharray=&quot;2&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;100&quot; y2=&quot;0&quot;/&gt;
 &lt;line fill=&quot;none&quot; stroke=&quot;#000000&quot; stroke-dasharray=&quot;2,5&quot; x1=&quot;0&quot; y1=&quot;10&quot; x2=&quot;100&quot; y2=&quot;10&quot;/&gt;
