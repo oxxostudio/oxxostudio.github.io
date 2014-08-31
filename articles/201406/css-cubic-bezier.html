@@ -12,12 +12,12 @@
   <meta name="description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
 
   <meta itemprop="name" content="CSS3 Cubic Bezier - OXXO.STUDIO">
-  <meta itemprop="image" content="https://lh3.googleusercontent.com/-AOUl_sL4uXE/U_IVYRZDFMI/AAAAAAAA96w/wdj3UhPj8Yc/s000/20140628_1_01.jpg">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140628_1_01.jpg">
   <meta itemprop="description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
 
   <meta property="og:title" content="CSS3 Cubic Bezier - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-cubic-bezier.html">
-  <meta property="og:image" content="https://lh3.googleusercontent.com/-AOUl_sL4uXE/U_IVYRZDFMI/AAAAAAAA96w/wdj3UhPj8Yc/s000/20140628_1_01.jpg">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140628_1_01.jpg">
   <meta property="og:description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -101,7 +101,7 @@
             <span class="article-date">JUN 28, 2014</span>
           </h2>
           <p>
-            <img src="https://lh3.googleusercontent.com/-AOUl_sL4uXE/U_IVYRZDFMI/AAAAAAAA96w/wdj3UhPj8Yc/s000/20140628_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+            <img src="/img/articles/201406/20140628_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
             <span itemprop="description" class="desc">Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 &quot;C&quot; 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。</span>
           </p>
           <p>在學習 Cubic Bezier 之前，要先來看看在 CSS3 裏頭哪些時候會用上 Cubic Bezier，會用到的時機有兩個，第一個是 <strong>transition</strong>，第二個是 <strong>animation</strong>，使用的方式如下：</p>
@@ -129,7 +129,7 @@ animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
           <p>
             <br/>Cubic Bezier 的原理很簡單，總共有四個參數，分別是第一個貝茲曲線控制點的 x1 和 座標 y1，第二個貝茲曲線控制點的 x2 和 y2 座標，可以參考下面這張 W3C 對於 cubic-bezier 參數設置的圖片，往上為 1，往下為 0。( 參考 <a href="http://www.w3.org/TR/css3-transitions/#transition-timing-function-property" target="_blank">W3C 文章</a> )</p>
           <p>
-            <img src="https://lh6.googleusercontent.com/-ADaUODvAz_k/U67MgNMbWhI/AAAAAAAA4-Y/ufxOjX7swtk/s300/20140628_1_04.png" />
+            <img src="/img/articles/201406/20140628_1_04.png" style="width:300px;" />
             <br/>
           </p>
           <p>藉由控制 Cubic Bezier，我們便可以很容易地做出加減速的效果， ( 可以參考 <a href="http://cubic-bezier.com/" target="_blank">cubic-bezier.com</a> )</p>
@@ -141,7 +141,7 @@ animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 </code></pre>
 
           <p>
-            <img src="https://lh6.googleusercontent.com/-oybcdaTz0YQ/U67PzCp7nSI/AAAAAAAA4-o/Sto8MsYHHAs/s300/20140628_1_05.png" />
+            <img src="/img/articles/201406/20140628_1_05.png" style="width:300px;" />
           </p>
           <p>此外，若我們把貝茲曲線上下超過了 0 和 1，就會產生很有意思的一個特效，就是有點皮球反彈的效果。</p>
           <div style="position:relative; margin-top:40px; height:200px;">
@@ -152,7 +152,7 @@ animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 </code></pre>
 
           <p>
-            <img src="https://lh5.googleusercontent.com/-d3bW37xkcZ4/U67MgG3Wp-I/AAAAAAAA4-c/22ddAQHzbds/s300/20140628_1_03.png" />
+            <img src="/img/articles/201406/20140628_1_03.png" style="width:300px;" />
             <br/>
           </p>
           <p>以上就是 Cubic Bezier 的介紹，因為這是一個三次函數曲線，所以會發生垂直或水平的地方有兩個點交會的情形喔！也因為有了 Cubic Bezier，我們的 CSS3 動畫也就更別具特色了！</p>

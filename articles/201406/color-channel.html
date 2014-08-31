@@ -12,12 +12,12 @@
   <meta name="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
 
   <meta itemprop="name" content="淺談位元色版 color channel - OXXO.STUDIO">
-  <meta itemprop="image" content="https://lh3.googleusercontent.com/-2xQl0TseZBo/U_IVWqSqfaI/AAAAAAAA958/JTYyjv0YjLU/s000/20140621_2_01.jpg">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140621_2_01.jpg">
   <meta itemprop="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
 
   <meta property="og:title" content="淺談位元色版 color channel - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/color-channel.html">
-  <meta property="og:image" content="https://lh3.googleusercontent.com/-2xQl0TseZBo/U_IVWqSqfaI/AAAAAAAA958/JTYyjv0YjLU/s000/20140621_2_01.jpg">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140621_2_01.jpg">
   <meta property="og:description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -74,12 +74,12 @@
           <h2>淺談位元色版 color channel
             <span class="article-date">JUN 21, 2014</span>
           </h2>
-          <p><img src="https://lh3.googleusercontent.com/-2xQl0TseZBo/U_IVWqSqfaI/AAAAAAAA958/JTYyjv0YjLU/s000/20140621_2_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+          <p><img src="/img/articles/201406/20140621_2_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
           <span itemprop="description" class="desc">這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。</span></p>
           <p>首先介紹一下色彩的解析度，這其實在大學一年級必修的計算機概論中，都會多少提到這觀念，如同 2^8 ( 2 的 8 次方 ) = 256 色的色彩資訊，也就是八位元的色彩資訊，而我們所知的螢幕解析度「高彩」，則是 2^16 = 65536 種顏色，16位元的色彩資訊，全彩則是 2^24 = 16777216，24 位元的色彩資訊。</p>
           <p>看完上面這段，或許你會有個疑問，這與 photoshop 中的位元色版有什麼不同，或是看到 photoshop 中 8 位元，16 位元與32 位元你已經混亂了，這裡面不同的可大了！那什麼是 photoshop 中的 8 位元 16 位元與 32 位元呢？</p>
           <p>
-            <img src="https://lh5.googleusercontent.com/-U1njvu43ddQ/U6WXiHOrVFI/AAAAAAAA4xo/MjSqvw5WA0I/s000/20140621_2_02.png" alt="color channel" />
+            <img src="/img/articles/201406/20140621_2_02.png" alt="color channel" />
           </p>
           <p>若以 8 位元的 RGB 色版為例，則是 R 色版具有 2^8 = 256 種紅色 ( 0~255 )，G 色版與 B 色版也各具有 256 種綠色與藍色 ( 0~255 )，也因此為什麼在 16 進位的色碼中會表示為 00~FF 的原因，所以 8 位元的 RGB 色版，就是包含 256 種紅色，256 種綠色，256 種藍色的色版，其實也就是 24 位元的全彩顏色 ( 256
             <em>256</em>256 = 2^8
@@ -90,7 +90,7 @@
           <p>而誠如 photoshop 說明文件所述，在 CS2 之後的版本於影像調整增加了 &quot;曝光度&quot; 的選項，這個選項的是專門針對 32 位元色版所設計，以及由 32 位元色版轉換為 8 位元或 16 位元色版中的轉換選單，也因為 32 位元色版多出了那一大堆的浮點數 就更能記錄更多的色彩資訊，所以高動態範圍的影像也都是採用這種位元色版模式記錄資訊囉！
           </p>
           <p>
-            <img src="https://lh3.googleusercontent.com/-KV408lQyWlc/U6WXiH5xhsI/AAAAAAAA4xk/EIlRUClnZCw/s000/20140621_2_03.png" alt="color channel" />
+            <img src="/img/articles/201406/20140621_2_03.png" alt="color channel" />
           </p>
         </div>
       </div>
