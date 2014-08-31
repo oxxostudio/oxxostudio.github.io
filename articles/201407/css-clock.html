@@ -12,12 +12,12 @@
     <meta name="description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
 
     <meta itemprop="name" content="電子時鐘效果 ( CSS 偽元素的應用 ) - OXXO.STUDIO">
-    <meta itemprop="image" content="https://lh3.googleusercontent.com/-phwh68WdMT0/U_IVcGlIvPI/AAAAAAAA97g/dtUinAOybH4/s000/20140717_1_01.jpg">
+    <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140717_1_01.jpg">
     <meta itemprop="description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
 
     <meta property="og:title" content="電子時鐘效果 ( CSS 偽元素的應用 ) - OXXO.STUDIO">
     <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-clock.html">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/-phwh68WdMT0/U_IVcGlIvPI/AAAAAAAA97g/dtUinAOybH4/s000/20140717_1_01.jpg">
+    <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140717_1_01.jpg">
     <meta property="og:description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -74,7 +74,7 @@
                     <h2>電子時鐘效果 ( CSS 偽元素的應用 )
                         <span class="article-date">JUL 17, 2014</span>
                     </h2>
-                    <p><img src="https://lh3.googleusercontent.com/-phwh68WdMT0/U_IVcGlIvPI/AAAAAAAA97g/dtUinAOybH4/s000/20140717_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+                    <p><img src="/img/articles/201407/20140717_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
                     <a href="http://jqmdesigner.appspot.com/designer.html#&ref=6078331350941696" target="_blank">電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )</a>
                         <br />這是<span itemprop="description" class="desc">單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。</p><p>首先介紹一下偽元素這個東西，為什麼稱呼這東西叫做偽元素呢？簡單來說，偽元素並不存在於標準的 HTML 元素當中，而是跟隨在每個元素裡頭，一前一後共有兩個，</span>分別是
                         <code>::befor</code>和
@@ -82,7 +82,7 @@
                         <code>a::before</code>或
                         <code>a::after</code>的時候，就等同於在這個 a 元素的前後加上了兩個假的元素，我們就可以更靈活的去針對 a 元素做變化。( 可以看看下面這張圖和對應的程式碼就比較清楚，搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&ref=6236140528992256">範例檔案</a> ）</p>
                     <p>
-                        <img src="https://lh4.googleusercontent.com/-ZesUIYBpwqk/U8efaYf7HzI/AAAAAAAA7YM/TFTUWgbQ7VQ/s240/20140717_1_02.png" style="margin-bottom:0; " alt="CSS Clock" />
+                        <img src="/img/articles/201407/20140717_1_02.png" style="margin-bottom:0; " alt="CSS Clock" />
                     </p>
                     <pre><code>.a{
   width:100px;
@@ -120,7 +120,7 @@
                         <code>content:'';</code>的屬性，這個屬性是讓我們可以在偽元素直接填入純文字內容，也可以使用像 alert 一樣的換行語法，這個值基本上都可以為空，但你也可以使用它搭配 HTML5 的 data attributes，就能做出更多的互動變化，也因為偽元素原本是 inline 的屬性，我們若要讓它俱有長寬，就要將其改為 block 或 inline-block。此外，如果要精准控制偽元素的位置，可以把本體的 position 設為 relative，偽元素的 position 設為 absolute，就可以由 top、left、right、bottom 控制位置。</p>
                     <p>了解了基本的偽元素之後，就可以做出這個時鐘效果了嗎？當然是不行呦～我們還必須要先了解邊框 ( border ) 的概念，如果今天一個正方形的長寬都是 0，但四個邊都有 10px 的寬度，出來的樣子就會像下圖這樣 ( <a href="http://jqmdesigner.appspot.com/designer.html#&ref=6236140528992256" target="_blank">範例檔案</a> )</p>
                     <p>
-                        <img src="https://lh3.googleusercontent.com/-50yhqUHR3kA/U8efadZ-RJI/AAAAAAAA7YA/9FODu4IfCJI/s000/20140717_1_03.png" style="margin-bottom:0; " alt="CSS Clock" />
+                        <img src="/img/articles/201407/20140717_1_03.png" style="margin-bottom:0; " alt="CSS Clock" />
                     </p>
                     <pre><code>.b{
   width:0;
@@ -136,7 +136,7 @@
                     </p>
                     <p>我們如果把邊框的底色設為透明，就可以輕鬆地做出三角形的效果，當然如果搭配 CSS3 的旋轉或變形，就可以做出更多形狀的變化。( <a href="http://jqmdesigner.appspot.com/designer.html#&ref=6236140528992256" target="_blank">範例檔案</a> )</p>
                     <p>
-                        <img src="https://lh5.googleusercontent.com/-kdLhg4kh7qE/U8efabwENzI/AAAAAAAA7YQ/y5VlGcULImE/s000/20140717_1_04.png" style="margin-bottom:0; " alt="CSS Clock" />
+                        <img src="/img/articles/201407/20140717_1_04.png" style="margin-bottom:0; " alt="CSS Clock" />
                     </p>
                     <pre><code>.c{
   width:0;
@@ -152,7 +152,7 @@
                     </p>
                     <p>搭配本體的元素，就能夠做出箭頭。( <a href="http://jqmdesigner.appspot.com/designer.html#&ref=6236140528992256" target="_blank">範例檔案</a> )</p>
                     <p>
-                        <img src="https://lh4.googleusercontent.com/-hfC8rw_tAUk/U8efa1btzWI/AAAAAAAA7YE/RQgC_Oh659U/s200/20140717_1_05.png" style="margin-bottom:0; " alt="CSS Clock" />
+                        <img src="/img/articles/201407/20140717_1_05.png" style="margin-bottom:0; " alt="CSS Clock" />
                     </p>
                     <pre><code>.d{
   width:100px;
@@ -179,7 +179,7 @@
                     </p>
                     <p>基本知識都都了解了之後，我們只要把各個箭頭 ( 總共七個 ) 組成八的形狀，就可以做出像液晶電子數字的 8 。 ( <a href="http://jqmdesigner.appspot.com/designer.html#&ref=6236140528992256" target="_blank">範例檔案</a> )</p>
                     <p>
-                        <img src="https://lh5.googleusercontent.com/-mTFQvbyKn4c/U8efbNC9G8I/AAAAAAAA7YI/ezNOPLE9WPM/s000/20140717_1_06.png" style="margin-bottom:0; " alt="CSS Clock" />
+                        <img src="/img/articles/201407/20140717_1_06.png" style="margin-bottom:0; " alt="CSS Clock" />
                     </p>
                     <pre><code>.clock{
   margin:20px;

@@ -12,12 +12,12 @@
     <meta name="description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
 
     <meta itemprop="name" content="CSS 模糊效果 - OXXO.STUDIO">
-    <meta itemprop="image" content="https://lh5.googleusercontent.com/-q7cse7A9y3c/U_IVcOEas_I/AAAAAAAA97k/j1cZln9pOyY/s000/20140726_1_01.jpg">
+    <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_1_01.jpg">
     <meta itemprop="description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
 
     <meta property="og:title" content="CSS 模糊效果 - OXXO.STUDIO">
     <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-blur.html">
-    <meta property="og:image" content="https://lh5.googleusercontent.com/-q7cse7A9y3c/U_IVcOEas_I/AAAAAAAA97k/j1cZln9pOyY/s000/20140726_1_01.jpg">
+    <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_1_01.jpg">
     <meta property="og:description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -74,12 +74,12 @@
                     <h2>CSS 模糊效果
                         <span class="article-date">JUL 26, 2014</span>
                         </h2>
-                    <p><img src="https://lh5.googleusercontent.com/-q7cse7A9y3c/U_IVcOEas_I/AAAAAAAA97k/j1cZln9pOyY/s000/20140726_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+                    <p><img src="/img/articles/201407/20140726_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
                     一直以來 CSS 的效果就受到於瀏覽器的限制，例如超強大的 webkit filter，到了 chrome 以外的瀏覽器幾乎完全沒有用武之地，不過<span itemprop="description" class="desc">隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。( 當然，圖片的模糊就非得借用 webkit filter 或 SVG filter 了 )</span></p>
                     <p>首先看到文字的模糊，先解釋一下文字模糊的原理，第一步將文字本身的顏色設為透明 ( 利用 rgba(0,0,0,0) )，接著設定 text shadow，我們知道 text shadow 具有以下四個屬性：<strong>x 偏移、y 偏移、模糊程度、模糊顏色</strong>，當我們設定偏移為 0，模糊的程度也為0，就可以發現透明顏色的文字變成了具有 shadow 顏色的文字，從下圖可以看到，原本應該透明的字，變成了紅色的字。
                     </p>
                     <p>
-                        <img src="https://lh3.googleusercontent.com/-44wv7KxfS5k/U9Nw1Z5-1GI/AAAAAAAA8hY/OD_VS8aOgHk/s000/20140726_1_02.png" style="margin-bottom:0;" alt="CSS Blur" />
+                        <img src="/img/articles/201407/20140726_1_02.png" style="margin-bottom:0;" alt="CSS Blur" />
                     </p>
                     <p>html:
                     </p>
@@ -100,7 +100,7 @@
                     <p>了解了這個原理之後，我們只要調整模糊的程度，就能夠做出不同模糊效果的文字。( 而且還可以跨平台 )
                     </p>
                     <p>
-                        <img src="https://lh3.googleusercontent.com/-va2V9NPUYmo/U9Nw2j9JtpI/AAAAAAAA8h4/LdQoRW_921s/s000/20140726_1_03.png" style="margin-bottom:0;" alt="CSS Blur" />
+                        <img src="/img/articles/201407/20140726_1_03.png" style="margin-bottom:0;" alt="CSS Blur" />
                     </p>
                     <p>html:</p>
                     <pre><code>&lt;div class=&quot;blur1&quot;&gt;BLUR 1&lt;/div&gt;
@@ -138,7 +138,7 @@
                     <p>學會了文字的效果之後，接下來我們來嘗試形狀的模糊，和文字模糊效果的做法相同，文字使用 text-shadow，形狀則使用 box-shadow，只是對於形狀的模糊，單純使用 CSS 有著先天上的限制，因為我們是使用陰影來偽裝成模糊，所以會導致視覺上形狀越模糊，尺寸也會越大，若要讓形狀不要越來越大，就必須使用 -webkit-transform:scale 來使其變小 ( 或 transform ),至於要變得多小，就自己看當時的情況去去拿捏囉！
                     </p>
                     <p>
-                        <img src="https://lh6.googleusercontent.com/-apV7lFmhEOY/U9Nw2KFSK5I/AAAAAAAA8ho/iiRIrCJydAQ/s000/20140726_1_04.png" style="margin-bottom:0;" alt="CSS Blur" />
+                        <img src="/img/articles/201407/20140726_1_04.png" style="margin-bottom:0;" alt="CSS Blur" />
                     </p>
                     <p>HTML:</p>
                     <pre><code>&lt;div class=&quot;boxblur0&quot;&gt;&lt;/div&gt;
@@ -179,7 +179,7 @@
                     <p>這裡有個比較需要注意的地方，就是我們必須使用 box-shadow 比 text-shadow 所多出來的第五個屬性：<strong>陰影擴展</strong>，如果沒有進行陰影擴展的調整，就會發生像下圖這樣的現象，真正變成 &quot;陰影&quot; 了：
                     </p>
                     <p>
-                        <img src="https://lh3.googleusercontent.com/-VwDjLI8mF4s/U9Nw2tE9-dI/AAAAAAAA8iU/VUreWFUqRTw/s000/20140726_1_05.png" style="margin-bottom:0;" alt="CSS Blur" />
+                        <img src="/img/articles/201407/20140726_1_05.png" style="margin-bottom:0;" alt="CSS Blur" />
                     </p>
                     <pre><code>.boxblur20{
   width:100px;
@@ -196,7 +196,7 @@
                     <p>如果我們使用了陰影擴展，才能夠讓陰影與邊緣接合，讓整體看起來像是模糊了一般，但也因為擴展的緣故，會導致整個大小變大，這時候就必須藉由 -webkit-transform:scale 或 transform:scale 來讓整體恢復我們所需要的大小 ( 缺點就是內容也會跟著變 )。
                     </p>
                     <p>
-                        <img src="https://lh5.googleusercontent.com/-XxRGaTX-V-s/U9Nw2jKnZ8I/AAAAAAAA8iQ/q-aZnAf2Tn4/s000/20140726_1_06.png" style="margin-bottom:0;" alt="CSS Blur" />
+                        <img src="/img/articles/201407/20140726_1_06.png" style="margin-bottom:0;" alt="CSS Blur" />
                     </p>
                     <pre><code>.boxblur20{
   width:100px;
@@ -215,7 +215,7 @@
                     <p>了解了形狀和文字的模糊後，其實我們可以綜合兩者，就能做出 &quot;形狀外框&quot; 模糊的效果 ( 如下圖 )，原理其實就是讓形狀沒有被景色，單靠外陰影與內陰影產生邊框，不過由於只有一組內外陰影所產生的邊框較透明，因此必須使用兩組內外陰影來達成，或使用陰影擴展的屬性來產生邊框。
                     </p>
                     <p>
-                        <img src="https://lh6.googleusercontent.com/-Yyrd3jBvlmY/U9Nw3M0Wa2I/AAAAAAAA8h8/AgvTh8L-3jY/s000/20140726_1_07.png" style="margin-bottom:0;" alt="CSS Blur" />
+                        <img src="/img/articles/201407/20140726_1_07.png" style="margin-bottom:0;" alt="CSS Blur" />
                     </p>
                     <pre><code>.boxblur{
   width:100px;
@@ -228,7 +228,7 @@
 
                     <p>
                     <p>
-                        <img src="https://lh6.googleusercontent.com/-eXlG2_yrYH8/U9N1_1rrClI/AAAAAAAA8is/4LEMe-MS7VU/s000/20140726_1_08.png" style="margin-bottom:0;" alt="CSS Blur" />
+                        <img src="/img/articles/201407/20140726_1_08.png" style="margin-bottom:0;" alt="CSS Blur" />
                     </p>
                     </p>
                     <pre><code>.boxblur{
@@ -248,7 +248,7 @@
                     </p>
                     <p>
                         <a href="http://jqmdesigner.appspot.com/designer.html#&ref=5681894561677312" target="_blank">
-                            <img src="https://lh3.googleusercontent.com/-BMHkEeC5-LU/U9Nw391w2lI/AAAAAAAA8ic/lLJcEU7dS3A/s000/20140726_1_08.gif" />
+                            <img src="/img/articles/201407/20140726_1_08.gif" />
                         </a>
                     </p>
                 </div>

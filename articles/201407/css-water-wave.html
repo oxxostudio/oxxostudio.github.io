@@ -12,12 +12,12 @@
     <meta name="description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
 
     <meta itemprop="name" content="CSS Water Wave (水波效果) - OXXO.STUDIO">
-    <meta itemprop="image" content="https://lh3.googleusercontent.com/-DbXqj5CHQa4/U_IVdp2-CWI/AAAAAAAA978/eNGtkOvZbeU/s000/20140729_1_01.gif">
+    <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140729_1_01.gif">
     <meta itemprop="description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
 
     <meta property="og:title" content="CSS Water Wave (水波效果) - OXXO.STUDIO">
     <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-water-wave.html">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/-DbXqj5CHQa4/U_IVdp2-CWI/AAAAAAAA978/eNGtkOvZbeU/s000/20140729_1_01.gif">
+    <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140729_1_01.gif">
     <meta property="og:description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -74,14 +74,14 @@
                     <h2>CSS Water Wave (水波效果)
                         <span class="article-date">JUL 29, 2014</span>
                         </h2>
-                    <p><a href="http://goo.gl/3VQRH7" target="_blank"><img src="https://lh3.googleusercontent.com/-DbXqj5CHQa4/U_IVdp2-CWI/AAAAAAAA978/eNGtkOvZbeU/s000/20140729_1_01.gif" style="float:right; width:300px; margin:0 10px 20px;"></a>
+                    <p><a href="http://goo.gl/3VQRH7" target="_blank"><img src="/img/articles/201407/20140729_1_01.gif" style="float:right; width:300px; margin:0 10px 20px;"></a>
                     <span itemprop="description" class="desc">以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。</span>範例：<a href="http://goo.gl/3VQRH7" target="_blank">CSS Water Wave</a> ( 使用 EZoApp 設計工具，點選 preview 可以看效果喔！ )</p>
                     <p>雖然 webkit 具有遮色片的能力 ( webkit mask )，不過就如同我之前在 <a href="http://www.oxxostudio.tw/articles/201407/css-blur.html">CSS 模糊效果</a> 所提到的，webkit 雖然強大，但在跨瀏覽器上總是它的罩門，況且在效能上也是往往會造成困擾 ( 這也是為什麼 chrome 要這麼吃資源了@@ )，因此撇開 webkit 不談，我們該用什麼方法，才可以做出像 flash 水波的效果呢？答案就是用「
                         <strong>疊</strong>」的，這個水波效果的原理其實就是用六個 div 疊在一起，接著最重要的就是將背景設為固定：
                         <code>background-attachment:fixed;</code>，然後讓背景的尺寸有大有小，就可以完成了，詳細原理如下：</p>
                     <p>把六個 div 疊在一起，搭配 CSS 的 animation，就可以讓六個 div 依序出現</p>
                     <p>
-                        <img src="https://lh5.googleusercontent.com/-507FxMtdEVY/U9ewdoszCFI/AAAAAAAA808/tBKRa7awHxA/s000/20140729_1_02.gif" alt="CSS Water Wave" />
+                        <img src="/img/articles/201407/20140729_1_02.gif" alt="CSS Water Wave" />
                     </p>
                     <p>HTML:</p>
                     <pre><code>&lt;div class=&quot;wave wave5&quot;&gt;&lt;/div&gt;
@@ -154,7 +154,7 @@
                         <code>calc</code>的 + 、 - 號前後必須有空格，不然會出錯 )，然後就是每個 animation 要逐一加上延遲時間，就可以逐一地冒出來，如果我們再把半徑設大一點，就會變成圓形或是橢圓形囉！</p>
                     <p>了解了水波的原理之後，再來我們只要把上面的顏色換成背景圖，就可以順利的產生水波了。</p>
                     <p>
-                        <img src="https://lh4.googleusercontent.com/-1kmYlurQqxM/U9ewds0uOHI/AAAAAAAA81A/gMWEC3F6WAw/s000/20140729_1_03.gif" alt="CSS Water Wave" />
+                        <img src="/img/articles/201407/20140729_1_03.gif" alt="CSS Water Wave" />
                     </p>
                     <p>HTML:</p>
                     <pre><code>&lt;div class=&quot;wave wave5&quot;&gt;&lt;/div&gt;
@@ -259,7 +259,7 @@ function _wave(i, j, k) {
                     <p>範例：<a href="http://goo.gl/3VQRH7" target="_blank">CSS Water Wave</a> ( 使用 EZoApp 設計工具，點選 preview 可以看效果喔！ )</p>
                     <p>
                         <a href="http://goo.gl/3VQRH7" target="_blank">
-                            <img src="https://lh6.googleusercontent.com/-LdmPHTcZJlo/U9exGiMs7iI/AAAAAAAA81M/VgReRrC50z4/s000/20140729_1_04.gif" alt="CSS Water Wave" />
+                            <img src="/img/articles/201407/20140729_1_04.gif" alt="CSS Water Wave" />
                         </a>
                     </p>
                 </div>
