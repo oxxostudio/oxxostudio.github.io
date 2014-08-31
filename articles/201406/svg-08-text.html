@@ -148,7 +148,7 @@
                 <code>&lt;tspan&gt;&lt;/tspan&gt;</code>是 SVG 文字裡頭重要的元素，因為它可以塑造出千變萬化的文字表現方式，而看<code>&lt;tspan&gt;</code>的字面，其實可以把它想像成 HTML 裏頭的<code>span</code>也無妨，也可以想像成在<code>&lt;text&gt;</code>裏頭的一個一個文字群組。<code>&lt;tspan&gt;</code>和<code>&lt;text&gt;</code>具有的屬性值幾乎一模一樣，也是 x、y、dx、dy、rotate、textLength。
               </p>
               <p>
-                <img src="https://lh3.googleusercontent.com/-WpaebM8WQ8g/U51WCQpsuVI/AAAAAAAA4Jc/Sa-EEs_MsQs/s000/20140615_1_03.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140615_1_03.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;text x=&quot;50&quot; y=&quot;20&quot;&gt;
   &lt;tspan fill=&quot;#000&quot;&gt;The tspan element&lt;/tspan&gt;
@@ -162,7 +162,7 @@
                 <br/>同樣也可以使用 x、y 與 dx、dy 的陣列方式做變化。
               </p>
               <p>
-                <img src="https://lh5.googleusercontent.com/-LUNd0RA0XRg/U51WCqGhGEI/AAAAAAAA4I8/014E3G_uXBk/s000/20140615_1_04.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140615_1_04.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;text x=&quot;50&quot; y=&quot;20&quot;&gt;
   &lt;tspan x=&quot;10,20,30,40,50&quot; y=&quot;60&quot; fill=&quot;#000&quot;&gt;element&lt;/tspan&gt;
@@ -174,7 +174,7 @@
                 <br/>使用 <code>rotate</code>同樣也可以使用陣列的方式，讓文字可以旋轉。
               </p>
               <p>
-                <img src="https://lh3.googleusercontent.com/-2ktG8QCABRY/U51WCwP2TVI/AAAAAAAA4JA/xwNI_Ii9IEY/s000/20140615_1_05.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140615_1_05.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;text x=&quot;50&quot; y=&quot;20&quot;&gt;
   &lt;tspan x=&quot;10&quot; y=&quot;30&quot; fill=&quot;#000&quot; rotate=&quot;20&quot; style=&quot;font-size:24px;&quot;&gt;element&lt;/tspan&gt;
@@ -190,7 +190,7 @@
               <p><strong>使用路徑</strong>
                 <br />除了以上的文字變化外還不稀奇，使用過 Illustrator 的朋友們都知道，我們可以讓文字跟隨路徑，做出各種形狀的文字，至於寫程式該怎麼寫呢？這時候就要回想起上一篇 <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">fill 漸層</a> 所提到的定義檔<code>&lt;defs&gt;&lt;/defs&gt;</code>，我們只需要在<code>&lt;defs&gt;&lt;/defs&gt;</code>定義好路徑，讓文字和路徑做連結，就可以讓文字隨著路徑跑囉！</p>
               <p>
-                <img src="https://lh3.googleusercontent.com/-IAZU62U7N4o/U51WDOehUsI/AAAAAAAA4JE/UH6nUx4TTNM/s000/20140615_1_06.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140615_1_06.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <p>定義路徑：</p>
               <pre><code>&lt;defs&gt;
@@ -211,7 +211,7 @@
                 <code>startOffset</code>來設定文字在路徑上的起始位置。(使用百分比)。
               </p>
               <p>
-                <img src="https://lh3.googleusercontent.com/-wzE8GaGvcFk/U51WDa4cUeI/AAAAAAAA4JU/wmW8Dn28ZHo/s000/20140615_1_07.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
+                <img src="/img/articles/201406/20140615_1_07.png" alt="SVG-text" style="margin-bottom:0; margin-top:10px;" />
               </p>
               <pre><code>&lt;text&gt;
    &lt;textPath xlink:href=&quot;#a1&quot;&gt;這是隨著路徑跑的文字，很酷吧&lt;/textPath&gt;

@@ -12,13 +12,13 @@
   <meta name="description" content="對於 CSS 的初學者而言，比較不容易理解的大概就是偽類以及偽元素，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，偽類分為四大類，第一大類就是剛剛所提到的「錨點偽類」，第二類是「狀態偽類」，而另外兩類則是 -child 和 of-type，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。">
 
   <meta itemprop="name" content="CSS 偽類 child 和 of-type - OXXO.STUDIO">
-  <meta itemprop="image" content="https://lh3.googleusercontent.com/-DYJBq-DVV90/U_IVKyhVI7I/AAAAAAAA93M/GKCdaJyCGf8/s000/20140527_1_01.jpg">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201405/20140527_1_01.jpg">
   <meta itemprop="description" content="對於 CSS 的初學者而言，比較不容易理解的大概就是偽類以及偽元素，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，偽類分為四大類，第一大類就是剛剛所提到的「錨點偽類」，第二類是「狀態偽類」，而另外兩類則是 -child 和 of-type，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。">
 
 
   <meta property="og:title" content="CSS 偽類 child 和 of-type - OXXO.STUDIO" >
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201405/css-selector.html">
-  <meta property="og:image" content="https://lh3.googleusercontent.com/-DYJBq-DVV90/U_IVKyhVI7I/AAAAAAAA93M/GKCdaJyCGf8/s000/20140527_1_01.jpg">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/20140527_1_01.jpg">
   <meta property="og:description" content="對於 CSS 的初學者而言，比較不容易理解的大概就是偽類以及偽元素，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，偽類分為四大類，第一大類就是剛剛所提到的「錨點偽類」，第二類是「狀態偽類」，而另外兩類則是 -child 和 of-type，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。" >
 
   <link rel="stylesheet" href="/css/layout.css">
@@ -76,7 +76,7 @@
             <span class="article-date">MAY 27, 2014</span>
           </h2>
           <p>
-            <img src="https://lh3.googleusercontent.com/-DYJBq-DVV90/U_IVKyhVI7I/AAAAAAAA93M/GKCdaJyCGf8/s000/20140527_1_01.jpg" style="float:right; width:300px; margin-left:10px;">
+            <img src="/img/articles/201405/20140527_1_01.jpg" style="float:right; width:300px; margin-left:10px;">
             <span itemprop="description" class="desc">對於 CSS 的初學者而言，比較不容易理解的大概就是
               <strong>偽類</strong>以及
               <strong>偽元素</strong>，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，這篇文章主要介紹偽類，偽元素的部分會在其他文章中再度提及。通常比較常用到的偽類大概就是超連結的錨點偽類：
@@ -130,7 +130,7 @@
 
           <p>那麼出來的長相應該會是這樣：
             <br />
-            <img src="https://lh5.googleusercontent.com/-1I9-Y9CJLx4/U4X8lBZ_-KI/AAAAAAAA32U/foW6Xfgyd8Y/s000/20140527_1_02.png" alt="img01" />
+            <img src="/img/articles/201405/20140527_1_02.png" alt="img01" />
           </p>
           <p>現在我們來試試看
             <code>:first-child</code>，照著以下的 CSS 來寫</p>
@@ -141,7 +141,7 @@
 
           <p>所呈現的畫面就會變成這樣：
             <br />
-            <img src="https://lh4.googleusercontent.com/-J7IZ7ebB8JI/U4X8lVGVdrI/AAAAAAAA32g/JGoGVtp0BIw/s000/20140527_1_03.png" alt="img02" />
+            <img src="/img/articles/201405/20140527_1_03.png" alt="img02" />
           </p>
           <p>
             <code>last-child</code>
@@ -152,7 +152,7 @@
 </code></pre>
 
           <p>
-            <img src="https://lh4.googleusercontent.com/-7tKXFUYQia8/U4X8lNsuGaI/AAAAAAAA32k/PUYuvnPlGBo/s000/20140527_1_04.png" alt="img03" />
+            <img src="/img/articles/201405/20140527_1_04.png" alt="img03" />
           </p>
           <p>
             <code>:nth-child(數字)</code>挑選第幾個 ( 注意，這裡是 1 起頭，不是 0 )</p>
@@ -162,7 +162,7 @@
 </code></pre>
 
           <p>
-            <img src="https://lh6.googleusercontent.com/-tLleuMGmbZs/U4X8l3jRsEI/AAAAAAAA33A/E_FcVNKKNuE/s000/20140527_1_05.png" alt="img04" />
+            <img src="/img/articles/201405/20140527_1_05.png" alt="img04" />
           </p>
           <p>
             <code>:nth-child(2n)</code>把偶數的挑出來 ( 應該說是把 2 的倍數挑出來 )</p>
@@ -172,7 +172,7 @@
 </code></pre>
 
           <p>
-            <img src="https://lh6.googleusercontent.com/-F-8DyzU1RuE/U4X8l9PBPZI/AAAAAAAA32s/emhMG58NrNA/s000/20140527_1_06.png" alt="img05" />
+            <img src="/img/articles/201405/20140527_1_06.png" alt="img05" />
           </p>
           <p>
             <code>:nth-child(2n+1)</code>把奇數的挑出來，其他就依此類推</p>
@@ -202,7 +202,7 @@
             <code>ul</code>只有一個元素，第二組
             <code>ul</code>則具有五個元素，就如同下圖所示：</p>
           <p>
-            <img src="https://lh6.googleusercontent.com/-2z1GwcKLyjQ/U4X8mZhH0xI/AAAAAAAA320/el-i_AIs-Sg/s000/20140527_1_07.png" alt="img06" />
+            <img src="/img/articles/201405/20140527_1_07.png" alt="img06" />
           </p>
           <p>不過，不要以為
             <code>child</code>的偽類就這麼簡單，裏頭隱藏著一個很容易搞混的地方，如果今天子元素不是單純的
@@ -232,7 +232,7 @@
           </p>
           <p>長相會是這樣：</p>
           <p>
-            <img src="https://lh3.googleusercontent.com/-CpWBP47nO44/U4X8mYMwBuI/AAAAAAAA328/rxV5sanIHng/s000/20140527_1_08.png" alt="img07" />
+            <img src="/img/articles/201405/20140527_1_08.png" alt="img07" />
           </p>
           <p>這時候如果我們寫了</p>
           <pre><code>#test span:first-child{
@@ -266,7 +266,7 @@
 </code></pre>
 
           <p>
-            <img src="https://lh5.googleusercontent.com/-E1HyCTIta1k/U4X-_1OQJXI/AAAAAAAA33Q/4QifacbpGDQ/s000/20140527_1_09.png" alt="img08" />
+            <img src="/img/articles/201405/20140527_1_09.png" alt="img08" />
           </p>
           <p>就會如上圖看到的，第一個
             <code>span</code>就變色了，也因如此，善用這些好用的偽類，我們更可以精準地控制我們所要控制的元素囉！</p>
