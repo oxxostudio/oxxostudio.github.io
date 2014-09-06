@@ -1,4 +1,10 @@
 [{
+  "tag": "tag-web",
+  "title": "SVG 研究之路 (16) - Stroke-miterlimit",
+  "site": "/articles/201409/svg-16-storke-miterlimit.html",
+  "img": "/img/articles/201409/20140906_1_01.jpg",
+  "date": "SEP 6, 2014"
+},{
   "tag": "tag-css",
   "title": "穿透的 div ( pointer-events )",
   "site": "/articles/201409/pointer-events.html",
