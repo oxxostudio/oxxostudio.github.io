@@ -312,4 +312,10 @@
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
+<url>
+<loc>http://www.oxxostudio.tw/articles/201409/apple-moon.html</loc>
+<lastmod>2014-09-08</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>

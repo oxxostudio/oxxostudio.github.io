@@ -1,4 +1,10 @@
 [{
+  "tag": "tag-share",
+  "title": "中秋節與 APPLE 發表會",
+  "site": "/articles/201409/apple-moon.html",
+  "img": "/img/articles/201409/20140908_2_01.jpg",
+  "date": "SEP 8, 2014"
+},{
   "tag": "tag-web",
   "title": "SVG 研究之路 (17) - Stroke-marker",
   "site": "/articles/201409/svg-17-storke-marker.html",
