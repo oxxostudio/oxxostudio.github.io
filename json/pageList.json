@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG 研究之路 (17) - Stroke-marker",
+  "site": "/articles/201409/svg-17-storke-marker.html",
+  "img": "/img/articles/201409/20140908_1_01.jpg",
+  "date": "SEP 8, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG 研究之路 (16) - Stroke-miterlimit",
   "site": "/articles/201409/svg-16-storke-miterlimit.html",
   "img": "/img/articles/201409/20140906_1_01.jpg",
