@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-09-16T23:45:00+01:00">
+  <meta name="keywords" content="svg,defs,definitions,fill,use">
+
+  <meta name="description" content="defs 顧名思義就是「definitions」：定義，我們可以把許多重複性質高的元素，放入 defs 元素內，讓它變成一個可以重複利用的物件，原理就有點類似當年 flash 裏頭把一些動畫或是圖案轉換成物件一樣。">
+
+  <meta itemprop="name" content="SVG 研究之路 (18) - 再談 defs - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140916_1_01.jpg">
+  <meta itemprop="description" content="defs 顧名思義就是「definitions」：定義，我們可以把許多重複性質高的元素，放入 defs 元素內，讓它變成一個可以重複利用的物件，原理就有點類似當年 flash 裏頭把一些動畫或是圖案轉換成物件一樣。">
+
+  <meta property="og:title" content="SVG 研究之路 (18) - 再談 defs - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-18-defs.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140916_1_01.jpg">
+  <meta property="og:description" content="defs 顧名思義就是「definitions」：定義，我們可以把許多重複性質高的元素，放入 defs 元素內，讓它變成一個可以重複利用的物件，原理就有點類似當年 flash 裏頭把一些動畫或是圖案轉換成物件一樣。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>SVG 研究之路 (18) - 再談 defs - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>SVG 研究之路 (18) - 再談 defs
+              <span class="article-date">SEP 16, 2014</span>
+            </h2>
+            <p>
+              <span itemprop="description" class="desc">在前面的 SVG 研究之路裡，不斷看到 defs 這個元素的身影，從顏色的填充、線段的圖案、濾鏡的定義...等許多的效果，都必須使用 defs 來定義，因此就直接寫了這篇關於 defs 的文章，也把這個常見但用法又時常不同的元素，一次做一個整理，也方便之後使用的參考。</span>
+            </p>
+            <p>defs 顧名思義就是「definitions」：定義，我們可以把許多重複性質高的元素，放入 defs 元素內，讓它變成一個可以重複利用的物件，原理就有點類似當年 flash 裏頭把一些動畫或是圖案轉換成物件一樣；首先我們來看到最常見的 defs 例子：「重複的圖形」，下面利用 defs 定義了一個矩形的長寬顏色，再使用 use 元素把矩形表現在畫面上，而 use 元素具有 x 與 y 的座標屬性，就可以輕鬆的做出許多不同位置的矩形。</p>
+            <p>
+              <img src="/img/articles/201409/20140916_1_02.png" alt="SVG 研究之路 (18) - 再談 defs" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;defs&gt;
+  &lt;rect id=&quot;rect1&quot; width=&quot;100&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;#c00&quot;/&gt;
+&lt;/defs&gt;
+&lt;use <strong>xlink:href=&quot;#rect1&quot;</strong>/&gt;
+&lt;use xlink:href=&quot;#rect1&quot; x=&quot;110&quot;/&gt;
+</code></pre>
+            <br/>
+
+            <p>也可以將 g 元素 ( 群組 ) 放在 defs 元素裏頭：</p>
+            <p>
+              <img src="/img/articles/201409/20140916_1_03.png" alt="SVG 研究之路 (18) - 再談 defs" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;defs&gt;
+    &lt;g id=&quot;g1&quot;&gt;
+        &lt;rect id=&quot;rect1&quot; width=&quot;100&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;#c00&quot;/&gt;
+        &lt;circle id=&quot;circle1&quot; cx=&quot;30&quot; cy=&quot;30&quot; r=&quot;10&quot; fill=&quot;#00c&quot;/&gt;
+    &lt;/g&gt;
+&lt;/defs&gt;
+&lt;use <strong>xlink:href=&quot;#g1&quot;</strong>/&gt;
+&lt;use xlink:href=&quot;#rect1&quot; x=&quot;110&quot;/&gt;
+&lt;use xlink:href=&quot;#circle1&quot; x=&quot;210&quot;/&gt;
+</code></pre>
+            <br/>
+
+            <p>定義漸層色 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">SVG 研究之路 (7) - fill 填色</a> )：</p>
+            <p>
+              <img src="/img/articles/201409/20140916_1_04.png" alt="SVG 研究之路 (18) - 再談 defs" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;defs&gt;
+   &lt;linearGradient id=&quot;a1&quot;&gt;
+     &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
+     &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+   &lt;/linearGradient&gt;
+&lt;/defs&gt;
+&lt;rect x=&quot;50&quot; y=&quot;250&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;5&quot; <strong>fill=&quot;url(#a1)&quot;</strong>&gt;&lt;/rect&gt;
+&lt;circle cx=&quot;220&quot; cy=&quot;300&quot; r=&quot;50&quot; stroke=&quot;#000&quot; stroke-width=&quot;5&quot; fill=&quot;url(#a1)&quot;&gt;&lt;/circle&gt;
+&lt;rect x=&quot;290&quot; y=&quot;250&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;url(#a1)&quot; stroke-width=&quot;5&quot; fill=&quot;none&quot;&gt;&lt;/rect&gt;
+</code></pre>
+            <br/>
+
+            <p>定義文字路徑 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-08-text.html">SVG 研究之路 (8) - text 文字</a> )：</p>
+            <p>
+              <img src="/img/articles/201409/20140916_1_05.png" alt="SVG 研究之路 (18) - 再談 defs" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;defs&gt;
+  &lt;path id=&quot;a1&quot; d=&quot;M0 50 C150 150 100 -50 300 50&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;/&gt;
+&lt;/defs&gt;
+&lt;text&gt;
+   &lt;textPath <strong>xlink:href=&quot;#a1&quot;&gt;</strong>這是隨著路徑跑的文字，很酷吧
+  &lt;/textPath&gt;
+&lt;/text&gt;
+</code></pre>
+            <br/>
+
+            <p>定義剪裁 Cliping ( <a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html">SVG 研究之路 (9) - Clipping and Masking</a> )：</p>
+            <p>
+              <img src="/img/articles/201409/20140916_1_06.png" alt="SVG 研究之路 (18) - 再談 defs" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;defs&gt;  
+  &lt;clipPath id=&quot;a1&quot;&gt;
+  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;200&quot; height=&quot;100&quot; /&gt;
+&lt;/clipPath&gt;
+&lt;/defs&gt;
+&lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;100&quot; <strong>clip-path=&quot;url(#a1)</strong>&quot; fill=&quot;#000&quot; /&gt;
+</code></pre>
+            <br/>
+
+            <p>定義剪裁 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html">SVG 研究之路 (9) - Clipping and Masking</a> )：</p>
+            <p>
+              <img src="/img/articles/201409/20140916_1_09.png" alt="SVG 研究之路 (18) - 再談 defs" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;defs&gt;
+  &lt;mask id=&quot;mask1&quot;&gt; 
+    &lt;rect  x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;#ccc&quot;/&gt;
+    &lt;rect  x=&quot;150&quot; y=&quot;150&quot; width=&quot;50&quot; height=&quot;50&quot; fill=&quot;#fff&quot;/&gt;
+  &lt;/mask&gt; 
+&lt;/defs&gt;
+  &lt;rect id=&quot;box1&quot; x=&quot;50&quot; y=&quot;50&quot; width=&quot;150&quot; height=&quot;150&quot; fill=&quot;#0f0&quot;/&gt;
+  &lt;rect id=&quot;box2&quot; x=&quot;50&quot; y=&quot;50&quot; width=&quot;150&quot; height=&quot;150&quot; fill=&quot;#f00&quot; <strong>mask=&quot;url(#mask1)&quot;</strong>/&gt;
+</code></pre>
+            <br/>
+
+            <p>定義線段 marker ( <a href="http://www.oxxostudio.tw/articles/201409/svg-17-storke-marker.html">SVG 研究之路 (17) - Stroke-marker</a> )：</p>
+            <p>
+              <img src="/img/articles/201409/20140916_1_07.png" alt="SVG 研究之路 (18) - 再談 defs" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;defs&gt;
+  &lt;marker id=&quot;r&quot; viewBox=&quot;-10 -10 70 70&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;15&quot; markerHeight=&quot;15&quot; orient=&quot;auto&quot; &gt;
+      &lt;circle fill=&quot;#fff&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;25&quot;/&gt;
+  &lt;/marker&gt;
+    &lt;marker id=&quot;g&quot; viewBox=&quot;0 0 50 50&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;10&quot; markerHeight=&quot;10&quot; orient=&quot;45&quot; &gt;
+      &lt;rect fill=&quot;#0a0&quot; width=&quot;50&quot; height=&quot;50&quot;/&gt;
+  &lt;/marker&gt;
+  &lt;marker id=&quot;b&quot; viewBox=&quot;-10 -10 70 70&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;15&quot; markerHeight=&quot;15&quot; orient=&quot;auto&quot; &gt;
+      &lt;circle fill=&quot;#f99&quot; stroke=&quot;#f00&quot; stroke-width=&quot;10&quot; cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;25&quot;/&gt;
+  &lt;/marker&gt;
+&lt;/defs&gt;
+&lt;polyline points=&quot;20,100 50,100 80,20 110,80 140,30 170,100 200,100&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;1&quot; <strong>marker-end=&quot;url(#b)&quot; marker-start=&quot;url(#r)&quot; marker-mid=&quot;url(#g)&quot;</strong>&gt;&lt;/polyline&gt;
+</code></pre>
+            <br/>
+
+            <p>使用 defs 定義 filter ( <a href="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html">SVG 研究之路 (13) - filter - feGaussianBlur</a> )：</p>
+            <p>
+              <img src="/img/articles/201409/20140916_1_08.png" alt="SVG 研究之路 (18) - 再談 defs" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;defs&gt;
+&lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
+  &lt;feGaussianBlur stdDeviation=&quot;5&quot; /&gt;
+&lt;/filter&gt;
+&lt;/defs&gt;
+&lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#a00&quot; <strong>filter=url(&quot;#blur&quot;)</strong> /&gt;
+</code></pre>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+</html>
