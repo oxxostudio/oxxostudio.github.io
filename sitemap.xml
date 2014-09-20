@@ -330,4 +330,10 @@
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
+<url>
+<loc>http://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html</loc>
+<lastmod>2014-09-20</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>
