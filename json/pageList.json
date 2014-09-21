@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG 研究之路 (21) - 初探 SMIL Animation",
+  "site": "/articles/201409/svg-21-smil-animation.html",
+  "img": "/img/articles/201409/20140921_1_01.jpg",
+  "date": "SEP 21, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG 研究之路 (20) - transform Matrix",
   "site": "/articles/201409/svg-20-transform-matrix.html",
   "img": "/img/articles/201409/20140920_2_01.jpg",
