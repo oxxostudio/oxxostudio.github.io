@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG 研究之路 (22) - 深入理解 SMIL Animation",
+  "site": "/articles/201409/svg-22-smil-animation-2.html",
+  "img": "/img/articles/201409/20140921_2_01.jpg",
+  "date": "SEP 22, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG 研究之路 (21) - 初探 SMIL Animation",
   "site": "/articles/201409/svg-21-smil-animation.html",
   "img": "/img/articles/201409/20140921_1_01.jpg",
