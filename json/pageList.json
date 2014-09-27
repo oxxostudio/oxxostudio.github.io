@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG 研究之路 (24) - 寫 jquery 產生圓餅圖",
+  "site": "/articles/201409/svg-24-jquery-pie-chart.html",
+  "img": "/img/articles/201409/20140927_1_01.jpg",
+  "date": "SEP 27, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG 研究之路 (23) - 理解 viewport 與 viewbox",
   "site": "/articles/201409/svg-23-viewpoint-viewBox.html",
   "img": "/img/articles/201409/20140925_1_01.jpg",
