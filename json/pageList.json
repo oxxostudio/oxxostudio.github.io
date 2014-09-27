@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG 研究之路 (25) - 再談漸層填色",
+  "site": "/articles/201409/svg-25-gradients-patterns.html",
+  "img": "/img/articles/201409/20140927_2_01.jpg",
+  "date": "SEP 27, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG 研究之路 (24) - 寫 jquery 產生圓餅圖",
   "site": "/articles/201409/svg-24-jquery-pie-chart.html",
   "img": "/img/articles/201409/20140927_1_01.jpg",
