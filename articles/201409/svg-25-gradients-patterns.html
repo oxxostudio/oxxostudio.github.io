@@ -77,7 +77,7 @@
             <h2>SVG 研究之路 (25) - 再談漸層填色
               <span class="article-date">SEP 27, 2014</span>
             </h2>
-            <p>先前在 <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">SVG 研究之路 (7) - fill 填色</a> 有介紹過 SVG 的 fill 填色，文章後面介紹了基本的漸層填色，但並沒有深入的介紹進一步的設定，然而<span itemprop="description" class="desc">高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活。廢話不多說，立馬來看漸層 Gradient ，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是圓形漸層 ( Radial gradients )</span> ，因為是漸層，所以要這樣子定義：</p>
+            <p>先前在 <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">SVG 研究之路 (7) - fill 填色</a> 有介紹過 SVG 的 fill 填色，文章後面介紹了基本的漸層填色，但並沒有深入的介紹進一步的設定，然而<span itemprop="description" class="desc">高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活。廢話不多說，立馬來看漸層 Gradient ，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients )</span> ，因為是漸層，所以要這樣子定義：</p>
             <pre><code>&lt;defs&gt;
    &lt;linearGradient id=&quot;L&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;&gt;
      &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
@@ -125,7 +125,7 @@
               </li>
               <li>
                 <p>
-                  <strong>圓形漸層：</strong>
+                  <strong>放射漸層：</strong>
                 </p>
                 <ul>
                   <li>
@@ -159,7 +159,7 @@
               </li>
             </ul>
             <p>其實兩種漸層大同小異，差別只在於線性漸層是用
-              <code>x1,y1,x2,y2</code>、圓形漸層是用
+              <code>x1,y1,x2,y2</code>、放射漸層是用
               <code>cx,cy,r,fx,fy</code>，因此我們先從相同的屬性來談起：</p>
             <ul>
               <li>
@@ -264,7 +264,7 @@
 
               </li>
             </ul>
-            <p>OK，以上就是線性漸層和圓形漸層的共通屬性，接下來就要討論它們兩個個別的屬性了，剛剛的範例幾乎都是用線性漸層做的，就讓我們先來看看線性漸層 linearGradient 吧！</p>
+            <p>OK，以上就是線性漸層和放射漸層的共通屬性，接下來就要討論它們兩個個別的屬性了，剛剛的範例幾乎都是用線性漸層做的，就讓我們先來看看線性漸層 linearGradient 吧！</p>
             <ul>
               <li>
                 <p>
@@ -318,7 +318,7 @@
                 <p>
                   <strong>cx,cy,r</strong>
                 </p>
-                <p>這是 radialGradient 最好理解的參數，顧名思義，從圓心出發一直到半徑結束的圓形漸層，請注意，單位仍然是小數點或是百分比，這邊最容易出錯的地方在
+                <p>這是 radialGradient 最好理解的參數，顧名思義，從圓心出發一直到半徑結束的放射漸層，請注意，單位仍然是小數點或是百分比，這邊最容易出錯的地方在
                   <code>r</code>，因為如果你設為 1 或是 100%，半徑就是矩形的寬度喔！( 如果不設定，則預設值為 50%，如果不是圓形，則會按照長寬變成同等比例的橢圓半徑 )</p>
                 <p>
                   <img src="/img/articles/201409/20140927_2_09.png" alt="SVG 研究之路 (25) - 再談漸層填色"  style="margin-bottom:-10px;"/>
@@ -348,7 +348,7 @@
                   <strong>fx,fy</strong>
                 </p>
                 <p>這兩個參數很有意思，這兩個參數預設是沒有值的，如果我們設定了這兩個參數，則剛剛的
-                  <code>cx,cy</code>就會變成圓形漸層填色的「
+                  <code>cx,cy</code>就會變成放射漸層填色的「
                   <strong>範圍</strong>」圓心，然後漸層色會填滿這個「圓的範圍」</p>
                 <p>
                   <img src="/img/articles/201409/20140927_2_10.png" alt="SVG 研究之路 (25) - 再談漸層填色"  style="margin-bottom:-10px;"/>
