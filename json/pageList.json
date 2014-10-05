@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG 研究之路 (27) - filter - feImage",
+  "site": "/articles/201410/svg-27-filter-feImage.html",
+  "img": "/img/articles/201410/20141005_1_01.jpg",
+  "date": "OCT 5, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG 研究之路 (26) - 有趣的 Patterns",
   "site": "/articles/201409/svg-26-patterns.html",
   "img": "/img/articles/201409/20140928_1_01.jpg",
