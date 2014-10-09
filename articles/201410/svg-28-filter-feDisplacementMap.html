@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-10-09T23:55:00+01:00">
+  <meta name="keywords" content="svg,移置,濾鏡,filter,feDisplacementMap">
+
+  <meta name="description" content="在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。">
+
+  <meta itemprop="name" content="SVG 研究之路 (28) - filter - feDisplacementMap - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/20141009_1_01.jpg">
+  <meta itemprop="description" content="在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。">
+
+  <meta property="og:title" content="SVG 研究之路 (28) - filter - feDisplacementMap - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-28-filter-feDisplacementMap.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141009_1_01.jpg">
+  <meta property="og:description" content="在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>SVG 研究之路 (28) - filter - feDisplacementMap - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>SVG 研究之路 (28) - filter - feDisplacementMap
+              <span class="article-date">OCT 9, 2014</span>
+            </h2>
+            <p><img src="/img/articles/201410/20141009_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+            在玩 photoshop 的時候，我時常會使用一個名為「移置」的特效，這個特效說難不難，可以參考我在 2008 年寫的的教學：<a href="http://oxxo-studio-past.blogspot.tw/2008/01/photoshop_5142.html" target="_blank">photoshop：國旗飄揚皺折</a>，<span itemprop="description" class="desc">在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。</span></p>
+            <p>同樣的，SVG 裡也有提供這種功能，就叫做 feDisplacementMap，也因為有了這個濾鏡，我們更可以做出許多有趣的變化，現在就讓我們來繼續看下去~</p>
+            <p>feDisplacementMap 的屬性：</p>
+            <ul>
+              <li>
+                <strong>scale</strong>
+              </li>
+              <li>
+                <strong>xChannelSelector</strong>
+              </li>
+              <li>
+                <strong>yChannelSelector</strong>
+              </li>
+              <li>
+                <strong>in</strong>
+              </li>
+              <li>
+                <strong>in2</strong>
+              </li>
+            </ul>
+            <p>在解釋這些屬性之前，可以先看到 SVG 裡頭關於每個像素移置的公式：「
+              <code>P'(x,y) &lt;- P( x + scale * (XC(x,y) - .5), y + scale * (YC(x,y) - .5))</code>」，看起來很難，翻成中文就是：P’(x,y) 是移置過的該像素坐標，公式就是原本的坐標 ( x,y ) 加上振幅比例 ( scale ) 與 xChannelSelector 或 yChannelSelector 的乘積。</p>
+            <p>好像很難理解？沒關係，我再講的直白一點，簡單來說就是我們提供一張以 R 或 G 或 B 或 A 為主的圖片，目的在作為另外一張圖片的移置參考，會怎麼移置取決了我們提供的圖片內容顏色以及被移置的圖片內容顏色，如果今天以 R ( 紅色 ) 通道為例，越紅移置的比例越高，但如果圖片裡面沒有紅色，則 R 作為移置的效用就不明顯或與其他顏色通道不同。</p>
+            <p>然而和 Photoshop 最大的不同，SVG 裡頭可以選擇四種通道顏色，也就是 RGBA，換句話說，我們在 HTML 的色彩，寫成 red 或 #f00 其實只描述了 RGB，如果寫成 rgba(255,0,0,1) 就會更容易理解，如果對於這些寫法不容易轉換的話，也可以開啟 photoshop 或繪圖軟體的調色盤，通常都可以看到色彩的數值。( 不明白 rgba 的請參考這篇文章 <a href="http://zh.wikipedia.org/wiki/RGBA" target="_blank">http://zh.wikipedia.org/wiki/RGBA</a>，這裡就不介紹了 )</p>
+            <p>上面其實就是在介紹 scale、xChannelSelector 和 yChannelSelector 這三個屬性，至於剩下的 in 和 in2 屬性，
+              <strong>in 代表要被套用的圖片 ( 要變形的 )，in2 則是要套用的圖片 ( RGBA 通道使用 )，而要套用的 feImage，則必須要寫上 result，就可以被套用</strong>。</p>
+            <p>講到這裡非常多的解釋，不如直接來幾張示意圖才比較好理解，下面我先拿一張黑白棋盤圖作為要變形的圖片 ( 通常變形都會拿這種圖來解釋，因為最明顯也最清楚 )，我們先看看套用紅黑漸層移置的效果：</p>
+            <p>
+              <img src="/img/articles/201410/20141009_1_02.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;svg width=&quot;250&quot; height=&quot;150&quot;&gt;
+  &lt;defs&gt;
+    &lt;filter id=&quot;f&quot; filterUnits=&quot;objectBoundingBox&quot; primitiveUnits=&quot;objectBoundingBox&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;1&quot; height=&quot;1&quot;&gt;
+      &lt;feImage result=&quot;pict1&quot; xlink:href=&quot;#m1&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;1&quot; height=&quot;1&quot;&gt;&lt;/feImage&gt;
+      &lt;feImage result=&quot;pict2&quot; xlink:href=&quot;#m2&quot; x=&quot;0&quot; y=&quot;0&quot;  width=&quot;1&quot; height=&quot;1&quot;&gt;&lt;/feImage&gt;
+      &lt;feDisplacementMap id=&quot;fdm&quot; scale=&quot;.5&quot; xChannelSelector=&quot;R&quot; yChannelSelector=&quot;R&quot; in2=&quot;pict2&quot; in=&quot;pict1&quot;&gt;&lt;/feDisplacementMap&gt;
+    &lt;/filter&gt;
+    &lt;linearGradient id=&quot;g&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;&gt;
+      &lt;stop offset=&quot;0&quot; stop-color=&quot;#f00&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;1&quot; stop-color=&quot;#000&quot;&gt;&lt;/stop&gt;
+    &lt;/linearGradient&gt;
+    &lt;rect id=&quot;m2&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;url(#g)&quot;&gt;&lt;/rect&gt;
+    &lt;image id=&quot;m1&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; xlink:href=&quot;http://www.oxxostudio.tw/img/articles/201410/20141009_1_demo.jpg&quot;&gt;&lt;/image&gt;
+  &lt;/defs&gt;
+  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; filter=&quot;url(#f)&quot; stroke=&quot;#000&quot; transform=&quot;translate(110)&quot;&gt;&lt;/rect&gt;
+  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;url(#g)&quot;&gt;&lt;/rect&gt;
+  &lt;rect x=&quot;110&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><br/>
+
+            <p>再來看看紅綠漸層移置的效果：</p>
+            <p>
+              <img src="/img/articles/201410/20141009_1_03.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>    &lt;linearGradient id=&quot;g&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;&gt;
+      &lt;stop offset=&quot;0&quot; stop-color=&quot;#f00&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;1&quot; stop-color=&quot;#0f0&quot;&gt;&lt;/stop&gt;
+    &lt;/linearGradient&gt;
+</code></pre><br/>
+
+            <p>為什麼上面的效果是一樣的呢？原因就是剛剛說的，我們採用紅色通道作為移置的參考，所以紅黑漸層或紅綠漸層，紅色通道的值是固定的，所以出來的效果才會一模一樣，不過這時候如果像下面的範例把通道改為 A，就會發現整張圖往左上角飄移！為什麼呢？</p>
+            <p>
+              <img src="/img/articles/201410/20141009_1_04.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;feDisplacementMap id=&quot;fdm&quot; scale=&quot;.5&quot; xChannelSelector=&quot;A&quot; yChannelSelector=&quot;A&quot; in2=&quot;pict2&quot; in=&quot;pict1&quot;&gt;&lt;/feDisplacementMap&gt;
+</code></pre><br/>
+
+            <p>因為這個漸層的 A 都是 1 ( 沒有不透明的部分 )，加上我們要用作移置的圖片 Aplha 色板也都是 1，所以在換算之後就整張圖移置了 ( 應該說所有的像素都移置了 )，如果這時候改成 B，就會發現往右下角飄移，因為漸層裏頭 B 的數值是 0 而套用的圖片 B 有數值 ( 白色的區域 B=255 )</p>
+            <p>
+              <img src="/img/articles/201410/20141009_1_05.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;feDisplacementMap id=&quot;fdm&quot; scale=&quot;.5&quot; xChannelSelector=&quot;B&quot; yChannelSelector=&quot;B&quot; in2=&quot;pict2&quot; in=&quot;pict1&quot;&gt;&lt;/feDisplacementMap&gt;
+</code></pre><br/>
+
+            <p>因此如果真的要精準控制 A，則必須要把漸層顏色加入透明度，你可以使用 stop-opacity 來加入，或是使用 rgba 來加入也可以，下面的範例使用 rgba，當有了透明度，設 A 通道的模式就有作用囉。 ( 不過你會發現出來的結果和經過 A 通道不同，因為被套用的圖片裡，所有像素的 A 都是 1，而對於 R 來說，白色區域的 R=255 )</p>
+            <p>
+              <img src="/img/articles/201410/20141009_1_06.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>    &lt;linearGradient id=&quot;g&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;&gt;
+      &lt;stop offset=&quot;0&quot; stop-color=&quot;rgba(255,0,0,0)&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;1&quot; stop-color=&quot;rgba(0,255,0,1)&quot;&gt;&lt;/stop&gt;
+    &lt;/linearGradient&gt;
+</code></pre><br/>
+
+            <p>除了自己畫漸層，也可以直接用別當圖來當作移置的參考：</p>
+            <p>
+              <img src="/img/articles/201410/20141009_1_07.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>    &lt;image id=&quot;m1&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; xlink:href=&quot;http://www.oxxostudio.tw/img/articles/201410/20141009_1_demo.jpg&quot;&gt;&lt;/image&gt;
+    &lt;image id=&quot;m3&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; xlink:href=&quot;http://www.oxxostudio.tw/img/articles/201410/20141009_1_demo2.jpg&quot;&gt;&lt;/image&gt;
+</code></pre><br/>
+
+            <p>了解原理之後，我們做一個放射漸層看看效果，那就再來一個多層的放射漸層，整個就變成水波了！( 不過由於範例的 primitiveUnits 設定為 objectBoundingBox，所以很多是比例的換算，比較麻煩且複雜 )</p>
+            <p>
+              <img src="/img/articles/201410/20141009_1_08.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;svg width=&quot;340&quot; height=&quot;231&quot;&gt;
+  &lt;defs&gt;
+    &lt;filter id=&quot;f&quot; filterUnits=&quot;objectBoundingBox&quot; primitiveUnits=&quot;objectBoundingBox&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;1.1&quot; height=&quot;1.1&quot;&gt;
+      &lt;feImage result=&quot;pict1&quot; xlink:href=&quot;#m1&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;1.1&quot; height=&quot;1.1&quot;&gt;&lt;/feImage&gt;
+      &lt;feImage result=&quot;pict2&quot; xlink:href=&quot;#m2&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;1.1&quot; height=&quot;1.1&quot;&gt;&lt;/feImage&gt;
+      &lt;feDisplacementMap id=&quot;fdm&quot; scale=&quot;.1&quot; xChannelSelector=&quot;R&quot; yChannelSelector=&quot;R&quot; in2=&quot;pict2&quot; in=&quot;pict1&quot;&gt;&lt;/feDisplacementMap&gt;
+    &lt;/filter&gt;
+    &lt;radialGradient id=&quot;g&quot; cx=&quot;.6&quot; cy=&quot;.6&quot; r=&quot;.05&quot; spreadMethod=&quot;reflect&quot;&gt;
+      &lt;stop offset=&quot;0&quot; stop-color=&quot;#000&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;1&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+    &lt;/radialGradient&gt;
+    &lt;rect id=&quot;m2&quot; x=&quot;-10&quot; y=&quot;0&quot; width=&quot;410&quot; height=&quot;300&quot; fill=&quot;url(#g)&quot;&gt;&lt;/rect&gt;
+    &lt;image id=&quot;m1&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;400&quot; height=&quot;300&quot; xlink:href=&quot;http://www.oxxostudio.tw/img/articles/201410/20141009_1_demo3.JPG&quot;&gt;&lt;/image&gt;
+  &lt;/defs&gt;
+  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;400&quot; height=&quot;300&quot; filter=&quot;url(#f)&quot; transform=&quot;translate(-60 -60)&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><br/>
+
+            <p>同樣的效果也可以應用在國旗上噢！</p>
+            <p>
+              <img src="/img/articles/201410/20141009_1_09.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;svg width=&quot;340&quot; height=&quot;231&quot;&gt;
+  &lt;defs&gt;
+    &lt;filter id=&quot;f&quot; filterUnits=&quot;objectBoundingBox&quot; primitiveUnits=&quot;objectBoundingBox&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;1.1&quot; height=&quot;1.1&quot;&gt;
+      &lt;feImage result=&quot;pict1&quot; xlink:href=&quot;#m1&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;1.1&quot; height=&quot;1.1&quot;&gt;&lt;/feImage&gt;
+      &lt;feImage result=&quot;pict2&quot; xlink:href=&quot;#m2&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;1.1&quot; height=&quot;1.1&quot;&gt;&lt;/feImage&gt;
+      &lt;feDisplacementMap id=&quot;fdm&quot; scale=&quot;.05&quot; xChannelSelector=&quot;A&quot; yChannelSelector=&quot;A&quot; in2=&quot;pict2&quot; in=&quot;pict1&quot;&gt;&lt;/feDisplacementMap&gt;
+    &lt;/filter&gt;
+    &lt;linearGradient id=&quot;g&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;.2&quot; y2=&quot;.02&quot; spreadMethod=&quot;reflect&quot;&gt;
+      &lt;stop offset=&quot;0&quot; stop-color=&quot;rgba(0,0,0,.8)&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;.2&quot; stop-color=&quot;rgba(0,0,0,.7)&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;.6&quot; stop-color=&quot;rgba(0,0,0,.1)&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;1&quot; stop-color=&quot;rgba(0,0,0,0)&quot;&gt;&lt;/stop&gt;
+    &lt;/linearGradient&gt;
+    &lt;linearGradient id=&quot;g2&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;.2&quot; y2=&quot;.02&quot; spreadMethod=&quot;reflect&quot;&gt;
+      &lt;stop offset=&quot;0&quot; stop-color=&quot;rgba(0,0,0,.8)&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;.2&quot; stop-color=&quot;rgba(0,0,0,.7)&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;.6&quot; stop-color=&quot;rgba(0,0,0,.1)&quot;&gt;&lt;/stop&gt;
+      &lt;stop offset=&quot;1&quot; stop-color=&quot;rgba(0,0,0,0)&quot;&gt;&lt;/stop&gt;
+    &lt;/linearGradient&gt;
+    &lt;rect id=&quot;m2&quot; x=&quot;-10&quot; y=&quot;0&quot; width=&quot;410&quot; height=&quot;300&quot; fill=&quot;url(#g)&quot;&gt;&lt;/rect&gt;
+    &lt;image id=&quot;m1&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;400&quot; height=&quot;300&quot; xlink:href=&quot;http://www.oxxostudio.tw/img/articles/201410/20141009_1_demo4.jpg&quot;&gt;&lt;/image&gt;
+  &lt;/defs&gt;
+  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;400&quot; height=&quot;300&quot; filter=&quot;url(#f)&quot; transform=&quot;translate(-50 -30)&quot;&gt;&lt;/rect&gt;
+  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;400&quot; height=&quot;300&quot; fill=&quot;url(#g2)&quot; transform=&quot;translate(-50 -30)&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre>
+
+            <p>以上就是非常有趣的 feDisplacementMap 濾鏡，趕緊用幾張圖來玩玩看吧！^_^</p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+</html>
