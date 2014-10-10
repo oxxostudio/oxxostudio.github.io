@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<!--======================================================================-->
+<!--==============  Copyright 2014, www.oxxostudio.tw    =================-->
+<!--======================================================================-->
+
+<svg version="1.1" baseProfile="full" id="oxxo-svg" width="340" height="231"
+     xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink" >
+      <defs>
+        <filter id="f" filterUnits="objectBoundingBox" x="20" y="20" width="390" height="280">
+          <feImage xlink:href="#MyImage1" result="pict1"></feImage>
+          <feImage xlink:href="#MyImage2" result="pict2"></feImage>
+          <feDisplacementMap id="fdm" scale="50" xChannelSelector="R" yChannelSelector="R" in2="pict2" in="pict1"></feDisplacementMap>
+        </filter>
+        <radialGradient id="r" cx=".5" cy=".5" r=".8">
+          <stop offset="0" stop-color="#000">
+            <animate attributeName="offset" to=".2" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".1" stop-color="#f00">
+            <animate attributeName="offset" to=".3" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".2" stop-color="#000">
+            <animate attributeName="offset" to=".4" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".3" stop-color="#f00">
+            <animate attributeName="offset" to=".5" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".4" stop-color="#000">
+            <animate attributeName="offset" to=".6" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".5" stop-color="#f00">
+            <animate attributeName="offset" to=".7" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".6" stop-color="#000">
+            <animate attributeName="offset" to=".8" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".7" stop-color="#f00">
+            <animate attributeName="offset" to=".9" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".8" stop-color="#000">
+            <animate attributeName="offset" to="1" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+          <stop offset=".9" stop-color="#f00">
+            <animate attributeName="offset" to="1.1" dur="1s" repeatCount="indefinite"></animate>
+          </stop>
+        </radialGradient>
+        <rect id="MyImage2" x="0" y="0" width="390" height="281" fill="url(#r)"></rect>
+        <image id="MyImage1" x="-20" y="-140" width="450" height="400" xlink:href="http://www.oxxostudio.tw/img/articles/201410/20141010_1_demo.jpg"></image>
+      </defs>
+      <use filter="url(#f)" x="-50" y="-50"></use>
+    </svg>
+

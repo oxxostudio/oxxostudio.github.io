@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-10-10T14:25:00+01:00">
+  <meta name="keywords" content="svg,移置,濾鏡,filter,feDisplacementMap,water,ripple,水波">
+
+  <meta name="description" content="這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
+
+  <meta itemprop="name" content="SVG 研究之路 (29) - filter - 水波效果 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/20141010_1_01.gif">
+  <meta itemprop="description" content="這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
+
+  <meta property="og:title" content="SVG 研究之路 (29) - filter - 水波效果 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-29-filter-water-ripple.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141010_1_01.gif">
+  <meta property="og:description" content="這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>SVG 研究之路 (29) - filter - 水波效果 - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>SVG 研究之路 (29) - filter - 水波效果
+              <span class="article-date">OCT 10, 2014</span>
+            </h2>
+            <p>在 <a href="http://www.oxxostudio.tw/articles/201410/svg-28-filter-feDisplacementMap.html">SVG 研究之路 (28) - filter - feDisplacementMap</a> <span itemprop="description" class="desc">我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！</span></p>
+            <p>說是補充其實也只是上一篇少講了這個 <a href="http://www.w3.org/Graphics/SVG/Test/20030813/htmlframe/full-filters-displace-01-f.html" target="_blank">W3C 的範例</a> ( 看下圖 )，裏頭同樣是使用黑白的棋盤圖來做移置，不過作為移置的參考漸層圖是有設計過的漸層，可以讓整體的移置剛好旋轉 20 度，而且如果是以 png 作為漸層移置參考，就不會有鋸齒狀的效果。</p>
+            <p>
+              <img src="/img/articles/201410/20141010_1_02.png" alt="SVG 研究之路 (29) - filter - 水波效果" />
+            </p>
+            <p>OK 補充完了，繼續來看一下這篇的主題：水波效果，在上一篇我使用的漸層，是利用漸層本身的重複性 spreadMethod=&quot;reflect&quot; 來做重複的漸層，但如果應用在漸層的動畫上，就會有些問題了，因為漸層的重複性很多層面取決於 r 的大小，所以無法做出由內而外不斷重複的動畫，於是換個角度思考，直接從製作的漸層顏色 stop-offset 著手，製作出許多的漸層環，搭配動畫的時間差，就可以讓漸層看起來完全連接在一起。</p>
+            <p>先看看漸層動畫：</p>
+            <p>
+              <img src="/img/articles/201410/20141010_1_03.gif" alt="SVG 研究之路 (29) - filter - 水波效果" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;svg width=&quot;340&quot; height=&quot;231&quot;&gt;
+  &lt;defs&gt;
+    &lt;radialGradient id=&quot;r&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.8&quot;&gt;
+      &lt;stop offset=&quot;0&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.2&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.1&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.3&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.2&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.4&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.3&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.5&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.4&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.6&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.5&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.7&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.6&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.8&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.7&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.9&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.8&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;1&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.9&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;1.1&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+    &lt;/radialGradient&gt;
+  &lt;/defs&gt;
+  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;340&quot; height=&quot;231&quot; fill=&quot;url(#r)&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><br/>
+
+            <p>套用移置率鏡後的效果，這樣的 gif 動畫只有一兩秒，檔案大小高達 600KB，SVG 只有 2KB，你也可以直接打開 <a href="/img/articles/201410/20141010_1_demo.svg" target="_blank">SVG 預覽</a>，看不到就表示你的瀏覽器不支援喔~：</p>
+            <p>
+              <img src="/img/articles/201410/20141010_1_01.gif" alt="SVG 研究之路 (29) - filter - 水波效果" style="margin-bottom:-10px;" />
+            </p>
+            <pre><code>&lt;svg width=&quot;340&quot; height=&quot;231&quot;&gt;
+  &lt;defs&gt;
+    &lt;filter id=&quot;f&quot; filterUnits=&quot;objectBoundingBox&quot; x=&quot;20&quot; y=&quot;20&quot; width=&quot;390&quot; height=&quot;280&quot;&gt;
+      &lt;feImage xlink:href=&quot;#MyImage1&quot; result=&quot;pict1&quot;&gt;&lt;/feImage&gt;
+      &lt;feImage xlink:href=&quot;#MyImage2&quot; result=&quot;pict2&quot;&gt;&lt;/feImage&gt;
+      &lt;feDisplacementMap id=&quot;fdm&quot; scale=&quot;50&quot; xChannelSelector=&quot;R&quot; yChannelSelector=&quot;R&quot; in2=&quot;pict2&quot; in=&quot;pict1&quot;&gt;&lt;/feDisplacementMap&gt;
+    &lt;/filter&gt;
+    &lt;radialGradient id=&quot;r&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.8&quot;&gt;
+      &lt;stop offset=&quot;0&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.2&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.1&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.3&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.2&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.4&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.3&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.5&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.4&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.6&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.5&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.7&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.6&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.8&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.7&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;.9&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.8&quot; stop-color=&quot;#000&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;1&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+      &lt;stop offset=&quot;.9&quot; stop-color=&quot;#f00&quot;&gt;
+        &lt;animate attributeName=&quot;offset&quot; to=&quot;1.1&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animate&gt;
+      &lt;/stop&gt;
+    &lt;/radialGradient&gt;
+    &lt;rect id=&quot;MyImage2&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;390&quot; height=&quot;281&quot; fill=&quot;url(#r)&quot;&gt;&lt;/rect&gt;
+    &lt;image id=&quot;MyImage1&quot; x=&quot;-20&quot; y=&quot;-140&quot; width=&quot;450&quot; height=&quot;400&quot; xlink:href=&quot;http://www.oxxostudio.tw/img/articles/201410/20141010_1_demo.jpg&quot;&gt;&lt;/image&gt;
+  &lt;/defs&gt;
+  &lt;use filter=&quot;url(#f)&quot; x=&quot;-50&quot; y=&quot;-50&quot;&gt;&lt;/use&gt;
+&lt;/svg&gt;
+</code></pre><br/>
+
+            <p>如果你需要線上編輯測試看看，可以點選 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=4811103238356992" target="_blank">這個網址</a> 來測試，這是 EZoApp 線上開發工具，右邊可以編輯，編輯之後按下上面的 preview 就可以預覽囉~ ^_^</p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+</html>

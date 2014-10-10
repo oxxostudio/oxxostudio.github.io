@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG 研究之路 (29) - filter - 水波效果",
+  "site": "/articles/201410/svg-29-filter-water-ripple.html",
+  "img": "/img/articles/201410/20141010_1_01.gif",
+  "date": "OCT 10, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG 研究之路 (28) - filter - feDisplacementMap",
   "site": "/articles/201410/svg-28-filter-feDisplacementMap.html",
   "img": "/img/articles/201410/20141009_1_01.jpg",
