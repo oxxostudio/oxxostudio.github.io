@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG 研究之路 (30) - filter - feConvolveMatrix",
+  "site": "/articles/201410/svg-30-filter-feConvolveMatrix.html",
+  "img": "/img/articles/201410/20141020_1_01.jpg",
+  "date": "OCT 20, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG 研究之路 (29) - filter - 水波效果",
   "site": "/articles/201410/svg-29-filter-water-ripple.html",
   "img": "/img/articles/201410/20141010_1_01.gif",
