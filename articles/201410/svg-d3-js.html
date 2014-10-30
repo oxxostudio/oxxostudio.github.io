@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-10-30T22:55:00+01:00">
+  <meta name="keywords" content="svg,d3,d3.js,視覺化數據,視覺化資料">
+
+  <meta name="description" content="D3.js 是一個用動態視覺化顯示資料的 js library，透過使用 HTML DOM、SVG 在網頁上顯示資料。">
+
+  <meta itemprop="name" content="SVG D3 - D3.js 初體驗 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/20141030_1_01.jpg">
+  <meta itemprop="description" content="D3.js 是一個用動態視覺化顯示資料的 js library，透過使用 HTML DOM、SVG 在網頁上顯示資料。">
+
+  <meta property="og:title" content="SVG D3 - D3.js 初體驗 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-d3-js.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141030_1_01.jpg">
+  <meta property="og:description" content="D3.js 是一個用動態視覺化顯示資料的 js library，透過使用 HTML DOM、SVG 在網頁上顯示資料。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>SVG D3 - D3.js 初體驗 - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="home" title="回首頁"><i></i><a href="/">HOME</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/list.html" title="文章列表"><div class="all-list"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>SVG D3 - D3.js 初體驗
+              <span class="article-date">OCT 30, 2014</span>
+            </h2>
+            <p><img src="/img/articles/201410/20141030_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+            <span itemprop="description" class="desc">D3.js 是一個用動態視覺化顯示資料的 js library，透過使用 HTML DOM、SVG 在網頁上顯示資料，在接觸 SVG 的時候不斷的接觸到 D3 的資訊，原本想說要先來玩玩 snap.svg 的，但由於大家都在談 D3，於是就也踏上這條不歸路，因為 D3 主要的應用會以 SVG 來表現，趁著之前 SVG 31 天教學的文章剛寫完，對 SVG 印象猶新之際，打鐵趁熱學學 D3。</span></p>
+            <p>既然下定決心要學了，就要先來了解一下 D3 的故事起源：</p>
+            <p>D3 是一個縮寫，全名叫作 Data-Driven Documents（ 資料驅動的文件 ），在 2005 年的時候，Jeffrey Heer、Stuart Card 和 James Landay 推出 prefuse，透過 JAVA 在瀏覽器中視覺化呈現資料，當時算是一個相當突破的應用，也開啟了在 web 裏頭視覺化操作數據的時代。</p>
+            <p>兩年後 Jeff Heer 又推出了 Flare，也是透過瀏覽器來呈現視覺化資料，到了 2009 年，Jeff Heer 說服一位剛畢業的學生Mike Bostock，共同開發 Protovis，Protovis 是一個只依賴原生的瀏覽器，利用 JavaScript 的視覺化檢視包，這時候已經慢慢看出 D3 的樣子，直到 2011 年，Mike Bostock、Vadim Ogievetsky 和 Jeff Heer 正式推出 D3，作為下一代 Web 視覺化檢視，與 Protovis 不同的是，D3 可以直接操作網頁文檔，展示視覺效果的可能性也更多。</p>
+            <p>一直到今天，Mike Bostocks 都致力於 D3 的開發和維護， 他的網站 ( <a href="http://bost.ocks.org/" target="_blank">http://bost.ocks.org/</a> ) 以及 github（ <a href="HTTPs://github.com/mbostock/d3" target="_blank">HTTPs://github.com/mbostock/d3</a> ）也都是 D3 開發者必須要朝聖的地方。</p>
+            <p>
+              <img src="/img/articles/201410/20141030_1_02.jpg" alt="SVG D3 - D3.js 初體驗" />
+            </p>
+            <p>故事講完了，來談點正經的吧！要使用 D3，第一步就是要先上 D3 的官網：<a href="http://d3js.org/" target="_blank">http://d3js.org/</a>，官網的 banner 就是一大堆六角形的圖片，別懷疑，這些全都是 D3 可以做出來的範例。</p>
+            <p>
+              <img src="/img/articles/201410/20141030_1_03.jpg" alt="SVG D3 - D3.js 初體驗" />
+            </p>
+            <p>點選上方的 example ( <a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">https://github.com/mbostock/d3/wiki/Gallery</a> )，就可以連到 D3 的 github，同時也可以看到滿滿的範例等著使用。</p>
+            <p>
+              <img src="/img/articles/201410/20141030_1_04.jpg" alt="SVG D3 - D3.js 初體驗" />
+            </p>
+            <p>隨便打開一個範例，感覺都是要寫很久的 code 才寫得出來的...( 例如：<a href="http://www.brightpointinc.com/interactive/political_influence/index.html?source=d3js" target="_blank">http://www.brightpointinc.com/interactive/political_influence/index.html?source=d3js</a> )</p>
+            <p>
+              <img src="/img/articles/201410/20141030_1_05.jpg" alt="SVG D3 - D3.js 初體驗" />
+            </p>
+            <p>實際上用了幾天，我自己的感覺就像是 jQuery 一樣的好用，不過某種程度又更方便了些，不過畢竟是是初體驗，沒有辦法有太多深入的用法介紹，待我來慢慢使用紀錄一下吧！</p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <h3>你可能對這些文章也感興趣</h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+</html>
