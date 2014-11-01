@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG D3 - 淺談 D3.js 的資料處理",
+  "site": "/articles/201411/svg-d3-01-data.html",
+  "img": "/img/articles/201411/20141101_1_01.jpg",
+  "date": "NOV 1, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG D3 - 起手式",
   "site": "/articles/201410/svg-d3-info.html",
   "img": "/img/articles/201410/20141031_1_01.jpg",
