@@ -225,6 +225,13 @@
   height: 1px;
   background: url(/img/layout/content_line.gif);
 }
+#other-articles h3 a {
+  color: #4183C4;
+}
+#other-articles h3 a:hover {
+  color: #4183C4;
+  text-decoration: underline;
+}
 #other-articles div {
   width: 130px;
   display: inline-block;

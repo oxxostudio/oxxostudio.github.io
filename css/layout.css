@@ -157,7 +157,7 @@ a {
 #top-menu .top-menu-left li a {
   color: #000;
 }
-#top-menu .top-menu-left .home i {
+#top-menu .top-menu-left .list i {
   background-position: -70px 0;
 }
 #top-menu .top-menu-left .about i {
@@ -186,7 +186,7 @@ a {
 #top-menu .search:hover {
   opacity: .5;
 }
-#top-menu .all-list {
+#top-menu .rss {
   float: right;
   margin: 10px 30px 20px 0;
   -webkit-transition: 0.3s;
@@ -197,7 +197,7 @@ a {
   height: 23px;
   background: #e9e9e9;
 }
-#top-menu .all-list > i {
+#top-menu .rss > i {
   width: 12px;
   height: 12px;
   display: inline-block;
@@ -206,7 +206,7 @@ a {
   background: url(/img/layout/sprites.png) no-repeat -71px -117px;
   opacity: .8;
 }
-#top-menu .all-list:hover {
+#top-menu .rss:hover {
   opacity: .5;
 }
 #top-menu .link {

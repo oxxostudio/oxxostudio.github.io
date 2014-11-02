@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OXXO.STUDIO</title>
+    <link>http://www.oxxostudio.tw</link>
+    <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
+    <pubDate>2014-11-01 23:25:00 GMT</pubDate>
+    <copyright>OXXO.STUDIO</copyright>
+    <Webmaster>oxxo.studio@gmail.com</Webmaster>
+    <language>zh-TW</language>
+    <item>
+      <title>SVG D3 - 淺談 D3.js 的資料處理</title>
+      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html</link>
+      <pubDate>2014-11-01 23:25:00 GMT</pubDate>
+      <description>D3 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式。
+      </description>
+    </item>
+    <item>
+      <title>SVG D3 - 起手式</title>
+      <link>http://www.oxxostudio.tw/articles/201410/svg-d3-info.html</link>
+      <pubDate>2014-10-31 23:25:00 GMT</pubDate>
+      <description>D3 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。
+      </description>
+    </item>
+    <item>
+      <title>SVG D3 - D3.js 初體驗</title>
+      <link>http://www.oxxostudio.tw/articles/201410/svg-d3-js.html</link>
+      <pubDate>2014-10-30 22:55:00 GMT</pubDate>
+      <description>D3.js 是一個用動態視覺化顯示資料的 js library，透過使用 HTML DOM、SVG 在網頁上顯示資料。
+      </description>
+    </item>
+    <item>
+      <title>SVG 完整教學 31 天</title>
+      <link>http://www.oxxostudio.tw/articles/201410/svg-tutorial.html</link>
+      <pubDate>2014-10-22 01:25:00 GMT</pubDate>
+      <description>這些是我所撰寫的 SVG 完整教學，從一開始的入門，到中期的控制 SVG，到後期的 SVG 濾鏡，看完這三十一篇之後，相信對於 SVG 會有非常完整的認識，應用也會更加得心應手。
+      </description>
+    </item>
+    <item>
+      <title>SVG 研究之路 (30) - filter - feConvolveMatrix</title>
+      <link>http://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html</link>
+      <pubDate>2014-10-20 23:55:00 GMT</pubDate>
+      <description>feConvolveMatrix 透過每個像素本身與周圍像素的矩陣運算，算出這個圖形裏頭每個像素的 RGBA 分別會變成如何，演算過後有可能彼此差異變大(銳利)，也有可能差異變小(模糊)，也有可能整個反相(浮雕或反相)，也因此可以做出基本的模糊、銳利或浮雕...等的效果。
+      </description>
+    </item>
+    <item>
+      <title>SVG 研究之路 (29) - filter - 水波效果</title>
+      <link>http://www.oxxostudio.tw/articles/201410/svg-29-filter-water-ripple.html</link>
+      <pubDate>2014-10-10 14:25:00 GMT</pubDate>
+      <description>這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！
+      </description>
+    </item>
+  </channel>
+</rss>
