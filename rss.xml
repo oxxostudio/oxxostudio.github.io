@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2014-11-01 23:25:00 GMT</pubDate>
+    <pubDate>2014-11-03 23:25:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SVG D3 - 繪製線段</title>
+      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html</link>
+      <pubDate>2014-11-03 23:25:00 GMT</pubDate>
+      <description>利用 D3.js 的 line() API ，來完成線段 ( line ) 的繪製，且有別於單純的 SVG 產生 path 不容易放入數據，D3.js 可以根據我們的數據，自動產生對應的線條。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201411/20141103_1_01.jpg</url>
+        <title>SVG D3 - 繪製線段</title>
+        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html</link>
+      </image>
+    </item>
     <item>
       <title>SVG D3 - 淺談 D3.js 的資料處理</title>
       <link>http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html</link>
@@ -71,18 +83,6 @@
         <url>http://www.oxxostudio.tw/img/articles/201410/20141020_1_01.jpg</url>
         <title>SVG 研究之路 (30) - filter - feConvolveMatrix</title>
         <link>http://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG 研究之路 (29) - filter - 水波效果</title>
-      <link>http://www.oxxostudio.tw/articles/201410/svg-29-filter-water-ripple.html</link>
-      <pubDate>2014-10-10 14:25:00 GMT</pubDate>
-      <description>這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201410/20141010_1_01.gif</url>
-        <title>SVG 研究之路 (29) - filter - 水波效果</title>
-        <link>http://www.oxxostudio.tw/articles/201410/svg-29-filter-water-ripple.html</link>
       </image>
     </item>
   </channel>

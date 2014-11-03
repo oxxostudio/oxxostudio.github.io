@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG D3 - 繪製線段",
+  "site": "/articles/201411/svg-d3-02-line.html",
+  "img": "/img/articles/201411/20141103_1_01.jpg",
+  "date": "NOV 3, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG D3 - 淺談 D3.js 的資料處理",
   "site": "/articles/201411/svg-d3-01-data.html",
   "img": "/img/articles/201411/20141101_1_01.jpg",
