@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <svg id="s"></svg>
+  
+  <script>
+  var data = [
+  {x:0, y:1.89}, 
+  {x:1, y:2.77}, 
+  {x:2, y:0.86}, 
+  {x:3, y:3.45}, 
+  {x:4, y:4.13}, 
+  {x:5, y:3.59}, 
+  {x:6, y:2.33}, 
+  {x:7, y:3.79}, 
+  {x:8, y:2.61}, 
+  {x:9, y:2.15}
+  ];
+
+  var width = 240,
+    height = 120;
+
+  var s = d3.select('#s');
+
+  s.attr({
+      'width': width,
+      'height': height,
+    }).style({
+      'border':'1px solid #000'
+    });
+
+  var minX = d3.min(data, function(d){return d.x});
+  var maxX = d3.max(data, function(d){return d.x});
+  var minY = d3.min(data, function(d){return d.y});
+  var maxY = d3.max(data, function(d){return d.y});
+
+  var scaleX = d3.scale.linear()
+                 .range([0,width])
+                 .domain([minX,maxX]); //x 的最大值與最小值
+
+  var scaleY = d3.scale.linear()
+                 .range([height,0])    //反過來才會上下顛倒
+                 .domain([minY,maxY]); //y 的最大值與最小值
+
+  var line = d3.svg.line()
+    .x(function(d) {
+      return scaleX(d.x);
+    }).y(function(d) {
+      return scaleY(d.y);
+    });
+
+  s.append('path')
+    .attr({
+    	'd':line(data),
+    	'stroke':'#09c',
+    	'fill':'none'
+    });
+  </script>
+</body>
+
+</html>

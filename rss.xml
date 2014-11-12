@@ -14,6 +14,18 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
+      <title>SVG D3 - 定義比例 ( scale.linear() )</title>
+      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html</link>
+      <pubDate>2014-11-12 22:25:00 GMT</pubDate>
+      <description>當我們面對一個折線圖或長條圖的長寬，超過電腦視窗的畫面大小，就必須用比例的方式讓圖表等比例縮小來適合寬度，在 D3.js 裏頭，就要使用 scale 這個方法來達成。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201411/20141112_1_01.jpg</url>
+        <title>SVG D3 - 定義比例 ( scale.linear() )</title>
+        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html</link>
+      </image>
+    </item>
+    <item>
       <title>SVG D3 - 繪製線段</title>
       <link>http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html</link>
       <pubDate>2014-11-03 23:25:00 GMT</pubDate>
