@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>SVG D3 - 定義比例 ( scale.linear() ) - demo 6</title>
+  <title>SVG D3 - 座標軸 ( Axis ) - demo 4</title>
   <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 
@@ -41,15 +41,6 @@
   }, {
     x: 9,
     y: 2.15
-  }, {
-    x: 10,
-    y: 3.15
-  }, {
-    x: 11,
-    y: 4.15
-  }, {
-    x: 12,
-    y: 2.5
   }];
 
   var width = 240,
@@ -57,21 +48,12 @@
 
   var s = d3.select('#s');
 
-  s.append('rect')
-    .attr({
-      'width':width,
-      'height': height,
-      'stroke':'#000',
-      'fill':'none'
-    });
-
   s.attr({
-    'width': '360',
-    'height': '140'
+    'width': '300',
+    'height': '180'
   }).style({
     'border': '1px dotted #aaa'
   });
-
 
   var scaleX = d3.scale.linear()
     .range([0, width])
@@ -88,12 +70,53 @@
       return scaleY(d.y);
     });
 
+  var axisX = d3.svg.axis()
+    .scale(scaleX)
+    .orient("bottom")
+    .ticks(10)
+    .tickFormat(function(d){return d+'n';});  //axis.tickFormat(d3.format(",%"))
+
+  var axisY = d3.svg.axis()
+    .scale(scaleY)
+    .orient("left")
+    .ticks(5)
+    .tickFormat(function(d){return d+'%';});
+
   s.append('path')
     .attr({
       'd': line(data),
       'stroke': '#09c',
-      'fill': 'none'
+      'fill': 'none',
+      'transform':'translate(35,20)'  //折線圖也要套用 translate
     });
+
+  s.append('g')
+   .call(axisX)
+   .attr({
+    'fill':'none',
+    'stroke':'#000',
+    'transform':'translate(35,'+(height+20)+')' 
+   }).selectAll('text')
+   .attr({
+    'fill':'#000',
+    'stroke':'none',
+   }).style({
+    'font-size':'11px'
+   });
+
+  s.append('g')
+   .call(axisY)
+   .attr({
+    'fill':'none',
+    'stroke':'#000',
+    'transform':'translate(35,20)'
+   }).selectAll('text')
+   .attr({
+    'fill':'#000',
+    'stroke':'none',
+   }).style({
+    'font-size':'10px'
+   });
   </script>
 </body>
 

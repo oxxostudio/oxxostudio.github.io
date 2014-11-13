@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG D3 - 座標軸 ( Axis )",
+  "site": "/articles/201411/svg-d3-04-axis.html",
+  "img": "/img/articles/201411/20141113_1_01.jpg",
+  "date": "NOV 13, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG D3 - 定義比例 ( scale.linear() )",
   "site": "/articles/201411/svg-d3-03-scale-linear.html",
   "img": "/img/articles/201411/20141112_1_01.jpg",

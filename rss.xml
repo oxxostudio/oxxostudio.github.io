@@ -14,6 +14,18 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
+      <title>SVG D3 - 座標軸 ( Axis )</title>
+      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html</link>
+      <pubDate>2014-11-12 22:25:00 GMT</pubDate>
+      <description>再來就要談談座標軸 Axis，利用 D3.js，我們就可以自己做出自己的圖表刻度。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201411/20141113_1_01.jpg</url>
+        <title>SVG D3 - 座標軸 ( Axis )</title>
+        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html</link>
+      </image>
+    </item>
+    <item>
       <title>SVG D3 - 定義比例 ( scale.linear() )</title>
       <link>http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html</link>
       <pubDate>2014-11-12 22:25:00 GMT</pubDate>

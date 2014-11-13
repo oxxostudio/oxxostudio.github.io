@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-11-13T23:55:00+01:00">
+  <meta name="keywords" content="svg,d3,d3.js,axis,scale,座標軸,座標">
+
+  <meta name="description" content="再來就要談談座標軸 Axis，利用 D3.js，我們就可以自己做出自己的圖表刻度。">
+
+  <meta itemprop="name" content="SVG D3 - 座標軸 ( Axis ) - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201411/20141113_1_01b.jpg">
+  <meta itemprop="description" content="再來就要談談座標軸 Axis，利用 D3.js，我們就可以自己做出自己的圖表刻度。">
+
+  <meta property="og:title" content="SVG D3 - 座標軸 ( Axis ) - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/20141113_1_01b.jpg">
+  <meta property="og:description" content="再來就要談談座標軸 Axis，利用 D3.js，我們就可以自己做出自己的圖表刻度。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>SVG D3 - 座標軸 ( Axis ) - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">SEARCH</div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>SVG D3 - 座標軸 ( Axis )
+              <span class="article-date">NOV 13, 2014</span>
+            </h2>
+            <p>藉由上一篇了解了最常用的 scale，<span itemprop="description" class="desc">再來就要談談座標軸 Axis，在 D3.js 裏頭，座標軸與 scale 幾乎是如影隨形地出現，畢竟既然是要用來顯示座標，就一定會出現在畫面裡，也因此必須要用 scale 才能夠讓座標軸按照比例大小擺放。</span>至於什麼是座標軸 Axis 呢？很簡單就是水平 x 軸和垂直 y 軸，上面會有刻度，前使用 illustrator 慢慢刻畫刻度，常常必須刻到天花地老，如果會用 Excel，就可以讓 Excel 產生大家都會的一百零一種刻度，今天利用 D3.js，我們就可以自己做出自己的圖表刻度。</p>
+            <p>首先來看看 Axis 有哪些 API 可以使用：</p>
+            <blockquote>
+              <ul>
+                <li>axis.scale</li>
+                <li>axis.orient</li>
+                <li>axis.ticks</li>
+                <li>axis.tickValues</li>
+                <li>axis.tickSize</li>
+                <li>axis.innerTickSize</li>
+                <li>axis.outerTickSize</li>
+                <li>axis.tickPadding</li>
+                <li>axis.tickFormat</li>
+              </ul>
+            </blockquote>
+            <p>
+              <br/>整體而言，Axis 比 scale 容易理解得多，相關的 API 基本上也很方便使用，以下就來一一解釋說明：</p>
+            <ul>
+              <li>
+                <p>
+                  <strong>axis.scale([scale])、axis.ticks([arguments…])</strong>
+                </p>
+                <p>第一個 API ，是告訴我們，要讓 axis 按照 scale 的比例縮放，不過光是知道這點還是不夠，要如何才能將 asix 加入圖表呢？下面的範例，我們拿上一篇的折線圖來當作示範，可以看到裡面多了兩個名為 axisX 和 axisY 的方法，
+                  <strong>最下方讓 SVG append 一個 g，然後 call axisX 方法與 axisY 方法，就可以產生座標軸</strong>，而 ticks 的用法和 scale 差不多，就是會按照上面設定的數字進行對應的區隔，不過同樣的，若區隔不適當則不一定會按照我們的數字進行。 ( 範例：<a href="svg-d3-04-axis-demo0.html" target="_blank">svg-d3-04-axis-demo0.html</a> )</p>
+                <pre><code>  var data = [
+  {x: 0,y: 1.89}, 
+  {x: 1,y: 2.77}, 
+  {x: 2,y: 0.86}, 
+  {x: 3,y: 3.45}, 
+  {x: 4,y: 4.13}, 
+  {x: 5,y: 3.59}, 
+  {x: 6,y: 2.33}, 
+  {x: 7,y: 3.79}, 
+  {x: 8,y: 2.61}, 
+  {x: 9,y: 2.15}
+  ];
+
+  var width = 240,
+    height = 120;
+
+  var s = d3.select('#s');
+
+  s.attr({
+    'width': '300',
+    'height': '180'
+  }).style({
+    'border': '1px dotted #aaa'
+  });
+
+  var scaleX = d3.scale.linear()
+    .range([0, width])
+    .domain([0, 9]);
+
+  var scaleY = d3.scale.linear()
+    .range([height, 0])
+    .domain([0, 5]); 
+
+  var line = d3.svg.line()
+    .x(function(d) {
+      return scaleX(d.x);
+    }).y(function(d) {
+      return scaleY(d.y);
+    });
+
+  var axisX = d3.svg.axis()
+    .scale(scaleX)
+    .ticks(10);
+
+  var axisY = d3.svg.axis()
+    .scale(scaleY)
+    .ticks(10);
+
+  s.append('path')
+    .attr({
+      'd': line(data),
+      'stroke': '#09c',
+      'fill': 'none'
+    });
+
+  s.append('g')
+   .call(axisX);  //call axisX
+
+  s.append('g')
+   .call(axisY);  //call axisY
+</code></pre>
+
+                <p>
+                  <img src="/img/articles/201411/20141113_1_02.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <strong>axis.orient([orientation])</strong>
+                </p>
+                <p>如果只是單純的設定 axis.scale 和 axis.ticks，出來的長相一定跟上面那張圖一樣莫名其妙，文字擠在一起！？座標軸在最上方！？這時候就必須要用 axis.orient 來定義座標標籤的上下左右位置，只要填入 top、right、bottom 或 left 就可以，上下通常針對 x 軸座標標籤，左右則是針對 y 軸座標標籤。( 範例：<a href="svg-d3-04-axis-demo1.html" target="_blank">svg-d3-04-axis-demo1.html</a> )</p>
+<pre><code>  var axisX = d3.svg.axis()
+    .scale(scaleX)
+    .orient(&quot;bottom&quot;)
+    .ticks(10);
+
+  var axisY = d3.svg.axis()
+    .scale(scaleY)
+    .orient(&quot;left&quot;)
+    .ticks(10);
+</code></pre>
+                <p>
+                  <img src="/img/articles/201411/20141113_1_03.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+                <p>
+                  <br/>不過只有修改標籤位置還是不構，接著要利用 transform 修改 g 的位置參數 ( 不知道 SVG transform 的請參考 <a href="http://www.oxxostudio.tw/articles/201409/svg-19-transform.html" target="_blank">SVG 研究之路 (19) - transform 基礎篇</a> )，同時設定一下 fill 與 stroke 的屬性，看起來就真有座標軸的樣子。( 範例：<a href="svg-d3-04-axis-demo2.html" target="_blank">svg-d3-04-axis-demo2.html</a> )</p>
+                <pre><code>  s.append('path')
+    .attr({
+      'd': line(data),
+      'stroke': '#09c',
+      'fill': 'none',
+      'transform':'translate(35,20)'  //折線圖也要套用 translate
+    });
+
+  s.append('g')
+   .call(axisX)
+   .attr({
+    'fill':'none',
+    'stroke':'#000',
+    'transform':'translate(35,'+(height+20)+')' 
+   });
+
+  s.append('g')
+   .call(axisY)
+   .attr({
+    'fill':'none',
+    'stroke':'#000',
+    'transform':'translate(35,20)'
+   });
+</code></pre>
+
+                <p>
+                  <img src="/img/articles/201411/20141113_1_04.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+                <p>
+                  <br/>不過從上圖可以看到，文字好像都變成空心的，主要因為把整個 g 內部的形狀都套用了
+                  <code>'fill':'none'</code>以及
+                  <code>'stroke':'#000'</code>的屬性，因此文字就變成只有外框，沒有填滿的外框字，為了改善，我們必須要再單獨針對 text 的屬性作設定，同時調整它的 style，看起來就會漂亮許多。( 範例：<a href="svg-d3-04-axis-demo3.html" target="_blank">svg-d3-04-axis-demo3.html</a> )</p>
+                <pre><code>  s.append('g')
+   .call(axisX)
+   .attr({
+    'fill':'none',
+    'stroke':'#000',
+    'transform':'translate(35,'+(height+20)+')' 
+   }).selectAll('text')
+   .attr({
+    'fill':'#000',
+    'stroke':'none',
+   }).style({
+    'font-size':'11px'
+   });
+
+  s.append('g')
+   .call(axisY)
+   .attr({
+    'fill':'none',
+    'stroke':'#000',
+    'transform':'translate(35,20)'
+   }).selectAll('text')
+   .attr({
+    'fill':'#000',
+    'stroke':'none',
+   }).style({
+    'font-size':'10px'
+   });
+</code></pre>
+
+                <p>
+                  <img src="/img/articles/201411/20141113_1_05.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+                <p>
+                  <br/>如果把 axisX 的 orient 修改為 top ，座標標籤就會跑到上方，同理修改 axisY 的 orient 為 right 就會跑到右方。</p>
+                <p>
+                  <img src="/img/articles/201411/20141113_1_06.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <strong>axis.tickFormat([format])</strong>
+                </p>
+                <p>上一篇 scale 裏頭提過 tickFormat，在 Axis 裏頭也有 tickFormat，不過用法不太相同，scale 的是套用 D3.js 的格式化，輸入 % 或 p 就會自動轉換成 100% 起跳的數值，而在 Axis 裏頭卻是真的在原本的數值後方加上格式，下面的範例在 tickFormat 裡頭家上了一個
+                  <code>function(d){return d+'n';}</code>，因為套用了 scale，所以 d 就會自動返回 d.x 或 d.y，可想而知，在後方加上 n 或 % ，就會產生有單位的座標軸，不過如果 tickFormat(&quot;&quot;)，就會清空座標軸數值，要小心。( 範例：<a href="svg-d3-04-axis-demo4.html" target="_blank">svg-d3-04-axis-demo4.html</a> )</p>
+                <pre><code>  var axisX = d3.svg.axis()
+    .scale(scaleX)
+    .orient(&quot;bottom&quot;)
+    .ticks(10)
+    .tickFormat(function(d){return d+'n';});
+
+  var axisY = d3.svg.axis()
+    .scale(scaleY)
+    .orient(&quot;left&quot;)
+    .ticks(5)
+    .tickFormat(function(d){return d+'%';});
+</code></pre>
+
+                <p>
+                  <img src="/img/articles/201411/20141113_1_07.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+                <p>如果要換成 scale 的 tickFormat 思考的話，就要改成下方的範例這樣，% 就會變成百位數的百分比：</p>
+                <pre><code>  var axisX = d3.svg.axis()
+    .scale(scaleX)
+    .orient(&quot;bottom&quot;)
+    .ticks(10)
+    .tickFormat(d3.format(&quot;,%&quot;));
+</code></pre>
+
+                <p>
+                  <img src="/img/articles/201411/20141113_1_08.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <strong>axis.tickSize([inner, outer])</strong>
+                </p>
+                <p>tickSize 表達的是座標軸上刻度線條的尺寸，包含了內部線段和和最外邊的線段，共兩個數值，而這兩個數值也各自獨立出來，所以其實直接用 tickSize 就可以都滿足，座標軸上預設的刻度長度是
+                  <strong>6</strong>，數字負值往座標內縮，正值往座標外長出去，利用 tickSize，我們可以輕鬆地做出座標的內格線 ( Grid ) ，做法就是新增另外兩組 g 來放座標格線的 axis，然後讓刻度尺寸長度和圖表寬高一樣就可以，而且這裡頭使用剛剛講的 tickFormat(&quot;&quot;)，就不會有額外的座標標籤產生。( 範例：<a href="svg-d3-04-axis-demo5.html" target="_blank">svg-d3-04-axis-demo5.html</a> )</p>
+                <pre><code>  var axisXGrid = d3.svg.axis()
+    .scale(scaleX)
+    .orient(&quot;bottom&quot;)
+    .ticks(10)
+    .tickFormat(&quot;&quot;)
+    .tickSize(-height,0);
+
+  var axisYGrid = d3.svg.axis()
+    .scale(scaleY)
+    .orient(&quot;left&quot;)
+    .ticks(10)
+    .tickFormat(&quot;&quot;)
+    .tickSize(-width,0);
+
+  s.append('g')
+   .call(axisXGrid)
+   .attr({
+    'fill':'none',
+    'stroke':'rgba(0,0,0,.1)',
+    'transform':'translate(35,'+(height+20)+')' 
+   });
+
+  s.append('g')
+   .call(axisYGrid)
+   .attr({
+    'fill':'none',
+    'stroke':'rgba(0,0,0,.1)',
+    'transform':'translate(35,20)'
+   });
+</code></pre>
+
+                <p>
+                  <img src="/img/articles/201411/20141113_1_09.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <strong>axis.tickValues([values])</strong>
+                </p>
+                <p>剛剛我們的座標軸標籤都是由 D3.js 自動產生，雖然可以使用 ticks 作一些區隔，但也常常不受控制，因此如果要自訂我們自己的間格區間，就可以使用 tickValues 來完成，tickValues 的內容是一個陣列，放上陣列之後就會按照我們設定的陣列進行。( 範例：<a href="svg-d3-04-axis-demo6.html" target="_blank">svg-d3-04-axis-demo6.html</a> )</p>
+                <pre><code>  var axisX = d3.svg.axis()
+    .scale(scaleX)
+    .orient(&quot;bottom&quot;)
+    .tickValues([1,3,5,7,9])
+    .tickFormat(function(d){return d+'n';});
+</code></pre>
+
+                <p>
+                  <img src="/img/articles/201411/20141113_1_10.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+                <p>
+                  <br/>改變區間就會看到不同的效果。( 範例：<a href="svg-d3-04-axis-demo7.html" target="_blank">svg-d3-04-axis-demo7.html</a> )</p>
+                <pre><code> var axisX = d3.svg.axis()
+    .scale(scaleX)
+    .orient(&quot;bottom&quot;)
+    .tickValues([1,2,6,7,9])
+    .tickFormat(function(d){return d+'n';});
+</code></pre>
+
+                <p>
+                  <img src="/img/articles/201411/20141113_1_11.png" alt="SVG D3 - 座標軸 ( Axis )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <strong>axis.tickPadding([padding])</strong>
+                </p>
+                <p>padding 很簡單不太需要解釋，就是座標標籤和座標軸之間的間距，直接用範例玩玩看囉！( 範例：<a href="svg-d3-04-axis-demo8.html" target="_blank">svg-d3-04-axis-demo8.html</a> )</p>
+                <pre><code>  var axisX = d3.svg.axis()
+    .scale(scaleX)
+    .orient(&quot;bottom&quot;)
+    .tickValues([1,3,5,7,9])
+    .tickFormat(function(d){return d+'n';})
+    .tickPadding(-20);
+
+  var axisY = d3.svg.axis()
+    .scale(scaleY)
+    .orient(&quot;left&quot;)
+    .ticks(5)
+    .tickFormat(function(d){return d+'%';})
+    .tickPadding(15);
+</code></pre>
+            <p><img src="/img/articles/201411/20141113_1_12.png" alt="SVG D3 - 座標軸 ( Axis )" /></p>
+              </li>
+            </ul>
+            <p>
+              <br/>以上就是 Axis 的基本用法，會使用座標軸之後，就可以做出一大堆實用的圖表囉！^_^</p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <h3>你可能對下列文章也感興趣，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+</body>
+</html>
