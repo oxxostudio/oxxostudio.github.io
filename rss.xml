@@ -14,74 +14,86 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
-      <title>SVG D3 - 座標軸 ( Axis )</title>
+      <title>SVG D3.js - 區域 ( area )</title>
+      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html</link>
+      <pubDate>2014-11-16 19:25:00 GMT</pubDate>
+      <description>理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201411/20141116_1_01.jpg</url>
+        <title>SVG D3.js - 區域 ( area )</title>
+        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html</link>
+      </image>
+    </item>
+    <item>
+      <title>SVG D3.js - 座標軸 ( Axis )</title>
       <link>http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html</link>
       <pubDate>2014-11-12 22:25:00 GMT</pubDate>
       <description>再來就要談談座標軸 Axis，利用 D3.js，我們就可以自己做出自己的圖表刻度。
       </description>
       <image>
         <url>http://www.oxxostudio.tw/img/articles/201411/20141113_1_01.jpg</url>
-        <title>SVG D3 - 座標軸 ( Axis )</title>
+        <title>SVG D3.js - 座標軸 ( Axis )</title>
         <link>http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html</link>
       </image>
     </item>
     <item>
-      <title>SVG D3 - 定義比例 ( scale.linear() )</title>
+      <title>SVG D3.js - 定義比例 ( scale.linear() )</title>
       <link>http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html</link>
       <pubDate>2014-11-12 22:25:00 GMT</pubDate>
       <description>當我們面對一個折線圖或長條圖的長寬，超過電腦視窗的畫面大小，就必須用比例的方式讓圖表等比例縮小來適合寬度，在 D3.js 裏頭，就要使用 scale 這個方法來達成。
       </description>
       <image>
         <url>http://www.oxxostudio.tw/img/articles/201411/20141112_1_01.jpg</url>
-        <title>SVG D3 - 定義比例 ( scale.linear() )</title>
+        <title>SVG D3.js - 定義比例 ( scale.linear() )</title>
         <link>http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html</link>
       </image>
     </item>
     <item>
-      <title>SVG D3 - 繪製線段</title>
+      <title>SVG D3.js - 繪製線段</title>
       <link>http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html</link>
       <pubDate>2014-11-03 23:25:00 GMT</pubDate>
       <description>利用 D3.js 的 line() API ，來完成線段 ( line ) 的繪製，且有別於單純的 SVG 產生 path 不容易放入數據，D3.js 可以根據我們的數據，自動產生對應的線條。
       </description>
       <image>
         <url>http://www.oxxostudio.tw/img/articles/201411/20141103_1_01.jpg</url>
-        <title>SVG D3 - 繪製線段</title>
+        <title>SVG D3.js - 繪製線段</title>
         <link>http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html</link>
       </image>
     </item>
     <item>
-      <title>SVG D3 - 淺談 D3.js 的資料處理</title>
+      <title>SVG D3.js - 淺談 D3.js 的資料處理</title>
       <link>http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html</link>
       <pubDate>2014-11-01 23:25:00 GMT</pubDate>
       <description>D3 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式。
       </description>
       <image>
         <url>http://www.oxxostudio.tw/img/articles/201411/20141101_1_01.jpg</url>
-        <title>SVG D3 - 淺談 D3.js 的資料處理</title>
+        <title>SVG D3.js - 淺談 D3.js 的資料處理</title>
         <link>http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html</link>
       </image>
     </item>
     <item>
-      <title>SVG D3 - 起手式</title>
+      <title>SVG D3.js - 起手式</title>
       <link>http://www.oxxostudio.tw/articles/201410/svg-d3-info.html</link>
       <pubDate>2014-10-31 23:25:00 GMT</pubDate>
       <description>D3 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。
       </description>
       <image>
         <url>http://www.oxxostudio.tw/img/articles/201410/20141031_1_01.jpg</url>
-        <title>SVG D3 - 起手式</title>
+        <title>SVG D3.js - 起手式</title>
         <link>http://www.oxxostudio.tw/articles/201410/svg-d3-info.html</link>
       </image>
     </item>
     <item>
-      <title>SVG D3 - D3.js 初體驗</title>
+      <title>SVG D3.js - 初體驗</title>
       <link>http://www.oxxostudio.tw/articles/201410/svg-d3-js.html</link>
       <pubDate>2014-10-30 22:55:00 GMT</pubDate>
       <description>D3.js 是一個用動態視覺化顯示資料的 js library，透過使用 HTML DOM、SVG 在網頁上顯示資料。
       </description>
       <image>
         <url>http://www.oxxostudio.tw/img/articles/201410/20141030_1_01.jpg</url>
-        <title>SVG D3 - D3.js 初體驗</title>
+        <title>SVG D3.js - 初體驗</title>
         <link>http://www.oxxostudio.tw/articles/201410/svg-d3-js.html</link>
       </image>
     </item>

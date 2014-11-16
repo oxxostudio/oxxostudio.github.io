@@ -1,36 +1,42 @@
 [{
   "tag": "tag-web",
-  "title": "SVG D3 - 座標軸 ( Axis )",
+  "title": "SVG D3.js - 區域 ( area )",
+  "site": "/articles/201411/svg-d3-05-area.html",
+  "img": "/img/articles/201411/20141116_1_01.jpg",
+  "date": "NOV 16, 2014"
+},{
+  "tag": "tag-web",
+  "title": "SVG D3.js - 座標軸 ( Axis )",
   "site": "/articles/201411/svg-d3-04-axis.html",
   "img": "/img/articles/201411/20141113_1_01.jpg",
   "date": "NOV 13, 2014"
 },{
   "tag": "tag-web",
-  "title": "SVG D3 - 定義比例 ( scale.linear() )",
+  "title": "SVG D3.js - 定義比例 ( scale.linear() )",
   "site": "/articles/201411/svg-d3-03-scale-linear.html",
   "img": "/img/articles/201411/20141112_1_01.jpg",
   "date": "NOV 12, 2014"
 },{
   "tag": "tag-web",
-  "title": "SVG D3 - 繪製線段",
+  "title": "SVG D3.js - 繪製線段",
   "site": "/articles/201411/svg-d3-02-line.html",
   "img": "/img/articles/201411/20141103_1_01.jpg",
   "date": "NOV 3, 2014"
 },{
   "tag": "tag-web",
-  "title": "SVG D3 - 淺談 D3.js 的資料處理",
+  "title": "SVG D3.js - 淺談 D3.js 的資料處理",
   "site": "/articles/201411/svg-d3-01-data.html",
   "img": "/img/articles/201411/20141101_1_01.jpg",
   "date": "NOV 1, 2014"
 },{
   "tag": "tag-web",
-  "title": "SVG D3 - 起手式",
+  "title": "SVG D3.js - 起手式",
   "site": "/articles/201410/svg-d3-info.html",
   "img": "/img/articles/201410/20141031_1_01.jpg",
   "date": "OCT 31, 2014"
 },{
   "tag": "tag-web",
-  "title": "SVG D3 - D3.js 初體驗",
+  "title": "SVG D3.js - 初體驗",
   "site": "/articles/201410/svg-d3-js.html",
   "img": "/img/articles/201410/20141030_1_01.jpg",
   "date": "OCT 30, 2014"

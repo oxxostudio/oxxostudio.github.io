@@ -9,23 +9,23 @@
   <meta property="article:published_time" content="2014-10-31T23:25:00+01:00">
   <meta name="keywords" content="svg,d3,d3.js,select,jquery">
 
-  <meta name="description" content="D3 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。">
+  <meta name="description" content="D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。">
 
-  <meta itemprop="name" content="SVG D3 - 起手式 - OXXO.STUDIO">
+  <meta itemprop="name" content="SVG D3.js - 起手式 - OXXO.STUDIO">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/20141031_1_01.jpg">
-  <meta itemprop="description" content="D3 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。">
+  <meta itemprop="description" content="D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。">
 
-  <meta property="og:title" content="SVG D3 - 起手式 - OXXO.STUDIO">
+  <meta property="og:title" content="SVG D3.js - 起手式 - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-d3-info.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141031_1_01.jpg">
-  <meta property="og:description" content="D3 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。">
+  <meta property="og:description" content="D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。">
   
   <link rel="stylesheet" href="/css/layout.css">
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
   <script src="/js/lib/jquery.min.js"></script>
 
-      <title>SVG D3 - 起手式 - OXXO.STUDIO</title>
+      <title>SVG D3.js - 起手式 - OXXO.STUDIO</title>
       </head>
 <body>
     <div id="header">
@@ -74,18 +74,18 @@
         <div class="content">
           <i class="tag-web"></i>
           <div class="md">
-            <h2>SVG D3 - 起手式
+            <h2>SVG D3.js - 起手式
               <span class="article-date">OCT 31, 2014</span>
             </h2>
             <p>
               <img src="/img/articles/201410/20141031_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
-              <span itemprop="description" class="desc">雖然說對 D3 的印象是從圖形的表現開始，但 D3 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上，而 D3 的 data 也不見得只適用在 SVG 的圖形產生，只要是 HTML 的 DOM 也都可以藉由這個方式作成，例如以往要將一百個一千個資料放到 DOM 裡或產出 DOM，必須用上 for 迴圈或是 each 的方式，這部分 D3 也幫我們都解決掉了，真是相當的方便。</span>
+              <span itemprop="description" class="desc">雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上，而 D3.js 的 data 也不見得只適用在 SVG 的圖形產生，只要是 HTML 的 DOM 也都可以藉由這個方式作成，例如以往要將一百個一千個資料放到 DOM 裡或產出 DOM，必須用上 for 迴圈或是 each 的方式，這部分 D3 也幫我們都解決掉了，真是相當的方便。</span>
             </p>
-            <p>在介紹資料處理之前，一定得先來一段 D3 的起手式，第一步，掛載 D3.js：</p>
+            <p>在介紹資料處理之前，一定得先來一段 D3.js 的起手式，第一步，掛載 D3.js：</p>
             <pre><code>&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 
-            <p>掛載完 D3.js 之後，接下來就是要使用 D3，與 jquery 的「$」符號很像的地方，要使用 D3，也是要有 d3 開頭，以下面的範例來說，就是選取了所有的 p 標籤,跟 jquery 裏頭的選擇器很像 ( $('p') )，而 D3 也可以和 jquery 混著使用，因為 D3 都會是 d3 開頭，基本上並不會有甚麼衝突的情形發生。</p>
+            <p>掛載完 D3.js 之後，接下來就是要使用 D3.js，與 jquery 的「$」符號很像的地方，要使用 D3，也是要有 d3 開頭，以下面的範例來說，就是選取了所有的 p 標籤,跟 jquery 裏頭的選擇器很像 ( $('p') )，而 D3 也可以和 jquery 混著使用，因為 D3 都會是 d3 開頭，基本上並不會有甚麼衝突的情形發生。</p>
             <pre><code>d3.selectAll('p')
 </code></pre>
 
