@@ -20,11 +20,19 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140623_1_01.jpg">
   <meta property="og:description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
 
+
   <link rel="stylesheet" href="/css/layout.css">
+
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
+
+
+
+
   <title>SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO</title>
+
 </head>
 <body>
     <div id="header">
@@ -175,6 +183,8 @@
         </div>
       </div>
 
+
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -183,14 +193,27 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
         </div>  
     </div>
+
   <div id="other-articles">
-    <h3>你可能對下列文章也感興趣，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -213,8 +236,10 @@
         ga('send', 'pageview');
     </script>
     <script src="/js/layout.min.js"></script>
+
   <script src="/js/articles.min.js"></script>
   <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
+
 </body>
 </html>

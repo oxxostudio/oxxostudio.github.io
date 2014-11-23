@@ -21,11 +21,19 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/20140527_1_01.jpg">
   <meta property="og:description" content="對於 CSS 的初學者而言，比較不容易理解的大概就是偽類以及偽元素，一個比較簡單的區分，偽類開頭會是一個冒號，偽元素開頭是兩個冒號，偽類分為四大類，第一大類就是剛剛所提到的「錨點偽類」，第二類是「狀態偽類」，而另外兩類則是 -child 和 of-type，這兩類是因為 CSS3 新增的偽類，也比較容易搞混，於是今天就來針對這兩類做說明。" >
 
+
   <link rel="stylesheet" href="/css/layout.css">
+
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
+
+
+
+
   <title>CSS 偽類 child 和 of-type - OXXO.STUDIO</title>
+
 </head>
 <body>
     <div id="header">
@@ -272,6 +280,8 @@
             <code>span</code>就變色了，也因如此，善用這些好用的偽類，我們更可以精準地控制我們所要控制的元素囉！</p>
         </div>
       </div>
+
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -280,14 +290,27 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
         </div>  
     </div>
+
   <div id="other-articles">
-    <h3>你可能對下列文章也感興趣，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -310,8 +333,10 @@
         ga('send', 'pageview');
     </script>
     <script src="/js/layout.min.js"></script>
+
   <script src="/js/articles.min.js"></script>
   <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
+
 </body>
 </html>

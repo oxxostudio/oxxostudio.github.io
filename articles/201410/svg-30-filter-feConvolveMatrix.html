@@ -20,13 +20,21 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141020_1_01.jpg">
   <meta property="og:description" content="feConvolveMatrix 透過每個像素本身與周圍像素的矩陣運算，算出這個圖形裏頭每個像素的 RGBA 分別會變成如何，演算過後有可能彼此差異變大(銳利)，也有可能差異變小(模糊)，也有可能整個反相(浮雕或反相)，也因此可以做出基本的模糊、銳利或浮雕...等的效果。">
   
+
   <link rel="stylesheet" href="/css/layout.css">
+
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
 
+
+
+
+
       <title>SVG 研究之路 (30) - filter - feConvolveMatrix - OXXO.STUDIO</title>
-      </head>
+      
+</head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -281,6 +289,8 @@
             <p>以上就是 feConvolveMatrix 的基本介紹，不過，除非真的有需要，不然這種影像處理的事情還是交給 photoshop 來解決就好了哈哈！畢竟人家才是專家咩~ 而且雖然我們可以自己手動計算，但實際上的演算法卻不是加減乘除這麼單純，而且每種利用矩陣來進行影像處理的方式，也會受到圖片本身的影響，所以這個方法學起來，雖然實際用到的情況不多，但真的有需要就會派上用處囉！</p>
           </div>
         </div>
+
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -289,14 +299,27 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
         </div>  
     </div>
+
   <div id="other-articles">
-    <h3>你可能對下列文章也感興趣，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -319,8 +342,10 @@
         ga('send', 'pageview');
     </script>
     <script src="/js/layout.min.js"></script>
+
   <script src="/js/articles.min.js"></script>
   <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
+
 </body>
 </html>

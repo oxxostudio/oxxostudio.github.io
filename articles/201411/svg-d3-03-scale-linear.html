@@ -20,13 +20,21 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/20141112_1_01b.jpg">
   <meta property="og:description" content="當我們面對一個折線圖或長條圖的長寬，超過電腦視窗的畫面大小，就必須用比例的方式讓圖表等比例縮小來適合寬度，在 D3.js 裏頭，就要使用 scale 這個方法來達成。">
   
+
   <link rel="stylesheet" href="/css/layout.css">
+
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
 
+
+
+
+
       <title>SVG D3.js - 定義比例 ( scale.linear() ) - OXXO.STUDIO</title>
-      </head>
+      
+</head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -534,6 +542,8 @@ console.log(
             </ul>
           </div>
         </div>
+
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -542,14 +552,27 @@ console.log(
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
         </div>  
     </div>
+
   <div id="other-articles">
-    <h3>你可能對下列文章也感興趣，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -572,8 +595,10 @@ console.log(
         ga('send', 'pageview');
     </script>
     <script src="/js/layout.min.js"></script>
+
   <script src="/js/articles.min.js"></script>
   <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
+
 </body>
 </html>

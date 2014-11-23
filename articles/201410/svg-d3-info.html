@@ -20,13 +20,21 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141031_1_01.jpg">
   <meta property="og:description" content="D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。">
   
+
   <link rel="stylesheet" href="/css/layout.css">
+
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
+
   <script src="/js/lib/jquery.min.js"></script>
 
+
+
+
+
       <title>SVG D3.js - 起手式 - OXXO.STUDIO</title>
-      </head>
+      
+</head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -160,6 +168,8 @@ d3.select('div div').style({
             <p>以上就是一些 D3 起手式的介紹，雖然 D3 可以做到和 jquery 差不多的事情，但整體而言還是 jquery 比較方便，因為畢竟 D3 誕生的目的原本就和 jquery 不同，D3 是為了讓數據可以用視覺圖像化的方式而誕生的，所以上述基本的用法，其實也會跟隨著 data 來自動產生，會在之後用一些篇幅仔細分享。</p>
           </div>
         </div>
+
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -168,14 +178,27 @@ d3.select('div div').style({
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
         </div>  
     </div>
+
   <div id="other-articles">
-    <h3>你可能對下列文章也感興趣，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -198,8 +221,10 @@ d3.select('div div').style({
         ga('send', 'pageview');
     </script>
     <script src="/js/layout.min.js"></script>
+
   <script src="/js/articles.min.js"></script>
   <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
+
 </body>
 </html>

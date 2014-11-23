@@ -6,8 +6,8 @@
   #other-articles {
     width: 90% !important;
   }
-  #other-articles h3::after {
-    width: 80% !important;
+  #other-articles h3::before, #other-articles h3::after {
+    width: 100% !important;
   }
 
   #disqus {
@@ -37,8 +37,11 @@
   #other-articles {
     padding: 20px !important;
   }
-  #other-articles h3::after {
-    left: 30px !important;
+  #other-articles .previous-next {
+    width: 95% !important;
+  }
+  #other-articles .previous-article {
+    height: 30px !important;
   }
 
   .content > i {
@@ -214,21 +217,26 @@
   color: #000;
 }
 #other-articles h3 {
+  clear: both;
   margin: 10px 10px 20px;
+  position: relative;
 }
-#other-articles h3::after {
+#other-articles h3::before, #other-articles h3::after {
   content: '';
   position: absolute;
-  top: 60px;
-  left: 45px;
-  width: 760px;
+  top: -40px;
+  left: -10px;
+  width: calc(100% + 10px);
   height: 1px;
   background: url(/img/layout/content_line.gif);
 }
-#other-articles h3 a {
+#other-articles h3::after {
+  top: 28px;
+}
+#other-articles h3 a, #other-articles h4 a {
   color: #4183C4;
 }
-#other-articles h3 a:hover {
+#other-articles h3 a:hover, #other-articles h4 a:hover {
   color: #4183C4;
   text-decoration: underline;
 }
@@ -259,6 +267,15 @@
 #other-articles div:hover img {
   margin: -2px 0 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+#other-articles .previous-next {
+  height: 70px;
+  width: 45%;
+  display: inline-block;
+}
+#other-articles .previous-next h4 {
+  margin-top: 10px;
+  text-align: left;
 }
 
 #disqus {
@@ -460,7 +477,7 @@
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
   background-color: #DDDDDD;
-  background-image: linear-gradient(#f1f1f1, #dddddd);
+  background-image: linear-gradient(#F1F1F1, #DDDDDD);
   background-repeat: repeat-x;
   border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
   border-image: none;
