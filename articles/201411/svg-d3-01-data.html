@@ -9,32 +9,24 @@
   <meta property="article:published_time" content="2014-11-01T23:25:00+01:00">
   <meta name="keywords" content="svg,d3,d3.js,data">
 
-  <meta name="description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式。">
+  <meta name="description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。">
 
   <meta itemprop="name" content="SVG D3.js - 淺談 D3.js 的資料處理 - OXXO.STUDIO">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201411/20141101_1_01.jpg">
-  <meta itemprop="description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式。">
+  <meta itemprop="description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。">
 
   <meta property="og:title" content="SVG D3.js - 淺談 D3.js 的資料處理 - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/20141101_1_01.jpg">
-  <meta property="og:description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式。">
+  <meta property="og:description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。">
   
-
   <link rel="stylesheet" href="/css/layout.css">
-
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
-
   <script src="/js/lib/jquery.min.js"></script>
 
-
-
-
-
       <title>SVG D3.js - 淺談 D3.js 的資料處理 - OXXO.STUDIO</title>
-      
-</head>
+      </head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -87,7 +79,7 @@
             </h2>
             <p>
               <img src="/img/articles/201411/20141101_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
-              <span itemprop="description" class="desc">D3 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，有別於一般我們要塞資料進 HTML，或要利用資料自動長出元素，不外乎都要用到 for 迴圈或是 each 的方式來進行，但對於 D3 來說，這些基本的功能已經全部包辦，甚至連同亂數和排序都內建在裏頭</span>，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。</p>
+              D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，有別於一般我們要塞資料進 HTML，或要利用資料自動長出元素，不外乎都要用到 for 迴圈或是 each 的方式來進行，但對於 D3 來說，這些基本的功能已經全部包辦，甚至連同亂數和排序都內建在裏頭，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。</p>
             <p>先來看看這個例子，有一個 data 的陣列，要把這個陣列的值分別放到五個 div 裏頭，過去應該會寫個 for 迴圈一一把值丟進去長出來，但在 D3 裏頭可以這樣寫 ( 阿對了，忘記說一點，D3 的 script 放在 header，D3 的執行 script 放在 body 裏頭, 放錯位置可就跑不出來了 ) ：</p>
             <pre><code>var data = [1,2,3,4,5];
 
@@ -190,8 +182,6 @@ console.log('shuffle: '+ d3.shuffle(data)); //亂數排列
             <p>其實 D3 在數據的處理上還有很多方法無法在這篇闡述完成 ( 敝人功力太弱 &gt;_&lt; )，相信熟悉之後一定會更容易處理數據，理解之後也會再一一分享的啦！</p>
           </div>
         </div>
-
-
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -200,10 +190,8 @@ console.log('shuffle: '+ d3.shuffle(data)); //亂數排列
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
-
         </div>  
     </div>
-
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -220,7 +208,6 @@ console.log('shuffle: '+ d3.shuffle(data)); //亂數排列
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -243,10 +230,8 @@ console.log('shuffle: '+ d3.shuffle(data)); //亂數排列
         ga('send', 'pageview');
     </script>
     <script src="/js/layout.min.js"></script>
-
   <script src="/js/articles.min.js"></script>
   <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
-
 </body>
 </html>
