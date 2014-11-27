@@ -9,32 +9,24 @@
   <meta property="article:published_time" content="2014-09-02T23:55:00+01:00">
   <meta name="keywords" content="css,css3,hover,svg,pointer-events,div,穿透">
 
-  <meta name="description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性">
+  <meta name="description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。">
 
   <meta itemprop="name" content="穿透的 div ( pointer-events ) - OXXO.STUDIO">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140902_1_01.jpg">
-  <meta itemprop="description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性">
+  <meta itemprop="description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。">
 
   <meta property="og:title" content="穿透的 div ( pointer-events ) - OXXO.STUDIO">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/pointer-events.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140902_1_01.jpg">
-  <meta property="og:description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性">
+  <meta property="og:description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。">
   
-
   <link rel="stylesheet" href="/css/layout.css">
-
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
-
   <script src="/js/lib/jquery.min.js"></script>
 
-
-
-
-
       <title>穿透的 div ( pointer-events ) - OXXO.STUDIO</title>
-      
-</head>
+      </head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -86,7 +78,7 @@
               <span class="article-date">SEP 2, 2014</span>
             </h2>
             <p><img src="/img/articles/201409/20140902_1_01.jpg" style="float:right; width:300px; margin-left:10px;">
-            <span itemprop="description" class="desc">pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性</span>，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。除了 auto 和 none，這是完整的屬性列表：
+            pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。除了 auto 和 none，這是完整的屬性列表：
               <code>pointer-events: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit</code>，除了 auto 與 none，其他都是控制 SVG 的屬性，若採用預設值，則 SVG 就是以 visiblePainted 來表現。</p>
             <p>首先看到
               <code>pointer-events: auto</code>，就是我們一般常見的，一個 div 被另外一個 div 遮住，就無法進行點擊或 hover 的動作，如下圖：
@@ -184,8 +176,6 @@
             <p>這就是 pointer-events 的用法，其實搞懂之後，因為可以點擊到被覆蓋的 div 下方的東西，就可以做出許多應用喔！真是迫不及待想要用用看啦！</p>
           </div>
         </div>
-
-
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -194,10 +184,8 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
-
         </div>  
     </div>
-
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -214,7 +202,6 @@
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -237,10 +224,8 @@
         ga('send', 'pageview');
     </script>
     <script src="/js/layout.min.js"></script>
-
   <script src="/js/articles.min.js"></script>
   <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
-
 </body>
 </html>

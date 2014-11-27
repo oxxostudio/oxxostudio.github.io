@@ -20,19 +20,11 @@
     <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140729_1_01.gif">
     <meta property="og:description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
 
-
   <link rel="stylesheet" href="/css/layout.css">
-
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
-
   <script src="/js/lib/jquery.min.js"></script>
-
-
-
-
   <title>CSS Water Wave (水波效果) - OXXO.STUDIO</title>
-
 </head>
 <body>
     <div id="header">
@@ -83,7 +75,7 @@
                         <span class="article-date">JUL 29, 2014</span>
                         </h2>
                     <p><a href="http://goo.gl/3VQRH7" target="_blank"><img src="/img/articles/201407/20140729_1_01.gif" style="float:right; width:300px; margin:0 10px 20px;"></a>
-                    <span itemprop="description" class="desc">以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。</span>範例：<a href="http://goo.gl/3VQRH7" target="_blank">CSS Water Wave</a> ( 使用 EZoApp 設計工具，點選 preview 可以看效果喔！ )</p>
+                    以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。範例：<a href="http://goo.gl/3VQRH7" target="_blank">CSS Water Wave</a> ( 使用 EZoApp 設計工具，點選 preview 可以看效果喔！ )</p>
                     <p>雖然 webkit 具有遮色片的能力 ( webkit mask )，不過就如同我之前在 <a href="http://www.oxxostudio.tw/articles/201407/css-blur.html">CSS 模糊效果</a> 所提到的，webkit 雖然強大，但在跨瀏覽器上總是它的罩門，況且在效能上也是往往會造成困擾 ( 這也是為什麼 chrome 要這麼吃資源了@@ )，因此撇開 webkit 不談，我們該用什麼方法，才可以做出像 flash 水波的效果呢？答案就是用「
                         <strong>疊</strong>」的，這個水波效果的原理其實就是用六個 div 疊在一起，接著最重要的就是將背景設為固定：
                         <code>background-attachment:fixed;</code>，然後讓背景的尺寸有大有小，就可以完成了，詳細原理如下：</p>
@@ -273,8 +265,6 @@ function _wave(i, j, k) {
                 </div>
             </div>
 
-
-
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -283,10 +273,8 @@ function _wave(i, j, k) {
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
-
         </div>  
     </div>
-
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -303,7 +291,6 @@ function _wave(i, j, k) {
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
-
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -326,10 +313,8 @@ function _wave(i, j, k) {
         ga('send', 'pageview');
     </script>
     <script src="/js/layout.min.js"></script>
-
   <script src="/js/articles.min.js"></script>
   <script src="/js/lib/run_prettify.js"></script>
   <script src="/js/lib/disqus.js"></script>
-
 </body>
 </html>
