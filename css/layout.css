@@ -177,14 +177,54 @@ a {
   height: 23px;
   color: #aaa;
   font-size: 12px;
-  padding: 5px;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
 }
-#top-menu .search:hover {
-  opacity: .5;
+#top-menu .search table, #top-menu .search tbody {
+  border-spacing: 0 !important;
+  border: none !important;
+}
+#top-menu .search .gsc-search-box {
+  margin-top: -2px !important;
+}
+#top-menu .search .gsc-search-box input {
+  background: none !important;
+  width: 145px !important;
+  height: 22px !important;
+  font-size: 13px !important;
+  margin: 0 0 0 -10px !important;
+  padding: 0 0 0 5px !important;
+  border: none !important;
+  color: #999999 !important;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+#top-menu .search .gsc-search-box input:focus {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+#top-menu .search .gsc-search-box .gsib_b {
+  display: none !important;
+}
+#top-menu .search .gsc-search-box .gsc-search-button {
+  width: 22px !important;
+}
+#top-menu .search .gsc-search-box .gsc-search-button input {
+  width: 22px !important;
+  height: 22px !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+}
+#top-menu .search #gsc-iw-id1 {
+  border: none !important;
+  background: none !important;
+  height: 20px !important;
+  box-shadow: none !important;
+}
+#top-menu .search #gs_tti50 {
+  padding: 1px 0 0 10px !important;
 }
 #top-menu .rss {
   float: right;

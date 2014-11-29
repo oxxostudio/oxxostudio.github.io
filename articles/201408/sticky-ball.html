@@ -36,7 +36,9 @@
                 <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
             </ul>
             <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">SEARCH</div>
+            <div class="search" title="站內搜尋">
+                <gcse:searchbox-only></gcse:searchbox-only>
+            </div>
         </div>
         <div id="banner">
             <h1>OXXO.STUDIO</h1>
@@ -77,7 +79,7 @@
             <h2>噁心黏黏球 ( 純 CSS )
               <span class="article-date">MAY 18, 2014</span>
             </h2>
-            <p><span itemprop="description" class="desc">這是一個純粹利用 CSS 所做出來的效果，這個效果說穿了就是一個影像處理的原理，做法跟 Photoshop 裡頭的幾乎一模一樣，只是一個用圖層和色版來製作，一個則是用 CSS ( 把 div 當成圖層思考就好了 )</span>，要看完整範例程式碼可以點選這個網址：<a href="http://jqmdesigner.appspot.com/designer.html#&ref=5128921674678272" target="_blank">http://jqmdesigner.appspot.com/designer.html#&ref=5128921674678272</a> ( 使用 EZoApp，按下上方 preview 可以預覽 )</p>
+            <p>這是一個純粹利用 CSS 所做出來的效果，這個效果說穿了就是一個影像處理的原理，做法跟 Photoshop 裡頭的幾乎一模一樣，只是一個用圖層和色版來製作，一個則是用 CSS ( 把 div 當成圖層思考就好了 )，要看完整範例程式碼可以點選這個網址：<a href="http://jqmdesigner.appspot.com/designer.html#&ref=5128921674678272" target="_blank">http://jqmdesigner.appspot.com/designer.html#&ref=5128921674678272</a> ( 使用 EZoApp，按下上方 preview 可以預覽 )</p>
             <p>一開始我們來玩 Photoshop，會比直接寫 CSS 來得容易理解 ( 沒有 Photoshop 的人也沒關係，看完說明也就懂了ㄎㄎ )，首先我們新增兩個圖層，一個裡頭放上紅色的小球，另外一個裡頭放上黑色的大球。</p>
             <p>
               <img src="/img/articles/201408/20140829_1_02.png" />
@@ -315,6 +317,10 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -323,9 +329,17 @@
         ga('create', 'UA-2708968-3', 'oxxostudio.tw');
         ga('send', 'pageview');
     </script>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script>
+      (function() {
+        var cx = '018175492205832613185:g5mvl2qoy5a';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            '//www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
 </body>
 </html>

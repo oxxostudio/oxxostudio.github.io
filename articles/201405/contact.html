@@ -20,19 +20,11 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/20140518_2_01.jpg">
   <meta property="og:description" content="這是我的一點點通訊方式，也希望有同好或前輩，先進們可以一起交流，給些指導，相得益彰，感恩感謝！" >
 
-
   <link rel="stylesheet" href="/css/layout.css">
-
   <link rel="stylesheet" href="/css/articles-content.css">
   <link rel="stylesheet" href="/css/lib/tomorrow.css">
-
   <script src="/js/lib/jquery.min.js"></script>
-
-
-
-
   <title>Contact - OXXO.STUDIO</title>
-
 </head>
 <body>
     <div id="header">
@@ -43,7 +35,9 @@
                 <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
             </ul>
             <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">SEARCH</div>
+            <div class="search" title="站內搜尋">
+                <gcse:searchbox-only></gcse:searchbox-only>
+            </div>
         </div>
         <div id="banner">
             <h1>OXXO.STUDIO</h1>
@@ -100,8 +94,6 @@
           </div>
         </div>
 
-
-
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -110,10 +102,8 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
-
         </div>  
     </div>
-
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -131,7 +121,6 @@
     <div id="disqus_thread"></div>
   </div>
 
-
     <div id="footer">
         <div class="footer-line"></div>
         <div class="footer-link">
@@ -144,6 +133,10 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -152,11 +145,17 @@
         ga('create', 'UA-2708968-3', 'oxxostudio.tw');
         ga('send', 'pageview');
     </script>
-    <script src="/js/layout.min.js"></script>
-
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
-
+    <script>
+      (function() {
+        var cx = '018175492205832613185:g5mvl2qoy5a';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            '//www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
 </body>
 </html>
