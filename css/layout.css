@@ -217,13 +217,13 @@ a {
   padding: 0 !important;
   opacity: 0 !important;
 }
-#top-menu .search #gsc-iw-id1 {
+#top-menu .search #gsc-iw-id1, #top-menu .search #gsc-iw-id2 {
   border: none !important;
   background: none !important;
   height: 20px !important;
   box-shadow: none !important;
 }
-#top-menu .search #gs_tti50 {
+#top-menu .search #gs_tti50, #top-menu .search #gs_tti51 {
   padding: 1px 0 0 10px !important;
 }
 #top-menu .rss {
