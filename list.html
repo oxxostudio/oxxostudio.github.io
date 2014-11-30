@@ -25,6 +25,7 @@
 
   <link rel="stylesheet" href="/css/layout.css">
   <link rel="stylesheet" href="/css/list.css">
+  <style class="list-search-style"></style>
   <script src="/js/lib/jquery.min.js"></script>
   <title>OXXO.STUDIO - 所有文章列表</title>
 </head>
@@ -73,7 +74,23 @@
         <div id="container">
 
       <div class="content">
-        <h1>所有文章列表 ( <span></span> )</h1>
+        <h1>所有文章列表 ( <span></span> )
+        </h1>
+        <div class="tag-list">
+          快速篩選：
+          <i class="tag-all">All</i>,
+          <i class="tag-creative not-this">Creative</i>,
+          <i class="tag-ui not-this">UI & UX</i>,
+          <i class="tag-photo not-this">PHOTO</i>,
+          <i class="tag-css not-this">CSS</i>,
+          <i class="tag-web not-this">WEB TECH</i>,
+          <i class="tag-share not-this">Share</i>,
+          <i class="tag-others not-this">OTHERS</i>
+        </div>
+        <div class="list-search">
+          標題搜尋：
+          <input type="text" placeholder="輸入標題" />
+        </div>
         <ul>
         </ul>
       </div>

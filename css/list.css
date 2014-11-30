@@ -27,6 +27,65 @@
   font-size: 28px;
   font-weight: bold;
 }
+#container .content .tag-list {
+  margin: 20px 40px 0;
+  font-size: 12px;
+  color: #666;
+}
+#container .content .tag-list i {
+  margin: 0 5px 0 0;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+  text-decoration: underline;
+}
+#container .content .tag-list i:hover {
+  opacity: 1;
+}
+#container .content .tag-list .tag-all {
+  color: #000;
+}
+#container .content .tag-list .tag-creative {
+  color: #eb6f70;
+}
+#container .content .tag-list .tag-ui {
+  color: #74bc48;
+}
+#container .content .tag-list .tag-share {
+  color: #40a880;
+}
+#container .content .tag-list .tag-photo {
+  color: #eb9e79;
+}
+#container .content .tag-list .tag-css {
+  color: #955694;
+}
+#container .content .tag-list .tag-web {
+  color: #309ac1;
+}
+#container .content .tag-list .tag-others {
+  color: #ff8400;
+}
+#container .content .tag-list .not-this {
+  opacity: .5;
+  text-decoration: none;
+}
+#container .content .list-search {
+  margin: 10px 40px 0;
+  font-size: 12px;
+  color: #666;
+}
+#container .content .list-search input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 3px;
+  background: none;
+}
+#container .content .list-search input:focus {
+  box-shadow: none;
+  outline: none;
+}
 #container .content ul {
   display: table;
   margin: 20px 20px 40px;
@@ -37,6 +96,7 @@
 #container .content ul li {
   margin: 10px 20px 10px 20px;
   font-size: 14px;
+  display: block;
 }
 #container .content ul li a {
   color: #666;
