@@ -14,6 +14,18 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
+      <title>簡單打造站內搜尋、標題搜尋</title>
+      <link>http://www.oxxostudio.tw/articles/201412/site-search.html</link>
+      <pubDate>2014-12-01 22:55:00 GMT</pubDate>
+      <description>這篇文章來分享一下自己部落格使用的兩種站內搜尋方式，第一種是利用 google 的「自訂搜尋」，就可以做出利用 google 進行全站搜尋的超強大功能，第二種則是單純使用一行 CSS 和一點點的 jQuery，就可以實現純前端的單頁內容搜尋。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201412/20141201_1_01.jpg</url>
+        <title>簡單打造站內搜尋、標題搜尋</title>
+        <link>http://www.oxxostudio.tw/articles/201412/site-search.html</link>
+      </image>
+    </item>
+    <item>
       <title>SVG D3.js - 區域 ( area )</title>
       <link>http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html</link>
       <pubDate>2014-11-16 19:25:00 GMT</pubDate>
@@ -107,18 +119,6 @@
         <url>http://www.oxxostudio.tw/img/articles/201410/20141022_1_01.jpg</url>
         <title>SVG 完整教學 31 天</title>
         <link>http://www.oxxostudio.tw/articles/201410/svg-tutorial.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG 研究之路 (30) - filter - feConvolveMatrix</title>
-      <link>http://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html</link>
-      <pubDate>2014-10-20 23:55:00 GMT</pubDate>
-      <description>feConvolveMatrix 透過每個像素本身與周圍像素的矩陣運算，算出這個圖形裏頭每個像素的 RGBA 分別會變成如何，演算過後有可能彼此差異變大(銳利)，也有可能差異變小(模糊)，也有可能整個反相(浮雕或反相)，也因此可以做出基本的模糊、銳利或浮雕...等的效果。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201410/20141020_1_01.jpg</url>
-        <title>SVG 研究之路 (30) - filter - feConvolveMatrix</title>
-        <link>http://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html</link>
       </image>
     </item>
   </channel>
