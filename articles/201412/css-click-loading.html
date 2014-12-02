@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-12-02T23:55:00+01:00">
+  <meta name="keywords" content="css,loading,before,偽元素,click">
+
+  <meta name="description" content="為了避免點擊後一兩秒的載入時間空窗，就做個 loading 動畫來強化使用者體驗，單純使用 CSS 的漸層效果來達成，沒想到效果還滿好的，而且不需要額外增加 div 之類的元素，單純修改 CSS 和加上點擊事件就完成了。">
+
+  <meta itemprop="name" content="點擊後的 CSS 載入效果 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/20141202_1_01b.jpg">
+  <meta itemprop="description" content="為了避免點擊後一兩秒的載入時間空窗，就做個 loading 動畫來強化使用者體驗，單純使用 CSS 的漸層效果來達成，沒想到效果還滿好的，而且不需要額外增加 div 之類的元素，單純修改 CSS 和加上點擊事件就完成了。">
+
+  <meta property="og:title" content="點擊後的 CSS 載入效果 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/css-click-loading.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/20141202_1_01b.jpg">
+  <meta property="og:description" content="為了避免點擊後一兩秒的載入時間空窗，就做個 loading 動畫來強化使用者體驗，單純使用 CSS 的漸層效果來達成，沒想到效果還滿好的，而且不需要額外增加 div 之類的元素，單純修改 CSS 和加上點擊事件就完成了。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>點擊後的 CSS 載入效果 - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-css"></i>
+          <div class="md">
+            <h2>點擊後的 CSS 載入效果
+              <span class="article-date">DEC 2, 2014</span>
+            </h2>
+            <p>由於自己公司產品裏頭，有個按鈕在點擊之後，會有一兩秒的等待時間 ( 寄認證信 )，因此為了避免點擊後一兩秒的載入時間空窗，就做個 loading 動畫來強化使用者體驗，原本想說直接用張 gif 來解決，但又想藉著這個機會練功，就使用了 CSS 的漸層效果來達成，沒想到效果還滿好的，而且不需要額外增加 div 之類的元素，單純修改 CSS 和加上點擊事件就完成了。</p>
+            <p>
+              <br/> 先來看一下完成的效果。( 範例：<a href="css-click-loading-demo.html" target="_blank">css-click-loading-demo.html</a> )</p>
+            <p><img src="/img/articles/201412/20141202_1_06.gif" alt="點擊後的 CSS 載入效果" />
+            </p>
+            <p>
+              這個效果其實很容易，先來看一下原本的按鈕長相，就只是個 div 套用 CSS 而已。</p>
+            <p>HTML：</p>
+            <pre><code>&lt;div class=&quot;btn&quot;&gt;click me&lt;/div&gt;
+</code></pre>
+
+            <p>CSS：</p>
+            <pre><code>.btn{
+  position:relative;
+  width:200px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  border-radius:3px;
+  background:#5ad;
+  color:#fff;
+  cursor:pointer;
+}
+</code></pre>
+
+            <p>長相就會是這樣 ( 就只是很簡單的 CSS ) ：</p>
+            <p><img src="/img/articles/201412/20141202_1_02.jpg" alt="點擊後的 CSS 載入效果" />
+            </p>
+            <p>
+              <br/> 那麼要怎麼在上面蓋上動畫呢？這時候就要利用 CSS 的偽元素 ( 參考 <a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">電子時鐘效果 ( CSS 偽元素的應用 )</a> )，在上方蓋上一個<code>before</code>偽元素，把動畫放在這個偽元素內即可。</p>
+            <p>CSS：</p>
+            <pre><code>.btn::before{
+  content:&quot;loading&quot;;
+  position:absolute;
+  width:200px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  border-radius:3px;
+  z-index:2;          //底層預設基本上都是 1，設 2 就可覆蓋
+  top:0;
+  left:0;
+  color:#fff;
+  text-shadow:rgba(100,0,0,1) 0 0 3px;
+  background:#c00;
+}
+</code></pre>
+
+            <p>套上 before 之後，就會發現原本的被覆蓋了。</p>
+            <p><img src="/img/articles/201412/20141202_1_03.jpg" alt="點擊後的 CSS 載入效果" />
+            </p>
+            <p>
+              <br/> 了解原理後，再來就是把 before 的背景改成動畫，這裡用到兩個 CSS3 的技巧，第一個是漸層色的背景，第二個是動畫，第一個漸層色比較複雜些，主要就是讓漸層以 45 度的方式填充，內容是兩種顏色互相搭配，但必須配合<code>background-size</code>，讓漸層能夠順利地接在一起，這邊通常是要調整最久的地方。</p>
+            <pre><code>  background:-webkit-linear-gradient(45deg,#fc0 0%,#fc0 20%,#fa0 20%, #fa0 45%,#fc0 45%,#fc0 70%,#fa0 70%, #fa0 95%,#fc0 95%,#fc0 100%);
+  background-size:30px 30px;
+  background-position:0 0;
+</code></pre>
+
+            <p>從下圖可以看到，如果沒有一步步調整，出來的長相可能就會沒接好，調整完成的就會接得很順暢。</p>
+            <p><img src="/img/articles/201412/20141202_1_04.jpg" alt="點擊後的 CSS 載入效果" />
+            </p>
+            <p>
+              <br/> 完成之後就是要套用 CSS3 的動畫效果，讓<code>background-position</code>改變，背景就會自動變化了。</p>
+            <pre><code>-webkit-animation:click 1s infinite linear; 
+
+@-webkit-keyframes &quot;click&quot;{
+  0%{
+    background-position:0 0;
+  }
+  100%{
+    background-position:30px 0;
+  }
+}
+</code></pre>
+
+            <p><img src="/img/articles/201412/20141202_1_05.gif" alt="點擊後的 CSS 載入效果" />
+            </p>
+            <p>
+              <br/> 到這邊其實完成了百分之八十了，最後一步就是要加上點擊的事件，這裡我的作法是先把剛剛的偽元素用
+              <code>display:none</code>隱藏起來，接著新增一個 class 名為 click，當點擊按鈕的時候，按鈕就會套用 click 的 class，偽元素就會出現了，以下是完整的程式碼，不過有做了些簡化，以及讓點擊 2 秒之後，按鈕會恢復原樣。( 範例：<a href="css-click-loading-demo.html" target="_blank">css-click-loading-demo.html</a> )</p>
+            <p>CSS：</p>
+            <pre><code>.btn,.btn::before{
+  width:200px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  border-radius:3px;
+}
+.btn{
+  position:relative;
+  background:#5ad;
+  color:#fff;
+  cursor:pointer;
+}
+.btn::before{
+  content:&quot;loading&quot;;
+  position:absolute;
+  display:none;
+  z-index:2;
+  top:0;
+  left:0;
+  color:#fff;
+  text-shadow:rgba(100,0,0,1) 0 0 3px;
+  background:-webkit-linear-gradient(45deg,#fc0 0%,#fc0 20%,#fa0 20%, #fa0 45%,#fc0 45%,#fc0 70%,#fa0 70%, #fa0 95%,#fc0 95%,#fc0 100%);
+  background-size:30px 30px;
+  background-position:0 0;
+   -webkit-animation:click 1s infinite linear;
+}
+.btn.click::before{
+  display:block;
+}
+@-webkit-keyframes &quot;click&quot;{
+  0%{
+    background-position:0 0;
+  }
+  100%{
+    background-position:30px 0;
+  }
+}
+</code></pre>
+
+            <p>jquery：</p>
+            <pre><code>$(function(){
+  var timer;
+  $('.btn').on('click',function(){
+    $('.btn').addClass('click');
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      $('.btn').removeClass('click');
+    },2000);
+  });
+});
+</code></pre>
+
+            <p><img src="/img/articles/201412/20141202_1_06.gif" alt="點擊後的 CSS 載入效果" />
+            </p>
+            <p>
+              CSS 的偽元素其實超好用的，除了之前分享過的 <a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">電子時鐘效果 ( CSS 偽元素的應用 )</a>，這篇的效果也是一個利用偽元素達成的效果，不需要改變 HTML 結構，輕鬆完成的啦喔哈！</p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

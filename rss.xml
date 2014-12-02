@@ -14,6 +14,18 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
+      <title>點擊後的 CSS 載入效果</title>
+      <link>http://www.oxxostudio.tw/articles/201412/css-click-loading.html</link>
+      <pubDate>2014-12-02 23:55:00 GMT</pubDate>
+      <description>為了避免點擊後一兩秒的載入時間空窗，就做個 loading 動畫來強化使用者體驗，單純使用 CSS 的漸層效果來達成，沒想到效果還滿好的，而且不需要額外增加 div 之類的元素，單純修改 CSS 和加上點擊事件就完成了。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201412/20141202_1_01.jpg</url>
+        <title>點擊後的 CSS 載入效果</title>
+        <link>http://www.oxxostudio.tw/articles/201412/css-click-loading.html</link>
+      </image>
+    </item>
+    <item>
       <title>簡單打造站內搜尋、標題搜尋</title>
       <link>http://www.oxxostudio.tw/articles/201412/site-search.html</link>
       <pubDate>2014-12-01 22:55:00 GMT</pubDate>
