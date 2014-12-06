@@ -14,6 +14,18 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
+      <title>SVG D3.js - 巢狀數據結構 ( d3.nest )</title>
+      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-06-data-nest.html</link>
+      <pubDate>2014-12-06 21:45:00 GMT</pubDate>
+      <description>這陣子研究了一下 d3.js 的 nest，nest 就是「巢」的意思，透過 d3.nest 的轉換，可以將原本的數據變成以 key 和 value 為主的巢狀結構，並且可以針對巢狀結構的每個節點進行排序，而所得到的巢狀結構數據，可以在程式裡重複使用而不會影響到原本的數據。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201412/20141206_1_01.jpg</url>
+        <title>SVG D3.js - 巢狀數據結構 ( d3.nest )</title>
+        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-06-data-nest.html</link>
+      </image>
+    </item>
+    <item>
       <title>點擊後的 CSS 載入效果</title>
       <link>http://www.oxxostudio.tw/articles/201412/css-click-loading.html</link>
       <pubDate>2014-12-02 23:55:00 GMT</pubDate>
