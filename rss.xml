@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2014-12-10 23:25:00 GMT</pubDate>
+    <pubDate>2014-12-11 23:25:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -14,9 +14,21 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
+      <title>2010 年工作的插畫 ( 1 )</title>
+      <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw1.html</link>
+      <pubDate>2014-12-11 23:55:00 GMT</pubDate>
+      <description>在 2010 年結束中研院的生活，剛回高雄，遠綠資訊服務了兩年，說真的還滿感謝遠綠資訊對我的栽培，不僅讓我學了不少網頁的技術，也能把一些插畫運用在工作上，這裡分享一些當年所畫的簡單插畫。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201412/20141211_1_01.jpg</url>
+        <title>2010 年工作的插畫 ( 1 )</title>
+        <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw1.html</link>
+      </image>
+    </item>
+    <item>
       <title>box-sizing 與 background-clip</title>
       <link>http://www.oxxostudio.tw/articles/201412/css-boxsizing-backgroundclip.html</link>
-      <pubDate>2014-12-07 23:55:00 GMT</pubDate>
+      <pubDate>2014-12-10 23:55:00 GMT</pubDate>
       <description>為了讓 border 可以順利的在外面顯示背景的圖案或顏色，就需要用到 box-sizing 與 background-clip 這兩個 CSS3 的屬性來設定，就讓我們來分別看看這兩個屬性該如何使用。
       </description>
       <image>
