@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2014-12-11 23:25:00 GMT</pubDate>
+    <pubDate>2014-12-14 00:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>2010 年工作的插畫 ( 2 )</title>
+      <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw2.html</link>
+      <pubDate>2014-12-14 00:55:00 GMT</pubDate>
+      <description>同樣也是在遠綠資訊的時候畫的，比之前的大張一點的，也有一些點陣與向量的圖形 ( 點陣圖是一直以來我愛的風格，當兵的時候畫了很多 )，原本想順著這個線條插畫系列，看看能不能畫出一本插畫集，不過明年再說吧！因為想學的程式學不完呀！
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201412/20141214_1_01.jpg</url>
+        <title>2010 年工作的插畫 ( 2 )</title>
+        <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw2.html</link>
+      </image>
+    </item>
     <item>
       <title>2010 年工作的插畫 ( 1 )</title>
       <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw1.html</link>
