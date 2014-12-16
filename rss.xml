@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2014-12-14 00:55:00 GMT</pubDate>
+    <pubDate>2014-12-16 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SVG D3.js - 陣列數據地圖 ( d3.map )</title>
+      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-07-data-map.html</link>
+      <pubDate>2014-12-16 23:55:00 GMT</pubDate>
+      <description>d3.map 這個其實我找不到合適的翻譯，只好暫時用我的破英文翻譯成「陣列數據地圖」，雖然有地圖兩個字，但跟實際的地圖卻是沒啥關聯性，d3.map 會根據我們所下的條件，把特定的值取出成為 key 而成為一個新的陣列，也可藉由 get、has 或 set 的 API 對數據做判斷或重新設定。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201412/20141216_1_01.jpg</url>
+        <title>SVG D3.js - 陣列數據地圖 ( d3.map )</title>
+        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-07-data-map.html</link>
+      </image>
+    </item>
     <item>
       <title>2010 年工作的插畫 ( 2 )</title>
       <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw2.html</link>
