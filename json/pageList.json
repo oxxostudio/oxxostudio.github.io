@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG D3.js - 定義色彩 - 基本篇 ( colors )",
+  "site": "/articles/201412/svg-d3-09-colors-1.html",
+  "img": "/img/articles/201412/20141225_1_01.jpg",
+  "date": "DEC 25, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG D3.js - 序數比例尺 ( ordinal )",
   "site": "/articles/201412/svg-d3-08-ordinal.html",
   "img": "/img/articles/201412/20141223_1_01.jpg",

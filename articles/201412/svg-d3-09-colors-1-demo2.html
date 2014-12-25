@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 定義色彩 - 基本篇 ( colors ) demo2</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<div id="red"></div>
+	<div id="green"></div>
+	<div id="yellow"></div>
+	<div id="blue"></div>
+	<script>
+
+var d = d3.selectAll('div'),
+		r = d3.select('#red'),
+		g = d3.select('#green'),
+		y = d3.select('#yellow'),
+		b = d3.select('#blue');
+
+d.style({
+  'width':'80px',
+  'height':'80px',
+  'display':'inline-block',
+  'margin':'3px'
+});
+
+// var red = d3.rgb('red');
+// var green = d3.rgb('green');
+// var yellow = d3.rgb('yellow');
+// var blue = d3.rgb('blue');
+var red = d3.rgb('#f00');
+var green = d3.rgb('#0f0');
+var yellow = d3.rgb('#ff0');
+var blue = d3.rgb('#00f');
+
+r.style({
+    'background':red
+  });
+g.style({
+    'background':green
+  });
+y.style({
+    'background':yellow
+  });
+b.style({
+    'background':blue
+  });
+
+	</script>
+</body>
+</html>

@@ -14,6 +14,18 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
+      <title>SVG D3.js - 定義色彩 - 基本篇 ( colors )</title>
+      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-09-colors-1.html</link>
+      <pubDate>2014-12-25 23:55:00 GMT</pubDate>
+      <description>在 d3.js 裡，同樣也有操作顏色的 API,有別於一般我們在寫 CSS 的顏色方式，d3.js 是使用 RGB ( 紅綠藍 )、HSL (色調、飽和度，亮度) 、HCL 與 LAB ( 亮度，a 維度，b 維度 ) 的這些色彩空間。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201412/20141225_1_01.jpg</url>
+        <title>SVG D3.js - 定義色彩 - 基本篇 ( colors )</title>
+        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-09-colors-1.html</link>
+      </image>
+    </item>
+    <item>
       <title>SVG D3.js - 序數比例尺 ( ordinal )</title>
       <link>http://www.oxxostudio.tw/articles/201412/svg-d3-08-ordinal.html</link>
       <pubDate>2014-12-23 00:55:00 GMT</pubDate>

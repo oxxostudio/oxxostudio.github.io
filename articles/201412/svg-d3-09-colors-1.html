@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2014-12-25T23:55:00+01:00">
+  <meta name="keywords" content="svg,d3,d3js,d3.js,color,colors,色彩">
+
+  <meta name="description" content="在 d3.js 裡，同樣也有操作顏色的 API,有別於一般我們在寫 CSS 的顏色方式，d3.js 是使用 RGB ( 紅綠藍 )、HSL (色調、飽和度，亮度) 、HCL 與 LAB ( 亮度，a 維度，b 維度 ) 的這些色彩空間。">
+
+  <meta itemprop="name" content="SVG D3.js - 定義色彩 - 基本篇 ( colors ) - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/20141225_1_01b.jpg">
+  <meta itemprop="description" content="在 d3.js 裡，同樣也有操作顏色的 API,有別於一般我們在寫 CSS 的顏色方式，d3.js 是使用 RGB ( 紅綠藍 )、HSL (色調、飽和度，亮度) 、HCL 與 LAB ( 亮度，a 維度，b 維度 ) 的這些色彩空間。">
+
+  <meta property="og:title" content="SVG D3.js - 定義色彩 - 基本篇 ( colors ) - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/svg-d3-09-colors-1.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/20141225_1_01b.jpg">
+  <meta property="og:description" content="在 d3.js 裡，同樣也有操作顏色的 API,有別於一般我們在寫 CSS 的顏色方式，d3.js 是使用 RGB ( 紅綠藍 )、HSL (色調、飽和度，亮度) 、HCL 與 LAB ( 亮度，a 維度，b 維度 ) 的這些色彩空間。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>SVG D3.js - 定義色彩 - 基本篇 ( colors ) - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>SVG D3.js - 定義色彩 - 基本篇 ( colors )
+              <span class="article-date">DEC 25, 2014</span>
+            </h2>
+            <img src="/img/articles/201412/20141225_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+            <p>在網頁的世界裡，色彩是非常重要的，通常我們在寫網頁的色彩，不外乎就是用十六進制 ( #f00、#fff )、顏色名稱 ( red、yellow ) 或 rgba ( rgba(0,0,0,0) )，而在 d3.js 裡，同樣也有操作顏色的 API,有別於一般我們在寫 CSS 的顏色方式，d3.js 是使用 RGB ( 紅綠藍 )、HSL (色調、飽和度，亮度) 、HCL 與 LAB ( 亮度，a 維度，b 維度 ) 的這些色彩空間，對於這些色彩空間不了解的，可以參考 <a href="http://zh.wikipedia.org/wiki/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%96%93" target="_blank">維基百科色彩空間</a>。</p>
+            <p>和 CSS 最大的差異，d3.js 可以運用其 API 讓顏色亮一點或暗一點，如果在 CSS 裏頭，要調整某個顏色亮一點暗一點，就非得要自己從十六進制色碼下去著手，而當我們運用 d3.js，就可以直接交給 API 去處理即可，以下就來看看 d3.js 的 colors，具有那些 API 可以使用，這裡列出了以 rgb 開頭的 API,而 HSL、HCL 與 LAB 的用法也都一樣，大家舉一反三就好：</p>
+            <blockquote>
+              <ul>
+                <li>d3.rgb</li>
+                <li>rgb.brighter</li>
+                <li>rgb.darker</li>
+                <li>rgb.hsl </li>
+                <li>rgb.toString</li>
+              </ul>
+            </blockquote>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>d3.rgb(r, g, b)</strong>
+                </p>
+                <p>這是可以把一個變數宣告為 d3 的色彩，也就是經過這個方式宣告之後，該變數不僅可作為色彩使用，也可利用 d3.js 其他的色彩 API 來控制和調整，下面的例子便是利用這種方式，將四個　div 的背景色設定為紅綠黃藍。( 範例：<a href="svg-d3-09-colors-1-demo1.html" target="_blank">svg-d3-09-colors-demo1.html</a> )</p>
+                <p>HTML：</p>
+                <pre><code>&lt;div id=&quot;red&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;green&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;yellow&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;blue&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+                <p>JS：</p>
+                <pre><code>var d = d3.selectAll('div'),
+        r = d3.select('#red'),
+        g = d3.select('#green'),
+        y = d3.select('#yellow'),
+        b = d3.select('#blue');
+
+d.style({
+  'width':'80px',
+  'height':'80px',
+  'display':'inline-block',
+  'margin':'3px'
+});
+
+var red = d3.rgb(255,0,0);
+var green = d3.rgb(0,255,0);
+var yellow = d3.rgb(255,255,0);
+var blue = d3.rgb(0,0,255);
+
+r.style({
+    'background':red
+  });
+g.style({
+    'background':green
+  });
+y.style({
+    'background':yellow
+  });
+b.style({
+    'background':blue
+  });
+</code></pre>
+
+                <p><img src="/img/articles/201412/20141225_1_02.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>d3.rgb(color)</strong>
+                </p>
+                <p>除了用十進位撰寫顏色之外，其實 d3.js 也可以直接讓我們填寫顏色的名稱或十六進位色碼，不過要注意的是，記得要用引號包起來，才識字串的形式。( 範例：<a href="svg-d3-09-colors-1-demo2.html" target="_blank">svg-d3-09-colors-1-demo2.html</a> )</p>
+                <pre><code>var red = d3.rgb('red');
+var green = d3.rgb('green');
+var yellow = d3.rgb('yellow');
+var blue = d3.rgb('blue');
+</code></pre>
+
+                <p><img src="/img/articles/201412/20141225_1_03.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )" />
+                </p>
+                <pre><code>var red = d3.rgb('#f00');
+var green = d3.rgb('#0f0');
+var yellow = d3.rgb('#ff0');
+var blue = d3.rgb('#00f');
+</code></pre>
+
+                <p><img src="/img/articles/201412/20141225_1_04.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>rgb.brighter([k])</strong>
+                </p>
+                <p>加亮顏色的 API，數值從 0 開始往上加，最主要是在原本的顏色數字乘上 0.7^-k ，數字越大越亮，不過最終的數值範圍是 30-255，超過範圍的就會以最大值或最小值表現，範例有改了一下上面的 HTML，可以點開看完整原始檔。( 範例：<a href="svg-d3-09-colors-1-demo3.html" target="_blank">svg-d3-09-colors-1-demo3.html</a> )</p>
+                <pre><code>var red = d3.rgb(50,0,0);
+
+r.style({
+    'background':red.brighter(0)
+  });
+r1.style({
+    'background':red.brighter(1)
+  });
+r2.style({
+    'background':red.brighter(2)
+  });
+r3.style({
+    'background':red.brighter(3)
+  });
+r4.style({
+    'background':red.brighter(4)
+  });
+</code></pre>
+
+                <p><img src="/img/articles/201412/20141225_1_05.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )" />
+                </p>
+                <p>對於想要了解背後真正運算式的，可以利用 console 看出背後的運作原理，但實際上我們也不太需要真正了解，因為 我們使用 d3.js ，就是為了幫我們解決這些運算呀！</p>
+                <pre><code>brighter: function (n){n=Math.pow(.7,arguments.length?n:1);var t=this.r,e=this.g,r=this.b,u=30;return t||e||r?(t&amp;&amp;u&gt;t&amp;&amp;(t=u),e&amp;&amp;u&gt;e&amp;&amp;(e=u),r&amp;&amp;u&gt;r&amp;&amp;(r=u),new dt(Math.min(255,t/n),Math.min(255,e/n),Math.min(255,r/n))):new dt(u,u,u)}
+</code></pre>
+
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>rgb.darker([k])</strong>
+                </p>
+                <p>和剛剛的 rgb.brighter 相反，rgb.darker 是變暗，是在原本的顏色數字乘上 0.7^k，注意不是 -k 而是 k。( 範例：<a href="svg-d3-09-colors-1-demo4.html" target="_blank">svg-d3-09-colors-1-demo4.html</a> )</p>
+                <pre><code>var red = d3.rgb(255,0,0);
+
+r.style({
+    'background':red.darker(0)
+  });
+r1.style({
+    'background':red.darker(1)
+  });
+r2.style({
+    'background':red.darker(2)
+  });
+r3.style({
+    'background':red.darker(3)
+  });
+r4.style({
+    'background':red.darker(4)
+  });
+</code></pre>
+
+                <p><img src="/img/articles/201412/20141225_1_06.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>rgb.hsl()</strong>
+                </p>
+                <p>返回 HSL 的色彩，可以直接從 console 看出來。( 範例：<a href="svg-d3-09-colors-1-demo5.html" target="_blank">svg-d3-09-colors-1-demo5.html</a> )</p>
+                <pre><code>var red = d3.rgb(255,0,0);  
+console.log(red.hsl());
+</code></pre>
+
+                <p><img src="/img/articles/201412/20141225_1_07.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>rgb.toString()</strong>
+                </p>
+                <p>輸出色彩為十六進位字串。( 範例：<a href="svg-d3-09-colors-1-demo6.html" target="_blank">svg-d3-09-colors-1-demo6.html</a> )</p>
+                <pre><code>var red = d3.rgb(255,0,0);
+console.log(red.toString());
+</code></pre>
+
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <p>以上就是 d3.js 對於色彩的基本用法，最主要也是練習色彩的相關 API，下一篇將會繼續介紹色彩的其他用法。</p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>
