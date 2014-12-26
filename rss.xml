@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2014-12-23 00:55:00 GMT</pubDate>
+    <pubDate>2014-12-26 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SVG D3.js - 定義色彩 - 應用篇 ( colors )</title>
+      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-10-colors-2.html</link>
+      <pubDate>2014-12-26 23:55:00 GMT</pubDate>
+      <description>對於色彩，d3.js 還有不少應用的方法，也因此在官網所介紹的範例，才會如此的色彩豐富生動多姿，因此，這篇將繼續介紹色彩的應用，主要是利用之前介紹過的 scale 來變化色彩。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201412/20141226_1_01.jpg</url>
+        <title>SVG D3.js - 定義色彩 - 應用篇 ( colors )</title>
+        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-10-colors-2.html</link>
+      </image>
+    </item>
     <item>
       <title>SVG D3.js - 定義色彩 - 基本篇 ( colors )</title>
       <link>http://www.oxxostudio.tw/articles/201412/svg-d3-09-colors-1.html</link>
