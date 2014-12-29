@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG D3.js - 時間格式 ( Time Formatting )",
+  "site": "/articles/201412/svg-d3-11-time.html",
+  "img": "/img/articles/201412/20141229_1_01.jpg",
+  "date": "DEC 29, 2014"
+},{
+  "tag": "tag-web",
   "title": "SVG D3.js - 定義色彩 - 應用篇 ( colors )",
   "site": "/articles/201412/svg-d3-10-colors-2.html",
   "img": "/img/articles/201412/20141226_1_01.jpg",

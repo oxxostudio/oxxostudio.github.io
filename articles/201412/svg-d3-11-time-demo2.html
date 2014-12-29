@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 時間格式 ( Time Formatting ) demo2</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+var d = new Date('2014,12,01,12:16:05');
+
+var Ymd = d3.time.format("%Y-%m-%d");
+var pIM = d3.time.format("(%p)%I:%M");
+
+console.log(Ymd(d)); //2014-12-16
+console.log(pIM(d)); //(PM)12:16
+
+	</script>
+</body>
+</html>
