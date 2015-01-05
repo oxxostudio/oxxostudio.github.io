@@ -1,4 +1,10 @@
 [{
+  "tag": "tag-photo",
+  "title": "認識 300 dpi",
+  "site": "/articles/201501/know-300-dpi.html",
+  "img": "/img/articles/201501/20150105_1_01b.jpg",
+  "date": "JAN 5, 2015"
+},{
   "tag": "tag-web",
   "title": "Mac Dock 實作",
   "site": "/articles/201501/mac-dock.html",

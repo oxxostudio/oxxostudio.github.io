@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-01-03 23:55:00 GMT</pubDate>
+    <pubDate>2015-01-05 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>認識 300 dpi</title>
+      <link>http://www.oxxostudio.tw/articles/201501/know-300-dpi.html</link>
+      <pubDate>2015-01-05 23:55:00 GMT</pubDate>
+      <description>不管做幾次印刷，總是會聽到「300 dpi」這個專有名詞，不論是往來的信件或電話，印刷廠總是會要求要給 300 dpi 的圖，傳遞訊息的人也三不五時講個 300 dpi 來凸顯一下自己的專業，彷彿做印刷，不談「300 dpi」就渾身不對勁。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201501/20150105_1_01b.jpg</url>
+        <title>認識 300 dpi</title>
+        <link>http://www.oxxostudio.tw/articles/201501/know-300-dpi.html</link>
+      </image>
+    </item>
     <item>
       <title>Mac Dock 實作</title>
       <link>http://www.oxxostudio.tw/articles/201501/mac-dock.html</link>
