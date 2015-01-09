@@ -1,26 +1,16 @@
-@media screen and (max-width: 850px) {
-  #container .content {
-    width: 90% !important;
-  }
-}
-@media screen and (max-width: 600px) {
-  .content h3 {
-    display: none !important;
-  }
-}
 #container .content {
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   display: table;
   width: 850px;
   margin: 20px auto 20px;
-  background: #fafafa;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  position: relative;
+  background: #fafafa;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 #container .content h1 {
   margin: 40px 40px 0;
@@ -34,11 +24,11 @@
 }
 #container .content .tag-list i {
   margin: 0 5px 0 0;
-  cursor: pointer;
+  text-decoration: underline;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   transition: 0.3s;
-  text-decoration: underline;
+  cursor: pointer;
 }
 #container .content .tag-list i:hover {
   opacity: 1;
@@ -68,8 +58,8 @@
   color: #ff8400;
 }
 #container .content .tag-list .not-this {
-  opacity: .5;
   text-decoration: none;
+  opacity: .5;
 }
 #container .content .list-search {
   margin: 10px 40px 0;
@@ -77,14 +67,14 @@
   color: #666;
 }
 #container .content .list-search input {
+  padding: 3px;
   border: none;
   border-bottom: 1px solid #ccc;
-  padding: 3px;
   background: none;
 }
 #container .content .list-search input:focus {
-  box-shadow: none;
   outline: none;
+  box-shadow: none;
 }
 #container .content ul {
   display: table;
@@ -94,9 +84,9 @@
   transition: 0.5s;
 }
 #container .content ul li {
+  display: block;
   margin: 10px 20px 10px 20px;
   font-size: 14px;
-  display: block;
 }
 #container .content ul li a {
   color: #666;
@@ -118,10 +108,10 @@
   display: inline-block;
   width: 10px;
   height: 10px;
-  background: #555;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%;
+  background: #555;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   transition: 0.2s;
@@ -180,12 +170,12 @@
   display: block;
   width: 24px;
   height: 24px;
-  background-image: url(/img/layout/sprites.png);
-  background-repeat: no-repeat;
   margin: 5px 0;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%;
+  background-image: url(/img/layout/sprites.png);
+  background-repeat: no-repeat;
 }
 .tool-icon > i > i {
   position: absolute;
@@ -193,37 +183,37 @@
   left: 0;
   width: 24px;
   height: 24px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
   background-image: url(/img/layout/sprites.png);
   background-repeat: no-repeat;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   transition: 0.3s;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  border-radius: 100%;
   cursor: pointer;
   opacity: 0;
 }
 .tool-icon > i span {
   position: absolute;
-  width: 0px;
   top: 5px;
   left: 27px;
+  width: 0px;
+  overflow: hidden;
   font-size: 12px;
   color: #333;
-  opacity: 0;
-  overflow: hidden;
+  white-space: nowrap;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   transition: 0.3s;
-  white-space: nowrap;
+  opacity: 0;
 }
 .tool-icon > i > i:hover {
   opacity: 1;
 }
 .tool-icon > i > i:hover + span {
-  opacity: 1;
   width: 120px;
+  opacity: 1;
 }
 .tool-icon .icon-home {
   background-position: -128px 0;
@@ -236,4 +226,15 @@
 }
 .tool-icon .goto-top > i {
   background-position: -99px -115px;
+}
+
+@media screen and (max-width: 850px) {
+  #container .content {
+    width: 90%;
+  }
+}
+@media (max-width: 600px) {
+  #container .content h3 {
+    display: none;
+  }
 }
