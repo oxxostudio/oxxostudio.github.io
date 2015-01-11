@@ -266,6 +266,11 @@
   /* IMAGES
 =============================================================================*/
 }
+.md .preview-img {
+  float: right;
+  width: 300px;
+  margin: 20px 10px 20px;
+}
 .md p, .md blockquote, .md ul, .md ol, .md dl, .md table, .md pre {
   margin: 15px 0;
 }

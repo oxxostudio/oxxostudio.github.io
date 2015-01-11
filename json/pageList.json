@@ -1,8 +1,14 @@
 [{
+  "tag": "tag-web",
+  "title": "SVG D3.js - 數字格式 ( Formatting )",
+  "site": "/articles/201501/svg-d3-12-formatting.html",
+  "img": "/img/articles/201501/20150111_1_01.jpg",
+  "date": "JAN 11, 2015"
+},{
   "tag": "tag-photo",
   "title": "認識 300 dpi",
   "site": "/articles/201501/know-300-dpi.html",
-  "img": "/img/articles/201501/20150105_1_01b.jpg",
+  "img": "/img/articles/201501/20150105_1_01.jpg",
   "date": "JAN 5, 2015"
 },{
   "tag": "tag-web",

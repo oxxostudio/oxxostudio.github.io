@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 數字格式 ( Formatting ) demo2</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+	var _g1 = d3.format(".9g");
+	
+	console.log(_g1(10000));  //10000.0000
+	console.log(_g1(10));     //10.0000000
+	console.log(_g1(1));      //1.00000000
+	console.log(_g1(0.01));   //0.0100000000
+	console.log(_g1(0.0001)); //0.000100000000
+	console.log(_g1(-10));    //-10.0000000
+	console.log(_g1(-0.01));  //-0.0100000000
+
+	var _g2 = d3.format("5g");
+	
+	console.log(_g2(10000));  //10000
+	console.log(_g2(10));     //   10 <-- 前面有空白
+	console.log(_g2(1));      //    1
+	console.log(_g2(0.01));   // 0.01
+	console.log(_g2(0.0001)); //0.0001
+	console.log(_g2(-10));    //  -10
+	console.log(_g2(-0.01));  //-0.01
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 數字格式 ( Formatting ) demo4</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+	var _d1 = d3.format("d");
+	
+	console.log(_d1(10000));  //10000
+	console.log(_d1(10));     //10
+	console.log(_d1(1));      //1
+	console.log(_d1(0.01));   //
+	console.log(_d1(0.0001)); //
+	console.log(_d1(-10));    //-10
+	console.log(_d1(-0.01));  //
+
+	var _d2 = d3.format("6d");
+	
+	console.log(_d2(10000));  // 10000 <-- 前面有空白
+	console.log(_d2(10));     //    10
+	console.log(_d2(1));      //     1
+	console.log(_d2(0.01));   //
+	console.log(_d2(0.0001)); //
+	console.log(_d2(-10));    //   -10
+	console.log(_d2(-0.01));  //
+
+
+	</script>
+</body>
+</html>

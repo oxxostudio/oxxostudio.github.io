@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 數字格式 ( Formatting ) demo13</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+	var _s1 = d3.format("s");
+	
+	console.log(_s1(10000));   //10k
+	console.log(_s1(100));     //100
+	console.log(_s1(1));       //1
+	console.log(_s1(0.01));    //10m
+	console.log(_s1(0.0001));  //100µ
+	console.log(_s1(-100));    //-100
+	console.log(_s1(-0.01));   //-10m
+
+	var _s2 = d3.format("10s");
+	
+	console.log(_s2(10000));   //        10k  <-- 前面有空格
+	console.log(_s2(100));     //       100
+	console.log(_s2(1));       //         1
+	console.log(_s2(0.01));    //        10m
+	console.log(_s2(0.0001));  //       100µ
+	console.log(_s2(-100));    //      -100
+	console.log(_s2(-0.01));   //       -10m
+
+	var _s3 = d3.format(".5s");
+	
+	console.log(_s3(10000));   //10.000k
+	console.log(_s3(100));     //100.00
+	console.log(_s3(1));       //1.0000
+	console.log(_s3(0.01));    //10.000m
+	console.log(_s3(0.0001));  //100.00µ
+	console.log(_s3(-100));    //-100.00
+	console.log(_s3(-0.01));   //-10.000m
+
+
+
+	</script>
+</body>
+</html>
