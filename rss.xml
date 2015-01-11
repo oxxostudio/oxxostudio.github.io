@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-01-05 23:55:00 GMT</pubDate>
+    <pubDate>2015-01-11 23:05:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SVG D3.js - 數字格式 ( Formatting )</title>
+      <link>http://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html</link>
+      <pubDate>2015-01-11 23:05:00 GMT</pubDate>
+      <description>來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201501/20150111_1_01b.jpg</url>
+        <title>SVG D3.js - 數字格式 ( Formatting )</title>
+        <link>http://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html</link>
+      </image>
+    </item>
     <item>
       <title>認識 300 dpi</title>
       <link>http://www.oxxostudio.tw/articles/201501/know-300-dpi.html</link>
