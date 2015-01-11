@@ -79,8 +79,8 @@
             <h2>SVG D3.js - 繪製線段
               <span class="article-date">NOV 3, 2014</span>
             </h2>
-            
-            <p>在之前的 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html">SVG 研究之路 (4) - Path 基礎篇</a> 裡頭，詳細的列出了 SVG path 的繪製方式，現在我們要來利用 D3.js 的 line() API ，來完成線段 ( line ) 的繪製，且有別於單純的 SVG 產生 path 不容易放入數據，D3.js 可以根據我們的數據，自動產生對應的線條。</p>
+            在之前的 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html">
+            <p>SVG 研究之路 (4) - Path 基礎篇</a> 裡頭，詳細的列出了 SVG path 的繪製方式，現在我們要來利用 D3.js 的 line() API ，來完成線段 ( line ) 的繪製，且有別於單純的 SVG 產生 path 不容易放入數據，D3.js 可以根據我們的數據，自動產生對應的線條。</p>
             <p>先來了解一下如何利用 D3.js 的 line() 畫線，一開始一定要有一些 data，而且這些 data 必須要有 x 座標和 y 座標 ( 因為有「點」才有「線」，點是由 x 與 y 構成 )，因此我們的 data 陣列的值，都會是個「具有 x 與 y 屬性的物件」 ( 大括號為物件，內容是屬性 )，第一個點的座標就是
               <code>data[0].x</code>和
               <code>data[0].y</code>，依此類推。</p>

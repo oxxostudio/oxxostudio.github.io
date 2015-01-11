@@ -76,8 +76,9 @@
           <h2>SVG 研究之路 (13) - filter - feGaussianBlur
             <span class="article-date">JUN 25, 2014</span>
           </h2>
+          <img src="/img/articles/201406/20140625_1_01.jpg" class="preview-img">
           <p>
-            <img src="/img/articles/201406/20140625_1_01.jpg" style="float:right; width:300px; margin:0 10px 20px;">
+            
             <span itemprop="description" class="desc">使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果 ( <a href="https://dl.dropboxusercontent.com/u/59597657/oxxo_code/Jquery_20120712_imageBlurMask.html" target="_blank">可以參考這個我以前做的效果</a> )，這個方式其實在一些 3D 軟體做景深渲染的時候也常常使用，不過這種方法在網頁上必須撰寫一些程式才能辦到。</span>今天有了 SVG 的 feGaussianBlur 濾鏡，我們只需要下幾個指令就能夠達到模糊的效果，且還能夠使用程式做互動的反應，是相當方便的喔！</p>
           <p><code>feGaussianBlur</code>應該算是 SVG filter 裏頭最簡單的濾鏡，因為它只有一個參數需要注意：<code>stdDeviation</code>，這也是控制模糊程度的參數，數字越大越模糊，數字為零則是圖片原本的狀態，在這邊有一個比較需要注意的地方，就是要記得設定 filter 的<code>filterUnits</code>為 userSpaceOnUse ，因為預設值是會讓 filter 跟隨著套用該 filter 的物件跑，所以要記得設定成跟隨整個 SVG space。</p>
           <p>
