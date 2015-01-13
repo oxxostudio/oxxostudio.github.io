@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-01-13 22:05:00 GMT</pubDate>
+    <pubDate>2015-01-13 23:25:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>CSS 搞怪的 text-decoration</title>
+      <link>http://www.oxxostudio.tw/articles/201501/css-text-decoration.html</link>
+      <pubDate>2015-01-13 23:25:00 GMT</pubDate>
+      <description>但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201501/20150113_2_01b.jpg</url>
+        <title>CSS 搞怪的 text-decoration</title>
+        <link>http://www.oxxostudio.tw/articles/201501/css-text-decoration.html</link>
+      </image>
+    </item>
     <item>
       <title>SVG D3.js - CSV 數據處理</title>
       <link>http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.html</link>
