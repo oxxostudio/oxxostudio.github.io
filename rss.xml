@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-01-11 23:05:00 GMT</pubDate>
+    <pubDate>2015-01-13 22:05:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SVG D3.js - CSV 數據處理</title>
+      <link>http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.html</link>
+      <pubDate>2015-01-13 22:05:00 GMT</pubDate>
+      <description>在數據的類型裡，CSV 是一種相當普及且方便的數據文件格式，從我們每個人手邊的 excel 就可以輕鬆地將數據轉換成 CSV 的數據格式，而對於 d3.js 而言，除了可以很輕鬆的處理 JSON 數據之外，也可以很便利的處理 CSV 的數據，搭配前幾篇所介紹的數據處理方法，就可以做出多樣的變化。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201501/20150113_1_01b.jpg</url>
+        <title>SVG D3.js - CSV 數據處理</title>
+        <link>http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.html</link>
+      </image>
+    </item>
     <item>
       <title>SVG D3.js - 數字格式 ( Formatting )</title>
       <link>http://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html</link>
@@ -215,54 +227,6 @@
         <url>http://www.oxxostudio.tw/img/articles/201411/20141113_1_01.jpg</url>
         <title>SVG D3.js - 座標軸 ( Axis )</title>
         <link>http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 定義比例 ( scale.linear() )</title>
-      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html</link>
-      <pubDate>2014-11-12 22:25:00 GMT</pubDate>
-      <description>當我們面對一個折線圖或長條圖的長寬，超過電腦視窗的畫面大小，就必須用比例的方式讓圖表等比例縮小來適合寬度，在 D3.js 裏頭，就要使用 scale 這個方法來達成。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201411/20141112_1_01.jpg</url>
-        <title>SVG D3.js - 定義比例 ( scale.linear() )</title>
-        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 繪製線段</title>
-      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html</link>
-      <pubDate>2014-11-03 23:25:00 GMT</pubDate>
-      <description>利用 D3.js 的 line() API ，來完成線段 ( line ) 的繪製，且有別於單純的 SVG 產生 path 不容易放入數據，D3.js 可以根據我們的數據，自動產生對應的線條。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201411/20141103_1_01.jpg</url>
-        <title>SVG D3.js - 繪製線段</title>
-        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 淺談 D3.js 的資料處理</title>
-      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html</link>
-      <pubDate>2014-11-01 23:25:00 GMT</pubDate>
-      <description>D3 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201411/20141101_1_01.jpg</url>
-        <title>SVG D3.js - 淺談 D3.js 的資料處理</title>
-        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 起手式</title>
-      <link>http://www.oxxostudio.tw/articles/201410/svg-d3-info.html</link>
-      <pubDate>2014-10-31 23:25:00 GMT</pubDate>
-      <description>D3 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201410/20141031_1_01.jpg</url>
-        <title>SVG D3.js - 起手式</title>
-        <link>http://www.oxxostudio.tw/articles/201410/svg-d3-info.html</link>
       </image>
     </item>
   </channel>
