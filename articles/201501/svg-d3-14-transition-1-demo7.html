@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - transition 基本篇 demo7</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+
+
+<style>
+	div{
+		position:absolute;
+		display:inline-block;
+		box-sizing: border-box;
+		top:30px;
+		width:100px;
+		height:100px;
+		padding:5px;
+		font-size:12px;
+		color:#fff;
+	}
+	.box1{
+		left:10px;
+		background:#095;
+	}
+</style>
+<body>
+	<button onclick="d3Transition()">RESET</button>
+	<br/>
+  <div class="box1">
+  </div>
+
+	<script>
+	d3Transition();
+	function d3Transition(){
+		d3.selectAll('div')
+			.transition()
+		  .style({
+				'top':'30px',
+				'left':'10px'
+		  });
+		d3.select('.box1')
+			.transition()
+			.duration(500)
+			.style('top','100px')
+			.transition()
+			.duration(500)
+			.style('left','100px')
+			.transition()
+			.duration(500)
+			.style('top','30px')
+			.transition()
+			.duration(500)
+			.style('left','10px');
+	}
+	</script>
+</body>
+
+</html>

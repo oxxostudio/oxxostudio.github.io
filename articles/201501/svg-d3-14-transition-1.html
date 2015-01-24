@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2015-01-24T21:15:00+01:00">
+  <meta name="keywords" content="svg,d3,d3js,transition,ease,duration,delay">
+
+  <meta name="description" content="在 d3.js 裡頭的 transition，會自動去計算補間動畫，更可以自己設定自己的補間效果，自己去設定相關的插值，許多 d3.js 圖表的動態效果，都是藉由這個 transition 來完成的。">
+
+  <meta itemprop="name" content="SVG D3.js - transition 基本篇 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/20150124_1_01b.jpg">
+  <meta itemprop="description" content="在 d3.js 裡頭的 transition，會自動去計算補間動畫，更可以自己設定自己的補間效果，自己去設定相關的插值，許多 d3.js 圖表的動態效果，都是藉由這個 transition 來完成的。">
+
+  <meta property="og:title" content="SVG D3.js - transition 基本篇 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html" target="_blank">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/20150124_1_01b.jpg">
+  <meta property="og:description" content="在 d3.js 裡頭的 transition，會自動去計算補間動畫，更可以自己設定自己的補間效果，自己去設定相關的插值，許多 d3.js 圖表的動態效果，都是藉由這個 transition 來完成的。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>SVG D3.js - transition 基本篇 - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>SVG D3.js - transition 基本篇
+              <span class="article-date">JAN 24, 2015</span>
+            </h2>
+            <p>在 CSS 裡面有非常好用的 transition 屬性，同樣的在 d3.js 裡頭也有，而且比 CSS 的 transition 更加強大，除了會自動去計算補間動畫 ( 這個詞在 flash 裡頭很常聽到 )，更可以自己設定自己的補間效果 ( tween )，自己去設定相關的插值 ( interpolate )，許多 d3.js 圖表的動態效果，都是藉由這個 transition 來完成的！這篇將先會先介紹基本的 transition 的用法，後續會用其他篇幅來說明比較進階的應用。</p>
+            <p>d3.js 基本的 API 有以下幾個：</p>
+            <blockquote>
+              <ul>
+                <li>d3.transition([selection], [name])</li>
+                <li>transition.delay([delay])</li>
+                <li>transition.duration([duration])</li>
+                <li>transition.ease([value[, arguments]])</li>
+                <li>transition.attr(name, value)</li>
+                <li>transition.style(name, value[, priority])</li>
+                <li>transition.each([type, ]listener)</li>
+                <li>transition.call(function[, arguments…])</li>
+              </ul>
+            </blockquote>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>.transition()、.delay()、.duratio()</strong>
+                </p>
+                <p>要看 API 就一定要實作，先看到下面這個範例，三個正方形在頁面載入之後就會往下移動，但因為設定的不同，所以會在不同的時間點抵達下方，紅色的正方形，單純只寫了<code>.transition</code>，因此會帶入預設的<code>.duration(250)</code>，也就是 0.25 秒，綠色的正方形多寫了<code>.duration(1000)</code>，表示會在一秒內抵達下方，藍色的正方形則是又多了<code>.delay(500)</code>，表示會延遲五秒鐘才開始進行動作，其實在在 CSS 也幾乎是同樣的設定方式啦。( 範例：<a href="svg-d3-14-transition-1-demo1.html" target="_blank">svg-d3-14-transition-1-demo1.html</a> )</p>
+                <pre><code>d3.selectAll('div')
+  .style({
+        'top':'0'
+  });
+d3.select('.box1')
+    .transition()
+    .style({
+        'top':'100px'
+    });
+d3.select('.box2')
+    .transition()
+    .duration(1000)
+    .style({
+        'top':'100px'
+    });
+d3.select('.box3')
+    .transition()
+    .duration(1000)
+    .delay(500)
+    .style({
+        'top':'100px'
+    });
+</code></pre>
+
+                <p><img src="/img/articles/201501/20150124_1_02.gif" alt="SVG D3.js - transition 基本篇" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>.style()、.attr()</strong>
+                </p>
+                <p>在上面的範例，其實還用到了<code>.style</code>這個方法，這個方法就是單純的針對具有樣式的樣式屬性去做變換，如果換成像 SVG 裡頭使用 attr 控制的元素，就必須要改用<code>.attr</code>的方式來控制，例如下面這個範例。( 範例：<a href="svg-d3-14-transition-1-demo2.html" target="_blank">svg-d3-14-transition-1-demo2.html</a> )</p>
+                <pre><code>d3.selectAll('rect')
+  .attr({
+        'y':'0'
+  });
+d3.select('#r1')
+    .transition()
+    .attr({
+        'y':'100'
+    });
+d3.select('#r2')
+    .transition()
+    .duration(1000)
+    .attr({
+        'y':'100'
+    });
+d3.select('#r3')
+    .transition()
+    .duration(1000)
+    .delay(500)
+    .attr({
+        'y':'100'
+    });
+</code></pre>
+
+                <p><img src="/img/articles/201501/20150124_1_03.gif" alt="SVG D3.js - transition 基本篇" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>.ease()</strong>
+                </p>
+                <p>看完上面兩個範例，我想應該已經大致上了解 transition 的運作原理，接著再來就看看<code>.ease</code>這個方法，在剛剛的兩個範例裏頭，並沒有設定<code>.ease</code>，呈現出來就是死板板的等速運動，換句話說，就是用<code>.ease(‘linear’)</code>的這個預設的動作類型，為了讓動畫看起來更漂亮，我們就會使用加速、減速或反彈...等動作類型，這些類型，在 d3.js 裏頭其實已經預設了不少囉！以下就是<code>.ease</code>具備的動作類型：</p>
+                <ul>
+                  <li>linear：線性，預設值，為一個常數</li>
+                  <li>poly(k)：Math.Pow，指定一個冪次 k 給 線性的常數</li>
+                  <li>quad：等同於 poly(2)</li>
+                  <li>cubic：等同於 poly(3).</li>
+                  <li>sin：三角函數的 sin 曲線</li>
+                  <li>exp：基於線性常數的指數函數</li>
+                  <li>circle：四分之一的圓周</li>
+                  <li>elastic(a, p)：像是橡皮筋一樣的有彈性，會超出 0 和 1 的範圍</li>
+                  <li>back(s)：先往後再往前</li>
+                  <li>bounce：會像球一樣的反彈</li>
+                </ul>
+                <p>這個這個範例 <a href="svg-d3-14-transition-1-demo3.html" target="_blank">svg-d3-14-transition-1-demo3.html</a> 裏頭，將<code>.ease</code>具備的模式一一展現，為了更清楚表現程式碼，就一段一段忠實呈現，在這裡就不一一把程式碼列出，可以點選範例看原始碼即可。</p>
+                <pre><code>d3.select('.box1')
+    .transition()
+    .duration(1000)
+    .ease('linear') //換裡面的字串即可
+    .style({
+        'top': '200px'
+    });
+d3.select('.box2')
+    .transition()
+    .duration(1000)
+    .ease('poly','2') //比較需要注意的是，有帶參數的要這樣寫
+    .style({
+        'top': '200px'
+    });
+</code></pre>
+
+                <p><img src="/img/articles/201501/20150124_1_04.gif" alt="SVG D3.js - transition 基本篇" />
+                </p>
+                <p>除此之外，還有另外四種類型。( 範例：<a href="svg-d3-14-transition-1-demo4.html" target="_blank">svg-d3-14-transition-1-demo4.html</a> )</p>
+                <ul>
+                  <li>cubic-in：加速</li>
+                  <li>cubic-out：減速</li>
+                  <li>cubic-in-out：先減速再加速</li>
+                  <li>
+                    <p>cubic-out-in：先加速再減速</p>
+                    <p>d3.select('.box1') .transition() .duration(1000) .ease('cubic-in') //cubic-out,cubic-out-in,cubic-in-out .style({ 'top': '200px' });
+                    </p>
+                  </li>
+                </ul>
+                <p><img src="/img/articles/201501/20150124_1_05.gif" alt="SVG D3.js - transition 基本篇" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>.each()</strong>
+                </p>
+                <p>看完<code>.ease</code>，接下來就是<code>.each</code>這個方法，按照官網的說明，這是一個在補間動畫運作時的「監聽器」 ( listener )，具有三種類型，分別是「start」、「end」與「interrupt」，「start」代表在補間動畫開始的時候，同時執行，但根據官方說法，會有 17ms 的延遲，所以也不是完全同時，「end」表示在補間動畫結束後，要執行甚麼，而「interrupt」則表示當補間動畫中斷時，會執行些甚麼，下面的範例，第一個正方形在開始的時候就會有邊框，第二個則是在結束的時候會有邊框，第三個按鈕則是在我們按下 interrupt 按鈕的時候會出現邊框。( 範例：<a href="svg-d3-14-transition-1-demo5.html" target="_blank">svg-d3-14-transition-1-demo5.html</a> )</p>
+                <pre><code>d3.select('.box1')
+    .transition()
+    .duration(2000)
+    .style({
+        'top':'100px'
+    })
+    .each('start',function(){
+        d3.select(this)
+            .style({
+                'border':'10px solid #000'
+            });
+    });
+d3.select('.box2')
+    .transition()
+    .duration(2000)
+    .style({
+        'top':'100px'
+    })
+    .each('end',function(){
+        d3.select(this)
+            .style({
+                'border':'10px solid #000'
+            });
+    });
+d3.select('.box3')
+    .transition()
+    .duration(2000)
+    .style({
+        'top':'100px'
+    })
+    .each('interrupt',function(){
+        d3.select(this)
+            .style({
+                'border':'10px solid #000'
+            });
+    });
+</code></pre>
+
+                <p><img src="/img/articles/201501/20150124_1_06.gif" alt="SVG D3.js - transition 基本篇" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/>
+            </p>
+            <ul>
+              <li>
+                <p><strong>.call()</strong>
+                </p>
+                <p>最後就是<code>.call</code>這個方法，其實這就類似我們在寫 JS 的時候，會把多個地方用到的函式獨立出來一樣，在下面的範例，由於三個正方形都會移動到同樣的位置，所以我們就將位置獨立出來，再使用<code>.call</code>來呼叫即可。( 範例：<a href="svg-d3-14-transition-1-demo6.html" target="_blank">svg-d3-14-transition-1-demo6.html</a> )</p>
+                <pre><code>function d3Transition(){
+    d3.selectAll('div')
+      .style({
+            'top':'30px'
+      });
+    d3.select('.box1')
+        .transition()
+        .call(foo);
+    d3.select('.box2')
+        .transition()
+        .duration(1000)
+        .call(foo);
+    d3.select('.box3')
+        .transition()
+        .duration(1000)
+        .delay(500)
+        .call(foo);
+}
+function foo(t){
+    t.style({
+            'top':'100px'
+        });
+}
+</code></pre>
+
+                <p><img src="/img/articles/201501/20150124_1_03.gif" alt="SVG D3.js - transition 基本篇" />
+                </p>
+              </li>
+            </ul>
+            <p>
+              <br/> 補充一點，我們也可以將 transition 組合起來成為一連串的動畫效果。( 範例：<a href="svg-d3-14-transition-1-demo7.html" target="_blank">svg-d3-14-transition-1-demo7.html</a> )</p>
+            <pre><code>d3.select('.box1')
+    .transition()
+    .duration(1000)
+    .style('top','100px')
+    .transition()
+    .duration(1000)
+    .style('left','100px')
+    .transition()
+    .duration(1000)
+    .style('top','30px')
+    .transition()
+    .duration(1000)
+    .style('left','10px');
+</code></pre>
+
+            <p><img src="/img/articles/201501/20150124_1_07.gif" alt="SVG D3.js - transition 基本篇" />
+            </p>
+            <p>
+              <br/> 以上就是 d3.js 裏頭 transition 的基本用法，不過 transition 真是滿博大精深的，之後將會再用其他篇幅，介紹比較深入的用法囉！</p>
+
+            <p>( 第一張圖片來源：http://iallenkelhet.no/2013/04/02/animation-a-little-goes-a-long-way/ )</p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

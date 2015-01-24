@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-01-13 23:25:00 GMT</pubDate>
+    <pubDate>2015-01-24 21:15:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SVG D3.js - transition 基本篇</title>
+      <link>http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html</link>
+      <pubDate>2015-01-24 21:15:00 GMT</pubDate>
+      <description>在 d3.js 裡頭的 transition，會自動去計算補間動畫，更可以自己設定自己的補間效果，自己去設定相關的插值，許多 d3.js 圖表的動態效果，都是藉由這個 transition 來完成的。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201501/20150124_1_01b.jpg</url>
+        <title>SVG D3.js - transition 基本篇</title>
+        <link>http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html</link>
+      </image>
+    </item>
     <item>
       <title>CSS 搞怪的 text-decoration</title>
       <link>http://www.oxxostudio.tw/articles/201501/css-text-decoration.html</link>
