@@ -392,7 +392,7 @@
  * @private
  */
   var _globalConfig = {
-    swfPath: _getDefaultSwfPath(),
+    swfPath: 'http://www.oxxostudio.tw/js/lib/ZeroClipboard.swf',
     trustedDomains: window.location.host ? [ window.location.host ] : [],
     cacheBust: true,
     forceEnhancedClipboard: false,
