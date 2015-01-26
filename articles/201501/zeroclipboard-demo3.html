@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>點選自動複製 ( ZeroClipboard、zClip ) demo3</title>
+</head>
+<script src="/js/lib/jquery.min.js"></script>
+<script src="/js/lib/ZeroClipboard.js"></script>
+
+<script>
+$(function() {
+  var client = new ZeroClipboard($(".clipboard"));
+
+  $('.clipboard').hover(function() {
+    $(this).addClass('ho');
+  }, function() {
+    $(this).removeClass('ho').removeClass('copied');
+  });
+
+  client.on('aftercopy', function(event) {
+    $('.clipboard').addClass('copied');
+  });
+});
+</script>
+
+<style>
+.ho {
+  position: relative;
+}
+.ho::before {
+  content: attr(data-hover);
+  position: absolute;
+  top: 26px;
+  width:60px;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0, 0, 0, .5);
+  box-shadow: rgba(0, 0, 0, .4) 2px 2px 5px;
+}
+.ho::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  border-top: 6px solid rgba(0, 0, 0, 0);
+  border-right: 6px solid rgba(0, 0, 0, 0);
+  border-bottom: 6px solid rgba(0, 0, 0, .5);
+  border-left: 6px solid rgba(0, 0, 0, 0);
+}
+.ho.copied::before{
+  content: attr(data-copied);
+}
+</style>
+
+<body>
+  <button class="clipboard" data-clipboard-text="12345" data-hover="複製：12345" data-copied="複製完成！">點我複製</button>
+  <br/>
+  <br/>
+  <br/> 貼上測試：
+  <br/>
+  <textarea id="text"></textarea>
+</body>
+
+</html>
