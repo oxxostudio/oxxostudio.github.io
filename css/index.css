@@ -207,6 +207,7 @@
   }
   #content-grid ul li h3:nth-child(even) {
     display: none;
+    margin: 0 auto 20px;
   }
   #content-grid ul li .content-img {
     position: absolute;
@@ -227,6 +228,9 @@
   }
   #content-grid ul li .read-more {
     display: none;
+  }
+  #content-grid ul li:nth-child(even) {
+    margin: 0 auto 20px;
   }
 }
 @media screen and (max-width: 650px) {
