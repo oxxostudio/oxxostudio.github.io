@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>深入解析 CSS Flexbox demo8</title>
+</head>
+<style>
+	body{
+		margin:20px;
+		font-family:"Verdana";
+		font-size:12px;
+		color:#fff;
+	}
+	.flex{
+		display:flex;
+		width:180px;
+		height:60px;
+		margin:5px 5px 40px;
+		border:1px solid #000;
+		vertical-align: top;
+	}
+	.item{
+		width:50px;
+		height:60px;
+		text-align: center;
+		line-height: 50px;
+	}
+	.order1{
+		order:1;
+		background:#c00;
+	}
+	.order2{
+		order:2;
+		background:#069;
+	}
+	.order3{
+		order:3;
+		background:#095;
+	}
+	.order4{
+		order:4;
+		background:#f50;
+	}
+	.order5{
+		order:5;
+		background:#777;
+	}
+	.order6{
+		order:6;
+		background:#077;
+	}
+</style>
+
+<body>
+<div class="flex">
+		<div class="item order2">1</div>
+		<div class="item order4">2</div>
+		<div class="item order6">3</div>
+		<div class="item order1">4</div>
+		<div class="item order3">5</div>
+		<div class="item order5">6</div>
+</div>
+<span>
+</body>
+
+</html>

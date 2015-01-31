@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>深入解析 CSS Flexbox demo5</title>
+</head>
+<style>
+	body{
+		margin:20px;
+		font-family:"Verdana";
+		font-size:12px;
+		color:#fff;
+	}
+	.flex-start,
+	.flex-end,
+	.center,
+	.stretch,	
+	.baseline{
+		display:inline-flex;
+		width:100px;
+		height:120px;
+		margin:5px;
+		border:1px solid #000;
+		vertical-align: top;
+	}
+	.flex-start{
+		align-items:flex-start;
+	}
+	.flex-end{
+		align-items:flex-end;
+	}
+	.center{
+		align-items:center;
+	}
+	.stretch{
+		align-items:stretch;
+	}
+	.baseline{
+		align-items:baseline;
+	}
+	.flex-item{
+		width:60px;
+		text-align:center;
+	}
+	.item1{
+		font-size:20px;
+		line-height: 60px;
+		background:#c00;
+	}
+	.item2{
+		align-self:baseline;
+		line-height: 30px;
+		background:#095;
+	}
+	.item3{
+		font-size:30px;
+		line-height: 100px;
+		background:#059;
+	}
+</style>
+
+<body>
+<div class="flex-start">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="flex-end">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="center">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="stretch">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="baseline">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<span>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>深入解析 CSS Flexbox demo3</title>
+</head>
+<style>
+	body{
+		margin:20px;
+		font-family:"Verdana";
+		font-size:12px;
+		color:#fff;
+	}
+	.flex-row,
+	.flex-row-reverse,
+	.flex-column,
+	.flex-column-reverse{
+		display:inline-flex;
+		width:120px;
+		height:120px;
+		border:1px solid #000;
+		vertical-align: top;
+	}
+	.flex-row{
+		flex-direction:row;
+	}
+	.flex-row-reverse{
+		flex-direction:row-reverse;
+	}
+	.flex-column{
+		flex-direction:column;
+	}
+	.flex-column-reverse{
+		flex-direction:column-reverse;
+	}
+	.flex-item{
+		width:40px;
+		height:40px;
+		text-align:center;
+		line-height: 40px;
+	}
+	.item1{
+		background:#c00;
+	}
+	.item2{
+		background:#095;
+	}
+	.item3{
+		background:#059;
+	}
+</style>
+
+<body>
+<div class="flex-row">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="flex-row-reverse">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="flex-column">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="flex-column-reverse">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<span>
+</body>
+
+</html>

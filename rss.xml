@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-01-26 23:15:00 GMT</pubDate>
+    <pubDate>2015-01-30 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>深入解析 CSS Flexbox</title>
+      <link>http://www.oxxostudio.tw/articles/201501/css-flexbox.html</link>
+      <pubDate>2015-01-30 23:55:00 GMT</pubDate>
+      <description>Flexbox 是一個 CSS3 的盒子模型 ( box model )，顧名思義它就是一個靈活的盒子 ( Flexible Box )，為什麼最近這個屬性才紅起來呢？最主要也是因為 CSS3 的規範終於普及 ( 或 IE 終於敗亡 )，加上行動裝置的發展促成了響應式布局興起，自適應長寬彈性相當大的 Flexbox 就趁勢而起了。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201501/20150130_1_01b.jpg</url>
+        <title>深入解析 CSS Flexbox</title>
+        <link>http://www.oxxostudio.tw/articles/201501/css-flexbox.html</link>
+      </image>
+    </item>
     <item>
       <title>點選自動複製 ( ZeroClipboard )</title>
       <link>http://www.oxxostudio.tw/articles/201501/zeroclipboard.html</link>
