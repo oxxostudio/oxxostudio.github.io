@@ -81,7 +81,7 @@
             </h2>
             <p>由於自己公司產品裏頭，有個按鈕在點擊之後，會有一兩秒的等待時間 ( 寄認證信 )，因此為了避免點擊後一兩秒的載入時間空窗，就做個 loading 動畫來強化使用者體驗，原本想說直接用張 gif 來解決，但又想藉著這個機會練功，就使用了 CSS 的漸層效果來達成，沒想到效果還滿好的，而且不需要額外增加 div 之類的元素，單純修改 CSS 和加上點擊事件就完成了。</p>
             <p>
-              <br/> 先來看一下完成的效果。( 範例：<a href="css-click-loading-demo.html" target="_blank">css-click-loading-demo.html</a> )</p>
+              <br/> 先來看一下完成的效果。( 範例：<a href="/demo/201412/css-click-loading-demo.html" target="_blank">css-click-loading-demo.html</a> )</p>
             <p><img src="/img/articles/201412/20141202_1_06.gif" alt="點擊後的 CSS 載入效果" />
             </p>
             <p>
@@ -158,7 +158,7 @@
             </p>
             <p>
               <br/> 到這邊其實完成了百分之八十了，最後一步就是要加上點擊的事件，這裡我的作法是先把剛剛的偽元素用
-              <code>display:none</code>隱藏起來，接著新增一個 class 名為 click，當點擊按鈕的時候，按鈕就會套用 click 的 class，偽元素就會出現了，以下是完整的程式碼，不過有做了些簡化，以及讓點擊 2 秒之後，按鈕會恢復原樣。( 範例：<a href="css-click-loading-demo.html" target="_blank">css-click-loading-demo.html</a> )</p>
+              <code>display:none</code>隱藏起來，接著新增一個 class 名為 click，當點擊按鈕的時候，按鈕就會套用 click 的 class，偽元素就會出現了，以下是完整的程式碼，不過有做了些簡化，以及讓點擊 2 秒之後，按鈕會恢復原樣。( 範例：<a href="/demo/201412/css-click-loading-demo.html" target="_blank">css-click-loading-demo.html</a> )</p>
             <p>CSS：</p>
             <pre><code>.btn,.btn::before{
   width:200px;

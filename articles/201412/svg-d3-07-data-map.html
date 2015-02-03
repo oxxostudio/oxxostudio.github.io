@@ -118,7 +118,7 @@
               <li>
                 <p><strong>d3.map([object][, key])</strong>
                 </p>
-                <p>這應該是 d3.map 裏頭最常用到的 API,跟 d3.nest 類似，將數據分為 keys 和 values 兩種，從 API 帶入的值可以看到，將物件丟進去之後，設定 key 是什麼，最後就會產生一個以這個 key 為基礎的陣列，以下面的例子來說，可以很明顯的看出來設定的 key 不同，出來的陣列也不相同，但很神奇的，使用 d3.map 所創造出的物件陣列，都已經幫我們排序排好了。( 範例：<a href="svg-d3-07-data-map-demo1.html" target="_blank">svg-d3-07-data-map-demo1.html</a> )</p>
+                <p>這應該是 d3.map 裏頭最常用到的 API,跟 d3.nest 類似，將數據分為 keys 和 values 兩種，從 API 帶入的值可以看到，將物件丟進去之後，設定 key 是什麼，最後就會產生一個以這個 key 為基礎的陣列，以下面的例子來說，可以很明顯的看出來設定的 key 不同，出來的陣列也不相同，但很神奇的，使用 d3.map 所創造出的物件陣列，都已經幫我們排序排好了。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo1.html" target="_blank">svg-d3-07-data-map-demo1.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 var j = d3.map(data,function(d){return d.type;});
 
@@ -137,7 +137,7 @@ console.log(j);
               <li>
                 <p><strong>map.has(key)</strong>
                 </p>
-                <p>這個 API 回傳的是　true 或　false，主要是找看看列出來的　key 當中有沒有我們想要的值，如果有，回傳　true，沒有則回傳　false。( 範例：<a href="svg-d3-07-data-map-demo2.html" target="_blank">svg-d3-07-data-map-demo2.html</a> )</p>
+                <p>這個 API 回傳的是　true 或　false，主要是找看看列出來的　key 當中有沒有我們想要的值，如果有，回傳　true，沒有則回傳　false。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo2.html" target="_blank">svg-d3-07-data-map-demo2.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 
 console.log(i.has('Tom'));   // true
@@ -155,7 +155,7 @@ console.log(i.has('oxxo'));  // false
               <li>
                 <p><strong>map.get(key)</strong>
                 </p>
-                <p>get 顧名思義就是將這個　key 提取出變成獨立的物件。( 範例：<a href="svg-d3-07-data-map-demo3.html" target="_blank">svg-d3-07-data-map-demo3.html</a> )</p>
+                <p>get 顧名思義就是將這個　key 提取出變成獨立的物件。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo3.html" target="_blank">svg-d3-07-data-map-demo3.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 
 console.log(i.get('Tom'));  
@@ -174,7 +174,7 @@ console.log(i.get('oxxo'));
               <li>
                 <p><strong>map.set(key, value)</strong>
                 </p>
-                <p>設定某個　key 的值，但置換後並不會影響到原本的值。( 範例：<a href="svg-d3-07-data-map-demo4.html" target="_blank">svg-d3-07-data-map-demo4.html</a> )</p>
+                <p>設定某個　key 的值，但置換後並不會影響到原本的值。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo4.html" target="_blank">svg-d3-07-data-map-demo4.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 
 console.log(i.set('Tom','hello world?!')); 
@@ -193,7 +193,7 @@ console.log(data);
               <li>
                 <p><strong>map.remove(key)</strong>
                 </p>
-                <p>移除某個　key，移除成功回傳 true，如果沒有 key 仍要移除，則回傳 false。( 範例：<a href="svg-d3-07-data-map-demo5.html" target="_blank">svg-d3-07-data-map-demo5.html</a> )</p>
+                <p>移除某個　key，移除成功回傳 true，如果沒有 key 仍要移除，則回傳 false。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo5.html" target="_blank">svg-d3-07-data-map-demo5.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 
 console.log(i.remove('Tom')); 
@@ -213,7 +213,7 @@ console.log(i.remove('Tom'));
               <li>
                 <p><strong>map.keys()</strong>
                 </p>
-                <p>列出所有的 key 成為一個陣列。( 範例：<a href="svg-d3-07-data-map-demo6.html" target="_blank">svg-d3-07-data-map-demo6.html</a> )</p>
+                <p>列出所有的 key 成為一個陣列。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo6.html" target="_blank">svg-d3-07-data-map-demo6.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 var j = i.keys();
 
@@ -231,7 +231,7 @@ console.log(j);
               <li>
                 <p><strong>map.values()</strong>
                 </p>
-                <p>列出所有的 value 成為一個陣列。( 範例：<a href="svg-d3-07-data-map-demo7.html" target="_blank">svg-d3-07-data-map-demo7.html</a> )</p>
+                <p>列出所有的 value 成為一個陣列。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo7.html" target="_blank">svg-d3-07-data-map-demo7.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 var j = i.values();
 
@@ -249,7 +249,7 @@ console.log(j);
               <li>
                 <p><strong>map.size()</strong>
                 </p>
-                <p>跟我們在寫 length 相同，回傳 map 有多少 key。( 範例：<a href="svg-d3-07-data-map-demo8.html" target="_blank">svg-d3-07-data-map-demo7.html</a> )</p>
+                <p>跟我們在寫 length 相同，回傳 map 有多少 key。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo8.html" target="_blank">svg-d3-07-data-map-demo7.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 
 console.log(i.size());  //10
@@ -264,7 +264,7 @@ console.log(i.size());  //10
               <li>
                 <p><strong>map.empty()</strong>
                 </p>
-                <p>如果 map 中具有 key 則回傳 false， map 的 key 為空則回傳 true。( 範例：<a href="svg-d3-07-data-map-demo9.html" target="_blank">svg-d3-07-data-map-demo9.html</a> )</p>
+                <p>如果 map 中具有 key 則回傳 false， map 的 key 為空則回傳 true。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo9.html" target="_blank">svg-d3-07-data-map-demo9.html</a> )</p>
                 <pre><code>var emptyData = [];
 
 var i = d3.map(data,function(d){return d.name;});
@@ -283,7 +283,7 @@ console.log(j.empty());  //true
               <li>
                 <p><strong>map.forEach(function)</strong>
                 </p>
-                <p>針對 map 產生的值，一一進行 function，最後回傳 undefined。( 範例：<a href="svg-d3-07-data-map-demo10.html" target="_blank">svg-d3-07-data-map-demo10.html</a> )</p>
+                <p>針對 map 產生的值，一一進行 function，最後回傳 undefined。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo10.html" target="_blank">svg-d3-07-data-map-demo10.html</a> )</p>
                 <pre><code>var i = d3.map(data,function(d){return d.name;});
 var j = i.forEach(function(n){console.log(n);});
 
@@ -297,7 +297,7 @@ console.log(j);
             <p>
               <br/>
             </p>
-            <p>以上就是 d3.map 的相關介紹，當然我們也可以直接對我們的數據下 map，例如以下的範例，就可以直接回傳 key 成為一個陣列，之後撰寫與 d3.js 有關的範例文章，也將會大量地使用 d3.map，這也是學習 d3.js 一定要會的部分喔。( 範例：<a href="svg-d3-07-data-map-demo11.html" target="_blank">svg-d3-07-data-map-demo11.html</a> )</p>
+            <p>以上就是 d3.map 的相關介紹，當然我們也可以直接對我們的數據下 map，例如以下的範例，就可以直接回傳 key 成為一個陣列，之後撰寫與 d3.js 有關的範例文章，也將會大量地使用 d3.map，這也是學習 d3.js 一定要會的部分喔。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo11.html" target="_blank">svg-d3-07-data-map-demo11.html</a> )</p>
             <pre><code>var i = data.map(function(d){return d.name;});
 
 console.log(i);

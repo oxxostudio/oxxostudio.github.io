@@ -106,10 +106,10 @@
 </code></pre>
 
             <p>
-              <br/> 上面的 HTML 我多放了一個 textarea，目的就是複製之後可以直接貼上，大家可以點選這個範例： <a href="zeroclipboard-demo1.html" target="_blank">zeroclipboard-demo1.html</a>,實際感受一下複製貼上，同時也可以在按鈕上面按右鍵，就會發現它上面多了一層 flash。</p>
+              <br/> 上面的 HTML 我多放了一個 textarea，目的就是複製之後可以直接貼上，大家可以點選這個範例： <a href="/demo/201501/zeroclipboard-demo1.html" target="_blank">zeroclipboard-demo1.html</a>,實際感受一下複製貼上，同時也可以在按鈕上面按右鍵，就會發現它上面多了一層 flash。</p>
             <p><img src="/img/articles/201501/20150126_1_07.jpg" alt="點選自動複製 ( ZeroClipboard )" />
             </p>
-            <p>箇中原理其實就在於這段：<code>data-clipboard-text=&quot;12345&quot;</code>，我們把要複製到剪貼簿的文字寫在裡面，點選之後就會把這段字複製起來，不過，總是不能所有東西都寫在裏頭，還是必須有寫在外面的時候，這時就必須用到 <code>data-clipboard-target</code>，裡面放上要複製區域的 id，就可以進行複製。( 範例： <a href="zeroclipboard-demo2.html" target="_blank">zeroclipboard-demo2.html</a> )</p>
+            <p>箇中原理其實就在於這段：<code>data-clipboard-text=&quot;12345&quot;</code>，我們把要複製到剪貼簿的文字寫在裡面，點選之後就會把這段字複製起來，不過，總是不能所有東西都寫在裏頭，還是必須有寫在外面的時候，這時就必須用到 <code>data-clipboard-target</code>，裡面放上要複製區域的 id，就可以進行複製。( 範例： <a href="/demo/201501/zeroclipboard-demo2.html" target="_blank">zeroclipboard-demo2.html</a> )</p>
             <p>HTML：</p>
             <pre><code>輸入要複製的內容：
 &lt;br/&gt;
@@ -127,7 +127,7 @@
             <p><img src="/img/articles/201501/20150126_1_08.jpg" alt="點選自動複製 ( ZeroClipboard )" />
             </p>
             <p>
-              <br/> 以上就是非常簡單就可以使用 ZeroClipboard.js 的作法，當然如果你 CSS 夠強，其實也可以利用 <a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">偽元素</a> 做出對話框的效果囉！( 範例： <a href="zeroclipboard-demo3.html" target="_blank">zeroclipboard-demo3.html</a> )</p>
+              <br/> 以上就是非常簡單就可以使用 ZeroClipboard.js 的作法，當然如果你 CSS 夠強，其實也可以利用 <a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">偽元素</a> 做出對話框的效果囉！( 範例： <a href="/demo/201501/zeroclipboard-demo3.html" target="_blank">zeroclipboard-demo3.html</a> )</p>
             <p>HTML：</p>
             <pre><code>&lt;button class=&quot;clipboard&quot; data-clipboard-text=&quot;12345&quot; data-hover=&quot;複製：12345&quot; data-copied=&quot;複製完成！&quot;&gt;點我複製&lt;/button&gt;
 &lt;br/&gt;
