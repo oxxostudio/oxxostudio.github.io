@@ -1,0 +1,4 @@
+User-agent: *
+disallow: /demo/
+disallow: /css/
+disallow: /js/
