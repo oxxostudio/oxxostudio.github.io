@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2015-02-11T23:55:00+01:00">
+  <meta name="keywords" content="gitbook,GitBook,電子書,柯P,GitHub">
+
+  <meta name="description" content="自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「政策白皮書」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！">
+
+  <meta itemprop="name" content="用 GitBook 來寫本書吧！ - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201502/20150211_1_01b.jpg">
+  <meta itemprop="description" content="自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「政策白皮書」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！">
+
+  <meta property="og:title" content="用 GitBook 來寫本書吧！ - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201502/gitbook.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201502/20150211_1_01b.jpg">
+  <meta property="og:description" content="自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「政策白皮書」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>標題 - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>用 GitBook 來寫本書吧！
+              <span class="article-date">FEB 11, 2015</span>
+            </h2>
+            <img src="/img/articles/201502/20150211_1_01.jpg" class="preview-img">
+            <p>自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「<a href="http://whitebook.kptaipei.tw/" target="_blank">政策白皮書</a>」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！( <a href="https://www.gitbook.com/blog/authors/taipei-mayor-writes-gitbook" target="_blank">連結參考</a> ) </p>
+            <p>然而 GitBook 這個服務也不是這時候才開始，根據他們官方說法，2014 年結束時在上頭已經有 3300 本電子書，而我也在 2014 上架了一本公司產品的教學手冊 ( 截至今日瀏覽人次快五千 )，目前也在籌備要上架自己的教學手冊。</p>
+            <p>因為 GitBook 是基於 GitHub 的方式運作，所以最基本發佈的方式與 Git 沒有太大的差異，而 GitBook 又是由 Node.js 開發而成，所以若要使用本機環境進行編寫書籍，就必須要安裝 Node.js，同時也要使用 Markdown 的語法來編輯，簡單來說，如果要用自己的編輯器 ( sublimeText、筆記本...等 ) 來編輯，就是安裝 Node.js 以及了解基本的 Git 與 Markdown。</p>
+            <p>不過其實也不用太過擔心，因為 GitBook 的團隊很貼心的提供了線上的編輯器，在線上編輯器之前是提供桌面安裝版本的編輯器，不管是線上編輯器或是安裝版本的編輯器，都讓使用者可以在不會 Node.js 和 Git 的情況下進行書籍的編寫，不過仍然要會 Markdown 就是了。( Markdown 是一種非常輕量的語言，只需要撰寫純文字，加上簡單的標記，就可以把整篇文章的純文字轉換為 HTML 語言，相信不到半小時就能學會，參考：<a href="http://zh.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a> )</p>
+            <p>
+              <br/> 廢話說盡，首先來看一下 GitBook 的線上編輯器該如何使用，第一步當然是要註冊一個帳號</p>
+            <p><img src="/img/articles/201502/20150211_1_02.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 註冊完成並且登入之後，應該就會看到跟我一樣的畫面。
+            </p>
+            <p><img src="/img/articles/201502/20150211_1_03.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 點選中間的 Start Creating Now 或右上方的 Creat a new book 按鈕，都可以建立一本新的電子書，畫面裡頭可以看到有四種書籍的類型，我們這裡選擇「basic」就可以，其他三種只是額外提供了數學公式、線上 codeing 與測驗...等的功能，接著往下看，「Title」是這本書的名稱，之後可以進行修改，「Name」是這本書的網址 ( 或 Git repository )，只能用英文數字或 - 、_ 符號，一旦確認開始編輯之後就不能更改，要特別注意。</p>
+            <p><img src="/img/articles/201502/20150211_1_04.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> show more option 點下去之後還會看到其他選項，最主要的就是公開 ( public ) 或私有 ( private )，然後也可以設定書籍描述 ( Description ) 以及售價 ( Price )</p>
+            <p><img src="/img/articles/201502/20150211_1_05.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 點下 Create book 就會進入這本書的功能主選單 ( dashboard )，點選 Edit Book 就可以進入線上編輯器。</p>
+            <p><img src="/img/articles/201502/20150211_1_06.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 線上編輯器其實就是一個 Markdown 的編輯器，最左邊是目錄及檔案櫃，再來是 Markdown 編輯區，右半邊的區塊是預覽區，在裡頭 GitBook 預設有 SUMMARY.md 和 README.md 這兩個檔案，這兩個檔案別刪掉，因為這是這本書預設的基本頁面，SUMMARY.md 負責整本書籍的架構與產生目錄，README.md 則是負責 Introduction。</p>
+            <p><img src="/img/articles/201502/20150211_1_07.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 再來就是新增檔案，從右上方的「+」就可以新增，新增完成的檔案就會出現在最左邊，新增的時候也可以指定資料夾，就會自動產生資料夾，而資料夾內不能為空，如果資料夾內沒有東西，就會自動消失了。
+            </p>
+            <p><img src="/img/articles/201502/20150211_1_08.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 整本 GitBook 電子書最重要的地方，就是 SUMMARY.md 這個檔案，可以參考 GitBook 官方的說明 <a href="http://help.gitbook.com/format/chapters.html" target="_blank">Chapters and Subchapters</a> 重點就是必須在 SUMMARY.md 內建立清單，這樣 GitBook 才會自動產生左側對應的選單。( SUMMARY.md 不會出現在書籍內，它的作用就是左側頁面的清單 )</p>
+            <p><img src="/img/articles/201502/20150211_1_09.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 理解 SUMMARY.md 之後，就是要開始編輯內容，編輯內容都是使用 Markdown，這裏就不多加贅述，大家可以直接參考 GitBook 團隊所寫的 Markdown 教學：<a href="http://gitbookio.gitbooks.io/markdown/content/" target="_blank">Learn Markdown</a>，總之，純粹利用 Markdown 來撰寫，就像用筆記本寫文字一樣簡單的喔！</p>
+            <p><img src="/img/articles/201502/20150211_1_10.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 在右上角的選單裡，我們可以添加一些 plugin ( 後面會繼續介紹 )，還有新增書籍封面，基本上都是相當的人性化，附帶一提，書籍封面的檔名必須是 cover.jpg，大小也盡量是按照 GitBook 的建議使用 1800×2360 ( 個人猜測是為了印刷使用啦 )。</p>
+            <p><img src="/img/articles/201502/20150211_1_11.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 就這樣在我們寫完了一本電子書之後，就可以回到剛剛的功能主選單 ( dashboard ) ，點選 view book，就可以看到我們電子書上架後的長相。</p>
+            <p><img src="/img/articles/201502/20150211_1_12.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 以上就是單純利用 GitBook 的線上編輯器來撰寫電子書，實在是非常的容易，不過其實我們也可以不使用他的線上編輯器進行編輯，特別是針對有多人共同編輯的電子書，或對於電子書有特殊需求的人而言，線上編輯器就顯得不敷使用了，因此再來要介紹如何不使用線上編輯器來進行 GitBook 的編輯。</p>
+            <p>首先我們必須要先安裝 Node.js，請到 Node.js 的網站下載安裝，安裝之後基本上就會連同 Node.js 的 npm 一起安裝完成。( <a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a> )</p>
+            <p><img src="/img/articles/201502/20150211_1_13.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 接著就是打開 cmd ( windows ) 或 terminal ( Mac )，安裝 gitbook，安裝的方法就是直接輸入下列命令，就可以將 gitbook 安裝到全域。</p>
+            <pre><code>npm install gitbook -g
+</code></pre>
+
+            <p><img src="/img/articles/201502/20150211_1_14.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 安裝完成之後，同樣利用指令來到我們要編輯 GitBook 的資料夾，就可以來用我們自己慣用的編輯器撰寫 Markdown 囉！不過在撰寫之前有一個很重要的，就是要先新增 README.md 和 SUMMARY.md 這兩個檔案，新增完成之後，輸入下方指令，GitBook 就會進行初始化，也就是會按照 SUMMARY.md 的內容，把檔案與資料夾配置好。</p>
+            <pre><code>gitbook init
+</code></pre>
+
+            <p><img src="/img/articles/201502/20150211_1_15.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 接著就是要新增一個名為 book.json 的檔案，我們可以將一些 plugin 寫在裏頭，如此一來我們就可以在 GitBook 裏頭，使用 Google Analytics ( Google 分析 )、Disqus ( 社群&amp;留言板 ) 和 youtube ...等外掛，同時你也可以從 npm 的網站，自行尋找需要的 <a href="https://www.npmjs.com/search?q=gitbook-plugin" target="_blank">Gitbook plugin</a>。</p>
+            <pre><code>{
+  &quot;plugins&quot;: [&quot;disqus&quot;],
+  &quot;pluginsConfig&quot;: {
+    &quot;disqus&quot;: {
+      &quot;shortName&quot;: &quot;你的留言板名稱&quot;
+    }
+  }
+}
+</code></pre>
+
+            <p><img src="/img/articles/201502/20150211_1_16.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 上面的 book.json 的撰寫方式，代表了當我們的 GitBook 轉換變成網頁的電子書之後，會在每一個頁面的最下方，安插一個 Disqus 留言板，不過只有 book.json 還不夠，我們仍舊必須透過 npm 安裝 plugin 才可以，輸入下列指令，就會安裝進去兩個 node module。</p>
+            <pre><code>npm install gitbook-plugin gitbook-plugin-disqus
+</code></pre>
+
+            <p><img src="/img/articles/201502/20150211_1_17.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 要如何才能看到呢？我們可以輸入以下的命令，就會產生一個 port 為 4000 的預覽頁面，同時你也會看到 Disqus 的社群留言板也加進去了。</p>
+            <pre><code>gutbook serve
+</code></pre>
+
+            <p><img src="/img/articles/201502/20150211_1_18.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 最後我們就是要發佈上 GitBook，這裡 GitBook 提供了兩種發佈的方式，但是不管哪種方式，在發佈之前我們都必須要先上 GitBook 建立一本書 ( 剛剛在上面有介紹過如何建立一本書 )，而發佈的第一種方式，就是直接把書，push 到這本書的 Git repo 上頭，打開書本的設定頁面，往下拉就可以找到 Git 的 URL。</p>
+            <p><img src="/img/articles/201502/20150211_1_19.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 然後就把這本書 push 上去，過一下子就可以在 GitBook 上頭看到囉！以下是 SourceTree 裏頭的圖。( 我自己是先 clone 一份下來之後再 commit 之後 push 上去 )</p>
+            <p><img src="/img/articles/201502/20150211_1_20.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 此外除了這種方法，我們也可以將撰寫好的書籍 push 到我們自己的 GitHub 裏頭，然後再和 GitBook 連結，不過這種方式仍然得透過 GitHub 的驗證，畢竟總不能隨便抓一本書就說是自己寫的吧哈哈！</p>
+            <p><img src="/img/articles/201502/20150211_1_21.jpg" alt="用 GitBook 來寫本書吧！" />
+            </p>
+            <p>
+              <br/> 以上就是一些我自己使用 GitBook 的心得與經驗分享，其實 GitBook 本身還有提供了很多好用的外掛供我們使用，但基本上熟練上述的做法以及熟悉 Markdown 的寫作方式，就可以輕鬆的寫出一本書，不過仍然要總歸一句，一本書的成功與否，並不在於這本書用什麼工具或什麼平台，而是在於這本書的內容好或不好！^_^</p>
+            <p>最後提供一下在 GitBook 上頭有人翻譯的資料給大家參考：<a href="http://wastemobile.gitbooks.io/gitbook-chinese/content/" target="_blank">http://wastemobile.gitbooks.io/gitbook-chinese/content/</a>
+            </p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

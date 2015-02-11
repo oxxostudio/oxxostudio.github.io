@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-02-09 23:45:00 GMT</pubDate>
+    <pubDate>2015-02-11 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>用 GitBook 來寫本書吧！</title>
+      <link>http://www.oxxostudio.tw/articles/201502/gitbook.html</link>
+      <pubDate>2015-02-11 23:55:00 GMT</pubDate>
+      <description>自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「政策白皮書」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201502/20150211_1_01b.jpg</url>
+        <title>用 GitBook 來寫本書吧！</title>
+        <link>http://www.oxxostudio.tw/articles/201502/gitbook.html</link>
+      </image>
+    </item>
     <item>
       <title>有趣的 CSS 彈跳動畫</title>
       <link>http://www.oxxostudio.tw/articles/201502/css-bounce.html</link>
