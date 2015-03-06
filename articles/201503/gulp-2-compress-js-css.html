@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2015-03-06T23:35:00+01:00">
+  <meta name="keywords" content="gulp,gulp-minift-css,gulp-uglify,gulp-concat,打包,壓縮">
+
+  <meta name="description" content="在上線版本裡頭，就會使用到打包和壓縮過的 JS 或 CSS，這類型的 JS 或 CSS 會在檔案名稱加個「.min」進行區隔，而一個打包壓縮過的 JS 和 CSS，基本上可能是好幾個檔案組合在一起，利用 Gulp 的套件，非常簡單的就可以做到打包壓縮的動作，甚至還可以自動重新命名檔案，一氣呵成。">
+
+  <meta itemprop="name" content="Gulp 學習 2 - 打包壓縮 CSS 與 JS - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/20150306_1_01b.jpg">
+  <meta itemprop="description" content="在上線版本裡頭，就會使用到打包和壓縮過的 JS 或 CSS，這類型的 JS 或 CSS 會在檔案名稱加個「.min」進行區隔，而一個打包壓縮過的 JS 和 CSS，基本上可能是好幾個檔案組合在一起，利用 Gulp 的套件，非常簡單的就可以做到打包壓縮的動作，甚至還可以自動重新命名檔案，一氣呵成。">
+
+  <meta property="og:title" content="Gulp 學習 2 - 打包壓縮 CSS 與 JS - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/gulp-2-compress-js-css.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/20150306_1_01b.jpg">
+  <meta property="og:description" content="在上線版本裡頭，就會使用到打包和壓縮過的 JS 或 CSS，這類型的 JS 或 CSS 會在檔案名稱加個「.min」進行區隔，而一個打包壓縮過的 JS 和 CSS，基本上可能是好幾個檔案組合在一起，利用 Gulp 的套件，非常簡單的就可以做到打包壓縮的動作，甚至還可以自動重新命名檔案，一氣呵成。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>Gulp 學習 2 - 打包壓縮 CSS 與 JS - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>Gulp 學習 2 - 打包壓縮 CSS 與 JS
+              <span class="article-date">MAR 6, 2015</span>
+            </h2>
+            <img src="/img/articles/201503/20150306_1_01.jpg" class="preview-img">
+            <p>通常我們在寫網頁的時候，都會引入許多的 JS 和 CSS，而每引入一個也就會產生一個 request，當引入的越來越多，在效能和時間的等待上也就相對付出的越來越多，雖然在對於現在的網路速度和瀏覽器效能而言，看似問題都不大，但是對於一個流量超大的網站來說，一個使用者多了一個 request，在效能的處理上就相對重要許多，因此，在做網頁的時候，往往至少會分成兩個階段，一個階段是「開發時期」的版本，一個階段是「發佈上線」的版本，最主要就是會把「開發」和「上線」分開，如此一來才不會一時疏忽把還沒開發好的版本給對外公開了。</p>
+            <p>在上線版本裡頭，就會使用到打包和壓縮過的 JS 或 CSS，這類型的 JS 或 CSS 會在檔案名稱加個「.min」進行區隔，而一個打包壓縮過的 JS 和 CSS，基本上可能是好幾個檔案組合在一起，過去我會利用 Yahoo 或 Google 提供的壓縮程式來處理，但許多步驟仍然要手工處理，但學習了 Gulp 之後，利用 Gulp 的套件，非常簡單的就可以做到打包壓縮的動作，甚至還可以自動重新命名檔案，一氣呵成，這篇主要會介紹如何打包壓縮的做法。</p>
+            <p>如同上一篇描述的，我們要先用<code>npm init</code>將專案初始化 ( 參考前一篇 )，接著輸入以下指令，安裝 gulp、gulp-minify-css、gulp-uglify、gulp-concat、gulp-rename 這五個 Node Module。( Mac 可能要加 sudo )</p>
+            <p>npm install gulp gulp-minify-css gulp-uglify gulp-concat gulp-rename -save-dev</p>
+            <p>安裝完成之後，先來建立一下我們檔案的目錄，首先新增一個 app 的資料夾，裡頭再放入一個 CSS 與 JS 的資料夾，分別在這些資料夾內新增一些 CSS 與 JS 檔案，接著在與 app 資料夾的同一層，新增 build 的資料夾，作為最後完成發佈使用，完成後的目錄應該長成這樣：</p>
+            <p><img src="/img/articles/201503/20150306_1_02.jpg" alt="Gulp 學習筆記 2 - 打包壓縮 CSS 與 JS" />
+            </p>
+            <p>好了，模擬一個簡單的專案目錄之後，先解釋一下剛剛安裝的這幾個套件是在幹嘛用的：</p>
+            <ul>
+              <li>gulp-concat：合併檔案</li>
+              <li>gulp-minify-css：壓縮 CSS</li>
+              <li>gulp-uglify：混淆並壓縮 JS</li>
+              <li>gulp-rename：重新命名檔案</li>
+            </ul>
+            <p>大概明白之後，就要來撰寫 gulpfile.js 了，首先第一個步驟，就是要引入這些套件：</p>
+            <pre><code>var gulp       = require('gulp'),
+    concat     = require('gulp-concat'),
+    minifyCSS  = require('gulp-minify-css'),
+    uglify     = require('gulp-uglify'),
+    rename     = require(&quot;gulp-rename&quot;);
+</code></pre>
+
+            <p>
+              <br/> 然後因為我新增了三個 css 檔案，所以我要先把這三個合併起來，才進行壓縮，合併採用的套件為：gulp-concat，它可以把目標資料夾內所有指定的檔案合併成為 all.css，然後放到 build 的資料夾內。( 可以參考 <a href="https://www.npmjs.com/package/gulp-concat" target="_blank">gulp-concat</a> )</p>
+            <pre><code>gulp.task('concat', function() {
+    return gulp.src('./app/css/*.css')
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest('./build/css/'));
+});
+</code></pre>
+
+            <p>
+              <br/> 再來我們壓縮 CSS，這裡要用到的是 gulp-minify-css 和 gulp-rename，下面的寫法是建立一個名為 minify-css 的任務，裡頭先使用 minifyCSS 壓縮，壓縮之後直接用 rename 對壓縮的檔案重新命名，命名時可以設定 basename 與 extname，完成後就把壓縮好的檔案，同樣放在 build 的資料夾裡頭。( 可以參考 <a href="https://www.npmjs.com/package/gulp-minify-css" target="_blank">gulp-minify-css</a> 和 <a href="https://www.npmjs.com/package/gulp-rename" target="_blank">gulp-rename</a> )</p>
+            <pre><code>gulp.task('minify-css',['concat'], function() {
+  return gulp.src('./build/css/all.css')
+    .pipe(minifyCSS({
+       keepBreaks: true,
+    }))
+    .pipe(rename(function(path) {
+      path.basename += &quot;.min&quot;;
+      path.extname = &quot;.css&quot;;
+    }))
+    .pipe(gulp.dest('./build/css/'));
+});
+</code></pre>
+
+            <p>
+              <br/> 第三步使用 uglify 混淆與壓縮 javascript，用法和 minifyCSS 幾乎相同。( 可以參考：<a href="https://www.npmjs.com/package/gulp-uglify" target="_blank">gulp-uglify</a> )</p>
+            <pre><code>gulp.task('uglify', function() {
+    return gulp.src('./app/js/*.js')
+        .pipe(uglify())
+        .pipe(rename(function(path) {
+            path.basename += &quot;.min&quot;;
+            path.extname = &quot;.js&quot;;
+        }))
+        .pipe(gulp.dest('./build/js/'));
+});
+</code></pre>
+
+            <p>
+              <br/> 到這邊幾乎已經完成囉，最後只要寫上 default 的任務就可以執行 gulp 看看。</p>
+            <pre><code>gulp.task('default',['minify-css','uglify']);
+</code></pre>
+
+            <p>
+              <br/> 執行 gulp 後，就會發現我們的檔案，已經被壓縮好並且重新命名，放在指定的位置了，這就是最基本的打包壓縮 CSS 與 JS 的 Gulp 用法。( 執行 gulp 就是直接在 cammand 輸入 gulp 就可以 )</p>
+            <p><img src="/img/articles/201503/20150306_1_02.jpg" alt="Gulp 學習筆記 2 - 打包壓縮 CSS 與 JS" />
+            </p>
+            <p>完整的 gulpfile.js 長這樣：</p>
+            <pre><code>var gulp       = require('gulp'),
+    concat     = require('gulp-concat'),
+    minifyCSS  = require('gulp-minify-css'),
+    uglify     = require('gulp-uglify'),
+    rename     = require(&quot;gulp-rename&quot;);
+
+gulp.task('concat', function() {
+    return gulp.src('./app/css/*.css')
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest('./build/css/'));
+});
+
+gulp.task('minify-css',['concat'], function() {
+    return gulp.src('./build/css/all.css')
+        .pipe(minifyCSS({
+            keepBreaks: true,
+        }))
+        .pipe(rename(function(path) {
+            path.basename += &quot;.min&quot;;
+            path.extname = &quot;.css&quot;;
+        }))
+        .pipe(gulp.dest('./build/css/'));
+});
+
+gulp.task('uglify', function() {
+    return gulp.src('./app/js/*.js')
+        .pipe(uglify())
+        .pipe(rename(function(path) {
+            path.basename += &quot;.min&quot;;
+            path.extname = &quot;.js&quot;;
+        }))
+        .pipe(gulp.dest('./build/js/'));
+});
+
+gulp.task('default',['minify-css','uglify']);
+</code></pre>
+
+            <p>
+              <br/>
+            </p>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

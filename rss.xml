@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-02 23:25:00 GMT</pubDate>
+    <pubDate>2015-03-06 23:35:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -14,14 +14,26 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
-      <title>Gulp 學習筆記 1 - 安裝與執行</title>
+      <title>Gulp 學習 2 - 打包壓縮 CSS 與 JS</title>
+      <link>http://www.oxxostudio.tw/articles/201503/gulp-2-compress-js-css.html</link>
+      <pubDate>2015-03-06 23:35:00 GMT</pubDate>
+      <description>在上線版本裡頭，就會使用到打包和壓縮過的 JS 或 CSS，這類型的 JS 或 CSS 會在檔案名稱加個「.min」進行區隔，而一個打包壓縮過的 JS 和 CSS，基本上可能是好幾個檔案組合在一起，利用 Gulp 的套件，非常簡單的就可以做到打包壓縮的動作，甚至還可以自動重新命名檔案，一氣呵成。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150306_1_01b.jpg</url>
+        <title>Gulp 學習 2 - 打包壓縮 CSS 與 JS</title>
+        <link>http://www.oxxostudio.tw/articles/201503/gulp-2-compress-js-css.html</link>
+      </image>
+    </item>
+    <item>
+      <title>Gulp 學習 1 - 安裝與執行</title>
       <link>http://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html</link>
       <pubDate>2015-03-02 23:25:00 GMT</pubDate>
       <description>在二月的時候，我花了不少時間在學習 Gulp 這個任務自動化管理工具，最主要受到了 Gitbook 的啟發，還有洧杰與志誠的推薦，讓我毅然決然地投入了 Gulp 的世界，過去因為工作的需求，接觸過一點點的 Grunt，Gulp 和 Grunt 的初衷相同，都是要把過去需要人工處理的步驟給自動化，如此一來就可以省下不少寶貴的時間。
       </description>
       <image>
         <url>http://www.oxxostudio.tw/img/articles/201503/20150302_1_01b.jpg</url>
-        <title>Gulp 學習筆記 1 - 安裝與執行</title>
+        <title>Gulp 學習 1 - 安裝與執行</title>
         <link>http://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html</link>
       </image>
     </item>
