@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-06 23:35:00 GMT</pubDate>
+    <pubDate>2015-03-07 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>Gulp 學習 3 - 打包壓縮 HTML</title>
+      <link>http://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html</link>
+      <pubDate>2015-03-07 23:55:00 GMT</pubDate>
+      <description>例如我們有一個網頁，裡頭載入了三個 CSS 與三個 JS，壓縮之後就會變成只有一個 min.css 和一個 min.js，如此一來原本要載入六個檔案，瞬間就變成了只需要載入兩個檔案而已，也由於由六個 request 降為兩個 request，整個網頁的流暢度也會提升。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150307_1_01b.jpg</url>
+        <title>Gulp 學習 3 - 打包壓縮 HTML</title>
+        <link>http://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html</link>
+      </image>
+    </item>
     <item>
       <title>Gulp 學習 2 - 打包壓縮 CSS 與 JS</title>
       <link>http://www.oxxostudio.tw/articles/201503/gulp-2-compress-js-css.html</link>
@@ -71,270 +83,6 @@
         <url>http://www.oxxostudio.tw/img/articles/201502/20150201_1_01b.jpg</url>
         <title>CSS 垂直置中的七個方法</title>
         <link>http://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html</link>
-      </image>
-    </item>
-    <item>
-      <title>深入解析 CSS Flexbox</title>
-      <link>http://www.oxxostudio.tw/articles/201501/css-flexbox.html</link>
-      <pubDate>2015-01-30 23:55:00 GMT</pubDate>
-      <description>Flexbox 是一個 CSS3 的盒子模型 ( box model )，顧名思義它就是一個靈活的盒子 ( Flexible Box )，為什麼最近這個屬性才紅起來呢？最主要也是因為 CSS3 的規範終於普及 ( 或 IE 終於敗亡 )，加上行動裝置的發展促成了響應式布局興起，自適應長寬彈性相當大的 Flexbox 就趁勢而起了。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201501/20150130_1_01b.jpg</url>
-        <title>深入解析 CSS Flexbox</title>
-        <link>http://www.oxxostudio.tw/articles/201501/css-flexbox.html</link>
-      </image>
-    </item>
-    <item>
-      <title>點選自動複製 ( ZeroClipboard )</title>
-      <link>http://www.oxxostudio.tw/articles/201501/zeroclipboard.html</link>
-      <pubDate>2015-01-26 23:15:00 GMT</pubDate>
-      <description>自從用了 Github 開始，一直都覺得它裏頭複製網址的方法做得很好，只需要點一個按鈕就可以複製 ( 也有可能因為文字欄位太短才用這種方式 )，仔細看了一下它怎麼寫的，發現上面用 div 疊了一層 flash 的 swf ，百般不思其解的狀態下找了一些資料，發現原來不能用純 javascript 的方法來做是因為瀏覽器的安全性限制，不能夠單純用前端存取剪貼簿的資料，所以才會用 flash 作為介接。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201501/20150126_1_01b.jpg</url>
-        <title>點選自動複製 ( ZeroClipboard )</title>
-        <link>http://www.oxxostudio.tw/articles/201501/zeroclipboard.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - transition 基本篇</title>
-      <link>http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html</link>
-      <pubDate>2015-01-24 21:15:00 GMT</pubDate>
-      <description>在 d3.js 裡頭的 transition，會自動去計算補間動畫，更可以自己設定自己的補間效果，自己去設定相關的插值，許多 d3.js 圖表的動態效果，都是藉由這個 transition 來完成的。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201501/20150124_1_01b.jpg</url>
-        <title>SVG D3.js - transition 基本篇</title>
-        <link>http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html</link>
-      </image>
-    </item>
-    <item>
-      <title>CSS 搞怪的 text-decoration</title>
-      <link>http://www.oxxostudio.tw/articles/201501/css-text-decoration.html</link>
-      <pubDate>2015-01-13 23:25:00 GMT</pubDate>
-      <description>但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201501/20150113_2_01b.jpg</url>
-        <title>CSS 搞怪的 text-decoration</title>
-        <link>http://www.oxxostudio.tw/articles/201501/css-text-decoration.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - CSV 數據處理</title>
-      <link>http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.html</link>
-      <pubDate>2015-01-13 22:05:00 GMT</pubDate>
-      <description>在數據的類型裡，CSV 是一種相當普及且方便的數據文件格式，從我們每個人手邊的 excel 就可以輕鬆地將數據轉換成 CSV 的數據格式，而對於 d3.js 而言，除了可以很輕鬆的處理 JSON 數據之外，也可以很便利的處理 CSV 的數據，搭配前幾篇所介紹的數據處理方法，就可以做出多樣的變化。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201501/20150113_1_01b.jpg</url>
-        <title>SVG D3.js - CSV 數據處理</title>
-        <link>http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 數字格式 ( Formatting )</title>
-      <link>http://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html</link>
-      <pubDate>2015-01-11 23:05:00 GMT</pubDate>
-      <description>來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201501/20150111_1_01b.jpg</url>
-        <title>SVG D3.js - 數字格式 ( Formatting )</title>
-        <link>http://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html</link>
-      </image>
-    </item>
-    <item>
-      <title>認識 300 dpi</title>
-      <link>http://www.oxxostudio.tw/articles/201501/know-300-dpi.html</link>
-      <pubDate>2015-01-05 23:55:00 GMT</pubDate>
-      <description>不管做幾次印刷，總是會聽到「300 dpi」這個專有名詞，不論是往來的信件或電話，印刷廠總是會要求要給 300 dpi 的圖，傳遞訊息的人也三不五時講個 300 dpi 來凸顯一下自己的專業，彷彿做印刷，不談「300 dpi」就渾身不對勁。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201501/20150105_1_01b.jpg</url>
-        <title>認識 300 dpi</title>
-        <link>http://www.oxxostudio.tw/articles/201501/know-300-dpi.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Mac Dock 實作</title>
-      <link>http://www.oxxostudio.tw/articles/201501/mac-dock.html</link>
-      <pubDate>2015-01-03 23:55:00 GMT</pubDate>
-      <description>2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201501/20150103_1_01b.jpg</url>
-        <title>Mac Dock 實作</title>
-        <link>http://www.oxxostudio.tw/articles/201501/mac-dock.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 時間格式 ( Time Formatting )</title>
-      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-11-time.html</link>
-      <pubDate>2014-12-29 23:35:00 GMT</pubDate>
-      <description>在 javascript 裏頭可以抓取當下的時間，或是設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141229_1_01.jpg</url>
-        <title>SVG D3.js - 時間格式 ( Time Formatting )</title>
-        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-11-time.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 定義色彩 - 應用篇 ( colors )</title>
-      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-10-colors-2.html</link>
-      <pubDate>2014-12-26 23:55:00 GMT</pubDate>
-      <description>對於色彩，d3.js 還有不少應用的方法，也因此在官網所介紹的範例，才會如此的色彩豐富生動多姿，因此，這篇將繼續介紹色彩的應用，主要是利用之前介紹過的 scale 來變化色彩。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141226_1_01.jpg</url>
-        <title>SVG D3.js - 定義色彩 - 應用篇 ( colors )</title>
-        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-10-colors-2.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 定義色彩 - 基本篇 ( colors )</title>
-      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-09-colors-1.html</link>
-      <pubDate>2014-12-25 23:55:00 GMT</pubDate>
-      <description>在 d3.js 裡，同樣也有操作顏色的 API,有別於一般我們在寫 CSS 的顏色方式，d3.js 是使用 RGB ( 紅綠藍 )、HSL (色調、飽和度，亮度) 、HCL 與 LAB ( 亮度，a 維度，b 維度 ) 的這些色彩空間。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141225_1_01.jpg</url>
-        <title>SVG D3.js - 定義色彩 - 基本篇 ( colors )</title>
-        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-09-colors-1.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 序數比例尺 ( ordinal )</title>
-      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-08-ordinal.html</link>
-      <pubDate>2014-12-23 00:55:00 GMT</pubDate>
-      <description>之前有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141223_1_01.jpg</url>
-        <title>SVG D3.js - 序數比例尺 ( ordinal )</title>
-        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-08-ordinal.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 陣列數據地圖 ( d3.map )</title>
-      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-07-data-map.html</link>
-      <pubDate>2014-12-16 23:55:00 GMT</pubDate>
-      <description>d3.map 這個其實我找不到合適的翻譯，只好暫時用我的破英文翻譯成「陣列數據地圖」，雖然有地圖兩個字，但跟實際的地圖卻是沒啥關聯性，d3.map 會根據我們所下的條件，把特定的值取出成為 key 而成為一個新的陣列，也可藉由 get、has 或 set 的 API 對數據做判斷或重新設定。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141216_1_01.jpg</url>
-        <title>SVG D3.js - 陣列數據地圖 ( d3.map )</title>
-        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-07-data-map.html</link>
-      </image>
-    </item>
-    <item>
-      <title>2010 年工作的插畫 ( 2 )</title>
-      <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw2.html</link>
-      <pubDate>2014-12-14 00:55:00 GMT</pubDate>
-      <description>同樣也是在遠綠資訊的時候畫的，比之前的大張一點的，也有一些點陣與向量的圖形 ( 點陣圖是一直以來我愛的風格，當兵的時候畫了很多 )，原本想順著這個線條插畫系列，看看能不能畫出一本插畫集，不過明年再說吧！因為想學的程式學不完呀！
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141214_1_01.jpg</url>
-        <title>2010 年工作的插畫 ( 2 )</title>
-        <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw2.html</link>
-      </image>
-    </item>
-    <item>
-      <title>2010 年工作的插畫 ( 1 )</title>
-      <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw1.html</link>
-      <pubDate>2014-12-11 23:55:00 GMT</pubDate>
-      <description>在 2010 年結束中研院的生活，剛回高雄，遠綠資訊服務了兩年，說真的還滿感謝遠綠資訊對我的栽培，不僅讓我學了不少網頁的技術，也能把一些插畫運用在工作上，這裡分享一些當年所畫的簡單插畫。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141211_1_01.jpg</url>
-        <title>2010 年工作的插畫 ( 1 )</title>
-        <link>http://www.oxxostudio.tw/articles/201412/doublegreen-draw1.html</link>
-      </image>
-    </item>
-    <item>
-      <title>box-sizing 與 background-clip</title>
-      <link>http://www.oxxostudio.tw/articles/201412/css-boxsizing-backgroundclip.html</link>
-      <pubDate>2014-12-10 23:55:00 GMT</pubDate>
-      <description>為了讓 border 可以順利的在外面顯示背景的圖案或顏色，就需要用到 box-sizing 與 background-clip 這兩個 CSS3 的屬性來設定，就讓我們來分別看看這兩個屬性該如何使用。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141210_1_01.jpg</url>
-        <title>box-sizing 與 background-clip</title>
-        <link>http://www.oxxostudio.tw/articles/201412/css-boxsizing-backgroundclip.html</link>
-      </image>
-    </item>
-    <item>
-      <title>設計個性化 QR Code</title>
-      <link>http://www.oxxostudio.tw/articles/201412/design-qrcode.html</link>
-      <pubDate>2014-12-07 23:55:00 GMT</pubDate>
-      <description>這篇將會介紹四種設計個性化 QR Code 的方法，相信藉由這四種方式的互相搭配，大家都可以輕鬆地設計出個性化的 QR Code，再也不會是黑黑的一塊正方形，也不需要花錢去購買線上設計軟體了。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141207_1_01.jpg</url>
-        <title>設計個性化 QR Code</title>
-        <link>http://www.oxxostudio.tw/articles/201412/design-qrcode.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 巢狀數據結構 ( d3.nest )</title>
-      <link>http://www.oxxostudio.tw/articles/201412/svg-d3-06-data-nest.html</link>
-      <pubDate>2014-12-06 21:45:00 GMT</pubDate>
-      <description>這陣子研究了一下 d3.js 的 nest，nest 就是「巢」的意思，透過 d3.nest 的轉換，可以將原本的數據變成以 key 和 value 為主的巢狀結構，並且可以針對巢狀結構的每個節點進行排序，而所得到的巢狀結構數據，可以在程式裡重複使用而不會影響到原本的數據。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141206_1_01.jpg</url>
-        <title>SVG D3.js - 巢狀數據結構 ( d3.nest )</title>
-        <link>http://www.oxxostudio.tw/articles/201412/svg-d3-06-data-nest.html</link>
-      </image>
-    </item>
-    <item>
-      <title>點擊後的 CSS 載入效果</title>
-      <link>http://www.oxxostudio.tw/articles/201412/css-click-loading.html</link>
-      <pubDate>2014-12-02 23:55:00 GMT</pubDate>
-      <description>為了避免點擊後一兩秒的載入時間空窗，就做個 loading 動畫來強化使用者體驗，單純使用 CSS 的漸層效果來達成，沒想到效果還滿好的，而且不需要額外增加 div 之類的元素，單純修改 CSS 和加上點擊事件就完成了。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141202_1_01.jpg</url>
-        <title>點擊後的 CSS 載入效果</title>
-        <link>http://www.oxxostudio.tw/articles/201412/css-click-loading.html</link>
-      </image>
-    </item>
-    <item>
-      <title>簡單打造站內搜尋、標題搜尋</title>
-      <link>http://www.oxxostudio.tw/articles/201412/site-search.html</link>
-      <pubDate>2014-12-01 22:55:00 GMT</pubDate>
-      <description>這篇文章來分享一下自己部落格使用的兩種站內搜尋方式，第一種是利用 google 的「自訂搜尋」，就可以做出利用 google 進行全站搜尋的超強大功能，第二種則是單純使用一行 CSS 和一點點的 jQuery，就可以實現純前端的單頁內容搜尋。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201412/20141201_1_01.jpg</url>
-        <title>簡單打造站內搜尋、標題搜尋</title>
-        <link>http://www.oxxostudio.tw/articles/201412/site-search.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 區域 ( area )</title>
-      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html</link>
-      <pubDate>2014-11-16 19:25:00 GMT</pubDate>
-      <description>理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201411/20141116_1_01.jpg</url>
-        <title>SVG D3.js - 區域 ( area )</title>
-        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 座標軸 ( Axis )</title>
-      <link>http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html</link>
-      <pubDate>2014-11-12 22:25:00 GMT</pubDate>
-      <description>再來就要談談座標軸 Axis，利用 D3.js，我們就可以自己做出自己的圖表刻度。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201411/20141113_1_01.jpg</url>
-        <title>SVG D3.js - 座標軸 ( Axis )</title>
-        <link>http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html</link>
       </image>
     </item>
   </channel>

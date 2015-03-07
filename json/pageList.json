@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "Gulp 學習 3 - 打包壓縮 HTML",
+  "site": "/articles/201503/gulp-3-compress-html.html",
+  "img": "/img/articles/201503/20150307_1_01.jpg",
+  "date": "MAR 7, 2015"
+},{
+  "tag": "tag-web",
   "title": "Gulp 學習 2 - 打包壓縮 CSS 與 JS",
   "site": "/articles/201503/gulp-2-compress-js-css.html",
   "img": "/img/articles/201503/20150306_1_01.jpg",
