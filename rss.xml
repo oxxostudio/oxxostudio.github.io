@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-07 23:55:00 GMT</pubDate>
+    <pubDate>2015-03-08 20:45:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>Gulp 學習 4 - 建立 SCSS/SASS 編輯環境</title>
+      <link>http://www.oxxostudio.tw/articles/201503/gulp-4-scss-sass.html</link>
+      <pubDate>2015-03-08 20:45:00 GMT</pubDate>
+      <description>隨著時代的演進，這一兩年來我都已經是用 SCSS 在編寫 CSS，不過 SCSS/SASS 是建構在 Ruby 的環境之下，通常我們要使用，則必須先安裝 Ruby 以及 compass，或也可以購買安裝 Fire.app 代勞，那麼要如何才能用 gulp ，來建立一個自動執行轉換 SCSS 的環境呢？
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150308_1_01b.jpg</url>
+        <title>Gulp 學習 4 - 建立 SCSS/SASS 編輯環境</title>
+        <link>http://www.oxxostudio.tw/articles/201503/gulp-4-scss-sass.html</link>
+      </image>
+    </item>
     <item>
       <title>Gulp 學習 3 - 打包壓縮 HTML</title>
       <link>http://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html</link>
