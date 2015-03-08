@@ -606,4 +606,10 @@
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
+<url>
+<loc>http://www.oxxostudio.tw/articles/201503/low-poly-art.html</loc>
+<lastmod>2015-03-08</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>
