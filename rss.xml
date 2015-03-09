@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-08 23:25:00 GMT</pubDate>
+    <pubDate>2015-03-09 23:35:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>Gulp 學習 5 - 建立 HTML 模板</title>
+      <link>http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html</link>
+      <pubDate>2015-03-09 23:35:00 GMT</pubDate>
+      <description>這裡我們要用到的是 gulp-html-extend 這個套件，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150309_1_01b.jpg</url>
+        <title>Gulp 學習 5 - 建立 HTML 模板</title>
+        <link>http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html</link>
+      </image>
+    </item>
     <item>
       <title>Low-Poly Art</title>
       <link>http://www.oxxostudio.tw/articles/201503/low-poly-art.html</link>
