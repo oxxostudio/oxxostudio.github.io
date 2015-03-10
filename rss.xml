@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-09 23:35:00 GMT</pubDate>
+    <pubDate>2015-03-10 23:25:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SublimeText - Seti_UI theme</title>
+      <link>http://www.oxxostudio.tw/articles/201503/sublimetext-seti-theme.html</link>
+      <pubDate>2015-03-10 23:25:00 GMT</pubDate>
+      <description>今天來介紹一個非常漂亮的 SublimeText theme：Seti_UI，這大概也是最近身邊的人幾乎每個人都用的樣式，我也是因為看到別人用才下載來用的，沒想到一用之後驚為天人，一定要分享給大家。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150310_1_01b.jpg</url>
+        <title>SublimeText - Seti_UI theme</title>
+        <link>http://www.oxxostudio.tw/articles/201503/sublimetext-seti-theme.html</link>
+      </image>
+    </item>
     <item>
       <title>Gulp 學習 5 - 建立 HTML 模板</title>
       <link>http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html</link>
