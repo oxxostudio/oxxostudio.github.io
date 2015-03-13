@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2015-03-13T23:25:00+01:00">
+  <meta name="keywords" content="gulp,markdown,markdown to html,gulp-markdown">
+
+  <meta name="description" content="當我發現 Gulp 也有 markdown 轉換的套件之後，就決定可以自己來做一個轉換的環境，如此一來就不用受限於各個編輯器的樣式，也不用受限於 gitbook 只能轉電子書的樣貌，甚至可以搭配之前幾篇介紹過的壓縮打包、html extend...等，做出一個純粹用 markdown 編寫網頁的環境。">
+
+  <meta itemprop="name" content="Gulp 學習 6 - 架設 Markdown 轉 HTML 環境 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/20150313_1_01b.jpg">
+  <meta itemprop="description" content="當我發現 Gulp 也有 markdown 轉換的套件之後，就決定可以自己來做一個轉換的環境，如此一來就不用受限於各個編輯器的樣式，也不用受限於 gitbook 只能轉電子書的樣貌，甚至可以搭配之前幾篇介紹過的壓縮打包、html extend...等，做出一個純粹用 markdown 編寫網頁的環境。">
+
+  <meta property="og:title" content="Gulp 學習 6 - 架設 Markdown 轉 HTML 環境 - OXXO.STUDIO">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/gulp-6-markdown-to-html.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/20150313_1_01b.jpg">
+  <meta property="og:description" content="當我發現 Gulp 也有 markdown 轉換的套件之後，就決定可以自己來做一個轉換的環境，如此一來就不用受限於各個編輯器的樣式，也不用受限於 gitbook 只能轉電子書的樣貌，甚至可以搭配之前幾篇介紹過的壓縮打包、html extend...等，做出一個純粹用 markdown 編寫網頁的環境。">
+  
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+
+      <title>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境 - OXXO.STUDIO</title>
+      </head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+    
+
+        <div class="content">
+          <i class="tag-web"></i>
+          <div class="md">
+            <h2>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境
+              <span class="article-date">MAR 13, 2015</span>
+            </h2>
+            <img src="/img/articles/201503/20150313_1_01.jpg" class="preview-img">
+            <p>要談到 Markdown 轉 HTML，其實有一大堆的 Markdown 編輯器都做得到，我個人最愛用的不外乎就是 Markdown Pad ( 只有 windows )、Mou ( Mac ) 和 lightPaper ( Mac )，然而不管是怎樣的編輯器，基本上都會具備將 markdown 轉為 HTML 的功能，所以一直以來我都不覺得在編輯器撰寫之後在轉檔有什麼不方便的，我的 blog 文章也一直都是用 markdown 寫的，不過自從用 gitbook 寫書之後，赫然發現 gitbook 的 markdown 自動轉換 html 功能真是太優了，用自己慣用的編輯器，存檔之後，Gitbook 就自動將 markdown 轉換為 HTML，而且還套上 layout 和樣式，真是太讚啦！</p>
+            <p>於是，當我發現 Gulp 也有 markdown 轉換的套件之後，就決定可以自己來做一個轉換的環境，如此一來就不用受限於各個編輯器的樣式，也不用受限於 gitbook 只能轉電子書的樣貌，甚至可以搭配之前幾篇介紹過的壓縮打包、html extend...等，做出一個純粹用 markdown 編寫網頁的環境。</p>
+            <p>廢話說太多，開始今天的正題，我使用的套件是：gulp-markdown 這個套件 ( 參考：<a href="https://www.npmjs.com/package/gulp-markdown" target="_blank">gulp-markdown</a> )，這個套件可以將 markdown 純粹轉為 HTML 的格式，但不包含一個網頁應該要有的 head 與 body，它就是一個純粹的 HTML tag 而已，舉例來說，我們來將下面這段 Markdown 進行轉換：</p>
+            <pre><code>#這是大標題
+##這是次標題
+我是內文，我是**粗體**
+</code></pre>
+
+            <p>轉換出來就變成：</p>
+            <pre><code>&lt;h1 id=&quot;-&quot;&gt;這是大標題&lt;/h1&gt;
+&lt;h2 id=&quot;-&quot;&gt;這是次標題&lt;/h2&gt;
+&lt;p&gt;我是內文，我是&lt;strong&gt;粗體&lt;/strong&gt;&lt;/p&gt;
+</code></pre>
+
+            <p>
+              <br/> 也因為不是一個完整的網頁，所以我們使用 gulp-webserver 來做 livereload ( 參考 <a href="http://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html" target="_blank">Gulp 學習 1 - 安裝與執行</a> ) 就會失效，所以變成要搭配 gulp-html-extend，結合一個 layout，組成一個完整的網頁，就可以使用 livereload 的功能囉！</p>
+            <p>所以這裡我們要輸入以下的指令安裝四個套件，分別是 gulp、gulp-webserver、gulp-html-extend、gulp-markdown ( mac 可能需要 sudo )：</p>
+            <pre><code>npm install gulp gulp-webserver gulp-html-extend gulp-markdown
+</code></pre>
+
+            <p>
+              <br/> 安裝之後就來寫 gulpfile.js，第一步當然是要引入這四個套件了。</p>
+            <pre><code>var gulp = require('gulp'),
+      md = require('gulp-markdown'),
+      extender = require('gulp-html-extend'),
+      webserver = require('gulp-webserver');
+</code></pre>
+
+            <p>
+              <br/> 第二步就是要新增一些資料夾，資料結構如下，md 資料夾裏頭有一個 test.md，是我們要轉換的 markdown 檔案，轉換完之後會預先放在 md2html 的資料夾，接著會將裏頭的檔案和 layout 資料夾內的 master.html 合併，合併完就會放在 dist 的資料夾內。</p>
+            <pre><code>|____dist
+|____layout
+| |____master.html
+|____md
+| |____test.md
+| |____md2html
+</code></pre>
+
+            <p>
+              <br/> 資料目錄建立好之後，新增一個名為 md 的任務，裡頭就是負責進行 markdown 轉換 html 的作業，這裡面<code>./md/**/*.md</code>代表是 md 資料夾內所有的 md 檔案，也包含子資料夾內的都會抓到。</p>
+            <pre><code>gulp.task('md',function(){
+    return gulp.src('./md/**/*.md')
+        .pipe(md())
+        .pipe(gulp.dest('./md/md2html/'));
+    });
+</code></pre>
+
+            <p>
+              <br/> 因為轉出來檔案要和 HTML 的 layout 做合併，所以我們必須要在我們要轉換的 markdown 檔案裡頭加上一些 html 的註解，轉換之後就會根據這些註解去做合併，下面這是我要用來轉換的 markdown 與 layout 的長相：</p>
+            <p>markdown：</p>
+            <pre><code>&lt;!-- @@master  = ../../layout/master.html--&gt;
+&lt;!-- @@block  =  content--&gt;
+
+#這是大標題
+##這是次標題
+我是內文，我是**粗體**
+
+測試 Markdown 轉 html
+
+&lt;!-- @@close--&gt;
+</code></pre>
+
+            <p>html layout：</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;link href=&quot;&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;title&gt;markdown preview&lt;/title&gt;
+    &lt;!-- @@placeholder= head --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- @@placeholder= content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            <p>合併之後：</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;link href=&quot;&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;title&gt;markdown preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id=&quot;-&quot;&gt;這是大標題&lt;/h1&gt;
+    &lt;h2 id=&quot;-&quot;&gt;這是次標題&lt;/h2&gt;
+    &lt;p&gt;我是內文，我是&lt;strong&gt;粗體&lt;/strong&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            <p>
+              <br/> 接著就來建立 html 合併的任務，記得合併任務要在 md 任務完成之後再執行，可以參考上一篇所講的 <a href="http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html" target="_blank">Gulp 學習 5 - 建立 HTML 模板</a>。</p>
+            <pre><code>gulp.task('extend', ['md'], function () {
+    return gulp.src('./md/md2html/**/*.html')
+        .pipe(extender({annotations:true,verbose:false}))
+        .pipe(gulp.dest('./dist/'));
+});
+</code></pre>
+
+            <p>
+              <br/> 合併之後，就是啟動一個 webserver 來進行預覽的動作，此外也要順便建立 watch 的任務，這樣才能編輯完 markdown 檔案存檔之後，就可以自動更新預覽囉。</p>
+            <pre><code>gulp.task('watch',function(){
+    gulp.watch('./md/**/*.md', ['extend']);
+    });
+
+gulp.task('webserver', ['extend'],function() {
+  return gulp.src('./dist/')
+    .pipe(webserver({
+      port:1111,
+      livereload: true,
+      directoryListing: false,
+      open: true,
+      fallback: 'test.html'
+    }));
+});
+
+gulp.task('default',['watch','webserver']);
+</code></pre>
+
+            <p>
+              <br/> 任務都用好之後，就可以執行 gulp 看看，如此一來，其實我們已經建立了一個簡易的 markdown 自動轉 html 的環境，當然還有很多地方要設定，之後會再慢慢分享，上圖執行之後的資料夾顯示圖就像下面這樣：</p>
+            <p><img src="/img/articles/201503/20150313_1_02.jpg" alt="Gulp 學習 6 - 架設 Markdown 轉 HTML 環境" />
+            </p>
+            <p>完整的 gulpfile.js：</p>
+            <pre><code>var gulp      = require('gulp'),
+      md        = require('gulp-markdown'),
+      extender  = require('gulp-html-extend'),
+      webserver = require('gulp-webserver');
+
+gulp.task('md',function(){
+    return gulp.src('./md/**/*.md')
+        .pipe(md())
+        .pipe(gulp.dest('./md/md2html/'));
+    });
+
+gulp.task('extend', ['md'], function () {
+    return gulp.src('./md/md2html/**/*.html')
+        .pipe(extender({annotations:true,verbose:false}))
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('watch',function(){
+    gulp.watch('./md/**/*.md', ['extend']);
+    });
+
+gulp.task('webserver', ['extend'],function() {
+  return gulp.src('./dist/')
+    .pipe(webserver({
+      port:1111,
+      livereload: true,
+      directoryListing: false,
+      open: true,
+      fallback: 'test.html'
+    }));
+});
+
+gulp.task('default',['watch','webserver']);
+</code></pre>
+
+            <p>
+              <br/> 相關連結：
+            </p>
+            <blockquote>
+              <ul>
+                <li><a href="http://markdownpad.com/" target="_blank">MarkdownPad</a>
+                </li>
+                <li><a href="http://25.io/mou/" target="_blank">Mou</a>
+                </li>
+                <li><a href="http://www.ashokgelal.com/lightpaper-for-mac/" target="_blank">lightPaper</a>
+                </li>
+                <li><a href="https://www.gitbook.com/" target="_blank">Gitbook</a> </li>
+              </ul>
+            </blockquote>
+          </div>
+        </div>
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

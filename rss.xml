@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-10 23:25:00 GMT</pubDate>
+    <pubDate>2015-03-13 23:25:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境</title>
+      <link>http://www.oxxostudio.tw/articles/201503/gulp-6-markdown-to-html.html</link>
+      <pubDate>2015-03-13 23:25:00 GMT</pubDate>
+      <description>當我發現 Gulp 也有 markdown 轉換的套件之後，就決定可以自己來做一個轉換的環境，如此一來就不用受限於各個編輯器的樣式，也不用受限於 gitbook 只能轉電子書的樣貌，甚至可以搭配之前幾篇介紹過的壓縮打包、html extend...等，做出一個純粹用 markdown 編寫網頁的環境。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150313_1_01b.jpg</url>
+        <title>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境</title>
+        <link>http://www.oxxostudio.tw/articles/201503/gulp-6-markdown-to-html.html</link>
+      </image>
+    </item>
     <item>
       <title>SublimeText - Seti_UI theme</title>
       <link>http://www.oxxostudio.tw/articles/201503/sublimetext-seti-theme.html</link>
