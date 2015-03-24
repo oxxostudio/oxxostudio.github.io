@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-13 23:25:00 GMT</pubDate>
+    <pubDate>2015-03-24 22:25:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>改變 HTML5 range 樣式的兩種方法</title>
+      <link>http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html</link>
+      <pubDate>2015-03-24 22:25:00 GMT</pubDate>
+      <description>今天來探討一下 HTML5 的 range 這個新的 input 類型，不過重點不是在 range 要如何使用，而是在如何去改變 range 的樣式，做出一個漂漂亮亮的滑動桿，這篇會介紹兩種修改 range 樣式的方法，一種是純 CSS，一種是用 jquery 搭配 CSS 來製作。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150324_1_01b.jpg</url>
+        <title>改變 HTML5 range 樣式的兩種方法</title>
+        <link>http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html</link>
+      </image>
+    </item>
     <item>
       <title>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境</title>
       <link>http://www.oxxostudio.tw/articles/201503/gulp-6-markdown-to-html.html</link>

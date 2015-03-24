@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>改變 HTML5 range 樣式的兩種方法 - demo1</title>
+	<style>
+		input[type="range"]{
+		  -webkit-appearance: none;
+		  overflow:hidden;     /* 限定範圍 */
+		  width:200px;
+		  height:10px;
+		  outline : none;      /* 避免點選會有藍線或虛線 */
+		  background:none;
+		}
+		input[type="range"]::-webkit-slider-thumb{
+		  -webkit-appearance: none;
+		  position: relative;    /* 設為相對位置，為了前後區塊的絕對位置而設定 */
+		  width:10px;
+		  height:10px;
+		  background:#f22;
+		  border-radius:50%;
+		  transition:.2s;        /* 點選放大時候的漸變時間 */
+		}
+	</style>
+</head>
+<body>
+	<input type="range" min="0" max="100" step="1" value="50">
+</body>
+</html>
