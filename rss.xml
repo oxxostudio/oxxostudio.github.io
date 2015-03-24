@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-24 22:25:00 GMT</pubDate>
+    <pubDate>2015-03-24 23:25:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>純 CSS 繪製圓餅圖</title>
+      <link>http://www.oxxostudio.tw/articles/201503/css-pie-chart.html</link>
+      <pubDate>2015-03-24 23:25:00 GMT</pubDate>
+      <description>純粹的 CSS 圓餅圖，勢必得用一個以上的 div 來組合產生，那麼，啾竟需要多少個 div 才有辦法做出一個漂亮的圓餅圖呢？目前我的做法「只需要用一個 div 搭配自身兩個偽元素」即可，換句話說，就是用 div 本身作為遮罩，內容的兩個偽元素互相旋轉搭配，就可以做出逼真的圓餅圖。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150324_2_01.gif</url>
+        <title>純 CSS 繪製圓餅圖</title>
+        <link>http://www.oxxostudio.tw/articles/201503/css-pie-chart.html</link>
+      </image>
+    </item>
     <item>
       <title>改變 HTML5 range 樣式的兩種方法</title>
       <link>http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html</link>

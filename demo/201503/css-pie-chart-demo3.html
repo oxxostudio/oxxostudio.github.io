@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>純 CSS 繪製圓餅圖 - demo3</title>
+	<script src="http://www.oxxostudio.tw/js/lib/jquery.min.js"></script>
+	<style>
+		input{
+			margin:150px 120px;
+		}
+		.pie{
+		  top:50px;
+		  left:145px;
+		  margin-left:50px;
+		  position:absolute;
+		  width:50px;
+		  height:100px;
+		  overflow:hidden;
+		  border-radius:0 50px 50px 0;
+		  -webkit-animation:a 5s infinite linear;
+		}
+		.pie:before,.pie:after{
+		  content:"";
+		  box-sizing:border-box;
+		  position:absolute;
+		  top:0;
+		  right:0;  
+		  width:100px;
+		  height:50px;
+		  background:#0ce;
+		  border-style:solid;
+		  border-color:#000;
+		  border-width:6px 6px 0;
+		  border-radius:50px 50px 0 0;
+		  transform-origin:50px 50px;
+		}
+		.pie:before{
+		  z-index:1;
+		  -webkit-animation:a1 5s infinite linear;
+		  transform:rotate(-90deg);
+		}
+		.pie:after{
+		  opacity:0;
+		  z-index:2;
+		  transform:rotate(90deg);
+		  -webkit-animation:a2 5s infinite linear;
+		}
+	</style>
+	<script>
+	$(function(){
+	  var deg;
+	  
+	  $('input').on('mousedown',function(){
+	    deg = $(this).val();
+	    _deg(deg);
+	    $('input').on('mousemove',function(){
+	      deg = $(this).val();
+	      _deg(deg);
+	    });
+	  });
+	  
+	  function _deg(deg){
+	    if(deg<180){
+	      $('head').append(
+	        "<style>"+
+	        ".pie{width:50px; margin-left:50px;border-radius:0 50px 50px 0;}"+
+	        ".pie:before{transform:rotate("+(deg-90)+"deg);}"+
+	        ".pie:after{opacity:0;}"+
+	        "</style>"
+	      );
+	    }else{
+	      $('head').append(
+	        "<style>"+
+	        ".pie{width:100px; margin-left:0;border-radius:0;}"+
+	        ".pie:before{transform:rotate("+(deg-90)+"deg);}"+
+	        ".pie:after{opacity:1;}"+
+	        "</style>"
+	      );
+	    }
+	  }
+	  
+	});
+	</script>
+</head>
+<body>
+  <input type="range" min="0" max="360" step="5" value="90"/>
+  <div class="pie"></div>
+</body>
+</html>
