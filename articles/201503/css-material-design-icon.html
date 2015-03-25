@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta property="article:published_time" content="2015-03-25T23:45:00+01:00">
+  <meta name="keywords" content="css,material,material design,icon,flat">
+
+  <meta name="description" content="當初一看到 Material Design，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。">
+
+  <meta itemprop="name" content="純 CSS Material Design 風格按鈕 - OXXO.STUDIO">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/20150325_1_01.gif">
+  <meta itemprop="description" content="當初一看到 Material Design，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。">
+
+  <meta property="og:title" content="純 CSS Material Design 風格按鈕 - OXXO.STUDIO" >
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/css-material-design-icon.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/20150325_1_01.gif">
+  <meta property="og:description" content="當初一看到 Material Design，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。" >
+
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/articles-content.css">
+  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+  <script src="/js/lib/jquery.min.js"></script>
+  <title>純 CSS Material Design 風格按鈕 - OXXO.STUDIO</title>
+</head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+        <div class="content">
+          <i class="tag-css"></i>
+          <div class="md">
+            <h2>純 CSS Material Design 風格按鈕
+              <span class="article-date">MAR 25, 2015</span>
+            </h2>
+            <p>其實 Material Design 的扁平化、以及著重動畫強調的設計風格早在去年七八月的時候就開始大流行 ( 2014 年的 Google I/O 大會 )，在台灣高雄的志誠大大也不遑多讓的翻譯了相關設計文件 ( 參考 <a href="http://wcc723.gitbooks.io/google_design_translate/content/" target="_blank">Google Material Design 正體中文版</a> )，然而當初一看到，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。</p>
+            <p><img src="/img/articles/201503/20150325_1_02.jpg" alt="純 CSS Material Design 風格按鈕" /></p>
+            <p>在這篇我純粹利用 CSS ，就做出了 Material Design 風格的按鈕，其實沒有很難，比較需要知道的重點如下：</p>
+            <ul>
+            <li>
+            <p><strong>偽元素 before 和 after 的應用</strong></p>
+            <p>偽元素在裏頭扮演相當重要的腳色，利用偽元素我們可以產生兩個不在 HTML 裏頭的類 div，可以大幅降低程式碼的複雜程度。</p>
+            </li>
+            <li>
+            <p><strong>div 的自身寬度與邊框</strong></p>
+            <p>由於我們要進行三角形與矩形之間的形變，雖然三角形可由邊框產生，但卻無法做出漂亮的形變效果 ( 用背景色的話就會有淡入淡出的現象 )，所以必須要用邊框寬度和矩形大小去搭配，當邊框變細的時候，矩形變大，如此一來就可以做出三角形與矩形互相變換的效果囉，下圖的紅色是純粹用顏色變換，藍色則是用邊框寬度與 div 寬度變換，效果應該很明顯吧！( <a href="/demo/201503/css-material-design-icon-demo1.html" target="_blank">css-material-design-icon-demo1.html</a> )</p>
+            <p><img src="/img/articles/201503/20150325_1_03.gif" alt="純 CSS Material Design 風格按鈕" /></p>
+            </li>
+            <li>
+            <p><strong>transform 的應用</strong></p>
+            <p>CSS 裡所有的形變都是藉由 transform 來完成 ( 必要時請加各個瀏覽器的前墜字 )，範例裏頭會用到 scale 與 rotate 這兩個變形屬性。</p>
+            </li>
+            </ul>
+            <p><br/>
+            了解原理之後，先來看一下 HTML 代碼，代碼裡面有兩個主要的 div 分別是 a 和 b，a 的話是利用偽元素來進行變換，b 的內容還有三個小 i 分別是 b1、b2 和 b3 ( 都會宣告為 block 屬性 )，因為大於兩個就無法純粹使用偽元素，所以直接用三個 block 元素來表示比較快。</p>
+            <pre><code>&lt;div class=&quot;a&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;b&quot;&gt;
+              &lt;i class=&quot;b1&quot;&gt;&lt;/i&gt;
+              &lt;i class=&quot;b2&quot;&gt;&lt;/i&gt;
+              &lt;i class=&quot;b3&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            </code></pre>
+            
+            <p><br/>
+            接下來就是 CSS 了，先看到 a，首先當然是先畫兩條垂直的矩形，做出暫停的 icon，這裡直接利用偽元素來畫，比較特別的是「高度為 0」，因為在上面有說過，為了要塑造一個「形狀的變換」，而不是「顏色的淡入淡出」，所以必須用 border-width 來代替高度 ( 記得加上 transition 的漸變時間 )。</p>
+            <pre><code>.a{
+              position:absolute;
+              top:50px;
+              left:50px;
+              width:100px;
+              height:100px;
+              border-radius:50%;
+              background:#363;
+              transition:.2s;
+            }
+            .a:before,.a:after{
+              content:&quot;&quot;;
+              position:absolute;
+              width:12px;
+              height:0;
+              top:24px;
+              border-style:solid;
+              border-width:0 0 54px 0;
+            }
+            .a:before{
+              left:27px;
+              border-color:#fff rgba(255,255,255,0) #fff rgba(255,255,255,0);
+              transition:.2s;
+            }
+            .a:after{
+              left:54px;
+              border-color: rgba(255,255,255,0) rgba(255,255,255,0) #fff #fff ;
+              transition:.2s;
+            }
+            </code></pre>
+            
+            <p><br/>
+            主體設定好之後，接著就要來設定 hover 和 active 的效果，這裡就會用 transform 的 scale 和 rotate，除了變形，仔細看一下，寬度和 border 寬度都改變了，加上位置的互相搭配，就可以很容易地做出兩個矩形在滑鼠移上去的時候變成三角形，點下去的時候變成正方形囉！( scale 如果設定兩個值，分別就是寬與長的變形比例 )</p>
+            <pre><code>.a:hover:before{
+              top:26px;
+              left:45px;
+              width:0;
+              transform:scale(2,1.17) rotate(90deg);
+              border-width:0 0 24px 24px; 
+            }
+            .a:hover:after{
+              top:53px;
+              left:45px;
+              width:0;
+              transform:scale(2,1.17) rotate(90deg);
+              border-width:0 24px 24px 0; 
+            }
+            .a:hover{
+              background:#095;
+              transition:.4s;
+            }
+            .a:active:before{
+              border-width:0 0 24px 0;
+              width:22px;
+              top:26px;
+              left:38px;
+              transition:.4s;
+            }
+            .a:active:after{
+              border-width:0 0 24px 0;
+              width:22px;
+              top:50px;
+              left:38px;
+              transition:.4s;
+            }
+            .a:active{
+              transform:rotate(180deg);
+              background:#0a9;
+            }
+            </code></pre>
+            
+            <p><br/>
+            完成的效果就是長這樣。( <a href="/demo/201503/css-material-design-icon-demo2.html" target="_blank">css-material-design-icon-demo2.html</a> )</p>
+            <p><img src="/img/articles/201503/20150325_1_04.gif" alt="純 CSS Material Design 風格按鈕" /></p>
+            <p>接著是另外一個，原理基本上大同小異，然而不需要做形狀變換反而簡單許多，只需要調整角度和長寬就好囉！</p>
+            <pre><code>.b{
+              position:absolute;
+              top:50px;
+              left:160px;
+              width:100px;
+              height:100px;
+              border-radius:50%;
+              background:#09c;
+              transition:.2s;
+            }
+            .b i{
+              position:absolute;
+              display:block;
+              width:56px;
+              height:10px;
+              background:#fff;
+              left:22px;
+              border-radius:2px;
+              transition:.2s;
+            }
+            .b1{
+              top:24px;
+            }
+            .b2{
+              top:44px;
+            }
+            .b3{
+              top:64px;
+            }
+            .b:hover .b1{
+              left:15px;
+              width:70px;
+              transform:translateY(20px) rotate(45deg);
+            }
+            .b:hover .b3{
+              left:15px;
+              width:70px;
+              transform:translateY(-20px) rotate(-45deg);
+            }
+            .b:hover .b2{
+              left:50px;
+              width:0;
+            }
+            .b:hover{
+              background:#c00;
+            }
+            .b:active .b1{
+              width:40px;
+              transform:translateY(11px) rotate(-45deg);
+              transition:.3s;
+            }
+            .b:active .b3{
+              width:40px;
+              transform:translateY(-7px) rotate(45deg);
+              transition:.3s;
+            }
+            .b:active .b2{
+              top:46px;
+              left:22px;
+              width:60px;
+              transition:.3s;
+            }
+            .b:active{
+              transform:rotate(45deg);
+              background:#f70;
+            }
+            </code></pre>
+            
+            <p><br/>
+            完成的效果長這樣。( <a href="/demo/201503/css-material-design-icon-demo3.html" target="_blank">css-material-design-icon-demo3.html</a> )</p>
+            <p><img src="/img/articles/201503/20150325_1_05.gif" alt="純 CSS Material Design 風格按鈕" /></p>
+            <p>以上就是純粹利用 CSS 做出來的 Material Design 風格按鈕，相信熟練之後就可以做出更多不錯的應用囉！</p>
+          </div>
+        </div>
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+        </div>  
+    </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.min.js"></script>
+  <script src="/js/articles.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

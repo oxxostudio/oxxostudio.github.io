@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>純 CSS Material Design 風格按鈕 - demo1</title>
+	<style>
+	body{
+	  background:#fff;
+	}
+	.a{
+	  position:absolute;
+	  width:0;
+	  height:0;
+	  border-width:50px;
+	  border-style:solid;
+	  border-color:#c00 ;
+	  transition:1s;
+	}
+	.b{
+	  position:absolute;
+	  left:120px;
+	  width:100px;
+	  height:0;
+	  background:#069;
+	  border-width:0 0 100px 0;
+	  border-style:solid;
+	  border-color:#fff #fff #069 #fff ;
+	  transition:1s;
+	}
+	.a:hover{
+	  border-color:#fff #fff #c00 #fff ;
+	}
+	.b:hover{
+	  border-width:50px;
+	  background:#069;
+	  border-color:#fff #fff #069 #fff ;
+	  width:0;
+	  height:0;
+	}
+	</style>
+</head>
+<body>
+	<div class="a"></div>
+  <div class="b"></div>
+</body>
+</html>
