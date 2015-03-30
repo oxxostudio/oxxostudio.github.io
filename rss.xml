@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-03-29 22:05:00 GMT</pubDate>
+    <pubDate>2015-03-30 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>運用 clip-path 的純 CSS 形狀變換</title>
+      <link>http://www.oxxostudio.tw/articles/201503/css-clip-path.html</link>
+      <pubDate>2015-03-30 23:55:00 GMT</pubDate>
+      <description>在單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201503/20150330_1_01b.jpg</url>
+        <title>運用 clip-path 的純 CSS 形狀變換</title>
+        <link>http://www.oxxostudio.tw/articles/201503/css-clip-path.html</link>
+      </image>
+    </item>
     <item>
       <title>單一 div 的正多邊形變換 ( 純 CSS )</title>
       <link>http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html</link>
