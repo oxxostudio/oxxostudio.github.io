@@ -1,5 +1,11 @@
 [{
   "tag": "tag-css",
+  "title": "玩轉 CSS 3D - 正四面體與正六面體",
+  "site": "/articles/201506/css-3d-platonic-solid-1.html",
+  "img": "/img/articles/201506/20150620_1_01.gif",
+  "date": "JUN 20, 2015"
+},{
+  "tag": "tag-css",
   "title": "玩轉 CSS 3D - 原理篇",
   "site": "/articles/201506/css-3d.html",
   "img": "/img/articles/201506/20150619_1_01.jpg",
