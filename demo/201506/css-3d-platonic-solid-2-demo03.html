@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>玩轉 CSS 3D - 正八面體與正十二面體 - demo3</title>
+	<style>
+		.camera{
+			margin:100px;
+			width:200px;
+			height:200px;
+			perspective-origin:50% 50%;
+			-moz-perspective-origin:50% 50%;
+			-webkit-perspective-origin:50% 50%;
+			perspective:1500px;
+			-moz-perspective:1500px;
+			-webkit-perspective:1500px;
+		}
+		.space{
+			position:relative;
+			width:100%;
+			height:100%;
+			transform-style:preserve-3d;
+			-moz-transform-style:preserve-3d;
+			-webkit-transform-style:preserve-3d;
+			transform:rotateX(20deg);
+		}
+		.space div{
+			position:absolute;
+		}
+		.box1, .box2{
+			transform-style:preserve-3d;
+			-moz-transform-style:preserve-3d;
+			-webkit-transform-style:preserve-3d;
+		}
+		.box1 div,.box2 div{
+		  width:162px;
+		  height:154px;
+		  opacity:.9;
+		}
+		.box1 div:before,.box2 div:before{
+		  position:absolute;
+		  content:"";
+		  top:0;
+		  width:0;
+		  height:0;
+		  border-width:0 81px 59px;
+		  border-style:solid;
+		  border-color:transparent transparent #069;
+		}
+		.box1 div:after,.box2 div:after{
+		  position:absolute;
+		  content:"";
+		  top:59px;
+		  left:0;
+		  width:100px;
+		  height:0;
+		  background:none;
+		  border-width:95px 31px 0;
+		  border-style:solid;   
+		  border-color:#069 transparent transparent;
+		}
+		.face2{  
+			transform-origin:81px 85px 0;
+  		transform:rotateZ(0) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+			-moz-transform-origin:81px 85px 0;
+  		-moz-transform:rotateZ(0) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+			-webkit-transform-origin:81px 85px 0;
+  		-webkit-transform:rotateZ(0) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+		}
+		.box1 .face2:before, .box2 .face2:before{
+		  border-color:transparent transparent #f00;
+		}
+		.box1 .face2:after, .box2 .face2:after{
+		  border-color:#f00 transparent transparent;
+		}
+		.face3{  
+  		transform-origin:81px 85px 0;
+  		transform:rotateZ(72deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+  		-moz-transform-origin:81px 85px 0;
+  		-moz-transform:rotateZ(72deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+  		-webkit-transform-origin:81px 85px 0;
+  		-webkit-transform:rotateZ(72deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+		}
+		.box1 .face3:before{
+		  border-color:transparent transparent #f0f;
+		}
+		.box1 .face3:after{
+		  border-color:#f0f transparent transparent;
+		}
+		.box2 .face3:before{
+		  border-color:transparent transparent #0f0;
+		}
+		.box2 .face3:after{
+		  border-color:#0f0 transparent transparent;
+		}
+		.face4{
+  		transform-origin:81px 85px 0;
+  		transform:rotateZ(144deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+  		-moz-transform-origin:81px 85px 0;
+  		-moz-transform:rotateZ(144deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+  		-webkit-transform-origin:81px 85px 0;
+  		-webkit-transform:rotateZ(144deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+		}
+		.box1 .face4:before, .box2 .face4:before{
+		  border-color:transparent transparent #f90;
+		}
+		.box1 .face4:after, .box2 .face4:after{
+		  border-color:#f90 transparent transparent;
+		}
+		.face5{  
+  		transform-origin:81px 85px 0;
+  		transform:rotateZ(-144deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+  		-moz-transform-origin:81px 85px 0;
+  		-moz-transform:rotateZ(-144deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+  		-webkit-transform-origin:81px 85px 0;
+  		-webkit-transform:rotateZ(-144deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+		}
+		.box1 .face5:before, .box2 .face5:before{
+		  border-color:transparent transparent #09f;
+		}
+		.box1 .face5:after, .box2 .face5:after{
+		  border-color:#09f transparent transparent;
+		}
+		.face6{  
+  		transform-origin:81px 85px 0;
+ 		  transform:rotateZ(-72deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+  		-moz-transform-origin:81px 85px 0;
+ 		  -moz-transform:rotateZ(-72deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+  		-webkit-transform-origin:81px 85px 0;
+ 		  -webkit-transform:rotateZ(-72deg) rotateX(-116.56deg) translateY(-69px) translateY(-31px) translateZ(62px);
+		}
+		.box1 .face6:before{
+		  border-color:transparent transparent #0f0;
+		}
+		.box1 .face6:after{
+		  border-color:#0f0 transparent transparent;
+		}
+		.box2 .face6:before{
+		  border-color:transparent transparent #f0f;
+		}
+		.box2 .face6:after{
+		  border-color:#f0f transparent transparent;
+		}
+		.box1{
+			transform-origin:81px 85px 0;
+			transform:rotateX(90deg) translateZ(-223px);
+			-moz-transform-origin:81px 85px 0;
+			-moz-transform:rotateX(90deg) translateZ(-223px);
+			-webkit-transform-origin:81px 85px 0;
+			-webkit-transform:rotateX(90deg) translateZ(-223px);
+		}
+		.box2{
+			transform-origin:81px 85px 0;
+			transform:rotateX(-90deg);
+			-moz-transform-origin:81px 85px 0;
+			-moz-transform:rotateX(-90deg);
+			-webkit-transform-origin:81px 85px 0;
+			-webkit-transform:rotateX(-90deg);
+		}
+		</style>
+</head>
+<body>
+	<div class="camera">
+		<div class="space">
+			<div class="box1">
+				<div class="face1"></div>
+				<div class="face2"></div>
+				<div class="face3"></div>
+				<div class="face4"></div>
+				<div class="face5"></div>
+				<div class="face6"></div>
+			</div>
+			<div class="box2">
+				<div class="face1"></div>
+				<div class="face2"></div>
+				<div class="face3"></div>
+				<div class="face4"></div>
+				<div class="face5"></div>
+				<div class="face6"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -80,7 +80,7 @@
               <span class="article-date">JUN 20, 2015</span>
             </h2>
             <p>繼 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html" target="_blank">上一篇</a> 我們理解了 CSS 3D 的箇中原理之後，廢話就不用多說，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了。</p>
-            <p>首先看一下 <a href="https://goo.gl/ZsQZHm" target="_blank">維基百科</a> 對於正多面體的介紹：「正多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。</p>
+            <p>首先看一下 <a href="https://goo.gl/ZsQZHm" target="_blank">維基百科</a>，對於正多面體的介紹：「多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。</p>
             <p>開始之前，如果有不會用 CSS 畫正多邊形的，請先參考我之前寫過的：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html" target="_blank">單一 div 的正多邊形變換 ( 純 CSS )</a>
             </p>
             <p>
@@ -149,14 +149,20 @@
 }
 </code></pre>
 
-                <p>box3 剛好在 box1 的正對面，所以只要旋轉 180 度即可，但很重要的是旋轉之後整個 Z 軸會跟著旋轉 180 度，為了避免錯亂，先把 box3 往 Z 軸後面移動 100px，旋轉後就會正常。( 先寫 translateZ 再寫 rotateY，不明白的可以參考我寫的 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html" target="_blank">玩轉 CSS 3D - 原理篇</a> )</p>
+                <p><img src="/img/articles/201506/20150620_1_06.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體" />
+                </p>
+                <p>
+                  <br/> box3 剛好在 box1 的正對面，所以只要旋轉 180 度即可，但很重要的是旋轉之後整個 Z 軸會跟著旋轉 180 度，為了避免錯亂，先把 box3 往 Z 軸後面移動 100px，旋轉後就會正常。( 先寫 translateZ 再寫 rotateY，不明白的可以參考我寫的 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html" target="_blank">玩轉 CSS 3D - 原理篇</a> )</p>
                 <pre><code>.box3{
     background:rgba(0,255,0,.2);
     transform:translateX(50px) translateY(50px) translateZ(-100px) rotateY(180deg);
 }
 </code></pre>
 
-                <p>box4 和 box2 類似，不過要將旋轉的中心點移到右側，也因為移到右側的緣故，所以我們要先進行 X 的位移。</p>
+                <p><img src="/img/articles/201506/20150620_1_07.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體" />
+                </p>
+                <p>
+                  <br/> box4 和 box2 類似，不過要將旋轉的中心點移到右側，也因為移到右側的緣故，所以我們要先進行 X 的位移。</p>
                 <pre><code>.box4{
     background:rgba(255,0,255,.2);
     transform-origin:right top;
@@ -164,7 +170,10 @@
 }
 </code></pre>
 
-                <p>box5 在上方，box6 在下方，用跟 box1 到 box4 同樣的方法，只是這次是要繞著 X 軸旋轉。</p>
+                <p><img src="/img/articles/201506/20150620_1_08.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體" />
+                </p>
+                <p>
+                  <br/> box5 在上方，box6 在下方，用跟 box1 到 box4 同樣的方法，只是這次是要繞著 X 軸旋轉。</p>
                 <pre><code>.box5{
     background:rgba(0,0,255,.2);
     transform-origin:center bottom;
@@ -177,11 +186,12 @@
 }
 </code></pre>
 
-                <p>完成之後應該就會順利地看到一個正六面體，這時候我們可以改變 camera 的 perspective，可以更加清楚。( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo01.html" target="_blank">css-3d-platonic-solid-1-demo01.html</a> )</p>
+                <p>
+                  <br/> 完成之後應該就會順利地看到一個正六面體，這時候我們可以改變 camera 的 perspective，可以更加清楚。( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo01.html" target="_blank">css-3d-platonic-solid-1-demo01.html</a> )</p>
                 <p><img src="/img/articles/201506/20150620_1_02.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體" />
                 </p>
                 <p>
-                  <br/> 我們可以在 space 套用 animate 的效果，透過 space 的旋轉，彷彿就是一個正立方體在旋轉囉！( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo02.html" target="_blank">css-3d-platonic-solid-1-demo02.html</a> )</p>
+                  <br/> 我們可以在 space 套用 animate 的效果，透過 space 的旋轉，彷彿就是一個正立方體在旋轉囉！( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo02.html"  target="_blank">css-3d-platonic-solid-1-demo02.html</a> )</p>
                 <pre><code>.space{
     position:relative;
     width:100%;
@@ -242,7 +252,10 @@
 }
 </code></pre>
 
-                <p>再來就是另外三個面了，box2 跟 box1 差不多簡單，只是 box1 旋轉 90 度，box2 要旋轉 19.5 度，因為 box1 要和 box2 有著 70.5 度的夾角。</p>
+                <p><img src="/img/articles/201506/20150620_1_10.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體" />
+                </p>
+                <p>
+                  <br/> 再來就是另外三個面了，box2 跟 box1 差不多簡單，只是 box1 旋轉 90 度，box2 要旋轉 19.5 度，因為 box1 要和 box2 有著 70.5 度的夾角。</p>
                 <pre><code>.box2{
     border-color:transparent transparent #00f;
     transform-origin:center bottom;
@@ -250,7 +263,10 @@
 }
 </code></pre>
 
-                <p>box3 比較麻煩，我們要先讓 box3 繞著 Y 軸旋轉 60 度 ( 因為正三角形每個角是 60 度 )，繞完之後，再繞 X 軸旋轉 19.5 度，為什麼這裡的 19.5 度是正值呢？因為我們繞 Y 軸旋轉後，X 軸也跟著旋轉，所以繞 X 軸的方向就變成顛倒過來了。</p>
+                <p><img src="/img/articles/201506/20150620_1_11.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體" />
+                </p>
+                <p>
+                  <br/> box3 比較麻煩，我們要先讓 box3 繞著 Y 軸旋轉 60 度 ( 因為正三角形每個角是 60 度 )，繞完之後，再繞 X 軸旋轉 19.5 度，為什麼這裡的 19.5 度是正值呢？因為我們繞 Y 軸旋轉後，X 軸也跟著旋轉，所以繞 X 軸的方向就變成顛倒過來了。</p>
                 <pre><code>.box3{
     border-color:transparent transparent #00f;
     transform-origin:right bottom;
@@ -258,7 +274,10 @@
 }
 </code></pre>
 
-                <p>box4 和 box3 類似，同樣的要先繞 Y 旋轉 60 度，這次是要繞負的，因為是另外一側。</p>
+                <p><img src="/img/articles/201506/20150620_1_12.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體" />
+                </p>
+                <p>
+                  <br/> box4 和 box3 類似，同樣的要先繞 Y 旋轉 60 度，這次是要繞負的，因為是另外一側。</p>
                 <pre><code>.box4{
     border-color:transparent transparent #f0f;
     transform-origin:left bottom;
