@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>HTML5 控制裝置陀螺儀 ( 三軸 ) - demo3</title>
+	<style>
+		#compass{
+		  margin:0 auto;
+		  width:90%;
+		  background-image:url(compass.jpg);
+		  background-size:cover;
+		  transform-origin:center center;
+		  -moz-transform-origin:center center;
+		  -webkit-transform-origin:center center;
+		}
+	</style>
+</head>
+<body>
+	<div id="compass"></div>
+	<script>
+	var compass = document.getElementById('compass'),
+	    w = compass.offsetWidth;
+
+	compass.style.height = w +'px';
+
+
+	if(window.DeviceOrientationEvent) {
+
+	  window.addEventListener('deviceorientation', function(event) {
+	        var alpha;
+	        // 	判斷是否為 iOS 裝置
+	        if(event.webkitCompassHeading) {
+	          alpha = event.webkitCompassHeading; // iOS 裝置必須使用 event.webkitCompassHeading
+	          compass.style.WebkitTransform = 'rotate(-' + alpha + 'deg)';
+	          show.innerHTML = alpha;
+	        }
+	        else {
+	          alpha = event.alpha;
+	          webkitAlpha = alpha;
+	          if(!window.chrome) {
+	            webkitAlpha = alpha-270;
+	          }
+	        }
+
+	        compass.style.Transform = 'rotate(' + alpha + 'deg)';
+	        compass.style.WebkitTransform = 'rotate('+ webkitAlpha + 'deg)';
+	        compass.style.MozTransform = 'rotate(-' + alpha + 'deg)'; 
+	      }, false);
+	}else{
+	  document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
+	}
+	</script>
+</body>
+</html>
