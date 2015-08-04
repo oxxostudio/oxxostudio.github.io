@@ -6,27 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2014-09-21T20:55:00+01:00">
-  <meta name="keywords" content="svg,smil,animation,動畫,transform,scale,rotate">
 
-  <meta name="description" content="SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配！">
+<meta property="article:published_time" content="2014-09-21T20:55:00+01:00">
 
-  <meta itemprop="name" content="SVG 研究之路 (21) - 初探 SMIL Animation - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140921_1_01.jpg">
-  <meta itemprop="description" content="SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配！">
+<meta name="keywords" content="svg,smil,animation,動畫,transform,scale,rotate">
 
-  <meta property="og:title" content="SVG 研究之路 (21) - 初探 SMIL Animation - OXXO.STUDIO">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-21-smil-animation.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140921_1_01.jpg">
-  <meta property="og:description" content="SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配！">
-  
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta name="description" content="SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配！">
+
+<meta itemprop="name" content="SVG 研究之路 (21) - 初探 SMIL Animation - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140921_1_01.jpg">
+
+<meta itemprop="description" content="SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配！">
+
+<meta property="og:title" content="SVG 研究之路 (21) - 初探 SMIL Animation - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-21-smil-animation.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140921_1_01.jpg">
+
+<meta property="og:description" content="SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配！">
+
+<title>SVG 研究之路 (21) - 初探 SMIL Animation  - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
 
-      <title>SVG 研究之路 (21) - 初探 SMIL Animation - OXXO.STUDIO</title>
-      </head>
+
+
+</head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -71,111 +87,92 @@
     <div id="wrapper">
         <div id="container">
 
-    
 
-        <div class="content">
-          <i class="tag-web"></i>
-          <div class="md">
-            <h2>SVG 研究之路 (21) - 初探 SMIL Animation
-              <span class="article-date">SEP 21, 2014</span>
-            </h2>
-            <img src="/img/articles/201409/20140921_1_01.jpg" class="preview-img">
-            <p>
-            SVG 的動畫元素是由 W3C Synchronized Multimedia (SYMM) Working Group 由 Synchronized Multimedia Integration Language (SMIL，同步多媒體集成語言) 所規範開發，SMIL 規劃具有許多的參數與設定值 ( 可以參考 <a href="http://www.w3.org/TR/SVG/animate.html" target="_blank">W3C 的規範</a> )，也因為有了這些設定，我們便可以輕鬆的控制 SVG 圖形，這篇將介紹 SVG 基本的動畫，進階動畫控制的部分會在<a href="http://www.oxxostudio.tw/articles/201409/svg-22-smil-animation-2.html">"下一篇</a>文章進行分享。</p>
-            <p>SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配，甚至在不需要撰寫 javascript 的情形下，就讓動畫具有一些互動效果，真的是非常之神奇呀！( 隨著瀏覽器逐漸的支援，SVG 也逐漸火紅起來 )</p>
-            <p>SVG 支援 SMIL 動畫規範中定義的四個動畫元素如下：</p>
-            <ul>
-              <li>set</li>
-              <li>animate</li>
-              <li>animateMotion</li>
-              <li>animateColor ( 已不使用，直接使用屬性值獲取顏色 )</li>
-            </ul>
-            <p>SVG 也包括以下的相容性擴展到 SMIL 動畫元素：</p>
-            <ul>
-              <li>animateTransform</li>
-              <li>path attribute</li>
-              <li>mpath element</li>
-              <li>keyPoints attribute</li>
-              <li>rotate attribute</li>
-            </ul>
-            <p>這篇文章會針對上面的 set、animate、animateMotion 與 animateTransform 這四個動畫元素，進行基本的介紹，除了 animateColor 已經不使用外，path、mpath、keyPoints 與 rotate 則必須依附在 animateMotion 上，之後會再一併介紹。</p>
-            <ul>
-              <li>
-                <p><strong>set</strong></p>
-                <p>set 其實是一個很簡單的元素，若你要說它不像動畫也可以，因為顧名思義就是一個設定而已，但在動畫裡頭，我們時常會需要用到延遲幾秒後從某個位置出現之類的效果，這時候就可以將 set 派上用場，下列的範例表示兩秒之後，正方形會移到 x=70 的地方，雖然 set 支援所有 SVG 動畫的屬性，不過很可惜的，根據 W3C 的規範，動畫屬性不能添加，因此沒有辦法利用 set 做出兩秒跳這邊，四秒跳那邊的動畫。( 範例圖片是 gif，所以會重複播放 )</p>
-                <p>
-                  <img src="/img/articles/201409/20140921_1_02.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation" style="margin-bottom:-10px;" />
-                </p>
-                <pre><code>&lt;rect width=&quot;50&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;#c00&quot;&gt;
-  &lt;set attributeName=&quot;x&quot; to=&quot;40&quot; begin=&quot;2s&quot;&gt;
-&lt;/rect&gt;
-&lt;rect width=&quot;50&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;/&gt;
-</code></pre><br/>
 
-              </li>
-              <li>
-                <p><strong>animate</strong></p>
-                <p>animate 元素就真的是一個動畫的元素 ( 廢話哈哈 )，下方的範例，設定兩秒內正方形會移到 x=60 的地方 ( dur=&quot;2s&quot; )，同時無限次播放 ( repeatCount=&quot;indefinite&quot; )。</p>
-                <p>
-                  <img src="/img/articles/201409/20140921_1_03.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation" style="margin-bottom:-10px;"  />
-                </p>
-                <pre><code>&lt;rect width=&quot;50&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;#09c&quot;&gt;
-  &lt;animate attributeName=&quot;x&quot; to=&quot;60&quot; dur=&quot;2s&quot; repeatCount=&quot;indefinite&quot;&gt; 
-&lt;/rect&gt;
-&lt;rect width=&quot;50&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;/&gt;
-</code></pre><br/>
 
-              </li>
-              <li>
-                <p><strong>animateMotion</strong></p>
-                <p>這個屬性是讓我們的圖形，可以跟隨路徑移動，甚至可以設定跟隨路徑自動旋轉，如果對於路徑 path 還不熟悉的，可以參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html">SVG 研究之路 (4) - Path 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html">SVG 研究之路 (5) - Path 進階篇</a>，比較需要注意的是，當我們設定了 animateMotion，則圖形位置以 path 的起點 M 開始計算，也就是會把 M 當作圖形的 (0,0) 的座標，因此下面的範例將 x 設為 0，y 設為 -10。</p>
-                <p>
-                  <img src="/img/articles/201409/20140921_1_04.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation" style="margin-bottom:-10px;"  />
-                </p>
-                <pre><code>&lt;rect width=&quot;20&quot; height=&quot;10&quot; x=&quot;0&quot; y=&quot;-10&quot; fill=&quot;#09c&quot;&gt;
-  &lt;animateMotion dur=&quot;5s&quot; path=&quot;M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3&quot; repeatCount=&quot;indefinite&quot; rotate=&quot;auto&quot; /&gt; 
-&lt;/rect&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;#000&quot; d=&quot;M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3&quot;/&gt;
-</code></pre>
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
 
-                <p>如果沒有這樣設定，則會出現這樣的情況：</p>
-                <p>
-                  <img src="/img/articles/201409/20140921_1_05.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation" style="margin-bottom:-10px;"  />
-                </p>
-                <pre><code>&lt;rect width=&quot;20&quot; height=&quot;10&quot; x=&quot;20&quot; y=&quot;20&quot; fill=&quot;#09c&quot;&gt;
-  &lt;animateMotion dur=&quot;5s&quot; path=&quot;M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3&quot; repeatCount=&quot;indefinite&quot; rotate=&quot;auto&quot; /&gt; 
-&lt;/rect&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;#000&quot; d=&quot;M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3&quot;/&gt;
-</code></pre><br/>
+<h2>SVG 研究之路 (21) - 初探 SMIL Animation  <span class="article-date" tag="web">SEP 20, 2014</span></h2>
+<p><img src="/img/articles/201409/20140921_1_01.jpg" class="preview-img"></p>
+<p>SVG 的動畫元素是由 W3C Synchronized Multimedia (SYMM) Working Group 由 Synchronized Multimedia Integration Language (SMIL，同步多媒體集成語言) 所規範開發，SMIL 規劃具有許多的參數與設定值 ( 可以參考 <a href="http://www.w3.org/TR/SVG/animate.html">W3C 的規範</a> )，也因為有了這些設定，我們便可以輕鬆的控制 SVG 圖形，這篇將介紹 SVG 基本的動畫，進階動畫控制的部分會在 <a href="http://www.oxxostudio.tw/articles/201409/svg-22-smil-animation-2.html">下一篇</a> 文章進行分享。</p>
+<p>SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配，甚至在不需要撰寫 javascript 的情形下，就讓動畫具有一些互動效果，真的是非常之神奇呀！( 隨著瀏覽器逐漸的支援，SVG 也逐漸火紅起來 )</p>
+<p>SVG 支援 SMIL 動畫規範中定義的四個動畫元素如下：</p>
+<ul>
+<li>set</li>
+<li>animate</li>
+<li>animateMotion</li>
+<li>animateColor ( 已不使用，直接使用屬性值獲取顏色 )</li>
+</ul>
+<p>SVG 也包括以下的相容性擴展到 SMIL 動畫元素：</p>
+<ul>
+<li>animateTransform</li>
+<li>path attribute</li>
+<li>mpath element</li>
+<li>keyPoints attribute</li>
+<li>rotate attribute</li>
+</ul>
+<p>這篇文章會針對上面的 set、animate、animateMotion 與 animateTransform 這四個動畫元素，進行基本的介紹，除了 animateColor 已經不使用外，path、mpath、keyPoints 與 rotate 則必須依附在 animateMotion 上，之後會再一併介紹。</p>
+<ul>
+<li><p><strong>set</strong></p>
+<p>  set 其實是一個很簡單的元素，若你要說它不像動畫也可以，因為顧名思義就是一個設定而已，但在動畫裡頭，我們時常會需要用到延遲幾秒後從某個位置出現之類的效果，這時候就可以將 set 派上用場，下列的範例表示兩秒之後，正方形會移到 x=70 的地方，雖然 set 支援所有 SVG 動畫的屬性，不過很可惜的，根據 W3C 的規範，動畫屬性不能添加，因此沒有辦法利用 set 做出兩秒跳這邊，四秒跳那邊的動畫。( 範例圖片是 gif，所以會重複播放 )</p>
+<p>  <img src="/img/articles/201409/20140921_1_02.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+<pre><code>  &lt;rect width=&quot;50&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;#c00&quot;&gt;
+    &lt;set attributeName=&quot;x&quot; to=&quot;40&quot; begin=&quot;2s&quot;&gt;
+  &lt;/rect&gt;
+  &lt;rect width=&quot;50&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;/&gt;
+</code></pre></li>
+</ul>
+<p><br/></p>
+<ul>
+<li><p><strong>animate</strong></p>
+<p>  animate 元素就真的是一個動畫的元素 ( 廢話哈哈 )，下方的範例，設定兩秒內正方形會移到 x=60 的地方 ( dur=&quot;2s&quot; )，同時無限次播放 ( repeatCount=&quot;indefinite&quot; )。</p>
+<p>  <img src="/img/articles/201409/20140921_1_03.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+<pre><code>  &lt;rect width=&quot;50&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;#09c&quot;&gt;
+    &lt;animate attributeName=&quot;x&quot; to=&quot;60&quot; dur=&quot;2s&quot; repeatCount=&quot;indefinite&quot;&gt; 
+  &lt;/rect&gt;
+  &lt;rect width=&quot;50&quot; height=&quot;50&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;/&gt;
+</code></pre></li>
+</ul>
+<p><br/></p>
+<ul>
+<li><p><strong>animateMotion</strong></p>
+<p>  這個屬性是讓我們的圖形，可以跟隨路徑移動，甚至可以設定跟隨路徑自動旋轉，如果對於路徑 path 還不熟悉的，可以參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html">SVG 研究之路 (4) - Path 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html">SVG 研究之路 (5) - Path 進階篇</a>，比較需要注意的是，當我們設定了 animateMotion，則圖形位置以 path 的起點 M 開始計算，也就是會把 M 當作圖形的 (0,0) 的座標，因此下面的範例將 x 設為 0，y 設為 -10。</p>
+<p>  <img src="/img/articles/201409/20140921_1_04.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+<pre><code>  &lt;rect width=&quot;20&quot; height=&quot;10&quot; x=&quot;0&quot; y=&quot;-10&quot; fill=&quot;#09c&quot;&gt;
+    &lt;animateMotion dur=&quot;5s&quot; path=&quot;M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3&quot; repeatCount=&quot;indefinite&quot; rotate=&quot;auto&quot; /&gt; 
+  &lt;/rect&gt;
+  &lt;path fill=&quot;none&quot; stroke=&quot;#000&quot; d=&quot;M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3&quot;/&gt;
+</code></pre><p>  如果沒有這樣設定，則會出現這樣的情況：</p>
+<p>  <img src="/img/articles/201409/20140921_1_05.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+<pre><code>  &lt;rect width=&quot;20&quot; height=&quot;10&quot; x=&quot;20&quot; y=&quot;20&quot; fill=&quot;#09c&quot;&gt;
+    &lt;animateMotion dur=&quot;5s&quot; path=&quot;M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3&quot; repeatCount=&quot;indefinite&quot; rotate=&quot;auto&quot; /&gt; 
+  &lt;/rect&gt;
+  &lt;path fill=&quot;none&quot; stroke=&quot;#000&quot; d=&quot;M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3&quot;/&gt;
+</code></pre></li>
+</ul>
+<p><br/></p>
+<ul>
+<li><p><strong>animateTransform</strong></p>
+<p>  這是控制圖形 transform 動畫的屬性，要使用這個屬性，就非得掌握 SVG transform 的基礎知識，可以參考之前的文章：<a href="http://www.oxxostudio.tw/articles/201409/svg-19-transform.html">SVG 研究之路 (19) - transform 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html">SVG 研究之路 (20) - transform Matrix</a>，下面的範例可以看到我們設定 type 是 scale，從 1 的比例變成 1.5 的比例。</p>
+<p>  <img src="/img/articles/201409/20140921_1_06.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+<pre><code>  &lt;rect width=&quot;60&quot; height=&quot;60&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;#0c0&quot;&gt;
+    &lt;animateTransform dur=&quot;2s&quot; attributeName=&quot;transform&quot; repeatCount=&quot;indefinite&quot; type=&quot;scale&quot; from=&quot;1&quot; to=&quot;1.5&quot;/&gt; 
+  &lt;/rect&gt;
+  &lt;rect width=&quot;60&quot; height=&quot;60&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;&gt;
+</code></pre><p>  也可以把 type 設為 rotate，就可以讓圖形旋轉</p>
+<p>  <img src="/img/articles/201409/20140921_1_07.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+<pre><code>  &lt;rect width=&quot;60&quot; height=&quot;60&quot; x=&quot;50&quot; y=&quot;50&quot; fill=&quot;#0c0&quot;&gt;
+    &lt;animateTransform dur=&quot;2s&quot; attributeName=&quot;transform&quot; repeatCount=&quot;indefinite&quot; type=&quot;rotate&quot; from=&quot;0,80,80&quot; to=&quot;360,80,80&quot;/&gt; 
+  &lt;/rect&gt;
+  &lt;rect width=&quot;60&quot; height=&quot;60&quot; x=&quot;50&quot; y=&quot;50&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;&gt;
+</code></pre></li>
+</ul>
+<p><br/></p>
+<p>其實 SVG animation 的設定還有很多，上述只是讓我們從最基本的「圖動起來」著手，避免一開始就介紹一大堆的屬性設定，喪失了對於動畫的好奇和熱情，下一篇即將介紹動畫更進階的設定，了解了這些設定之後，相信一定可以做出不錯的效果喔！</p>
 
-              </li>
-              <li>
-                <p><strong>animateTransform</strong></p>
-                <p>這是控制圖形 transform 動畫的屬性，要使用這個屬性，就非得掌握 SVG transform 的基礎知識，可以參考之前的文章：<a href="http://www.oxxostudio.tw/articles/201409/svg-19-transform.html">SVG 研究之路 (19) - transform 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html">SVG 研究之路 (20) - transform Matrix</a>，下面的範例可以看到我們設定 type 是 scale，從 1 的比例變成 1.5 的比例。</p>
-                <p>
-                  <img src="/img/articles/201409/20140921_1_06.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation" style="margin-bottom:-10px;"  />
-                </p>
-                <pre><code>&lt;rect width=&quot;60&quot; height=&quot;60&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;#0c0&quot;&gt;
-  &lt;animateTransform dur=&quot;2s&quot; attributeName=&quot;transform&quot; repeatCount=&quot;indefinite&quot; type=&quot;scale&quot; from=&quot;1&quot; to=&quot;1.5&quot;/&gt; 
-&lt;/rect&gt;
-&lt;rect width=&quot;60&quot; height=&quot;60&quot; x=&quot;10&quot; y=&quot;10&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;&gt;
-</code></pre>
 
-                <p>也可以把 type 設為 rotate，就可以讓圖形旋轉</p>
-                <p>
-                  <img src="/img/articles/201409/20140921_1_07.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation" style="margin-bottom:-10px;"  />
-                </p>
-                <pre><code>&lt;rect width=&quot;60&quot; height=&quot;60&quot; x=&quot;50&quot; y=&quot;50&quot; fill=&quot;#0c0&quot;&gt;
-  &lt;animateTransform dur=&quot;2s&quot; attributeName=&quot;transform&quot; repeatCount=&quot;indefinite&quot; type=&quot;rotate&quot; from=&quot;0,80,80&quot; to=&quot;360,80,80&quot;/&gt; 
-&lt;/rect&gt;
-&lt;rect width=&quot;60&quot; height=&quot;60&quot; x=&quot;50&quot; y=&quot;50&quot; fill=&quot;none&quot; stroke=&quot;#000&quot;&gt;
-</code></pre><br/>
-
-              </li>
-            </ul>
-            <p>其實 SVG animation 的設定還有很多，上述只是讓我們從最基本的「圖動起來」著手，避免一開始就介紹一大堆的屬性設定，喪失了對於動畫的好奇和熱情，<a href="http://www.oxxostudio.tw/articles/201409/svg-22-smil-animation-2.html">下一篇</a>即將介紹動畫更進階的設定，了解了這些設定之後，相信一定可以做出不錯的效果喔！</p>
-          </div>
-        </div>
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -184,8 +181,13 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -197,11 +199,12 @@
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -215,10 +218,14 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

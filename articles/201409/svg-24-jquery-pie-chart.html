@@ -6,27 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2014-09-27T13:25:00+01:00">
-  <meta name="keywords" content="svg,pie,pie chart,chart,jquery">
 
-  <meta name="description" content="使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！">
+<meta property="article:published_time" content="2014-09-27T13:25:00+01:00">
 
-  <meta itemprop="name" content="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖 - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140927_1_01.jpg">
-  <meta itemprop="description" content="使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！">
+<meta name="keywords" content="svg,pie,pie chart,chart,jquery">
 
-  <meta property="og:title" content="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖 - OXXO.STUDIO">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-24-jquery-pie-chart.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140927_1_01.jpg">
-  <meta property="og:description" content="使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！">
-  
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta name="description" content="使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！">
+
+<meta itemprop="name" content="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖 - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140927_1_01.jpg">
+
+<meta itemprop="description" content="使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！">
+
+<meta property="og:title" content="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖 - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-24-jquery-pie-chart.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140927_1_01.jpg">
+
+<meta property="og:description" content="使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！">
+
+<title>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖  - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
 
-      <title>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖 - OXXO.STUDIO</title>
-      </head>
+
+
+</head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -71,73 +87,57 @@
     <div id="wrapper">
         <div id="container">
 
-    
 
-        <div class="content">
-          <i class="tag-web"></i>
-          <div class="md">
-            <h2>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖
-              <span class="article-date">SEP 27, 2014</span>
-            </h2>
-            <img src="/img/articles/201409/20140927_1_01.jpg" class="preview-img">
-            <p>
-              之前我們提過了 <a href="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html">SVG 研究之路 (12) - pie chart 圓餅圖實作</a> 和 <a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html">SVG 研究之路 (14) - 控制 SVG 的注意事項</a>，現在就要來將兩者結合，
-              使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選上面的連結回去再次閱讀一下吧！ )</p>
-            <p>使用 jquery 畫出圓餅圖的原理很簡單，就是要在 SVG 內部放入 path 的路徑，不過由於 SVG 是 xmlns 而非 HTML，因此瀏覽器不認識 rect 或 path 等元素，所以在程式之初必須先加上這段：</p>
-            <pre><code> function makeSVG(tag, attrs) {
-   var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖  <span class="article-date" tag="web">SEP 27, 2014</span></h2>
+<p><img src="/img/articles/201409/20140927_1_01.jpg" class="preview-img"></p>
+<p>之前我們提過了 <a href="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html">SVG 研究之路 (12) - pie chart 圓餅圖實作</a> 和 <a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html">SVG 研究之路 (14) - 控制 SVG 的注意事項</a>，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選上面的連結回去再次閱讀一下吧！ )</p>
+<p>使用 jquery 畫出圓餅圖的原理很簡單，就是要在 SVG 內部放入 path 的路徑，不過由於 SVG 是 xmlns 而非 HTML，因此瀏覽器不認識 rect 或 path 等元素，所以在程式之初必須先加上這段：</p>
+<pre><code> function makeSVG(tag, attrs) {
+   var el = document.createElementNS(&#39;http://www.w3.org/2000/svg&#39;, tag);
    for (var k in attrs)
      el.setAttribute(k, attrs[k]);
    return el;
  }
-</code></pre>
-
-            <p>有了這段之後，我們就可以把 path 或 rect 宣告為 HTML 的元素，就可以使用 jquery 來做 append 的動作；接下來就是重頭戲了，回想一下之前是怎麼畫圓餅圖的，現在就要依樣畫葫蘆的畫出來，只是要轉成 jquery 啦~</p>
-            <p>一開始要先宣告變數，
-              <code>i</code>和
-              <code>j</code>是 for 迴圈用的，
-              <code>path</code>是配合上面的程式碼要給 jquery append 的，
-              <code>x0,y0</code>則是從圓心出發的第一個座標，
-              <code>x1,y1</code>是第二個座標，
-              <code>aa,bb,cc</code>,
-              <code>all</code>都只是後面會用到的變數，
-              <code>cx,cy</code>是圓餅圖的圓心，
-              <code>r</code>是半徑，最後一個
-              <code>data</code>則是 json 格式的資料。</p>
-            <pre><code> var i, j, path, x0, y0, x1, y1, aa, cc, bb = 0;
+</code></pre><p>有了這段之後，我們就可以把 path 或 rect 宣告為 HTML 的元素，就可以使用 jquery 來做 append 的動作；接下來就是重頭戲了，回想一下之前是怎麼畫圓餅圖的，現在就要依樣畫葫蘆的畫出來，只是要轉成 jquery 啦~</p>
+<p>一開始要先宣告變數，<code>i</code>和<code>j</code>是 for 迴圈用的，<code>path</code>是配合上面的程式碼要給 jquery append 的，<code>x0,y0</code>則是從圓心出發的第一個座標，<code>x1,y1</code>是第二個座標，<code>aa,bb,cc</code>,<code>all</code>都只是後面會用到的變數，<code>cx,cy</code>是圓餅圖的圓心，<code>r</code>是半徑，最後一個<code>data</code>則是 json 格式的資料。</p>
+<pre><code> var i, j, path, x0, y0, x1, y1, aa, cc, bb = 0;
  var all = 0;
  var cx = 90;
  var cy = 90;
  var r = 70;
  var data = [{
    num: 12,
-   fill: '#f00'
+   fill: &#39;#f00&#39;
  }, {
    num: 28,
-   fill: '#0f0'
+   fill: &#39;#0f0&#39;
  }, {
    num: 7,
-   fill: '#c0c'
+   fill: &#39;#c0c&#39;
  }, {
    num: 36,
-   fill: '#00f'
+   fill: &#39;#00f&#39;
  }, {
    num: 7,
-   fill: '#c0c'
+   fill: &#39;#c0c&#39;
  }, {
    num: 17,
-   fill: '#0cc'
+   fill: &#39;#0cc&#39;
  }, {
    num: 12,
-   fill: '#cc0'
+   fill: &#39;#cc0&#39;
  }, {
    num: 7,
-   fill: '#c0c'
+   fill: &#39;#c0c&#39;
  }];
-</code></pre>
-
-            <p>再來進入主程式的部分，一開始的 for 迴圈幫助我們由 data 計算總共有幾個扇形，才可以算出每個扇形的角度，跟著的 for 迴圈一開始先進行 if-else 的判斷，為什麼要這個判斷呢？單純只是因為第一個扇形和最後一個扇形的角度計算方式比較不同，所以必須獨立出來計算，判斷之後有了 path 所需要的數值，再藉由另外一個 if-else 來判斷畫出正確的扇形，最後緊跟著的 path 就是利用 jquery append 的方式畫入 SVG 裏頭。</p>
-            <pre><code> for (i = 0; i &lt; data.length; i++) {
+</code></pre><p>再來進入主程式的部分，一開始的 for 迴圈幫助我們由 data 計算總共有幾個扇形，才可以算出每個扇形的角度，跟著的 for 迴圈一開始先進行 if-else 的判斷，為什麼要這個判斷呢？單純只是因為第一個扇形和最後一個扇形的角度計算方式比較不同，所以必須獨立出來計算，判斷之後有了 path 所需要的數值，再藉由另外一個 if-else 來判斷畫出正確的扇形，最後緊跟著的 path 就是利用 jquery append 的方式畫入 SVG 裏頭。</p>
+<pre><code> for (i = 0; i &lt; data.length; i++) {
    all = all + data[i].num;
  }
  for (j = 0; j &lt; data.length; j++) {
@@ -163,31 +163,35 @@
    }
 
    if ((data[j].num / all * 360) &gt; 180) {
-     aa = 'M' + cx + ' ' + cy + ',' + 'L' + x0 + ' ' + y0 + ' ' + 'A' + r + ' ' + r + ' 0 1 1 ' + x1 + ' ' + y1 + ' ' + 'Z';
+     aa = &#39;M&#39; + cx + &#39; &#39; + cy + &#39;,&#39; + &#39;L&#39; + x0 + &#39; &#39; + y0 + &#39; &#39; + &#39;A&#39; + r + &#39; &#39; + r + &#39; 0 1 1 &#39; + x1 + &#39; &#39; + y1 + &#39; &#39; + &#39;Z&#39;;
    } else {
-     aa = 'M' + cx + ' ' + cy + ',' + 'L' + x0 + ' ' + y0 + ' ' + 'A' + r + ' ' + r + ' 0 0 1 ' + x1 + ' ' + y1 + ' ' + 'Z';
+     aa = &#39;M&#39; + cx + &#39; &#39; + cy + &#39;,&#39; + &#39;L&#39; + x0 + &#39; &#39; + y0 + &#39; &#39; + &#39;A&#39; + r + &#39; &#39; + r + &#39; 0 0 1 &#39; + x1 + &#39; &#39; + y1 + &#39; &#39; + &#39;Z&#39;;
    }
 
-   path = makeSVG('path', {
-     'd': aa,
-     'fill': data[j].fill,
-     'stroke': '#fff',
-     'stroke-width': '2'
+   path = makeSVG(&#39;path&#39;, {
+     &#39;d&#39;: aa,
+     &#39;fill&#39;: data[j].fill,
+     &#39;stroke&#39;: &#39;#fff&#39;,
+     &#39;stroke-width&#39;: &#39;2&#39;
    });
-   $('#qq').append(path);
+   $(&#39;#qq&#39;).append(path);
 
  }
-</code></pre>
+</code></pre><p>其實到上面這裡我們已經畫完了扇形，最後再加點小小的變化，就是讓滑鼠移上去會變透明：</p>
+<pre><code> $(&#39;path&#39;).hover(function () {
+   $(this).css({
+     &#39;opacity&#39;: &#39;.5&#39;
+   });
+ }, function () {
+   $(this).css({
+     &#39;opacity&#39;: &#39;1&#39;
+   });
+ });
+</code></pre><p><img src="/img/articles/201409/20140927_1_02.png" alt="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖"></p>
+<p>就這樣，輕鬆愜意地完成了圓餅圖的製作，當然，了解原理之後，也可以做出一些不同的變化，例如半徑越來越大之類的圓餅圖，原理就是在第二個 for 迴圈裡面多個 r=r+5 ，每個扇形的半徑就會越來越大囉！( 範例：<a href="http://jsbin.com/jacugi/2">http://jsbin.com/jacugi/2</a> )</p>
+<p><img src="/img/articles/201409/20140927_1_03.png" alt="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖"></p>
 
-            <p>
-              <img src="/img/articles/201409/20140927_1_02.png" alt="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖" />
-            </p>
-            <p>就這樣，輕鬆愜意地完成了圓餅圖的製作，當然，了解原理之後，也可以做出一些不同的變化，例如半徑越來越大之類的圓餅圖，原理就是在第二個 for 迴圈裡面多個 r=r+5 ，每個扇形的半徑就會越來越大囉！( 範例：<a href="http://jsbin.com/jacugi/2" target="_blank">http://jsbin.com/jacugi/2</a> )</p>
-            <p>
-              <img src="/img/articles/201409/20140927_1_03.png" alt="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖" />
-            </p>
-          </div>
-        </div>
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -196,8 +200,13 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -209,11 +218,12 @@
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -227,10 +237,14 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

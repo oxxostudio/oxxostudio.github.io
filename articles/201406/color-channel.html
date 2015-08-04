@@ -6,25 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2014-05-21T22:25:00+01:00">
-  <meta name="keywords" content="photoshop,位元色版,HDR,64 bit,32 bit,EXR,修圖,影像處理">
 
-  <meta name="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
+<meta property="article:published_time" content="2014-05-21T22:25:00+01:00">
 
-  <meta itemprop="name" content="淺談位元色版 color channel - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140621_2_01.jpg">
-  <meta itemprop="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
+<meta name="keywords" content="photoshop,位元色版,HDR,64 bit,32 bit,EXR,修圖,影像處理">
 
-  <meta property="og:title" content="淺談位元色版 color channel - OXXO.STUDIO">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/color-channel.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140621_2_01.jpg">
-  <meta property="og:description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
+<meta name="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
 
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta itemprop="name" content="淺談位元色版 color channel - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140621_2_01.jpg">
+
+<meta itemprop="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
+
+<meta property="og:title" content="淺談位元色版 color channel - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/color-channel.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140621_2_01.jpg">
+
+<meta property="og:description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
+
+<title>淺談位元色版 color channel - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
-  <title>淺談位元色版 color channel - OXXO.STUDIO</title>
+
+
+
 </head>
 <body>
     <div id="header">
@@ -70,33 +87,26 @@
     <div id="wrapper">
         <div id="container">
 
-      <div class="content">
-        <i class="tag-photo"></i>
-        <div class="md">
-          <h2>淺談位元色版 color channel
-            <span class="article-date">JUN 21, 2014</span>
-          </h2>
-          <img src="/img/articles/201406/20140621_2_01.jpg" class="preview-img">
-          <p>
-          <span itemprop="description" class="desc">這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。</span></p>
-          <p>首先介紹一下色彩的解析度，這其實在大學一年級必修的計算機概論中，都會多少提到這觀念，如同 2^8 ( 2 的 8 次方 ) = 256 色的色彩資訊，也就是八位元的色彩資訊，而我們所知的螢幕解析度「高彩」，則是 2^16 = 65536 種顏色，16位元的色彩資訊，全彩則是 2^24 = 16777216，24 位元的色彩資訊。</p>
-          <p>看完上面這段，或許你會有個疑問，這與 photoshop 中的位元色版有什麼不同，或是看到 photoshop 中 8 位元，16 位元與32 位元你已經混亂了，這裡面不同的可大了！那什麼是 photoshop 中的 8 位元 16 位元與 32 位元呢？</p>
-          <p>
-            <img src="/img/articles/201406/20140621_2_02.png" alt="color channel" />
-          </p>
-          <p>若以 8 位元的 RGB 色版為例，則是 R 色版具有 2^8 = 256 種紅色 ( 0~255 )，G 色版與 B 色版也各具有 256 種綠色與藍色 ( 0~255 )，也因此為什麼在 16 進位的色碼中會表示為 00~FF 的原因，所以 8 位元的 RGB 色版，就是包含 256 種紅色，256 種綠色，256 種藍色的色版，其實也就是 24 位元的全彩顏色 ( 256
-            <em>256</em>256 = 2^8
-            <em>2^8</em>2^8 = 2^24 )，這也幾乎包含了我們眼睛所能見到的全部顏色了，此外，或許還有人聽過 32 位元的色彩，那就是包含了 256 種不同的 alpha 色彩。</p>
-          <p>而單純灰階的色版，我們也可稱為 8 位元的色版，但他卻是只有 8 位元的顏色，也就是 256 種從黑到白之間的灰色，同理，16 位元的色版，則是 R 色版具有 2^16 = 65536 種紅色，G 色版具有 65536 種綠色，B 色版具有 65536 種藍色，總共則是2^16
-            <em>2^16</em>2^16 = 2^48 種顏色，等於是 48 位元的色彩資訊，當然這幾乎已經是天文數字了，也遠遠超過眼睛所能感受的色彩了。</p>
-          <p>接著介紹 32 位元的色版，跟剛剛一樣，RGB 三色版分別都具有 2^32 種紅色綠色藍色，但為什麼現在大家往往朗朗上口的卻是32 位元浮點數色版呢？因為在 8 位元色版與 16 位元色版中，色彩的資訊均以整數表示，類似 255 的紅，或是 65530 的藍( 當然不會是這麼直接的講法 )，而在 32 位元色版中，則是將這 32 個位元，區分為 1 個正負號，8 個整數，23 個小數點後的浮點數，當然這其中牽扯到了許多複雜的傅立葉運算，也因此在32位元色版的色彩選擇中，可以發現許多的小數點與正負號跑出來。</p>
-          <p>而誠如 photoshop 說明文件所述，在 CS2 之後的版本於影像調整增加了 &quot;曝光度&quot; 的選項，這個選項的是專門針對 32 位元色版所設計，以及由 32 位元色版轉換為 8 位元或 16 位元色版中的轉換選單，也因為 32 位元色版多出了那一大堆的浮點數 就更能記錄更多的色彩資訊，所以高動態範圍的影像也都是採用這種位元色版模式記錄資訊囉！
-          </p>
-          <p>
-            <img src="/img/articles/201406/20140621_2_03.png" alt="color channel" />
-          </p>
-        </div>
-      </div>
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>淺談位元色版 color channel <span class="article-date" tag="photo">JUN 21, 2014</span></h2>
+<p><img src="/img/articles/201406/20140621_2_01.jpg" class="preview-img"></p>
+<p>這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。</p>
+<p>首先介紹一下色彩的解析度，這其實在大學一年級必修的計算機概論中，都會多少提到這觀念，如同 2^8 ( 2 的 8 次方 ) = 256 色的色彩資訊，也就是八位元的色彩資訊，而我們所知的螢幕解析度「高彩」，則是 2^16 = 65536 種顏色，16位元的色彩資訊，全彩則是 2^24 = 16777216，24 位元的色彩資訊。</p>
+<p>看完上面這段，或許你會有個疑問，這與 photoshop 中的位元色版有什麼不同，或是看到 photoshop 中 8 位元，16 位元與32 位元你已經混亂了，這裡面不同的可大了！那什麼是 photoshop 中的 8 位元 16 位元與 32 位元呢？</p>
+<p><img src="/img/articles/201406/20140621_2_02.png" alt="color channel"></p>
+<p>若以 8 位元的 RGB 色版為例，則是 R 色版具有 2^8 = 256 種紅色 ( 0~255 )，G 色版與 B 色版也各具有 256 種綠色與藍色 ( 0~255 )，也因此為什麼在 16 進位的色碼中會表示為 00~FF 的原因，所以 8 位元的 RGB 色版，就是包含 256 種紅色，256 種綠色，256 種藍色的色版，其實也就是 24 位元的全彩顏色 ( 256 x 256 x 256 = 2^8 x 2^8 x 2^8 = 2^24 )，這也幾乎包含了我們眼睛所能見到的全部顏色了，此外，或許還有人聽過 32 位元的色彩，那就是包含了 256 種不同的 alpha 色彩。</p>
+<p>而單純灰階的色版，我們也可稱為 8 位元的色版，但他卻是只有 8 位元的顏色，也就是 256 種從黑到白之間的灰色，同理，16 位元的色版，則是 R 色版具有 2^16 = 65536 種紅色，G 色版具有 65536 種綠色，B 色版具有 65536 種藍色，總共則是2^16 x 2^16 x 2^16 = 2^48 種顏色，等於是 48 位元的色彩資訊，當然這幾乎已經是天文數字了，也遠遠超過眼睛所能感受的色彩了。</p>
+<p>接著介紹 32 位元的色版，跟剛剛一樣，RGB 三色版分別都具有 2^32 種紅色綠色藍色，但為什麼現在大家往往朗朗上口的卻是32 位元浮點數色版呢？因為在 8 位元色版與 16 位元色版中，色彩的資訊均以整數表示，類似 255 的紅，或是 65530 的藍( 當然不會是這麼直接的講法 )，而在 32 位元色版中，則是將這 32 個位元，區分為 1 個正負號，8 個整數，23 個小數點後的浮點數，當然這其中牽扯到了許多複雜的傅立葉運算，也因此在32位元色版的色彩選擇中，可以發現許多的小數點與正負號跑出來。</p>
+<p>而誠如 photoshop 說明文件所述，在 CS2 之後的版本於影像調整增加了 &quot;曝光度&quot; 的選項，這個選項的是專門針對 32 位元色版所設計，以及由 32 位元色版轉換為 8 位元或 16 位元色版中的轉換選單，也因為 32 位元色版多出了那一大堆的浮點數
+就更能記錄更多的色彩資訊，所以高動態範圍的影像也都是採用這種位元色版模式記錄資訊囉！</p>
+<p><img src="/img/articles/201406/20140621_2_03.png" alt="color channel"></p>
+
 
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
@@ -106,8 +116,13 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -119,11 +134,12 @@
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -137,10 +153,14 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

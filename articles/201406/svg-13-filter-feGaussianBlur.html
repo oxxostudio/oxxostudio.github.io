@@ -6,25 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2014-06-25T23:05:00+01:00">
-  <meta name="keywords" content="SVG,filter,濾鏡,向量,feGaussianBlur,高斯模糊,模糊,blur">
 
-  <meta name="description" content="使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果。">
+<meta property="article:published_time" content="2014-06-25T23:05:00+01:00">
 
-  <meta itemprop="name" content="SVG 研究之路 (13) - filter - feGaussianBlur - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140625_1_01.jpg">
-  <meta itemprop="description" content="使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果。">
+<meta name="keywords" content="SVG,filter,濾鏡,向量,feGaussianBlur,高斯模糊,模糊,blur">
 
-  <meta property="og:title" content="SVG 研究之路 (13) - filter - feGaussianBlur - OXXO.STUDIO">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140625_1_01.jpg">
-  <meta property="og:description" content="使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果。">
+<meta name="description" content="使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果。">
 
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta itemprop="name" content="SVG 研究之路 (13) - filter - feGaussianBlur - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140625_1_01.jpg">
+
+<meta itemprop="description" content="使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果。">
+
+<meta property="og:title" content="SVG 研究之路 (13) - filter - feGaussianBlur - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140625_1_01.jpg">
+
+<meta property="og:description" content="使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果。">
+
+<title>SVG 研究之路 (13) - filter - feGaussianBlur - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
-  <title>SVG 研究之路 (13) - filter - feGaussianBlur - OXXO.STUDIO</title>
+
+
+
 </head>
 <body>
     <div id="header">
@@ -70,144 +87,103 @@
     <div id="wrapper">
         <div id="container">
 
-      <div class="content">
-        <i class="tag-web"></i>
-        <div class="md">
-          <h2>SVG 研究之路 (13) - filter - feGaussianBlur
-            <span class="article-date">JUN 25, 2014</span>
-          </h2>
-          <img src="/img/articles/201406/20140625_1_01.jpg" class="preview-img">
-          <p>
-            
-            <span itemprop="description" class="desc">使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果 ( <a href="https://dl.dropboxusercontent.com/u/59597657/oxxo_code/Jquery_20120712_imageBlurMask.html" target="_blank">可以參考這個我以前做的效果</a> )，這個方式其實在一些 3D 軟體做景深渲染的時候也常常使用，不過這種方法在網頁上必須撰寫一些程式才能辦到。</span>今天有了 SVG 的 feGaussianBlur 濾鏡，我們只需要下幾個指令就能夠達到模糊的效果，且還能夠使用程式做互動的反應，是相當方便的喔！</p>
-          <p><code>feGaussianBlur</code>應該算是 SVG filter 裏頭最簡單的濾鏡，因為它只有一個參數需要注意：<code>stdDeviation</code>，這也是控制模糊程度的參數，數字越大越模糊，數字為零則是圖片原本的狀態，在這邊有一個比較需要注意的地方，就是要記得設定 filter 的<code>filterUnits</code>為 userSpaceOnUse ，因為預設值是會讓 filter 跟隨著套用該 filter 的物件跑，所以要記得設定成跟隨整個 SVG space。</p>
-          <p>
-            <img src="/img/articles/201406/20140625_1_03.png" style="margin-bottom:0; " />
-          </p>
-          <pre><code>&lt;defs&gt;
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>SVG 研究之路 (13) - filter - feGaussianBlur <span class="article-date" tag="web">JUN 25, 2014</span></h2>
+<p><img src="/img/articles/201406/20140625_1_01.jpg" class="preview-img"></p>
+<p>使用過 Photoshop 都知道，模糊就跟斯斯一樣多種，其中的一種就是「高斯模糊」，同樣的，在 illustrator 裏頭也有高斯模糊，因此 SVG 也就擁有高斯模糊的能力！以往我們單純用網頁製作「假」的高斯模糊，常常是將十幾二十張圖片更改透明度與些微的座標差距，來做出類似的效果 ( <a href="https://dl.dropboxusercontent.com/u/59597657/oxxo_code/Jquery_20120712_imageBlurMask.html">可以參考這個我以前做的效果</a> )，這個方式其實在一些 3D 軟體做景深渲染的時候也常常使用，不過這種方法在網頁上必須撰寫一些程式才能辦到。今天有了 SVG 的 feGaussianBlur 濾鏡，我們只需要下幾個指令就能夠達到模糊的效果，且還能夠使用程式做互動的反應，是相當方便的喔！</p>
+<p><code>feGaussianBlur</code>應該算是 SVG filter 裏頭最簡單的濾鏡，因為它只有一個參數需要注意：<code>stdDeviation</code>，這也是控制模糊程度的參數，數字越大越模糊，數字為零則是圖片原本的狀態，在這邊有一個比較需要注意的地方，就是要記得設定 filter 的<code>filterUnits</code>為 userSpaceOnUse ，因為預設值是會讓 filter 跟隨著套用該 filter 的物件跑，所以要記得設定成跟隨整個 SVG space。</p>
+<p><img src="/img/articles/201406/20140625_1_03.png" alt=""></p>
+<pre><code>&lt;defs&gt;
 &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
   &lt;feGaussianBlur stdDeviation=&quot;1&quot; /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#a00&quot; filter=url(&quot;#blur&quot;) /&gt;
-</code></pre>
-
-          <p>
-            <img src="/img/articles/201406/20140625_1_02.png" style="margin-bottom:0; " />
-          </p>
-          <pre><code>&lt;defs&gt;
+</code></pre><p><img src="/img/articles/201406/20140625_1_02.png" alt=""></p>
+<pre><code>&lt;defs&gt;
 &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
   &lt;feGaussianBlur stdDeviation=&quot;5&quot; /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#a00&quot; filter=url(&quot;#blur&quot;) /&gt;
-</code></pre>
-
-          <p>
-            <img src="/img/articles/201406/20140625_1_04.png" style="margin-bottom:0; " />
-          </p>
-          <pre><code>&lt;defs&gt;
+</code></pre><p><img src="/img/articles/201406/20140625_1_04.png" alt=""></p>
+<pre><code>&lt;defs&gt;
 &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
   &lt;feGaussianBlur stdDeviation=&quot;10&quot; /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#a00&quot; filter=url(&quot;#blur&quot;) /&gt;
-</code></pre>
-          <p>
-            <br/>
-          </p>
-          <p><code>feGaussianBlur</code>的<code>stdDeviation</code>還有一個鮮為人知且相當好用的設定，就是可以撰寫兩個數值在裏頭，分別代表水平與垂直方向的模糊程度。</p>
-          <p>
-            <img src="/img/articles/201406/20140625_1_08.png" style="margin-bottom:0; " />
-          </p>
-          <pre><code>&lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot; &gt;
+</code></pre><p><br/></p>
+<p><code>feGaussianBlur</code>的<code>stdDeviation</code>還有一個鮮為人知且相當好用的設定，就是可以撰寫兩個數值在裏頭，分別代表水平與垂直方向的模糊程度。</p>
+<p><img src="/img/articles/201406/20140625_1_08.png" alt=""></p>
+<pre><code>&lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot; &gt;
   &lt;feGaussianBlur stdDeviation=&quot;1 15&quot;/&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#ff4500&quot; filter=url(&quot;#blur1&quot;) /&gt;
-</code></pre>
-
-          <p>
-            <img src="/img/articles/201406/20140625_1_09.png" style="margin-bottom:0; " />
-          </p>
-          <pre><code>&lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot; &gt;
+</code></pre><p><img src="/img/articles/201406/20140625_1_09.png" alt=""></p>
+<pre><code>&lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot; &gt;
   &lt;feGaussianBlur stdDeviation=&quot;15 1&quot;/&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#ff4500&quot; filter=url(&quot;#blur1&quot;) /&gt;
-</code></pre>
+</code></pre><p><br/></p>
+<p>理解了<code>feGaussianBlur</code>的用法之後，我們就可以利用它來做一些與眾不同的變化，例如：  </p>
+<ul>
+<li><p>不同的景深</p>
+<p>  <img src="/img/articles/201406/20140625_1_05.png" alt=""></p>
+<pre><code>    &lt;defs&gt;
+    &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
+      &lt;feGaussianBlur stdDeviation=&quot;10&quot; /&gt;
+    &lt;/filter&gt;
+    &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur2&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
+      &lt;feGaussianBlur stdDeviation=&quot;2&quot; /&gt;
+    &lt;/filter&gt;
+    &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur3&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
+      &lt;feGaussianBlur stdDeviation=&quot;0&quot; /&gt;
+    &lt;/filter&gt;
+    &lt;/defs&gt;
+      &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#a00&quot; filter=url(&quot;#blur1&quot;) /&gt;
+      &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;50&quot; fill=&quot;#09a&quot; filter=url(&quot;#blur2&quot;) /&gt;
+      &lt;rect x=&quot;100&quot; y=&quot;100&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#fa0&quot; filter=url(&quot;#blur3&quot;) /&gt;
+</code></pre></li>
+</ul>
+<p><br/></p>
+<ul>
+<li><p>陰影  </p>
+<p>  陰影其實說好做很好做，就做一個黑色的色塊讓它模糊即可，不過這裡用了一個比較有趣的方法，就是讓濾鏡套用在物件的 Aplha 色版 ( in=&quot;SourceAlpha&quot; )，如此一來也可以做出陰影。</p>
+<p>  <img src="/img/articles/201406/20140625_1_06.png" alt=""></p>
+<pre><code>    &lt;defs&gt;
+    &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot; &gt;
+      &lt;feGaussianBlur stdDeviation=&quot;5&quot; in=&quot;SourceAlpha&quot;  /&gt;
+    &lt;/filter&gt;
+    &lt;/defs&gt;
+      &lt;rect x=&quot;30&quot; y=&quot;35&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#f00&quot; filter=url(&quot;#blur1&quot;) /&gt;
+      &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#6f9&quot;/&gt;
+</code></pre></li>
+</ul>
+<p><br/></p>
+<ul>
+<li><p>不同形狀的陰影</p>
+<p>  <img src="/img/articles/201406/20140625_1_07.png" alt=""></p>
+<pre><code>&lt;defs&gt;
+&lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot; &gt;
+  &lt;feGaussianBlur stdDeviation=&quot;5&quot;/&gt;
+&lt;/filter&gt;
+&lt;/defs&gt;
+  &lt;path d=&quot;M30 30 L100 30 Q90 65 100 100 L30 100 Q40 65 30 30&quot; fill=&quot;#000&quot; filter=url(&quot;#blur1&quot;) /&gt;
+  &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#6f9&quot;/&gt;
+</code></pre></li>
+</ul>
+<p><br/></p>
+<p>陰影的做法萬變不離其宗，跟我們以往使用 photoshop 和 illustrator 總是幾分類似，畢竟身為設計師，最拿手的也應該就是利用光影的變化來欺騙眼睛，學會了 SVG 的<code>feGaussianBlur</code>，相信一定能做出更多有趣的效果。</p>
 
-          <p>
-            <br/>
-          </p>
-
-          <p>
-            <br/>理解了
-            <code>feGaussianBlur</code>的用法之後，我們就可以利用它來做一些與眾不同的變化，例如：
-          </p>
-          <ul>
-            <li>
-              <p>不同的景深</p>
-              <p>
-                <img src="/img/articles/201406/20140625_1_05.png" style="margin-bottom:0; " />
-              </p>
-              <pre><code>  &lt;defs&gt;
-  &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
-    &lt;feGaussianBlur stdDeviation=&quot;10&quot; /&gt;
-  &lt;/filter&gt;
-  &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur2&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
-    &lt;feGaussianBlur stdDeviation=&quot;2&quot; /&gt;
-  &lt;/filter&gt;
-  &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur3&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
-    &lt;feGaussianBlur stdDeviation=&quot;0&quot; /&gt;
-  &lt;/filter&gt;
-  &lt;/defs&gt;
-    &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#a00&quot; filter=url(&quot;#blur1&quot;) /&gt;
-    &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;50&quot; fill=&quot;#09a&quot; filter=url(&quot;#blur2&quot;) /&gt;
-    &lt;rect x=&quot;100&quot; y=&quot;100&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#fa0&quot; filter=url(&quot;#blur3&quot;) /&gt;
-</code></pre>
-
-              <p>
-                <br/>
-              </p>
-            </li>
-            <li>
-              <p>陰影
-                <br />陰影其實說好做很好做，就做一個黑色的色塊讓它模糊即可，不過這裡用了一個比較有趣的方法，就是讓濾鏡套用在物件的 Aplha 色版 ( in=&quot;SourceAlpha&quot; )，如此一來也可以做出陰影。</p>
-              <p>
-                <img src="/img/articles/201406/20140625_1_06.png" style="margin-bottom:0; " />
-              </p>
-              <pre><code>  &lt;defs&gt;
-  &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot; &gt;
-    &lt;feGaussianBlur stdDeviation=&quot;5&quot; in=&quot;SourceAlpha&quot;  /&gt;
-  &lt;/filter&gt;
-  &lt;/defs&gt;
-    &lt;rect x=&quot;30&quot; y=&quot;35&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#f00&quot; filter=url(&quot;#blur1&quot;) /&gt;
-    &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#6f9&quot;/&gt;
-</code></pre>
-
-              <p>
-                <br/>
-              </p>
-            </li>
-            <li>
-              <p>不同形狀的陰影</p>
-              <p>
-                <img src="/img/articles/201406/20140625_1_07.png" style="margin-bottom:0; " />
-              </p>
-              <pre><code>  &lt;defs&gt;
-  &lt;filter width=&quot;200&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; id=&quot;blur1&quot; filterUnits=&quot;userSpaceOnUse&quot; &gt;
-    &lt;feGaussianBlur stdDeviation=&quot;5&quot;/&gt;
-  &lt;/filter&gt;
-  &lt;/defs&gt;
-    &lt;path d=&quot;M30 30 L100 30 Q90 65 100 100 L30 100 Q40 65 30 30&quot; fill=&quot;#000&quot; filter=url(&quot;#blur1&quot;) /&gt;
-    &lt;rect x=&quot;30&quot; y=&quot;30&quot; width=&quot;70&quot; height=&quot;70&quot; fill=&quot;#6f9&quot;/&gt;
-</code></pre>
-
-              <p>
-                <br/>陰影的做法萬變不離其宗，跟我們以往使用 photoshop 和 illustrator 總是幾分類似，畢竟身為設計師，最拿手的也應該就是利用光影的變化來欺騙眼睛，學會了 SVG 的<code>feGaussianBlur</code>，相信一定能做出更多有趣的效果。</p>
-        </div>
-      </div>
 
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
@@ -217,8 +193,13 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -230,11 +211,12 @@
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -248,10 +230,14 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

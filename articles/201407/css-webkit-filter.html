@@ -6,26 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-    <meta property="article:published_time" content="2014-07-26T17:25:00+01:00">
-    <meta name="keywords" content="css,css3,webkit,webkit filter,濾鏡">
 
-    <link rel="publisher" href="https://plus.google.com/105185415102049371674">
-    <meta name="description" content="某一天我發現了 webkit filter 這個超級好用的技術，雖然很可惜的一直到寫這篇文章的今天它都還只支援 webkit 核心的 chrome 或 safari 瀏覽器，但我自己倒是很期待 webkit filter 的未來，雖然我這篇文章其實在 2012 年我已經寫過一次啦">
+<meta property="article:published_time" content="2014-07-26T17:25:00+01:00">
 
-    <meta itemprop="name" content="CSS webkit filter - OXXO.STUDIO">
-    <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_2_01.jpg">
-    <meta itemprop="description" content="某一天我發現了 webkit filter 這個超級好用的技術，雖然很可惜的一直到寫這篇文章的今天它都還只支援 webkit 核心的 chrome 或 safari 瀏覽器，但我自己倒是很期待 webkit filter 的未來，雖然我這篇文章其實在 2012 年我已經寫過一次啦">
+<meta name="keywords" content="css,css3,webkit,webkit filter,濾鏡">
 
-    <meta property="og:title" content="CSS webkit filter - OXXO.STUDIO">
-    <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-swbkit-filter.html">
-    <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_2_01.jpg">
-    <meta property="og:description" content="某一天我發現了 webkit filter 這個超級好用的技術，雖然很可惜的一直到寫這篇文章的今天它都還只支援 webkit 核心的 chrome 或 safari 瀏覽器，但我自己倒是很期待 webkit filter 的未來，雖然我這篇文章其實在 2012 年我已經寫過一次啦">
+<link rel="publisher" href="https://plus.google.com/105185415102049371674">
 
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta name="description" content="某一天我發現了 webkit filter 這個超級好用的技術，雖然很可惜的一直到寫這篇文章的今天它都還只支援 webkit 核心的 chrome 或 safari 瀏覽器，但我自己倒是很期待 webkit filter 的未來，雖然我這篇文章其實在 2012 年我已經寫過一次啦">
+
+<meta itemprop="name" content="CSS webkit filter - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_2_01.jpg">
+
+<meta itemprop="description" content="某一天我發現了 webkit filter 這個超級好用的技術，雖然很可惜的一直到寫這篇文章的今天它都還只支援 webkit 核心的 chrome 或 safari 瀏覽器，但我自己倒是很期待 webkit filter 的未來，雖然我這篇文章其實在 2012 年我已經寫過一次啦">
+
+<meta property="og:title" content="CSS webkit filter - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-swbkit-filter.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_2_01.jpg">
+
+<meta property="og:description" content="某一天我發現了 webkit filter 這個超級好用的技術，雖然很可惜的一直到寫這篇文章的今天它都還只支援 webkit 核心的 chrome 或 safari 瀏覽器，但我自己倒是很期待 webkit filter 的未來，雖然我這篇文章其實在 2012 年我已經寫過一次啦">
+
+<title>CSS webkit filter - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
-  <title>CSS webkit filter - OXXO.STUDIO</title>
+
+
+
 </head>
 <body>
     <div id="header">
@@ -71,81 +89,93 @@
     <div id="wrapper">
         <div id="container">
 
-            <div class="content">
-                <i class="tag-css"></i>
-                <div class="md">
-                    <h2>CSS webkit filter
-                        <span class="article-date">JUL 26, 2014</span>
-                    </h2>
-                        <img src="/img/articles/201407/20140726_2_01.jpg" class="preview-img">
-                    <p>由於我自己是多媒體專長的背景，「filter」 ( 濾鏡 ) 這個詞基本上是陪伴我成長的一個重要技術 ( 或工具 )，不管是在影像處理還是向量繪圖，甚至是影片剪輯、聲音處理都會需要使用到濾鏡，但很可惜的在網站設計裡，卻沒有如同 photoshop 一般的濾鏡可以輕鬆使用，一張圖如果需要一些特效 ( 例如模糊、黑白、高對比...等 )，往往必須直接再重製一張圖來使用，雖然對我自己來說重做一張圖應該不用花到一分鐘，但對於許多不會影像處理的人而言，簡直就是另外一門學問了。</p>
-                    <p>
-                        某一天我發現了 webkit filter 這個超級好用的技術，雖然很可惜的一直到寫這篇文章的今天它都還只支援 webkit 核心的 chrome 或 safari 瀏覽器，但我自己倒是很期待 webkit filter 的未來，雖然我這篇文章其實在 2012 年我已經寫過一次啦！( 舊的 blog )
-                    </p>
-                    <p>下面的預覽圖都是直接使用 webkit filter 做出來的，如果看到的圖都長一樣，就表示你的瀏覽器不支援，請更換成 chrome 或 safari 吧！</p>
-                    <p style="text-align:center;">
-                        -webkit-filter: blur(3px)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: blur(3px);" />
-                    </p>
-                    <p style="text-align:center;">
-                        -webkit-filter: grayscale(0.9)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: grayscale(0.9);" />
-                    </p>
-                    <p style="text-align:center;">
-                        -webkit-filter: drop-shadow(5px 5px 10px #000)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: drop-shadow(5px 5px 10px #000);" />
-                    </p>
-                    <p style="text-align:center;">
-                        -webkit-filter: sepia(0.7)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: sepia(0.7);" />
-                        <br/>
-                    </p>
-                    <p style="text-align:center;">-webkit-filter: brightness(0.5)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: brightness(0.5);" />
 
-                    </p>
-                    <p style="text-align:center;">-webkit-filter: brightness(-0.5)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: brightness(-0.5);" />
 
-                    </p>
-                    <p style="text-align:center;">-webkit-filter: contrast(3)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: contrast(3);" />
 
-                    </p>
-                    <p style="text-align:center;">-webkit-filter: contrast(0.3)
-                        <Br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: contrast(0.3);" />
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
 
-                    </p>
-                    <p style="text-align:center;">-webkit-filter: hue-rotate(90deg)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: hue-rotate(90deg);" />
+<h2>CSS webkit filter <span class="article-date" tag="css">JUL 26, 2014</span></h2>
+<p><img src="/img/articles/201407/20140726_2_01.jpg" class="preview-img"></p>
+<p>由於我自己是多媒體專長的背景，「filter」 ( 濾鏡 ) 這個詞基本上是陪伴我成長的一個重要技術 ( 或工具 )，不管是在影像處理還是向量繪圖，甚至是影片剪輯、聲音處理都會需要使用到濾鏡，但很可惜的在網站設計裡，卻沒有如同 photoshop 一般的濾鏡可以輕鬆使用，一張圖如果需要一些特效 ( 例如模糊、黑白、高對比...等 )，往往必須直接再重製一張圖來使用，雖然對我自己來說重做一張圖應該不用花到一分鐘，但對於許多不會影像處理的人而言，簡直就是另外一門學問了。</p>
+<p>某一天我發現了 webkit filter 這個超級好用的技術，雖然很可惜的一直到寫這篇文章的今天它都還只支援 webkit 核心的 chrome 或 safari 瀏覽器，但我自己倒是很期待 webkit filter 的未來，雖然我這篇文章其實在 2012 年我已經寫過一次啦！( 舊的 blog )</p>
+<p>下面的預覽圖都是直接使用 webkit filter 做出來的，如果看到的圖都長一樣，就表示你的瀏覽器不支援，請更換成 chrome 或 safari 吧！</p>
+<p style="text-align:center;">
+-webkit-filter: blur(3px)
 
-                    </p>
-                    <p style="text-align:center;">-webkit-filter: invert(1)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: invert(1);" />
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: blur(3px);" />
+</p>
+<p style="text-align:center;">
+-webkit-filter: grayscale(0.9)
 
-                    </p>
-                    <p style="text-align:center;">-webkit-filter: saturate(5)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: saturate(5);" />
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: grayscale(0.9);" />
+</p>
+<p style="text-align:center;">
+-webkit-filter: drop-shadow(5px 5px 10px #000)
 
-                    </p>
-                    <p style="text-align:center;">-webkit-filter: opacity(0.5)
-                        <br/>
-                        <img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: opacity(0.5);" />
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: drop-shadow(5px 5px 10px #000);" />
+</p>
+<p style="text-align:center;">
+-webkit-filter: sepia(0.7)
 
-                    </p>
-                </div>
-            </div>
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: sepia(0.7);" />
+<br/>
+</p>
+<p style="text-align:center;">-webkit-filter: brightness(0.5)
+
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: brightness(0.5);" />
+
+</p>
+<p style="text-align:center;">-webkit-filter: brightness(-0.5)
+
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: brightness(-0.5);" />
+
+</p>
+<p style="text-align:center;">-webkit-filter: contrast(3)
+
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: contrast(3);" />
+
+</p>
+<p style="text-align:center;">-webkit-filter: contrast(0.3)
+
+<Br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: contrast(0.3);" />
+
+</p>
+<p style="text-align:center;">-webkit-filter: hue-rotate(90deg)
+
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: hue-rotate(90deg);" />
+
+</p>
+<p style="text-align:center;">-webkit-filter: invert(1)
+
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: invert(1);" />
+
+</p>
+<p style="text-align:center;">-webkit-filter: saturate(5)
+
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: saturate(5);" />
+
+</p>
+<p style="text-align:center;">-webkit-filter: opacity(0.5)
+
+<br/>
+<img src="/img/articles/201407/20140726_2_02.png" style="-webkit-filter: opacity(0.5);" />
+
+</p>
+
+
 
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
@@ -155,8 +185,13 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -168,11 +203,12 @@
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -186,10 +222,14 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

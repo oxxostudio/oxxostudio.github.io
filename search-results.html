@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+
   <meta property="article:published_time" content="2014-11-29T00:00:00+01:00" >
   <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
   
@@ -22,11 +23,13 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/layout/social.png">
   <meta property="og:description" content="OXXO.STUDIO  包含了視覺創作、網頁前端程式、UI & UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！" >
 
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/search-results.css">
-  <script src="/js/lib/jquery.min.js"></script>
   <title>OXXO.STUDIO - 站內搜尋結果</title>
-  <style>
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+  <link rel="stylesheet" href="/style/css/search-results.css">
+    <style>
     .gs-bidi-start-align.gs-snippet{
       line-height:24px!important;
       font-size:15px!important;
@@ -70,6 +73,11 @@
       padding:0 10px!important;
     }
   </style>
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
 </head>
 <body>
     <div id="header">
@@ -123,15 +131,21 @@
       </div>
 
 
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
 
 
-      
-      <div class="tool-icon">
-        <i class="icon-home"><i></i><span>Back Home</span></i>
-        <i class="goto-top"><i></i><span>Back to Top</span></i>
-      </div>
+
+
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -145,8 +159,9 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/tool-icon.min.js"></script>
+    <script src="/js/layout.js"></script>
+
+  <script src="/js/tool-icon.js"></script>
   <script src='//www.google.com/jsapi' type='text/javascript'></script>
   <script type='text/javascript'>
     google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
@@ -181,6 +196,8 @@
       }
     }, true);
   </script> 
+<% end %>
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -6,25 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-    <meta name="keywords" content="svg,filter,feComponentTransfer">
-    <meta property="article:published_time" content="2014-07-28T23:35:00+01:00">
 
-    <meta name="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
+<meta name="keywords" content="svg,filter,feComponentTransfer">
 
-    <meta itemprop="name" content="SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO">
-    <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140728_1_01.jpg">
-    <meta itemprop="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
+<meta property="article:published_time" content="2014-07-28T23:35:00+01:00">
 
-    <meta property="og:title" content="SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO">
-    <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/svg-15-filter-feComponentTransfer.html">
-    <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140728_1_01.jpg">
-    <meta property="og:description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
+<meta name="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
 
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta itemprop="name" content="SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140728_1_01.jpg">
+
+<meta itemprop="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
+
+<meta property="og:title" content="SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/svg-15-filter-feComponentTransfer.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140728_1_01.jpg">
+
+<meta property="og:description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
+
+<title>SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
-  <title>SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO</title>
+
+
+
 </head>
 <body>
     <div id="header">
@@ -70,25 +87,22 @@
     <div id="wrapper">
         <div id="container">
 
-            <div class="content">
-                <i class="tag-web"></i>
-                <div class="md">
-                    <h2>SVG 研究之路 (15) - filter - feComponentTransfer
-                        <span class="article-date">JUL 28, 2014</span>
-                    </h2>
-                    <img src="/img/articles/201407/20140728_1_01.jpg" class="preview-img">
-                    <p>
-                    feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。</p>
-                    <p>feComponentTransfer 包含四個元素，分別是：feFuncR、feFuncG、feFuncB、feFuncA，也就是可以針對紅綠藍與 alpha 色版進行獨立調整，調整的 type 分為五種，分別是：identity、table、discrete、linear、gamma，五種調整 type 的對照公式可以參考 <a href="http://www.w3.org/TR/SVG/filters.html#feComponentTransferElement" target="_blank">W3C 的詳細說明</a>，也可以參考 <a href="http://docs.webplatform.org/wiki/svg/elements/feComponentTransfer" target="_blank">這篇文章</a>，介紹的更是詳細。</p>
-                    <p>首先看到 table，table 屬性主要是將我們所輸入的區塊，重新填入原本對照的色彩梯度區塊當中 ( 如下圖 )，就可以產生不同色彩梯度的效果。</p>
-                    <p>
-                        <img src="/img/articles/201407/20140728_1_02.png" />
-                    </p>
-                    <p>我們也可以利用 table 屬性來讓一張圖片有不同風格的變化 ：</p>
-                    <p>
-                        <img src="/img/articles/201407/20140728_1_03.png" />
-                    </p>
-                    <pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>SVG 研究之路 (15) - filter - feComponentTransfer <span class="article-date" tag="web">JUL 28, 2014</span></h2>
+<p><img src="/img/articles/201407/20140728_1_01.jpg" class="preview-img"></p>
+<p>feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。</p>
+<p>feComponentTransfer 包含四個元素，分別是：feFuncR、feFuncG、feFuncB、feFuncA，也就是可以針對紅綠藍與 alpha 色版進行獨立調整，調整的 type 分為五種，分別是：identity、table、discrete、linear、gamma，五種調整 type 的對照公式可以參考 <a href="http://www.w3.org/TR/SVG/filters.html#feComponentTransferElement">W3C 的詳細說明</a>，也可以參考 <a href="http://docs.webplatform.org/wiki/svg/elements/feComponentTransfer">這篇文章</a>，介紹的更是詳細。</p>
+<p>首先看到 table，table 屬性主要是將我們所輸入的區塊，重新填入原本對照的色彩梯度區塊當中 ( 如下圖 )，就可以產生不同色彩梯度的效果。</p>
+<p><img src="/img/articles/201407/20140728_1_02.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+<p>我們也可以利用 table 屬性來讓一張圖片有不同風格的變化 ： </p>
+<p><img src="/img/articles/201407/20140728_1_03.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+<pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;table&quot; filterUnits=&quot;userSpaceOnUse&quot; x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;
       &lt;feComponentTransfer&gt;
@@ -101,21 +115,12 @@
   &lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; /&gt;
   &lt;image x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; filter=&quot;url(#table)&quot;  /&gt;
 &lt;/svg&gt;
-</code></pre>
-
-                    <p>
-                        <br/>
-                    </p>
-                    <p>再來看到 discrete，從字面翻譯就是「離散」，也就是當我們列出一個數字的陣列，就會採用這個陣列的數字直接填入該色彩梯度內，造成沒有漸層的情形，如下圖：</p>
-                    <p>
-                        <img src="/img/articles/201407/20140728_1_04.png" />
-                    </p>
-                    <p>也因為少了很多顏色，所產生的圖片效果也頗特殊的：
-                    </p>
-                    <p>
-                        <img src="/img/articles/201407/20140728_1_05.png" />
-                    </p>
-                    <pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
+</code></pre><p><br/></p>
+<p>再來看到 discrete，從字面翻譯就是「離散」，也就是當我們列出一個數字的陣列，就會採用這個陣列的數字直接填入該色彩梯度內，造成沒有漸層的情形，如下圖：</p>
+<p><img src="/img/articles/201407/20140728_1_04.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+<p>也因為少了很多顏色，所產生的圖片效果也頗特殊的：  </p>
+<p><img src="/img/articles/201407/20140728_1_05.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+<pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;discrete&quot; filterUnits=&quot;userSpaceOnUse&quot; x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;
       &lt;feComponentTransfer&gt;
@@ -128,16 +133,10 @@
   &lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; /&gt;
   &lt;image x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; filter=&quot;url(#discrete)&quot;  /&gt;
 &lt;/svg&gt;
-</code></pre>
-
-                    <p>
-                        <br/>
-                    </p>
-                    <p>至於 linear 和 gamma 就簡單多了，linear 就是調整直線的斜率，和 linear 有關的參數有兩個，一個是 slope，也就斜率，預設值為 1，另外一個是 intercept，預設值為 0 ( linear 的公式為：C' = slope * C + intercept ) 了解了之後，我們就可以很輕鬆的對漸層當中的顏色作調整</p>
-                    <p>
-                        <img src="/img/articles/201407/20140728_1_07.png" />
-                    </p>
-                    <pre><code>&lt;svg width=&quot;8cm&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 800&quot;&gt;
+</code></pre><p><br/></p>
+<p>至於 linear 和 gamma 就簡單多了，linear 就是調整直線的斜率，和 linear 有關的參數有兩個，一個是 slope，也就斜率，預設值為 1，另外一個是 intercept，預設值為 0 ( linear 的公式為：C&#39; = slope * C + intercept ) 了解了之後，我們就可以很輕鬆的對漸層當中的顏色作調整</p>
+<p><img src="/img/articles/201407/20140728_1_07.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+<pre><code>&lt;svg width=&quot;8cm&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 800&quot;&gt;
     &lt;linearGradient id=&quot;MyGradient&quot; gradientUnits=&quot;userSpaceOnUse&quot;
             x1=&quot;100&quot; y1=&quot;0&quot; x2=&quot;600&quot; y2=&quot;0&quot;&gt;
       &lt;stop offset=&quot;0&quot; stop-color=&quot;#000000&quot; /&gt;
@@ -157,13 +156,9 @@
     &lt;rect x=&quot;100&quot; y=&quot;420&quot; width=&quot;600&quot; height=&quot;60&quot; fill=&quot;url(#MyGradient)&quot; /&gt;
     &lt;rect x=&quot;100&quot; y=&quot;490&quot; width=&quot;600&quot; height=&quot;60&quot; fill=&quot;url(#MyGradient)&quot; filter=&quot;url(#Linear)&quot; /&gt;
 &lt;/svg&gt;
-</code></pre>
-
-                    <p>
-                        <br/>
-                        <img src="/img/articles/201407/20140728_1_08.png" />
-                    </p>
-                    <pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
+</code></pre><p><br/></p>
+<p><img src="/img/articles/201407/20140728_1_08.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+<pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;Linear&quot; filterUnits=&quot;objectBoundingBox&quot; x=&quot;0%&quot; y=&quot;0%&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;
       &lt;feComponentTransfer&gt;
@@ -176,19 +171,11 @@
   &lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; /&gt;
   &lt;image x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; filter=&quot;url(#Linear)&quot;  /&gt;
 &lt;/svg&gt;
-</code></pre>
-
-                    <p>
-                        <br/>
-                    </p>
-                    <p>最後是 gamma ，gamma 就是調整指數曲線的數值，與 photoshop 裏頭調整圖片曲線有異曲同工之妙，當然還是必須得手動輸入一些數值就是了,gamma 的公式為：C' = amplitude * pow(C, exponent) + offset，因此就具有三個參數：amplitude、exponent、offset。</p>
-                    <p>
-                        <img src="/img/articles/201407/20140728_1_06.png" />
-                    </p>
-                    <p>
-                        <img src="/img/articles/201407/20140728_1_10.png" />
-                    </p>
-                    <pre><code>&lt;svg width=&quot;8cm&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 800&quot;&gt;
+</code></pre><p><br/></p>
+<p>最後是 gamma ，gamma 就是調整指數曲線的數值，與 photoshop 裏頭調整圖片曲線有異曲同工之妙，當然還是必須得手動輸入一些數值就是了,gamma 的公式為：C&#39; = amplitude * pow(C, exponent) + offset，因此就具有三個參數：amplitude、exponent、offset。</p>
+<p><img src="/img/articles/201407/20140728_1_06.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
+<p><img src="/img/articles/201407/20140728_1_10.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
+<pre><code>&lt;svg width=&quot;8cm&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 800&quot;&gt;
     &lt;linearGradient id=&quot;MyGradient&quot; gradientUnits=&quot;userSpaceOnUse&quot;
             x1=&quot;100&quot; y1=&quot;0&quot; x2=&quot;600&quot; y2=&quot;0&quot;&gt;
       &lt;stop offset=&quot;0&quot; stop-color=&quot;#000000&quot; /&gt;
@@ -208,15 +195,9 @@
     &lt;rect x=&quot;100&quot; y=&quot;420&quot; width=&quot;600&quot; height=&quot;60&quot; fill=&quot;url(#MyGradient)&quot; /&gt;
     &lt;rect x=&quot;100&quot; y=&quot;490&quot; width=&quot;600&quot; height=&quot;60&quot; fill=&quot;url(#MyGradient)&quot; filter=&quot;url(#Gamma)&quot; /&gt;
 &lt;/svg&gt;
-</code></pre>
-
-                    <p>
-                        <br/>
-                    </p>
-                    <p>
-                        <img src="/img/articles/201407/20140728_1_09.png" />
-                    </p>
-                    <pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
+</code></pre><p><br/></p>
+<p><img src="/img/articles/201407/20140728_1_09.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
+<pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
   &lt;defs&gt;
     &lt;filter id=&quot;Gamma&quot; filterUnits=&quot;objectBoundingBox&quot; x=&quot;0%&quot; y=&quot;0%&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;
       &lt;feComponentTransfer&gt;
@@ -229,14 +210,9 @@
   &lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; /&gt;
   &lt;image x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; filter=&quot;url(#Gamma)&quot;  /&gt;
 &lt;/svg&gt;
-</code></pre>
+</code></pre><p><br/></p>
+<p>了解了 feComponentTransfer 的基本原理之後，其實就已經可以簡單地針對圖片做顏色上的調整囉！雖然我還是覺得直接用影像處理軟體調整比較實在，不過若要製作一個線上調整圖片顏色的工具，也不失為一個好方式。</p>
 
-                    <p>
-                        <br/>
-                    </p>
-                    <p>了解了 feComponentTransfer 的基本原理之後，其實就已經可以簡單地針對圖片做顏色上的調整囉！雖然我還是覺得直接用影像處理軟體調整比較實在，不過若要製作一個線上調整圖片顏色的工具，也不失為一個好方式。</p>
-                </div>
-            </div>
 
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
@@ -246,8 +222,13 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -259,11 +240,12 @@
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -277,10 +259,14 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

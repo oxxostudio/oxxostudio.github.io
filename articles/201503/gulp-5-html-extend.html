@@ -6,27 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2015-03-09T23:35:00+01:00">
-  <meta name="keywords" content="gulp,html extend,gulp-html-extend,layout,master">
 
-  <meta name="description" content="這裡我們要用到的是 gulp-html-extend 這個套件，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。">
+<meta property="article:published_time" content="2015-03-09T23:35:00+01:00">
 
-  <meta itemprop="name" content="Gulp 學習 5 - 建立 HTML 模板 - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/20150309_1_01b.jpg">
-  <meta itemprop="description" content="這裡我們要用到的是 gulp-html-extend 這個套件，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。">
+<meta name="keywords" content="gulp,html extend,gulp-html-extend,layout,master">
 
-  <meta property="og:title" content="Gulp 學習 5 - 建立 HTML 模板 - OXXO.STUDIO">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/20150309_1_01b.jpg">
-  <meta property="og:description" content="這裡我們要用到的是 gulp-html-extend 這個套件，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。">
-  
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta name="description" content="這裡我們要用到的是 gulp-html-extend 這個套件，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。">
+
+<meta itemprop="name" content="Gulp 學習 5 - 建立 HTML 模板 - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/20150309_1_01b.jpg">
+
+<meta itemprop="description" content="這裡我們要用到的是 gulp-html-extend 這個套件，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。">
+
+<meta property="og:title" content="Gulp 學習 5 - 建立 HTML 模板 - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/20150309_1_01b.jpg">
+
+<meta property="og:description" content="這裡我們要用到的是 gulp-html-extend 這個套件，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。">
+
+<title>Gulp 學習 5 - 建立 HTML 模板 - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
 
-      <title>Gulp 學習 5 - 建立 HTML 模板 - OXXO.STUDIO</title>
-      </head>
+
+
+</head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -71,69 +87,62 @@
     <div id="wrapper">
         <div id="container">
 
-    
 
-        <div class="content">
-          <i class="tag-web"></i>
-          <div class="md">
-            <h2>Gulp 學習 5 - 建立 HTML 模板
-              <span class="article-date">MAR 9, 2015</span>
-            </h2>
-            <img src="/img/articles/201503/20150309_1_01.jpg" class="preview-img">
-            <p>這個部落格經營了快一年，都是利用 fire.app 替我建置「純靜態」的 blog，換句話說，其實我只是撰寫內容，然後藉由 fire.app 幫我把內容和 layout 合併在一起，如果有興趣的人可以直接購買 <a href="http://fireapp.kkbox.com/doc/tw/index.html" target="_blank">fire.app</a> 下來使用即可。不過這一篇並不是要介紹 fire.app，而是要利用 gulp，建立 HTML 的模板，同樣也是將 layout 和 content 分開，然後在預覽與上線的時候再合併。</p>
-            <p>這裡我們要用到的是 gulp-html-extend 這個套件 ( 參考 <a href="https://www.npmjs.com/package/gulp-html-extend" target="_blank">gulp-html-extend</a> )，和之前介紹過的 gulp-html-replace 類似，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，在於 gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。</p>
-            <p>以下面的例子來說，首先我們建立一個 layout.html 的樣版，裡頭是要共用的內容，在裡面可以看到有兩個註解，分別是 title 和 content，這就是我們要合併的部分。</p>
-            <pre><code>&lt;!DOCTYPE html&gt;
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>Gulp 學習 5 - 建立 HTML 模板  <span class="article-date" tag="web">MAR 9, 2015</span></h2>
+<p><img src="/img/articles/201503/20150309_1_01.jpg" class="preview-img"></p>
+<p>這個部落格經營了快一年，都是利用 fire.app 替我建置「純靜態」的 blog，換句話說，其實我只是撰寫內容，然後藉由 fire.app 幫我把內容和 layout 合併在一起，如果有興趣的人可以直接購買 <a href="http://fireapp.kkbox.com/doc/tw/index.html">fire.app</a> 下來使用即可。不過這一篇並不是要介紹 fire.app，而是要利用 gulp，建立 HTML 的模板，同樣也是將 layout 和 content 分開，然後在預覽與上線的時候再合併。</p>
+<p>這裡我們要用到的是 gulp-html-extend 這個套件 ( 參考 <a href="https://www.npmjs.com/package/gulp-html-extend">gulp-html-extend</a> )，和之前介紹過的 gulp-html-replace 類似，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，在於 gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。</p>
+<p>以下面的例子來說，首先我們建立一個 layout.html 的樣版，裡頭是要共用的內容，在裡面可以看到有兩個註解，分別是<code>&lt;!-- @ @ placeholder= title --&gt;</code>和<code>&lt;!-- @ @ placeholder= content --&gt;</code>，這就是我們要合併的部分。( 因為兩個 @ 會被 markdown 用消失，所以這邊中間有空格 )</p>
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;!-- @@placeholder= title --&gt;
+    &lt;!-- @ @ placeholder= title --&gt;
 
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;!-- @@placeholder= content --&gt;
+    &lt;!-- @ @ placeholder= content --&gt;
     &lt;footer&gt;
         footer
     &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
+</code></pre><p><br/>
+接著看到要和 layout.html 合併的頁面，分別是 index.html 和 index2.html，裏頭用註解區塊很清楚的標示哪裡是 title ，哪裡是 content，屆時合併之後，index.html 和 index2.html 就會具備相同的 layout了。</p>
+<p>未合併的 index.html</p>
+<pre><code>&lt;!-- @ @ master  = ../layout.html--&gt;
 
-            <p>
-              <br/> 接著看到要和 layout.html 合併的頁面，分別是 index.html 和 index2.html，裏頭用註解區塊很清楚的標示哪裡是 title ，哪裡是 content，屆時合併之後，index.html 和 index2.html 就會具備相同的 layout了。</p>
-            <p>未合併的 index.html</p>
-            <pre><code>&lt;!-- @@master  = ../layout.html--&gt;
-
-&lt;!-- @@block  =  title--&gt;
+&lt;!-- @ @ block  =  title--&gt;
 &lt;title&gt;index&lt;/title&gt;
-&lt;!-- @@close--&gt;
+&lt;!-- @ @ close--&gt;
 
-&lt;!-- @@block  =  content--&gt;
+&lt;!-- @ @ block  =  content--&gt;
 &lt;main&gt;
     我是 index
 &lt;/main&gt;
-&lt;!-- @@close--&gt;
-</code></pre>
+&lt;!-- @ @close--&gt;
+</code></pre><p>未合併的 index2.html</p>
+<pre><code>&lt;!-- @ @master  = ../layout.html--&gt;
 
-            <p>未合併的 index2.html</p>
-            <pre><code>&lt;!-- @@master  = ../layout.html--&gt;
-
-&lt;!-- @@block  =  title--&gt;
+&lt;!-- @ @block  =  title--&gt;
 &lt;title&gt;index2&lt;/title&gt;
-&lt;!-- @@close--&gt;
+&lt;!-- @ @close--&gt;
 
-&lt;!-- @@block  =  content--&gt;
+&lt;!-- @ @block  =  content--&gt;
 &lt;main&gt;
     我是 index2
 &lt;/main&gt;
-&lt;!-- @@close--&gt;
-</code></pre>
-
-            <p>
-              <br/> 合併之後就會變成這樣：
-            </p>
-            <p>合併的 index.html</p>
-            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;!-- @ @close--&gt;
+</code></pre><p><br/>
+合併之後就會變成這樣：</p>
+<p>合併的 index.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -149,14 +158,12 @@
 &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
-
-            <p>合併的 index2.html</p>
-            <pre><code>&lt;!DOCTYPE html&gt;
+</code></pre><p>合併的 index2.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;index2&lt;/title&gt;   
+    &lt;title&gt;index2&lt;/title&gt;    
 &lt;/head&gt;
 &lt;body&gt;
 
@@ -168,28 +175,23 @@
 &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
+</code></pre><p><br/>
+看完 html 是如何進行合併，再來就是 gulpfile.js 要怎麼寫呢？一開始同樣是要引入套件，然後建立名為 extend 的任務，src 設定目標資料夾內的 html 檔案，然後設定 ( verbose 設定為 false 就可以在合併之後把註解移除 )</p>
+<pre><code>var gulp      = require(&#39;gulp&#39;),
+    extender    = require(&#39;gulp-html-extend&#39;);
 
-            <p>
-              <br/> 看完 html 是如何進行合併，再來就是 gulpfile.js 要怎麼寫呢？一開始同樣是要引入套件，然後建立名為 extend 的任務，src 設定目標資料夾內的 html 檔案，然後設定 ( verbose 設定為 false 就可以在合併之後把註解移除 )</p>
-            <pre><code>var gulp      = require('gulp'),
-    extender    = require('gulp-html-extend');
-
-gulp.task('extend', function () {
-    gulp.src('./app/dist/*.html')
+gulp.task(&#39;extend&#39;, function () {
+    gulp.src(&#39;./app/dist/*.html&#39;)
         .pipe(extender({annotations:false,verbose:false})) // default options 
-        .pipe(gulp.dest('./app/preview/'));
+        .pipe(gulp.dest(&#39;./app/preview/&#39;));
 });
 
-gulp.task('default',['extend']);
-</code></pre>
+gulp.task(&#39;default&#39;,[&#39;extend&#39;]);
+</code></pre><p><br/>
+以上就是利用 Gulp 建立 HTML 模板的方法，下圖是整個 HTML 的資料夾結構。</p>
+<p><img src="/img/articles/201503/20150309_1_02.jpg" alt="Gulp 學習 5 - 建立 HTML 模板"></p>
 
-            <p>
-              <br/> 以上就是利用 Gulp 建立 HTML 模板的方法，下圖是整個 HTML 的資料夾結構。</p>
-            <p><img src="/img/articles/201503/20150309_1_02.jpg" alt="Gulp 學習 5 - 建立 HTML 模板" />
-            </p>
-          </div>
-        </div>
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -198,8 +200,13 @@ gulp.task('default',['extend']);
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -211,11 +218,12 @@ gulp.task('default',['extend']);
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -229,10 +237,14 @@ gulp.task('default',['extend']);
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

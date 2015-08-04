@@ -6,27 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2015-01-03T23:55:00+01:00">
-  <meta name="keywords" content="mac dock,dock,css,jquery,html5">
 
-  <meta name="description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家。">
+<meta property="article:published_time" content="2015-01-03T23:55:00+01:00">
 
-  <meta itemprop="name" content="Mac Dock 實作 - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/20150103_1_01b.jpg">
-  <meta itemprop="description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家。">
+<meta name="keywords" content="mac dock,dock,css,jquery,html5">
 
-  <meta property="og:title" content="Mac Dock 實作 - OXXO.STUDIO">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/mac-dock.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/20150103_1_01b.jpg">
-  <meta property="og:description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家。">
-  
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta name="description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家。">
+
+<meta itemprop="name" content="Mac Dock 實作 - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/20150103_1_01b.jpg">
+
+<meta itemprop="description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家。">
+
+<meta property="og:title" content="Mac Dock 實作 - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/mac-dock.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/20150103_1_01b.jpg">
+
+<meta property="og:description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家。">
+
+<title>Mac Dock 實作  - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
 
-      <title>Mac Dock 實作 - OXXO.STUDIO</title>
-      </head>
+
+
+</head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -71,41 +87,39 @@
     <div id="wrapper">
         <div id="container">
 
-    
 
-        <div class="content">
-          <i class="tag-web"></i>
-          <div class="md">
-            <h2>Mac Dock 實作
-              <span class="article-date">JAN 3, 2015</span>
-            </h2>
-            <img src="/img/articles/201501/20150103_1_01.gif" class="preview-img">
-            <p>2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。( 完成範例：<a href="/demo/201501/mac-dock-demo.html" target="_blank">mac-dock-demo.html</a> ) Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：</p>
-            <p><img src="/img/articles/201501/20150103_1_02.jpg" alt="Mac Docker 實作" />
-            </p>
-            <p>看不懂沒關係，來看一下程式碼的組成，首先看一下 HTML，外圍用一個 div 包著一個清單，清單的<code>li</code>都有一個<code>text</code>的 HTML5 data attribute，這裡的目的是讓 CSS3 的偽元素<code>::before</code>直接讀取，就可以在完全不用 JS 的情況下載入文字。</p>
-            <pre><code>&lt;div id='mouse_area'&gt;
-    &lt;ul id='mac_button'&gt;
-      &lt;li text='blogger'&gt;&lt;img src='mac_img/01.png' /&gt;&lt;/li&gt;
-      &lt;li text='DVD'&gt;&lt;img src='mac_img/02.png' /&gt;&lt;/li&gt;
-      &lt;li text='Firefox'&gt;&lt;img src='mac_img/03.png' /&gt;&lt;/li&gt;
-      &lt;li text='Chrome'&gt;&lt;img src='mac_img/04.png' /&gt;&lt;/li&gt;
-      &lt;li text='Information'&gt;&lt;img src='mac_img/05.png' /&gt;&lt;/li&gt;
-      &lt;li text='IE'&gt;&lt;img src='mac_img/06.png' /&gt;&lt;/li&gt;
-      &lt;li text='Youtube'&gt;&lt;img src='mac_img/07.png' /&gt;&lt;/li&gt;
-      &lt;li text='Media'&gt;&lt;img src='mac_img/08.png' /&gt;&lt;/li&gt;
-      &lt;li text='Printer'&gt;&lt;img src='mac_img/09.png' /&gt;&lt;/li&gt;
-      &lt;li text='Skype'&gt;&lt;img src='mac_img/10.png' /&gt;&lt;/li&gt;
-      &lt;li text='Note'&gt;&lt;img src='mac_img/11.png' /&gt;&lt;/li&gt;
-      &lt;li text='Tools'&gt;&lt;img src='mac_img/12.png' /&gt;&lt;/li&gt;
-      &lt;li text='Yahoo'&gt;&lt;img src='mac_img/13.png' /&gt;&lt;/li&gt;
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>Mac Dock 實作  <span class="article-date" tag="web">JAN 3, 2015</span></h2>
+<p><img src="/img/articles/201501/20150103_1_01.gif" class="preview-img"></p>
+<p>2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。( 完成範例：<a href="mac-dock-demo.html">mac-dock-demo.html</a> )
+Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：</p>
+<p><img src="/img/articles/201501/20150103_1_02.jpg" alt="Mac Docker 實作"></p>
+<p>看不懂沒關係，來看一下程式碼的組成，首先看一下 HTML，外圍用一個 div 包著一個清單，清單的<code>li</code>都有一個<code>text</code>的 HTML5 data attribute，這裡的目的是讓 CSS3 的偽元素<code>::before</code>直接讀取，就可以在完全不用 JS 的情況下載入文字。</p>
+<pre><code>&lt;div id=&#39;mouse_area&#39;&gt;
+    &lt;ul id=&#39;mac_button&#39;&gt;
+      &lt;li text=&#39;blogger&#39;&gt;&lt;img src=&#39;mac_img/01.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;DVD&#39;&gt;&lt;img src=&#39;mac_img/02.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Firefox&#39;&gt;&lt;img src=&#39;mac_img/03.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Chrome&#39;&gt;&lt;img src=&#39;mac_img/04.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Information&#39;&gt;&lt;img src=&#39;mac_img/05.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;IE&#39;&gt;&lt;img src=&#39;mac_img/06.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Youtube&#39;&gt;&lt;img src=&#39;mac_img/07.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Media&#39;&gt;&lt;img src=&#39;mac_img/08.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Printer&#39;&gt;&lt;img src=&#39;mac_img/09.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Skype&#39;&gt;&lt;img src=&#39;mac_img/10.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Note&#39;&gt;&lt;img src=&#39;mac_img/11.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Tools&#39;&gt;&lt;img src=&#39;mac_img/12.png&#39; /&gt;&lt;/li&gt;
+      &lt;li text=&#39;Yahoo&#39;&gt;&lt;img src=&#39;mac_img/13.png&#39; /&gt;&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;
-</code></pre>
-
-            <p>
-              <br/> 接著看一下 CSS，這裡大多都只是基本的 CSS，比較需要注意的是<code>::before</code>這一段，意思是讓每個 li 都有一個偽元素<code>::before</code>，而其內容<code>content</code>會自動讀取對應 li 的 text，也就是<code>attr(text)</code>，如此一來，每個 li 的 text 文字都會自動放到<code>::before</code>裏頭囉！此外，最後面多增加了一個具有 id 的 style 區塊，因為<code>::before</code>這種偽元素，並不是 HTML 的標準元素，也因此 jquery 無法控制這些偽元素，當我想讓偽元素寬度是動態的，就必須要額外將 style 寫入，所以多增加一組 style 讓 jquery 把樣式加進去。</p>
-            <pre><code>&lt;style&gt;
+</code></pre><p><br/>
+接著看一下 CSS，這裡大多都只是基本的 CSS，比較需要注意的是<code>::before</code>這一段，意思是讓每個 li 都有一個偽元素<code>::before</code>，而其內容<code>content</code>會自動讀取對應 li 的 text，也就是<code>attr(text)</code>，如此一來，每個 li 的 text 文字都會自動放到<code>::before</code>裏頭囉！此外，最後面多增加了一個具有 id 的 style 區塊，因為<code>::before</code>這種偽元素，並不是 HTML 的標準元素，也因此 jquery 無法控制這些偽元素，當我想讓偽元素寬度是動態的，就必須要額外將 style 寫入，所以多增加一組 style 讓 jquery 把樣式加進去。</p>
+<pre><code>&lt;style&gt;
   #mouse_area {
     position: absolute;
     z-index: 99;
@@ -154,61 +168,49 @@
   }
 &lt;/style&gt;
 &lt;style id=&quot;before-class&quot;&gt;&lt;/style&gt;  &lt;!-- 額外加入樣式 --
-</code></pre>
-
-            <p>
-              <br/> 看完了 HTML 與 CSS，就來進入重點的 jquery code，一開始的這一段，用來定義 icon 的大小，以及整組 icon 的位置，順便把常用的選擇器宣告起來。</p>
-            <pre><code>var limin = 30,  //icon縮小時候的寬度
+</code></pre><p><br/>
+看完了 HTML 與 CSS，就來進入重點的 jquery code，一開始的這一段，用來定義 icon 的大小，以及整組 icon 的位置，順便把常用的選擇器宣告起來。</p>
+<pre><code>var limin = 30,  //icon縮小時候的寬度
     limax = 64,  //icon放大時候的寬度
     areax = 50, //整組 icon 的位置
     areay = 100,
     diff = limax - limin;
-var $icon =  $('#mac_button li');
-</code></pre>
-
-            <p>
-              <br/> 接著根據不同的 icon 大小，把偽元素的大小和位置也給定位好。</p>
-            <pre><code>$('#before-class').html(
-        '#mac_button li::before{width:'+(limax+4)+'px;left:'+((limin-(limax+4)*0.6)/2)+'px}'
+var $icon =  $(&#39;#mac_button li&#39;);
+</code></pre><p><br/>
+接著根據不同的 icon 大小，把偽元素的大小和位置也給定位好。</p>
+<pre><code>$(&#39;#before-class&#39;).html(
+        &#39;#mac_button li::before{width:&#39;+(limax+4)+&#39;px;left:&#39;+((limin-(limax+4)*0.6)/2)+&#39;px}&#39;
     );  //修改::before樣式，利用 ::before 來產生說明文字
-</code></pre>
-
-            <p>
-              <br/> 定義每個 icon 的大小，還有整個按鈕群的大小，為什麼要定義整個按鈕群的大小呢？目的是為了讓按鈕群置中，如此一來才不會發生當按鈕變大的時候，最右邊的按鈕會凸出去縮進來的窘境，以及未來在整個畫面的編排上，也比較容易定位。</p>
-            <pre><code>$icon.css({
-  'width': limin + 'px',  
-  'height': limin + 'px'
+</code></pre><p><br/>
+定義每個 icon 的大小，還有整個按鈕群的大小，為什麼要定義整個按鈕群的大小呢？目的是為了讓按鈕群置中，如此一來才不會發生當按鈕變大的時候，最右邊的按鈕會凸出去縮進來的窘境，以及未來在整個畫面的編排上，也比較容易定位。</p>
+<pre><code>$icon.css({
+  &#39;width&#39;: limin + &#39;px&#39;,  
+  &#39;height&#39;: limin + &#39;px&#39;
 });  //定義每個icon的大小
 
-$('#mouse_area').css({
-  'width': $icon.length * limin + 4 * limax + 'px',  
-  'top': areay + 'px',
-  'left': areax + 'px'
+$(&#39;#mouse_area&#39;).css({
+  &#39;width&#39;: $icon.length * limin + 4 * limax + &#39;px&#39;,  
+  &#39;top&#39;: areay + &#39;px&#39;,
+  &#39;left&#39;: areax + &#39;px&#39;
 });  //定義左右滑鼠區域，目的為了讓 icon 群置中
-</code></pre>
-
-            <p>
-              <br/> 這裡我用了一個簡單的變數來判斷滑鼠是否還在按鈕群裏頭，目的是要讓滑鼠第一次滑上去的時候，icon 會有放大的動畫效果，而不是蹦一下的變大</p>
-            <pre><code>var a = 0;  //判斷滑鼠是否還在icon群裏頭的簡單參數
-</code></pre>
-
-            <p>
-              <br/> 接著進入重點程式，讓滑鼠滑上去的 icon 有個 class 名稱識別，這個 icon 的左右兩個 icon 也有 class 名稱識別，如此一來就可以動態設定它們的尺寸。</p>
-            <pre><code>$icon.hover(function(e) {
-  $(this).addClass('lihover');        //讓滑鼠 hover 與其左右 li 都有 class
-  $(this).next().addClass('linext');
-  $(this).prev().addClass('liprev');
-  $icon.not('.lihover,.linext,.liprev').css({
-    'width': limin + 'px',
-    'height': limin + 'px',
-    'margin-top': '0'
+</code></pre><p><br/>
+這裡我用了一個簡單的變數來判斷滑鼠是否還在按鈕群裏頭，目的是要讓滑鼠第一次滑上去的時候，icon 會有放大的動畫效果，而不是蹦一下的變大</p>
+<pre><code>var a = 0;  //判斷滑鼠是否還在icon群裏頭的簡單參數
+</code></pre><p><br/>
+接著進入重點程式，讓滑鼠滑上去的 icon 有個 class 名稱識別，這個 icon 的左右兩個 icon 也有 class 名稱識別，如此一來就可以動態設定它們的尺寸。</p>
+<pre><code>$icon.hover(function(e) {
+  $(this).addClass(&#39;lihover&#39;);        //讓滑鼠 hover 與其左右 li 都有 class
+  $(this).next().addClass(&#39;linext&#39;);
+  $(this).prev().addClass(&#39;liprev&#39;);
+  $icon.not(&#39;.lihover,.linext,.liprev&#39;).css({
+    &#39;width&#39;: limin + &#39;px&#39;,
+    &#39;height&#39;: limin + &#39;px&#39;,
+    &#39;margin-top&#39;: &#39;0&#39;
   });  //讓沒有 class 的 icon 恢復最小長寬
-</code></pre>
-
-            <p>
-              <br/> 這是最關鍵的計算公式，原理其實就是當滑鼠在 icon 上頭 ( hover ) 的時候，把這個 icon 的中心點和滑鼠座標的差值，分別套用到左右兩個 icon 的尺寸裏頭，就可以做到這個效果。</p>
-            <pre><code>  if (a == 0) {
-    var licenterx = $('.lihover').offset().left + $('.lihover').width() * 0.5,  //hover icon 的中心位置
+</code></pre><p><br/>
+這是最關鍵的計算公式，原理其實就是當滑鼠在 icon 上頭 ( hover ) 的時候，把這個 icon 的中心點和滑鼠座標的差值，分別套用到左右兩個 icon 的尺寸裏頭，就可以做到這個效果。</p>
+<pre><code>  if (a == 0) {
+    var licenterx = $(&#39;.lihover&#39;).offset().left + $(&#39;.lihover&#39;).width() * 0.5,  //hover icon 的中心位置
             mousex = e.pageX,
             x = mousex - licenterx,
             x1 = x / (1 - (diff / limax)),
@@ -217,87 +219,80 @@ $('#mouse_area').css({
             mtNext = -0.5 * diff - diff / limax * x1,  //為了置底，margin-top 也必須改變
             mtPrev = -0.5 * diff + diff / limax * x1;
 
-    $('.linext').stop().animate({
-      'width': nextwidth + 'px',
-      'height': nextwidth + 'px',
-      'margin-top': mtNext + 'px'
+    $(&#39;.linext&#39;).stop().animate({
+      &#39;width&#39;: nextwidth + &#39;px&#39;,
+      &#39;height&#39;: nextwidth + &#39;px&#39;,
+      &#39;margin-top&#39;: mtNext + &#39;px&#39;
     }, 100);
-    $('.liprev').stop().animate({
-      'width': prevwidth + 'px',
-      'height': prevwidth + 'px',
-      'margin-top': mtPrev + 'px'
+    $(&#39;.liprev&#39;).stop().animate({
+      &#39;width&#39;: prevwidth + &#39;px&#39;,
+      &#39;height&#39;: prevwidth + &#39;px&#39;,
+      &#39;margin-top&#39;: mtPrev + &#39;px&#39;
     }, 100);
-    $('.lihover').stop().animate({
-      'width': limax + 'px',
-      'height': limax + 'px',
-      'margin-top': -diff + 'px'
+    $(&#39;.lihover&#39;).stop().animate({
+      &#39;width&#39;: limax + &#39;px&#39;,
+      &#39;height&#39;: limax + &#39;px&#39;,
+      &#39;margin-top&#39;: -diff + &#39;px&#39;
     }, 100, function(){
-        $('.lihover').on('mousemove', _mouseMove);  //動畫完成後再 callback，避免突然放大
+        $(&#39;.lihover&#39;).on(&#39;mousemove&#39;, _mouseMove);  //動畫完成後再 callback，避免突然放大
         a = 1;
     });
   } else {
-    $('.lihover').on('mousemove', _mouseMove); //如果已經是 hover，就直接執行
+    $(&#39;.lihover&#39;).on(&#39;mousemove&#39;, _mouseMove); //如果已經是 hover，就直接執行
   }
 
 }, function() {
-  $icon.removeClass('lihover linext liprev').off('mousemove');
+  $icon.removeClass(&#39;lihover linext liprev&#39;).off(&#39;mousemove&#39;);
 });
-</code></pre>
-
-            <p>
-              <br/> 當滑鼠離開按鈕群的時候，所有按鈕恢復原狀。
-            </p>
-            <pre><code>$('#mac_button').on('mouseleave', function() {
+</code></pre><p><br/>
+當滑鼠離開按鈕群的時候，所有按鈕恢復原狀。</p>
+<pre><code>$(&#39;#mac_button&#39;).on(&#39;mouseleave&#39;, function() {
   a = 0;
-  $('li').stop().animate({
-    'width': limin + 'px',
-    'height': limin + 'px',
-    'margin-top': '0'
+  $(&#39;li&#39;).stop().animate({
+    &#39;width&#39;: limin + &#39;px&#39;,
+    &#39;height&#39;: limin + &#39;px&#39;,
+    &#39;margin-top&#39;: &#39;0&#39;
   }, 200);
 });
-</code></pre>
+</code></pre><p><br/>
+最後這是剛剛 callback 的程式，是在滑鼠移動的時候，立馬計算左右 icon 的尺寸。</p>
+<pre><code>function _mouseMove(e) {
+  var licenterx2 = $(&#39;.lihover&#39;).offset().left + $(&#39;.lihover&#39;).width() * 0.5,
+          mousex2 = e.pageX,
+          x2 = mousex2 - licenterx2,
+          nextwidth2 = limin + diff / limax * (0.5 * limax + x2),
+          prevwidth2 = limin + diff / limax * (0.5 * limax - x2),
+          mtNext2 = -0.5 * diff - diff / limax * x2,
+          mtPrev2 = -0.5 * diff + diff / limax * x2;
 
-            <p>
-              <br/> 最後這是剛剛 callback 的程式，是在滑鼠移動的時候，立馬計算左右 icon 的尺寸。</p>
-            <pre><code>function _mouseMove(e) {
-  var licenterx2 = $('.lihover').offset().left + $('.lihover').width() * 0.5,
-        mousex2 = e.pageX,
-        x2 = mousex2 - licenterx2,
-        nextwidth2 = limin + diff / limax * (0.5 * limax + x2),
-        prevwidth2 = limin + diff / limax * (0.5 * limax - x2),
-        mtNext2 = -0.5 * diff - diff / limax * x2,
-        mtPrev2 = -0.5 * diff + diff / limax * x2;
-
-  $('.lihover').css({
-    'width': limax + 'px',
-    'height': limax + 'px',
-    'margin-top': -diff + 'px'
+  $(&#39;.lihover&#39;).css({
+    &#39;width&#39;: limax + &#39;px&#39;,
+    &#39;height&#39;: limax + &#39;px&#39;,
+    &#39;margin-top&#39;: -diff + &#39;px&#39;
   });
-  $('.linext').css({
-    'width': nextwidth2 + 'px',
-    'height': nextwidth2 + 'px',
-    'margin-top': mtNext2 + 'px'
+  $(&#39;.linext&#39;).css({
+    &#39;width&#39;: nextwidth2 + &#39;px&#39;,
+    &#39;height&#39;: nextwidth2 + &#39;px&#39;,
+    &#39;margin-top&#39;: mtNext2 + &#39;px&#39;
   });
-  $('.liprev').css({
-    'width': prevwidth2 + 'px',
-    'height': prevwidth2 + 'px',
-    'margin-top': mtPrev2 + 'px'
+  $(&#39;.liprev&#39;).css({
+    &#39;width&#39;: prevwidth2 + &#39;px&#39;,
+    &#39;height&#39;: prevwidth2 + &#39;px&#39;,
+    &#39;margin-top&#39;: mtPrev2 + &#39;px&#39;
   });
 
-  $icon.not('.lihover,.linext,.liprev').css({
-    'width': limin + 'px',
-    'height': limin + 'px',
-    'margin-top': '0'
+  $icon.not(&#39;.lihover,.linext,.liprev&#39;).css({
+    &#39;width&#39;: limin + &#39;px&#39;,
+    &#39;height&#39;: limin + &#39;px&#39;,
+    &#39;margin-top&#39;: &#39;0&#39;
   });
 }
-</code></pre>
+</code></pre><p><br/>
+以上，就是我這個效果的完整程式碼，不是很難，真正難的是要理解變大變小的原理，不過實際上 Mac Dock 好像也不是用這種方式，有興趣的可以參考美國專利局裏頭 Mac Dock 的專利說明：<a href="http://www.google.com/patents/US7434177">http://www.google.com/patents/US7434177</a>。</p>
+<p>( 完成範例：<a href="/demo/201501/mac-dock-demo.html">mac-dock-demo.html</a> )</p>
+<p><img src="/img/articles/201501/20150103_1_03.gif" alt="Mac Docker 實作"></p>
 
-            <p>
-              <br/> 以上，就是我這個效果的完整程式碼，不是很難，真正難的是要理解變大變小的原理，不過實際上 Mac Dock 好像也不是用這種方式，有興趣的可以參考美國專利局裏頭 Mac Dock 的專利說明：<a href="http://www.google.com/patents/US7434177" target="_blank">http://www.google.com/patents/US7434177</a>。</p>
-            <p>( 完成範例：<a href="/demo/201501/mac-dock-demo.html" target="_blank">mac-dock-demo.html</a> )</p>
-            <p><img src="/img/articles/201501/20150103_1_03.gif" alt="Mac Docker 實作" /></p>
-          </div>
-        </div>
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -306,8 +301,13 @@ $('#mouse_area').css({
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -319,11 +319,12 @@ $('#mouse_area').css({
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -337,10 +338,14 @@ $('#mouse_area').css({
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

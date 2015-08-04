@@ -6,27 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2015-01-13T23:25:00+01:00">
-  <meta name="keywords" content="css,text-decoration">
 
-  <meta name="description" content="但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？">
+<meta property="article:published_time" content="2015-01-13T23:25:00+01:00">
 
-  <meta itemprop="name" content="CSS 搞怪的 text-decoration - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/20150113_2_01b.jpg">
-  <meta itemprop="description" content="但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？">
+<meta name="keywords" content="css,text-decoration">
 
-  <meta property="og:title" content="CSS 搞怪的 text-decoration - OXXO.STUDIO">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/css-text-decoration.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/20150113_2_01b.jpg">
-  <meta property="og:description" content="但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？">
-  
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta name="description" content="但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？">
+
+<meta itemprop="name" content="CSS 搞怪的 text-decoration - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/20150113_2_01b.jpg">
+
+<meta itemprop="description" content="但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？">
+
+<meta property="og:title" content="CSS 搞怪的 text-decoration - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/css-text-decoration.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/20150113_2_01b.jpg">
+
+<meta property="og:description" content="但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？">
+
+<title>SVG D3.js - transition 基本篇  - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
 
-      <title>CSS 搞怪的 text-decoration - OXXO.STUDIO</title>
-      </head>
+
+
+</head>
 <body>
     <div id="header">
         <div id="top-menu">
@@ -71,45 +87,39 @@
     <div id="wrapper">
         <div id="container">
 
-    
 
-        <div class="content">
-          <i class="tag-css"></i>
-          <div class="md">
-            <h2>CSS 搞怪的 text-decoration
-              <span class="article-date">JAN 13, 2015</span>
-            </h2>
-            <img src="/img/articles/201501/20150113_2_01.jpg" class="preview-img">
-            <p>自己從出社會工作開始，CSS 一定會出現在每個大大小小不同的專案裏頭，真可以說是吃飯的工具無誤，但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？就讓我們繼續看下去~</p>
-            <p>在我的專案裏頭遇到的問題如下，一個 div 裏頭包了一個 span，我要「<strong>除了這個 span 之外，其他所有的文字都有底線</strong>」，通常看到這個問題一定覺得很簡單，只要照下面的 CSS 寫法一定可以達成：</p>
-            <pre><code>div{
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>CSS 搞怪的 text-decoration  <span class="article-date" tag="css">JAN 13, 2015</span></h2>
+<p><img src="/img/articles/201501/20150113_2_01.jpg" class="preview-img"></p>
+<p>自己從出社會工作開始，CSS 一定會出現在每個大大小小不同的專案裏頭，真可以說是吃飯的工具無誤，但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？就讓我們繼續看下去~</p>
+<p>在我的專案裏頭遇到的問題如下，一個 div 裏頭包了一個 span，我要「<strong>除了這個 span 之外，其他所有的文字都有底線</strong>」，通常看到這個問題一定覺得很簡單，只要照下面的 CSS 寫法一定可以達成：</p>
+<pre><code>div{
     font-size:20px;
     text-decoration: underline;
 }
 div span{
     text-decoration: none;
 }
-</code></pre>
-
-            <p>理論上應該前一段會有底線，後一段會沒有底線，但是實際上卻是一條底線通到底.....( 範例：<a href="/demo/201501/css-text-decoration-demo1.html" target="_blank">css-text-decoration-demo1.html</a> )</p>
-            <p><img src="/img/articles/201501/20150113_2_02.jpg" alt="CSS 搞怪的 text-decoration" />
-            </p>
-            <p>
-              <br/> 不過我不信邪，怕是哪裡 CSS 權重出了問題 ( 參考 <a href="http://www.oxxostudio.tw/articles/201405/css-specificity.html" target="_blank">CSS Specificity</a> )，直接加上萬惡的 important 試試看，結果發現結果還是一模一樣！天呀！是見到鬼了嗎！( 範例：<a href="/demo/201501/css-text-decoration-demo2.html" target="_blank">css-text-decoration-demo2.html</a> )</p>
-            <pre><code>div{
+</code></pre><p>理論上應該前一段會有底線，後一段會沒有底線，但是實際上卻是一條底線通到底.....( 範例：<a href="/demo/201501/css-text-decoration-demo1.html">css-text-decoration-demo1.html</a> )</p>
+<p><img src="/img/articles/201501/20150113_2_02.jpg" alt="CSS 搞怪的 text-decoration"></p>
+<p><br/>
+不過我不信邪，怕是哪裡 CSS 權重出了問題 ( 參考 <a href="http://www.oxxostudio.tw/articles/201405/css-specificity.html">CSS Specificity</a> )，直接加上萬惡的 important 試試看，結果發現結果還是一模一樣！天呀！是見到鬼了嗎！( 範例：<a href="/demo/201501/css-text-decoration-demo2.html">css-text-decoration-demo2.html</a> )</p>
+<pre><code>div{
     font-size:20px;
     text-decoration: underline;
 }
 div span{
     text-decoration: none!important;
 }
-</code></pre>
-
-            <p><img src="/img/articles/201501/20150113_2_02.jpg" alt="CSS 搞怪的 text-decoration" />
-            </p>
-            <p>
-              <br/> 由於實在是太詭異了，必須要查明原因，於是我換個角度思考，來改一下顏色試試看吧！一改才發現不得了，為什麼底線會是紅色的呀？！( 範例：<a href="/demo/201501/css-text-decoration-demo3.html" target="_blank">css-text-decoration-demo3.html</a> )</p>
-            <pre><code>div{
+</code></pre><p><img src="/img/articles/201501/20150113_2_02.jpg" alt="CSS 搞怪的 text-decoration"></p>
+<p><br/>
+由於實在是太詭異了，必須要查明原因，於是我換個角度思考，來改一下顏色試試看吧！一改才發現不得了，為什麼底線會是紅色的呀？！( 範例：<a href="/demo/201501/css-text-decoration-demo3.html">css-text-decoration-demo3.html</a> )</p>
+<pre><code>div{
     font-size:20px;
     color:#f00;
     text-decoration: underline;
@@ -118,13 +128,10 @@ div span{
     color:#00f;
     text-decoration: none!important;
 }
-</code></pre>
-
-            <p><img src="/img/articles/201501/20150113_2_03.jpg" alt="CSS 搞怪的 text-decoration" />
-            </p>
-            <p>
-              <br/> 看到這邊我已經大概知道原因了，最有可能的原因應該就是出在 text-decoration 這個屬性的定義，經過一番追根究柢，總算看到 <a href="http://www.w3.org/TR/CSS21/text.html#lining-striking-props" target="_blank">W3C 的說法</a>，主要是因為 text-decoration 會把<strong>整個父元素加上底線</strong>，而整個父元素，當然就包含了子元素，因為同樣顏色的緣故，就以為子元素也被加上底線了，( 實際上子元素沒有被加上底線 )，不過後來又看了這個專門分析兼容性問題的網站 <a href="http://w3help.org/zh-cn/causes/RT3002" target="_blank">說明</a>，其實 text-decoration 會根據不同的 display 屬性，而決定父元素的底線是否延伸，舉例來說吧！如果今天我把 span 的 display 改成 inline-block，就會得到不同的結果：( 範例：<a href="/demo/201501/css-text-decoration-demo4.html" target="_blank">css-text-decoration-demo4.html</a> )</p>
-            <pre><code>div{
+</code></pre><p><img src="/img/articles/201501/20150113_2_03.jpg" alt="CSS 搞怪的 text-decoration"></p>
+<p><br/>
+看到這邊我已經大概知道原因了，最有可能的原因應該就是出在 text-decoration 這個屬性的定義，經過一番追根究柢，總算看到 <a href="http://www.w3.org/TR/CSS21/text.html#lining-striking-props">W3C 的說法</a>，主要是因為 text-decoration 會把<strong>整個父元素加上底線</strong>，而整個父元素，當然就包含了子元素，因為同樣顏色的緣故，就以為子元素也被加上底線了，( 實際上子元素沒有被加上底線 )，不過後來又看了這個專門分析兼容性問題的網站 <a href="http://w3help.org/zh-cn/causes/RT3002">說明</a>，其實 text-decoration 會根據不同的 display 屬性，而決定父元素的底線是否延伸，舉例來說吧！如果今天我把 span 的 display 改成 inline-block，就會得到不同的結果：( 範例：<a href="/demo/201501/css-text-decoration-demo4.html">css-text-decoration-demo4.html</a> )</p>
+<pre><code>div{
     font-size:20px;
     color:#f00;
     text-decoration: underline;
@@ -134,20 +141,15 @@ div span{
     color:#00f;
     text-decoration: none!important;
 }
-</code></pre>
-
-            <p><img src="/img/articles/201501/20150113_2_04.jpg" alt="CSS 搞怪的 text-decoration" />
-            </p>
-            <p>
-              <br/> 不過由於各家瀏覽器的渲染不同，加上已經明白了箇中原理，這裡就不做太多的測試，只要記得下次如果又遇到這種問題，可能就是父元素和子元素互相干擾所造成，自己也要特別留心。最後，好像也可以利用這種方法，做出莫名其妙的效果...( 範例：<a href="/demo/201501/css-text-decoration-demo5.html" target="_blank">css-text-decoration-demo5.html</a> )</p>
-            <p>HTML</p>
-            <pre><code>&lt;div&gt;
+</code></pre><p><img src="/img/articles/201501/20150113_2_04.jpg" alt="CSS 搞怪的 text-decoration"></p>
+<p><br/>
+不過由於各家瀏覽器的渲染不同，加上已經明白了箇中原理，這裡就不做太多的測試，只要記得下次如果又遇到這種問題，可能就是父元素和子元素互相干擾所造成，自己也要特別留心。最後，好像也可以利用這種方法，做出莫名其妙的效果...( 範例：<a href="/demo/201501/css-text-decoration-demo5.html">css-text-decoration-demo5.html</a> )</p>
+<p>HTML</p>
+<pre><code>&lt;div&gt;
     &lt;span&gt;&lt;span&gt;&lt;span&gt;真是很莫名其妙的效果&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/div&gt;
-</code></pre>
-
-            <p>CSS</p>
-            <pre><code>div{
+</code></pre><p>CSS</p>
+<pre><code>div{
     font-size:30px;
     color:#f00;
     text-decoration:overline;
@@ -164,12 +166,9 @@ div span span span{
     color:#000;
     text-decoration: none;
 }
-</code></pre>
+</code></pre><p><img src="/img/articles/201501/20150113_2_05.jpg" alt="CSS 搞怪的 text-decoration"></p>
 
-            <p><img src="/img/articles/201501/20150113_2_05.jpg" alt="CSS 搞怪的 text-decoration" />
-            </p>
-          </div>
-        </div>
+
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
                 <i class="icon-list"><i></i><span>Article List</span></i>
@@ -178,8 +177,13 @@ div span span span{
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -191,11 +195,12 @@ div span span span{
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -209,10 +214,14 @@ div span span span{
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

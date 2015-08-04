@@ -6,25 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <meta property="article:published_time" content="2014-06-24T23:35:00+01:00">
-  <meta name="keywords" content="SVG,filter,向量,濾鏡,pie chart,chart,圓餅圖,圖表">
 
-  <meta name="description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
+<meta property="article:published_time" content="2014-06-24T23:35:00+01:00">
 
-  <meta itemprop="name" content="SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140623_1_01.jpg">
-  <meta itemprop="description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
+<meta name="keywords" content="SVG,filter,向量,濾鏡,pie chart,chart,圓餅圖,圖表">
 
-  <meta property="og:title" content="SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140623_1_01.jpg">
-  <meta property="og:description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
+<meta name="description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
 
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/articles-content.css">
-  <link rel="stylesheet" href="/css/lib/tomorrow.css">
+<meta itemprop="name" content="SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140623_1_01.jpg">
+
+<meta itemprop="description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
+
+<meta property="og:title" content="SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140623_1_01.jpg">
+
+<meta property="og:description" content="圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
+
+<title>SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
   <script src="/js/lib/jquery.min.js"></script>
-  <title>SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO</title>
+
+
+
 </head>
 <body>
     <div id="header">
@@ -70,55 +87,33 @@
     <div id="wrapper">
         <div id="container">
 
-      <div class="content">
-        <i class="tag-web"></i>
-        <div class="md">
-          <h2>SVG 研究之路 (12) - pie chart 圓餅圖實作
-            <span class="article-date">JUN 24, 2014</span>
-          </h2>
-          <p>在之前我所撰寫的 SVG path 的文章 <a href="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html">SVG 研究之路 (5) - Path 進階篇</a> 當中，詳細介紹了關於 path 的 A 參數用法，回想一下，A 參數是拿來繪製弧形，因此這篇就藉由 A 參數的精妙之處，來繪製圓餅圖；什麼是圓餅圖呢？<span itemprop="description" class="desc">圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。</span></p>
-          <p>要繪製圓餅圖的第一步，我們先來使用 SVG path 的 A 參數繪製一個四分之一圓 ，四分之一圓的原理很簡單，就是將 A 參數的兩軸設為相等 ( 也就是圓形 )，接著只要知道頂點和側邊頂點的座標，就能夠畫出四分之一圓。
-          </p>
-          <p>
-            <img src="/img/articles/201406/20140623_1_02.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
-          </p>
-          <pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 0 0 50 100,Z&quot; fill=&quot;#fa0&quot;/&gt;
-</code></pre>
 
-          <p>
-            <Br/>
-          </p>
-          <p>接下來我們來繪製一個四分之一圓，一個四分之三圓
-          </p>
-          <p>
-            <img src="/img/articles/201406/20140623_1_03.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
-          </p>
-          <pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 0 0 50 100,Z&quot; fill=&quot;#fa0&quot;/&gt;
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>SVG 研究之路 (12) - pie chart 圓餅圖實作 <span class="article-date" tag="web">JUN 23, 2014</span></h2>
+<p>在之前我所撰寫的 SVG path 的文章 <a href="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html">SVG 研究之路 (5) - Path 進階篇</a> 當中，詳細介紹了關於 path 的 A 參數用法，回想一下，A 參數是拿來繪製弧形，因此這篇就藉由 A 參數的精妙之處，來繪製圓餅圖；什麼是圓餅圖呢？圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。</p>
+<p>要繪製圓餅圖的第一步，我們先來使用 SVG path 的 A 參數繪製一個四分之一圓    ，四分之一圓的原理很簡單，就是將 A 參數的兩軸設為相等 ( 也就是圓形 )，接著只要知道頂點和側邊頂點的座標，就能夠畫出四分之一圓。  </p>
+<p><img src="/img/articles/201406/20140623_1_02.png" alt="SVG - pie chart"></p>
+<pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 0 0 50 100,Z&quot; fill=&quot;#fa0&quot;/&gt;
+</code></pre><p><br/></p>
+<p>接下來我們來繪製一個四分之一圓，一個四分之三圓  </p>
+<p><img src="/img/articles/201406/20140623_1_03.png" alt="SVG - pie chart"></p>
+<pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 0 0 50 100,Z&quot; fill=&quot;#fa0&quot;/&gt;
 &lt;path d=&quot;M100 100,L100 50,A50 50 0 1 1 50 100,Z&quot; fill=&quot;#09d&quot;/&gt;
-</code></pre>
-
-          <p>
-            <br/>
-          </p>
-          <p>從上圖我們可以發現，如果要繪製大於 180 度的圓，我們程式上必須要讓繪製的路徑角度弧線設為大角度弧線 ( 數字為 1 )，這也是在繪製圓餅圖的時候必須要注意的，不然就會變成下面這樣：
-          </p>
-          <p>
-            <img src="/img/articles/201406/20140623_1_04.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
-          </p>
-          <pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 1 0 50 100,Z&quot; fill=&quot;#09d&quot;/&gt;
+</code></pre><p><br/></p>
+<p>從上圖我們可以發現，如果要繪製大於 180 度的圓，我們程式上必須要讓繪製的路徑角度弧線設為大角度弧線 ( 數字為 1 )，這也是在繪製圓餅圖的時候必須要注意的，不然就會變成下面這樣：   </p>
+<p><img src="/img/articles/201406/20140623_1_04.png" alt="SVG - pie chart"></p>
+<pre><code>&lt;path d=&quot;M100 100,L100 50,A50 50 0 1 0 50 100,Z&quot; fill=&quot;#09d&quot;/&gt;
 &lt;path d=&quot;M100 100,L100 50,A50 50 0 0 0 50 100,Z&quot; fill=&quot;#fa0&quot;/&gt;
-</code></pre>
-
-          <p>
-            <br/>
-          </p>
-          <p>了解了圓餅圖的構造，現在我們要來繪製一個不同角度的圓餅圖 ( 剛剛都使用 90 度和 90 度的倍數 )，如果要繪製不同角度的圓餅圖，就必須要使用三角函數去計算起點和終點，有了起點和終點才能夠畫出弧線，舉例來說，要畫一個夾角 30 度的弧線，我就必須先用 javascript 計算：
-          </p>
-          <p>
-            <img src="/img/articles/201406/20140623_1_05.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
-          </p>
-          <p>JS：</p>
-          <pre><code>$(function(){ 
+</code></pre><p><br/></p>
+<p>了解了圓餅圖的構造，現在我們要來繪製一個不同角度的圓餅圖 ( 剛剛都使用 90 度和 90 度的倍數 )，如果要繪製不同角度的圓餅圖，就必須要使用三角函數去計算起點和終點，有了起點和終點才能夠畫出弧線，舉例來說，要畫一個夾角 30 度的弧線，我就必須先用 javascript 計算：  </p>
+<p><img src="/img/articles/201406/20140623_1_05.png" alt="SVG - pie chart"></p>
+<p>JS：</p>
+<pre><code>$(function(){ 
   var startAngle=0;                                  // 起始角度
   var deg1 = 30 + startAngle;                        // 夾角
   var x0 = 100+50*Math.cos(startAngle*Math.PI/180);  // 計算起點x座標
@@ -126,23 +121,15 @@
   var x1 = 100+50*Math.cos(deg1*Math.PI/180);        // 計算終點x座標
   var y1 = 100-50*Math.sin(deg1*Math.PI/180);        // 計算終點y座標   
 
-  $('path').attr('d','M100 100,L100 50,A'+x0+' '+y0+' 0 0 1 '+x1+' '+y1+',Z');  
+  $(&#39;path&#39;).attr(&#39;d&#39;,&#39;M100 100,L100 50,A&#39;+x0+&#39; &#39;+y0+&#39; 0 0 1 &#39;+x1+&#39; &#39;+y1+&#39;,Z&#39;);  
 });
-</code></pre>
-
-          <p>SVG：</p>
-          <pre><code>&lt;path fill=&quot;#fa0&quot;/&gt;
-</code></pre>
-
-          <p>
-            <br/>
-          </p>
-          <p>理解了圓餅圖的原理之後，我們就可以設定相關的參數，並且統一讓畫圓的方向固定為順時針或逆時針，就可以畫出漂亮的圓餅圖。( 當然，更進階的可以去做判斷，讓大於 180 度的圓餅使用大角度弧線，避免畫出來會很奇怪囉！ ) 當然，pie chart 也可以先變萬化，例如我們可以使用各種不同數值的半徑，就可以做出每個半徑都不盡相同的圓餅區塊，整體也會更具特色喔！</p>
-          <p>
-            <img src="/img/articles/201406/20140623_1_06.png" alt="SVG - pie chart" style="margin-bottom:0; "  />
-          </p>
-          <p>JS：</p>
-          <pre><code>$(function(){ 
+</code></pre><p>SVG：</p>
+<pre><code>&lt;path fill=&quot;#fa0&quot;/&gt;
+</code></pre><p><br/></p>
+<p>理解了圓餅圖的原理之後，我們就可以設定相關的參數，並且統一讓畫圓的方向固定為順時針或逆時針，就可以畫出漂亮的圓餅圖。( 當然，更進階的可以去做判斷，讓大於 180 度的圓餅使用大角度弧線，避免畫出來會很奇怪囉！ ) 當然，pie chart 也可以先變萬化，例如我們可以使用各種不同數值的半徑，就可以做出每個半徑都不盡相同的圓餅區塊，整體也會更具特色喔！</p>
+<p><img src="/img/articles/201406/20140623_1_06.png" alt="SVG - pie chart"></p>
+<p>JS：</p>
+<pre><code>$(function(){ 
  var startAngle=0;
  var cx = 100;
  var cy = 100;
@@ -167,15 +154,12 @@
  $(&quot;#test2&quot;).attr(&quot;d&quot;,&quot;M &quot;+cx+&quot;,&quot;+cy+&quot; L &quot;+x1+&quot;,&quot;+y1+&quot; A &quot;+r+&quot;,&quot;+r+&quot; 0 1,0 &quot;+x2+&quot;,&quot;+y2+&quot; Z&quot;);
  $(&quot;#test3&quot;).attr(&quot;d&quot;,&quot;M &quot;+cx+&quot;,&quot;+cy+&quot; L &quot;+x2+&quot;,&quot;+y2+&quot; A &quot;+r+&quot;,&quot;+r+&quot; 0 0,0 &quot;+x3+&quot;,&quot;+y3+&quot; Z&quot;);
 });
-</code></pre>
-
-          <p>SVG：</p>
-          <pre><code>&lt;path id=&quot;test1&quot; style=&quot;fill:#fe0; stroke:#fff; stroke-width:5;&quot; /&gt;
+</code></pre><p>SVG：</p>
+<pre><code>&lt;path id=&quot;test1&quot; style=&quot;fill:#fe0; stroke:#fff; stroke-width:5;&quot; /&gt;
 &lt;path id=&quot;test2&quot; style=&quot;fill:#0a0; stroke:#fff; stroke-width:5;&quot; /&gt;
 &lt;path id=&quot;test3&quot; style=&quot;fill:#e00; stroke:#fff; stroke-width:5;&quot; /&gt;
-</code></pre>
-        </div>
-      </div>
+</code></pre><p><br/></p>
+
 
             <div class="social-icon">
                 <i class="icon-home"><i></i><span>Back Home</span></i>
@@ -185,8 +169,13 @@
                 <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
                 <i class="goto-top"><i></i><span>Back to Top</span></i>
             </div>
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
   <div id="other-articles">
     <div class="previous-next previous-article">
         前一篇文章：
@@ -198,11 +187,12 @@
         <br/>
         <h4></h4>
     </div>
-    <h3>推薦閱讀，或瀏覽 <a href="/list.html">所有文章</a></h3>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="disqus">
     <div id="disqus_thread"></div>
   </div>
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -216,10 +206,14 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/articles.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <script src="/js/lib/disqus.js"></script>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

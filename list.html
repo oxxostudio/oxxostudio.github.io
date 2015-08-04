@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+
   <meta property="article:published_time" content="2014-05-01T00:00:00+01:00" >
   <meta property="article:modified_time" content="2015-06-30T22:55:00+01:00" >
   <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
@@ -23,11 +24,18 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/layout/social.png">
   <meta property="og:description" content="OXXO.STUDIO  包含了視覺創作、網頁前端程式、UI & UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！" >
 
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/list.css">
-  <style class="list-search-style"></style>
-  <script src="/js/lib/jquery.min.js"></script>
   <title>OXXO.STUDIO - 所有文章列表</title>
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+  <link rel="stylesheet" href="/style/css/list.css">
+  <style class="list-search-style"></style>
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
 </head>
 <body>
     <div id="header">
@@ -73,38 +81,44 @@
     <div id="wrapper">
         <div id="container">
 
-      <div class="content">
-        <h1>所有文章列表 ( <span></span> )
-        </h1>
-        <div class="tag-list">
-          快速篩選：
-          <i class="tag-all">All</i>,
-          <i class="tag-creative not-this">Creative</i>,
-          <i class="tag-ui not-this">UI & UX</i>,
-          <i class="tag-photo not-this">PHOTO</i>,
-          <i class="tag-css not-this">CSS</i>,
-          <i class="tag-web not-this">WEB TECH</i>,
-          <i class="tag-share not-this">Share</i>,
-          <i class="tag-others not-this">OTHERS</i>
-        </div>
-        <div class="list-search">
-          標題搜尋：
-          <input type="text" placeholder="輸入標題" />
-        </div>
-        <ul>
-        </ul>
+    <div class="content">
+      <h1>所有文章列表 ( <span></span> )
+      </h1>
+      <div class="tag-list">
+        快速篩選：
+        <i class="tag-all">All</i>,
+        <i class="tag-creative not-this">Creative</i>,
+        <i class="tag-ui not-this">UI & UX</i>,
+        <i class="tag-photo not-this">PHOTO</i>,
+        <i class="tag-css not-this">CSS</i>,
+        <i class="tag-web not-this">WEB TECH</i>,
+        <i class="tag-share not-this">Share</i>,
+        <i class="tag-others not-this">OTHERS</i>
       </div>
-
-
-
-
-      
-      <div class="tool-icon">
-        <i class="icon-home"><i></i><span>Back Home</span></i>
-        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      <div class="list-search">
+        標題搜尋：
+        <input type="text" placeholder="輸入標題" />
       </div>
+      <ul>
+      </ul>
+    </div>
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+
+
+
+
+
+            </div>
+          </div>
         </div>  
     </div>
+
+
 
     <div id="footer">
         <div class="footer-line"></div>
@@ -118,9 +132,11 @@
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.min.js"></script>
-  <script src="/js/list.min.js"></script>
-  <script src="/js/tool-icon.min.js"></script>
+    <script src="/js/layout.js"></script>
+
+  <script src="/js/list.js"></script>
+  <script src="/js/tool-icon.js"></script>
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
