@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-06-30 22:55:00 GMT</pubDate>
+    <pubDate>2015-08-05 22:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>用 Gulp 展開新的 blog 編輯旅程</title>
+      <link>http://www.oxxostudio.tw/articles/201508/edit-blog-by-gulp.html</link>
+      <pubDate>2015-08-05 22:55:00 GMT</pubDate>
+      <description>Gulp 大概是我在今年一月開始接觸的，坦白說實在是滿好用的，主要因為 Gulp 有著龐大 npm package 的後盾，許多疑難雜症都相當容易找到解決的方式，且實際運作起來的速度也是不同凡響，加上自己也在工作上實際用來製作網站，在各種條件都備妥的情況下，自然而然的就把開發模式轉換過來了。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201508/20150805_1_01b.jpg</url>
+        <title>用 Gulp 展開新的 blog 編輯旅程</title>
+        <link>http://www.oxxostudio.tw/articles/201508/edit-blog-by-gulp.html</link>
+      </image>
+    </item>
     <item>
       <title>HTML5 控制裝置陀螺儀 ( 三軸 )</title>
       <link>http://www.oxxostudio.tw/articles/201506/html5-device-orientation.html</link>
@@ -95,174 +107,6 @@
         <url>http://www.oxxostudio.tw/img/articles/201503/20150329_1_01b.jpg</url>
         <title>單一 div 的正多邊形變換 ( 純 CSS )</title>
         <link>http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html</link>
-      </image>
-    </item>
-    <item>
-      <title>純 CSS Material Design 風格按鈕</title>
-      <link>http://www.oxxostudio.tw/articles/201503/css-material-design-icon.html</link>
-      <pubDate>2015-03-25 23:45:00 GMT</pubDate>
-      <description>當初一看到 Material Design，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150325_1_01.gif</url>
-        <title>純 CSS Material Design 風格按鈕</title>
-        <link>http://www.oxxostudio.tw/articles/201503/css-material-design-icon.html</link>
-      </image>
-    </item>
-    <item>
-      <title>純 CSS 繪製圓餅圖</title>
-      <link>http://www.oxxostudio.tw/articles/201503/css-pie-chart.html</link>
-      <pubDate>2015-03-24 23:25:00 GMT</pubDate>
-      <description>純粹的 CSS 圓餅圖，勢必得用一個以上的 div 來組合產生，那麼，啾竟需要多少個 div 才有辦法做出一個漂亮的圓餅圖呢？目前我的做法「只需要用一個 div 搭配自身兩個偽元素」即可，換句話說，就是用 div 本身作為遮罩，內容的兩個偽元素互相旋轉搭配，就可以做出逼真的圓餅圖。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150324_2_01.gif</url>
-        <title>純 CSS 繪製圓餅圖</title>
-        <link>http://www.oxxostudio.tw/articles/201503/css-pie-chart.html</link>
-      </image>
-    </item>
-    <item>
-      <title>改變 HTML5 range 樣式的兩種方法</title>
-      <link>http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html</link>
-      <pubDate>2015-03-24 22:25:00 GMT</pubDate>
-      <description>今天來探討一下 HTML5 的 range 這個新的 input 類型，不過重點不是在 range 要如何使用，而是在如何去改變 range 的樣式，做出一個漂漂亮亮的滑動桿，這篇會介紹兩種修改 range 樣式的方法，一種是純 CSS，一種是用 jquery 搭配 CSS 來製作。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150324_1_01b.jpg</url>
-        <title>改變 HTML5 range 樣式的兩種方法</title>
-        <link>http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境</title>
-      <link>http://www.oxxostudio.tw/articles/201503/gulp-6-markdown-to-html.html</link>
-      <pubDate>2015-03-13 23:25:00 GMT</pubDate>
-      <description>當我發現 Gulp 也有 markdown 轉換的套件之後，就決定可以自己來做一個轉換的環境，如此一來就不用受限於各個編輯器的樣式，也不用受限於 gitbook 只能轉電子書的樣貌，甚至可以搭配之前幾篇介紹過的壓縮打包、html extend...等，做出一個純粹用 markdown 編寫網頁的環境。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150313_1_01b.jpg</url>
-        <title>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境</title>
-        <link>http://www.oxxostudio.tw/articles/201503/gulp-6-markdown-to-html.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SublimeText - Seti_UI theme</title>
-      <link>http://www.oxxostudio.tw/articles/201503/sublimetext-seti-theme.html</link>
-      <pubDate>2015-03-10 23:25:00 GMT</pubDate>
-      <description>今天來介紹一個非常漂亮的 SublimeText theme：Seti_UI，這大概也是最近身邊的人幾乎每個人都用的樣式，我也是因為看到別人用才下載來用的，沒想到一用之後驚為天人，一定要分享給大家。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150310_1_01b.jpg</url>
-        <title>SublimeText - Seti_UI theme</title>
-        <link>http://www.oxxostudio.tw/articles/201503/sublimetext-seti-theme.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Gulp 學習 5 - 建立 HTML 模板</title>
-      <link>http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html</link>
-      <pubDate>2015-03-09 23:35:00 GMT</pubDate>
-      <description>這裡我們要用到的是 gulp-html-extend 這個套件，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150309_1_01b.jpg</url>
-        <title>Gulp 學習 5 - 建立 HTML 模板</title>
-        <link>http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Low-Poly Art</title>
-      <link>http://www.oxxostudio.tw/articles/201503/low-poly-art.html</link>
-      <pubDate>2015-03-08 23:25:00 GMT</pubDate>
-      <description>Low-Poly 這是個之前很紅的向量繪圖風格，不過其實 Low-Poly 存在已久，是由 3D 電腦繪圖發展而來，Low-Poly 是一個利用較少的多邊形，來構成一個 3D 的模型，由於減少了多邊形的數目，相對在做運算也會較為迅速，但缺點就是外觀會呈現一片一片的非擬真狀態。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150308_2_01b.jpg</url>
-        <title>Low-Poly Art</title>
-        <link>http://www.oxxostudio.tw/articles/201503/gulp-4-scss-sass.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Gulp 學習 4 - 建立 SCSS/SASS 編輯環境</title>
-      <link>http://www.oxxostudio.tw/articles/201503/gulp-4-scss-sass.html</link>
-      <pubDate>2015-03-08 20:45:00 GMT</pubDate>
-      <description>隨著時代的演進，這一兩年來我都已經是用 SCSS 在編寫 CSS，不過 SCSS/SASS 是建構在 Ruby 的環境之下，通常我們要使用，則必須先安裝 Ruby 以及 compass，或也可以購買安裝 Fire.app 代勞，那麼要如何才能用 gulp ，來建立一個自動執行轉換 SCSS 的環境呢？
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150308_1_01b.jpg</url>
-        <title>Gulp 學習 4 - 建立 SCSS/SASS 編輯環境</title>
-        <link>http://www.oxxostudio.tw/articles/201503/gulp-4-scss-sass.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Gulp 學習 3 - 打包壓縮 HTML</title>
-      <link>http://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html</link>
-      <pubDate>2015-03-07 23:55:00 GMT</pubDate>
-      <description>例如我們有一個網頁，裡頭載入了三個 CSS 與三個 JS，壓縮之後就會變成只有一個 min.css 和一個 min.js，如此一來原本要載入六個檔案，瞬間就變成了只需要載入兩個檔案而已，也由於由六個 request 降為兩個 request，整個網頁的流暢度也會提升。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150307_1_01b.jpg</url>
-        <title>Gulp 學習 3 - 打包壓縮 HTML</title>
-        <link>http://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Gulp 學習 2 - 打包壓縮 CSS 與 JS</title>
-      <link>http://www.oxxostudio.tw/articles/201503/gulp-2-compress-js-css.html</link>
-      <pubDate>2015-03-06 23:35:00 GMT</pubDate>
-      <description>在上線版本裡頭，就會使用到打包和壓縮過的 JS 或 CSS，這類型的 JS 或 CSS 會在檔案名稱加個「.min」進行區隔，而一個打包壓縮過的 JS 和 CSS，基本上可能是好幾個檔案組合在一起，利用 Gulp 的套件，非常簡單的就可以做到打包壓縮的動作，甚至還可以自動重新命名檔案，一氣呵成。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150306_1_01b.jpg</url>
-        <title>Gulp 學習 2 - 打包壓縮 CSS 與 JS</title>
-        <link>http://www.oxxostudio.tw/articles/201503/gulp-2-compress-js-css.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Gulp 學習 1 - 安裝與執行</title>
-      <link>http://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html</link>
-      <pubDate>2015-03-02 23:25:00 GMT</pubDate>
-      <description>在二月的時候，我花了不少時間在學習 Gulp 這個任務自動化管理工具，最主要受到了 Gitbook 的啟發，還有洧杰與志誠的推薦，讓我毅然決然地投入了 Gulp 的世界，過去因為工作的需求，接觸過一點點的 Grunt，Gulp 和 Grunt 的初衷相同，都是要把過去需要人工處理的步驟給自動化，如此一來就可以省下不少寶貴的時間。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150302_1_01b.jpg</url>
-        <title>Gulp 學習 1 - 安裝與執行</title>
-        <link>http://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html</link>
-      </image>
-    </item>
-    <item>
-      <title>用 GitBook 來寫本書吧！</title>
-      <link>http://www.oxxostudio.tw/articles/201502/gitbook.html</link>
-      <pubDate>2015-02-11 23:55:00 GMT</pubDate>
-      <description>自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「政策白皮書」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201502/20150211_1_01b.jpg</url>
-        <title>用 GitBook 來寫本書吧！</title>
-        <link>http://www.oxxostudio.tw/articles/201502/gitbook.html</link>
-      </image>
-    </item>
-    <item>
-      <title>有趣的 CSS 彈跳動畫</title>
-      <link>http://www.oxxostudio.tw/articles/201502/css-bounce.html</link>
-      <pubDate>2015-02-09 23:45:00 GMT</pubDate>
-      <description>這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201502/20150209_1_01.gif</url>
-        <title>有趣的 CSS 彈跳動畫</title>
-        <link>http://www.oxxostudio.tw/articles/201502/css-bounce.html</link>
-      </image>
-    </item>
-    <item>
-      <title>CSS 垂直置中的七個方法</title>
-      <link>http://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html</link>
-      <pubDate>2015-02-01 23:55:00 GMT</pubDate>
-      <description>之前我有寫過一篇文章：「CSS 垂直置中的三個方法」，這篇將延續該篇文章，繼續介紹另外四種垂直置中的方法，總共七種 CSS 垂直置中的方法分別是：設定行高、添加偽元素、calc 動態計算、使用表格或假裝表格、transform、絕對定位、使用 Flexbox。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201502/20150201_1_01b.jpg</url>
-        <title>CSS 垂直置中的七個方法</title>
-        <link>http://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html</link>
       </image>
     </item>
   </channel>

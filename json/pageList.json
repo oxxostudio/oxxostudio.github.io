@@ -1,4 +1,10 @@
 [{
+  "tag": "tag-others",
+  "title": "用 Gulp 展開新的 blog 編輯旅程",
+  "site": "/articles/201508/edit-blog-by-gulp.html",
+  "img": "/img/articles/201508/20150805_1_01.jpg",
+  "date": "AUG 5, 2015"
+},{
   "tag": "tag-web",
   "title": "HTML5 控制裝置陀螺儀 ( 三軸 )",
   "site": "/articles/201506/html5-device-orientation.html",
