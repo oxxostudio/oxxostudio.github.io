@@ -1,4 +1,10 @@
 [{
+  "tag": "tag-web",
+  "title": "FIGlet - ASCII Decorator",
+  "site": "/articles/201508/figlet-ascii-decorator.html",
+  "img": "/img/articles/201508/20150808_1_01.jpg",
+  "date": "AUG 8, 2015"
+},{
   "tag": "tag-others",
   "title": "用 Gulp 展開新的 blog 編輯旅程",
   "site": "/articles/201508/edit-blog-by-gulp.html",

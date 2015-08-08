@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-08-05 22:55:00 GMT</pubDate>
+    <pubDate>2015-08-08 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>FIGlet - ASCII Decorator</title>
+      <link>http://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html</link>
+      <pubDate>2015-08-08 23:55:00 GMT</pubDate>
+      <description>首先談到這種字體的由來，它其實有幾個固定名稱，幾種比較主要的稱呼分別是：「ASCII TEXT」、「ASCII TEXT Banner」、「ASCII Art」、「ASCII Decorator」和「FIGlet」，「FIGlet」這個詞應該是最標準的用法，因為這個詞可是在維基百科上頭有介紹的。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201508/20150808_1_01b.jpg</url>
+        <title>FIGlet - ASCII Decorator</title>
+        <link>http://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html</link>
+      </image>
+    </item>
     <item>
       <title>用 Gulp 展開新的 blog 編輯旅程</title>
       <link>http://www.oxxostudio.tw/articles/201508/edit-blog-by-gulp.html</link>
