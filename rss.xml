@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-08-08 23:55:00 GMT</pubDate>
+    <pubDate>2015-08-17 22:15:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>自動選取某個區域的文字</title>
+      <link>http://www.oxxostudio.tw/articles/201508/select-text.html</link>
+      <pubDate>2015-08-17 22:15:00 GMT</pubDate>
+      <description>最近在工作上需要一個功能，就是點選一個按鈕可以全選某個區域內的文字，由於，找了一些解法大多都是針對文 input 的 text 或 textarea 所設計，，後來總算是在 Stack Overflow 發現了完美的解法，根據這個解法我就做出來了可以選取特定區域文字的範例。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201508/20150817_1_01b.jpg</url>
+        <title>自動選取某個區域的文字</title>
+        <link>http://www.oxxostudio.tw/articles/201508/select-text.html</link>
+      </image>
+    </item>
     <item>
       <title>FIGlet - ASCII Decorator</title>
       <link>http://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html</link>

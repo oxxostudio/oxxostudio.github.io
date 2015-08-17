@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "自動選取某個區域的文字",
+  "site": "/articles/201508/select-text.html",
+  "img": "/img/articles/201508/20150817_1_01.jpg",
+  "date": "AUG 17, 2015"
+},{
+  "tag": "tag-web",
   "title": "FIGlet - ASCII Decorator",
   "site": "/articles/201508/figlet-ascii-decorator.html",
   "img": "/img/articles/201508/20150808_1_01.jpg",

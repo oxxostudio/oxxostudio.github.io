@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+<meta property="article:published_time" content="2015-08-17T22:15:00+01:00">
+
+<meta name="keywords" content="select text, DOM, Selection, range, node">
+
+<meta name="description" content="最近在工作上需要一個功能，就是點選一個按鈕可以全選某個區域內的文字，由於，找了一些解法大多都是針對文 input 的 text 或 textarea 所設計，，後來總算是在 Stack Overflow 發現了完美的解法，根據這個解法我就做出來了可以選取特定區域文字的範例。">
+
+<meta itemprop="name" content="自動選取某個區域的文字 - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201508/20150817_1_01b.jpg">
+
+<meta itemprop="description" content="最近在工作上需要一個功能，就是點選一個按鈕可以全選某個區域內的文字，由於，找了一些解法大多都是針對文 input 的 text 或 textarea 所設計，，後來總算是在 Stack Overflow 發現了完美的解法，根據這個解法我就做出來了可以選取特定區域文字的範例。">
+
+<meta property="og:title" content="自動選取某個區域的文字 - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201508/select-text.html">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201508/20150817_1_01b.jpg">
+
+<meta property="og:description" content="最近在工作上需要一個功能，就是點選一個按鈕可以全選某個區域內的文字，由於，找了一些解法大多都是針對文 input 的 text 或 textarea 所設計，，後來總算是在 Stack Overflow 發現了完美的解法，根據這個解法我就做出來了可以選取特定區域文字的範例。">
+
+<title>自動選取某個區域的文字 - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>自動選取某個區域的文字  <span class="article-date" tag="web">AUG 17, 2015</span></h2>
+<p>最近在工作上需要一個功能，就是點選一個按鈕可以全選某個區域內的文字，由於，找了一些解法大多都是針對文 input 的 text 或 textarea 所設計，，後來總算是在 Stack Overflow 發現了完美的解法，( 參考連結：<a href="http://goo.gl/uAHGuS">http://goo.gl/uAHGuS</a> ) 根據這個解法我就做出來了可以選取特定區域文字的範例，程式碼的長相如下：<br>( 範例：<a href="/demo/201508/select-text-demo01.html">select-text-demo01.html</a> )</p>
+<p>HTML：</p>
+<pre><code>&lt;div id=&quot;textA&quot;&gt;點選 A 會選取我&lt;/div&gt;
+&lt;div id=&quot;textB&quot;&gt;點選 B 會選取我&lt;/div&gt;
+&lt;button id=&quot;btnA&quot;&gt;按鈕 A&lt;/button&gt;
+&lt;button id=&quot;btnB&quot;&gt;按鈕 B&lt;/button&gt;
+</code></pre><p>javascript：</p>
+<pre><code>function SelectText(element) {
+  var doc = document,
+    text = doc.getElementById(element),
+    range, selection;
+  if (doc.body.createTextRange) {
+    range = document.body.createTextRange();
+    range.moveToElementText(text);
+    range.select();
+  } else if (window.getSelection) {
+    selection = window.getSelection();
+    range = document.createRange();
+    range.selectNodeContents(text);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+}
+
+document.getElementById(&#39;btnA&#39;).addEventListener(&#39;click&#39;, function() {
+  SelectText(&#39;textA&#39;);
+});
+document.getElementById(&#39;btnB&#39;).addEventListener(&#39;click&#39;, function() {
+  SelectText(&#39;textB&#39;);
+});
+</code></pre><p><br/>
+判斷式裡的<code>createTextRange</code>只有 IE 支援，所以上面這段程式碼之所以要加上判斷，主要也是區分瀏覽器使用，因為自己不用 IE 也沒辦法測試 ( mac 沒有 IE )，所以就直接忽略第一個判斷式裡頭的東西。</p>
+<p>再來可能是自己 javascript 見識淺薄，第一次看到<code>getSelection()</code>與<code>createRange()</code>這兩個方法，<code>getSelection()</code>目的在返回一個 selection 對象開始選取，而<code>createRange()</code>則定義了一個範圍 range，在上面的範例裏，使用了<code>selectNodeContents()</code>的方法，讓我們可以全選指定的 DOM 內的文字 ( 應該說選取整個指定的 DOM )。</p>
+<p>除了全選，我們也可以使用<code>setStart()</code>以及<code>setEnd()</code>的方法，指定要選取的文字，不過因為這兩個方法是針對「節點 Node」的操作，所以放在裡面的，就是我們要選擇節點，以及從這個節點起算的第幾個字元，因為我們要獲取文字，所以，可以參考以下的程式碼，當我們按下 A 的按鈕，第一行會有部分文字被選取起來，當我們按下 B 的按鈕，換成第二行有部分文字被選取起來。<br>( 範例：<a href="/demo/201508/select-text-demo02.html">select-text-demo02.html</a> )</p>
+<pre><code>function SelectText(element) {
+  var doc = document,
+    text = doc.getElementById(element),
+    range,
+    selection;
+  if (doc.body.createTextRange) {
+    range = document.body.createTextRange();
+    range.moveToElementText(text);
+    range.select();
+  } else if (window.getSelection) {
+    selection = window.getSelection();
+    range = document.createRange();
+    if (element == &#39;textA&#39;) {
+      range.setStart(text.firstChild, 1);
+      range.setEnd(text.firstChild, 7);
+    }
+    if (element == &#39;textB&#39;) {
+      range.setStart(text.firstChild, 5);
+      range.setEnd(text.firstChild, 8);
+    }
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+}
+
+document.getElementById(&#39;btnA&#39;).addEventListener(&#39;click&#39;, function() {
+  SelectText(&#39;textA&#39;);
+});
+document.getElementById(&#39;btnB&#39;).addEventListener(&#39;click&#39;, function() {
+  SelectText(&#39;textB&#39;);
+});
+</code></pre><p><br/></p>
+<p>除了純粹的選取之外，我們也可以使用<code>cloneContents()</code>的方法來同時複製並貼上，使用<code>deleteContents()</code>來刪除，使用<code>extractContents()</code>同時剪下並貼上 ( 移動 )，下面的範例做出三個按鈕，分別套用這三個方法。( 範例：<a href="/demo/201508/select-text-demo03.html">select-text-demo03.html</a> )</p>
+<pre><code>var p = document.getElementById(&#39;p&#39;);
+
+function SelectText(element, check) {
+  var doc = document,
+    text = doc.getElementById(element),
+    range,
+    selection;
+  if (doc.body.createTextRange) {
+    range = document.body.createTextRange();
+    range.moveToElementText(text);
+    range.select();
+  } else if (window.getSelection) {
+    selection = window.getSelection();
+    range = document.createRange();
+    range.setStart(text.firstChild, 1);
+    range.setEnd(text.firstChild, 5);
+    if (check == &#39;A&#39;) {
+      var oFragment = range.cloneContents();
+    }
+    if (check == &#39;B&#39;) {
+      var oFragment = range.extractContents();
+    }
+    if (check == &#39;C&#39;) {
+      var oFragment = range.deleteContents();
+    }
+    p.appendChild(oFragment);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+}
+
+document.getElementById(&#39;btnA&#39;).addEventListener(&#39;click&#39;, function() {
+  SelectText(&#39;text&#39;, &#39;A&#39;);
+});
+document.getElementById(&#39;btnB&#39;).addEventListener(&#39;click&#39;, function() {
+  SelectText(&#39;text&#39;, &#39;B&#39;);
+});
+document.getElementById(&#39;btnC&#39;).addEventListener(&#39;click&#39;, function() {
+  SelectText(&#39;text&#39;, &#39;C&#39;);
+});
+</code></pre><p><br/></p>
+<p>在實作第三個範例的時候，為了要使用<code>innerHTML</code>還是<code>appendChild</code>讓我有點頭疼，因為這邊 range 返回的是 node 對象，如果我們使用<code>innerHTML</code>就會發現出來的是節點的代碼，而並非相對應的內容文字，而使用<code>appendChild</code>是把整個節點放進去，自然就會是內容文字了，這邊其實不是很好理解，找了很多文章總算是有以下這個結論，我想這也應該是我 javascript 沒有深入學好才會出現這種問題吧！</p>
+<p>DOM 的三種節點：</p>
+<ul>
+<li><strong>元素節點</strong>：element node，各種標籤便是這些元素節點的名稱，元素節點可以包含其他元素，唯一沒有被包含只有根元素<code>&lt;html&gt;</code>。</li>
+<li><strong>屬性節點</strong>：attribute node，屬性節點總是被包含在元素節點之中，例如：<code>&lt;a href=&quot;網址&quot;&gt;連結文字&lt;/a&gt;</code>，a 是元素節點名稱，href 是屬性節點名稱。</li>
+<li><strong>文字節點</strong>：text node，標籤裡具體的文字內容，網頁最終目的是向使用者展示內容。</li>
+</ul>
+<p><br/></p>
+<p>最後附上這一篇文章我的參考資料：</p>
+<blockquote>
+<ul>
+<li><a href="http://blog.kkbruce.net/2012/02/javascript-w3c-dom.html#.VdHiKVOqqkp">JAVASCRIPT - W3C DOM簡介</a></li>
+<li><a href="http://www.cnblogs.com/rainman/archive/2011/02/28/1967488.html">Javascript标准DOM Range操作</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getSelection">MDN Window.getSelection</a></li>
+<li><a href="http://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse/987376#987376">Selecting text in an element</a></li>
+</ul>
+</blockquote>
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+
+            </div>
+          </div>
+        </div>  
+    </div>
+
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>
