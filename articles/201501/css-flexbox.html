@@ -117,19 +117,19 @@
 <ul>
 <li><p><strong>display</strong></p>
 <p>  display 是我們熟知的 CSS 屬性，對於 Flexbox 來說，多了有兩種方式可以設定，預設為「flex」，其布局方式與 block 幾乎類似，都會強迫換行，但設定<code>display:flex</code>的子元素卻具備了更多彈性的設定，此外另外一種方式則是「inline-flex」，和 inline-block 也是幾乎雷同，意義上都是一個<code>display:flex</code>的元素外面包覆<code>display:inline</code>的屬性，在後方的元素不會換行。( 範例：<a href="/demo/201501/css-flexbox-demo1.html">css-flexbox-demo1.html</a> )</p>
-<p>  CSS：</p>
-<pre><code>  .flex,
-  .inline-flex{
-      width:100px;
-      height:50px;
-      border:1px solid #000;
-  }
-  .flex{
-      display:flex;
-  }
-  .inline-flex{
-      display:inline-flex;
-  }
+<p>CSS：</p>
+<pre><code>.flex,
+.inline-flex{
+    width:100px;
+    height:50px;
+    border:1px solid #000;
+}
+.flex{
+    display:flex;
+}
+.inline-flex{
+    display:inline-flex;
+}
 </code></pre><p>  <img src="/img/articles/201501/20150130_1_03.jpg" alt="深入解析 CSS Flexbox"></p>
 </li>
 </ul>
@@ -141,23 +141,22 @@
 <li>row：預設值，由左到右，從上到下</li>
 <li>row-reverse：與 row 相反</li>
 <li>column：從上到下，再由左到右</li>
-<li><p>column-reverse：與 column 相反      </p>
-<p>CSS：</p>
-<p>.flex-row{</p>
-<pre><code>flex-direction:row;
-</code></pre><p>}
-.flex-row-reverse{</p>
-<pre><code>flex-direction:row-reverse;
-</code></pre><p>}
-.flex-column{</p>
-<pre><code>flex-direction:column;
-</code></pre><p>}
-.flex-column-reverse{</p>
-<pre><code>flex-direction:column-reverse;
-</code></pre><p>}  </p>
-<p><img src="/img/articles/201501/20150130_1_04.jpg" alt="深入解析 CSS Flexbox"></p>
-</li>
+<li>column-reverse：與 column 相反      </li>
 </ul>
+<p>CSS：</p>
+<pre><code>.flex-row{
+    flex-direction:row;
+}
+.flex-row-reverse{
+    flex-direction:row-reverse;
+}
+.flex-column{
+    flex-direction:column;
+}
+.flex-column-reverse{
+    flex-direction:column-reverse;
+}  
+</code></pre><p>  <img src="/img/articles/201501/20150130_1_04.jpg" alt="深入解析 CSS Flexbox"></p>
 </li>
 </ul>
 <p><br/></p>
@@ -243,11 +242,11 @@
 <li><p><strong>align-self</strong></p>
 <p>  align-self 的設定與 align-items 相同，但目的不同，align-self 的作用在於覆寫已經套用 align-items 的屬性，如果照我們以前所寫，因為 align-items 是針對子元素，所以必須要用 align-self 來進行覆寫，我們直接用上一個範例來修改就很清楚了。( 範例：<a href="/demo/201501/css-flexbox-demo5.html">css-flexbox-demo5.html</a>、<a href="http://www.w3.org/TR/css3-flexbox/#align-items-property">W3C 說明</a> )</p>
 <p>  CSS：</p>
-<pre><code>  .item2{
-      align-self:baseline;
-      line-height: 30px;
-      background:#095;
-  }
+<pre><code>.item2{
+    align-self:baseline;
+    line-height: 30px;
+    background:#095;
+}
 </code></pre><p>  <img src="/img/articles/201501/20150130_1_07.jpg" alt="深入解析 CSS Flexbox"></p>
 </li>
 </ul>
