@@ -97,7 +97,7 @@
 <h2>Google 語音辨識 API  <span class="article-date" tag="web">SEP 6, 2015</span></h2>
 <p>又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！( 不過我相信未來應該會支援的，畢竟瀏覽器的發展就是這樣咩，而且 iOS 平台的 Google App 也有內建語音辨識呀，但也不太一定，畢竟 iOS 上頭有個 Siri... )</p>
 <p>有興趣的人可以先到這個 demo 網站看看：<a href="https://www.google.com/intl/en/chrome/demos/speech.html">https://www.google.com/intl/en/chrome/demos/speech.html</a>，下拉選單選擇自己要念的語言，按一下右上的麥克風，就可以開始玩語音輸入了。</p>
-<p><img src="/img/articles/201509/20150906_1_02.jpg" alt="圖2"></p>
+<p><img src="/img/articles/201509/20150906_1_02.jpg" alt="Google 語音辨識 API"></p>
 <p>接著要來看一下怎麼實作語音辨識，語音辨識一開始要判斷「<strong>webkitSpeechRecognition</strong>」有沒有存在瀏覽器裡，因為這是內建於瀏覽器的 api，從 webkit 的字樣我們也可以知道，Firefox 和 IE 是一定 GG 的，所以一開始的程式可以這樣寫：</p>
 <pre><code>if (!(&#39;webkitSpeechRecognition&#39; in window)) {
   // do something...
@@ -151,7 +151,7 @@ recognition.onresult=function(event){
 };
 
 recognition.start();     
-</code></pre><p>  <img src="/img/articles/201509/20150906_1_03.jpg" alt="圖3"></p>
+</code></pre><p>  <img src="/img/articles/201509/20150906_1_03.jpg" alt="Google 語音辨識 API"></p>
 <p>  從印出來的結果可以看到，每一段話之間其實都存在著一個「isFinal」的屬性，這個屬性如果是 true，表示這段話結束，就會把這段話存為一個 result，因此我們可以從這邊發現幾個比較重要的 event 屬性如下：</p>
 <ul>
 <li><p><strong>event.results[i]</strong></p>
@@ -196,7 +196,7 @@ recognition.onresult=function(event){
 };
 
 recognition.start();  
-</code></pre><p>  <img src="/img/articles/201509/20150906_1_03.jpg" alt="圖3"></p>
+</code></pre><p>  <img src="/img/articles/201509/20150906_1_03.jpg" alt="Google 語音辨識 API"></p>
 </li>
 </ul>
 <p>以上就是利用現成的 Chrome 語音辨識 API 的應用實例，記得要使用的時候一定要有網路，而且網路的速度也決定了辨識的速度，畢竟他的運作原理是把我們的聲音錄製即時傳送出去辨識，所以網路越慢來往的時間就會拉大，最後再附上一個我用語音辨識來操控自走車的影片，真的滿有趣的喔！</p>

@@ -1,4 +1,10 @@
 [{
+  "tag": "tag-photo",
+  "title": "Photoshop SandStorm 沙塵暴效果",
+  "site": "/articles/201509/sandstorm.html",
+  "img": "/img/articles/201509/20150907_1_01.jpg",
+  "date": "SEP 7, 2015"
+},{
   "tag": "tag-web",
   "title": "Google 語音辨識 API",
   "site": "/articles/201509/web-speech-api.html",
