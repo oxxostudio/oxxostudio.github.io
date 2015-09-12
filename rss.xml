@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-09-07 22:40:00 GMT</pubDate>
+    <pubDate>2015-09-12 23:40:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SVG D3.js - transition ( tween、interpolate )</title>
+      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html</link>
+      <pubDate>2015-09-12 23:40:00 GMT</pubDate>
+      <description>之前有介紹過 d3.js 基本的 transition，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201509/20150912_1_01b.jpg</url>
+        <title>SVG D3.js - transition ( tween、interpolate )</title>
+        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html</link>
+      </image>
+    </item>
     <item>
       <title>Photoshop SandStorm 沙塵暴效果</title>
       <link>http://www.oxxostudio.tw/articles/201509/sandstorm.html</link>

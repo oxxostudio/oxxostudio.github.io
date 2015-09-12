@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - transition ( tween、interpolate ) - demo7</title>
+  <style>
+    div{
+      font-size:50px;
+      line-height: 60px;
+    }
+    #show{
+      width:200px;
+      height:50px;
+    }
+  </style>
+  <script src="/js/lib/d3.v3.min.js"></script>
+  <script>
+    window.addEventListener('load',function(){
+      var o = d3.select('#object');
+      var oi = d3.interpolateObject(
+        {x:0,y:1},{x:1,y:50,z:100}
+      );
+
+      console.log(oi(0.5));
+    },false);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
