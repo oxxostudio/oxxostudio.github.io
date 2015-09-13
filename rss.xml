@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-09-12 23:40:00 GMT</pubDate>
+    <pubDate>2015-09-14 00:10:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>SVG D3.js - 拖拉行為 ( Drag Behavior )</title>
+      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html</link>
+      <pubDate>2015-09-14 00:10:00 GMT</pubDate>
+      <description>這篇要來談一下 d3.js 裏頭的「拖拉行為」( Drag Behavior )，其實 drag 這個行為在 web 的世界裡頭早就存在已久，HTML5 出來之後更變成了一些基本的網頁行為，不過這個行為在 d3.js 該如何實現呢？其實 d3.js 早就已經幫我們做好了，不僅適用在 svg 裡頭，更可以應用在一般的網頁元素上頭。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201509/20150914_1_01.gif</url>
+        <title>SVG D3.js - 拖拉行為 ( Drag Behavior )</title>
+        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html</link>
+      </image>
+    </item>
     <item>
       <title>SVG D3.js - transition ( tween、interpolate )</title>
       <link>http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html</link>
