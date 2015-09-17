@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "SVG D3.js - Enter、Update 和 Exit",
+  "site": "/articles/201509/svg-d3-18-enter-update-exit.html",
+  "img": "/img/articles/201509/20150917_1_01.jpg",
+  "date": "SEP 17, 2015"
+},{
+  "tag": "tag-web",
   "title": "SVG D3.js - 縮放行為 ( Zoom Behavior )",
   "site": "/articles/201509/svg-d3-17-zoom-behavior.html",
   "img": "/img/articles/201509/20150915_1_01.jpg",

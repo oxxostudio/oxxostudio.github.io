@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+<meta property="article:published_time" content="2015-09-17T23:50:00+01:00">
+
+<meta name="keywords" content="svg,d3,d3js,enter,data,exit,update">
+
+<meta name="description" content="在我之前的文章有談過 D3.js 的資料處理，這篇要來在介紹一下資料處理當中很重要的三個元素：enter、update 和 exit，為什麼說很重要呢？因為這三個元素可以處理當畫面元素 ( Elements ) 和資料數量 ( data ) 不相等的情形。">
+
+<meta itemprop="name" content="SVG D3.js - Enter、Update 和 Exit - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150917_1_01b.jpg">
+
+<meta itemprop="description" content="在我之前的文章有談過 D3.js 的資料處理，這篇要來在介紹一下資料處理當中很重要的三個元素：enter、update 和 exit，為什麼說很重要呢？因為這三個元素可以處理當畫面元素 ( Elements ) 和資料數量 ( data ) 不相等的情形。">
+
+<meta property="og:title" content="SVG D3.js - Enter、Update 和 Exit - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-18-enter-update-exit.html" target="_blank">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150917_1_01b.jpg">
+
+<meta property="og:description" content="在我之前的文章有談過 D3.js 的資料處理，這篇要來在介紹一下資料處理當中很重要的三個元素：enter、update 和 exit，為什麼說很重要呢？因為這三個元素可以處理當畫面元素 ( Elements ) 和資料數量 ( data ) 不相等的情形。">
+
+<title>SVG D3.js - Enter、Update 和 Exit - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>SVG D3.js - Enter、Update 和 Exit <span class="article-date" tag="web">SEP 17, 2015</span></h2>
+<p>在我之前的文章有談過 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html">D3.js 的資料處理</a>，這篇要來在介紹一下資料處理當中很重要的三個元素：enter、update 和 exit ( 不知道為什麼當初寫那篇文章沒有寫到哈哈 )，為什麼說很重要呢？因為這三個元素可以處理當畫面元素 ( Elements ) 和資料數量 ( data ) 不相等的情形。</p>
+<p>以下面這張圖來說，我們利用 enter 來放入資料，如果資料有多少筆，就會在背景「預先」產生多少個元素，當 enter 指令發生的當下，就會把這些預先產生的元素放到畫面裏，而資料和元素數量相等的部分，我們就稱之為「update」，如果資料比元素多，「enter」就會自動生成對應數量的元素來因應，如果資料比元素少，就可以用 exit 指令來列出多的元素，再利用 remove 來移除，這就是 enter 到 update 到 exit 的標準流程。( 簡單來說，enter 就是多出來的，update 就是相等，exit 就是少掉的 )</p>
+<p><img src="/img/articles/201509/20150917_1_01b.jpg" alt="SVG D3.js - Enter、Update 和 Exit"></p>
+<p>舉個例子來說，今天我們在畫面裡有三個 div，但是有一個長度為 5 的陣列要放進去，一開始我們先用 data 來裝入資料，可以看到第一個 console 出來的結果雖然長度是 5，但是內容卻只有三個，這三個就是 update，我們就用一個名為 update 的變數裝著，第二個 console 印出來的雖然長度是 5，但內容卻只有兩個，這就是 enter，因此我用一個名為 enter 的變數裝著。( 範例：<a href="/demo/201509/svg-d3-18-enter-update-exit-demo01.html">svg-d3-18-enter-update-exit-demo01.html</a> )</p>
+<pre><code>var data = [1,2,3,4,5];
+
+var d = d3.select(&#39;body&#39;).selectAll(&#39;div&#39;);
+
+var update = d.data(data);
+console.log(update);
+
+var enter = update.enter();
+console.log(enter);
+</code></pre><p><img src="/img/articles/201509/20150917_1_02.jpg" alt="SVG D3.js - Enter、Update 和 Exit"></p>
+<p>再來我們就用 append div，把這些資料秀出來，並且標明哪些是 enter 產生進去的，這時候我們打開 console 就可以看到一個有趣的現象，突然間 update 的資料變成五筆了，原因無他，因為當 enter 事件發生時，就產生了五個 div，導致我們的 console 就出現五筆資料。( 非同步 )( 範例：<a href="/demo/201509/svg-d3-18-enter-update-exit-demo02.html">svg-d3-18-enter-update-exit-demo02.html</a> )</p>
+<pre><code>update.append(&#39;div&#39;)
+  .text(function(d){
+    return &#39;update: &#39;+d;
+  });
+
+enter.append(&#39;div&#39;)
+  .text(function(d){
+    return &#39;enter: &#39;+d;
+  });
+</code></pre><p><img src="/img/articles/201509/20150917_1_03.jpg" alt="SVG D3.js - Enter、Update 和 Exit"></p>
+<p>如果今天資料量比元素量少，又該如何處理呢？跟剛剛一樣的做法，先來看一下 console 怎麼說，因為我們有三個資料，所以預設的 update 出來就會是 3 筆，而 exit 看到的則是元素有五個，所以長度是五，但內容卻列出來後面兩個空值。( 範例：<a href="/demo/201509/svg-d3-18-enter-update-exit-demo03.html">svg-d3-18-enter-update-exit-demo03.html</a> )</p>
+<pre><code>var data = [1,2,3];
+
+var d = d3.select(&#39;body&#39;).selectAll(&#39;div&#39;);
+
+var update = d.data(data);
+console.log(update);
+
+var exit = update.exit();
+console.log(exit);
+</code></pre><p><img src="/img/articles/201509/20150917_1_04.jpg" alt="SVG D3.js - Enter、Update 和 Exit"></p>
+<p>接著就是把資料秀出來，如果是 exit 就出現 exit 的文字。( 範例：<a href="/demo/201509/svg-d3-18-enter-update-exit-demo04.html">svg-d3-18-enter-update-exit-demo04.html</a> )</p>
+<pre><code>update.append(&#39;div&#39;)
+  .text(function(d){
+    return &#39;update: &#39;+d;
+  });
+
+exit.append(&#39;div&#39;)
+  .text(function(d){
+    return &#39;this is exit&#39;;
+  });
+</code></pre><p><img src="/img/articles/201509/20150917_1_05.jpg" alt="SVG D3.js - Enter、Update 和 Exit"></p>
+<p>最後我們也可以用<code>exit.remove()</code>將多出來的資料移除，就可以呈現資料相對應的數量元素在畫面上，以上就是 enter、update、exit 的典型用法，也是 d3.js 官方網站的第一頁就有提到的，非常之重要呀！</p>
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+
+            </div>
+          </div>
+        </div>  
+    </div>
+
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>
