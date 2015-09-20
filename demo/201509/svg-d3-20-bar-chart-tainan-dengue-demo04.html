@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 直條圖 ( 以登革熱數據為例 )  - demo04</title>
+  <style>
+    h2{
+      margin:10px;
+    }
+    button{
+      border:none;
+      background:#ddd;
+    }
+    select{
+      margin:0 0 10px 5px;
+      font-size:16px;
+    }
+    #menu{
+      margin:0 0 10px 10px ;
+    }
+  </style>
+  <script src="/js/lib/d3.v3.min.js"></script>
+  <script>
+    window.addEventListener('load',function(){
+
+      d3.csv("tainan-dengue.csv", function(data) {
+
+        var area1 = d3.nest()
+        .key(function(d){
+          return d.區別;
+        })
+        .entries(data); 
+        choose(area1);
+
+        var area2 = d3.nest()
+        .key(function(d){
+          return d.里別;
+        })
+        .entries(data); 
+
+        d3.select('#menu').on('change',function(){
+
+          if(this.value==1){
+            choose(area1);
+          }else{
+            choose(area2);
+          }
+        });
+
+
+        function choose(area){
+
+          d3.select('#submenu').selectAll('option').remove();
+          d3.selectAll('svg').remove();
+
+          d3.select('#submenu').selectAll('option')
+            .data(area)
+            .enter()
+            .append('option')
+            .attr({
+              'value':function(d){
+                return d.key;
+              }
+            })
+            .text(function(d){
+              return d.key + ' ( ' +d.values.length+ ' )';
+            });
+
+
+          var dataMap = d3.map(area,function(d){return d.key;});
+          if(dataMap.has('關廟區')){
+            areaData = dataMap.get('關廟區');
+            draw(areaData.values);
+          }else if(dataMap.has('南花里')){
+            areaData = dataMap.get('南花里');
+            draw(areaData.values);
+          }
+
+          d3.select('#submenu')
+            .on('change',function(){
+              var dataMap = d3.map(area,function(d){return d.key;});
+              if(dataMap.has(this.value)){
+                areaData = dataMap.get(this.value);
+                draw(areaData.values);
+              }
+            });
+        }
+
+        function draw(drawData){
+
+          d3.selectAll('svg').remove();
+
+          var day = d3.nest()
+          .key(function(d){
+            return d.確診日;
+          })
+          .entries(drawData); 
+
+          for(var i=0; i<day.length; i++){
+            if(i<9){
+              day[i]._id = '0'+(i+1).toString();
+            }else{
+              day[i]._id = (i+1).toString();
+            }
+          }
+
+          var dayById = d3.nest()
+          .key(function(d){
+            return d._id;
+          }).sortKeys(d3.descending)
+          .entries(day); 
+
+          for(var j=0; j<dayById.length; j++){
+              dayById[j]._id = j+1;
+          }
+
+          var s = d3.select('body').append('svg')
+                    .attr({
+                      'width':400,
+                      'height':dayById.length*15+20
+                    }).style({
+                      'border':'1px solid #000',
+                      'margin':'0 11px'
+                    });
+          var rect = s.append('g')
+                      .attr({
+                        'id':'rect'
+                      });
+          var num = s.append('g')
+                      .attr({
+                        'id':'num'
+                      });
+          var date = s.append('g')
+                      .attr({
+                        'id':'date'
+                      });
+
+          rect.selectAll('rect')
+            .data(dayById)
+            .enter()
+            .append('rect')
+            .attr({
+              'width':function(d){
+                return d.values[0].values.length;
+              },
+              'height':10,
+              'fill':function(d){
+                if(d.values[0].values.length>150){
+                  return '#c00';
+                }else if(d.values[0].values.length>110&&d.values[0].values.length<=150){
+                  return '#f90';
+                }else if(d.values[0].values.length>60&&d.values[0].values.length<=110){
+                  return '#aa0';
+                }else if(d.values[0].values.length>20&&d.values[0].values.length<=60){
+                  return '#ac0';
+                }else{
+                  return '#6c0';
+                }
+              },
+              'x':100,
+              'y':function(d){
+                return d._id*15;
+              }
+            });
+
+          num.selectAll('text')
+            .data(dayById)
+            .enter()
+            .append('text')
+            .attr({
+              'fill':'#000',
+              'x':function(d){
+                return d.values[0].values.length+105;
+              },
+              'y':function(d){
+                return d._id * 15 + 10;
+              }
+            }).text(function(d){
+              return d.values[0].values.length;
+            }).style({
+              'font-size':'12px'
+            });
+
+          date.selectAll('text')
+            .data(dayById)
+            .enter()
+            .append('text')
+            .attr({
+              'fill':'#000',
+              'text-anchor': 'end',
+              'x':90,
+              'y':function(d){
+                return d._id * 15 + 10;
+              }
+            }).text(function(d){
+              return d.values[0].values[0].確診日;
+            }).style({
+              'font-size':'12px'
+            });
+        }
+      });
+
+    },false);
+  </script>
+</head>
+
+<body>
+  <h2>台南市登革熱病例長條圖</h2>
+  <select id="menu">
+    <option value="1">行政區</option>
+    <option value="2">里</option>
+  </select>
+  <select id="submenu">
+  </select>
+  <br>
+</body>
+
+</html>

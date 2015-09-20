@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+<meta property="article:published_time" content="2015-09-20T17:50:00+01:00">
+
+<meta name="keywords" content="svg,d3,d3js,bar,chart,bar chart,直條圖,登革熱,台南">
+
+<meta name="description" content="在上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。">
+
+<meta itemprop="name" content="SVG D3.js - 直條圖 ( 以登革熱數據為例 ) - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150920_1_01b.jpg">
+
+<meta itemprop="description" content="在上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。">
+
+<meta property="og:title" content="SVG D3.js - 直條圖 ( 以登革熱數據為例 )  - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html" target="_blank">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150920_1_01b.jpg">
+
+<meta property="og:description" content="在上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。">
+
+<title>SVG D3.js - 直條圖 ( 以登革熱數據為例 )  - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>SVG D3.js - 直條圖 ( 以登革熱數據為例 ) <span class="article-date" tag="web">SEP 20    , 2015</span></h2>
+<p><img src="/img/articles/201509/20150920_1_01.jpg" class="preview-img"></p>
+<p>在 <a href="svg-d3-19-bar-chart.html">上一篇</a> 我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。</p>
+<p>因為要繪圖，就需要資料，我這邊使用的資料是台南的登革熱每日病例 ( 參考 <a href="http://data.tainan.gov.tw/dataset/dengue-dist/resource/fb2e5df8-d5dc-42d6-9fc2-8d638205a7aa">104年臺南市本土登革熱病例數</a>，使用 csv 需要跨域，可以用後端爬一份放在自己的 server 即可，不過覺得台南市政府可以用成英文啦，中文會有編碼的問題呀！ )，我抓了一份 csv 檔，用裡面的「確診日期」以及「編號 ( 加總就變成病例數 )」，就可以得到我們要畫圖的 data。</p>
+<p>接著我使用了 d3.nest 把「日期」變成「key」，如此一來就可以知道每個日期裡面的「陣列長度」，陣列長度也就是病例數，因為透過 d3.nest 的轉換，已經變成陣列，不過因為後續需要編號來做位置排列、升冪、降冪排列，所以新增一個名為 _id 的屬性。不過因為這份 CSV 數據的日期格式，讓我在做升冪降冪排序遇到一些問題 ( 9/2 會在 9/10 的後面 )，所以我就再度利用 d3.nest 把剛剛的 _id 當 key，用 _id 來排序就解決了。( 範例：<a href="/demo/201509/svg-d3-20-bar-chart-tainan-dengue-demo01.html">svg-d3-20-bar-chart-tainan-dengue-demo01.html</a> )</p>
+<pre><code>d3.csv(&quot;tainan-dengue.csv&quot;, function(data) {
+  var day = d3.nest()
+  .key(function(d){
+    return d.確診日;
+  })
+  .entries(data); 
+
+  for(var i=0; i&lt;day.length; i++){
+    if(i&lt;9){
+      day[i]._id = &#39;0&#39;+(i+1).toString();
+    }else{
+      day[i]._id = (i+1).toString();
+    }
+  }
+
+  var dayById = d3.nest()
+  .key(function(d){
+    return d._id;
+  }).sortKeys(d3.descending)
+  .entries(day); 
+
+  for(var j=0; j&lt;dayById.length; j++){
+      dayById[j]._id = j+1;
+  }
+
+  console.log(dayById);
+</code></pre><p><img src="/img/articles/201509/20150920_1_02.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
+<p>有了數據之後，我們要來用 SVG 畫圖，首先我們在 body 裡用 d3.js 放入一個 svg，內容放上三個 g ( 群組 )，分別用變數 rect、num 和 date 表示，rect 是要放置矩形，也就是我們的長條圖，date 標示日期，num 表示該日期的病例數，svg 的高度我是用每個矩形的高度加總，上下 padding 10 來計算。</p>
+<pre><code>var s = d3.select(&#39;body&#39;).append(&#39;svg&#39;)
+          .attr({
+            &#39;width&#39;:800,
+            &#39;height&#39;:day.length*15+20
+          }).style({
+            &#39;border&#39;:&#39;1px solid #000&#39;
+          });
+var rect = s.append(&#39;g&#39;)
+            .attr({
+              &#39;id&#39;:&#39;rect&#39;
+            });
+var num = s.append(&#39;g&#39;)
+            .attr({
+              &#39;id&#39;:&#39;num&#39;
+            });
+var date = s.append(&#39;g&#39;)
+            .attr({
+              &#39;id&#39;:&#39;date&#39;
+            });
+</code></pre><p><br/></p>
+<p>先來畫矩形，矩形的寬度就直接用病例數來表示，病例越多就越長，高度設為 10，利用 y 座標來做一個間距的 padding，顏色的部分會根據不同的病例數呈現不同的顏色，x 的座標先加 100，目的是讓前面可以放日期。</p>
+<pre><code>rect.selectAll(&#39;rect&#39;)
+  .data(dayById)
+  .enter()
+  .append(&#39;rect&#39;)
+  .attr({
+    &#39;width&#39;:function(d){
+      return d.values[0].values.length;
+    },
+    &#39;height&#39;:10,
+    &#39;fill&#39;:function(d){
+      if(d.values[0].values.length&gt;300){
+        return &#39;#c00&#39;;
+      }else if(d.values[0].values.length&gt;200&amp;&amp;d.values[0].values.length&lt;=300){
+        return &#39;#f90&#39;;
+      }else if(d.values[0].values.length&gt;100&amp;&amp;d.values[0].values.length&lt;=200){
+        return &#39;#aa0&#39;;
+      }else if(d.values[0].values.length&gt;50&amp;&amp;d.values[0].values.length&lt;=100){
+        return &#39;#ac0&#39;;
+      }else{
+        return &#39;#6c0&#39;;
+      }
+    },
+    &#39;x&#39;:100,
+    &#39;y&#39;:function(d){
+      return d._id*15;
+    }
+  });
+</code></pre><p><br/></p>
+<p>再來是病例的數字，這裏我要讓病例的數字會接在長條圖後方呈現，所以 x 的位置就比長條圖多了 5 也就是 105，y 的位置因為矩形有 10 的高度，所以這裡就加 10，高度才會剛剛好對齊。</p>
+<pre><code>num.selectAll(&#39;text&#39;)
+  .data(dayById)
+  .enter()
+  .append(&#39;text&#39;)
+  .attr({
+    &#39;fill&#39;:&#39;#000&#39;,
+    &#39;x&#39;:function(d){
+      return d.values[0].values.length+105;
+    },
+    &#39;y&#39;:function(d){
+      return d._id * 15 + 10;
+    }
+  }).text(function(d){
+    return d.values[0].values.length;
+  }).style({
+    &#39;font-size&#39;:&#39;12px&#39;
+  });
+</code></pre><p><br/></p>
+<p>最後就是日期的文字，做法和病例數一模一樣，比較特別的是在 SVG 裏頭文字的靠右對齊，要用<code>text-anchor=end</code>。</p>
+<pre><code>date.selectAll(&#39;text&#39;)
+  .data(dayById)
+  .enter()
+  .append(&#39;text&#39;)
+  .attr({
+    &#39;fill&#39;:&#39;#000&#39;,
+    &#39;text-anchor&#39;: &#39;end&#39;,
+    &#39;x&#39;:90,
+    &#39;y&#39;:function(d){
+      console.log(d);
+      return d._id * 15 + 10;
+    }
+  }).text(function(d){
+    return d.values[0].values[0].確診日;
+  }).style({
+    &#39;font-size&#39;:&#39;12px&#39;
+  });
+</code></pre><p><br/></p>
+<p>做到這個步驟，基本上已經可以看到一個台南到 2015/9/17 為止的登革熱狀況，希望疫情趕快趨緩呀！！( 範例：<a href="/demo/201509/svg-d3-20-bar-chart-tainan-dengue-demo02.html">svg-d3-20-bar-chart-tainan-dengue-demo02.html</a> )</p>
+<p><img src="/img/articles/201509/20150920_1_03.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
+<p>同樣的做法，我們其實也可以篩出台南哪個區，幾月幾號有多少確診數，大概就可以知道該地區疫情有沒有控制下來，如果要這麼做，我們就要把剛剛用 d3.nest 篩選的 key 換成「區別」，有了「區別」之後，我們就有各個區各自的數據，接下來就只要把上面的做法用一個 draw 的 function 包起來，點選按鈕的時候執行即可，然後一開始先把所有 svg 清空作重繪的動作。</p>
+<p>為什麼這裡要用「重繪」而不用上一篇的動畫呢？因為資料格式其實沒有很完整，如果以「區別」來說，並不是一連連續的日期，當然要用前端的方式處理讓日期連續也是可以，但必須花費不少的力氣才能完成，因為這純粹是展示直條圖的效果，就不在這邊做了。( 範例：<a href="/demo/201509/svg-d3-20-bar-chart-tainan-dengue-demo03.html">svg-d3-20-bar-chart-tainan-dengue-demo03.html</a> )</p>
+<pre><code>d3.csv(&quot;tainan-dengue.csv&quot;, function(data) {
+
+  var area = d3.nest()
+  .key(function(d){
+    return d.區別;
+  })
+  .entries(data); 
+
+  console.log(area);
+
+  d3.select(&#39;#button&#39;).selectAll(&#39;button&#39;)
+    .data(area)
+    .enter()
+    .append(&#39;button&#39;)
+    .text(function(d){
+          return d.key + &#39; ( &#39; +d.values.length+ &#39; )&#39;;
+    }).style({
+      &#39;margin&#39;:&#39;2px&#39;,
+      &#39;padding&#39;:&#39;5px&#39;
+    }).on(&#39;click&#39;,function(d){
+      d3.selectAll(&#39;button&#39;).style({
+        &#39;background&#39;:&#39;#ddd&#39;,
+        &#39;color&#39;:&#39;#000&#39;
+      });
+      this.style.background = &#39;#666&#39;;
+      this.style.color = &#39;#fff&#39;;
+      var areaData = d.values;
+      draw(areaData);
+    });
+
+  function draw(drawData){
+
+      d3.selectAll(&#39;svg&#39;).remove();
+
+      //剛剛做的事情
+
+   }
+});
+</code></pre><p><img src="/img/articles/201509/20150920_1_04.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
+<p>以上就是利用政府的開放資料所做的長條圖實例，開放資料的格式百百款，如何善用 d3.js 的數據處理能力，把資料變成我們要的格式，就可以輕輕鬆鬆地畫出圖形囉！最後我將上面的程式改良，變成下拉選單的方式，可以選擇行政區和里，分享給大家。( 範例：<a href="/demo/201509/svg-d3-20-bar-chart-tainan-dengue-demo04.html">svg-d3-20-bar-chart-tainan-dengue-demo04.html</a> )</p>
+<p><img src="/img/articles/201509/20150920_1_05.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+
+            </div>
+          </div>
+        </div>  
+    </div>
+
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

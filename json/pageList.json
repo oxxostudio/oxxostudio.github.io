@@ -1,5 +1,17 @@
 [{
   "tag": "tag-web",
+  "title": "SVG D3.js - 直條圖 ( 以登革熱數據為例 )",
+  "site": "/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html",
+  "img": "/img/articles/201509/20150920_1_01.jpg",
+  "date": "SEP 20, 2015"
+},{
+  "tag": "tag-web",
+  "title": "SVG D3.js - 直條圖 ( Bar Chart )",
+  "site": "/articles/201509/svg-d3-19-bar-chart.html",
+  "img": "/img/articles/201509/20150919_1_01.gif",
+  "date": "SEP 19, 2015"
+},{
+  "tag": "tag-web",
   "title": "SVG D3.js - Enter、Update 和 Exit",
   "site": "/articles/201509/svg-d3-18-enter-update-exit.html",
   "img": "/img/articles/201509/20150917_1_01.jpg",

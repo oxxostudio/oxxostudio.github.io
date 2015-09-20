@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-09-17 23:55:00 GMT</pubDate>
+    <pubDate>2015-09-20 17:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,30 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>VG D3.js - 直條圖 ( 以登革熱數據為例 )</title>
+      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html</link>
+      <pubDate>2015-09-20 17:55:00 GMT</pubDate>
+      <description>在上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201509/20150920_1_01b.jpg</url>
+        <title>VG D3.js - 直條圖 ( 以登革熱數據為例 )</title>
+        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html</link>
+      </image>
+    </item>
+    <item>
+      <title>SVG D3.js - 直條圖 ( Bar Chart )</title>
+      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-19-bar-chart.html</link>
+      <pubDate>2015-09-19 23:55:00 GMT</pubDate>
+      <description>在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201509/20150919_1_01b.jpg</url>
+        <title>SVG D3.js - 直條圖 ( Bar Chart )</title>
+        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-19-bar-chart.html</link>
+      </image>
+    </item>
     <item>
       <title>SVG D3.js - Enter、Update 和 Exit</title>
       <link>http://www.oxxostudio.tw/articles/201509/svg-d3-18-enter-update-exit.html</link>
