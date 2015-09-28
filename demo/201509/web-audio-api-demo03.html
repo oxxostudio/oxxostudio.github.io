@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>初探 Web Audio API - demo03</title>
+  <style>
+    body{
+      font-size:20px;
+    }
+    span{
+      display:inline-block;
+      width:120px;
+      margin:10px 0;
+    }
+    button{
+      font-size:18px;
+    }
+    .r{
+      width:300px;
+      margin:10px;
+    }
+    .selected{
+      outline:3px solid #f80;
+    }
+  </style>
+  <script>
+
+    window.addEventListener('load',function(){
+
+      var AudioContext = AudioContext || webkitAudioContext;
+      var context      = new AudioContext;
+      var oscillator   = context.createOscillator();
+      var sound,
+          type = 'sine',
+          frequency = 440,
+          detune = 0,
+          volume = 1,
+          p = 0;
+
+      var startBtn      = document.getElementById('startBtn'),
+        stopBtn        = document.getElementById('stopBtn'),
+        sineBtn        = document.getElementById('sineBtn'),
+        squareBtn      = document.getElementById('squareBtn'),
+        sawtoothBtn    = document.getElementById('sawtoothBtn'),
+        triangleBtn    = document.getElementById('triangleBtn'),
+        frequencyRange = document.getElementById('frequencyRange'),
+        showFrequency  = document.getElementById('showFrequency'),
+        detuneRange    = document.getElementById('detuneRange'),
+        showDetune     = document.getElementById('showDetune'),
+        volumeRange    = document.getElementById('volumeRange'),
+        showVolume     = document.getElementById('showVolume');
+
+      var _gain = function(t,f,d,g){
+        oscillator.type = t;
+        oscillator.frequency.value = f;
+        oscillator.detune.value = d;
+        gainNodes = context.createGain();
+        gainNodes.gain.value = g;  
+        oscillator.connect(gainNodes);
+        return gainNodes;
+      }
+
+      function _sound(){
+        if(p == 1){
+          sound.disconnect(context.destination);
+          sound = _gain(type,frequency,detune,volume);
+          sound.connect(context.destination);
+        }
+      }
+
+      function _typeClick(e){  
+        sineBtn.style.outline = 'none';
+        squareBtn.style.outline = 'none';
+        sawtoothBtn.style.outline = 'none';
+        triangleBtn.style.outline = 'none';
+        e.style.outline = '3px solid #f80'; 
+      }
+
+      startBtn.addEventListener('click',function(){
+        p = 1;
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        sound = _gain(type,frequency,detune,volume);
+        sound.connect(context.destination);
+      });
+
+      stopBtn.addEventListener('click',function(){
+        p = 0;
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        sound.disconnect(context.destination);
+      });
+
+      sineBtn.addEventListener('click',function(){
+        type = 'sine';
+        _typeClick(this);
+        _sound();
+      });
+
+      squareBtn.addEventListener('click',function(){
+        type = 'square';
+        _typeClick(this);
+        _sound();
+      });
+
+      sawtoothBtn.addEventListener('click',function(){
+        type = 'sawtooth';
+        _typeClick(this);
+        _sound();
+      });
+
+      triangleBtn.addEventListener('click',function(){
+        type = 'triangle';
+        _typeClick(this);
+        _sound();
+      });
+
+      frequencyRange.addEventListener('mousedown',function(){
+        this.addEventListener('mousemove',function(){
+          frequency = this.value;
+          showFrequency.innerHTML = frequency;
+          _sound();
+        });
+      });
+
+      detuneRange.addEventListener('mousedown',function(){
+        this.addEventListener('mousemove',function(){
+          detune = this.value;
+          showDetune.innerHTML = detune;
+          _sound();
+        });
+      });
+
+      volumeRange.addEventListener('mousedown',function(){
+        this.addEventListener('mousemove',function(){
+          volume = this.value;
+          showVolume.innerHTML = volume;
+          _sound();
+        });
+      });
+
+      oscillator.start();
+
+    },false);
+  </script>
+</head>
+
+<body>  
+  <button id="startBtn">播放</button>
+  <button id="stopBtn" disabled>停止</button>
+  <br/>
+  <span>type: </span>
+    <button id="sineBtn" class="selected">sine</button>
+    <button id="squareBtn">square</button>
+    <button id="sawtoothBtn">sawtooth</button>
+    <button id="triangleBtn">triangle</button>
+  <br/>
+  <span>frequency: </span><input type="range" min="0" max="3000" step="1" value="440" id="frequencyRange" class="r"><i id="showFrequency">440</i>
+  <br/>
+  <span>detune: </span><input type="range" min="-1000" max="1000" step="1" value="0" id="detuneRange" class="r"><i id="showDetune">1</i>
+  <br/>
+  <span>volume: </span><input type="range" min="0" max="2" step="0.1" value="1" id="volumeRange" class="r"><i id="showVolume">1</i>
+</body>
+
+</html>

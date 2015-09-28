@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>初探 Web Audio API - demo02</title>
+  <script>
+    var AudioContext = AudioContext || webkitAudioContext;
+    var context = new AudioContext;
+
+    var oscillator1 = context.createOscillator();
+    oscillator1.type = "square";
+    oscillator1.frequency.value = 440;
+    oscillator1.detune.value = -400;
+    oscillator1.connect(context.destination);
+    oscillator1.start();
+    oscillator1.stop(2);
+
+    var oscillator2 = context.createOscillator();
+    oscillator2.type = "square";
+    oscillator2.frequency.value = 440;
+    oscillator2.detune.value = -400;
+    gainNode = context.createGain();  // 創建 gainNode
+    gainNode.gain.value = 0.3;        // 設定音量
+    oscillator2.connect(gainNode);    // 將聲音連到 gainNode 
+    gainNode.connect(context.destination); // 播放 gainNode
+    oscillator2.start(2);
+    oscillator2.stop(4);
+  </script>
+</head>
+
+<body>  
+
+</body>
+
+</html>

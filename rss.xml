@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-09-20 17:55:00 GMT</pubDate>
+    <pubDate>2015-09-28 16:35:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -14,14 +14,26 @@
       <link>http://www.oxxostudio.tw/</link>
     </image>
     <item>
-      <title>VG D3.js - 直條圖 ( 以登革熱數據為例 )</title>
+      <title>初探 Web Audio API</title>
+      <link>http://www.oxxostudio.tw/articles/201509/web-audio-api.html</link>
+      <pubDate>2015-09-28 16:35:00 GMT</pubDate>
+      <description>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201509/20150928_1_01b.jpg</url>
+        <title>初探 Web Audio API</title>
+        <link>http://www.oxxostudio.tw/articles/201509/web-audio-api.html</link>
+      </image>
+    </item>
+    <item>
+      <title>SVG D3.js - 直條圖 ( 以登革熱數據為例 )</title>
       <link>http://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html</link>
       <pubDate>2015-09-20 17:55:00 GMT</pubDate>
       <description>在上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉
       </description>
       <image>
         <url>http://www.oxxostudio.tw/img/articles/201509/20150920_1_01b.jpg</url>
-        <title>VG D3.js - 直條圖 ( 以登革熱數據為例 )</title>
+        <title>SVG D3.js - 直條圖 ( 以登革熱數據為例 )</title>
         <link>http://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html</link>
       </image>
     </item>
