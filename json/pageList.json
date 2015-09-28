@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "聲音參數與音量節點 ( AudioParam,GainNode ) ",
+  "site": "/articles/201509/web-audio-api-audioparam-gainnode.html",
+  "img": "/img/articles/201509/20150929_1_01.jpg",
+  "date": "SEP 29, 2015"
+},{
+  "tag": "tag-web",
   "title": "初探 Web Audio API",
   "site": "/articles/201509/web-audio-api.html",
   "img": "/img/articles/201509/20150928_1_01.jpg",
