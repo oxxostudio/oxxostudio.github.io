@@ -19,7 +19,7 @@
 
 <meta itemprop="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。">
 
-<meta property="og:title" content="初探 Web Audio API- OXXO.STUDIO">
+<meta property="og:title" content="初探 Web Audio API - OXXO.STUDIO">
 
 <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api.html" target="_blank">
 
@@ -96,13 +96,13 @@
 
 <h2>初探 Web Audio API <span class="article-date" tag="web">SEP 28    , 2015</span></h2>
 <p><img src="/img/articles/201509/20150928_1_01.jpg" class="preview-img"></p>
-<p>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：h<a href="http://webaudio.github.io/web-audio-api/">ttp://webaudio.github.io/web-audio-api/</a></p>
+<p>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：<a href="http://webaudio.github.io/web-audio-api/">http://webaudio.github.io/web-audio-api/</a></p>
 <p>要使用 Web Audio API，第一步就是要創建一個 AudioContext，AudioContext 是一個聲音的容器，在 AudioContext 裡，我們可以針對聲音做各種的處理，在裡頭，AudioSourceNode 表示音訊來源，而聲音是以節點的方式 ( AudioNode ) 存在，每個節點都有輸入和輸出，只有來源節點沒有輸入，聲音除了可以用外部的輸入 ( wav、mp3、ogg...等 )，也可以使用振盪器 ( Oscillators ) 來產生，原理就有點像我們彈奏弦樂器，也是利用樂器內的弦震盪來發聲。</p>
 <p>既然是初探 Web Audio API，就用一個簡單的例子入手，由於我們在範例裡要用的是 Web Audio API，就一定會用到 AudioContext，所以我們要先來看看瀏覽器有沒有支援 ( 行動裝置目前還不支援 )，一開始先這樣寫，套用有支援的 AudioContext。</p>
 <pre><code>var AudioContext = AudioContext || webkitAudioContext;
 var context = new AudioContext;
 </code></pre><p><br/></p>
-<p>有了裝載聲音的容器之後，接著就用振盪器來發點聲音，先用<code>reateOscillator()</code>來產生振盪器，振盪器有四種屬性：</p>
+<p>有了裝載聲音的容器之後，接著就用振盪器來發點聲音，先用<code>createOscillator()</code>來產生振盪器，振盪器有四種屬性：</p>
 <ul>
 <li><p><strong>type：</strong></p>
 <p>  <code>type</code>選擇震盪的波形，波形共有五種 type，分別是 sine ( 正弦波 )、square ( 方波 )、sawtooth ( 鋸齒波 )、triangle ( 三角波 )    和 custom ( 自訂 )，每種波形在同樣的頻率下，會產生不同的聲音。</p>
