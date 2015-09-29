@@ -244,30 +244,24 @@ sineBtn.addEventListener(&#39;click&#39;,function(){
   _sound();
 });
 </code></pre><p><br/></p>
-<p>range 的部分，用了 mousedown 和 mousemove 互相搭配：</p>
-<pre><code>frequencyRange.addEventListener(&#39;mousedown&#39;,function(){
-  this.addEventListener(&#39;mousemove&#39;,function(){
-    frequency = this.value;
-    showFrequency.innerHTML = frequency;
-    _sound();
-  });
-});
+<p>range 的部分，用了<code>oninput</code>：</p>
+<pre><code>frequencyRange.oninput = function(){
+  frequency = this.value;
+  showFrequency.innerHTML = frequency;
+  _sound();
+};
 
-detuneRange.addEventListener(&#39;mousedown&#39;,function(){
-  this.addEventListener(&#39;mousemove&#39;,function(){
-    detune = this.value;
-    showDetune.innerHTML = detune;
-    _sound();
-  });
-});
+detuneRange.oninput = function(){
+  detune = this.value;
+  showDetune.innerHTML = detune;
+  _sound();
+};
 
-volumeRange.addEventListener(&#39;mousedown&#39;,function(){
-  this.addEventListener(&#39;mousemove&#39;,function(){
-    volume = this.value;
-    showVolume.innerHTML = volume;
-    _sound();
-  });
-});
+volumeRange.oninput = function(){
+  volume = this.value;
+  showVolume.innerHTML = volume;
+  _sound();
+};
 </code></pre><p><br/></p>
 <p>最後當然就是要讓聲音啟動：</p>
 <pre><code>oscillator.start();
