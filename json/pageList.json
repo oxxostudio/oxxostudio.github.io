@@ -1,6 +1,6 @@
 [{
   "tag": "tag-web",
-  "title": "聲音的濾波 ( BiquadFilterNode )",
+  "title": "聲音濾波器 ( BiquadFilterNode )",
   "site": "/articles/201510/web-audio-api-biquadfilternode.html",
   "img": "/img/articles/201510/20151006_1_01.jpg",
   "date": "OCT 6, 2015"
