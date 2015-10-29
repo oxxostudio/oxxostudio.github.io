@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2015-10-06 23:55:00 GMT</pubDate>
+    <pubDate>2015-10-29 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>點選複製 Clipboard.js</title>
+      <link>http://www.oxxostudio.tw/articles/201510/clipboard-js.html</link>
+      <pubDate>2015-10-29 23:55:00 GMT</pubDate>
+      <description>之前有介紹過點選自動複製，這個透過 flash 的方式，繞過瀏覽器安全性限制，將網頁元素內容複製到剪貼簿的方法，但因為必須走 flash 的緣故，在不支援 flash 的瀏覽器裡反而變成了一個隱性的問題。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201510/20151029_1_01b.jpg</url>
+        <title>點選複製 Clipboard.js</title>
+        <link>http://www.oxxostudio.tw/articles/201510/clipboard-js.html</link>
+      </image>
+    </item>
     <item>
       <title>聲音濾波器 ( BiquadFilterNode )</title>
       <link>http://www.oxxostudio.tw/articles/201510/web-audio-api-biquadfilternode.html</link>

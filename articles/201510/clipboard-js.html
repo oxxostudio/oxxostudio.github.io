@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+<meta property="article:published_time" content="2015-10-29T23:50:00+01:00">
+
+<meta name="keywords" content="clipboard.js,複製,點選複製,clipboard">
+
+<meta name="description" content="之前有介紹過點選自動複製，這個透過 flash 的方式，繞過瀏覽器安全性限制，將網頁元素內容複製到剪貼簿的方法，但因為必須走 flash 的緣故，在不支援 flash 的瀏覽器裡反而變成了一個隱性的問題。">
+
+<meta itemprop="name" content="點選複製 Clipboard.js - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201510/20151029_1_01b.jpg">
+
+<meta itemprop="description" content="之前有介紹過點選自動複製，這個透過 flash 的方式，繞過瀏覽器安全性限制，將網頁元素內容複製到剪貼簿的方法，但因為必須走 flash 的緣故，在不支援 flash 的瀏覽器裡反而變成了一個隱性的問題。">
+
+<meta property="og:title" content="點選複製 Clipboard.js - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201510/clipboard-js.html" target="_blank">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201510/20151029_1_01b.jpg">
+
+<meta property="og:description" content="之前有介紹過點選自動複製，這個透過 flash 的方式，繞過瀏覽器安全性限制，將網頁元素內容複製到剪貼簿的方法，但因為必須走 flash 的緣故，在不支援 flash 的瀏覽器裡反而變成了一個隱性的問題。">
+
+<title>點選複製 Clipboard.js - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>點選複製 Clipboard.js <span class="article-date" tag="web">OCT 29    , 2015</span></h2>
+<p>之前有介紹過 <a href="http://www.oxxostudio.tw/articles/201501/zeroclipboard.html">點選自動複製 ( ZeroClipboard )</a> 這個透過 flash 的方式，繞過瀏覽器安全性限制，將網頁元素內容複製到剪貼簿的方法，但因為必須走 flash 的緣故，在不支援 flash 的瀏覽器裡反而變成了一個隱性的問題，從以前那篇文章可以看到，當初其實是參考了 Github 的做法，結果前一陣子在 Github 裡頭，赫然發現他的那顆按鈕已經不是 flash，變成用純粹的 JavaScript 就可以複製到剪貼簿，真是太令人感到意外！</p>
+<p>再差不多同一時間，從 Facebook 的 Front-End Developers Taiwan 社團看到了 Rplus Chen 大大發的一篇文章：「<a href="https://zenorocha.github.io/clipboard.js/">Clipboard.js</a>」，就這麼巧同樣也是在講不走 flash 就能複製到剪貼簿的 JavaScript，找了一些資料，發現 W3C 也開始支援 ( 參考：<a href="http://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a> )，就先把這些內容收藏著，等待時機派上用場。</p>
+<p>一直到最近，工作上總算是需要用到這個方法 ( 之前一直都用需要 flash 的版本 )，在實作的過程中又遇到了一點小坑，不過做完之後覺得真是滿方便的，趕緊寫篇文章記錄一下。</p>
+<p>首先我們先連結到 Clipboard.js 的官方網站：<a href="https://zenorocha.github.io/clipboard.js/">https://zenorocha.github.io/clipboard.js/</a>，當然直接連結去他的 Github 也可以，星星超多 Der！</p>
+<p><img src="/img/articles/201510/20151029_1_02.jpg" alt="點選複製 Clipboard.js"></p>
+<p>一開始他說的是 node.js 的安裝方式，如果要直接用在網頁上，其實直接載入對應的 js 就可以，大概就像下面這樣，不過作者也附上了 CDN 的網址。( <a href="https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers">https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers</a> )</p>
+<pre><code>&lt;script src=&quot;dist/clipboard.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><p><br/></p>
+<p>載入之後就要來看用法，要用這支 js 最主要的目的，就是讓我們可以「一點就複製」，因此要先把行為綁定在需要點選的元素上，這裏作者稱之為「Trigger」，以下面的程式碼來說，最重要的就是要寫上<code>data-clipboard-target</code>這段，這指定了要複製的元素 id，點選後就會自動複製這個 id 的內容。</p>
+<pre><code>&lt;button id=&quot;btn&quot; data-clipboard-target=&quot;#foo&quot;&gt;
+    點選複製
+&lt;/button&gt;
+
+&lt;div id=&quot;foo&quot;&gt;123&lt;/div&gt;
+</code></pre><p><br/></p>
+<p>當然這只是預設值 ( 複製 )，如果要剪下，就要額外增加<code>data-clipboard-action=&quot;cut&quot;</code>的屬性，不過「剪下」的功能，就只適合「文字輸入」的欄位，畢竟一般要將元素的內容剪下，就要用到其他的 js 來輔助了。</p>
+<pre><code>&lt;button id=&quot;btn&quot; data-clipboard-action=&quot;cut&quot; data-clipboard-target=&quot;#foo&quot;&gt;
+    點選複製
+&lt;/button&gt;
+
+&lt;textarea id=&quot;foo&quot;&gt;123&lt;/textarea&gt;
+</code></pre><p><br/></p>
+<p>寫完 HTML 就要來看程式，結果 JavaScript 的部份異常簡單，一段 code 就搞定，只要有這行，new 了一個 Clipboard 的物件之後，就可以點選複製或點選剪下了。</p>
+<pre><code>var clipboard = new Clipboard(&#39;btn&#39;);
+</code></pre><p><br/></p>
+<p>不過作者當然不只有提供這些功能，他還提供了成功與失敗的事件，而取消選取的方法，就可以寫在「成功」的事件裡頭，複製完就會自動取消選取。( 想當初還花了很大的功夫寫了一篇 <a href="http://www.oxxostudio.tw/articles/201508/select-text.html">自動選取某個區域的文字</a> )</p>
+<pre><code>clipboard.on(&#39;success&#39;, function(e) {
+    console.info(&#39;Action:&#39;, e.action);
+    console.info(&#39;Text:&#39;, e.text);
+    console.info(&#39;Trigger:&#39;, e.trigger);
+
+    e.clearSelection(); //取消選取
+});
+
+clipboard.on(&#39;error&#39;, function(e) {
+    console.error(&#39;Action:&#39;, e.action);
+    console.error(&#39;Trigger:&#39;, e.trigger);
+});
+</code></pre><p><br/></p>
+<p>而這次自己實作遇到的小坑，是因為自己沒有看清楚作者的進階範例，進階用法裡，可以選擇複製下一個<code>trigger.nextElementSibling</code>，或複製指定屬性<code>trigger.getAttribute(&#39;aria-label&#39;)</code>，一開始沒看清楚，還以為是什麼 bug 導致都複製到下一個呢...</p>
+<pre><code>new Clipboard(&#39;.btn&#39;, {
+    target: function(trigger) {
+        return trigger.nextElementSibling;
+    }
+});
+
+new Clipboard(&#39;.btn&#39;, {
+text: function(trigger) {
+    return trigger.getAttribute(&#39;aria-label&#39;);
+}
+});
+</code></pre><p><br/></p>
+<p>總之，就這樣順利的完成了點選複製的功能，但很可惜的，在 Safari、iOS ( iPhone、iPad ) 上頭都不能跑，或許跟 Apple 的安全性限制還是有關係，不過...在 IE9 都能跑呀！相信之後一定會支援的啦！</p>
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+
+            </div>
+          </div>
+        </div>  
+    </div>
+
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

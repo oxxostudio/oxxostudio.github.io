@@ -1,5 +1,11 @@
 [{
   "tag": "tag-web",
+  "title": "點選複製 Clipboard.js",
+  "site": "/articles/201510/clipboard-js.html",
+  "img": "/img/articles/201510/20151029_1_01.jpg",
+  "date": "OCT 29, 2015"
+},{
+  "tag": "tag-web",
   "title": "聲音濾波器 ( BiquadFilterNode )",
   "site": "/articles/201510/web-audio-api-biquadfilternode.html",
   "img": "/img/articles/201510/20151006_1_01.jpg",
