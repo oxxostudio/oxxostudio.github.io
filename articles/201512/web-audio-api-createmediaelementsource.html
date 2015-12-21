@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+<meta property="article:published_time" content="2015-12-21T23:50:00+01:00">
+
+<meta name="keywords" content="music,audio,web audio api">
+
+<meta name="description" content="前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )">
+
+<meta itemprop="name" content="建立音樂頻譜 ( createMediaElementSource ) - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201512/20151221_1_01b.jpg">
+
+<meta itemprop="description" content="前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )">
+
+<meta property="og:title" content="建立音樂頻譜 ( createMediaElementSource ) - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201512/web-audio-api-createmediaelementsource.html" target="_blank">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201512/20151221_1_01b.jpg">
+
+<meta property="og:description" content="前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )">
+
+<title>建立音樂頻譜 ( createMediaElementSource ) - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>建立音樂頻譜 ( createMediaElementSource ) <span class="article-date" tag="web">DEC 21    , 2015</span></h2>
+<p>最近好忙，一陣子沒寫這系列的文章，還回頭複習了一陣子，前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )</p>
+<p>在這系列的 <a href="http://www.oxxostudio.tw/articles/201509/web-audio-api.html">第一篇</a> 有介紹過<code>createOscillator()</code>這個振盪器產生單音的方法，這篇要來介紹<code>createMediaElementSource</code>這個把外部音軌作為 source 的方法，這個方法需要搭配 HTML5 的<code>audio</code>標籤來實施，因為它預設就是會以 HTML5 所載入的音頻為主，以下面的例子來說，我們要先在 HTML 裡放入聲音，<code>controls</code>表示會載入預設的播放器介面，<code>autoplay</code>預設為一開始就自動播放。( mp3 格式基本上已經被所有瀏覽器接受，如果不能播放也可以採用 ogg 格式 )</p>
+<pre><code>&lt;audio controls autoplay&gt;
+  &lt;source src=&quot;test.mp3&quot;&gt;
+&lt;/audio&gt;
+</code></pre><p>放入聲音之後就要來寫 JavaScript，首先要放入這三行，基本上就是用<code>createMediaElementSource</code>把我們的音樂轉成可以讓「節點」( AudioNode ) 使用的數位音頻。</p>
+<pre><code>var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+var myAudio = document.querySelector(&#39;audio&#39;);
+var source = audioCtx.createMediaElementSource(myAudio);
+</code></pre><p>再來我們可以做一個簡單的實驗，使用在之前 <a href="http://localhost:3000/articles/201509/web-audio-api-audioparam-gainnode.html">聲音參數與音量節點</a> 有介紹過的音量節點 Gain 來控制音樂的音量大小，因此在這裡可以獲取整個視窗滑鼠的座標，把座標轉換為音量大小，因為音量最大不會超過 1，所以把視窗的高度當作分母，往下音量就會越大，往上聲音就會越小聲，同時也把音量顯示在畫面的 span 裡頭。( 範例：<a href="/demo/201512/web-audio-api-createmediaelementsource-demo1.html">web-audio-api-createmediaelementsource-demo1.html</a> )</p>
+<pre><code>var gainNode = audioCtx.createGain();
+source.connect(gainNode);
+gainNode.connect(audioCtx.destination);
+
+window.onmousemove = function(e){
+    var v = e.pageY/window.innerHeight;
+    console.log(v);
+  gainNode.gain.value = v;
+  s.innerHTML = v;
+  myAudio.volume = v;
+};
+</code></pre><p><img src="/img/articles/201512/20151221_1_02.jpg" alt="建立音樂頻譜 ( createMediaElementSource )"></p>
+<p>不過只是會控制聲音還不夠，再來我們要把數位化之後的聲音數值給取出，做一個很簡單的音量頻譜，這邊使用 div 來做，先在 HTML 裡面放入一個 div，然後用 JavaScript 的方式在裡面塞入 128 個 div。( 待會會讓這些 div 跳動 )</p>
+<pre><code>&lt;audio controls autoplay&gt;
+  &lt;source src=&quot;test.mp3&quot;&gt;
+&lt;/audio&gt;
+&lt;span id=&quot;s&quot;&gt;&lt;/span&gt;
+&lt;div id=&quot;d&quot;&gt;&lt;/div&gt;
+</code></pre><p>JavaScript：</p>
+<pre><code>var s = document.getElementById(&#39;s&#39;);
+var d = document.getElementById(&#39;d&#39;);
+for(var i=0; i&lt;128; i++){
+    d.innerHTML += &#39;&lt;div&gt;&lt;/div&gt;&#39;;
+}
+var dd = document.querySelectorAll(&#39;#d div&#39;);
+</code></pre><p>接著，我們會用到一個新的方法，叫做<code>createScriptProcessor</code>，這個方法目的在建立一個聲音的處理器，有三個屬性，依序為<code>bufferSize</code>、<code>numberOfInputChannels</code>和<code>numberOfOutputChannels</code>，第一個<code>bufferSize</code>可以照字面翻譯為緩衝區大小，換句話說就是可以容納聲音訊號的多寡，數值可為 256、512、1024、2048、 4096、8192、16384，數值較低會有較好的效率，但相對品質會變差，另外兩個屬性是輸入與輸出通道的數量，預設為 2，不過在沒有要做通道混合處理的狀況下都會設為 1。</p>
+<p>因為要建立<code>createScriptProcessor</code>，我們就把它接在音量後面，因使程式碼就會改成這樣，剛剛用滑鼠控制音量的還是保留著：</p>
+<pre><code>var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+var myAudio = document.querySelector(&#39;audio&#39;);
+var source = audioCtx.createMediaElementSource(myAudio);
+var gainNode = audioCtx.createGain();
+var processor = audioCtx.createScriptProcessor(4096, 1, 1);
+source.connect(gainNode);
+gainNode.connect(processor);
+processor.connect(audioCtx.destination);
+
+window.onmousemove = function(e){
+    var v = e.pageY/window.innerHeight;
+    console.log(v);
+  gainNode.gain.value = v;
+  s.innerHTML = v;
+  myAudio.volume = v;
+};
+</code></pre><p>再來就是要設定處理器的內容，這裏會用到<code>onaudioprocess</code>這個屬性，這表示當音頻處理好之後，會發生什麼事情，裡面會設定一個 input 和一個 ouput，output 負責承接 input 來的訊號接著輸出，因此如果我們用 console 印出來看，就會發現這是一大串的陣列，由於剛剛設定 4096 就表示有這個陣列有 4096 個數值在裡面，這也是為什麼數值設越高聲音會越好，因為保留的細節越多，但相對即時要處理一個這麼大的數值資料，效率當然就會比較差一點。</p>
+<p>回顧剛剛我們有設定 div 內有 128 個 div ( 為了增加效率所以就只用 128 個 )，這裏我們就用一個 for 迴圈，來把對應的數值轉換成這些 div 的高度。</p>
+<pre><code>processor.onaudioprocess = function(e) {
+  var input = e.inputBuffer.getChannelData(0);
+  var output = e.outputBuffer.getChannelData(0);
+  for (var i = 0; i &lt; input.length; i++) {
+    output[i] = input[i];
+  }
+  console.log(output);
+  for(var j=0; j&lt;128; j++){
+         dd[j].style.height = output[j*32]*100+&#39;px&#39;;
+  }
+};
+</code></pre><p>因為要讓 div 是從底部往上長，然後 div 也有顏色，所以要設定 CSS，這裏用了 after 這個為元素來讓所有 div 置底。</p>
+<pre><code>#d {
+  height: 100px;
+}
+#d:after{
+    content:&#39;&#39;;
+  display: inline-block;
+  height:100px;
+  width:1px;
+}
+
+#d div {
+  display: inline-block;
+  width: 1px;
+  background: #a00;
+  margin: 0 0 0 1px;
+  vertical-align: bottom;
+}
+</code></pre><p>完成後開始執行，就會看到一個有音量頻譜的顯示，同時我們也可以用滑鼠上下移動來操控大小聲囉！( 範例：<a href="/demo/201512/web-audio-api-createmediaelementsource-demo2.html">web-audio-api-createmediaelementsource-demo2.html</a> )</p>
+<p><img src="/img/articles/201512/20151221_1_03.jpg" alt="建立音樂頻譜 ( createMediaElementSource )"></p>
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+
+            </div>
+          </div>
+        </div>  
+    </div>
+
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>
