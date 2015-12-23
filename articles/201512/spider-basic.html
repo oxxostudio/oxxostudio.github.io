@@ -161,7 +161,7 @@ fs.writeFile(&quot;result.json&quot;, result, function() {
   console.log(varTime.toLocaleTimeString()+&#39;: &#39;+a[&#39; 日圓 (JPY)&#39;][1]);
 
 });
-</code></pre><p>最後一樣使用<code>setInterval</code>五分鐘撈一次資料，就可以囉！</p>
+</code></pre><p>最後一樣使用<code>setInterval</code>五分鐘撈一次資料，就可以囉！( Github：<a href="https://github.com/oxxostudio/pm25">https://github.com/oxxostudio/pm25</a> )</p>
 <pre><code>pm();
 setInterval(pm,5*60*1000);
 </code></pre><p>不過這裡如果發通知要怎麼做呢？我原本使用了 firebase 來串接，當數據改變時，就會透過瀏覽器發一個 alert 通知，但還有一個更快的方法，就是我使用了自家研發的 Webduino 產品，當匯率改變時，就透過蜂鳴器發出聲音，或透過 LED 閃爍來提醒，就更方便囉！範例程式就像下面這樣，當匯率小於 0.27 就把 led 燈點亮。</p>
