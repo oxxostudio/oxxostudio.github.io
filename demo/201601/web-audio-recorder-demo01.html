@@ -25,7 +25,7 @@
     var microphone = context.createMediaStreamSource(stream);
     var analyser = context.createAnalyser();
     microphone.connect(analyser);
-    analyser.connect(context.destination);
+    //analyser.connect(context.destination);
 
     analyser.fftSize = 2048;
     var bufferLength = analyser.frequencyBinCount;
