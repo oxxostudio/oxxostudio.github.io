@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>recorder.js - demo01</title>
+</head>
+
+<body>  
+  <button id="p">play</button>
+  <button id="s">stop</button>
+
+</body>
+  <script>
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+  window.URL = window.URL || window.webkitURL;
+
+  var s = document.getElementById('s');
+  var p = document.getElementById('p');
+  var timer;
+  var context = new AudioContext();
+  navigator.getUserMedia({audio: true}, function(stream) {
+    var microphone = context.createMediaStreamSource(stream);
+    var analyser = context.createAnalyser();
+    microphone.connect(analyser);
+    analyser.connect(context.destination);
+
+    analyser.fftSize = 256;
+    var bufferLength = analyser.frequencyBinCount;
+    var dataArray = new Uint8Array(analyser.fftSize);
+    //analyser.getByteTimeDomainData(dataArray);
+    analyser.getByteFrequencyData(dataArray);
+
+    s.onclick = function(){
+      clearTimeout(timer);
+    };
+
+    p.onclick = function(){
+      update();
+    };
+
+    update();
+
+    function update(){
+      console.log(dataArray);
+      //analyser.getByteTimeDomainData(dataArray);
+      analyser.getByteFrequencyData(dataArray);
+      timer = setTimeout(update,50);
+    }
+
+  }, function(){
+    console.log('error');
+  });
+  
+
+
+  </script>
+</html>

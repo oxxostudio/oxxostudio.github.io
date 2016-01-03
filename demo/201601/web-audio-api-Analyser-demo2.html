@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>建立音樂頻譜 2 ( Analyser ) - demo02</title>
+  <style>
+  #d {
+    height: 100px;
+  }
+  #d:after{
+    content:'';
+    display: inline-block;
+    height:255px;
+    width:px;
+  }
+  
+  #d div {
+    display: inline-block;
+    width: 2px;
+    background: #a00;
+    margin: 0 0 0 1px;
+    vertical-align: bottom;
+  }
+  </style>
+</head>
+
+<body>  
+  <audio controls autoplay>
+    <source src="test.mp3">
+  </audio>
+  <br/>
+  <button id="p">play</button>
+  <button id="s">pause</button>
+  <div id="d"></div>
+</body>
+  <script>
+
+  var d = document.getElementById('d');
+  for(var i=0; i<256; i++){
+    d.innerHTML += '<div></div>';
+  }
+  var dd = document.querySelectorAll('#d div');
+
+  var timer;
+  var s = document.getElementById('s');
+  var p = document.getElementById('p');
+  var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+  var myAudio = document.querySelector('audio');
+  var source = audioCtx.createMediaElementSource(myAudio);
+  var analyser = audioCtx.createAnalyser();
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+
+  analyser.fftSize = 2048;
+  var bufferLength = analyser.frequencyBinCount;
+  var dataArray = new Uint8Array(analyser.fftSize);
+  analyser.getByteFrequencyData(dataArray);
+  function update() {
+    console.log(dataArray);
+    dataArray = new Uint8Array(analyser.fftSize);
+    analyser.getByteFrequencyData(dataArray);
+    for(var j=0; j<256; j++){
+      dd[j].style.height = dataArray[j]+'px';
+      dd[j].style.background = 'rgba('+(255-j)+','+j*2+',0,1)';
+    }
+    timer = setTimeout(update,15);
+  };
+
+  s.onclick = function(){
+    myAudio.pause();
+    clearTimeout(timer);
+  };
+
+  p.onclick = function(){
+    myAudio.play();
+    update();
+  };
+
+  update();
+  
+
+
+  </script>
+</html>
