@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2016-01-03 14:55:00 GMT</pubDate>
+    <pubDate>2016-01-03 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>獲取錄音資訊 (getUserMedia) </title>
+      <link>http://www.oxxostudio.tw/articles/201601/web-audio-recorder.html</link>
+      <pubDate>2016-01-03 23:55:00 GMT</pubDate>
+      <description>當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201601/20160103_2_01b.jpg</url>
+        <title>獲取錄音資訊 (getUserMedia) </title>
+        <link>http://www.oxxostudio.tw/articles/201601/web-audio-recorder.html</link>
+      </image>
+    </item>
     <item>
       <title>建立音樂頻譜 2 ( analyser )</title>
       <link>http://www.oxxostudio.tw/articles/201601/web-audio-api-Analyser.html</link>
