@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+<meta property="article:published_time" content="2016-01-06T22:50:00+01:00">
+
+<meta name="keywords" content="css,less,gulp less,css 預處理器">
+
+<meta name="description" content="經過前兩篇的洗禮，應該可以直接用 LESS 來撰寫整個網站的 CSS 了，不過如果要針對大型的專案，在樣式的規劃上可能就要用到更進階的設定，第三篇的 LESS 文章將會介紹一些進階的功能。">
+
+<meta itemprop="name" content="用 LESS 寫 CSS ( 判斷式、迴圈、Function ) - OXXO.STUDIO">
+
+<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201601/20160106_1_01b.jpg">
+
+<meta itemprop="description" content="經過前兩篇的洗禮，應該可以直接用 LESS 來撰寫整個網站的 CSS 了，不過如果要針對大型的專案，在樣式的規劃上可能就要用到更進階的設定，第三篇的 LESS 文章將會介紹一些進階的功能。">
+
+<meta property="og:title" content="用 LESS 寫 CSS ( 判斷式、迴圈、Function ) - OXXO.STUDIO">
+
+<meta property="og:url" content="http://www.oxxostudio.tw/articles/201601/css-less-03.html" target="_blank">
+
+<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201601/20160106_1_01b.jpg">
+
+<meta property="og:description" content="經過前兩篇的洗禮，應該可以直接用 LESS 來撰寫整個網站的 CSS 了，不過如果要針對大型的專案，在樣式的規劃上可能就要用到更進階的設定，第三篇的 LESS 文章將會介紹一些進階的功能。">
+
+<title>用 LESS 寫 CSS ( 判斷式、迴圈、Function ) - OXXO.STUDIO</title> 
+
+
+
+  <link rel="stylesheet" href="/style/css/layout.css">
+
+<link rel="stylesheet" href="/style/css/articles.css">
+<link rel="stylesheet" href="/style/lib/tomorrow.css">
+
+
+
+  <script src="/js/lib/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <ul class="top-menu-left">
+                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+            </ul>
+            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
+            <div class="search" title="站內搜尋">
+                <div id='cse-search-form' style='width: 100%;'></div>
+            </div>
+        </div>
+        <div id="banner">
+            <h1>OXXO.STUDIO</h1>
+            <a href="/">
+            <i class="bubble"></i>
+            <i class="hihi"></i>
+            <img src="/img/layout/banner.png">
+            <h2>Design thinking is everywhere</h2>
+            </a>
+        </div>
+        <div id="main-menu">
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="tag-all"><i></i>ALL</li>
+                <li class="tag-creative"><i></i>Creative</li>
+                <li class="tag-ui"><i></i>UI & UX</li>
+                <li class="tag-photo"><i></i>PHOTO</li>
+                <li class="tag-css"><i></i>CSS</li>
+                <li class="tag-web"><i></i>WEB TECH</li>
+                <li class="tag-share"><i></i>Share</li>
+                <li class="tag-others"><i></i>OTHERS</li>
+            </ul>
+        </div>
+        <div class="body-line"></div>
+    </div>
+    <div id="wrapper">
+        <div id="container">
+
+
+
+
+          <div class="content">
+            <i class="tag"></i>
+            <div class="md">
+
+<h2>用 LESS 寫 CSS ( 判斷式、迴圈、Function ) <span class="article-date" tag="css">JAN 6, 2016</span></h2>
+<p>經過前兩篇的洗禮，應該可以直接用 LESS 來撰寫整個網站的 CSS 了，不過如果要針對大型的專案，在樣式的規劃上可能就要用到更進階的設定，第三篇的 LESS 文章將會介紹一些進階的功能，總而言之，其實 LESS 和 SASS 的功能都大同小異，我自己也是寫過 SASS 又轉戰 LESS，不過 LESS 真是滿簡便好用的，提供給大家參考。</p>
+<h3>判斷式</h3>
+<p>LESS 的判斷式使用<code>if</code>和<code>when</code>，如果有多個判斷就要寫多個判斷式，以下面的例子來說，第一段表示如果變數大於 0，就顯示變數數值，第二個判斷式就是小於等於 0 的話就顯示<code>border:30px;</code>。</p>
+<ul>
+<li><p>LESS</p>
+<pre><code>  .if (@aif) when (@aif &gt; 0) { 
+      border:@aif;
+  }
+  .if (@aif) when (default()) {
+      border:30px;
+  } 
+  .ifmixin1{
+      .if(-20px);
+  }
+  .ifmixin1{
+      .if(20px);
+  }
+</code></pre></li>
+<li><p>CSS</p>
+<pre><code>  .ifmixin1 {
+    border: 30px;
+  }
+  .ifmixin1 {
+    border: 20px;
+  }
+</code></pre></li>
+</ul>
+<p><br/></p>
+<h3>迴圈</h3>
+<p>迴圈就是我們常見的 for 迴圈，不過在 LESS 裡型態比較不同，是用<code>when</code>來表現，最外層的<code>when</code>是針對這個迴圈下一個停止點，以下面的例子來說就是<code>@counter &gt; 0</code>，而每進行一次迴圈<code>@counter</code>就會少 1 直到 0 為止，然後迴圈跑出來的內容就是跟著後面表現。</p>
+<ul>
+<li><p>LESS</p>
+<pre><code>  .loop(@counter) when (@counter &gt; 0) {
+    .loop((@counter - 1));    
+    width: (10px * @counter); 
+  }
+  .loopdiv {
+    .loop(5);
+  }
+  .loop2(@counter) when (@counter &gt; 0) {
+    .loop2((@counter - 1));   
+    .loop-@{counter}-div{ 
+        width: (10px * @counter); 
+    }
+  }
+  .loop2(5);
+</code></pre></li>
+<li><p>CSS</p>
+<pre><code>  .loopdiv {
+    width: 10px;
+    width: 20px;
+    width: 30px;
+    width: 40px;
+    width: 50px;
+  }
+  .loop-1-div {
+    width: 10px;
+  }
+  .loop-2-div {
+    width: 20px;
+  }
+  .loop-3-div {
+    width: 30px;
+  }
+  .loop-4-div {
+    width: 40px;
+  }
+  .loop-5-div {
+    width: 50px;
+  }
+</code></pre></li>
+</ul>
+<p><br/></p>
+<h3>function - 獲取圖片尺寸</h3>
+<p>透過<code>image-width</code>、<code>image-height</code>和<code>image-size</code>，我們可以直接獲取圖片的長寬尺寸</p>
+<ul>
+<li><p>LESS</p>
+<pre><code>  .img1{
+      width:image-width(&quot;../img/less-logo.png&quot;);
+      height:image-height(&quot;../img/less-logo.png&quot;);
+      margin:image-size(&quot;../img/less-logo.png&quot;);
+  }
+</code></pre></li>
+<li><p>CSS</p>
+<pre><code>  .img1 {
+    width: 199px;
+    height: 81px;
+    margin: 199px 81px;
+  }
+</code></pre></li>
+</ul>
+<p><br/></p>
+<h3>function - 單位轉換</h3>
+<p>其實我也不知道為什麼要有單位轉換的功能，可能還是會擔心有些人分不清楚各種單位吧，單位轉換只要使用<code>convert</code>就可以，可以轉換的長度單位有：m、cm、mm、in、pt、和 pc，時間單位有：s 和 ms，角度單位有：rad、deg、grad 和 turn。</p>
+<ul>
+<li><p>LESS</p>
+<pre><code>  .img2{
+      width:convert(9s, &quot;ms&quot;);
+      height:convert(14cm, mm);
+      margin:convert(8, mm);
+  }
+</code></pre></li>
+<li><p>CSS</p>
+<pre><code>  .img2 {
+    width: 9000ms;
+    height: 140mm;
+    margin: 8;
+  }
+</code></pre></li>
+</ul>
+<p><br/></p>
+<h3>function - 陣列</h3>
+<p>如果要共用的變數有很多又不想一個個寫，我們可以用一個陣列來表示，不過和一般陣列第一個順序是 0 不同，LESS 的陣列是從 1 開始的。</p>
+<ul>
+<li><p>LESS</p>
+<pre><code>  @list: red, blue, green, yellow;
+  .list{
+      color:extract(@list, 1);
+      border-color:extract(@list, 2);
+      background-volor:extract(@list, 3);
+  }
+</code></pre></li>
+<li><p>CSS</p>
+<pre><code>  .list {
+    color: red;
+    border-color: blue;
+    background-volor: green;
+  }
+</code></pre></li>
+</ul>
+<p><br/></p>
+<h3>function - 數學計算</h3>
+<p>這裏我們可以用一些數學式來計算，不過也不是很實用，畢竟真正需要運算，都會用 JS 或其他方式來代替才比較正統一點 ( 因為通常會用到計算都是動態計算，CSS 除了百分比和 calc 之外，基本上都只能算是靜態的數值而已 )。</p>
+<ul>
+<li><p>LESS</p>
+<pre><code>  .math{
+      width:sqrt(25cm);
+      width:abs(-18.6%);
+      width:sin(1deg);
+      width:pow(25, -2);
+      width:max(5, 10);
+      width:min(5, 10);
+      width:percentage(0.5);
+      width:round(1.67);
+      width:round(1.67, 1);
+  }
+</code></pre></li>
+<li><p>CSS</p>
+<pre><code>  .math {
+    width: 5cm;
+    width: 18.6%;
+    width: 0.01745241;
+    width: 0.0016;
+    width: 10;
+    width: 5;
+    width: 50%;
+    width: 2;
+    width: 1.7;
+  }
+</code></pre></li>
+</ul>
+<p><br/></p>
+<h3>function - 色彩轉換</h3>
+<p>這是在設計大型專案上一定要會使用的，舉例來說，今天如果設定了一組標準色，在沒有 class 或 id 的輔助下，如果需要一次修改所有的顏色 ( 例如老闆說：請幫我把所有的某某字從藍色換成紅色 )，大概就會瘋掉了，但是 LESS 就是要來解決這個麻煩事，我們可以定義好幾組顏色，然後重複使用，如此一來當遇到要修改，只要改一次顏色即可。</p>
+<ul>
+<li><p>LESS</p>
+<pre><code>  /* 色彩轉換 */
+  .color{
+      color:rgb(90, 23, 148);
+  }
+
+  /* 顏色調整-飽和度 */
+  .color-saturate{
+      color:saturate(#cc8888, 10%);
+      color:saturate(#cc8888, -10%);
+  }
+
+  /* 顏色調整-不飽和度 */
+  .color-desaturate{
+      color:desaturate(#cc8888, 10%);
+      color:desaturate(#cc8888, -10%);
+  }
+
+  /* 顏色調整-變亮 */
+  .color-lighten{
+      color:lighten(#cc8888, 10%);
+      color:lighten(#cc8888, -10%);
+  }
+
+  /* 顏色調整-變暗 */
+  .color-darken{
+      color:darken(#cc8888, 10%);
+      color:darken(#cc8888, -10%);
+  }
+
+  /* 顏色調整-灰階 */
+  .color-darken{
+      color:greyscale(#cc8888);
+  }
+
+  /* 顏色混合 */
+  .color-mix{
+      color:mix(#f00, #00f, 50%);
+      color:mix(#f00, #00f, 20%);
+      color:mix(#f00, #00f, 80%);
+  }
+</code></pre></li>
+<li><p>CSS</p>
+<pre><code>  /* 色彩轉換 */
+  .color {
+    color: #5a1794;
+  }
+
+  /* 顏色調整-飽和度 */
+  .color-saturate {
+    color: #d58080;
+    color: #c49191;
+  }
+
+  /* 顏色調整-不飽和度 */
+  .color-desaturate {
+    color: #c49191;
+    color: #d58080;
+  }
+
+  /* 顏色調整-變亮 */
+  .color-lighten {
+    color: #dbacac;
+    color: #bd6464;
+  }
+
+  /* 顏色調整-變暗 */
+  .color-darken {
+    color: #bd6464;
+    color: #dbacac;
+  }
+
+  /* 顏色調整-灰階 */
+  .color-darken {
+    color: #aaaaaa;
+  }
+
+  /* 顏色混合 */
+  .color-mix {
+    color: #800080;
+    color: #3300cc;
+    color: #cc0033;
+  }
+</code></pre></li>
+</ul>
+
+
+            <div class="social-icon">
+                <i class="icon-home"><i></i><span>Back Home</span></i>
+                <i class="icon-list"><i></i><span>Article List</span></i>
+                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+                <i class="icon-google"><i></i><span>Share on Google+</span></i>
+                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+                <i class="goto-top"><i></i><span>Back to Top</span></i>
+            </div>
+
+
+            </div>
+          </div>
+        </div>  
+    </div>
+
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+        前一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+        下一篇文章：
+        <br/>
+        <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+
+    <div id="footer">
+        <div class="footer-line"></div>
+        <div class="footer-link">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    </div>
+    <script src="/js/layout.js"></script>
+
+<script src="/js/articles.js"></script>
+<script src="/js/lib/run_prettify.js"></script>
+<script src="/js/lib/disqus.js"></script>
+
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+        ga('send', 'pageview');
+    </script>
+    <script src='//www.google.com/jsapi' type='text/javascript'></script>
+    <script type='text/javascript'>
+    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};
+      var orderByOptions = {};
+      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+      customSearchOptions['enableOrderBy'] = true;
+      customSearchOptions['orderByOptions'] = orderByOptions;
+      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.enableSearchboxOnly('/search-results.html', 's');
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+</body>
+</html>

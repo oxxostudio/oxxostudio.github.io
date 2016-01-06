@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2016-01-03 23:55:00 GMT</pubDate>
+    <pubDate>2016-01-06 22:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,42 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>用 LESS 寫 CSS ( 判斷式、迴圈、Function )</title>
+      <link>http://www.oxxostudio.tw/articles/201601/css-less-03.html</link>
+      <pubDate>2016-01-06 22:55:00 GMT</pubDate>
+      <description>經過前兩篇的洗禮，應該可以直接用 LESS 來撰寫整個網站的 CSS 了，不過如果要針對大型的專案，在樣式的規劃上可能就要用到更進階的設定，第三篇的 LESS 文章將會介紹一些進階的功能。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201601/20160106_1_01b.jpg</url>
+        <title>用 LESS 寫 CSS ( 判斷式、迴圈、Function )</title>
+        <link>http://www.oxxostudio.tw/articles/201601/css-less-03.html</link>
+      </image>
+    </item>
+    <item>
+      <title>用 LESS 寫 CSS ( Mixin、Extend )</title>
+      <link>http://www.oxxostudio.tw/articles/201601/css-less-02.html</link>
+      <pubDate>2016-01-05 23:55:00 GMT</pubDate>
+      <description>上一篇介紹了 LESS 的基本用法、import 和變數，這一篇要來玩一點比較進階的：函式、 mixin 和 extend，當我們可以熟練mixin 和 extend 的用法，相信對於整個 CSS 可以有大幅加速的功能。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201601/20160105_1_01b.jpg</url>
+        <title>用 LESS 寫 CSS ( Mixin、Extend )</title>
+        <link>http://www.oxxostudio.tw/articles/201601/css-less-02.html</link>
+      </image>
+    </item>
+    <item>
+      <title>用 LESS 寫 CSS ( 入門、Import、變數 )</title>
+      <link>http://www.oxxostudio.tw/articles/201601/css-less-01.html</link>
+      <pubDate>2016-01-04 23:55:00 GMT</pubDate>
+      <description>LESS 這套以 JavaScript 為基底的預處理器，除了可以用 gulp-less 來作轉換，更不需要安裝任何東西 ( 當然 NodeJS 還是得裝 )，就算你都不安裝，載一個 less.js 放在網頁裡面就可以直接撰寫 less 在網頁裡面跑，相當的方便好用，就這樣我一寫 LESS 就是寫了半年以上，也算是有點心得了。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201601/20160104_1_01b.jpg</url>
+        <title>用 LESS 寫 CSS ( 入門、Import、變數 )</title>
+        <link>http://www.oxxostudio.tw/articles/201601/css-less-01.html</link>
+      </image>
+    </item>
     <item>
       <title>獲取錄音資訊 (getUserMedia) </title>
       <link>http://www.oxxostudio.tw/articles/201601/web-audio-recorder.html</link>
@@ -59,282 +95,6 @@
         <url>http://www.oxxostudio.tw/img/articles/201512/20151221_1_01b.jpg</url>
         <title>建立音樂頻譜 ( createMediaElementSource )</title>
         <link>http://www.oxxostudio.tw/articles/201512/web-audio-api-createmediaelementsource.html</link>
-      </image>
-    </item>
-    <item>
-      <title>點選複製 Clipboard.js</title>
-      <link>http://www.oxxostudio.tw/articles/201510/clipboard-js.html</link>
-      <pubDate>2015-10-29 23:55:00 GMT</pubDate>
-      <description>之前有介紹過點選自動複製，這個透過 flash 的方式，繞過瀏覽器安全性限制，將網頁元素內容複製到剪貼簿的方法，但因為必須走 flash 的緣故，在不支援 flash 的瀏覽器裡反而變成了一個隱性的問題。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201510/20151029_1_01b.jpg</url>
-        <title>點選複製 Clipboard.js</title>
-        <link>http://www.oxxostudio.tw/articles/201510/clipboard-js.html</link>
-      </image>
-    </item>
-    <item>
-      <title>聲音濾波器 ( BiquadFilterNode )</title>
-      <link>http://www.oxxostudio.tw/articles/201510/web-audio-api-biquadfilternode.html</link>
-      <pubDate>2015-10-06 23:55:00 GMT</pubDate>
-      <description>這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201510/20151006_1_01b.jpg</url>
-        <title>聲音濾波器 ( BiquadFilterNode )</title>
-        <link>http://www.oxxostudio.tw/articles/201510/web-audio-api-biquadfilternode.html</link>
-      </image>
-    </item>
-    <item>
-      <title>立體聲 ( PannerNode,StereoPannerNode )</title>
-      <link>http://www.oxxostudio.tw/articles/201509/web-audio-api-stereo-pannernode.html</link>
-      <pubDate>2015-09-30 23:15:00 GMT</pubDate>
-      <description>通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150930_1_01b.jpg</url>
-        <title>立體聲 ( PannerNode,StereoPannerNode )</title>
-        <link>http://www.oxxostudio.tw/articles/201509/web-audio-api-stereo-pannernode.html</link>
-      </image>
-    </item>
-    <item>
-      <title>聲音參數與音量節點 ( AudioParam,GainNode )</title>
-      <link>http://www.oxxostudio.tw/articles/201509/web-audio-api-audioparam-gainnode.html</link>
-      <pubDate>2015-09-29 00:35:00 GMT</pubDate>
-      <description>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150929_1_01b.jpg</url>
-        <title>聲音參數與音量節點 ( AudioParam,GainNode )</title>
-        <link>http://www.oxxostudio.tw/articles/201509/web-audio-api-audioparam-gainnode.html</link>
-      </image>
-    </item>
-    <item>
-      <title>初探 Web Audio API</title>
-      <link>http://www.oxxostudio.tw/articles/201509/web-audio-api.html</link>
-      <pubDate>2015-09-28 16:35:00 GMT</pubDate>
-      <description>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150928_1_01b.jpg</url>
-        <title>初探 Web Audio API</title>
-        <link>http://www.oxxostudio.tw/articles/201509/web-audio-api.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 直條圖 ( 以登革熱數據為例 )</title>
-      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html</link>
-      <pubDate>2015-09-20 17:55:00 GMT</pubDate>
-      <description>在上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150920_1_01b.jpg</url>
-        <title>SVG D3.js - 直條圖 ( 以登革熱數據為例 )</title>
-        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 直條圖 ( Bar Chart )</title>
-      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-19-bar-chart.html</link>
-      <pubDate>2015-09-19 23:55:00 GMT</pubDate>
-      <description>在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150919_1_01b.jpg</url>
-        <title>SVG D3.js - 直條圖 ( Bar Chart )</title>
-        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-19-bar-chart.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - Enter、Update 和 Exit</title>
-      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-18-enter-update-exit.html</link>
-      <pubDate>2015-09-17 23:55:00 GMT</pubDate>
-      <description>上在我之前的文章有談過 D3.js 的資料處理，這篇要來在介紹一下資料處理當中很重要的三個元素：enter、update 和 exit，為什麼說很重要呢？因為這三個元素可以處理當畫面元素 ( Elements ) 和資料數量 ( data ) 不相等的情形。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150917_1_01b.jpg</url>
-        <title>SVG D3.js - Enter、Update 和 Exit</title>
-        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-18-enter-update-exit.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 縮放行為 ( Zoom Behavior )</title>
-      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-17-zoom-behavior.html</link>
-      <pubDate>2015-09-15 23:15:00 GMT</pubDate>
-      <description>上一篇我們提到了拖拉行為 Drag Behavior，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150915_1_01b.jpg</url>
-        <title>SVG D3.js - 縮放行為 ( Zoom Behavior )</title>
-        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-17-zoom-behavior.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - 拖拉行為 ( Drag Behavior )</title>
-      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html</link>
-      <pubDate>2015-09-14 00:10:00 GMT</pubDate>
-      <description>這篇要來談一下 d3.js 裏頭的「拖拉行為」( Drag Behavior )，其實 drag 這個行為在 web 的世界裡頭早就存在已久，HTML5 出來之後更變成了一些基本的網頁行為，不過這個行為在 d3.js 該如何實現呢？其實 d3.js 早就已經幫我們做好了，不僅適用在 svg 裡頭，更可以應用在一般的網頁元素上頭。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150914_1_01.gif</url>
-        <title>SVG D3.js - 拖拉行為 ( Drag Behavior )</title>
-        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html</link>
-      </image>
-    </item>
-    <item>
-      <title>SVG D3.js - transition ( tween、interpolate )</title>
-      <link>http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html</link>
-      <pubDate>2015-09-12 23:40:00 GMT</pubDate>
-      <description>之前有介紹過 d3.js 基本的 transition，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150912_1_01b.jpg</url>
-        <title>SVG D3.js - transition ( tween、interpolate )</title>
-        <link>http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Photoshop SandStorm 沙塵暴效果</title>
-      <link>http://www.oxxostudio.tw/articles/201509/sandstorm.html</link>
-      <pubDate>2015-09-07 22:40:00 GMT</pubDate>
-      <description>SandStorm 是我偶然發現的一個 Photoshop 效果，它其實不是 Photoshop 內建的功能，而是有人做出來的一系列行為，也就是一連串的動作所組成，最後產生有如會畫一般的粒子效果，也就像 SandStorm 的名稱一樣，沙塵暴。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150907_1_01b.jpg</url>
-        <title>Photoshop SandStorm 沙塵暴效果</title>
-        <link>http://www.oxxostudio.tw/articles/201509/snadstorm.html</link>
-      </image>
-    </item>
-    <item>
-      <title>Google 語音辨識 API</title>
-      <link>http://www.oxxostudio.tw/articles/201509/web-speech-api.html</link>
-      <pubDate>2015-09-06 23:00:00 GMT</pubDate>
-      <description>又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201509/20150906_1_01b.jpg</url>
-        <title>Google 語音辨識 API</title>
-        <link>http://www.oxxostudio.tw/articles/201509/web-speech-api.html</link>
-      </image>
-    </item>
-    <item>
-      <title>自動選取某個區域的文字</title>
-      <link>http://www.oxxostudio.tw/articles/201508/select-text.html</link>
-      <pubDate>2015-08-17 22:15:00 GMT</pubDate>
-      <description>最近在工作上需要一個功能，就是點選一個按鈕可以全選某個區域內的文字，由於，找了一些解法大多都是針對文 input 的 text 或 textarea 所設計，，後來總算是在 Stack Overflow 發現了完美的解法，根據這個解法我就做出來了可以選取特定區域文字的範例。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201508/20150817_1_01b.jpg</url>
-        <title>自動選取某個區域的文字</title>
-        <link>http://www.oxxostudio.tw/articles/201508/select-text.html</link>
-      </image>
-    </item>
-    <item>
-      <title>FIGlet - ASCII Decorator</title>
-      <link>http://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html</link>
-      <pubDate>2015-08-08 23:55:00 GMT</pubDate>
-      <description>首先談到這種字體的由來，它其實有幾個固定名稱，幾種比較主要的稱呼分別是：「ASCII TEXT」、「ASCII TEXT Banner」、「ASCII Art」、「ASCII Decorator」和「FIGlet」，「FIGlet」這個詞應該是最標準的用法，因為這個詞可是在維基百科上頭有介紹的。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201508/20150808_1_01b.jpg</url>
-        <title>FIGlet - ASCII Decorator</title>
-        <link>http://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html</link>
-      </image>
-    </item>
-    <item>
-      <title>用 Gulp 展開新的 blog 編輯旅程</title>
-      <link>http://www.oxxostudio.tw/articles/201508/edit-blog-by-gulp.html</link>
-      <pubDate>2015-08-05 22:55:00 GMT</pubDate>
-      <description>Gulp 大概是我在今年一月開始接觸的，坦白說實在是滿好用的，主要因為 Gulp 有著龐大 npm package 的後盾，許多疑難雜症都相當容易找到解決的方式，且實際運作起來的速度也是不同凡響，加上自己也在工作上實際用來製作網站，在各種條件都備妥的情況下，自然而然的就把開發模式轉換過來了。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201508/20150805_1_01b.jpg</url>
-        <title>用 Gulp 展開新的 blog 編輯旅程</title>
-        <link>http://www.oxxostudio.tw/articles/201508/edit-blog-by-gulp.html</link>
-      </image>
-    </item>
-    <item>
-      <title>HTML5 控制裝置陀螺儀 ( 三軸 )</title>
-      <link>http://www.oxxostudio.tw/articles/201506/html5-device-orientation.html</link>
-      <pubDate>2015-06-30 22:55:00 GMT</pubDate>
-      <description>在行動裝置發達的現在，手機或平板的瀏覽器效能也跟了上來，加上 iOS 與 Android 兩大陣營對於瀏覽器可以控制硬體的權限逐漸鬆手，慢慢的當年 HTML5 裏頭所制定出來，和控制裝置硬體相關的 API 也逐漸可以派上用場。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201506/20150630_1_01b.jpg</url>
-        <title>HTML5 控制裝置陀螺儀 ( 三軸 )</title>
-        <link>http://www.oxxostudio.tw/articles/201506/html5-device-orientation.html</link>
-      </image>
-    </item>
-    <item>
-      <title>玩轉 CSS 3D - 正八面體與正十二面體</title>
-      <link>http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-2.html</link>
-      <pubDate>2015-06-20 21:55:00 GMT</pubDate>
-      <description>上一篇介紹了正四面體與正六面體，接著我們要用同樣的方法，來製作正八面體與正十二面體，這兩個正多面體雖然組合的面比較多，不過因為具備了對稱性，所以只需要製作出一半的結構，另外一半再用反轉的方式接在一起即可。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201506/20150620_2_01b.jpg</url>
-        <title>玩轉 CSS 3D - 正八面體與正十二面體</title>
-        <link>http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-2.html</link>
-      </image>
-    </item>
-    <item>
-      <title>玩轉 CSS 3D - 正四面體與正六面體</title>
-      <link>http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html</link>
-      <pubDate>2015-06-20 00:55:00 GMT</pubDate>
-      <description>理解了 CSS 3D 的箇中原理之後，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了，「正多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201506/20150620_1_01b.jpg</url>
-        <title>玩轉 CSS 3D - 正四面體與正六面體</title>
-        <link>http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html</link>
-      </image>
-    </item>
-    <item>
-      <title>玩轉 CSS 3D - 原理篇</title>
-      <link>http://www.oxxostudio.tw/articles/201506/css-3d.html</link>
-      <pubDate>2015-06-19 17:25:00 GMT</pubDate>
-      <description>CSS 3D 坦白說就是純粹利用計算的方法，藉由瀏覽器的高效能，在 2D 的空間繪製一個 3D 的圖形，就像我們拿張紙，用鉛筆在上頭畫個正立方體之類的，從這篇開始以及再來的一兩篇，將會深入介紹 CSS 3D 的繪圖以及直接做些應用。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201506/20150619_1_01b.jpg</url>
-        <title>玩轉 CSS 3D - 原理篇</title>
-        <link>http://www.oxxostudio.tw/articles/201506/css-3d.html</link>
-      </image>
-    </item>
-    <item>
-      <title>oxxo.studio 一周年生日快樂</title>
-      <link>http://www.oxxostudio.tw/articles/201505/oxxostudio.html</link>
-      <pubDate>2015-05-01 00:00:00 GMT</pubDate>
-      <description>今天是 oxxo.studio 開台一年的日子，雖然說部落格上的文章不是從五月一號開始，但第一個版本是在五月一號上線的，當初其實也用這個部落格作為我自己的生日禮物 ( 我也是五月一號出生ㄎㄎ )。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201505/20150501_01.jpg</url>
-        <title>oxxo.studio 一周年生日快樂</title>
-        <link>http://www.oxxostudio.tw/articles/201505/oxxostudio.html</link>
-      </image>
-    </item>
-    <item>
-      <title>運用 clip-path 的純 CSS 形狀變換</title>
-      <link>http://www.oxxostudio.tw/articles/201503/css-clip-path.html</link>
-      <pubDate>2015-03-30 23:55:00 GMT</pubDate>
-      <description>在單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150330_1_01b.jpg</url>
-        <title>運用 clip-path 的純 CSS 形狀變換</title>
-        <link>http://www.oxxostudio.tw/articles/201503/css-clip-path.html</link>
-      </image>
-    </item>
-    <item>
-      <title>單一 div 的正多邊形變換 ( 純 CSS )</title>
-      <link>http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html</link>
-      <pubDate>2015-03-29 22:05:00 GMT</pubDate>
-      <description>這篇純粹利用 CSS，讓「單一個」div，從正三角形變換為正八邊形 ( 單一 div 最多只能做到正八邊形 )，最後再搭配動畫的效果，變成正多邊形的變換動畫，也由於正多邊形需要用到不少的三角函數計算，為了方便起見，這裡將正多邊形的邊統一都設為 100px。
-      </description>
-      <image>
-        <url>http://www.oxxostudio.tw/img/articles/201503/20150329_1_01b.jpg</url>
-        <title>單一 div 的正多邊形變換 ( 純 CSS )</title>
-        <link>http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html</link>
       </image>
     </item>
   </channel>
