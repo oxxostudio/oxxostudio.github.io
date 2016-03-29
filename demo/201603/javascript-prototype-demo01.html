@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>JavaScript 筆記 ( Prototype ) - demo01</title>
+  <script>
+  function people(n, s) {
+    this.name = n;
+    this.skin = s;
+  }
+
+  var human = {
+    walk: function() {
+      console.log(this.name + ' 在走路');
+    },
+    eat: function() {
+      console.log(this.name + ' 在吃東西');
+    },
+    scratch: function() {
+      console.log(this.name + ' 抓自己的' + this.skin + '皮膚');
+    }
+  };
+
+  people.prototype = Object.create(human);
+
+  var tom = new people('Tom', '白色');
+  var bill = new people('Bill', '黑色');
+  var cherry = new people('Cherry', '黃色');
+
+
+  tom.walk();
+  bill.scratch();
+  cherry.eat();
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

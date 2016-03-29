@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2016-01-06 22:55:00 GMT</pubDate>
+    <pubDate>2016-03-29 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,18 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>JavaScript 筆記 ( Prototype )</title>
+      <link>http://www.oxxostudio.tw/articles/201603/javascript-prototype.html</link>
+      <pubDate>2016-03-29 22:55:00 GMT</pubDate>
+      <description>JavaScript 裡面所有物件都具有 Prototype 這個原型物件，但只有函式物件才有公開的原型物件，其他的物件都只有私有的原型物件，凡是原型物件裡面的屬性或方法，都會直接繼承到它的實體物件上頭。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201603/20160329_1_01b.jpg</url>
+        <title>JavaScript 筆記 ( Prototype )</title>
+        <link>http://www.oxxostudio.tw/articles/201603/javascript-prototype.html</link>
+      </image>
+    </item>
     <item>
       <title>用 LESS 寫 CSS ( 判斷式、迴圈、Function )</title>
       <link>http://www.oxxostudio.tw/articles/201601/css-less-03.html</link>
