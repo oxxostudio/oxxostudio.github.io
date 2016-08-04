@@ -4,7 +4,7 @@
     <title>OXXO.STUDIO</title>
     <link>http://www.oxxostudio.tw</link>
     <description>OXXO.STUDIO 包含了視覺創作、網頁前端程式、UI與UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！</description>
-    <pubDate>2016-03-29 23:55:00 GMT</pubDate>
+    <pubDate>2016-08-04 23:55:00 GMT</pubDate>
     <copyright>OXXO.STUDIO</copyright>
     <Webmaster>oxxo.studio@gmail.com</Webmaster>
     <language>zh-TW</language>
@@ -13,6 +13,42 @@
       <title>OXXO.STUDIO</title>
       <link>http://www.oxxostudio.tw/</link>
     </image>
+    <item>
+      <title>玩玩 360 度 ( 繪圖設計 )</title>
+      <link>http://www.oxxostudio.tw/articles/201608/panorama-360-3.html</link>
+      <pubDate>2016-08-01 22:55:00 GMT</pubDate>
+      <description>有了 上一篇 的介紹，應該對於 360 圖片有了更深一層的認識，原理其實不難，這篇我將再加碼，介紹如何透過同樣的方式來繪圖，首先，基本的 360 圖片要把握以下幾個原則，或是說你要讓你的 360 度照片或圖片上傳成功必須要這做：
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201608/20160801_1_01b.jpg</url>
+        <title>J玩玩 360 度 ( 繪圖設計 )</title>
+        <link>http://www.oxxostudio.tw/articles/201608/panorama-360-3.html</link>
+      </image>
+    </item>
+    <item>
+      <title>玩玩 360 度 ( 進階編修 )</title>
+      <link>http://www.oxxostudio.tw/articles/201607/panorama-360-2.html</link>
+      <pubDate>2016-07-31 22:55:00 GMT</pubDate>
+      <description>上一篇 稍微介紹了 360 圖片或照片的做法與原理，這一篇就要來玩點真功夫了！因為是真功夫，所以前提必須要會一些影像處理軟體，以下將會使用 Photoshop 才可以完成 ( 小弟只專攻 Photoshop )，不過如果知道原理，其他影像處理軟體應該也是可以辦到的。
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201607/20160731_1_01b.jpg</url>
+        <title>J玩玩 360 度 ( 進階編修 )</title>
+        <link>http://www.oxxostudio.tw/articles/201607/panorama-360-2.html</link>
+      </image>
+    </item>
+    <item>
+      <title>玩玩 360 度 ( 基本介紹 )</title>
+      <link>http://www.oxxostudio.tw/articles/201607/panorama-360-1.html</link>
+      <pubDate>2016-07-28 22:55:00 GMT</pubDate>
+      <description>就在幾個月前，Facebook 開始支援 360 度全景影像，動態牆也開始陸續出現透過 360 度相機或軟體實做出來的 360 度照片，當然原本就可以拍攝全景的 iPhone 或 Android ，所拍的照片也開始可以用滑鼠移動觀賞，這種瀏覽的變革讓喜愛攝影的我，感到相當興奮！
+      </description>
+      <image>
+        <url>http://www.oxxostudio.tw/img/articles/201607/20160728_1_01b.jpg</url>
+        <title>J玩玩 360 度 ( 基本介紹 )</title>
+        <link>http://www.oxxostudio.tw/articles/201607/panorama-360-1.html</link>
+      </image>
+    </item>
     <item>
       <title>JavaScript 筆記 ( Prototype )</title>
       <link>http://www.oxxostudio.tw/articles/201603/javascript-prototype.html</link>
