@@ -135,6 +135,24 @@ c20.242,0,36.668,16.416,36.668,36.669H238.77c0-8.381-6.808-15.189-15.186-15.189c
 c0,8.39,6.797,15.188,15.188,15.188c8.378,0,15.176-6.798,15.186-15.178v-0.01v-15.176h-15.186V209.904L223.584,209.904z" />
 </svg>
 
+<style>
+    #SVG-S,#SVG-V,#SVG-G,#SVG-bar{
+        cursor:pointer;
+        transition:.3s;
+    }
+    #SVG-bar:hover{
+        fill:#0ff;
+    }
+    #SVG-S:hover{
+        fill:#f00;
+    }
+    #SVG-V:hover{
+        fill:#0f0;
+    }
+    #SVG-G:hover{
+        fill:#00f;
+    }
+</style>
 
 <p>雖然 SVG 是如此的便利，但還是要補充說明一點，根據我十多年來設計的背景和經驗，<strong>「向量」與「點陣」這兩種圖形，各有各自的好處</strong>，如果你要使用向量圖來表現細節非常繁雜的圖片，整張向量圖的大小有可能會遠大於點陣圖，處理和運算的速度也會非常慢 ( 可以想像幾千個數學式同時進行，跟我只要單純呈現表現幾千個點，速度就差多了 )，況且有時候你就是希望有點陣的風格，這就是向量圖做不到的地方，但向量圖所具備的優勢也是點陣圖所無法達成，可以縮放自如的圖片，可以由程式控制的細節...等。</p>
 <p>因此，<strong>如何在點陣和向量之間取得一個完美的平衡，就大大考驗著設計師的功力！</strong>最後，對於設計師來說，也不用擔心不會寫 SVG 怎麼辦，你只要打開 Illustrator ，就可以把向量圖轉換成 SVG，再進去改程式碼就可以囉！ ( 如果你不會用 Illustrator，那我想你應該就不配稱作設計師了ㄎㄎ ) 由下面這張圖可以看出，我們把上面那張 SVG 用 Illustrator 打開，就可以看出各個群組與向量是如何繪製，對於設計師來說，這就是我們的強項了，對吧！</p>
@@ -198,7 +216,8 @@ c0,8.39,6.797,15.188,15.188,15.188c8.378,0,15.176-6.798,15.186-15.178v-0.01v-15.
         </div>
         <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
     </div>
-    <script src="/js/layout.js"></script>
+</body>
+<script src="/js/layout.js"></script>
 
 <script src="/js/articles.js"></script>
 <script src="/js/lib/run_prettify.js"></script>
@@ -206,30 +225,30 @@ c0,8.39,6.797,15.188,15.188,15.188c8.378,0,15.176-6.798,15.186-15.178v-0.01v-15.
 
 
 
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-2708968-3', 'oxxostudio.tw');
-        ga('send', 'pageview');
-    </script>
-    <script src='//www.google.com/jsapi' type='text/javascript'></script>
-    <script type='text/javascript'>
-    google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-    google.setOnLoadCallback(function() {
-      var customSearchOptions = {};
-      var orderByOptions = {};
-      orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-      customSearchOptions['enableOrderBy'] = true;
-      customSearchOptions['orderByOptions'] = orderByOptions;
-      var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-      var options = new google.search.DrawOptions();
-      options.enableSearchboxOnly('/search-results.html', 's');
-      options.setAutoComplete(true);
-      customSearchControl.draw('cse-search-form', options);
-    }, true);
-    </script>
-</body>
+<script src='//www.google.com/jsapi' type='text/javascript'></script>
+<script>
+  window.onload = function(){
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-2708968-3', 'oxxostudio.tw');
+    ga('send', 'pageview');
+  };
+    
+  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
+  google.setOnLoadCallback(function() {
+    var customSearchOptions = {};
+    var orderByOptions = {};
+    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+    customSearchOptions['enableOrderBy'] = true;
+    customSearchOptions['orderByOptions'] = orderByOptions;
+    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchboxOnly('/search-results.html', 's');
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse-search-form', options);
+  }, true);
+</script>
 </html>
