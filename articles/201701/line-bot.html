@@ -117,7 +117,7 @@
 <p>設定的部分，記得勾選「允許 Webhook 傳訊」，然後「取消」自動回應，接著就可以點選「LINE Developers」進入開發者頁面。</p>
 <p><img src="/img/articles/201701/20170115_1_10.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>開發者頁面第一個選項「Basic information」是最重要的，在這邊我們要記住「Channel ID」、「Channel Secret」( 點選 SHOW 會出現 ) 和「Channel Access Token」( 點選 ISSUE 會產生 )，而「Webhook URL」則是一個要放在「https」的網址，用作和 LINE BOT 溝通使用，到這邊基本上我們已經完成了 LINE BOT 的設定，接著就來看看 Webhook URL 要怎麼做。</p>
-<p><img src="/img/articles/201701/20170115_1_10.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img src="/img/articles/201701/20170115_1_11.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p><br/></p>
 <h3>2. 製作 Webhook URL ( Node.js )</h3>
 <p>我這邊使用 Node.js 來建構我的 Webhook 頁面，首先我們要使用 「<strong>linebot</strong>」這個 Node.js 模組 ( 參考 <a href="https://www.npmjs.com/package/linebot">https://www.npmjs.com/package/linebot</a> )，然後伺服器端使用「<strong>express</strong>」這個模組。</p>
