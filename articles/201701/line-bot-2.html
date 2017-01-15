@@ -172,10 +172,11 @@ function _bot() {
         pm.forEach(function(e, i) {
           if (msg.indexOf(e[0]) != -1) {
             replyMsg = e[0] + &#39;的 PM2.5 數值為 &#39; + e[1];
-          }else{
-              replyMsg = &#39;請輸入正確的地點&#39;;
           }
         });
+        if (replyMsg == &#39;&#39;) {
+          replyMsg = &#39;請輸入正確的地點&#39;;
+        }
       }
       if (replyMsg == &#39;&#39;) {
         replyMsg = &#39;不知道「&#39;+msg+&#39;」是什麼意思 :p&#39;;
