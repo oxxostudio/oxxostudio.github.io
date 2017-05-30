@@ -1,107 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>初探 Web Audio API - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-09-28T16:10:00+01:00">
-
-<meta name="keywords" content="music,audio,web audio api,音效控制">
-
-<meta name="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。">
-
-<meta itemprop="name" content="初探 Web Audio API - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150928_1_01b.jpg">
-
-<meta itemprop="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。">
-
-<meta property="og:title" content="初探 Web Audio API - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150928_1_01b.jpg">
-
-<meta property="og:description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。">
-
-<title>初探 Web Audio API - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：http://webaudio.github.io/web-audio-api/">
+  <meta itemprop="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：http://webaudio.github.io/web-audio-api/">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api.jpg">
+  <meta property="og:description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：http://webaudio.github.io/web-audio-api/">
+  <meta property="og:title" content="初探 Web Audio API">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>初探 Web Audio API <span class="article-date" tag="web">SEP 28    , 2015</span></h2>
-<p><img src="/img/articles/201509/20150928_1_01.jpg" class="preview-img"></p>
+<h1>初探 Web Audio API</h1>
+<p><img src="/img/articles/201509/web-audio-api.jpg" class="preview-img" alt=""> </p>
 <p>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：<a href="http://webaudio.github.io/web-audio-api/">http://webaudio.github.io/web-audio-api/</a></p>
 <p>要使用 Web Audio API，第一步就是要創建一個 AudioContext，AudioContext 是一個聲音的容器，在 AudioContext 裡，我們可以針對聲音做各種的處理，在裡頭，AudioSourceNode 表示音訊來源，而聲音是以節點的方式 ( AudioNode ) 存在，每個節點都有輸入和輸出，只有來源節點沒有輸入，聲音除了可以用外部的輸入 ( wav、mp3、ogg...等 )，也可以使用振盪器 ( Oscillators ) 來產生，原理就有點像我們彈奏弦樂器，也是利用樂器內的弦震盪來發聲。</p>
 <p>既然是初探 Web Audio API，就用一個簡單的例子入手，由於我們在範例裡要用的是 Web Audio API，就一定會用到 AudioContext，所以我們要先來看看瀏覽器有沒有支援 ( 行動裝置目前還不支援 )，一開始先這樣寫，套用有支援的 AudioContext。</p>
-<pre><code>var AudioContext = AudioContext || webkitAudioContext;
+<pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
 var context = new AudioContext;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>有了裝載聲音的容器之後，接著就用振盪器來發點聲音，先用<code>createOscillator()</code>來產生振盪器，振盪器有四種屬性：</p>
 <ul>
 <li><p><strong>type：</strong></p>
@@ -117,19 +88,19 @@ var context = new AudioContext;
 <p>  結束時會發生的事件，寫法為：<code>oscillator.onended = function(){發生什麼事};</code>。</p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <p>利用這四個屬性，我們就可以這樣做，建立三個音節，讓這三個音節做 detune 偏移，並且只播放兩秒後停止 ( 直接寫在 stop 裡面，要延後播放就寫在 start 裡 )，停止後會彈出一個 alert 告訴我們音樂停了。( 範例：<a href="/demo/201509/web-audio-api-demo01.html">web-audio-api-demo01.html</a> )</p>
-<pre><code>var oscillator1 = context.createOscillator();
-oscillator1.type = &quot;square&quot;;
+<pre class="prettyprint"><code>var oscillator1 = context.createOscillator();
+oscillator1.type = "square";
 oscillator1.frequency.value = 440;
 oscillator1.detune.value = -400;
 oscillator1.connect(context.destination);
 oscillator1.start();
 oscillator1.stop(2);
-oscillator1.onended = function(){alert(&#39;stop&#39;);};
+oscillator1.onended = function(){alert('stop');};
 
 var oscillator2 = context.createOscillator();
-oscillator2.type = &quot;square&quot;;
+oscillator2.type = "square";
 oscillator2.frequency.value = 440;
 oscillator2.detune.value = -300;
 oscillator2.connect(context.destination);
@@ -137,22 +108,22 @@ oscillator2.start();
 oscillator2.stop(2);
 
 var oscillator3 = context.createOscillator();
-oscillator3.type = &quot;square&quot;;
+oscillator3.type = "square";
 oscillator3.frequency.value = 440;
 oscillator3.detune.value = 300;
 oscillator3.connect(context.destination);
 oscillator3.start();
 oscillator3.stop(2);
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>瞭解怎麼利用 Web Audio Api 發聲之後，接著就是要來控制我們所發出來的聲音，但是在我們要控制聲音之前，必須要先了解「節點 AudioNode」這個概念，在 AudioContext 裡，主要就是音樂節點的處理和控制，換個角度思考，AudioContext 就像是一張畫布，在上頭繪製的圖形，就是我們的音符，把音符串在一起，就變成了一首曲子，整個流程圖如下：</p>
 <p><img src="/img/articles/201509/20150928_1_02.jpg" alt="初探 Web Audio API"></p>
 <p>簡單來說，source 是我們的音訊來源，不論是用剛剛講的 oscillator 來做，或直接播放音訊，總之音訊來源就都必須轉換為 AudioNode，才能夠做進一步的控制，也就是進入「Processing Nodes」的階段，在這個階段我們就有許多的特殊節點模組 ( Nodes Modules ) 可以進行運算，最後就利用「destination」做輸出的動作，中間的每個步驟，我們都會使用「connect」來做連結，這也是為什麼在使用 Web Audio Api 的程式碼裡頭，都會出現許多 connect，同時也是上面的範例最後用了<code>oscillator3.connect(context.destination);</code>的原因。</p>
 <p>詳細的 Nodes Modules 會在之後的篇幅介紹，這裏我先用到一個最簡單也是最容易理解的 Nodes Modules：「GainNode 音量節點」，顧名思義這就是拿來控制音量使用的，因為我們已經進入 AudioNode 的階段，所以寫法上就要做點小更動，剛剛我們是直接用 oscillator 去連結 context.destination，這裏因為 oscillator 先連結了 gainNode，所以再來我們是要用 gainNode 去連結 context.destination，下面的範例打開以後，就會先聽到兩秒的標準音量，再來又會聽到兩秒變成原本音量 0.3 倍的聲音。( 範例：<a href="/demo/201509/web-audio-api-demo02.html">web-audio-api-demo02.html</a> )</p>
-<pre><code>var AudioContext = AudioContext || webkitAudioContext;
+<pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
 var context = new AudioContext;
 
 var oscillator1 = context.createOscillator();
-oscillator1.type = &quot;square&quot;;
+oscillator1.type = "square";
 oscillator1.frequency.value = 440;
 oscillator1.detune.value = -400;
 oscillator1.connect(context.destination);
@@ -160,7 +131,7 @@ oscillator1.start(AudioContext.currentTime+0);
 oscillator1.stop(AudioContext.currentTime+2);
 
 var oscillator2 = context.createOscillator();
-oscillator2.type = &quot;square&quot;;
+oscillator2.type = "square";
 oscillator2.frequency.value = 440;
 oscillator2.detune.value = -400;
 gainNode = context.createGain();  // 創建 gainNode
@@ -169,36 +140,36 @@ oscillator2.connect(gainNode);    // 將聲音連到 gainNode
 gainNode.connect(context.destination); // 播放 gainNode
 oscillator2.start(AudioContext.currentTime+2);
 oscillator2.stop(AudioContext.currentTime+4);
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>上面的例子用到了一個新的東西叫做<code>currentTime</code>，<code>currentTime</code>是從 AudioContext 建立的當下就會產生的時間，時間會不斷的進行直到我們將 AudioContext 移除，因此我們利用<code>currentTime</code>就可以確保聲音播放的時間，一定會在兩秒後或四秒後停止或播放。</p>
 <p>做到這邊，其實我們已經可以做一個很簡單的聲音產生器，並且在聲音播放的過程中還可以去調整聲音，下面這個範例，我做了「播放」與「停止」的按鈕，點選播放就會開始發出聲音，停止就會沒有聲音，一開始以為用 start 和 stop 就可以解決，後來發現一個坑，就是「當 OscillatorNode 開始之後，只會執行一次 start 和 stop」，那該如何讓聲音靜止呢？回想一下剛剛我們用了<code>connect</code>連結<code>context.destination</code>來播放，要靜止就只要<code>disconnect</code>即可，類似把喇叭的音源線拔掉就可以，至於其他的程式，大多都是負責按鈕的點擊事件，以及 range 的拖拉事件，在點擊或拖拉的時候，即時改變 type、frequency、detun 和 volume。</p>
 <p>第一部份的程式碼為創建 AudioContext 以及宣告一開始的聲音數值，這裏為什麼要先 disconnect 再 connect 呢。如果沒有這樣做，就會發現每做一個動作，聲音就會不斷的累加上去，就會越來越大聲越來越大聲，因此在這邊每做一個動作就要 disconnect，又為了避免還沒有 connect 的時候就 disconnect 會產生錯誤，因此用了一個 p 來做判斷。</p>
-<pre><code>var AudioContext = AudioContext || webkitAudioContext;
+<pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
 var context      = new AudioContext;
 var oscillator   = context.createOscillator();
 var sound,
-    type = &#39;sine&#39;,
+    type = 'sine',
     frequency = 440,
     detune = 0,
     volume = 1,
     p = 0;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>第二部分的程式碼是把畫面上的案扭都根據 id 變成變數：</p>
-<pre><code>var startBtn      = document.getElementById(&#39;startBtn&#39;),
-  stopBtn        = document.getElementById(&#39;stopBtn&#39;),
-  sineBtn        = document.getElementById(&#39;sineBtn&#39;),
-  squareBtn      = document.getElementById(&#39;squareBtn&#39;),
-  sawtoothBtn    = document.getElementById(&#39;sawtoothBtn&#39;),
-  triangleBtn    = document.getElementById(&#39;triangleBtn&#39;),
-  frequencyRange = document.getElementById(&#39;frequencyRange&#39;),
-  showFrequency  = document.getElementById(&#39;showFrequency&#39;),
-  detuneRange    = document.getElementById(&#39;detuneRange&#39;),
-  showDetune     = document.getElementById(&#39;showDetune&#39;),
-  volumeRange    = document.getElementById(&#39;volumeRange&#39;),
-  showVolume     = document.getElementById(&#39;showVolume&#39;);
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>var startBtn      = document.getElementById('startBtn'),
+  stopBtn        = document.getElementById('stopBtn'),
+  sineBtn        = document.getElementById('sineBtn'),
+  squareBtn      = document.getElementById('squareBtn'),
+  sawtoothBtn    = document.getElementById('sawtoothBtn'),
+  triangleBtn    = document.getElementById('triangleBtn'),
+  frequencyRange = document.getElementById('frequencyRange'),
+  showFrequency  = document.getElementById('showFrequency'),
+  detuneRange    = document.getElementById('detuneRange'),
+  showDetune     = document.getElementById('showDetune'),
+  volumeRange    = document.getElementById('volumeRange'),
+  showVolume     = document.getElementById('showVolume');
+</code></pre><p><br></p>
 <p>接著就是把一些重複的行為做成函式，讓我們可以重複使用，connect 和 disconnect 都寫在這裡面，還有一些按鈕的樣式也寫在這裡。</p>
-<pre><code>var _gain = function(t,f,d,g){
+<pre class="prettyprint"><code>var _gain = function(t,f,d,g){
   oscillator.type = t;
   oscillator.frequency.value = f;
   oscillator.detune.value = d;
@@ -214,16 +185,16 @@ var sound,
       sound.connect(context.destination);
     }
   }</p>
-<pre><code>function _typeClick(e){  
-  sineBtn.style.outline = &#39;none&#39;;
-  squareBtn.style.outline = &#39;none&#39;;
-  sawtoothBtn.style.outline = &#39;none&#39;;
-  triangleBtn.style.outline = &#39;none&#39;;
-  e.style.outline = &#39;3px solid #f80&#39;; 
+<pre class="prettyprint"><code>function _typeClick(e){  
+  sineBtn.style.outline = 'none';
+  squareBtn.style.outline = 'none';
+  sawtoothBtn.style.outline = 'none';
+  triangleBtn.style.outline = 'none';
+  e.style.outline = '3px solid #f80'; 
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>按鈕點選事件的程式，因為按鈕較多，這裏列出三個主要的按鈕：</p>
-<pre><code>startBtn.addEventListener(&#39;click&#39;,function(){
+<pre class="prettyprint"><code>startBtn.addEventListener('click',function(){
   p = 1;
   startBtn.disabled = true;
   stopBtn.disabled = false;
@@ -231,21 +202,21 @@ var sound,
   sound.connect(context.destination);
 });
 
-stopBtn.addEventListener(&#39;click&#39;,function(){
+stopBtn.addEventListener('click',function(){
   p = 0;
   startBtn.disabled = false;
   stopBtn.disabled = true;
   sound.disconnect(context.destination);
 });
 
-sineBtn.addEventListener(&#39;click&#39;,function(){
-  type = &#39;sine&#39;;
+sineBtn.addEventListener('click',function(){
+  type = 'sine';
   _typeClick(this);
   _sound();
 });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>range 的部分，用了<code>oninput</code>：</p>
-<pre><code>frequencyRange.oninput = function(){
+<pre class="prettyprint"><code>frequencyRange.oninput = function(){
   frequency = this.value;
   showFrequency.innerHTML = frequency;
   _sound();
@@ -262,45 +233,41 @@ volumeRange.oninput = function(){
   showVolume.innerHTML = volume;
   _sound();
 };
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>最後當然就是要讓聲音啟動：</p>
-<pre><code>oscillator.start();
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>oscillator.start();
+</code></pre><p><br></p>
 <p>到這邊為止，我們已經完成了一個很簡單的聲音產生器，這也是 Web Audio Api 最基本的起手勢，不嫌棄的話就玩玩看吧！( 範例：<a href="/demo/201509/web-audio-api-demo03.html">web-audio-api-demo03.html</a> )</p>
 <p><img src="/img/articles/201509/20150928_1_03.jpg" alt="初探 Web Audio API"></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -308,53 +275,67 @@ volumeRange.oninput = function(){
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,189 +1,156 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 起手式 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-10-31T23:25:00+01:00">
-
-<meta name="keywords" content="svg,d3,d3.js,select,jquery">
-
-<meta name="description" content="雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上。">
-
-<meta itemprop="name" content="SVG D3.js - 起手式 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/20141031_1_01.jpg">
-
-<meta itemprop="description" content="雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上。">
-
-<meta property="og:title" content="SVG D3.js - 起手式 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-d3-info.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141031_1_01.jpg">
-
-<meta property="og:description" content="雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上。">
-
-<title>SVG D3.js - 起手式  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上，而 D3.js 的 data 也不見得只適用在 SVG 的圖形產生，只要是 HTML 的 DOM 也都可以藉由這個方式作成，例如以往要將一百個一千個資料放到 DOM 裡或產出 DOM，必須用上 for 迴圈或是 each 的方式，這部分 D3 也幫我們都解決掉了，真是相當的方便。">
+  <meta itemprop="description" content="雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上，而 D3.js 的 data 也不見得只適用在 SVG 的圖形產生，只要是 HTML 的 DOM 也都可以藉由這個方式作成，例如以往要將一百個一千個資料放到 DOM 裡或產出 DOM，必須用上 for 迴圈或是 each 的方式，這部分 D3 也幫我們都解決掉了，真是相當的方便。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/svg-d3-info.jpg">
+  <meta property="og:description" content="雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上，而 D3.js 的 data 也不見得只適用在 SVG 的圖形產生，只要是 HTML 的 DOM 也都可以藉由這個方式作成，例如以往要將一百個一千個資料放到 DOM 裡或產出 DOM，必須用上 for 迴圈或是 each 的方式，這部分 D3 也幫我們都解決掉了，真是相當的方便。">
+  <meta property="og:title" content="SVG D3.js - 起手式">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-d3-info.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/svg-d3-info.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG D3.js - 起手式  <span class="article-date" tag="web">OCT 31, 2014</span></h2>
-<p><img src="/img/articles/201410/20141031_1_01.jpg" class="preview-img"></p>
+<h1>SVG D3.js - 起手式</h1>
+<p><img src="/img/articles/201410/svg-d3-info.jpg" class="preview-img" alt=""></p>
 <p>雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上，而 D3.js 的 data 也不見得只適用在 SVG 的圖形產生，只要是 HTML 的 DOM 也都可以藉由這個方式作成，例如以往要將一百個一千個資料放到 DOM 裡或產出 DOM，必須用上 for 迴圈或是 each 的方式，這部分 D3 也幫我們都解決掉了，真是相當的方便。</p>
 <p>在介紹資料處理之前，一定得先來一段 D3.js 的起手式，第一步，掛載 D3.js：</p>
-<pre><code>&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>掛載完 D3.js 之後，接下來就是要使用 D3，與 jquery 的「$」符號很像的地方，要使用 D3，也是要有 d3 開頭，以下面的範例來說，就是選取了所有的 p 標籤,跟 jquery 裏頭的選擇器很像 ( $(&#39;p&#39;) )，而 D3 也可以和 jquery 混著使用，因為 D3 都會是 d3 開頭，基本上並不會有甚麼衝突的情形發生。</p>
-<pre><code>d3.selectAll(&#39;p&#39;)
+<pre class="prettyprint"><code>&lt;script src="http://d3js.org/d3.v3.min.js"&gt;&lt;/script&gt;
+</code></pre><p>掛載完 D3.js 之後，接下來就是要使用 D3，與 jquery 的「$」符號很像的地方，要使用 D3，也是要有 d3 開頭，以下面的範例來說，就是選取了所有的 p 標籤,跟 jquery 裏頭的選擇器很像 ( $('p') )，而 D3 也可以和 jquery 混著使用，因為 D3 都會是 d3 開頭，基本上並不會有甚麼衝突的情形發生。</p>
+<pre class="prettyprint"><code>d3.selectAll('p')
 </code></pre><p>要一層層選擇下去的話，也可以這樣寫：</p>
 <p>HTML：</p>
-<pre><code>&lt;div&gt;red
+<pre class="prettyprint"><code>&lt;div&gt;red
       &lt;div&gt;blue&lt;/div&gt;
 &lt;/div&gt;
 </code></pre><p>JS：</p>
-<pre><code>d3.select(&#39;div&#39;).style({
-  &#39;color&#39;: &#39;red&#39;
+<pre class="prettyprint"><code>d3.select('div').style({
+  'color': 'red'
 });
-d3.select(&#39;div div&#39;).style({
-  &#39;color&#39;: &#39;blue&#39;
+d3.select('div div').style({
+  'color': 'blue'
 });
 </code></pre><p>結果就像這樣：</p>
 <p><img src="/img/articles/201410/20141031_1_02.png" alt="SVG D3 - 起手式"></p>
 <p>其實說穿了 D3 和 jquery 大同小異，如果已經熟悉 jquery 的寫法，D3 用起來應該也很容易理解 ( 當然還是有不太一樣的地方要習慣 )，而且 D3 也採用了<strong>「串鍊」</strong>式的方法 ( Chaining Methods )，就是用點的一點一點串下去，例如：</p>
-<pre><code>d3.select(&#39;div&#39;).style({
-    &#39;color&#39;: &#39;red&#39;
-  }).select(&#39;div&#39;).style({
-    &#39;color&#39;: &#39;blue&#39;
+<pre class="prettyprint"><code>d3.select('div').style({
+    'color': 'red'
+  }).select('div').style({
+    'color': 'blue'
   });
 </code></pre><p><img src="/img/articles/201410/20141031_1_02.png" alt="SVG D3 - 起手式"></p>
 <p>跟上面也會是同樣的結果，一直串一直串就對了！然而除了選取器 ( select、selectAll ) 之外，跟 jquery 同樣，也可以使用 append 的指令在最後面放入物件或元素，不過要放在前面就要用 insert 而不是 prepend，而且要改變樣式必須用 style 而不是 css，要特別注意，下面就用個實際的例子來瞧瞧：</p>
-<pre><code>d3.select(&#39;body&#39;)
-  .append(&#39;div&#39;)
-  .html(&#39;I am div&#39;)
+<pre class="prettyprint"><code>d3.select('body')
+  .append('div')
+  .html('I am div')
   .style({
-  &#39;border&#39;:&#39;1px solid #000&#39;,
-  &#39;width&#39;:&#39;120px&#39;
+  'border':'1px solid #000',
+  'width':'120px'
   });
 </code></pre><p><img src="/img/articles/201410/20141031_1_03.png" alt="SVG D3 - 起手式"></p>
 <p>除了塞 HTML 的 DOM 之外，更重要的是可以塞 SVG 的形狀，還記得在我之前的文章：<a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html">SVG 研究之路 (14) - 控制 SVG 的注意事項</a>，因為 SVG 本身不屬於 HTML 的標準元素，所以都要用額外的方式才能動態添加內容，但自從有了 D3，就都沒有這問題了，直接添加即可，下列程式碼會產生一個圓形 ( 如果對 SVG 形狀不了解的可以參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-03-basic-shapes.html">SVG 研究之路 (3) - 基本形狀</a> )：</p>
-<pre><code>  d3.select(&#39;body&#39;)
-    .append(&#39;svg&#39;)
+<pre class="prettyprint"><code>  d3.select('body')
+    .append('svg')
     .attr({
-      &#39;width&#39;:200,
-      &#39;height&#39;:200
+      'width':200,
+      'height':200
     });
 
-  d3.select(&#39;svg&#39;)
-    .append(&#39;circle&#39;)
+  d3.select('svg')
+    .append('circle')
     .attr({
-    &#39;cx&#39;:50,
-    &#39;cy&#39;:50,
-    &#39;r&#39;:30,
-    &#39;fill&#39;:&#39;#f90&#39;,
-    &#39;stroke&#39;:&#39;#c00&#39;,
-    &#39;stroke-width&#39;:&#39;5px&#39;
+    'cx':50,
+    'cy':50,
+    'r':30,
+    'fill':'#f90',
+    'stroke':'#c00',
+    'stroke-width':'5px'
     });
 </code></pre><p><img src="/img/articles/201410/20141031_1_04.png" alt="SVG D3 - 起手式"></p>
 <p>以上就是一些 D3 起手式的介紹，雖然 D3 可以做到和 jquery 差不多的事情，但整體而言還是 jquery 比較方便，因為畢竟 D3 誕生的目的原本就和 jquery 不同，D3 是為了讓數據可以用視覺圖像化的方式而誕生的，所以上述基本的用法，其實也會跟隨著 data 來自動產生，會在之後用一些篇幅仔細分享。 </p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -191,53 +158,67 @@ d3.select(&#39;div div&#39;).style({
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

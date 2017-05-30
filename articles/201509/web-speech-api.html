@@ -1,113 +1,84 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>Google 語音辨識 API - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-09-06T23:00:00+01:00">
-
-<meta name="keywords" content="web,speech,api,web speech api,聲控,google 語音辨識">
-
-<meta name="description" content="又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！">
-
-<meta itemprop="name" content="Google 語音辨識 API - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150906_1_01b.jpg">
-
-<meta itemprop="description" content="又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！">
-
-<meta property="og:title" content="Google 語音辨識 API - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-speech-api.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150906_1_01b.jpg">
-
-<meta property="og:description" content="又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！">
-
-<title>Google 語音辨識 API - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！( 不過我相信未來應該會支援的，畢竟瀏覽器的發展就是這樣咩，而且 iOS 平台的 Google App 也有內建語音辨識呀，但也不太一定，畢竟 iOS 上頭有個 Siri... )">
+  <meta itemprop="description" content="又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！( 不過我相信未來應該會支援的，畢竟瀏覽器的發展就是這樣咩，而且 iOS 平台的 Google App 也有內建語音辨識呀，但也不太一定，畢竟 iOS 上頭有個 Siri... )">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/web-speech-api.jpg">
+  <meta property="og:description" content="又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！( 不過我相信未來應該會支援的，畢竟瀏覽器的發展就是這樣咩，而且 iOS 平台的 Google App 也有內建語音辨識呀，但也不太一定，畢竟 iOS 上頭有個 Siri... )">
+  <meta property="og:title" content="Google 語音辨識 API">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-speech-api.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/web-speech-api.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>Google 語音辨識 API  <span class="article-date" tag="web">SEP 6, 2015</span></h2>
+<h1>Google 語音辨識 API</h1>
 <p>又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！( 不過我相信未來應該會支援的，畢竟瀏覽器的發展就是這樣咩，而且 iOS 平台的 Google App 也有內建語音辨識呀，但也不太一定，畢竟 iOS 上頭有個 Siri... )</p>
 <p>有興趣的人可以先到這個 demo 網站看看：<a href="https://www.google.com/intl/en/chrome/demos/speech.html">https://www.google.com/intl/en/chrome/demos/speech.html</a>，下拉選單選擇自己要念的語言，按一下右上的麥克風，就可以開始玩語音輸入了。</p>
 <p><img src="/img/articles/201509/20150906_1_02.jpg" alt="Google 語音辨識 API"></p>
 <p>接著要來看一下怎麼實作語音辨識，語音辨識一開始要判斷「<strong>webkitSpeechRecognition</strong>」有沒有存在瀏覽器裡，因為這是內建於瀏覽器的 api，從 webkit 的字樣我們也可以知道，Firefox 和 IE 是一定 GG 的，所以一開始的程式可以這樣寫：</p>
-<pre><code>if (!(&#39;webkitSpeechRecognition&#39; in window)) {
+<pre class="prettyprint"><code>if (!('webkitSpeechRecognition' in window)) {
   // do something...
 } else {
   // do something...
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>if 裡面就可以放個 alert 或顯示文字作為警告，重點放在 else 裏頭，一開始我們要先建立 webkitSpeechRecognition 物件，接著我們才可以使用這個物件的屬性來做設定。</p>
-<pre><code>var recognition = new webkitSpeechRecognition();
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>var recognition = new webkitSpeechRecognition();
+</code></pre><p><br></p>
 <p>再來我們來瞭解一下有哪些屬性可以用：</p>
 <ul>
 <li><p><strong>recognition.continuous=true/false</strong></p>
@@ -116,7 +87,7 @@
 <li><p><strong>recognition.interimResults=true/false</strong></p>
 <p>  這個屬性也是布林值，如果設定為 true，表示在我們講話的當下就會即時辨識，不然就會在一段話結束之後，才會開始辨識。</p>
 </li>
-<li><p><strong>recognition.lang=&quot;語系&quot;</strong></p>
+<li><p><strong>recognition.lang="語系"</strong></p>
 <p>  設定辨識的語系，如果是講中文，就要設定為「cmn-Hant-TW」，如果是英文，就可以設定為「en-US」，當然 Google 所提供的語系非常多，可以從上面<a href="https://www.google.com/intl/en/chrome/demos/speech.html">範例連結</a>的原始碼看到對應的語系喔！不過也是因為要連結到 Google 的語系資料庫，所以基本上沒有網路也就無法進行語音辨識了。</p>
 </li>
 <li><p><strong>recognition.onstart=function(){}</strong></p>
@@ -133,17 +104,17 @@
 </li>
 <li><p><strong>recognition.onresult=function(event){}</strong></p>
 <p>  當「辨識有結果」的時候，要做什麼事情，這也是進行語音辨識最關鍵的動作，所以我們要來解構一下語音辨識時的結果，首先用下面的範例來看看 event 長怎樣，當我們講話進行辨識的時候，就會印出 event。( 範例：<a href="/demo/201509/web-speech-api-demo01.html">web-speech-api-demo01.html</a> )</p>
-<pre><code>var recognition = new webkitSpeechRecognition();
+<pre class="prettyprint"><code>var recognition = new webkitSpeechRecognition();
 
 recognition.continuous=true;
 recognition.interimResults=true;
-recognition.lang=&quot;cmn-Hant-TW&quot;;
+recognition.lang="cmn-Hant-TW";
 
 recognition.onstart=function(){
-  console.log(&#39;開始辨識...&#39;);
+  console.log('開始辨識...');
 };
 recognition.onend=function(){
-  console.log(&#39;停止辨識!&#39;);
+  console.log('停止辨識!');
 };
 
 recognition.onresult=function(event){
@@ -173,20 +144,20 @@ recognition.start();
 <p>辨識的可信度，是一個由 0 到 1 的浮點數，表示辨識的準確度。</p>
 </li>
 </ul>
-<p><br/>
+<p><br>
 有了上面的屬性列表，我們就可以做一個即時辨識並把文字顯示在網頁上頭的範例：( 範例：<a href="/demo/201509/web-speech-api-demo02.html">web-speech-api-demo02.html</a> )</p>
-<pre><code>var show = document.getElementById(&#39;show&#39;);
+<pre class="prettyprint"><code>var show = document.getElementById('show');
 var recognition = new webkitSpeechRecognition();
 
 recognition.continuous=true;
 recognition.interimResults=true;
-recognition.lang=&quot;cmn-Hant-TW&quot;;
+recognition.lang="cmn-Hant-TW";
 
 recognition.onstart=function(){
-  console.log(&#39;開始辨識...&#39;);
+  console.log('開始辨識...');
 };
 recognition.onend=function(){
-  console.log(&#39;停止辨識!&#39;);
+  console.log('停止辨識!');
 };
 
 recognition.onresult=function(event){
@@ -200,41 +171,36 @@ recognition.start();
 </li>
 </ul>
 <p>以上就是利用現成的 Chrome 語音辨識 API 的應用實例，記得要使用的時候一定要有網路，而且網路的速度也決定了辨識的速度，畢竟他的運作原理是把我們的聲音錄製即時傳送出去辨識，所以網路越慢來往的時間就會拉大，最後再附上一個我用語音辨識來操控自走車的影片，真的滿有趣的喔！</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ERY1ukVxTJM" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ERY1ukVxTJM" frameborder="0" allowfullscreen=""></iframe>
 
 
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
-
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -242,53 +208,67 @@ recognition.start();
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

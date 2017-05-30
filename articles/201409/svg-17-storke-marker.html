@@ -1,197 +1,164 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 研究之路 (17) - Stroke-marker - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-09-08T16:25:00+01:00">
-
-<meta name="keywords" content="svg,illustrator,storke,marker,polyline">
-
-<meta name="description" content="stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。">
-
-<meta itemprop="name" content="SVG 研究之路 (17) - Stroke-marker - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140908_1_01.jpg">
-
-<meta itemprop="description" content="stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。">
-
-<meta property="og:title" content="SVG 研究之路 (17) - Stroke-marker - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-17-storke-marker.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140908_1_01.jpg">
-
-<meta property="og:description" content="stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。">
-
-<title>SVG 研究之路 (17) - Stroke-marker  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="在 SVG 研究之路 (16) - Stroke-miterlimit 和 SVG 研究之路 (6) - stroke 邊框 都有介紹了 stroke 的用法，其實 stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。">
+  <meta itemprop="description" content="在 SVG 研究之路 (16) - Stroke-miterlimit 和 SVG 研究之路 (6) - stroke 邊框 都有介紹了 stroke 的用法，其實 stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/svg-17-storke-marker.jpg">
+  <meta property="og:description" content="在 SVG 研究之路 (16) - Stroke-miterlimit 和 SVG 研究之路 (6) - stroke 邊框 都有介紹了 stroke 的用法，其實 stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。">
+  <meta property="og:title" content="SVG 研究之路 (17) - Stroke-marker">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-17-storke-marker.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/svg-17-storke-marker.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 研究之路 (17) - Stroke-marker  <span class="article-date" tag="web">SEP 8, 2014</span></h2>
+<h1>SVG 研究之路 (17) - Stroke-marker</h1>
 <p>在 <a href="http://www.oxxostudio.tw/articles/201409/svg-16-storke-miterlimit.html">SVG 研究之路 (16) - Stroke-miterlimit</a> 和 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html">SVG 研究之路 (6) - stroke 邊框</a> 都有介紹了 stroke 的用法，其實 stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。</p>
 <p>不過 marker 並不是寫在 stroke 的屬性裏頭，而是用<code>defs</code>來定義，再使用<code>marker-start</code>、<code>marker-mid</code>和<code>marker-end</code>來將其放入線段當中，原本我想使用 illustrator 來表現，不過在 illustrator 裏頭，是用<code>g</code> ( group ) 把符號和線段組合，並不是使用 marker 的方式，但我們仍然可以使用 illustrator 來繪製圖案。</p>
 <p>例如今天要做一支愛神之箭，必須要有愛心箭頭和羽毛尾巴，利用 illustrator 繪製這兩個形狀之後存成 SVG ( 就可以看到程式碼 )，接著在<code>defs</code>裏頭加入 marker，就可以和線段串接在一起。  </p>
 <p><img src="/img/articles/201409/20140908_1_02.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<pre><code>&lt;svg width=&quot;300&quot; height=&quot;400&quot;&gt;
+<pre class="prettyprint"><code>&lt;svg width="300" height="400"&gt;
   &lt;defs&gt;
-    &lt;marker id=&quot;a1&quot; viewBox=&quot;0 0 77 77&quot; refX=&quot;20&quot; refY=&quot;39&quot; markerWidth=&quot;30&quot; markerHeight=&quot;30&quot; orient=&quot;auto&quot; &gt;
-      &lt;path fill=&quot;#f00&quot;  d=&quot;M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6    C-1.594,77.1-8.594,49.8,12.707,38.6z&quot;&gt;&lt;/path&gt;
+    &lt;marker id="a1" viewBox="0 0 77 77" refX="20" refY="39" markerWidth="30" markerHeight="30" orient="auto" &gt;
+      &lt;path fill="#f00"  d="M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6    C-1.594,77.1-8.594,49.8,12.707,38.6z"&gt;&lt;/path&gt;
     &lt;/marker&gt;
 
-    &lt;marker id=&quot;a2&quot; viewBox=&quot;0 0 80 45&quot; refX=&quot;50&quot; refY=&quot;22&quot; markerWidth=&quot;40&quot; markerHeight=&quot;30&quot; orient=&quot;auto&quot; &gt;
-      &lt;polygon fill=&quot;#600&quot; points=&quot;65.397,0 0,0 14.173,22.417 0.001,44.833 65.398,44.833 79.569,22.417 &quot;/&gt;
+    &lt;marker id="a2" viewBox="0 0 80 45" refX="50" refY="22" markerWidth="40" markerHeight="30" orient="auto" &gt;
+      &lt;polygon fill="#600" points="65.397,0 0,0 14.173,22.417 0.001,44.833 65.398,44.833 79.569,22.417 "/&gt;
     &lt;/marker&gt;
   &lt;/defs&gt;
-  &lt;polyline points=&quot;50,20 150,20&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;1&quot; marker-end=&quot;url(#a1)&quot; marker-start=&quot;url(#a2)&quot;&gt;&lt;/polyline&gt;
+  &lt;polyline points="50,20 150,20" fill="none" stroke="black" stroke-width="1" marker-end="url(#a1)" marker-start="url(#a2)"&gt;&lt;/polyline&gt;
 &lt;/svg&gt;
-</code></pre><p>上述 marker ，必須由某些屬性來進行基本的調控，<code>id</code>的目的在於讓線段可以獲取這個 marker，<code>viewbox</code>是 SVG 裏頭特有的屬性，是一個檢視的區域界限，後方跟隨四個數值，分別是左上起點座標以及長寬：<code>viewbox=&quot;x,y,width,height&quot;</code>，以 id=&quot;a1&quot; 而言，愛心的大小約為 77x77，若<code>viewbox</code>改為於 0,0,37,77，則愛心會發生被裁切的現象 ( 如下圖 )  </p>
+</code></pre><p>上述 marker ，必須由某些屬性來進行基本的調控，<code>id</code>的目的在於讓線段可以獲取這個 marker，<code>viewbox</code>是 SVG 裏頭特有的屬性，是一個檢視的區域界限，後方跟隨四個數值，分別是左上起點座標以及長寬：<code>viewbox="x,y,width,height"</code>，以 id="a1" 而言，愛心的大小約為 77x77，若<code>viewbox</code>改為於 0,0,37,77，則愛心會發生被裁切的現象 ( 如下圖 )  </p>
 <p><img src="/img/articles/201409/20140908_1_03.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<pre><code>    &lt;marker id=&quot;a1&quot; viewBox=&quot;0 0 37 77&quot; refX=&quot;20&quot; refY=&quot;39&quot; markerWidth=&quot;30&quot; markerHeight=&quot;30&quot; orient=&quot;auto&quot; &gt;
-      &lt;path fill=&quot;#f00&quot;  d=&quot;M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6    C-1.594,77.1-8.594,49.8,12.707,38.6z&quot;&gt;&lt;/path&gt;
+<pre class="prettyprint"><code>    &lt;marker id="a1" viewBox="0 0 37 77" refX="20" refY="39" markerWidth="30" markerHeight="30" orient="auto" &gt;
+      &lt;path fill="#f00"  d="M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6    C-1.594,77.1-8.594,49.8,12.707,38.6z"&gt;&lt;/path&gt;
     &lt;/marker&gt;
-</code></pre><p>了解了<code>viewbox</code>之後，<code>refX</code>與<code>refY</code>就是<strong>相對</strong>於 X 軸與 y 軸的座標，例如我們設定 refX=&quot;20&quot;，就表示我們以 20,0 作為起始點，所以整張圖就會往左邊移，設定 refY=&quot;39&quot;，整張圖就會往上面移;至於<code>markerWidth</code>與<code>markerHeight</code>，就是 marker 的長與寬，設定的越大就越大。  </p>
+</code></pre><p>了解了<code>viewbox</code>之後，<code>refX</code>與<code>refY</code>就是<strong>相對</strong>於 X 軸與 y 軸的座標，例如我們設定 refX="20"，就表示我們以 20,0 作為起始點，所以整張圖就會往左邊移，設定 refY="39"，整張圖就會往上面移;至於<code>markerWidth</code>與<code>markerHeight</code>，就是 marker 的長與寬，設定的越大就越大。  </p>
 <p><img src="/img/articles/201409/20140908_1_04.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<pre><code>    &lt;marker id=&quot;a1&quot; viewBox=&quot;0 0 77 77&quot; refX=&quot;20&quot; refY=&quot;39&quot; markerWidth=&quot;80&quot; markerHeight=&quot;80&quot; orient=&quot;auto&quot; &gt;
-      &lt;path fill=&quot;#f00&quot;  d=&quot;M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6    C-1.594,77.1-8.594,49.8,12.707,38.6z&quot;&gt;&lt;/path&gt;
+<pre class="prettyprint"><code>    &lt;marker id="a1" viewBox="0 0 77 77" refX="20" refY="39" markerWidth="80" markerHeight="80" orient="auto" &gt;
+      &lt;path fill="#f00"  d="M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6    C-1.594,77.1-8.594,49.8,12.707,38.6z"&gt;&lt;/path&gt;
     &lt;/marker&gt;
 </code></pre><p>最後一個屬性是<code>orient</code>，這個屬性很特別，是 marker 圖形跟隨線段的方向，單位是<strong>角度</strong>，預設值是 <strong>auto</strong> ，也就是線段怎麼跑，都會自動隨著線段旋轉角度，不過要注意的是，auto 的話，<strong>一律以水平方向作為起始方向</strong>，不是垂直！</p>
-<p>orient=&quot;auto&quot;  </p>
+<p>orient="auto"  </p>
 <p><img src="/img/articles/201409/20140908_1_05.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<p>orient=&quot;-45&quot;  </p>
+<p>orient="-45"  </p>
 <p><img src="/img/articles/201409/20140908_1_06.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <p>了解了所有 marker 的屬性之後，要做出帶有圖案的折線圖就非常的方便了，下圖我將起點設定為紅色球，中間的折點設定為綠色球，終點設定為藍色球。  </p>
 <p><img src="/img/articles/201409/20140908_1_07.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<pre><code>&lt;svg width=&quot;300&quot; height=&quot;400&quot;&gt;
+<pre class="prettyprint"><code>&lt;svg width="300" height="400"&gt;
   &lt;defs&gt;
-    &lt;marker id=&quot;r&quot; viewBox=&quot;0 0 50 50&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;10&quot; markerHeight=&quot;10&quot; orient=&quot;auto&quot; &gt;
-      &lt;circle fill=&quot;#f00&quot; cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;25&quot;/&gt;
+    &lt;marker id="r" viewBox="0 0 50 50" refX="25" refY="25" markerWidth="10" markerHeight="10" orient="auto" &gt;
+      &lt;circle fill="#f00" cx="25" cy="25" r="25"/&gt;
     &lt;/marker&gt;
-    &lt;marker id=&quot;g&quot; viewBox=&quot;0 0 50 50&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;10&quot; markerHeight=&quot;10&quot; orient=&quot;auto&quot; &gt;
-      &lt;circle fill=&quot;#0f0&quot; cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;25&quot;/&gt;
+    &lt;marker id="g" viewBox="0 0 50 50" refX="25" refY="25" markerWidth="10" markerHeight="10" orient="auto" &gt;
+      &lt;circle fill="#0f0" cx="25" cy="25" r="25"/&gt;
     &lt;/marker&gt;
-    &lt;marker id=&quot;b&quot; viewBox=&quot;0 0 50 50&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;10&quot; markerHeight=&quot;10&quot; orient=&quot;auto&quot; &gt;
-      &lt;circle fill=&quot;#00f&quot; cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;25&quot;/&gt;
+    &lt;marker id="b" viewBox="0 0 50 50" refX="25" refY="25" markerWidth="10" markerHeight="10" orient="auto" &gt;
+      &lt;circle fill="#00f" cx="25" cy="25" r="25"/&gt;
     &lt;/marker&gt;
   &lt;/defs&gt;
-  &lt;polyline points=&quot;20,100 50,100 80,20 110,80 140,30 170,100 200,100&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;1&quot; marker-end=&quot;url(#b)&quot; marker-start=&quot;url(#r)&quot; marker-mid=&quot;url(#g)&quot;&gt;&lt;/polyline&gt;
+  &lt;polyline points="20,100 50,100 80,20 110,80 140,30 170,100 200,100" fill="none" stroke="black" stroke-width="1" marker-end="url(#b)" marker-start="url(#r)" marker-mid="url(#g)"&gt;&lt;/polyline&gt;
 &lt;/svg&gt;
 </code></pre><p>藉由更改 marker 的形狀，就可以做出更多的變化。  </p>
 <p><img src="/img/articles/201409/20140908_1_08.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<pre><code>&lt;svg width=&quot;300&quot; height=&quot;400&quot;&gt;
+<pre class="prettyprint"><code>&lt;svg width="300" height="400"&gt;
   &lt;defs&gt;
-    &lt;marker id=&quot;r&quot; viewBox=&quot;-10 -10 70 70&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;15&quot; markerHeight=&quot;15&quot; orient=&quot;auto&quot; &gt;
-      &lt;circle fill=&quot;#fff&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;25&quot;/&gt;
+    &lt;marker id="r" viewBox="-10 -10 70 70" refX="25" refY="25" markerWidth="15" markerHeight="15" orient="auto" &gt;
+      &lt;circle fill="#fff" stroke="#000" stroke-width="10" cx="25" cy="25" r="25"/&gt;
     &lt;/marker&gt;
-    &lt;marker id=&quot;g&quot; viewBox=&quot;0 0 50 50&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;10&quot; markerHeight=&quot;10&quot; orient=&quot;45&quot; &gt;
-      &lt;rect fill=&quot;#0a0&quot; width=&quot;50&quot; height=&quot;50&quot;/&gt;
+    &lt;marker id="g" viewBox="0 0 50 50" refX="25" refY="25" markerWidth="10" markerHeight="10" orient="45" &gt;
+      &lt;rect fill="#0a0" width="50" height="50"/&gt;
     &lt;/marker&gt;
-    &lt;marker id=&quot;b&quot; viewBox=&quot;-10 -10 70 70&quot; refX=&quot;25&quot; refY=&quot;25&quot; markerWidth=&quot;15&quot; markerHeight=&quot;15&quot; orient=&quot;auto&quot; &gt;
-      &lt;circle fill=&quot;#f99&quot; stroke=&quot;#f00&quot; stroke-width=&quot;10&quot; cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;25&quot;/&gt;
+    &lt;marker id="b" viewBox="-10 -10 70 70" refX="25" refY="25" markerWidth="15" markerHeight="15" orient="auto" &gt;
+      &lt;circle fill="#f99" stroke="#f00" stroke-width="10" cx="25" cy="25" r="25"/&gt;
     &lt;/marker&gt;
   &lt;/defs&gt;
-  &lt;polyline points=&quot;20,100 50,100 80,20 110,80 140,30 170,100 200,100&quot; fill=&quot;none&quot; stroke=&quot;black&quot; stroke-width=&quot;1&quot; marker-end=&quot;url(#b)&quot; marker-start=&quot;url(#r)&quot; marker-mid=&quot;url(#g)&quot;&gt;&lt;/polyline&gt;
+  &lt;polyline points="20,100 50,100 80,20 110,80 140,30 170,100 200,100" fill="none" stroke="black" stroke-width="1" marker-end="url(#b)" marker-start="url(#r)" marker-mid="url(#g)"&gt;&lt;/polyline&gt;
 &lt;/svg&gt;
 </code></pre><p>以上就是運用 marker 可以做到的許多特殊效果，對於繪製折線圖來說相當的方便好用喔！</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -199,53 +166,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,117 +1,88 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>立體聲 ( PannerNode,StereoPannerNode ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-09-30T23:10:00+01:00">
-
-<meta name="keywords" content="music,audio,web audio api,PannerNode,StereoPannerNode">
-
-<meta name="description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域。">
-
-<meta itemprop="name" content="立體聲 ( PannerNode,StereoPannerNode ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150930_1_01b.jpg">
-
-<meta itemprop="description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域。">
-
-<meta property="og:title" content="立體聲 ( PannerNode,StereoPannerNode ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api-stereo-pannernode.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150930_1_01b.jpg">
-
-<meta property="og:description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域。">
-
-<title>立體聲 ( PannerNode,StereoPannerNode ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。">
+  <meta itemprop="description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api-stereo-pannernode.jpg">
+  <meta property="og:description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。">
+  <meta property="og:title" content="立體聲 ( PannerNode,StereoPannerNode )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api-stereo-pannernode.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api-stereo-pannernode.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>立體聲 ( PannerNode,StereoPannerNode ) <span class="article-date" tag="web">SEP 30    , 2015</span></h2>
-<p><img src="/img/articles/201509/20150930_1_01.jpg" class="preview-img"></p>
+<h1>立體聲 ( PannerNode,StereoPannerNode )</h1>
+<p><img src="/img/articles/201509/web-audio-api-stereo-pannernode.jpg" class="preview-img" alt=""> </p>
 <p>通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。</p>
 <p>先看到比較簡單的 StereoPannerNode，這只是針對在 2D 平面上的左右移動，它也只有一個屬性叫做「pan」，數值為 -1 到 1，如果越接近 -1，左邊的聲音就會越大聲，右邊就越小聲，越接近 1 則反之，預設值為 0 也就是左右均等，在下面的範例我們利用<code>context.createStereoPanner()</code>產生 StereoPannerNode，賦予值，就可以控制左右聲道。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo01.html">web-audio-api-stereo-pannernode-demo01.html</a> )</p>
-<pre><code>var AudioContext = AudioContext || webkitAudioContext;
+<pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
 var context      = new AudioContext;
 var oscillator   = context.createOscillator();
 var sound,
-    type = &#39;square&#39;,
+    type = 'square',
     frequency = 440,
     detune = 0,
     pan = 0;
     c = 0;
 
-var startBtn  = document.getElementById(&#39;startBtn&#39;),
-  stopBtn     = document.getElementById(&#39;stopBtn&#39;),
-  panRange    = document.getElementById(&#39;panRange&#39;),
-  showPan     = document.getElementById(&#39;showPan&#39;);
+var startBtn  = document.getElementById('startBtn'),
+  stopBtn     = document.getElementById('stopBtn'),
+  panRange    = document.getElementById('panRange'),
+  showPan     = document.getElementById('showPan');
 
 var _pan = function(t,f,d,p){
   oscillator.type = t;
@@ -131,7 +102,7 @@ function _sound(){
   }
 }
 
-startBtn.addEventListener(&#39;click&#39;,function(){
+startBtn.addEventListener('click',function(){
   c = 1;
   startBtn.disabled = true;
   stopBtn.disabled = false;
@@ -139,7 +110,7 @@ startBtn.addEventListener(&#39;click&#39;,function(){
   sound.connect(context.destination);
 });
 
-stopBtn.addEventListener(&#39;click&#39;,function(){
+stopBtn.addEventListener('click',function(){
   c = 0;
   startBtn.disabled = false;
   stopBtn.disabled = true;
@@ -153,7 +124,7 @@ panRange.oninput = function(){
 };
 
 oscillator.start();
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>雖然說可以控制左右聲道，好像已經可以做出一些滿有趣的東西 ( 許多音樂也都會有左右聲道的切換 )，但對於一些 WebGL 所繪製的場景來說，要說立體又沒有那麼的立體，畢竟在真實的世界聲音不會只有左邊到右邊而已，因此 Web Audio API 還有提供力另外一個「PannerNode」來幫我們解決立體聲的問題，而它具備的屬性就多很多了：</p>
 <blockquote>
 <ul>
@@ -166,7 +137,7 @@ oscillator.start();
 <li>coneOuterGain：音源外側衰減率，預設 0</li>
 </ul>
 </blockquote>
-<p><br/></p>
+<p><br></p>
 <p>前面兩個<code>panningModel</code>和<code>distanceModel</code>基本上就是聲音在 3D 空間和衰減的演算法，如果對於數學有興趣的可以參考<a href="http://webaudio.github.io/web-audio-api/#idl-def-PanningModelType">這篇</a>和<a href="http://webaudio.github.io/web-audio-api/#idl-def-DistanceModelType">這篇</a>，在這邊就不多作解釋，<code>maxDistance</code>也很好理解，就是聲音最多可以傳送到哪邊，而<code>rolloffFactor</code>就是在傳送過程中衰減的速度，數值愈大衰減的越快 ( 雖然還是會傳遞到我們設定的最大距離，但一開始衰減太快的話，其實就會很快就聽不到了 )。</p>
 <p>比較有趣的是後面三個屬性<code>coneInnerAngle</code>、<code>coneOuterAngle</code>和<code>coneOuterGain</code>，要理解這三個屬性必須由下面這張示意圖著手，圖片來源：<a href="http://curtaincall.weblike.jp/portfolio-web-sounder/">http://curtaincall.weblike.jp/portfolio-web-sounder/</a></p>
 <p><img src="/img/articles/201509/20150930_1_02.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
@@ -180,9 +151,9 @@ oscillator.start();
 <li>setVelocity(x, y, z)：音源移動速度設定，預設 (0,0,0)</li>
 </ul>
 </blockquote>
-<p><br/></p>
+<p><br></p>
 <p><code>setPosition</code>是設定音源在 3D 空間的哪個位置，而<code>setOrientation</code>是告訴我們聲音往哪個方向發聲，有點像在繪製 3D 圖形的時候，探照燈或是攝影機，都會有自己的中心點，以及朝向哪個方向的點座標一樣，<code>setVelocity</code>指的是聲音的速度，也就是這個聲音朝哪個方向移動，下面的範例是利用 PannerNode 來做一個空間裡的聲音，有別於剛剛的左聲道右聲道，利用 PannerNode 還會發現聲音越來越小聲，彷彿真的有個聲音在移動的感覺，由於程式碼比較多，這裏就只列出主要修改的部分。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo02.html">web-audio-api-stereo-pannernode-demo02.html</a> )</p>
-<pre><code>oscillator.type = &#39;square&#39;;
+<pre class="prettyprint"><code>oscillator.type = 'square';
 oscillator.frequency.value = 440;
 oscillator.detune.value = 0;
 panNodes = context.createPanner();
@@ -191,7 +162,7 @@ panNodes.setOrientation(ox,oy,oz);
 panNodes.coneInnerAngle = it;
 panNodes.coneOuterAngle = ot;
 oscillator.connect(panNodes);
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>如果開了範例之後調整拉霸還是不太明白，其實只要換個角度思考，在沒有設定<code>coneInnerAngle</code>和<code>coneOuterAngle</code>的情形下，聲音會朝四面八方擴散，聲音所在的位置 (0,0,0) 剛好也是我們人所在的位置 (0,0,0)，所以我們調整 x 的時候，就會發現突然是只有右邊有聲音或突然只有左邊有聲音 ( 想像有隻蚊子跨過頭頂，從左耳飛到右耳 )，又因為是「笛卡兒座標系統」，所以 y 軸往上為正。</p>
 <p><img src="/img/articles/201509/20150930_1_03.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
 <p>如果今天我們稍微調整一下 Z 軸 (pz)，讓蚊子飛行的時候不要從頭頂，而是往前一點或往後一點，我們就會開始兩隻耳朵都聽到聲音了。</p>
@@ -208,12 +179,12 @@ oscillator.connect(panNodes);
 <li>setVelocity(x, y, z)</li>
 </ul>
 </blockquote>
-<p><br/>
+<p><br>
 <code>dopplerFactor</code>代表都卜勒效應，如果不了解都卜勒效應，可以參考<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94">維基百科</a>，舉例來說，今天有輛鳴笛的警車朝我們駛過來，聽到的鳴笛聲會比較尖銳，當警車遠離我們時，鳴笛聲會比較低沈，這就是因為鳴笛的音速和車速的關聯，導致我們聽到的聲音頻率不同，這通常也是我們要在 Web 裏頭模擬真實的聲音會用到的。</p>
 <p><img src="/img/articles/201509/20150930_1_03.gif" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
 <p>此外雖然說用法類似，但 AudioListener 並不是 AudioNode，udioListener 是創立一個「聽者」，如果沒有創建，預設就以 (0,0,0) 為主，創建的話就可以設定由創建的聽者為主，也因此不會有 connect 的事件在它身上發生，創建的方法很簡單，一行程式就建立了，然後就可以使用上面的屬性和方法，在範例當中可以調整最後的 ax、ay 和 az，看看效果。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo03.html">web-audio-api-stereo-pannernode-demo03.html</a> )</p>
-<pre><code>var listener = context.listener;
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>var listener = context.listener;
+</code></pre><p><br></p>
 <p>以上就是利用 Web Audio API 創建立體聲，如果把聲音想像成 3D 的繪圖，就會容易理解得多，雖然目前感覺起來，純粹使用感覺用處不大，但搭配一些 WebGL 的遊戲或立體空間，應該就會頗有看頭的啦！</p>
 <p>參考資料：</p>
 <ul>
@@ -222,37 +193,33 @@ oscillator.connect(panNodes);
 </ul>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -260,53 +227,67 @@ oscillator.connect(panNodes);
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

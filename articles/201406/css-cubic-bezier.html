@@ -1,201 +1,139 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>CSS3 Cubic Bezier - OXXO.STUDIO</title>
 
-<meta name="keywords" content="CSS,CSS3,教學,Cubic Bezier,網頁前端,oxxo,前端技術,css animation,css transition">
-
-<meta property="article:published_time" content="2014-06-28T22:45:00+01:00">
-
-<meta name="description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
-
-<meta itemprop="name" content="CSS3 Cubic Bezier - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140628_1_01.jpg">
-
-<meta itemprop="description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
-
-<meta property="og:title" content="CSS3 Cubic Bezier - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-cubic-bezier.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140628_1_01.jpg">
-
-<meta property="og:description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
-
-
-<title>CSS3 Cubic Bezier - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-<style>
-#test1 {
-position:absolute;
-width:70px;
-height:70px;
-background:#f90;
--webkit-animation:testkeyframes 2s infinite linear;
-top:0;
-}
-#test2 {
-position:absolute;
-width:70px;
-height:70px;
-background:#c00;
--webkit-animation:testkeyframes 2s infinite cubic-bezier(.89,-1.3,.2,1.3);
-top:0;
-}
-@-webkit-keyframes testkeyframes {
-0%, 100% {
-  top:0;
-}
-50% {
-  top:100px;
-}
-}
-</style>
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 &quot;C&quot; 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
+  <meta itemprop="description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 &quot;C&quot; 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/css-cubic-bezier.jpg">
+  <meta property="og:description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 &quot;C&quot; 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
+  <meta property="og:title" content="CSS3 Cubic Bezier">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-cubic-bezier.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/css-cubic-bezier.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>CSS3 Cubic Bezier <span class="article-date" tag="css">JUN 28, 2014</span></h2>
-<p><img src="/img/articles/201406/20140628_1_01.jpg" class="preview-img"></p>
-<p>Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 &quot;C&quot; 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。</p>
+<h1>CSS3 Cubic Bezier</h1>
+<p><img src="/img/articles/201406/css-cubic-bezier.jpg" class="preview-img" alt=""></p>
+<p>Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 "C" 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。</p>
 <p>在學習 Cubic Bezier 之前，要先來看看在 CSS3 裏頭哪些時候會用上 Cubic Bezier，會用到的時機有兩個，第一個是 <strong>transition</strong>，第二個是 <strong>animation</strong>，使用的方式如下：</p>
 <p>transition：</p>
-<pre><code>-webkit-transition:漸變樣式 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
+<pre class="prettyprint"><code>-webkit-transition:漸變樣式 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 -moz-transition:漸變樣式 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 -o-transition:漸變樣式 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 transition:漸變樣式 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 </code></pre><p>animation：</p>
-<pre><code>-webkit-anumation:影格名稱 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
+<pre class="prettyprint"><code>-webkit-anumation:影格名稱 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 -moz-anumation:影格名稱 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 -o-anumation:影格名稱 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 anumation:影格名稱 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 </code></pre><p>animation keyframes：</p>
-<pre><code>-webkit-animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
+<pre class="prettyprint"><code>-webkit-animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 -moz-animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 -o-animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
-</code></pre><p><br/>
+</code></pre><p><br>
 Cubic Bezier 的原理很簡單，總共有四個參數，分別是第一個貝茲曲線控制點的 x1 和 座標 y1，第二個貝茲曲線控制點的 x2 和 y2 座標，可以參考下面這張 W3C 對於 cubic-bezier 參數設置的圖片，往上為 1，往下為 0。( 參考 <a href="http://www.w3.org/TR/css3-transitions/#transition-timing-function-property">W3C 文章</a> )</p>
 <p><img src="/img/articles/201406/20140628_1_04.png" alt="CSS Cubic Bezier">
-<br/></p>
+<br></p>
 <p>藉由控制 Cubic Bezier，我們便可以很容易地做出加減速的效果， ( 可以參考 <a href="http://cubic-bezier.com/">cubic-bezier.com</a> )</p>
 <div style="position:relative; height:170px;">
 <div id="test1"></div>
 </div>
 
-<pre><code>  -webkit-animation:testkeyframes 2s infinite cubic-bezier(.89,-0.93,.2,1.58);
+<pre class="prettyprint"><code>  -webkit-animation:testkeyframes 2s infinite cubic-bezier(.89,-0.93,.2,1.58);
 </code></pre><p><img src="/img/articles/201406/20140628_1_05.png" alt="CSS Cubic Bezier"></p>
-<p><br/></p>
+<p><br></p>
 <p>此外，若我們把貝茲曲線上下超過了 0 和 1，就會產生很有意思的一個特效，就是有點皮球反彈的效果。</p>
 <div style="position:relative; margin-top:40px; height:200px;">
 <div id="test2"></div>
 </div>
 
 
-<pre><code>  -webkit-animation:testkeyframes 2s infinite cubic-bezier(.89,-1.3,.2,1.3);
+<pre class="prettyprint"><code>  -webkit-animation:testkeyframes 2s infinite cubic-bezier(.89,-1.3,.2,1.3);
 </code></pre><p><img src="/img/articles/201406/20140628_1_03.png" alt="CSS Cubic Bezier">
-<br/></p>
+<br></p>
 <p>以上就是 Cubic Bezier 的介紹，因為這是一個三次函數曲線，所以會發生垂直或水平的地方有兩個點交會的情形喔！也因為有了 Cubic Bezier，我們的 CSS3 動畫也就更別具特色了！</p>
 
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
-
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -203,53 +141,67 @@ Cubic Bezier 的原理很簡單，總共有四個參數，分別是第一個貝�
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,100 +1,71 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 區域 ( area ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-11-16T19:25:00+01:00">
-
-<meta name="keywords" content="svg,d3,d3.js,area,區域">
-
-<meta name="description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
-
-<meta itemprop="name" content="SVG D3.js - 區域 ( area ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201411/20141116_1_01b.jpg">
-
-<meta itemprop="description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
-
-<meta property="og:title" content="SVG D3.js - 區域 ( area ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/20141116_1_01b.jpg">
-
-<meta property="og:description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
-
-<title>SVG D3.js - 區域 ( area )  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
+  <meta itemprop="description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-05-area.jpg">
+  <meta property="og:description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
+  <meta property="og:title" content="SVG D3.js - 區域 ( area )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-05-area.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG D3.js - 區域 ( area )  <span class="article-date" tag="web">NOV 16, 2014</span></h2>
+<h1>SVG D3.js - 區域 ( area )</h1>
 <p>理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。</p>
 <p>一如往常，先來看看 area 有哪些 API 可以使用：</p>
 <blockquote>
@@ -110,11 +81,11 @@
 <li>area.defined</li>
 </ul>
 </blockquote>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>x([x])、x0([x0])、x1([x1])、y([y])、y0([y0])、y1([y1])</strong></p>
 <p>  一開始的 x、x0、x1、y、y0、y1 這六個 API 是要一併處理的，這幾個 API 是專門處理座標的 API，通常 <strong>x、y0、y1 互相搭配，y、x0、x1 互相搭配</strong>，舉例來說，若我們把 x 和 y1 帶入一串數據 ( 不是陣列，要用 data 的方式帶入 )，y0 固定，那麼就會畫出一個區域的圖形。( <a href="/demo/201411/svg-d3-05-area-demo1.html">svg-d3-05-area-demo1.html</a> )</p>
-<pre><code>    var data = [
+<pre class="prettyprint"><code>    var data = [
     {x:0, y:18}, 
     {x:20, y:27}, 
     {x:40, y:56}, 
@@ -130,11 +101,11 @@
     var width = 240,
       height = 120;
 
-    var s = d3.select(&#39;#s&#39;);
+    var s = d3.select('#s');
 
     s.attr({
-        &#39;width&#39;: width,
-        &#39;height&#39;: height,
+        'width': width,
+        'height': height,
       });
 
     var area = d3.svg.area()
@@ -142,24 +113,24 @@
         .y0(0)
         .y1(function(d) { return d.y; });
 
-      s.append(&#39;path&#39;)
+      s.append('path')
         .attr({
-            &#39;    d&#39;:area(data),
-                &#39;stroke&#39;:&#39;#c00&#39;,
-                &#39;fill&#39;:&#39;rgba(255,0,0,.3)&#39;,
-              &#39;transform&#39;:&#39;translate(2,2)&#39;
+            '    d':area(data),
+                'stroke':'#c00',
+                'fill':'rgba(255,0,0,.3)',
+              'transform':'translate(2,2)'
         });
 </code></pre><p>  <img src="/img/articles/201411/20141116_1_02.png" alt="SVG D3 - 區域 ( area )"></p>
-<p>  <br/>
+<p>  <br>
   如果我們將陣列換成垂直的，再改一下 area 的 API，方向就會變成垂直的。( <a href="/demo/201411/svg-d3-05-area-demo2.html">svg-d3-05-area-demo2.html</a> )</p>
-<pre><code>    var area = d3.svg.area()
+<pre class="prettyprint"><code>    var area = d3.svg.area()
         .y(function(d) { return d.y; })
         .x0(0)
         .x1(function(d) { return d.x; });
 </code></pre><p>  <img src="/img/articles/201411/20141116_1_03.png" alt="SVG D3 - 區域 ( area )"></p>
-<p>  <br/>
+<p>  <br>
   如果要比較簡單來思考的話，y0 和 y1 可以分別看成是上方 y 座標與下方 y 坐標，x0、x1 可以看成左方的 x 座標與右方的 x 座標，基本上一定要有 x 一組數據搭配 y0、y1 或 y 一組數據搭配 x0、x1，因此最重要的其實就是必須要有一組座標來產生 area，前面使用了固定 x0 或固定 y0 的方式，就可以做出折線圖的區域效果，當然，如果我們數據，就會產生非常有趣的形狀。( <a href="/demo/201411/svg-d3-05-area-demo3.html">svg-d3-05-area-demo3.html</a> )</p>
-<pre><code>    var data = [
+<pre class="prettyprint"><code>    var data = [
     {x:0, y0:0, y1:20},
     {x:20, y0:10, y1:30},
     {x:40, y0:30, y1:80},
@@ -178,11 +149,11 @@
 </code></pre><p>  <img src="/img/articles/201411/20141116_1_04.png" alt="SVG D3 - 區域 ( area )"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>area.interpolate([interpolate])、area.tension([tension])</strong></p>
-<p>  這兩個 API 和 line() 的用法其實一模一樣，可以參考 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html">SVG D3 - 繪製線段</a>，這兩者的目的在於根據我們的數據，描繪出有 B-spline 或 Cardinal spline  或 cubic interpolation 的邊緣線段，這裡我們拿剛剛範例 1 來做比較，實驗組套用了<code>.interpolate(&#39;bundle&#39;)</code>。( <a href="/demo/201411/svg-d3-05-area-demo4.html">svg-d3-05-area-demo4.html</a> )</p>
-<pre><code>   //對照組
+<p>  這兩個 API 和 line() 的用法其實一模一樣，可以參考 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html">SVG D3 - 繪製線段</a>，這兩者的目的在於根據我們的數據，描繪出有 B-spline 或 Cardinal spline  或 cubic interpolation 的邊緣線段，這裡我們拿剛剛範例 1 來做比較，實驗組套用了<code>.interpolate('bundle')</code>。( <a href="/demo/201411/svg-d3-05-area-demo4.html">svg-d3-05-area-demo4.html</a> )</p>
+<pre class="prettyprint"><code>   //對照組
     var area1 = d3.svg.area()
         .x(function(d) { return d.x; })
         .y0(0)
@@ -193,30 +164,30 @@
         .x(function(d) { return d.x; })
         .y0(0)
         .y1(function(d) { return d.y; })
-        .interpolate(&#39;bundle&#39;);
+        .interpolate('bundle');
 
-      s.append(&#39;path&#39;)
+      s.append('path')
         .attr({
-          &#39;d&#39;:area1(data),
-          &#39;stroke&#39;:&#39;#00c&#39;,
-          &#39;fill&#39;:&#39;rgba(0,0,255,.1)&#39;,
-          &#39;transform&#39;:&#39;translate(2,2)&#39;
+          'd':area1(data),
+          'stroke':'#00c',
+          'fill':'rgba(0,0,255,.1)',
+          'transform':'translate(2,2)'
         });
-      s.append(&#39;path&#39;)
+      s.append('path')
         .attr({
-          &#39;d&#39;:area2(data),
-          &#39;stroke&#39;:&#39;#c00&#39;,
-          &#39;fill&#39;:&#39;rgba(255,0,0,.3)&#39;,
-          &#39;transform&#39;:&#39;translate(2,2)&#39;
+          'd':area2(data),
+          'stroke':'#c00',
+          'fill':'rgba(255,0,0,.3)',
+          'transform':'translate(2,2)'
         });
 </code></pre><p>  <img src="/img/articles/201411/20141116_1_05.png" alt="SVG D3 - 區域 ( area )">    </p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>area.defined([defined])</strong></p>
 <p>  defined 就式定義那些資料該出現或不該出現，舉例來說可以定義資料大於多少才出現，或資料是偶數才能出現...等之類,下面的範例讓區域只顯示 x 不是三的倍數的資料。 ( <a href="/demo/201411/svg-d3-05-area-demo5.html">svg-d3-05-area-demo5.html</a> )</p>
-<pre><code>    //對照組
+<pre class="prettyprint"><code>    //對照組
     var area1 = d3.svg.area()
         .x(function(d) { return d.x; })
         .y0(0)
@@ -231,13 +202,13 @@
 </code></pre><p>  <img src="/img/articles/201411/20141116_1_06.png" alt="SVG D3 - 區域 ( area )">    </p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <p>理解了 area 的用法之後，現在要來把之前的 line()、scale()、Axis() 和 area() 全部結合在一起，做一個票漂亮亮的圖表，第一步，直接參考上一篇的 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis-demo5.html">範例</a> 拿來用，然後我們直接多新增 area 進去，就可以做出具有區域的折線圖表，程式碼有點多，不過都是之前介紹過的，所以直接點開範例看看吧。( <a href="/demo/201411/svg-d3-05-area-demo6.html">svg-d3-05-area-demo6.html</a> )</p>
 <p><img src="/img/articles/201411/20141116_1_07.png" alt="SVG D3 - 區域 ( area )">    </p>
-<p><br/></p>
+<p><br></p>
 <p>只有一個折線圖不稀奇，可以放超過一個折線圖，看起來整個圖表的樣貌就更為完善囉！( <a href="/demo/201411/svg-d3-05-area-demo7.html">svg-d3-05-area-demo7.html</a> )</p>
 <p>資料長這樣：</p>
-<pre><code>  var data = [
+<pre class="prettyprint"><code>  var data = [
   {x:0, y:38, z:28}, 
   {x:20, y:27, z:15}, 
   {x:40, y:56, z:39}, 
@@ -249,9 +220,9 @@
   {x:160, y:36, z:44}, 
   {x:180, y:41, z:30}
   ];
-</code></pre><p><br/>
+</code></pre><p><br>
 兩條線段兩個區域：</p>
-<pre><code>  //line
+<pre class="prettyprint"><code>  //line
   var line1 = d3.svg.line()
     .x(function(d) {
       return scaleX(d.x);
@@ -277,74 +248,70 @@
   .y0(height)
   .y1(function(d) { return scaleY(d.z); });
 
-  s.append(&#39;path&#39;)
+  s.append('path')
     .attr({
-      &#39;d&#39;:line1(data),
-      &#39;stroke&#39;:&#39;#06c&#39;,
-      &#39;fill&#39;:&#39;none&#39;,
-      &#39;transform&#39;:&#39;translate(35,20)&#39; 
+      'd':line1(data),
+      'stroke':'#06c',
+      'fill':'none',
+      'transform':'translate(35,20)' 
     });
 
-  s.append(&#39;path&#39;)
+  s.append('path')
   .attr({
-    &#39;d&#39;:area1(data),
-    &#39;fill&#39;:&#39;rgba(0,150,255,.1)&#39;,
-    &#39;transform&#39;:&#39;translate(35,20)&#39; 
+    'd':area1(data),
+    'fill':'rgba(0,150,255,.1)',
+    'transform':'translate(35,20)' 
   });
 
-  s.append(&#39;path&#39;)
+  s.append('path')
     .attr({
-      &#39;d&#39;:line2(data),
-      &#39;stroke&#39;:&#39;#c00&#39;,
-      &#39;fill&#39;:&#39;none&#39;,
-      &#39;transform&#39;:&#39;translate(35,20)&#39; 
+      'd':line2(data),
+      'stroke':'#c00',
+      'fill':'none',
+      'transform':'translate(35,20)' 
     });
 
-  s.append(&#39;path&#39;)
+  s.append('path')
   .attr({
-    &#39;d&#39;:area2(data),
-    &#39;fill&#39;:&#39;rgba(255,0,0,.1)&#39;,
-    &#39;transform&#39;:&#39;translate(35,20)&#39; 
+    'd':area2(data),
+    'fill':'rgba(255,0,0,.1)',
+    'transform':'translate(35,20)' 
   });
 </code></pre><p><img src="/img/articles/201411/20141116_1_08.png" alt="SVG D3 - 區域 ( area )">    </p>
-<p><br/></p>
+<p><br></p>
 <p>以上就是 D3.js area 的基本介紹，相信理解之後，就可以做出更多有趣的圖表囉！最後，這篇文章的起始圖片，取自三星的 S3 廣告，總共有兩部，都超讚的，我很喜歡，分享給大家。^_^</p>
 <p><img src="/img/articles/201411/20141116_1_09.png" alt="SVG D3 - 區域 ( area )"><br><a href="http://youtu.be/zyMfpJh3h4A">http://youtu.be/zyMfpJh3h4A</a></p>
-<p><br/>
+<p><br>
 <img src="/img/articles/201411/20141116_1_10.png" alt="SVG D3 - 區域 ( area )"><br><a href="http://youtu.be/kF0yk9q2hp0">http://youtu.be/kF0yk9q2hp0</a>    </p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -352,53 +319,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,250 +1,217 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO</title>
 
-<meta name="keywords" content="svg,filter,feComponentTransfer">
-
-<meta property="article:published_time" content="2014-07-28T23:35:00+01:00">
-
-<meta name="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
-
-<meta itemprop="name" content="SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140728_1_01.jpg">
-
-<meta itemprop="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
-
-<meta property="og:title" content="SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/svg-15-filter-feComponentTransfer.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140728_1_01.jpg">
-
-<meta property="og:description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
-
-<title>SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
+  <meta itemprop="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/svg-15-filter-feComponentTransfer.jpg">
+  <meta property="og:description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
+  <meta property="og:title" content="SVG 研究之路 (15) - filter - feComponentTransfer">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/svg-15-filter-feComponentTransfer.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/svg-15-filter-feComponentTransfer.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 研究之路 (15) - filter - feComponentTransfer <span class="article-date" tag="web">JUL 28, 2014</span></h2>
-<p><img src="/img/articles/201407/20140728_1_01.jpg" class="preview-img"></p>
+<h1>SVG 研究之路 (15) - filter - feComponentTransfer</h1>
+<p><img src="/img/articles/201407/svg-15-filter-feComponentTransfer.jpg" class="preview-img" alt=""></p>
 <p>feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。</p>
 <p>feComponentTransfer 包含四個元素，分別是：feFuncR、feFuncG、feFuncB、feFuncA，也就是可以針對紅綠藍與 alpha 色版進行獨立調整，調整的 type 分為五種，分別是：identity、table、discrete、linear、gamma，五種調整 type 的對照公式可以參考 <a href="http://www.w3.org/TR/SVG/filters.html#feComponentTransferElement">W3C 的詳細說明</a>，也可以參考 <a href="http://docs.webplatform.org/wiki/svg/elements/feComponentTransfer">這篇文章</a>，介紹的更是詳細。</p>
 <p>首先看到 table，table 屬性主要是將我們所輸入的區塊，重新填入原本對照的色彩梯度區塊當中 ( 如下圖 )，就可以產生不同色彩梯度的效果。</p>
 <p><img src="/img/articles/201407/20140728_1_02.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
 <p>我們也可以利用 table 屬性來讓一張圖片有不同風格的變化 ： </p>
 <p><img src="/img/articles/201407/20140728_1_03.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
-<pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
+<pre class="prettyprint"><code>&lt;svg width="300" height="500"&gt;
   &lt;defs&gt;
-    &lt;filter id=&quot;table&quot; filterUnits=&quot;userSpaceOnUse&quot; x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;
+    &lt;filter id="table" filterUnits="userSpaceOnUse" x="0" y="200" width="300" height="200"&gt;
       &lt;feComponentTransfer&gt;
-        &lt;feFuncR type=&quot;table&quot; tableValues=&quot;0.0 0.7 0.9 1.0&quot;/&gt;
-        &lt;feFuncG type=&quot;table&quot; tableValues=&quot;.2 0.7 0.9 1.0&quot;/&gt;
-        &lt;feFuncB type=&quot;table&quot; tableValues=&quot;.2 0.7 0.9 1.0&quot;/&gt;
+        &lt;feFuncR type="table" tableValues="0.0 0.7 0.9 1.0"/&gt;
+        &lt;feFuncG type="table" tableValues=".2 0.7 0.9 1.0"/&gt;
+        &lt;feFuncB type="table" tableValues=".2 0.7 0.9 1.0"/&gt;
       &lt;/feComponentTransfer&gt;
     &lt;/filter&gt;
   &lt;/defs&gt;
-  &lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; /&gt;
-  &lt;image x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; filter=&quot;url(#table)&quot;  /&gt;
+  &lt;image x="0" y="0" width="300" height="200" xlink:href="圖片網址" /&gt;
+  &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#table)"  /&gt;
 &lt;/svg&gt;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>再來看到 discrete，從字面翻譯就是「離散」，也就是當我們列出一個數字的陣列，就會採用這個陣列的數字直接填入該色彩梯度內，造成沒有漸層的情形，如下圖：</p>
 <p><img src="/img/articles/201407/20140728_1_04.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
 <p>也因為少了很多顏色，所產生的圖片效果也頗特殊的：  </p>
 <p><img src="/img/articles/201407/20140728_1_05.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
-<pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
+<pre class="prettyprint"><code>&lt;svg width="300" height="500"&gt;
   &lt;defs&gt;
-    &lt;filter id=&quot;discrete&quot; filterUnits=&quot;userSpaceOnUse&quot; x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;
+    &lt;filter id="discrete" filterUnits="userSpaceOnUse" x="0" y="200" width="300" height="200"&gt;
       &lt;feComponentTransfer&gt;
-        &lt;feFuncR type=&quot;discrete&quot; tableValues=&quot;0.0 1.0 1.0 1.0&quot;/&gt;
-        &lt;feFuncG type=&quot;discrete&quot; tableValues=&quot;0.0 0.5 0.5 0.9&quot;/&gt;
-        &lt;feFuncB type=&quot;discrete&quot; tableValues=&quot;0.0 0.6&quot;/&gt;
+        &lt;feFuncR type="discrete" tableValues="0.0 1.0 1.0 1.0"/&gt;
+        &lt;feFuncG type="discrete" tableValues="0.0 0.5 0.5 0.9"/&gt;
+        &lt;feFuncB type="discrete" tableValues="0.0 0.6"/&gt;
       &lt;/feComponentTransfer&gt;
     &lt;/filter&gt;
   &lt;/defs&gt;
-  &lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; /&gt;
-  &lt;image x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; filter=&quot;url(#discrete)&quot;  /&gt;
+  &lt;image x="0" y="0" width="300" height="200" xlink:href="圖片網址" /&gt;
+  &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#discrete)"  /&gt;
 &lt;/svg&gt;
-</code></pre><p><br/></p>
-<p>至於 linear 和 gamma 就簡單多了，linear 就是調整直線的斜率，和 linear 有關的參數有兩個，一個是 slope，也就斜率，預設值為 1，另外一個是 intercept，預設值為 0 ( linear 的公式為：C&#39; = slope * C + intercept ) 了解了之後，我們就可以很輕鬆的對漸層當中的顏色作調整</p>
+</code></pre><p><br></p>
+<p>至於 linear 和 gamma 就簡單多了，linear 就是調整直線的斜率，和 linear 有關的參數有兩個，一個是 slope，也就斜率，預設值為 1，另外一個是 intercept，預設值為 0 ( linear 的公式為：C' = slope * C + intercept ) 了解了之後，我們就可以很輕鬆的對漸層當中的顏色作調整</p>
 <p><img src="/img/articles/201407/20140728_1_07.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
-<pre><code>&lt;svg width=&quot;8cm&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 800&quot;&gt;
-    &lt;linearGradient id=&quot;MyGradient&quot; gradientUnits=&quot;userSpaceOnUse&quot;
-            x1=&quot;100&quot; y1=&quot;0&quot; x2=&quot;600&quot; y2=&quot;0&quot;&gt;
-      &lt;stop offset=&quot;0&quot; stop-color=&quot;#000000&quot; /&gt;
-      &lt;stop offset=&quot;.3&quot; stop-color=&quot;#00ff00&quot; /&gt;
-      &lt;stop offset=&quot;.6&quot; stop-color=&quot;#0000ff&quot; /&gt;
-      &lt;stop offset=&quot;1&quot; stop-color=&quot;#ff0000&quot; /&gt;
+<pre class="prettyprint"><code>&lt;svg width="8cm" height="100%" viewBox="0 0 800 800"&gt;
+    &lt;linearGradient id="MyGradient" gradientUnits="userSpaceOnUse"
+            x1="100" y1="0" x2="600" y2="0"&gt;
+      &lt;stop offset="0" stop-color="#000000" /&gt;
+      &lt;stop offset=".3" stop-color="#00ff00" /&gt;
+      &lt;stop offset=".6" stop-color="#0000ff" /&gt;
+      &lt;stop offset="1" stop-color="#ff0000" /&gt;
     &lt;/linearGradient&gt;
-    &lt;filter id=&quot;Linear&quot; filterUnits=&quot;objectBoundingBox&quot; 
-            x=&quot;0%&quot; y=&quot;0%&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;
+    &lt;filter id="Linear" filterUnits="objectBoundingBox" 
+            x="0%" y="0%" width="100%" height="100%"&gt;
       &lt;feComponentTransfer&gt;
-        &lt;feFuncR type=&quot;linear&quot; slope=&quot;0&quot; intercept=&quot;0&quot;/&gt;
-        &lt;feFuncG type=&quot;linear&quot; slope=&quot;0&quot; intercept=&quot;0&quot;/&gt;
-        &lt;feFuncB type=&quot;linear&quot; slope=&quot;1&quot; intercept=&quot;0&quot;/&gt;
+        &lt;feFuncR type="linear" slope="0" intercept="0"/&gt;
+        &lt;feFuncG type="linear" slope="0" intercept="0"/&gt;
+        &lt;feFuncB type="linear" slope="1" intercept="0"/&gt;
       &lt;/feComponentTransfer&gt;
     &lt;/filter&gt;
   &lt;/defs&gt;
-    &lt;rect x=&quot;100&quot; y=&quot;420&quot; width=&quot;600&quot; height=&quot;60&quot; fill=&quot;url(#MyGradient)&quot; /&gt;
-    &lt;rect x=&quot;100&quot; y=&quot;490&quot; width=&quot;600&quot; height=&quot;60&quot; fill=&quot;url(#MyGradient)&quot; filter=&quot;url(#Linear)&quot; /&gt;
+    &lt;rect x="100" y="420" width="600" height="60" fill="url(#MyGradient)" /&gt;
+    &lt;rect x="100" y="490" width="600" height="60" fill="url(#MyGradient)" filter="url(#Linear)" /&gt;
 &lt;/svg&gt;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p><img src="/img/articles/201407/20140728_1_08.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
-<pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
+<pre class="prettyprint"><code>&lt;svg width="300" height="500"&gt;
   &lt;defs&gt;
-    &lt;filter id=&quot;Linear&quot; filterUnits=&quot;objectBoundingBox&quot; x=&quot;0%&quot; y=&quot;0%&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;
+    &lt;filter id="Linear" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%"&gt;
       &lt;feComponentTransfer&gt;
-        &lt;feFuncR type=&quot;linear&quot; slope=&quot;0&quot; intercept=&quot;0&quot;/&gt;
-        &lt;feFuncG type=&quot;linear&quot; slope=&quot;1&quot; intercept=&quot;0&quot;/&gt;
-        &lt;feFuncB type=&quot;linear&quot; slope=&quot;1&quot; intercept=&quot;0&quot;/&gt;
+        &lt;feFuncR type="linear" slope="0" intercept="0"/&gt;
+        &lt;feFuncG type="linear" slope="1" intercept="0"/&gt;
+        &lt;feFuncB type="linear" slope="1" intercept="0"/&gt;
       &lt;/feComponentTransfer&gt;
     &lt;/filter&gt;
   &lt;/defs&gt;
-  &lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; /&gt;
-  &lt;image x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; filter=&quot;url(#Linear)&quot;  /&gt;
+  &lt;image x="0" y="0" width="300" height="200" xlink:href="圖片網址" /&gt;
+  &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#Linear)"  /&gt;
 &lt;/svg&gt;
-</code></pre><p><br/></p>
-<p>最後是 gamma ，gamma 就是調整指數曲線的數值，與 photoshop 裏頭調整圖片曲線有異曲同工之妙，當然還是必須得手動輸入一些數值就是了,gamma 的公式為：C&#39; = amplitude * pow(C, exponent) + offset，因此就具有三個參數：amplitude、exponent、offset。</p>
+</code></pre><p><br></p>
+<p>最後是 gamma ，gamma 就是調整指數曲線的數值，與 photoshop 裏頭調整圖片曲線有異曲同工之妙，當然還是必須得手動輸入一些數值就是了,gamma 的公式為：C' = amplitude * pow(C, exponent) + offset，因此就具有三個參數：amplitude、exponent、offset。</p>
 <p><img src="/img/articles/201407/20140728_1_06.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
 <p><img src="/img/articles/201407/20140728_1_10.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
-<pre><code>&lt;svg width=&quot;8cm&quot; height=&quot;100%&quot; viewBox=&quot;0 0 800 800&quot;&gt;
-    &lt;linearGradient id=&quot;MyGradient&quot; gradientUnits=&quot;userSpaceOnUse&quot;
-            x1=&quot;100&quot; y1=&quot;0&quot; x2=&quot;600&quot; y2=&quot;0&quot;&gt;
-      &lt;stop offset=&quot;0&quot; stop-color=&quot;#000000&quot; /&gt;
-      &lt;stop offset=&quot;.3&quot; stop-color=&quot;#00ff00&quot; /&gt;
-      &lt;stop offset=&quot;.6&quot; stop-color=&quot;#0000ff&quot; /&gt;
-      &lt;stop offset=&quot;1&quot; stop-color=&quot;#ff0000&quot; /&gt;
+<pre class="prettyprint"><code>&lt;svg width="8cm" height="100%" viewBox="0 0 800 800"&gt;
+    &lt;linearGradient id="MyGradient" gradientUnits="userSpaceOnUse"
+            x1="100" y1="0" x2="600" y2="0"&gt;
+      &lt;stop offset="0" stop-color="#000000" /&gt;
+      &lt;stop offset=".3" stop-color="#00ff00" /&gt;
+      &lt;stop offset=".6" stop-color="#0000ff" /&gt;
+      &lt;stop offset="1" stop-color="#ff0000" /&gt;
     &lt;/linearGradient&gt;
-    &lt;filter id=&quot;Gamma&quot; filterUnits=&quot;objectBoundingBox&quot; 
-            x=&quot;0%&quot; y=&quot;0%&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;
+    &lt;filter id="Gamma" filterUnits="objectBoundingBox" 
+            x="0%" y="0%" width="100%" height="100%"&gt;
       &lt;feComponentTransfer&gt;
-        &lt;feFuncR type=&quot;gamma&quot; amplitude=&quot;2&quot; exponent=&quot;5&quot; offset=&quot;0&quot;/&gt;
-        &lt;feFuncG type=&quot;gamma&quot; amplitude=&quot;2&quot; exponent=&quot;3&quot; offset=&quot;0&quot;/&gt;
-        &lt;feFuncB type=&quot;gamma&quot; amplitude=&quot;2&quot; exponent=&quot;1&quot; offset=&quot;0&quot;/&gt;
+        &lt;feFuncR type="gamma" amplitude="2" exponent="5" offset="0"/&gt;
+        &lt;feFuncG type="gamma" amplitude="2" exponent="3" offset="0"/&gt;
+        &lt;feFuncB type="gamma" amplitude="2" exponent="1" offset="0"/&gt;
       &lt;/feComponentTransfer&gt;
     &lt;/filter&gt;
   &lt;/defs&gt;
-    &lt;rect x=&quot;100&quot; y=&quot;420&quot; width=&quot;600&quot; height=&quot;60&quot; fill=&quot;url(#MyGradient)&quot; /&gt;
-    &lt;rect x=&quot;100&quot; y=&quot;490&quot; width=&quot;600&quot; height=&quot;60&quot; fill=&quot;url(#MyGradient)&quot; filter=&quot;url(#Gamma)&quot; /&gt;
+    &lt;rect x="100" y="420" width="600" height="60" fill="url(#MyGradient)" /&gt;
+    &lt;rect x="100" y="490" width="600" height="60" fill="url(#MyGradient)" filter="url(#Gamma)" /&gt;
 &lt;/svg&gt;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p><img src="/img/articles/201407/20140728_1_09.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
-<pre><code>&lt;svg width=&quot;300&quot; height=&quot;500&quot;&gt;
+<pre class="prettyprint"><code>&lt;svg width="300" height="500"&gt;
   &lt;defs&gt;
-    &lt;filter id=&quot;Gamma&quot; filterUnits=&quot;objectBoundingBox&quot; x=&quot;0%&quot; y=&quot;0%&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;
+    &lt;filter id="Gamma" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%"&gt;
       &lt;feComponentTransfer&gt;
-      &lt;feFuncR type=&quot;gamma&quot; amplitude=&quot;2&quot; exponent=&quot;5&quot; offset=&quot;0&quot;/&gt;
-      &lt;feFuncG type=&quot;gamma&quot; amplitude=&quot;2&quot; exponent=&quot;3&quot; offset=&quot;0&quot;/&gt;
-      &lt;feFuncB type=&quot;gamma&quot; amplitude=&quot;2&quot; exponent=&quot;1&quot; offset=&quot;0&quot;/&gt;
+      &lt;feFuncR type="gamma" amplitude="2" exponent="5" offset="0"/&gt;
+      &lt;feFuncG type="gamma" amplitude="2" exponent="3" offset="0"/&gt;
+      &lt;feFuncB type="gamma" amplitude="2" exponent="1" offset="0"/&gt;
       &lt;/feComponentTransfer&gt;
     &lt;/filter&gt;
   &lt;/defs&gt;
-  &lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; /&gt;
-  &lt;image x=&quot;0&quot; y=&quot;200&quot; width=&quot;300&quot; height=&quot;200&quot; xlink:href=&quot;圖片網址&quot; filter=&quot;url(#Gamma)&quot;  /&gt;
+  &lt;image x="0" y="0" width="300" height="200" xlink:href="圖片網址" /&gt;
+  &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#Gamma)"  /&gt;
 &lt;/svg&gt;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>了解了 feComponentTransfer 的基本原理之後，其實就已經可以簡單地針對圖片做顏色上的調整囉！雖然我還是覺得直接用影像處理軟體調整比較實在，不過若要製作一個線上調整圖片顏色的工具，也不失為一個好方式。</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -252,53 +219,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

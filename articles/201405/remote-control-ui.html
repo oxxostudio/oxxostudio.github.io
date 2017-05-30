@@ -1,150 +1,119 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>搖控器 APP UI 設計 - OXXO.STUDIO</title>
 
-<meta name="keywords" content="ui,ux,界面設計,app 界面,使用者體驗,app ui,app ux,ui 設計,ux 設計,遙控器,智能家電">
-
-<meta name="description" content="這是我在之前公司所設計的 UI 作品，主要是針對一款紅外線遙控器所設計的操作畫面，在專案的進行中，不知不覺也做了好幾個畫面，有一些畫面甚至花費我許多時間去雕刻細節，其實我不是一個很愛去雕琢細節的人，因為我一旦雕琢細節，就會開始追毛求雌沒完沒了，況且在專案很趕的時候，過多的細節往往會造成時程的延誤，總而言之，這些也算是我煞費苦心做出來的一些小作品，分享給大家。">
-
-<meta itemprop="name" content="搖控器 APP UI 設計 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201405/20140529_1_01.jpg">
-
-<meta itemprop="description" content="這是我在之前公司所設計的 UI 作品，主要是針對一款紅外線遙控器所設計的操作畫面，在專案的進行中，不知不覺也做了好幾個畫面，有一些畫面甚至花費我許多時間去雕刻細節，其實我不是一個很愛去雕琢細節的人，因為我一旦雕琢細節，就會開始追毛求雌沒完沒了，況且在專案很趕的時候，過多的細節往往會造成時程的延誤，總而言之，這些也算是我煞費苦心做出來的一些小作品，分享給大家。">
-
-<meta property="og:title" content="搖控器 APP UI 設計 - OXXO.STUDIO" >
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201405/remote-control-ui.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/20140529_1_01.jpg">
-
-<meta property="og:description" content="這是我在之前公司所設計的 UI 作品，主要是針對一款紅外線遙控器所設計的操作畫面，在專案的進行中，不知不覺也做了好幾個畫面，有一些畫面甚至花費我許多時間去雕刻細節，其實我不是一個很愛去雕琢細節的人，因為我一旦雕琢細節，就會開始追毛求雌沒完沒了，況且在專案很趕的時候，過多的細節往往會造成時程的延誤，總而言之，這些也算是我煞費苦心做出來的一些小作品，分享給大家。" >
-
-<title>搖控器 APP UI 設計 - OXXO.STUDIO</title>
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="這是我在之前公司所設計的 UI 作品，主要是針對一款紅外線遙控器所設計的操作畫面，在專案的進行中，不知不覺也做了好幾個畫面，有一些畫面甚至花費我許多時間去雕刻細節，其實我不是一個很愛去雕琢細節的人，因為我一旦雕琢細節，就會開始追毛求雌沒完沒了，況且在專案很趕的時候，過多的細節往往會造成時程的延誤，總而言之，這些也算是我煞費苦心做出來的一些小作品，分享給大家。">
+  <meta itemprop="description" content="這是我在之前公司所設計的 UI 作品，主要是針對一款紅外線遙控器所設計的操作畫面，在專案的進行中，不知不覺也做了好幾個畫面，有一些畫面甚至花費我許多時間去雕刻細節，其實我不是一個很愛去雕琢細節的人，因為我一旦雕琢細節，就會開始追毛求雌沒完沒了，況且在專案很趕的時候，過多的細節往往會造成時程的延誤，總而言之，這些也算是我煞費苦心做出來的一些小作品，分享給大家。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201405/remote-control-ui.jpg">
+  <meta property="og:description" content="這是我在之前公司所設計的 UI 作品，主要是針對一款紅外線遙控器所設計的操作畫面，在專案的進行中，不知不覺也做了好幾個畫面，有一些畫面甚至花費我許多時間去雕刻細節，其實我不是一個很愛去雕琢細節的人，因為我一旦雕琢細節，就會開始追毛求雌沒完沒了，況且在專案很趕的時候，過多的細節往往會造成時程的延誤，總而言之，這些也算是我煞費苦心做出來的一些小作品，分享給大家。">
+  <meta property="og:title" content="搖控器 APP UI 設計">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201405/remote-control-ui.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/remote-control-ui.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>搖控器 APP UI 設計 <span class="article-date" tag="ui">MAY 29, 2014</span></h2>
+<h1>搖控器 APP UI 設計</h1>
 <p>這是我在之前公司所設計的 UI 作品，主要是針對一款紅外線遙控器所設計的操作畫面，在專案的進行中，不知不覺也做了好幾個畫面，有一些畫面甚至花費我許多時間去雕刻細節，其實我不是一個很愛去雕琢細節的人，因為我一旦雕琢細節，就會開始追毛求雌沒完沒了，況且在專案很趕的時候，過多的細節往往會造成時程的延誤，總而言之，這些也算是我煞費苦心做出來的一些小作品，分享給大家。</p>
-<h3>REMOTE.UI-01</h3>
-<p>這算是刻最久的的一張 UI，不過很可惜的最後還是沒有採用 ( 坦白說如果採用了，其實我也很困擾... )</p>
-<p><img src="/img/articles/201405/20140529_1_06.png" alt="UI01"><br><br/>
-<br/></p>
-<h3>REMOTE.UI-02</h3>
-<p>採用炫光方式呈現的 UI，觸控的時候會有光線與震動的回饋    </p>
+<p>###REMOTE.UI-01###
+這算是刻最久的的一張 UI，不過很可惜的最後還是沒有採用 ( 坦白說如果採用了，其實我也很困擾... )</p>
+<p><img src="/img/articles/201405/20140529_1_06.png" alt="UI01"><br><br>
+<br></p>
+<p>###REMOTE.UI-02###
+採用炫光方式呈現的 UI，觸控的時候會有光線與震動的回饋    </p>
 <p><img src="/img/articles/201405/20140529_1_07.png" alt="UI02-1">  </p>
 <p><img src="/img/articles/201405/20140529_1_08.png" alt="UI02-2">
-<br/>
-<br/></p>
-<h3>REMOTE.UI-03</h3>
-<p>嘗試比較扁平化與明亮鮮豔的 UI 設計    </p>
+<br>
+<br></p>
+<p>###REMOTE.UI-03###
+嘗試比較扁平化與明亮鮮豔的 UI 設計    </p>
 <p><img src="/img/articles/201405/20140529_1_09.png" alt="UI03">
-<br/>
-<br/></p>
-<h3>REMOTE.UI-04</h3>
-<p>以暗紫色和紅色為配色的設計，並加入一些明亮的小色塊識別</p>
+<br>
+<br></p>
+<p>###REMOTE.UI-04###
+以暗紫色和紅色為配色的設計，並加入一些明亮的小色塊識別</p>
 <p><img src="/img/articles/201405/20140529_1_10.png" alt="UI04"></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -152,53 +121,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

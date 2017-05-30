@@ -1,117 +1,88 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - transition ( tween、interpolate ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-09-12T21:15:00+01:00">
-
-<meta name="keywords" content="svg,d3,d3js,transition,tween,interpolate">
-
-<meta name="description" content="之前有介紹過 d3.js 基本的 transition，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。">
-
-<meta itemprop="name" content="SVG D3.js - transition ( tween、interpolate ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150912_1_01b.jpg">
-
-<meta itemprop="description" content="之前有介紹過 d3.js 基本的 transition，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。">
-
-<meta property="og:title" content="SVG D3.js - transition ( tween、interpolate ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150912_1_01b.jpg">
-
-<meta property="og:description" content="之前有介紹過 d3.js 基本的 transition，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。">
-
-<title>SVG D3.js - transition ( tween、interpolate ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="之前有介紹過 d3.js 基本的 transition ( 好像是一月份的事情了，真是好久以前啦... )，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，這個方式其實很好用，因為我們除了基本的長、寬、位置、顏色，更可以做出文字、數字...等電腦不知道如何做補間動作的效果 ( 例如 1~10 的數字變換 )，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。">
+  <meta itemprop="description" content="之前有介紹過 d3.js 基本的 transition ( 好像是一月份的事情了，真是好久以前啦... )，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，這個方式其實很好用，因為我們除了基本的長、寬、位置、顏色，更可以做出文字、數字...等電腦不知道如何做補間動作的效果 ( 例如 1~10 的數字變換 )，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-15-transition-tween.jpg">
+  <meta property="og:description" content="之前有介紹過 d3.js 基本的 transition ( 好像是一月份的事情了，真是好久以前啦... )，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，這個方式其實很好用，因為我們除了基本的長、寬、位置、顏色，更可以做出文字、數字...等電腦不知道如何做補間動作的效果 ( 例如 1~10 的數字變換 )，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。">
+  <meta property="og:title" content="SVG D3.js - transition ( tween、interpolate )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-15-transition-tween.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG D3.js - transition ( tween、interpolate )  <span class="article-date" tag="web">SEP 12, 2015</span></h2>
-<p><img src="/img/articles/201509/20150912_1_01.gif" class="preview-img"></p>
+<h1>SVG D3.js - transition ( tween、interpolate )</h1>
+<p><img src="/img/articles/201509/svg-d3-15-transition-tween.gif" class="preview-img" alt=""> </p>
 <p>之前有介紹過 <a href="http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html">d3.js 基本的 transition</a> ( 好像是一月份的事情了，真是好久以前啦... )，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，這個方式其實很好用，因為我們除了基本的長、寬、位置、顏色，更可以做出文字、數字...等電腦不知道如何做補間動作的效果 ( 例如 1~10 的數字變換 )，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。</p>
 <p>tween 的用法其實滿容易的，就是<code>tween(name,factory)</code>，當中的 name 是我們自訂這個補間動畫的名稱，不過這個 name 實際上沒有太大的用處，彷彿是識別用的 ( 可以參考 stackoverflow 的<a href="http://stackoverflow.com/questions/25002417/d3-use-of-the-name-argument-in-transition-tween">這篇</a>，也是有人對這個 name 有同樣的困惑 )，至於第二個參數 factory 就十分重要了，裏頭主要會放上我們需要進行補間動畫的程式，以下面的這個例子來看，透過<code>interpolateRound</code>，可以計算 0 到 100 之間的補間數字，然後再透過 tween 本身的 return，就可以非常簡單的做出一個 0 到 100 跳動的效果。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo1.html">svg-d3-15-transition-tween-demo1.html</a> ) </p>
-<pre><code>var show = d3.select(&#39;#show&#39;);
+<pre class="prettyprint"><code>var show = d3.select('#show');
 
-show.transition().tween(&quot;number&quot;, function() {
+show.transition().tween("number", function() {
   var i = d3.interpolateRound(0, 100);
   return function(t) {
     this.textContent = i(t);
   };
 });
 </code></pre><p>在上一篇 transition 有提過，duration 預設值為 250ms，因此我們如果把 duration 拉長，就會看到數字慢慢增加。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo2.html">svg-d3-15-transition-tween-demo2.html</a> )</p>
-<pre><code>var show = d3.select(&#39;#show&#39;);
+<pre class="prettyprint"><code>var show = d3.select('#show');
 
 show.transition()
 .duration(2000)
-.tween(&quot;number&quot;, function() {
+.tween("number", function() {
   var i = d3.interpolateRound(0, 100);
   return function(t) {
     this.textContent = i(t);
@@ -122,13 +93,13 @@ show.transition()
 <ul>
 <li><p><strong>d3.interpolate(a, b)</strong></p>
 <p>回傳一個 a 到 b 之間的 ( 插 ) 值，會根據 a 和 b 的型別或屬性去做自動判斷，如果是顏色，則會回傳顏色的值，如果是數字，則會回傳數字的值，舉例來說，我們可以算出 0 到 200 之間從 0 數過來 30% 的數字，也可以換成顏色紅到青之間從紅色算過來 30% 的顏色是什麼，只要使用 d3.interpolate 就很容易搞定。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo3.html">svg-d3-15-transition-tween-demo3.html</a> )</p>
-<pre><code>var n = d3.select(&#39;#number&#39;);
-var s = d3.select(&#39;#string&#39;);
-var c = d3.select(&#39;#color&#39;);
+<pre class="prettyprint"><code>var n = d3.select('#number');
+var s = d3.select('#string');
+var c = d3.select('#color');
 
 var ni = d3.interpolate(0, 200);
-var si = d3.interpolate(&#39;Apple1&#39;,&#39;Apple5&#39;);
-var ci = d3.interpolate(&#39;#ff0000&#39;,&#39;#00ffff&#39;);
+var si = d3.interpolate('Apple1','Apple5');
+var ci = d3.interpolate('#ff0000','#00ffff');
 
 n.text(ni(0.3));
 s.text(si(0.3));
@@ -145,28 +116,28 @@ c.text(ci(0.3));
 </li>
 <li><p><strong>d3.interpolateString(a, b)</strong></p>
 <p>  回傳一個字串插值，方式是從字串裡面找到數字，由數字去做插值判斷，舉例來說，如果今天你的字串是「Hello 123 World」到「Cool 456」，那麼出來的結果就會是「Cool 232.89000000000001」。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo4.html">svg-d3-15-transition-tween-demo4.html</a> )</p>
-<pre><code>var s = d3.select(&#39;#string&#39;);
-var si = d3.interpolateString(&#39;Hello 123 World&#39;, &#39;Cool 456&#39;);
+<pre class="prettyprint"><code>var s = d3.select('#string');
+var si = d3.interpolateString('Hello 123 World', 'Cool 456');
 
 s.text(si(0.33));
 </code></pre><p>  <img src="/img/articles/201509/20150912_1_04.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 <li><p><strong>d3.interpolateRgb(a, b)</strong></p>
 <p>  回傳顏色插值，類似的還有<code>d3.interpolateHsl(a, b)</code>、<code>d3.interpolateLab(a, b)</code>、<code>d3.interpolateLab(a, b)</code>，這裏就直接用 RGB 的來介紹就可以，因為用法一樣，使用這個 API 我們就可以很簡單的做出在某個區間內的顏色。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo5.html">svg-d3-15-transition-tween-demo5.html</a> </p>
-<pre><code>var c = d3.select(&#39;#color&#39;);
-var show = d3.select(&#39;#show&#39;);
+<pre class="prettyprint"><code>var c = d3.select('#color');
+var show = d3.select('#show');
 
-var ci = d3.interpolateRgb(&#39;#f00&#39;, &#39;#39e&#39;);
+var ci = d3.interpolateRgb('#f00', '#39e');
 
 c.text(ci(0.6));
 show.style({
-  &#39;background&#39;:ci(0.6)
+  'background':ci(0.6)
 });
 </code></pre><p>  <img src="/img/articles/201509/20150912_1_05.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 <li><p><strong>d3.interpolateArray(a, b)</strong></p>
 <p>  回傳陣列的插值，比較需要注意的地方是，不管 a 或 b 陣列長度如何，最終的結果都會是相同長度的陣列，舉例來說，如果今天 a 陣列是 [0,1] 而 b 陣列是 [1,10,100]，那麼 0.5 的時候就會回傳 [0.5,5,100]，最後就自動補上 100 了。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo6.html">svg-d3-15-transition-tween-demo6.html</a></p>
-<pre><code>var a = d3.select(&#39;#array&#39;);
+<pre class="prettyprint"><code>var a = d3.select('#array');
 var ai = d3.interpolateArray([0,1], [1,50,100]);
 
 a.text(ai(0.5));
@@ -176,7 +147,7 @@ a.text(ai(0.5));
 <ul>
 <li><p><strong>d3.interpolateObject(a, b)</strong></p>
 <p>  回傳物件的插值，做法其實跟陣列很像，如果缺少的會就會自動補上，因為是物件，所以我們用 console 來看。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo7.html">svg-d3-15-transition-tween-demo7.html</a></p>
-<pre><code>var o = d3.select(&#39;#object&#39;);
+<pre class="prettyprint"><code>var o = d3.select('#object');
 var oi = d3.interpolateObject(
   {x:0,y:1},{x:1,y:50,z:100}
 );
@@ -186,70 +157,66 @@ console.log(oi(0.5));
 </li>
 <li><p><strong>d3.interpolateTransform(a, b)</strong></p>
 <p>  如果要純粹針對 SVG 的 transform，就可以使用 d3.interpolateTransform 來回傳變形的插值。( 如果是用在一般 CSS 可能會有錯誤，因為如果在 translate 內加上 px 就會錯了 )( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo8.html">svg-d3-15-transition-tween-demo8.html</a></p>
-<pre><code>var box = d3.select(&#39;#box&#39;);  
+<pre class="prettyprint"><code>var box = d3.select('#box');  
 
 box.transition()
   .duration(2000)
-  .tween(&#39;move&#39;,function(){
-    var start = d3.transform(&quot;translate(10,10)&quot;);
-    var stop = d3.transform(&quot;translate(80,80)&quot;);
+  .tween('move',function(){
+    var start = d3.transform("translate(10,10)");
+    var stop = d3.transform("translate(80,80)");
     var interpolate = d3.interpolateTransform(start,stop);
     return function(t){
-       d3.select(this).attr(&quot;transform&quot;, interpolate(t));
+       d3.select(this).attr("transform", interpolate(t));
     }
   });
 </code></pre><p>  <img src="/img/articles/201509/20150912_1_08.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 </ul>
 <p>到這邊基本上已經可以利用 interpolate 和 tween 做出自己的補間動畫，這個方式其實在許多視覺畫圖表的動態都滿常見的，最後我們將前面的集合在一起做個變化，就會有頗酷的效果囉！( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo9.html">svg-d3-15-transition-tween-demo9.html</a></p>
-<pre><code>var show = d3.select(&#39;#show&#39;);
-var cc = document.getElementById(&#39;color&#39;);
+<pre class="prettyprint"><code>var show = d3.select('#show');
+var cc = document.getElementById('color');
 
 show.transition()
 .duration(2000)
-.tween(&quot;number&quot;, function() {
-  var i = d3.interpolateRound(&#39;0&#39;, &#39;1000&#39;);
-  var c = d3.interpolateRgb(&#39;#555&#39;, &#39;#fa0&#39;);
+.tween("number", function() {
+  var i = d3.interpolateRound('0', '1000');
+  var c = d3.interpolateRgb('#555', '#fa0');
   return function(t) {
     this.textContent = i(t);
-    d3.select(this).style({&#39;color&#39;:c(t)});
+    d3.select(this).style({'color':c(t)});
     console.log(cc.textContent);
     cc.innerHTML = c(t);
   };
 </code></pre><p><img src="/img/articles/201509/20150912_1_01.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -257,53 +224,67 @@ show.transition()
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

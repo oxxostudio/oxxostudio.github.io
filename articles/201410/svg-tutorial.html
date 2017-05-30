@@ -1,101 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 完整教學 31 天 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-10-22T01:25:00+01:00">
-
-<meta name="keywords" content="SVG 教學,SVG,SVG 濾鏡,SVG tutorial,it 鐵人賽">
-
-<meta name="description" content="這些是我所撰寫的 SVG 完整教學，從一開始的入門，到中期的控制 SVG，到後期的 SVG 濾鏡，看完這三十一篇之後，相信對於 SVG 會有非常完整的認識，應用也會更加得心應手。">
-
-<meta itemprop="name" content="SVG 完整教學 31 天 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/20141022_1_01b.jpg">
-
-<meta itemprop="description" content="這些是我所撰寫的 SVG 完整教學，從一開始的入門，到中期的控制 SVG，到後期的 SVG 濾鏡，看完這三十一篇之後，相信對於 SVG 會有非常完整的認識，應用也會更加得心應手。">
-
-<meta property="og:title" content="SVG 完整教學 31 天 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-tutorial.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141022_1_01b.jpg">
-
-<meta property="og:description" content="這些是我所撰寫的 SVG 完整教學，從一開始的入門，到中期的控制 SVG，到後期的 SVG 濾鏡，看完這三十一篇之後，相信對於 SVG 會有非常完整的認識，應用也會更加得心應手。">
-
-<title>SVG 完整教學 31 天  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="從還沒有這個 blog 的時候，我就已經開始在寫 SVG 相關的技術，只是寫的哩哩辣辣的，而從這個 oxxostudio.tw 正式上線之後，我就決定好好的來寫個完整的 SVG 教學，最主要是寫給我自己看，我始終抱持著一個理念，可能當幾個月或幾年之後，我忘記了 SVG 該如何寫，這時候我就需要一個完整的教學介紹來教我自己，但目前放眼望去，撰寫 SVG 教學的人寥寥無幾，分布在世界各地，往往必須要這裡找找那裏逛逛，花費不少時間，因此如果我寫出來的東西，對以後忘記 SVG 的我而言，能夠立馬看懂，那麼沒有接觸過 SVG 的也能立馬看懂。">
+  <meta itemprop="description" content="從還沒有這個 blog 的時候，我就已經開始在寫 SVG 相關的技術，只是寫的哩哩辣辣的，而從這個 oxxostudio.tw 正式上線之後，我就決定好好的來寫個完整的 SVG 教學，最主要是寫給我自己看，我始終抱持著一個理念，可能當幾個月或幾年之後，我忘記了 SVG 該如何寫，這時候我就需要一個完整的教學介紹來教我自己，但目前放眼望去，撰寫 SVG 教學的人寥寥無幾，分布在世界各地，往往必須要這裡找找那裏逛逛，花費不少時間，因此如果我寫出來的東西，對以後忘記 SVG 的我而言，能夠立馬看懂，那麼沒有接觸過 SVG 的也能立馬看懂。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/svg-tutorial.jpg">
+  <meta property="og:description" content="從還沒有這個 blog 的時候，我就已經開始在寫 SVG 相關的技術，只是寫的哩哩辣辣的，而從這個 oxxostudio.tw 正式上線之後，我就決定好好的來寫個完整的 SVG 教學，最主要是寫給我自己看，我始終抱持著一個理念，可能當幾個月或幾年之後，我忘記了 SVG 該如何寫，這時候我就需要一個完整的教學介紹來教我自己，但目前放眼望去，撰寫 SVG 教學的人寥寥無幾，分布在世界各地，往往必須要這裡找找那裏逛逛，花費不少時間，因此如果我寫出來的東西，對以後忘記 SVG 的我而言，能夠立馬看懂，那麼沒有接觸過 SVG 的也能立馬看懂。">
+  <meta property="og:title" content="SVG 完整教學 31 天">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-tutorial.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/svg-tutorial.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 完整教學 31 天  <span class="article-date" tag="web">OCT 22, 2014</span></h2>
-<p><img src="/img/articles/201410/20141022_1_01.jpg" class="preview-img"></p>
+<h1>SVG 完整教學 31 天</h1>
+<p><img src="/img/articles/201410/svg-tutorial.jpg" class="preview-img" alt=""></p>
 <p>從還沒有這個 blog 的時候，我就已經開始在寫 SVG 相關的技術，只是寫的哩哩辣辣的，而從這個 oxxostudio.tw 正式上線之後，我就決定好好的來寫個完整的 SVG 教學，最主要是寫給我自己看，我始終抱持著一個理念，可能當幾個月或幾年之後，我忘記了 SVG 該如何寫，這時候我就需要一個完整的教學介紹來教我自己，但目前放眼望去，撰寫 SVG 教學的人寥寥無幾，分布在世界各地，往往必須要這裡找找那裏逛逛，花費不少時間，因此如果我寫出來的東西，對以後忘記 SVG 的我而言，能夠立馬看懂，那麼沒有接觸過 SVG 的也能立馬看懂。</p>
 <p>碰巧在寫了二十篇左右的時候，遇上了一年一度的「第七屆 IT 鐵人賽」，要連續撰寫三十天的技術分享文章，正好把這幾個月以來所撰寫的 SVG 分享出去，也為自己幾個月來的累積做個紀錄 ( 每篇我都是平均三到五天才寫完...)，當然，目前寫的三十一篇是到今天這個時間點的數字，未來希望自己也要繼續持續的寫，畢竟有一個更難的 feTurbulence 濾鏡尚未理解，而且我正磨刀霍霍要來玩 snap.svg 和 D3.js 吶！</p>
 <p>以下是我所撰寫的 SVG 完整教學，從一開始的入門，到中期的控制 SVG，到後期的 SVG 濾鏡，看完這三十一篇之後，相信對於 SVG 會有非常完整的認識，應用也會更加得心應手。</p>
@@ -143,8 +114,8 @@
 <li><a href="http://www.oxxostudio.tw/articles/201410/svg-29-filter-water-ripple.html">Day30 - SVG filter - feDisplacementMap 水波動畫</a></li>
 <li><a href="http://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html">Day31 - SVG filter - feConvolveMatrix</a></li>
 </ul>
-<p><br/>
-<br/>
+<p><br>
+<br>
 除了教學，也要分享一下這幾個月來我所參考的一些 SVG 資訊給大家，畢竟我寫的是我自己的認知與理解，如果能參考更多高手的資訊，相信可以吸收得更快更好。</p>
 <p><strong>教學與介紹：</strong></p>
 <ul>
@@ -155,7 +126,7 @@
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial">MDN SVG Tutorial</a>：初學者必來的 MDN SVG 基礎教學</li>
 <li><a href="http://tutorials.jenkov.com/svg/index.html">jenkov SVG Tutorial</a>：同樣是初學者必備的 SVG 完整基礎教學</li>
 <li><a href="http://zvon.org/comp/r/ref-SVG_1_1_Full.html#Attributes~viewBox">SVG 1.1 Full Reference</a>：滿豐富的 SVG 範例參考</li>
-<li><a href="http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html">An SVG Primer for Today&#39;s Browsers</a></li>
+<li><a href="http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html">An SVG Primer for Today's Browsers</a></li>
 </ul>
 <p><strong>SVG 工具與框架：</strong></p>
 <ul>
@@ -166,37 +137,33 @@
 </ul>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -204,53 +171,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

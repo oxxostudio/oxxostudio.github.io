@@ -1,360 +1,327 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 研究之路 (25) - 再談漸層填色 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-09-27T23:25:00+01:00">
-
-<meta name="keywords" content="svg,Gradient,Linear gradients,Radial gradients,漸層,fill">
-
-<meta name="description" content="高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients )。">
-
-<meta itemprop="name" content="SVG 研究之路 (25) - 再談漸層填色 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140927_2_01.jpg">
-
-<meta itemprop="description" content="高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients )。">
-
-<meta property="og:title" content="SVG 研究之路 (25) - 再談漸層填色 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-25-gradients-patterns.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140927_2_01.jpg">
-
-<meta property="og:description" content="高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients )。">
-
-<title>SVG 研究之路 (25) - 再談漸層填色  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="先前在 SVG 研究之路 (7) - fill 填色 有介紹過 SVG 的 fill 填色，文章後面介紹了基本的漸層填色，但並沒有深入的介紹進一步的設定，然而高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活。廢話不多說，立馬來看漸層 Gradient ，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients ) ，因為是漸層，所以要這樣子定義：">
+  <meta itemprop="description" content="先前在 SVG 研究之路 (7) - fill 填色 有介紹過 SVG 的 fill 填色，文章後面介紹了基本的漸層填色，但並沒有深入的介紹進一步的設定，然而高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活。廢話不多說，立馬來看漸層 Gradient ，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients ) ，因為是漸層，所以要這樣子定義：">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/svg-25-gradients-patterns.jpg">
+  <meta property="og:description" content="先前在 SVG 研究之路 (7) - fill 填色 有介紹過 SVG 的 fill 填色，文章後面介紹了基本的漸層填色，但並沒有深入的介紹進一步的設定，然而高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活。廢話不多說，立馬來看漸層 Gradient ，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients ) ，因為是漸層，所以要這樣子定義：">
+  <meta property="og:title" content="SVG 研究之路 (25) - 再談漸層填色">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-25-gradients-patterns.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/svg-25-gradients-patterns.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 研究之路 (25) - 再談漸層填色  <span class="article-date" tag="web">SEP 27, 2014</span></h2>
+<h1>SVG 研究之路 (25) - 再談漸層填色</h1>
 <p>先前在 <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">SVG 研究之路 (7) - fill 填色</a> 有介紹過 SVG 的 fill 填色，文章後面介紹了基本的漸層填色，但並沒有深入的介紹進一步的設定，然而高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活。廢話不多說，立馬來看漸層 Gradient ，漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients ) ，因為是漸層，所以要這樣子定義：</p>
-<pre><code>&lt;defs&gt;
-   &lt;linearGradient id=&quot;L&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;&gt;
-     &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
-     &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+<pre class="prettyprint"><code>&lt;defs&gt;
+   &lt;linearGradient id="L" x1="0%" y1="0%" x2="100%" y2="100%"&gt;
+     &lt;stop offset="5%" stop-color="#F00" /&gt;
+     &lt;stop offset="95%" stop-color="#ff0" /&gt;
    &lt;/linearGradient&gt;
-   &lt;radialGradient id=&quot;R&quot; cx=&quot;20%&quot; cy=&quot;40%&quot;&gt;
-     &lt;stop offset=&quot;5%&quot; stop-color=&quot;#ff0&quot; /&gt;
-     &lt;stop offset=&quot;95%&quot; stop-color=&quot;#f00&quot; /&gt;
+   &lt;radialGradient id="R" cx="20%" cy="40%"&gt;
+     &lt;stop offset="5%" stop-color="#ff0" /&gt;
+     &lt;stop offset="95%" stop-color="#f00" /&gt;
    &lt;/radialGradient&gt;
 &lt;/defs&gt;
 </code></pre><p>看到上述的定義，會發現有許多屬性在裏頭，因為兩種漸層分別具有以下這些屬性：</p>
 <ul>
 <li><p><strong>線性漸層：</strong></p>
 <ul>
-<li><strong>gradientUnits = &quot;userSpaceOnUse | objectBoundingBox&quot;</strong></li>
+<li><strong>gradientUnits = "userSpaceOnUse | objectBoundingBox"</strong></li>
 <li><strong>gradientTransform</strong></li>
 <li><strong>x1</strong></li>
 <li><strong>y1</strong></li>
 <li><strong>x2</strong></li>
 <li><strong>y2</strong></li>
-<li><strong>spreadMethod = &quot;pad | reflect | repeat&quot;</strong></li>
+<li><strong>spreadMethod = "pad | reflect | repeat"</strong></li>
 <li><strong>xlink:href</strong></li>
 </ul>
 </li>
 <li><p><strong>圓形漸層：</strong></p>
 <ul>
-<li><strong>gradientUnits = &quot;userSpaceOnUse | objectBoundingBox&quot;</strong></li>
+<li><strong>gradientUnits = "userSpaceOnUse | objectBoundingBox"</strong></li>
 <li><strong>gradientTransform</strong></li>
 <li><strong>cx</strong></li>
 <li><strong>cy</strong></li>
 <li><strong>r</strong></li>
 <li><strong>fx</strong></li>
 <li><strong>fy</strong></li>
-<li><strong>spreadMethod = &quot;pad | reflect | repeat&quot;</strong></li>
+<li><strong>spreadMethod = "pad | reflect | repeat"</strong></li>
 <li><strong>xlink:href</strong></li>
 </ul>
 </li>
 </ul>
 <p>其實兩種漸層大同小異，差別只在於線性漸層是用<code>x1,y1,x2,y2</code>、圓形漸層是用<code>cx,cy,r,fx,fy</code>，因此我們先從相同的屬性來談起：</p>
-<p><br/></p>
+<p><br></p>
 <ul>
-<li><p><strong>gradientUnits = &quot;userSpaceOnUse | objectBoundingBox&quot;</strong></p>
+<li><p><strong>gradientUnits = "userSpaceOnUse | objectBoundingBox"</strong></p>
 <p>  gradientUnits 定義了漸層的座標系統，預設為<code>objectBoundingBox</code>，也就是以我們要套用漸層的物件為單位上色 ( 物件左上座標為漸層的 0% 0% )，而<code>userSpaceOnUse</code>則是以整個 SVG 視區 ( viewport ) 為座標系統，如果還不清楚，可以看看下方的示意圖，我把 SVG 放上兩個矩形，套用跟 SVG 視區一樣的漸層，只是 gradientUnits 設定不同，就可以發現漸層的位置有很明顯的差異，設定為<code>userSpaceOnUse</code>的矩形漸層色跟背景完全相同。 ( 附帶一提，如果是用 illustrator 產生的漸層，是採用<code>userSpaceOnUse</code> )</p>
 <p>  <img src="/img/articles/201409/20140927_2_02.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;linearGradient id=&quot;bg&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;100%&quot;&gt;
-      &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
-      &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%"&gt;
+      &lt;stop offset="5%" stop-color="#F00" /&gt;
+      &lt;stop offset="95%" stop-color="#ff0" /&gt;
     &lt;/linearGradient&gt;
-    &lt;linearGradient id=&quot;userSpaceOnUse&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;100%&quot; gradientUnits=&quot;userSpaceOnUse&quot;&gt;
-      &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
-      &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+    &lt;linearGradient id="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse"&gt;
+      &lt;stop offset="5%" stop-color="#F00" /&gt;
+      &lt;stop offset="95%" stop-color="#ff0" /&gt;
     &lt;/linearGradient&gt;
   &lt;/defs&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;40&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#userSpaceOnUse)&quot; /&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;140&quot; y=&quot;50&quot; stroke=&quot;#000&quot;  fill=&quot;url(#bg)&quot; /&gt;
+  &lt;rect width="70" height="70" x="40" y="50" stroke="#000" fill="url(#userSpaceOnUse)" /&gt;
+  &lt;rect width="70" height="70" x="140" y="50" stroke="#000"  fill="url(#bg)" /&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>gradientTransform</strong></p>
 <p>  可以把漸層套用 transform 的效果，也就是可以縮放、旋轉、傾斜、Matrix...等，不過用到的時間點還真的不常見，畢竟漸層都已經可以手動調整方向了，實際用到 gradientTransform 的機會也不多，下面是範例，把漸層旋轉 45 度。(    你一定會發現，明明是藍到白的漸層，旋轉後為什麼藍色區域變多了呢？因為旋轉以後，藍色後面沒有漸層，延伸出去是一片藍色，藍色區域就增加了 )</p>
 <p>  <img src="/img/articles/201409/20140927_2_03.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;linearGradient id=&quot;bg&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;100%&quot; gradientTransform=&quot;rotate(45)&quot;&gt;
-      &lt;stop offset=&quot;5%&quot; stop-color=&quot;#069&quot; /&gt;
-      &lt;stop offset=&quot;95%&quot; stop-color=&quot;#fff&quot; /&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%" gradientTransform="rotate(45)"&gt;
+      &lt;stop offset="5%" stop-color="#069" /&gt;
+      &lt;stop offset="95%" stop-color="#fff" /&gt;
     &lt;/linearGradient&gt;
-    &lt;linearGradient id=&quot;userSpaceOnUse&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;100%&quot; gradientUnits=&quot;userSpaceOnUse&quot; gradientTransform=&quot;rotate(45)&quot;&gt;
-      &lt;stop offset=&quot;5%&quot; stop-color=&quot;#069&quot; /&gt;
-      &lt;stop offset=&quot;95%&quot; stop-color=&quot;#fff&quot; /&gt;
+    &lt;linearGradient id="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)"&gt;
+      &lt;stop offset="5%" stop-color="#069" /&gt;
+      &lt;stop offset="95%" stop-color="#fff" /&gt;
     &lt;/linearGradient&gt;
   &lt;/defs&gt;
-  &lt;rect width=&quot;250&quot; height=&quot;200&quot; x=&quot;0&quot; y=&quot;0&quot; fill=&quot;url(#bg)&quot; /&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;40&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#userSpaceOnUse)&quot; /&gt;
+  &lt;rect width="250" height="200" x="0" y="0" fill="url(#bg)" /&gt;
+  &lt;rect width="70" height="70" x="40" y="50" stroke="#000" fill="url(#userSpaceOnUse)" /&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
-<li><p><strong>spreadMethod = &quot;pad | reflect | repeat&quot;</strong></p>
+<li><p><strong>spreadMethod = "pad | reflect | repeat"</strong></p>
 <p>  這是個對於漸層來說頗重要也頗特別的屬性，可以下達三種指令，第一個 pad 是預設值，也就是按照我們的漸層填色，第二個 reflect 是鏡射，就是按照鏡射的方式用我們定義的漸層，補滿漸層的頭尾，第三個 repeat 就是重複，就是使用重複的漸層來補滿頭尾，看看下圖會比較清楚：</p>
 <p>  <img src="/img/articles/201409/20140927_2_04.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;linearGradient id=&quot;pad&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;30%&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#069&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;linearGradient id="pad" x1="0%" y1="0%" x2="0%" y2="30%"&gt;
+      &lt;stop offset="0%" stop-color="#069"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#fff"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;linearGradient id=&quot;reflect&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;30%&quot; spreadMethod=&quot;reflect&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#069&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+    &lt;linearGradient id="reflect" x1="0%" y1="0%" x2="0%" y2="30%" spreadMethod="reflect"&gt;
+      &lt;stop offset="0%" stop-color="#069"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#fff"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;linearGradient id=&quot;repeat&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;30%&quot; spreadMethod=&quot;repeat&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#069&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+    &lt;linearGradient id="repeat" x1="0%" y1="0%" x2="0%" y2="30%" spreadMethod="repeat"&gt;
+      &lt;stop offset="0%" stop-color="#069"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#fff"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
   &lt;/defs&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;30&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#pad)&quot;&gt;&lt;/rect&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;130&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#reflect)&quot;&gt;&lt;/rect&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;230&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#repeat)&quot;&gt;&lt;/rect&gt;
+  &lt;rect width="70" height="70" x="30" y="50" stroke="#000" fill="url(#pad)"&gt;&lt;/rect&gt;
+  &lt;rect width="70" height="70" x="130" y="50" stroke="#000" fill="url(#reflect)"&gt;&lt;/rect&gt;
+  &lt;rect width="70" height="70" x="230" y="50" stroke="#000" fill="url(#repeat)"&gt;&lt;/rect&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>xlink:href</strong></p>
 <p>  讓漸層可以引用其它元素的設定，也就是說我們可以先定義漸層的顏色，，就可以套用在不同的起始點和終點，例如下面的範例：</p>
 <p>  <img src="/img/articles/201409/20140927_2_05.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;linearGradient id=&quot;a1&quot;&gt;
-        &lt;stop offset=&quot;0%&quot; stop-color=&quot;#0c0&quot;&gt;&lt;/stop&gt;
-        &lt;stop offset=&quot;100%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;linearGradient id="a1"&gt;
+        &lt;stop offset="0%" stop-color="#0c0"&gt;&lt;/stop&gt;
+        &lt;stop offset="100%" stop-color="#fff"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;linearGradient id=&quot;b1&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot;  y2=&quot;1&quot; xlink:href=&quot;#a1&quot; /&gt;
-    &lt;linearGradient id=&quot;b2&quot; x1=&quot;0&quot; y1=&quot;1&quot; x2=&quot;0&quot;  y2=&quot;0&quot; xlink:href=&quot;#a1&quot; /&gt;
-    &lt;radialGradient id=&quot;b3&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot;  y2=&quot;1&quot; xlink:href=&quot;#a1&quot; /&gt;
+    &lt;linearGradient id="b1" x1="0" y1="0" x2="0"  y2="1" xlink:href="#a1" /&gt;
+    &lt;linearGradient id="b2" x1="0" y1="1" x2="0"  y2="0" xlink:href="#a1" /&gt;
+    &lt;radialGradient id="b3" x1="0" y1="0" x2="0"  y2="1" xlink:href="#a1" /&gt;
   &lt;/defs&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;30&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#b1)&quot;&gt;&lt;/rect&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;130&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#b2)&quot;&gt;&lt;/rect&gt;
-  &lt;rect width=&quot;70&quot; height=&quot;70&quot; x=&quot;230&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#b3)&quot;&gt;&lt;/rect&gt;
+  &lt;rect width="70" height="70" x="30" y="50" stroke="#000" fill="url(#b1)"&gt;&lt;/rect&gt;
+  &lt;rect width="70" height="70" x="130" y="50" stroke="#000" fill="url(#b2)"&gt;&lt;/rect&gt;
+  &lt;rect width="70" height="70" x="230" y="50" stroke="#000" fill="url(#b3)"&gt;&lt;/rect&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <p>OK，以上就是線性漸層和圓形漸層的共通屬性，接下來就要討論它們兩個個別的屬性了，剛剛的範例幾乎都是用線性漸層做的，就讓我們先來看看線性漸層 linearGradient 吧！</p>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>x1,y1,x2,y2</strong></p>
 <p>  這個非常容易理解，<code>x1,y1</code>就是漸層色的起點，<code>x2,y2</code>就是漸層色的終點，數值是 0~1 的數字 ( 可以小數 )，或是 0%~100% 的數值，至於要如何和內容的 stop offset 做區分呢？可以參考下面這張示意圖，<code>x1,y1,x2,y2</code>是指整個漸層填色的區域位置，而stop offset 則是在填色區域內的 0% ~ 100% 。</p>
 <p>  <img src="/img/articles/201409/20140927_2_08.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<p>  x1=&quot;0&quot;,y1=&quot;0&quot; 或 x1=&quot;0%&quot; y1=&quot;0%&quot; 表示從左上開始，x2=&quot;1&quot; y2=&quot;1&quot; 或 x2=&quot;100%&quot; y2=&quot;100%&quot; 表示結束在右下角，如果這樣設定就會變成左上到右下的漸層，了解之後就可以做出許多變化：</p>
+<p>  x1="0",y1="0" 或 x1="0%" y1="0%" 表示從左上開始，x2="1" y2="1" 或 x2="100%" y2="100%" 表示結束在右下角，如果這樣設定就會變成左上到右下的漸層，了解之後就可以做出許多變化：</p>
 <p>  <img src="/img/articles/201409/20140927_2_06.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;linearGradient id=&quot;a1&quot;&gt;
-        &lt;stop offset=&quot;0%&quot; stop-color=&quot;#f80&quot;&gt;&lt;/stop&gt;
-        &lt;stop offset=&quot;100%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;linearGradient id="a1"&gt;
+        &lt;stop offset="0%" stop-color="#f80"&gt;&lt;/stop&gt;
+        &lt;stop offset="100%" stop-color="#fff"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;linearGradient id=&quot;b1&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot;  y2=&quot;1&quot; xlink:href=&quot;#a1&quot; /&gt;
-    &lt;linearGradient id=&quot;b2&quot; x1=&quot;0&quot; y1=&quot;.5&quot; x2=&quot;0&quot;  y2=&quot;0.6&quot; xlink:href=&quot;#a1&quot; /&gt;
-    &lt;linearGradient id=&quot;b3&quot; x1=&quot;0&quot; y1=&quot;0.4&quot; x2=&quot;0.7&quot;  y2=&quot;0&quot; xlink:href=&quot;#a1&quot; /&gt;
+    &lt;linearGradient id="b1" x1="0" y1="0" x2="0"  y2="1" xlink:href="#a1" /&gt;
+    &lt;linearGradient id="b2" x1="0" y1=".5" x2="0"  y2="0.6" xlink:href="#a1" /&gt;
+    &lt;linearGradient id="b3" x1="0" y1="0.4" x2="0.7"  y2="0" xlink:href="#a1" /&gt;
   &lt;/defs&gt;
 </code></pre><p>  你也可以運用 stop-opacity 改變漸層透明度，結合多種漸層：</p>
 <p>  <img src="/img/articles/201409/20140927_2_07.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;linearGradient id=&quot;b1&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#c00&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#c00&quot; stop-opacity=&quot;0&quot;&gt;&lt;/stop&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;linearGradient id="b1" x1="0" y1="0" x2="0" y2="1"&gt;
+      &lt;stop offset="0%" stop-color="#c00"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#c00" stop-opacity="0"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;linearGradient id=&quot;b2&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;0&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#09c&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#09c&quot; stop-opacity=&quot;0&quot;&gt;&lt;/stop&gt;
+    &lt;linearGradient id="b2" x1="0" y1="0" x2="1" y2="0"&gt;
+      &lt;stop offset="0%" stop-color="#09c"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#09c" stop-opacity="0"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
   &lt;/defs&gt;
-    &lt;rect width=&quot;100&quot; height=&quot;100&quot; x=&quot;0&quot; y=&quot;0&quot; stroke=&quot;#000&quot; fill=&quot;url(#b1)&quot;&gt;&lt;/rect&gt;
-    &lt;rect width=&quot;100&quot; height=&quot;100&quot; x=&quot;0&quot; y=&quot;0&quot; stroke=&quot;#000&quot; fill=&quot;url(#b2)&quot;&gt;&lt;/rect&gt;
+    &lt;rect width="100" height="100" x="0" y="0" stroke="#000" fill="url(#b1)"&gt;&lt;/rect&gt;
+    &lt;rect width="100" height="100" x="0" y="0" stroke="#000" fill="url(#b2)"&gt;&lt;/rect&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <p>看完了 linearGradient，就來研究一下 radialGradient。</p>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>cx,cy,r</strong></p>
 <p>  這是 radialGradient 最好理解的參數，顧名思義，從圓心出發一直到半徑結束的圓形漸層，請注意，單位仍然是小數點或是百分比，這邊最容易出錯的地方在<code>r</code>，因為如果你設為 1 或是 100%，半徑就是矩形的寬度喔！( 如果不設定，則預設值為 50%，如果不是圓形，則會按照長寬變成同等比例的橢圓半徑 )</p>
 <p>  <img src="/img/articles/201409/20140927_2_09.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;radialGradient id=&quot;r1&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.5&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#f80&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;radialGradient id="r1" cx=".5" cy=".5" r=".5"&gt;
+      &lt;stop offset="0%" stop-color="#f80"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#fff"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;radialGradient id=&quot;r2&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.5&quot;&gt;
-      &lt;stop offset=&quot;50%&quot; stop-color=&quot;#f80&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+    &lt;radialGradient id="r2" cx=".5" cy=".5" r=".5"&gt;
+      &lt;stop offset="50%" stop-color="#f80"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#fff"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;radialGradient id=&quot;r3&quot; cx=&quot;.9&quot; cy=&quot;.9&quot; r=&quot;1&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#f80&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
+    &lt;radialGradient id="r3" cx=".9" cy=".9" r="1"&gt;
+      &lt;stop offset="0%" stop-color="#f80"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#fff"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
   &lt;/defs&gt;
-  &lt;rect width=&quot;100&quot; height=&quot;100&quot; x=&quot;5&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#r1)&quot;&gt;&lt;/rect&gt;
-  &lt;rect width=&quot;100&quot; height=&quot;100&quot; x=&quot;115&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#r2)&quot;&gt;&lt;/rect&gt;
-  &lt;rect width=&quot;100&quot; height=&quot;100&quot; x=&quot;225&quot; y=&quot;50&quot; stroke=&quot;#000&quot; fill=&quot;url(#r3)&quot;&gt;&lt;/rect&gt;
+  &lt;rect width="100" height="100" x="5" y="50" stroke="#000" fill="url(#r1)"&gt;&lt;/rect&gt;
+  &lt;rect width="100" height="100" x="115" y="50" stroke="#000" fill="url(#r2)"&gt;&lt;/rect&gt;
+  &lt;rect width="100" height="100" x="225" y="50" stroke="#000" fill="url(#r3)"&gt;&lt;/rect&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>fx,fy</strong></p>
 <p>  這兩個參數很有意思，這兩個參數預設是沒有值的，如果我們設定了這兩個參數，則剛剛的<code>cx,cy</code>就會變成圓形漸層填色的「<strong>範圍</strong>」圓心，然後漸層色會填滿這個「圓的範圍」</p>
 <p>  <img src="/img/articles/201409/20140927_2_10.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;radialGradient id=&quot;r1&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.5&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#f00&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#ff0&quot;&gt;&lt;/stop&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;radialGradient id="r1" cx=".5" cy=".5" r=".5"&gt;
+      &lt;stop offset="0%" stop-color="#f00"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#ff0"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;radialGradient id=&quot;r2&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.5&quot; fx=&quot;.5&quot; fy=&quot;1&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#f00&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#ff0&quot;&gt;&lt;/stop&gt;
+    &lt;radialGradient id="r2" cx=".5" cy=".5" r=".5" fx=".5" fy="1"&gt;
+      &lt;stop offset="0%" stop-color="#f00"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#ff0"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
   &lt;/defs&gt;
-  &lt;rect width=&quot;150&quot; height=&quot;150&quot; x=&quot;5&quot; y=&quot;10&quot; stroke=&quot;#000&quot; fill=&quot;url(#r1)&quot;&gt;&lt;/rect&gt;
-  &lt;rect width=&quot;150&quot; height=&quot;150&quot; x=&quot;160&quot; y=&quot;10&quot; stroke=&quot;#000&quot; fill=&quot;url(#r2)&quot;&gt;&lt;/rect&gt;
+  &lt;rect width="150" height="150" x="5" y="10" stroke="#000" fill="url(#r1)"&gt;&lt;/rect&gt;
+  &lt;rect width="150" height="150" x="160" y="10" stroke="#000" fill="url(#r2)"&gt;&lt;/rect&gt;
 </code></pre><p>  如果搭配剛剛的鏡射或重複的屬性，就會發生有趣的變化</p>
 <p>  <img src="/img/articles/201409/20140927_2_11.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>  &lt;defs&gt;
-    &lt;radialGradient id=&quot;r1&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.4&quot; fx=&quot;.75&quot; fy=&quot;.75&quot; spreadMethod=&quot;reflect&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#f00&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#00f&quot;&gt;&lt;/stop&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;radialGradient id="r1" cx=".5" cy=".5" r=".4" fx=".75" fy=".75" spreadMethod="reflect"&gt;
+      &lt;stop offset="0%" stop-color="#f00"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#00f"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
-    &lt;radialGradient id=&quot;r2&quot; cx=&quot;.5&quot; cy=&quot;.5&quot; r=&quot;.4&quot; fx=&quot;.75&quot; fy=&quot;.75&quot; spreadMethod=&quot;repeat&quot;&gt;
-      &lt;stop offset=&quot;0%&quot; stop-color=&quot;#f00&quot;&gt;&lt;/stop&gt;
-      &lt;stop offset=&quot;100%&quot; stop-color=&quot;#00f&quot;&gt;&lt;/stop&gt;
+    &lt;radialGradient id="r2" cx=".5" cy=".5" r=".4" fx=".75" fy=".75" spreadMethod="repeat"&gt;
+      &lt;stop offset="0%" stop-color="#f00"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#00f"&gt;&lt;/stop&gt;
     &lt;/linearGradient&gt;
   &lt;/defs&gt;
-  &lt;rect width=&quot;150&quot; height=&quot;150&quot; x=&quot;5&quot; y=&quot;10&quot; stroke=&quot;#000&quot; fill=&quot;url(#r1)&quot;&gt;&lt;/rect&gt;
-  &lt;rect width=&quot;150&quot; height=&quot;150&quot; x=&quot;160&quot; y=&quot;10&quot; stroke=&quot;#000&quot; fill=&quot;url(#r2)&quot; &gt;&lt;/rect&gt;
+  &lt;rect width="150" height="150" x="5" y="10" stroke="#000" fill="url(#r1)"&gt;&lt;/rect&gt;
+  &lt;rect width="150" height="150" x="160" y="10" stroke="#000" fill="url(#r2)" &gt;&lt;/rect&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <p>以上就是詳細的漸層用法，如果熟練了 radialGradient，也可以輕鬆做出立體的球喔！</p>
 <p><img src="/img/articles/201409/20140927_2_12.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
-<pre><code>&lt;defs&gt;
-  &lt;radialGradient id=&quot;r1&quot; cx=&quot;.3&quot; cy=&quot;.3&quot; r=&quot;.7&quot;&gt;
-    &lt;stop offset=&quot;0%&quot; stop-color=&quot;#fff&quot;&gt;&lt;/stop&gt;
-    &lt;stop offset=&quot;30%&quot; stop-color=&quot;#9f9&quot;&gt;&lt;/stop&gt;
-    &lt;stop offset=&quot;70%&quot; stop-color=&quot;#373&quot;&gt;&lt;/stop&gt;
-    &lt;stop offset=&quot;100%&quot; stop-color=&quot;#000&quot;&gt;&lt;/stop&gt;
+<pre class="prettyprint"><code>&lt;defs&gt;
+  &lt;radialGradient id="r1" cx=".3" cy=".3" r=".7"&gt;
+    &lt;stop offset="0%" stop-color="#fff"&gt;&lt;/stop&gt;
+    &lt;stop offset="30%" stop-color="#9f9"&gt;&lt;/stop&gt;
+    &lt;stop offset="70%" stop-color="#373"&gt;&lt;/stop&gt;
+    &lt;stop offset="100%" stop-color="#000"&gt;&lt;/stop&gt;
   &lt;/linearGradient&gt;
 &lt;/defs&gt;
-&lt;&lt;circle cx=&quot;85&quot; cy=&quot;85&quot; r=&quot;75&quot; fill=&quot;url(#r1)&quot;/&gt;
-</code></pre><p><br/></p>
+&lt;&lt;circle cx="85" cy="85" r="75" fill="url(#r1)"/&gt;
+</code></pre><p><br></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -362,53 +329,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

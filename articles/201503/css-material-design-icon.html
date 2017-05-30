@@ -1,100 +1,71 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>純 CSS Material Design 風格按鈕 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-03-25T23:45:00+01:00">
-
-<meta name="keywords" content="css,material,material design,icon,flat">
-
-<meta name="description" content="當初一看到 Material Design，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。">
-
-<meta itemprop="name" content="純 CSS Material Design 風格按鈕 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/20150325_1_01.gif">
-
-<meta itemprop="description" content="當初一看到 Material Design，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。">
-
-<meta property="og:title" content="純 CSS Material Design 風格按鈕 - OXXO.STUDIO" >
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/css-material-design-icon.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/20150325_1_01.gif">
-
-<meta property="og:description" content="當初一看到 Material Design，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。" >
-
-<title>純 CSS Material Design 風格按鈕 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="其實 Material Design 的扁平化、以及著重動畫強調的設計風格早在去年七八月的時候就開始大流行 ( 2014 年的 Google I/O 大會 )，在台灣高雄的志誠大也不遑多讓的翻譯了相關設計文件 ( 參考 Google Material Design 正體中文版 )，然而當初一看到，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。">
+  <meta itemprop="description" content="其實 Material Design 的扁平化、以及著重動畫強調的設計風格早在去年七八月的時候就開始大流行 ( 2014 年的 Google I/O 大會 )，在台灣高雄的志誠大也不遑多讓的翻譯了相關設計文件 ( 參考 Google Material Design 正體中文版 )，然而當初一看到，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/css-material-design-icon.jpg">
+  <meta property="og:description" content="其實 Material Design 的扁平化、以及著重動畫強調的設計風格早在去年七八月的時候就開始大流行 ( 2014 年的 Google I/O 大會 )，在台灣高雄的志誠大也不遑多讓的翻譯了相關設計文件 ( 參考 Google Material Design 正體中文版 )，然而當初一看到，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。">
+  <meta property="og:title" content="純 CSS Material Design 風格按鈕">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/css-material-design-icon.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/css-material-design-icon.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>純 CSS Material Design 風格按鈕  <span class="article-date" tag="css">MAR 25, 2015</span></h2>
+<h1>純 CSS Material Design 風格按鈕</h1>
 <p>其實 Material Design 的扁平化、以及著重動畫強調的設計風格早在去年七八月的時候就開始大流行 ( 2014 年的 Google I/O 大會 )，在台灣高雄的志誠大也不遑多讓的翻譯了相關設計文件 ( 參考 <a href="http://wcc723.gitbooks.io/google_design_translate/content/">Google Material Design 正體中文版</a> )，然而當初一看到，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。</p>
 <p><img src="/img/articles/201503/20150325_1_02.jpg" alt="純 CSS Material Design 風格按鈕"></p>
 <p>在這篇我純粹利用 CSS ，就做出了 Material Design 風格的按鈕，其實沒有很難，比較需要知道的重點如下：</p>
@@ -110,17 +81,17 @@
 <p>  CSS 裡所有的形變都是藉由 transform 來完成 ( 必要時請加各個瀏覽器的前墜字 )，範例裏頭會用到 scale 與 rotate 這兩個變形屬性。</p>
 </li>
 </ul>
-<p><br/>
+<p><br>
 了解原理之後，先來看一下 HTML 代碼，代碼裡面有兩個主要的 div 分別是 a 和 b，a 的話是利用偽元素來進行變換，b 的內容還有三個小 i 分別是 b1、b2 和 b3 ( 都會宣告為 block 屬性 )，因為大於兩個就無法純粹使用偽元素，所以直接用三個 block 元素來表示比較快。</p>
-<pre><code>&lt;div class=&quot;a&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;b&quot;&gt;
-  &lt;i class=&quot;b1&quot;&gt;&lt;/i&gt;
-  &lt;i class=&quot;b2&quot;&gt;&lt;/i&gt;
-  &lt;i class=&quot;b3&quot;&gt;&lt;/i&gt;
+<pre class="prettyprint"><code>&lt;div class="a"&gt;&lt;/div&gt;
+&lt;div class="b"&gt;
+  &lt;i class="b1"&gt;&lt;/i&gt;
+  &lt;i class="b2"&gt;&lt;/i&gt;
+  &lt;i class="b3"&gt;&lt;/i&gt;
 &lt;/div&gt;
-</code></pre><p><br/>
+</code></pre><p><br>
 接下來就是 CSS 了，先看到 a，首先當然是先畫兩條垂直的矩形，做出暫停的 icon，這裡直接利用偽元素來畫，比較特別的是「高度為 0」，因為在上面有說過，為了要塑造一個「形狀的變換」，而不是「顏色的淡入淡出」，所以必須用 border-width 來代替高度 ( 記得加上 transition 的漸變時間 )。</p>
-<pre><code>.a{
+<pre class="prettyprint"><code>.a{
   position:absolute;
   top:50px;
   left:50px;
@@ -131,7 +102,7 @@
   transition:.2s;
 }
 .a:before,.a:after{
-  content:&quot;&quot;;
+  content:"";
   position:absolute;
   width:12px;
   height:0;
@@ -149,9 +120,9 @@
   border-color: rgba(255,255,255,0) rgba(255,255,255,0) #fff #fff ;
   transition:.2s;
 }
-</code></pre><p><br/>
+</code></pre><p><br>
 主體設定好之後，接著就要來設定 hover 和 active 的效果，這裡就會用 transform 的 scale 和 rotate，除了變形，仔細看一下，寬度和 border 寬度都改變了，加上位置的互相搭配，就可以很容易地做出兩個矩形在滑鼠移上去的時候變成三角形，點下去的時候變成正方形囉！( scale 如果設定兩個值，分別就是寬與長的變形比例 )</p>
-<pre><code>.a:hover:before{
+<pre class="prettyprint"><code>.a:hover:before{
   top:26px;
   left:45px;
   width:0;
@@ -187,11 +158,11 @@
   transform:rotate(180deg);
   background:#0a9;
 }
-</code></pre><p><br/>
+</code></pre><p><br>
 完成的效果就是長這樣。( <a href="/demo/201503/css-material-design-icon-demo2.html">css-material-design-icon-demo2.html</a> )</p>
 <p><img src="/img/articles/201503/20150325_1_04.gif" alt="純 CSS Material Design 風格按鈕"></p>
 <p>接著是另外一個，原理基本上大同小異，然而不需要做形狀變換反而簡單許多，只需要調整角度和長寬就好囉！</p>
-<pre><code>.b{
+<pre class="prettyprint"><code>.b{
   position:absolute;
   top:50px;
   left:160px;
@@ -257,43 +228,39 @@
   transform:rotate(45deg);
   background:#f70;
 }
-</code></pre><p><br/>
+</code></pre><p><br>
 完成的效果長這樣。( <a href="/demo/201503/css-material-design-icon-demo3.html">css-material-design-icon-demo3.html</a> )</p>
 <p><img src="/img/articles/201503/20150325_1_05.gif" alt="純 CSS Material Design 風格按鈕"></p>
 <p>以上就是純粹利用 CSS 做出來的 Material Design 風格按鈕，相信熟練之後就可以做出更多不錯的應用囉！</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -301,53 +268,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

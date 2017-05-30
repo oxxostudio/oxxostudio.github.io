@@ -1,116 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>box-sizing 與 background-clip - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-12-10T23:25:00+01:00">
-
-<meta name="keywords" content="css,box-sizing,background-clip,padding-box,border-box,content-box,box model">
-
-<meta name="description" content="為了讓 border 可以順利的在外面顯示背景的圖案或顏色，就需要用到 box-sizing 與 background-clip 這兩個 CSS3 的屬性來設定，就讓我們來分別看看這兩個屬性該如何使用。">
-
-<meta itemprop="name" content="box-sizing 與 background-clip - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/20141210_1_01b.jpg">
-
-<meta itemprop="description" content="為了讓 border 可以順利的在外面顯示背景的圖案或顏色，就需要用到 box-sizing 與 background-clip 這兩個 CSS3 的屬性來設定，就讓我們來分別看看這兩個屬性該如何使用。">
-
-<meta property="og:title" content="box-sizing 與 background-clip - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/css-boxsizing-backgroundclip.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/20141210_1_01b.jpg">
-
-<meta property="og:description" content="為了讓 border 可以順利的在外面顯示背景的圖案或顏色，就需要用到 box-sizing 與 background-clip 這兩個 CSS3 的屬性來設定，就讓我們來分別看看這兩個屬性該如何使用。">
-
-<title>box-sizing 與 background-clip  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="過去在學習 CSS 的時候，首要任務就是要理解「box model」，因為　box model 是 CSS 裏頭很重要的模型概念，描述了 padding、margin、border 與 content 的空間定位 ( 參考 W3C Box model )，雖然 CSS 是我吃飯的工具，但今天的專案竟然卡在一個簡單的小問題，因此就用一篇文章做個紀錄提醒自己不要忘記，也避免之後遭遇到又會卡住了。( 下圖就是 CSS 的 box model )">
+  <meta itemprop="description" content="過去在學習 CSS 的時候，首要任務就是要理解「box model」，因為　box model 是 CSS 裏頭很重要的模型概念，描述了 padding、margin、border 與 content 的空間定位 ( 參考 W3C Box model )，雖然 CSS 是我吃飯的工具，但今天的專案竟然卡在一個簡單的小問題，因此就用一篇文章做個紀錄提醒自己不要忘記，也避免之後遭遇到又會卡住了。( 下圖就是 CSS 的 box model )">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/css-boxsizing-backgroundclip.jpg">
+  <meta property="og:description" content="過去在學習 CSS 的時候，首要任務就是要理解「box model」，因為　box model 是 CSS 裏頭很重要的模型概念，描述了 padding、margin、border 與 content 的空間定位 ( 參考 W3C Box model )，雖然 CSS 是我吃飯的工具，但今天的專案竟然卡在一個簡單的小問題，因此就用一篇文章做個紀錄提醒自己不要忘記，也避免之後遭遇到又會卡住了。( 下圖就是 CSS 的 box model )">
+  <meta property="og:title" content="box-sizing 與 background-clip">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/css-boxsizing-backgroundclip.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/css-boxsizing-backgroundclip.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>box-sizing 與 background-clip  <span class="article-date" tag="css">DEC 10, 2014</span></h2>
+<h1>box-sizing 與 background-clip</h1>
 <p>過去在學習 CSS 的時候，首要任務就是要理解「box model」，因為　box model 是 CSS 裏頭很重要的模型概念，描述了 padding、margin、border 與 content 的空間定位 ( 參考 <a href="http://www.w3.org/TR/CSS2/box.html">W3C Box model</a> )，雖然 CSS 是我吃飯的工具，但今天的專案竟然卡在一個簡單的小問題，因此就用一篇文章做個紀錄提醒自己不要忘記，也避免之後遭遇到又會卡住了。( 下圖就是 CSS 的 box model )</p>
 <p><img src="/img/articles/201412/20141210_1_02.jpg" alt="box-sizing 與 background-clip"></p>
 <p>今天遇到的問題是出在我用了一個半透明的 border，但卻無法順利地透過並顯示背景的圖案或顏色，後來發現原來 box 預設的 border ，其實是在這個 box 之內的，雖然 border 在 box 的內部，但其實與剛剛的 box model 並沒有相違背，因為 border 包住的空間，仍然是 padding 與 content，只是如果把 border 變成半透明，就會把原本 box 的底色給呈現出來。( 如下圖 )</p>
 <p><img src="/img/articles/201412/20141210_1_03.jpg" alt="box-sizing 與 background-clip"></p>
 <p>為了讓 border 可以順利的在外面顯示背景的圖案或顏色，就需要用到<code>box-sizing</code>與<code>background-clip</code>這兩個 CSS3 的屬性來設定，就讓我們來分別看看這兩個屬性該如何使用：</p>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>box-sizing</strong></p>
 <p>  <code>box-sizing</code>有兩個值可以設定，分別是：<code>content-box</code>(預設值) 與<code>border-box</code>，如果在<code>content-box</code>的情形下，我們設定了 box 的 padding 或 border，box 就會被撐開，因為 padding 和 border 是長在 box 內的，不過如果我們將<code>box-sizing</code>設定為<code>border-box</code>，那麼就會一直維持原始的大小，但相對的也就會壓縮內部的空間，我自己在設計網頁的習慣，都會預先把所有的 div 設為<code>border-box</code>，如此一來才能更方便去計算大小，也能避免內容的東西加了 padding 就把外框變大了，然後再根據當下的情況，去決定是否要改為<code>content-box</code>。</p>
 <p>  下面的範例是用三個範例來對照參考，半透明的藍色方塊是原始的大小，第一張圖設定了<code>padding:20px;</code>，第二張圖除了 <code>padding:20px</code>之外，還有設定了<code>border:10px dotted rgba(255,0,0,.5);</code>，第三張圖則是與第二張圖同樣的設定，但<code>box-sizing</code>設為<code>border-box</code>，經由對照，就可以很明顯的發現彼此的差異。</p>
 <p>  HTML：</p>
-<pre><code>    &lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
-    &lt;div class=&quot;box default&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
-    &lt;div class=&quot;box border-box&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+<pre class="prettyprint"><code>    &lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box default"&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box border-box"&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
 </code></pre><p>  CSS：</p>
-<pre><code>  div{
+<pre class="prettyprint"><code>  div{
     width:120px;
     height:120px;
     margin:20px 0 0 10px;
@@ -135,17 +106,17 @@
 </code></pre><p>  <img src="/img/articles/201412/20141210_1_04.jpg" alt="box-sizing 與 background-clip"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>background-clip</strong></p>
 <p>  嚴格說起來<code>background-clip</code>與<code>box-sizing</code>應該是八竿子打不著邊，但因為在設計一個 box 的時候，往往都會 border、padding 和 margin 混合使用，也因為這個 CSS3 的屬性，讓我剎那間不知道是哪裡寫錯了，結果原來是自己忘了屬性該怎麼使用。</p>
 <p>  <code>background-clip</code>共有三個設定值，分別是：<code>border-box</code>( 預設值 )、<code>padding-box</code>、<code>content-box</code>，很有趣的是，剛剛的<code>box-sizing</code>預設值為<code>content-box</code>，這裡的預設值卻變成了<code>border-box</code>，下面的三張圖，分別代表了這三個設定值的長相，我們可以看到，第一章圖在預設值的情形下，邊框之下就是原本 box 的底色 ( 邊框是半透明的虛線 )，第二張圖設為<code>padding-box</code>，border 下方就不會有 box 底色，最後一個設定為<code>content-box</code>，就只會出現 content 區域的背景，border 與 padding 下的背景都會消失，這也是 background ( 背景 ) clip ( 剪裁 ) 的意義所在。</p>
 <p>  HTML：</p>
-<pre><code>  &lt;div class=&quot;box bg-border-box&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;div class=&quot;box bg-padding-box&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;div class=&quot;box bg-content-box&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+<pre class="prettyprint"><code>  &lt;div class="box bg-border-box"&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="box bg-padding-box"&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="box bg-content-box"&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
 </code></pre><p>  CSS：</p>
-<pre><code>  div{
+<pre class="prettyprint"><code>  div{
     width:120px;
     height:120px;
     margin:20px 0 0 10px;
@@ -170,41 +141,37 @@
 </code></pre><p>  <img src="/img/articles/201412/20141210_1_05.jpg" alt="box-sizing 與 background-clip"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <p>以上就是看似無關卻又有關的<code>background-clip</code>與<code>box-sizing</code>，相信理解了之後，遇到 box 的尺寸大小調整，就能夠更得心應手囉！</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -212,53 +179,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,101 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 時間格式 ( Time Formatting ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-12-29T23:25:00+01:00">
-
-<meta name="keywords" content="svg,d3,d3js,d3.js,time,time formatting">
-
-<meta name="description" content="在 javascript 裏頭可以抓取當下的時間，或是設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。">
-
-<meta itemprop="name" content="SVG D3.js - 時間格式 ( Time Formatting ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/20141229_1_01b.jpg">
-
-<meta itemprop="description" content="在 javascript 裏頭可以抓取當下的時間，或是設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。">
-
-<meta property="og:title" content="SVG D3.js - 時間格式 ( Time Formatting ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/svg-d3-11-time.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/20141229_1_01b.jpg">
-
-<meta property="og:description" content="在 javascript 裏頭可以抓取當下的時間，或是設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。">
-
-<title>SVG D3.js - 時間格式 ( Time Formatting )  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="我們都知道在 javascript 裏頭可以抓取電腦的當下的時間 (new date())，或是在裏頭設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。">
+  <meta itemprop="description" content="我們都知道在 javascript 裏頭可以抓取電腦的當下的時間 (new date())，或是在裏頭設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/svg-d3-11-time.jpg">
+  <meta property="og:description" content="我們都知道在 javascript 裏頭可以抓取電腦的當下的時間 (new date())，或是在裏頭設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。">
+  <meta property="og:title" content="SVG D3.js - 時間格式 ( Time Formatting )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/svg-d3-11-time.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/svg-d3-11-time.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG D3.js - 時間格式 ( Time Formatting )  <span class="article-date" tag="web">DEC 29, 2014</span></h2>
-<p><img src="/img/articles/201412/20141229_1_01.jpg" class="preview-img"></p>
+<h1>SVG D3.js - 時間格式 ( Time Formatting )</h1>
+<p><img src="/img/articles/201412/svg-d3-11-time.jpg" class="preview-img" alt=""></p>
 <p>我們都知道在 javascript 裏頭可以抓取電腦的當下的時間 (<code>new date()</code>)，或是在裏頭設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。</p>
 <p>來看一下關於定義時間格式，有哪些 API 可以使用：</p>
 <blockquote>
@@ -108,7 +79,7 @@
 <li>d3.time.format.iso</li>
 </ul>
 </blockquote>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>d3.time.format(specifier)、format(date)</strong></p>
 <p>  這兩個 API 要一起看，雖然都是 format ，不過意思卻不相同，time.format 主要是定義時間的格式是什麼，而 format，則是將我們要格式化的時間套入，下面是 d3.js 所有 time.format 的格式：</p>
@@ -138,31 +109,31 @@
 <li>%Z : 時區偏移量</li>
 </ul>
 <p>至於要如何使用呢？可以參考下面的範例，先把宣告一個 d3.js 的 time 物件，制定好格式，再將時間放入，就會變成相關格式的時間囉！( 範例：<a href="/demo/201412/svg-d3-11-time-demo1.html">svg-d3-11-time-demo1.html</a> )</p>
-<pre><code>  var d = new Date(&#39;2014,12,01,12:16:05&#39;);
+<pre class="prettyprint"><code>  var d = new Date('2014,12,01,12:16:05');
 
-  var _a = d3.time.format(&quot;%a&quot;);
-  var _A = d3.time.format(&quot;%A&quot;);
-  var _b = d3.time.format(&quot;%b&quot;);
-  var _B = d3.time.format(&quot;%B&quot;);
-  var _c = d3.time.format(&quot;%c&quot;);
-  var _d = d3.time.format(&quot;%d&quot;);
-  var _e = d3.time.format(&quot;%e&quot;);
-  var _H = d3.time.format(&quot;%H&quot;);
-  var _I = d3.time.format(&quot;%I&quot;);
-  var _j = d3.time.format(&quot;%j&quot;);
-  var _m = d3.time.format(&quot;%m&quot;);
-  var _M = d3.time.format(&quot;%M&quot;);
-  var _L = d3.time.format(&quot;%L&quot;);
-  var _p = d3.time.format(&quot;%p&quot;);
-  var _S = d3.time.format(&quot;%S&quot;);
-  var _U = d3.time.format(&quot;%U&quot;); 
-  var _w = d3.time.format(&quot;%w&quot;);
-  var _W = d3.time.format(&quot;%W&quot;);
-  var _x = d3.time.format(&quot;%x&quot;);
-  var _X = d3.time.format(&quot;%X&quot;);
-  var _y = d3.time.format(&quot;%y&quot;);
-  var _Y = d3.time.format(&quot;%Y&quot;);
-  var _Z = d3.time.format(&quot;%Z&quot;);
+  var _a = d3.time.format("%a");
+  var _A = d3.time.format("%A");
+  var _b = d3.time.format("%b");
+  var _B = d3.time.format("%B");
+  var _c = d3.time.format("%c");
+  var _d = d3.time.format("%d");
+  var _e = d3.time.format("%e");
+  var _H = d3.time.format("%H");
+  var _I = d3.time.format("%I");
+  var _j = d3.time.format("%j");
+  var _m = d3.time.format("%m");
+  var _M = d3.time.format("%M");
+  var _L = d3.time.format("%L");
+  var _p = d3.time.format("%p");
+  var _S = d3.time.format("%S");
+  var _U = d3.time.format("%U"); 
+  var _w = d3.time.format("%w");
+  var _W = d3.time.format("%W");
+  var _x = d3.time.format("%x");
+  var _X = d3.time.format("%X");
+  var _y = d3.time.format("%y");
+  var _Y = d3.time.format("%Y");
+  var _Z = d3.time.format("%Z");
 
   console.log(d); //Mon Dec 01 2014 12:16:05 GMT+0800 (台北標準時間)
 
@@ -190,41 +161,41 @@
   console.log(_Y(d)); //2014
   console.log(_Z(d)); //+0800
 </code></pre><p>  了解運作原理之後，接著就可以利用組合的方式，做出我們想要的格式。( 範例：<a href="/demo/201412/svg-d3-11-time-demo2.html">svg-d3-11-time-demo2.html</a> )</p>
-<pre><code>  var Ymd = d3.time.format(&quot;%Y-%m-%d&quot;);
-  var pIM = d3.time.format(&quot;(%p)%I:%M&quot;);
+<pre class="prettyprint"><code>  var Ymd = d3.time.format("%Y-%m-%d");
+  var pIM = d3.time.format("(%p)%I:%M");
 
   console.log(Ymd(d)); //2014-12-16
   console.log(pIM(d)); //(PM)12:16
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>format.parse(string)</strong></p>
 <p>  針對經由 d3.time.format 的物件字串，轉換為原始的時間格式，如果沒有經過 time 格式化，出來可能會報錯獲釋返回 null。( 範例：<a href="/demo/201412/svg-d3-11-time-demo3.html">svg-d3-11-time-demo3.html</a> )</p>
-<pre><code>  var _x = d3.time.format(&quot;%x&quot;);
+<pre class="prettyprint"><code>  var _x = d3.time.format("%x");
 
   var a=_x(d);
 
-  var dd = &#39;2014/12/30 12:05:18&#39;;
+  var dd = '2014/12/30 12:05:18';
 
   console.log(a);            //12/01/2014
   console.log(_x.parse(a));  //Mon Dec 01 2014 00:00:00 GMT+0800 (台北標準時間)
   console.log(_x.parse(dd)); //null
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>d3.time.format.multi(formats)</strong></p>
 <p>  multi 有多選或複合的意思，這個 API 主要針對時間的尺度而設計，可以讓時間根據不同的尺度，自動從多個格式中挑出最適當的格式 ( 返回 true 即套用該格式 )，因此當從年分逐漸縮減到小時或分鐘，都可以在同一個畫面中呈現，在下方的範例中，time.scale 的用法就像之前提過的 scale 一樣，把一段時間放到一個範圍內顯示，而 customTimeFormat 就是負責要顯示那些時間出來，因為這個範例是一年份，所以左右就變成了年份，中間就是月份。 ( 可以參考 d3 原作者<a href="http://bl.ocks.org/mbostock/4149176">範例</a>，或 <a href="/demo/201412/svg-d3-11-time-demo4.html">svg-d3-11-time-demo4.html</a> )</p>
-<pre><code>  var customTimeFormat = d3.time.format.multi([
-    [&quot;.%L&quot;, function(d) { return d.getMilliseconds(); }],
-    [&quot;:%S&quot;, function(d) { return d.getSeconds(); }],
-    [&quot;%I:%M&quot;, function(d) { return d.getMinutes(); }],
-    [&quot;%I %p&quot;, function(d) { return d.getHours(); }],
-    [&quot;%a %d&quot;, function(d) { return d.getDay() &amp;&amp; d.getDate() != 1; }],
-    [&quot;%b %d&quot;, function(d) { return d.getDate() != 1; }],
-    [&quot;%B&quot;, function(d) { return d.getMonth(); }],
-    [&quot;%Y&quot;, function() { return true; }]
+<pre class="prettyprint"><code>  var customTimeFormat = d3.time.format.multi([
+    [".%L", function(d) { return d.getMilliseconds(); }],
+    [":%S", function(d) { return d.getSeconds(); }],
+    ["%I:%M", function(d) { return d.getMinutes(); }],
+    ["%I %p", function(d) { return d.getHours(); }],
+    ["%a %d", function(d) { return d.getDay() &amp;&amp; d.getDate() != 1; }],
+    ["%b %d", function(d) { return d.getDate() != 1; }],
+    ["%B", function(d) { return d.getMonth(); }],
+    ["%Y", function() { return true; }]
   ]);
 
   var margin = {top: 250, right: 40, bottom: 250, left: 40},
@@ -239,37 +210,37 @@
       .scale(x)
       .tickFormat(customTimeFormat);
 
-  var svg = d3.select(&quot;body&quot;).append(&quot;svg&quot;)
-      .attr(&quot;width&quot;, width + margin.left + margin.right)
-      .attr(&quot;height&quot;, height + margin.top + margin.bottom)
-    .append(&quot;g&quot;)
-      .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+  var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  svg.append(&quot;g&quot;)
-      .attr(&quot;class&quot;, &quot;x axis&quot;)
-      .attr(&quot;transform&quot;, &quot;translate(0,&quot; + height + &quot;)&quot;)
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 </code></pre><p>  <img src="/img/articles/201412/20141229_1_02.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
 <p>  當我們把時間間隔縮減，就會發現時間軸的格式自動變化了。( 範例：<a href="/demo/201412/svg-d3-11-time-demo5.html">svg-d3-11-time-demo5.html</a> )</p>
-<pre><code>  var x = d3.time.scale()
+<pre class="prettyprint"><code>  var x = d3.time.scale()
   .domain([new Date(2012, 0, 1), new Date(2012, 3, 1)])
   .range([0, width]);
 </code></pre><p>  <img src="/img/articles/201412/20141229_1_03.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>d3.time.format.utc(specifier)</strong></p>
 <p>  utc 是標準定位時間格式 ( UTC time )，以台灣來說，就是 UTC+8:00，utc 對於跨時區或涉及多個國家地區的時候，設定為 utc 的時間會比較方便，UTC 傳回參數日期的 GMT ( 由 1970年1月1日零時零分計起，以微秒為單位 )</p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>d3.time.format.iso</strong></p>
 <p>  一個完整的 ISO 8601 UTC 時間格式為 <code>%Y-%m-%dT%H:%M:%S.%LZ</code>。( 範例：<a href="/demo/201412/svg-d3-11-time-demo6.html">svg-d3-11-time-demo6.html</a> )</p>
-<pre><code>  var d = new Date();
+<pre class="prettyprint"><code>  var d = new Date();
 
-  var f = d3.time.format(&quot;%c&quot;);
+  var f = d3.time.format("%c");
   var u = d3.time.format.utc(f(d));
   var i = d3.time.format.iso(d);
 
@@ -279,41 +250,37 @@
   console.log(i);    //2014-12-29T15:15:05.665Z
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <p>其實定義時間格式沒有太大難度，因為定義格式，目的其實也是為了在顯示圖表的時候，可以更為清楚，所以在這篇了解時間格式之後，會用其他篇幅來繼續介紹如何運用這些時間格式，創造漂亮的圖表。 </p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -321,53 +288,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

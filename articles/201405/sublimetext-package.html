@@ -1,110 +1,81 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SublimeText Package - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-05-20T22:25:00+01:00">
-
-<meta name="keywords" content="Sublime Text,Sublime Text 2,Sublime Text 3,Sublime Text package">
-
-<meta name="description" content="自己一直是使用 Sublime Text 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
-
-<meta itemprop="name" content="Sublime Text Package - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201405/20140520_1_01.jpg">
-
-<meta itemprop="description" content="自己一直是使用 Sublime Text 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
-
-<meta property="og:title" content="Sublime Text Package - OXXO.STUDIO" >
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201405/sublimetext-package.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/20140520_1_01.jpg">
-
-<meta property="og:description" content="自己一直是使用 Sublime Text 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。" >
-
-<title>SublimeText Package - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
+  <meta itemprop="description" content="自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201405/sublimetext-package.jpg">
+  <meta property="og:description" content="自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。">
+  <meta property="og:title" content="SublimeText Package">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201405/sublimetext-package.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/sublimetext-package.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SublimeText Package <span class="article-date" tag="web"><i></i>MAY 20, 2014</span></h2>
-<p><img src="/img/articles/201405/20140520_1_01.jpg" class="preview-img"></p>
+<h1>SublimeText Package</h1>
+<p><img src="/img/articles/201405/sublimetext-package.jpg" class="preview-img" alt=""></p>
 <p>自己一直是使用 SublimeText 作為開發的工具，這套由 Google 工程師所設計出來的軟體，因為相當的輕便與快速，又具有非常強大的擴充能力，所以有些人把它當作是好用的文字編輯器，有些人則把它視作方便的開發軟體，總之也慢慢變成了主流的開發工具之一。</p>
 <p>不過因為 SublimeText 的擴充特性，衍伸出有一大票的 Package，如果缺少了這些 Package 的輔助，SublimeText 可能就真的只是套好用的文字編輯器，有了這些 Package，SublimeText 則化身為超好用的開發工具！由於 Package 實在太多，我自己也裝了一大堆，為了避免每次重灌都要去想或去找，就用這篇文章做個紀錄。</p>
 <p>在安裝之前，我們必須要先安裝<code>Package Control</code>，按下 <strong>Ctrl+`</strong>，然後貼上這些程式碼，按下 Enter 就可以安裝。<br>( 這裡是 SublimeText3 的版本使用的 )</p>
 <blockquote>
-<p>import urllib.request,os,hashlib; h = &#39;eb2297e1a458f27d836c04bb0cbaf282&#39; + &#39;d0e7a3098092775ccb37ca9d6b2e4b7d&#39;; pf = &#39;Package Control.sublime-package&#39;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &#39;<a href="http://packagecontrol.io/">http://packagecontrol.io/</a>&#39; + pf.replace(&#39; &#39;, &#39;%20&#39;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&#39;Error validating download (got %s instead of %s), please try manual install&#39; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &#39;wb&#39; ).write(by)  </p>
+<p>import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( '<a href="http://packagecontrol.io/">http://packagecontrol.io/</a>' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)  </p>
 </blockquote>
 <p>安裝完成後，只要按下 <strong>Ctrl + Shift + p</strong>，輸入 install package，點選後就可以看到一大堆可以安裝的 Package 列表囉！
-<br/>
-<br/></p>
+<br>
+<br></p>
 <h3>我所安裝的 Package</h3>
 <ul>
 <li><strong>Emmet</strong> ： 非常重要的套件，會有很多程式碼的提示以及快速產生程式碼的指令</li>
@@ -124,55 +95,50 @@
 <li><strong>Theme</strong> ： 強烈推薦 Soda Dark 3.sublime-theme</li>
 <li><strong>Color-Picker</strong> ： 選擇顏色更容易</li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <h3>補充說明</h3>
 <p>補充上述的 Theme，安裝之後必須要手動添加相關的設定，重啟 SublimeText 之後才會生效喔！  </p>
-<pre><code>{
-&quot;font_size&quot;: 12,
-&quot;ignored_packages&quot;:
+<pre class="prettyprint"><code>{
+"font_size": 12,
+"ignored_packages":
 [
-    &quot;Vintage&quot;
+    "Vintage"
 ],
-&quot;margin&quot;: 2,
-&quot;soda_classic_tabs&quot;: true,
-&quot;soda_folder_icons&quot;: false,
-&quot;tab_size&quot;: 2,
-&quot;theme&quot;: &quot;Soda Dark 3.sublime-theme&quot;
+"margin": 2,
+"soda_classic_tabs": true,
+"soda_folder_icons": false,
+"tab_size": 2,
+"theme": "Soda Dark 3.sublime-theme"
 }
 </code></pre><p>以上就是我所使用的 Package，關於 SublimeText 的使用心得和經驗，會在日後慢慢分享。</p>
 
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
-
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -180,53 +146,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,120 +1,91 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>玩轉 CSS 3D - 正四面體與正六面體 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-06-20T00:55:00+01:00">
-
-<meta name="keywords" content="css,css3,css 3d">
-
-<meta name="description" content="理解了 CSS 3D 的箇中原理之後，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了，「正多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。">
-
-<meta itemprop="name" content="玩轉 CSS 3D - 正四面體與正六面體 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201506/20150620_1_01b.jpg">
-
-<meta itemprop="description" content="理解了 CSS 3D 的箇中原理之後，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了，「正多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。">
-
-<meta property="og:title" content="玩轉 CSS 3D - 正四面體與正六面體 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201506/20150620_1_01b.jpg">
-
-<meta property="og:description" content="理解了 CSS 3D 的箇中原理之後，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了，「正多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。">
-
-<title>玩轉 CSS 3D - 正四面體與正六面體 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="繼 上一篇 我們理解了 CSS 3D 的箇中原理之後，廢話就不用多說，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了。">
+  <meta itemprop="description" content="繼 上一篇 我們理解了 CSS 3D 的箇中原理之後，廢話就不用多說，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201506/css-3d-platonic-solid-1.jpg">
+  <meta property="og:description" content="繼 上一篇 我們理解了 CSS 3D 的箇中原理之後，廢話就不用多說，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了。">
+  <meta property="og:title" content="玩轉 CSS 3D - 正四面體與正六面體">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201506/css-3d-platonic-solid-1.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>玩轉 CSS 3D - 正四面體與正六面體  <span class="article-date" tag="css">JUN 20, 2015</span></h2>
+<h1>玩轉 CSS 3D - 正四面體與正六面體</h1>
 <p>繼 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html">上一篇</a> 我們理解了 CSS 3D 的箇中原理之後，廢話就不用多說，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了。</p>
 <p>首先看一下 <a href="https://goo.gl/ZsQZHm">維基百科</a> 對於正多面體的介紹：「多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。</p>
 <p>開始之前，如果有不會用 CSS 畫正多邊形的，請先參考我之前寫過的：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html">單一 div 的正多邊形變換 ( 純 CSS )</a></p>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正六面體</strong></p>
 <p>  要繪製正多面體，第一個一定要先畫正六面體，為什麼呢？因為正六面體就是我們熟知的正立方體，夾角都是 90 度，也是最容易理解的形狀 ( 就算有寫少許錯，好像還是畫得出來... )</p>
 <p>  首先我們要先在 space 裏頭放入六個正方形，分別給予 box1 到 box6 的類別名稱識別，並寫上 1 到 6 來確定翻轉是否為正面朝外 ( 朝內的話文字就會是反過來的 )。</p>
-<pre><code>  &lt;div class=&quot;camera&quot;&gt;
-      &lt;div class=&quot;space&quot;&gt;
-          &lt;div class=&quot;box1&quot;&gt;1&lt;/div&gt;
-          &lt;div class=&quot;box2&quot;&gt;2&lt;/div&gt;
-          &lt;div class=&quot;box3&quot;&gt;3&lt;/div&gt;
-          &lt;div class=&quot;box4&quot;&gt;4&lt;/div&gt;
-          &lt;div class=&quot;box5&quot;&gt;5&lt;/div&gt;
-          &lt;div class=&quot;box6&quot;&gt;6&lt;/div&gt;
+<pre class="prettyprint"><code>  &lt;div class="camera"&gt;
+      &lt;div class="space"&gt;
+          &lt;div class="box1"&gt;1&lt;/div&gt;
+          &lt;div class="box2"&gt;2&lt;/div&gt;
+          &lt;div class="box3"&gt;3&lt;/div&gt;
+          &lt;div class="box4"&gt;4&lt;/div&gt;
+          &lt;div class="box5"&gt;5&lt;/div&gt;
+          &lt;div class="box6"&gt;6&lt;/div&gt;
       &lt;/div&gt;
   &lt;/div&gt;
 </code></pre><p>  接著對 camera、space 和這些 box 做基本的 CSS 定義，記得 box 的 position 要設為 absolute，才不會互相擠壓。</p>
-<pre><code>  .camera{
+<pre class="prettyprint"><code>  .camera{
       width:200px;
       height:200px;
       perspective-origin:center center;
@@ -142,35 +113,35 @@
       line-height:100px;
   }
 </code></pre><p>  完成後先來看 box1，box1 最簡單，只要將它位移到 space 的中間即可。</p>
-<pre><code>  .box1{
+<pre class="prettyprint"><code>  .box1{
       background:rgba(255,0,0,.2);
       transform:translateX(50px) translateY(50px);
   }
 </code></pre><p>  box2 除了移到中間，還必須要旋轉 90 度，這時候就要使用<code>transform-origin</code>的屬性，這可以設定物體作變化時要以自身的哪一點為主，設定不同的位置，旋轉 90 度之後就會在不同的位置，這裡我們先把 box2 水平位移 150px，然後把變換的 X 定位在左側，旋轉後就會可以順利地接在 box1 旁邊。</p>
-<pre><code>  .box2{
+<pre class="prettyprint"><code>  .box2{
       background:rgba(255,255,0,.2);
       transform-origin:left top;
       transform:translateX(150px) translateY(50px) rotateY(90deg);
   }
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_06.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
-<p>  <br/>
+<p>  <br>
   box3 剛好在 box1 的正對面，所以只要旋轉 180 度即可，但很重要的是旋轉之後整個 Z 軸會跟著旋轉 180 度，為了避免錯亂，先把 box3 往 Z 軸後面移動 100px，旋轉後就會正常。( 先寫 translateZ 再寫 rotateY，不明白的可以參考我寫的 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html">玩轉 CSS 3D - 原理篇</a> )</p>
-<pre><code>  .box3{
+<pre class="prettyprint"><code>  .box3{
       background:rgba(0,255,0,.2);
       transform:translateX(50px) translateY(50px) translateZ(-100px) rotateY(180deg);
   }
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_07.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
-<p>  <br/>
+<p>  <br>
   box4 和 box2 類似，不過要將旋轉的中心點移到右側，也因為移到右側的緣故，所以我們要先進行 X 的位移。</p>
-<pre><code>  .box4{
+<pre class="prettyprint"><code>  .box4{
       background:rgba(255,0,255,.2);
       transform-origin:right top;
       transform:translateX(-50px) translateY(50px) rotateY(-90deg);
   }
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_08.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
-<p>  <br/>
+<p>  <br>
   box5 在上方，box6 在下方，用跟 box1 到 box4 同樣的方法，只是這次是要繞著 X 軸旋轉。</p>
-<pre><code>  .box5{
+<pre class="prettyprint"><code>  .box5{
       background:rgba(0,0,255,.2);
       transform-origin:center bottom;
       transform:translateX(50px) translateY(-50px) rotateX(90deg);
@@ -180,12 +151,12 @@
       transform-origin:center top;
       transform:translateX(50px) translateY(150px) rotateX(-90deg);
   }
-</code></pre><p>  <br/></p>
+</code></pre><p>  <br></p>
 <p>  完成之後應該就會順利地看到一個正六面體，這時候我們可以改變 camera 的 perspective，可以更加清楚。( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo01.html">css-3d-platonic-solid-1-demo01.html</a> )</p>
 <p>  <img src="/img/articles/201506/20150620_1_02.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
-<p>  <br/>
+<p>  <br>
   我們可以在 space 套用 animate 的效果，透過 space 的旋轉，彷彿就是一個正立方體在旋轉囉！( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo02.html">css-3d-platonic-solid-1-demo02.html</a> )</p>
-<pre><code>  .space{
+<pre class="prettyprint"><code>  .space{
       position:relative;
       width:100%;
       height:100%;
@@ -204,21 +175,21 @@
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_03.gif" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正四面體</strong></p>
 <p>  理解正六面體之後，正四面體就比較好上手了，正四面體由四個正三角形組成 ( 不會畫正三角形的可以參考這篇：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html">單一 div 的正多邊形變換 ( 純 CSS )</a> )，每個面之間的夾角為 70.5 度，所以待會旋轉的角度也就是 70.5 度。</p>
 <p>  首先看到 HTML 的結構就是只有四個 div 而已。</p>
-<pre><code>  &lt;div class=&quot;camera&quot;&gt;
-      &lt;div class=&quot;space&quot;&gt;
-          &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;
-          &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
-          &lt;div class=&quot;box3&quot;&gt;&lt;/div&gt;
-          &lt;div class=&quot;box4&quot;&gt;&lt;/div&gt;
+<pre class="prettyprint"><code>  &lt;div class="camera"&gt;
+      &lt;div class="space"&gt;
+          &lt;div class="box1"&gt;&lt;/div&gt;
+          &lt;div class="box2"&gt;&lt;/div&gt;
+          &lt;div class="box3"&gt;&lt;/div&gt;
+          &lt;div class="box4"&gt;&lt;/div&gt;
       &lt;/div&gt;
   &lt;/div&gt;
 </code></pre><p>  camera 和 space 的設定就不多談，直接看到這些 box 的屬性，別忘記要畫正三角形，就要用到邊框來繪製。</p>
-<pre><code>  .space div{
+<pre class="prettyprint"><code>  .space div{
     position:absolute;
     width:0;
     height:0;
@@ -227,40 +198,40 @@
     opacity:.4;
   }
 </code></pre><p>  首先看到 box1，box1 依舊是最簡單的 ( 但也是比正方形的麻煩一點 )，這裡我要用 box1 當底，所以除了直接做位置的移動，移動後還要繞 X 軸旋轉 90 度，比較特別的是因為正三角形是由邊框構成，所以顏色就是要改變 border 才可以。</p>
-<pre><code>  .box1{
+<pre class="prettyprint"><code>  .box1{
       border-color:transparent transparent #f00;
       transform-origin:center bottom;
       transform:translateX(50px) translateY(50px) rotateX(-90deg);
   }
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_10.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
-<p>  <br/></p>
+<p>  <br></p>
 <p>  再來就是另外三個面了，box2 跟 box1 差不多簡單，只是 box1 旋轉 90 度，box2 要旋轉 19.5 度，因為 box1 要和 box2 有著 70.5 度的夾角。</p>
-<pre><code>  .box2{
+<pre class="prettyprint"><code>  .box2{
       border-color:transparent transparent #00f;
       transform-origin:center bottom;
       transform:translateX(50px) translateY(50px) rotateX(-19.5deg);
   }
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_11.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
-<p>  <br/></p>
+<p>  <br></p>
 <p>  box3 比較麻煩，我們要先讓 box3 繞著 Y 軸旋轉 60 度 ( 因為正三角形每個角是 60 度 )，繞完之後，再繞 X 軸旋轉 19.5 度，為什麼這裡的 19.5 度是正值呢？因為我們繞 Y 軸旋轉後，X 軸也跟著旋轉，所以繞 X 軸的方向就變成顛倒過來了。</p>
-<pre><code>  .box3{
+<pre class="prettyprint"><code>  .box3{
       border-color:transparent transparent #00f;
       transform-origin:right bottom;
       transform:translateX(50px) translateY(50px) rotateY(60deg) rotateX(19.5deg);
   }
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_12.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
-<p>  <br/></p>
+<p>  <br></p>
 <p>  box4 和 box3 類似，同樣的要先繞 Y 旋轉 60 度，這次是要繞負的，因為是另外一側。</p>
-<pre><code>  .box4{
+<pre class="prettyprint"><code>  .box4{
       border-color:transparent transparent #f0f;
       transform-origin:left bottom;
       transform:translateX(50px) translateY(50px) rotateY(-60deg) rotateX(19.5deg);
   }
 </code></pre><p>  按照上面做，應該就可以得到下圖的結果：( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo03.html">css-3d-platonic-solid-1-demo03.html</a> )</p>
 <p>  <img src="/img/articles/201506/20150620_1_04.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
-<p>  <br/></p>
+<p>  <br></p>
 <p>  同樣的，把 space 加上動畫，就可以看到正四面體旋轉囉！比較不同的地方是中心點的位移為 29px，為什麼呢？因為要抓取正三角形的中心點，數學式為：tan(30deg) x 50 = 28.86。( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo04.html">css-3d-platonic-solid-1-demo04.html</a> )</p>
-<pre><code>  .space{
+<pre class="prettyprint"><code>  .space{
       position:relative;
       width:100%;
       height:100%;
@@ -279,40 +250,36 @@
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_05.gif" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
 </li>
 </ul>
-<p><br/>
+<p><br></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -320,53 +287,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

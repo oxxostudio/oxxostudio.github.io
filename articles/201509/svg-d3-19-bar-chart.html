@@ -1,103 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 直條圖 ( Bar Chart ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-09-19T23:50:00+01:00">
-
-<meta name="keywords" content="svg,d3,d3js,bar,chart,bar chart,直條圖">
-
-<meta name="description" content="在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。">
-
-<meta itemprop="name" content="SVG D3.js - 直條圖 ( Bar Chart ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150919_1_01b.jpg">
-
-<meta itemprop="description" content="在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。">
-
-<meta property="og:title" content="SVG D3.js - 直條圖 ( Bar Chart ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-19-bar-chart.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150919_1_01b.jpg">
-
-<meta property="og:description" content="在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。">
-
-<title>SVG D3.js - 直條圖 ( Bar Chart ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了 ( 其實之前已經有畫過折線圖了，參考：SVG D3.js - 區域 ( area ) )，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。">
+  <meta itemprop="description" content="在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了 ( 其實之前已經有畫過折線圖了，參考：SVG D3.js - 區域 ( area ) )，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-19-bar-chart.jpg">
+  <meta property="og:description" content="在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了 ( 其實之前已經有畫過折線圖了，參考：SVG D3.js - 區域 ( area ) )，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。">
+  <meta property="og:title" content="SVG D3.js - 直條圖 ( Bar Chart )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-19-bar-chart.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-19-bar-chart.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG D3.js - 直條圖 ( Bar Chart ) <span class="article-date" tag="web">SEP 19    , 2015</span></h2>
+<h1>SVG D3.js - 直條圖 ( Bar Chart )</h1>
 <p>在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了 ( 其實之前已經有畫過折線圖了，參考：<a href="http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html">SVG D3.js - 區域 ( area )</a> )，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。</p>
 <p>一開始先熟悉一下長條圖的畫法，用一個簡單的資料數據來畫，這裏的數據我用 random 的方式產生，接著在畫面中用 d3.js 放入一個 SVG，接著利用 data 產生對應的矩形，矩形的位置和寬度，就根據數據的數值自動產生 (<code>data(data</code>和<code>enter()</code>)，很簡單的就可以完成一個 SVG 的長條圖。( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo01.html">svg-d3-19-bar-chart-demo01.html</a> )</p>
-<pre><code>var data=[
+<pre class="prettyprint"><code>var data=[
   {x:1, w:Math.floor(Math.random()*200)},
   {x:2, w:Math.floor(Math.random()*200)},
   {x:3, w:Math.floor(Math.random()*200)},
@@ -105,91 +76,91 @@
   {x:5, w:Math.floor(Math.random()*200)},
 ];
 
-var s = d3.select(&#39;body&#39;)
-          .append(&#39;svg&#39;)
+var s = d3.select('body')
+          .append('svg')
           .attr({
-            &#39;width&#39;:300,
-            &#39;height&#39;:300
+            'width':300,
+            'height':300
           });
 
-s.selectAll(&#39;rect&#39;)
+s.selectAll('rect')
  .data(data)
  .enter()
- .append(&#39;rect&#39;)
+ .append('rect')
  .attr({
-  &#39;fill&#39;:&#39;#09c&#39;,
-  &#39;width&#39;:function(d){
+  'fill':'#09c',
+  'width':function(d){
     return d.w;
   },
-  &#39;height&#39;:30,
-  &#39;x&#39;:0,
-  &#39;y&#39;:function(d){
+  'height':30,
+  'x':0,
+  'y':function(d){
     return (d.x-1) * 35;
   }
  });
 </code></pre><p><img src="/img/articles/201509/20150919_1_02.jpg" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
 <p>不過只有長條圖好像是不太夠，我們再把文字加進去，畢竟這樣才知道數值究竟為何，SVG 加入數值的方式就是用 text 的標籤，和製作 rect 是差不多的，加進去之後同樣要根據數據來設定位置。( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo02.html">svg-d3-19-bar-chart-demo02.html</a> )</p>
-<pre><code>s.selectAll(&#39;text&#39;)
+<pre class="prettyprint"><code>s.selectAll('text')
  .data(data)
  .enter()
- .append(&#39;text&#39;)
+ .append('text')
  .text(function(d){
   return d.w;
  })
  .attr({
-  &#39;fill&#39;:&#39;#000&#39;,
-  &#39;x&#39;:function(d){
+  'fill':'#000',
+  'x':function(d){
     return d.w + 3;
   },
-  &#39;y&#39;:function(d){
+  'y':function(d){
     return d.x * 35 - 12;
   }
  });
 </code></pre><p><img src="/img/articles/201509/20150919_1_03.jpg" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
 <p>如果今天要在長條圖加上動畫也是很容易的，這裏我們要用到 transition 來讓長條圖可以用動畫的方式變長，而數字的增加可以搭配 tween 來做增加的效果，如果不會的可以參考我之前寫的這兩篇文章：<a href="http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html">SVG D3.js - transition 基本篇</a> 和     <a href="http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html">SVG D3.js - transition ( tween、interpolate )</a>，不過因為要進行漸變的動畫，所以一開始我都先把寬度和數值都設為 0，漸變的時間用 duration 設為 1500 毫秒。( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo03.html">svg-d3-19-bar-chart-demo03.html</a> )</p>
-<pre><code>s.selectAll(&#39;rect&#39;)
+<pre class="prettyprint"><code>s.selectAll('rect')
  .data(data)
  .enter()
- .append(&#39;rect&#39;)
+ .append('rect')
  .attr({
-  &#39;fill&#39;:&#39;#09c&#39;,
-  &#39;width&#39;:0,
-  &#39;height&#39;:30,
-  &#39;x&#39;:0,
-  &#39;y&#39;:function(d){
+  'fill':'#09c',
+  'width':0,
+  'height':30,
+  'x':0,
+  'y':function(d){
     return (d.x-1) * 35;
   }
  })
  .transition()
  .duration(1500)
  .attr({
-  &#39;width&#39;:function(d){
+  'width':function(d){
     return d.w;
   }
  });
 
-s.selectAll(&#39;text&#39;)
+s.selectAll('text')
  .data(data)
  .enter()
- .append(&#39;text&#39;)
+ .append('text')
  .text(function(d){
   return 0  ;
  })
  .attr({
-  &#39;fill&#39;:&#39;#000&#39;,
-  &#39;x&#39;:3,
-  &#39;y&#39;:function(d){
+  'fill':'#000',
+  'x':3,
+  'y':function(d){
     return d.x * 35 - 12;
   }
  })
  .transition()
  .duration(1500)
  .attr({
-  &#39;x&#39;:function(d){
+  'x':function(d){
     return d.w + 3;
   }
  })
- .tween(&#39;number&#39;,function(d){
+ .tween('number',function(d){
     var i = d3.interpolateRound(0, d.w);
       return function(t) {
       this.textContent = i(t);
@@ -197,51 +168,51 @@ s.selectAll(&#39;text&#39;)
  });
 </code></pre><p><img src="/img/articles/201509/20150919_1_04.gif" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
 <p>既然可以讓一開始有動畫效果，其實也可以做一個按鈕，每次點按鈕的時候，就會自動生成一組數據，並讓長條圖自動切換顯示，實作的方式我先在外面建了一陣列型別的變數，預設為 0，目的在紀錄每次動畫做完之後的數值，這樣下次點擊按鈕，就會用這組數值作為基準去變化，除了這個按鈕，我又多做了一個歸零的按鈕，點選後就會歸零。</p>
-<pre><code>var newNumber = [0,0,0,0,0];
+<pre class="prettyprint"><code>var newNumber = [0,0,0,0,0];
 
-var btn = d3.select(&#39;#btn&#39;)
-            .on(&#39;click&#39;,function(){
+var btn = d3.select('#btn')
+            .on('click',function(){
               for(var i=0; i&lt;5; i++){
                 data[i].w = Math.floor(Math.random()*200);
               }
               _transition(data);
             });
 
-var btn = d3.select(&#39;#zero&#39;)
-            .on(&#39;click&#39;,function(){
+var btn = d3.select('#zero')
+            .on('click',function(){
               for(var i=0; i&lt;5; i++){
                 data[i].w = 0;
               }
               _transition(data);
             });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>然後在剛剛文字 tween 的 function 加入這兩段，目的就是紀錄數值。</p>
-<pre><code>var i = d3.interpolateRound(newNumber[d.x-1], d.w);
+<pre class="prettyprint"><code>var i = d3.interpolateRound(newNumber[d.x-1], d.w);
 newNumber[d.x-1] = d.w;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>最後就是寫漸變的 function，這裏就不需要用到 enter 了，因為 enter 是把數據放進去，這裏純粹是數據的變化，直接用 data 即可，寫完 function，我們就完成了一個點選按鈕，長條圖就會動態變化的效果囉！( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo04.html">svg-d3-19-bar-chart-demo04.html</a> )</p>
-<pre><code>function _transition(){
+<pre class="prettyprint"><code>function _transition(){
 
-  s.selectAll(&#39;rect&#39;)
+  s.selectAll('rect')
    .data(data)
    .transition()
    .duration(1500)
    .attr({
-    &#39;width&#39;:function(d){
+    'width':function(d){
       return d.w;
     }
    });
 
-  s.selectAll(&#39;text&#39;)
+  s.selectAll('text')
    .data(data)
    .transition()
    .duration(1500)
    .attr({
-    &#39;x&#39;:function(d){
+    'x':function(d){
       return d.w + 3;
     }
    })
-   .tween(&#39;number&#39;,function(d){
+   .tween('number',function(d){
       var i = d3.interpolateRound(newNumber[d.x-1], d.w);
       newNumber[d.x-1] = d.w;
         return function(t) {
@@ -254,37 +225,33 @@ newNumber[d.x-1] = d.w;
 <p>當然直條圖的變化還有很多，下一篇會直接用一些現成的數據，來做一點實際的應用。</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -292,53 +259,67 @@ newNumber[d.x-1] = d.w;
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

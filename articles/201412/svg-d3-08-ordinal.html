@@ -1,101 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 序數比例尺 ( ordinal ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-12-23T00:25:00+01:00">
-
-<meta name="keywords" content="svg,d3,d3.js,d3js,ordinal,rangePoints,rangeBands">
-
-<meta name="description" content="之前有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。">
-
-<meta itemprop="name" content="SVG D3.js - 序數比例尺 ( ordinal ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/20141223_1_01b.jpg">
-
-<meta itemprop="description" content="之前有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。">
-
-<meta property="og:title" content="SVG D3.js - 序數比例尺 ( ordinal ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/svg-d3-08-ordinal.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/20141223_1_01b.jpg">
-
-<meta property="og:description" content="之前有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。">
-
-<title>SVG D3.js - 序數比例尺 ( ordinal )  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="之前我在 SVG D3.js - 定義比例 ( scale.linear() ) 有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。">
+  <meta itemprop="description" content="之前我在 SVG D3.js - 定義比例 ( scale.linear() ) 有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/svg-d3-08-ordinal.jpg">
+  <meta property="og:description" content="之前我在 SVG D3.js - 定義比例 ( scale.linear() ) 有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。">
+  <meta property="og:title" content="SVG D3.js - 序數比例尺 ( ordinal )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/svg-d3-08-ordinal.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/svg-d3-08-ordinal.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG D3.js - 序數比例尺 ( ordinal )  <span class="article-date" tag="web">DEC 23, 2014</span></h2>
-<p><img src="/img/articles/201412/20141223_1_01.jpg" class="preview-img"></p>
+<h1>SVG D3.js - 序數比例尺 ( ordinal )</h1>
+<p><img src="/img/articles/201412/svg-d3-08-ordinal.jpg" class="preview-img" alt=""></p>
 <p>之前我在 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html">SVG D3.js - 定義比例 ( scale.linear() )</a> 有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。</p>
 <p>其實 ordinal 的用法和 linear 的用法幾乎一模一樣，不過仍然先來看一下 ordinal 有哪些 API ，然後再介紹一下吧！( 忘記的請複習 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html">SVG D3.js - 定義比例 ( scale.linear() )</a> )</p>
 <blockquote>
@@ -111,40 +82,40 @@
 <li>ordinal.copy</li>
 </ul>
 </blockquote>
-<p><br/>
+<p><br>
 開始之前，同樣用一組數據做為範例使用：</p>
-<pre><code>var data=[
-  {x:&#39;a&#39;,y:135},
-  {x:&#39;b&#39;,y:138},
-  {x:&#39;c&#39;,y:132},
-  {x:&#39;d&#39;,y:121},
-  {x:&#39;e&#39;,y:126},
-  {x:&#39;f&#39;,y:140},
-  {x:&#39;g&#39;,y:123},
-  {x:&#39;h&#39;,y:89},
-  {x:&#39;i&#39;,y:79},
-  {x:&#39;j&#39;,y:83}
+<pre class="prettyprint"><code>var data=[
+  {x:'a',y:135},
+  {x:'b',y:138},
+  {x:'c',y:132},
+  {x:'d',y:121},
+  {x:'e',y:126},
+  {x:'f',y:140},
+  {x:'g',y:123},
+  {x:'h',y:89},
+  {x:'i',y:79},
+  {x:'j',y:83}
 ];
 </code></pre><p>然後也先畫個 svg 的外框出來，就可以開始了。</p>
-<pre><code>var s = d3.select(&#39;svg&#39;);
+<pre class="prettyprint"><code>var s = d3.select('svg');
 
 s.attr({
-     &#39;width&#39;: width,
-     &#39;height&#39;: 200,
+     'width': width,
+     'height': 200,
   }).style({
-     &#39;border&#39;:&#39;1px solid #000&#39;
+     'border':'1px solid #000'
   });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <ul>
 <li><p><strong>ordinal.domain([values])</strong> </p>
 <p>  ordinal 的 domain 內所帶入的值，與 linear 有所不同，linear 帶入的是一個數字範圍，而 ordinal.domain 內所帶入的是一串陣列值，陣列的第一個值會對應到第一個元素的的輸出範圍，第二個則會對應到第二個範圍，依此類推。</p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>ordinal.range([values])</strong></p>
 <p>  在 ordinal.range 裏頭同樣是帶入陣列，換句話說，domain 有幾個，範圍也要有幾個，這裡與 linear 是不太相同的，如果照著 linear 的設定方式，出來的結果可能就會出乎意料，範例裏頭藍色的線就是按照 linear 的 range 設定，整個就是非常的詭異呀！範例的 domain 使用之前介紹過的 <a href="http://www.oxxostudio.tw/articles/201412/svg-d3-07-data-map.html">d3.map</a>，很容易的產生一個陣列放進去。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo1.html">svg-d3-08-ordinal-demo1.html</a> )</p>
-<pre><code>  var height = 120,
+<pre class="prettyprint"><code>  var height = 120,
       width = 200;
 
   var scaleX1 = d3.scale 
@@ -176,45 +147,45 @@ s.attr({
                             return scaleY(d.y);
                          });
 
-  s.append(&#39;path&#39;)
+  s.append('path')
      .attr({
-          &#39;d&#39;:line1(data),
-          &#39;stroke&#39;:&#39;#09c&#39;,
-          &#39;fill&#39;:&#39;none&#39;
+          'd':line1(data),
+          'stroke':'#09c',
+          'fill':'none'
      });
 
-  s.append(&#39;path&#39;)
+  s.append('path')
      .attr({
-          &#39;d&#39;:line2(data),
-          &#39;stroke&#39;:&#39;#f66&#39;,
-          &#39;fill&#39;:&#39;none&#39;,
-          &#39;transform&#39;: &#39;translate(0,80)&#39;
+          'd':line2(data),
+          'stroke':'#f66',
+          'fill':'none',
+          'transform': 'translate(0,80)'
      });
 </code></pre><p>  <img src="/img/articles/201412/20141223_1_02.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>ordinal.rangePoints(interval[, padding])</strong></p>
 <p>  由於使用 range，要寫了一大堆的點在裏頭，因此，通常如果我們使用 ordinal，會使用 rangePoints 代替 range，rangePoints 可以指定一段範圍，這段範圍會根據 domain 有多少個值，自動區分為多少個間隔單位。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo2.html">svg-d3-08-ordinal-demo2.html</a> )</p>
-<pre><code>  var scaleX = d3.scale 
+<pre class="prettyprint"><code>  var scaleX = d3.scale 
                  .ordinal() 
                  .domain(data.map(function(d){return(d.x);}))
                  .rangePoints([0, width]);
 </code></pre><p>  <img src="/img/articles/201412/20141223_1_03.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 <p>  這裡還有一個選填的數值 padding，表示範圍前後的邊距，而邊距的長度等於 step 與 step 之間的距離，乘以 padding/2，如果 step 之間的距離是 10， padding 是 1，那麼實際 padding 的長度就會是 5 ( 10*1/2 )。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo3.html">svg-d3-08-ordinal-demo3.html</a> )</p>
-<pre><code>  var scaleX = d3.scale 
+<pre class="prettyprint"><code>  var scaleX = d3.scale 
                  .ordinal() 
                  .domain(data.map(function(d){return(d.x);}))
                  .rangePoints([0, width],1);
 </code></pre><p>  <img src="/img/articles/201412/20141223_1_04.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>ordinal.rangeRoundPoints(interval[, padding])</strong></p>
 <p>  由於剛剛講的 rangePoints 是自動化分間格，所以出來的數值從開發者工具可以看出，都會有一大堆的小數點在後面，如果要做四捨五入的整數，就可以使用 rangeRoundPoints 代替 rangePoints，下面的範例紅色的線條是 rangeRoundPoints，雖然直接看開發者工具會看到還是有些小數，但基本上都是十分接近整數的。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo4.html">svg-d3-08-ordinal-demo4.html</a> )</p>
-<pre><code>  var scaleX1 = d3.scale 
+<pre class="prettyprint"><code>  var scaleX1 = d3.scale 
                  .ordinal() 
                  .domain(data.map(function(d){return(d.x);}))
                  .rangePoints([0, width]);
@@ -226,7 +197,7 @@ s.attr({
 </code></pre><p>  <img src="/img/articles/201412/20141223_1_05.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>ordinal.rangeBands(interval[, padding[, outerPadding]])</strong></p>
 <p>  rangeBands 是 ordinal 滿特別的一個 API，要了解這個 API 就要先看一下 <a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales">官方的說明</a> ，最主要的也就是下面這張圖片，rangeBands 可以看做是總長度的分段，有幾個數值，就會分成「數值-1」段，而當中又包含了 padding 與 outpadding 的設定，定義了每段 rangeBands 後方接續的 padding 與兩側的 outpadding 數值。</p>
@@ -238,86 +209,82 @@ s.attr({
 <p>  或許這樣說還是不太明白，可以看看下面這張我畫的示意圖，換個角度思考，padding=1 的意思，也等同於全部 padding 總和，等於一段 rangBand，因此會補滿原本的寬度，這也是為什麼 d3.js 要我們設定 0 到 1 的原因，如果設定大於 1，例如 padding=2，就表示總 padding 的長度的兩段 rangeBand，而在範圍內的 rangeBand + padding 必須要等於範圍，所以就變成有一段 rangeBand 不見了 ( 凸到外面去 )</p>
 <p>  <img src="/img/articles/201412/20141223_1_09.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 <p>  依此類推，如果範圍是 100，有十個點，就可以用計算機算出 padding 的值會是多少，1 就是 0.11111 ( 1/9 )，2 就是 0.25 ( 2/8 ) ，3 就是 0.4285714... ( 3/7 )，4 就是 0.66666 ( 4/6 )，其他就自己算下去吧，為了證明，我們寫一個 padding=4 的來看看是不是這樣，結果當然是這樣囉！而且還可以很明顯地看到有三個點跑到 100 外面去了。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo7.html">svg-d3-08-ordinal-demo7.html</a> )</p>
-<pre><code>  var scaleX = d3.scale 
+<pre class="prettyprint"><code>  var scaleX = d3.scale 
                  .ordinal() 
                  .domain(data.map(function(d){return(d.x);}))
                  .rangeBands([0, width],4,0);
 </code></pre><p>  <img src="/img/articles/201412/20141223_1_10.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 <p>  理解了 padding 之後，outpadding 就是兩側的邊距，預設也是 0，如果我們寫 rangeBands([0, width],1)，就表示 padding 與 outpadding 都是 1。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo8.html">svg-d3-08-ordinal-demo8.html</a> )</p>
-<pre><code>  var scaleX = d3.scale 
+<pre class="prettyprint"><code>  var scaleX = d3.scale 
                  .ordinal() 
                  .domain(data.map(function(d){return(d.x);}))
                  .rangeBands([0, width],1);
 </code></pre><p>  <img src="/img/articles/201412/20141223_1_11.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>ordinal.rangeRoundBands(interval[, padding[, outerPadding]])</strong></p>
 <p>  和 ordinal.rangeRoundPoints 很像，就是把剛剛的小數變成整數，直接用 padding=4 來跟剛剛的 ordinal.rangeBands 比較一下，有沒有看到，變成整數了。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo9.html">svg-d3-08-ordinal-demo9.html</a> )</p>
-<pre><code>  var scaleX = d3.scale 
+<pre class="prettyprint"><code>  var scaleX = d3.scale 
                  .ordinal() 
                  .domain(data.map(function(d){return(d.x);}))
                  .rangeRoundBands([0, width],4,0);
 </code></pre><p>  <img src="/img/articles/201412/20141223_1_12.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>ordinal.rangeBand()</strong></p>
 <p>  返回與邊界的邊距，如果 padding 為 1，則 rangeBand 出來的結果是 0，padding 設為 2，則 rangeBand 出來的結果是 -2.5。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo10.html">svg-d3-08-ordinal-demo10.html</a> )</p>
-<pre><code>  console.log(scaleX.rangeBand());
+<pre class="prettyprint"><code>  console.log(scaleX.rangeBand());
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>ordinal.rangeExtent()</strong></p>
 <p>  返回範圍寬度，如果以這篇的範例來說，就是返回 100 或 200 ( 因為一開始用 200，後來的都用 100 )( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo11.html">svg-d3-08-ordinal-demo11.html</a> )</p>
-<pre><code>  console.log(scaleX.rangeExtent());
+<pre class="prettyprint"><code>  console.log(scaleX.rangeExtent());
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>ordinal.copy</strong></p>
 <p>  複製一份出來，而不會影響到原本的。</p>
 </li>
 </ul>
-<p><br/>
+<p><br>
 以上大概就是 ordinal 的 API 介紹，最後，當然要結合 Axis 坐標軸，做一個與 ordinal 有關的座標來瞧瞧，如果忘記座標軸怎麼做的，請參考 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html">SVG D3.js - 座標軸 ( Axis )</a> 還有 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html">SVG D3.js - 區域 ( area )</a>：( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo12.html">svg-d3-08-ordinal-demo12.html</a> )</p>
 <p><img src="/img/articles/201412/20141223_1_13.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -325,53 +292,67 @@ s.attr({
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

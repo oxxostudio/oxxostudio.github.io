@@ -1,105 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>Web Font 的使用 - OXXO.STUDIO</title>
 
-<meta name="keywords" content="google fonts,font,cloud,css,css3">
-
-<meta property="article:published_time" content="2014-06-06T23:55:00+01:00">
-
-<meta name="description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，Google Fonts 是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現。">
-
-<meta itemprop="name" content="Web Font 的使用 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140606_1_01.jpg">
-
-<meta itemprop="description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，Google Fonts 是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現。">
-
-<meta property="og:title" content="Web Font 的使用 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-web-font.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140606_1_01.jpg">
-
-<meta property="og:description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，Google Fonts 是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現。">
-
-
-<title>Web Font 的使用 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，Google Fonts 是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現，通常 web font 的格式不外乎就是 woff 這種格式 ( Web Open Font Format )，檔案大小會比一般的 TTF 來得小，但隨著瀏覽器的進步，也越來越多的字體使用 svg 的圖形格式，也可以做出 icon font，至於如何製作，會在另外的篇幅介紹。">
+  <meta itemprop="description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，Google Fonts 是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現，通常 web font 的格式不外乎就是 woff 這種格式 ( Web Open Font Format )，檔案大小會比一般的 TTF 來得小，但隨著瀏覽器的進步，也越來越多的字體使用 svg 的圖形格式，也可以做出 icon font，至於如何製作，會在另外的篇幅介紹。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/css-web-font.jpg">
+  <meta property="og:description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，Google Fonts 是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現，通常 web font 的格式不外乎就是 woff 這種格式 ( Web Open Font Format )，檔案大小會比一般的 TTF 來得小，但隨著瀏覽器的進步，也越來越多的字體使用 svg 的圖形格式，也可以做出 icon font，至於如何製作，會在另外的篇幅介紹。">
+  <meta property="og:title" content="Web Font 的使用">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-web-font.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/css-web-font.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>Web Font 的使用 <span class="article-date" tag="css">JUN 6, 2014</span></h2>
-<p><img src="/img/articles/201406/20140606_1_01.jpg" class="preview-img"></p>
+<h1>Web Font 的使用</h1>
+<p><img src="/img/articles/201406/css-web-font.jpg" class="preview-img" alt=""></p>
 <p>隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，<a href="https://www.google.com/fonts">Google Fonts</a> 是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現，通常 web font 的格式不外乎就是 woff 這種格式 ( Web Open Font Format )，檔案大小會比一般的 TTF 來得小，但隨著瀏覽器的進步，也越來越多的字體使用 svg 的圖形格式，也可以做出 icon font，至於如何製作，會在另外的篇幅介紹。</p>
 <p>英文字體除了 Google fonts 之外，其實也有像 <a href="http://html.adobe.com/edge/webfonts/">Adobe Edge Web Fonts</a> 、<a href="http://www.fonts.com/web-fonts">Fonts.com</a>...等這些選擇，至於中文字體，也有像 <a href="http://webfont.arphic.com/">iFontCloud</a>、<a href="http://www.justfont.com">justfont</a> 的服務，不過很可惜都要收費就是了，但後面會介紹如何自己製作中文的字體，不過雖然可以自己製作，但還是比較推薦使用預設的新細明體或正黑體，畢竟中文字體一組通常高達 10 MB 以上，對於網頁瀏覽的負擔實在太重了。</p>
-<p><br/>
+<p><br>
 首先介紹 Google Fonts 的使用方式：</p>
 <ol>
 <li>進入 Google Fonts 網站 ： <a href="https://www.google.com/fonts">https://www.google.com/fonts</a></li>
@@ -110,60 +80,56 @@
 <li><p>點選後進入詳細頁面，滑鼠往下拉，看到第三點，選擇<code>@import</code>，將這段看到的程式碼貼在 CSS 檔案的最上方，就可以載入 Web font。</p>
 <p> <img src="/img/articles/201406/20140606_1_03.png" alt="Google Fonts"></p>
 </li>
-<li><p>接著我們只要在　HTML 裏頭，需要用到這個字體的 DOM ，加上<code>font-family:&#39;字體名稱&#39;</code>，就大功告成囉！</p>
+<li><p>接著我們只要在　HTML 裏頭，需要用到這個字體的 DOM ，加上<code>font-family:'字體名稱'</code>，就大功告成囉！</p>
 <p> <img src="/img/articles/201406/20140606_1_04.png" alt="Google Fonts"></p>
 </li>
 </ol>
-<p><br/>
+<p><br>
 以上就是英文字體的使用方式，基本上在 Google Fonts 都可以找到所需的字體，而且英文字體的素材和資源也較為豐富，不太需要擔心英文字體的使用，我們要擔心的反而是中文字體該如何用，以下介紹如何製作自己的中文字體。</p>
 <ol>
 <li>先準備一組自己愛用的字體，例如<em>娃娃體</em> ( 也可以去電腦的控制台，把「字型」資料夾打開，直接複製出來即可 )</li>
 <li>上傳到這個網站：<a href="http://onlinefontconverter.com/">http://onlinefontconverter.com/</a>，可以將字體轉換成 Web font 的格式 (woff) ，當然這個網站不僅可以轉中文，各種語言都能轉啦！</li>
 <li><p>轉檔好了之後，使用以下的程式碼載入我們的字體檔 ( 請把字體檔放在你的網站空間上 )，就可以利用<code>font-family</code>來控制字體囉！</p>
-<pre><code> @font-face {
+<pre class="prettyprint"><code> @font-face {
      font-family: 字體名稱;
      src: url(字體名稱.woff);
  }  
 </code></pre><p> 必要的時候可以在後方加上格式，避免舊版的 IE 不支援  </p>
-<pre><code> @font-face {
-     font-family: &#39;字體名稱&#39;;
-     src: url(字體名稱.woff) format(&#39;woff&#39;);
+<pre class="prettyprint"><code> @font-face {
+     font-family: '字體名稱';
+     src: url(字體名稱.woff) format('woff');
  }
 </code></pre></li>
 </ol>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -171,53 +137,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

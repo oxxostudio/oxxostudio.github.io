@@ -1,123 +1,94 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>CSS 模糊效果 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-07-26T17:25:00+01:00">
-
-<meta name="keywords" content="css,css3,css blur,blur,css 模糊,模糊">
-
-<meta name="description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
-
-<meta itemprop="name" content="CSS 模糊效果 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_1_01.jpg">
-
-<meta itemprop="description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
-
-<meta property="og:title" content="CSS 模糊效果 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-blur.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140726_1_01.jpg">
-
-<meta property="og:description" content="隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。">
-
-<title>CSS 模糊效果 - feGaussianBlur - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="一直以來 CSS 的效果就受到於瀏覽器的限制，例如超強大的 webkit filter，到了 chrome 以外的瀏覽器幾乎完全沒有用武之地，不過隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。( 當然，圖片的模糊就非得借用 webkit filter 或 SVG filter 了 )">
+  <meta itemprop="description" content="一直以來 CSS 的效果就受到於瀏覽器的限制，例如超強大的 webkit filter，到了 chrome 以外的瀏覽器幾乎完全沒有用武之地，不過隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。( 當然，圖片的模糊就非得借用 webkit filter 或 SVG filter 了 )">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/css-blur.jpg">
+  <meta property="og:description" content="一直以來 CSS 的效果就受到於瀏覽器的限制，例如超強大的 webkit filter，到了 chrome 以外的瀏覽器幾乎完全沒有用武之地，不過隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。( 當然，圖片的模糊就非得借用 webkit filter 或 SVG filter 了 )">
+  <meta property="og:title" content="CSS 模糊效果">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-blur.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/css-blur.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>CSS 模糊效果 <span class="article-date" tag="css">JUL 26, 2014</span></h2>
-<p><img src="/img/articles/201407/20140726_1_01.jpg" class="preview-img"></p>
+<h1>CSS 模糊效果</h1>
+<p><img src="/img/articles/201407/css-blur.jpg" class="preview-img" alt=""></p>
 <p>一直以來 CSS 的效果就受到於瀏覽器的限制，例如超強大的 webkit filter，到了 chrome 以外的瀏覽器幾乎完全沒有用武之地，不過隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。( 當然，圖片的模糊就非得借用 webkit filter 或 SVG filter 了 )</p>
 <p>首先看到文字的模糊，先解釋一下文字模糊的原理，第一步將文字本身的顏色設為透明 ( 利用 rgba(0,0,0,0) )，接著設定 text shadow，我們知道 text shadow 具有以下四個屬性：x 偏移、y 偏移、模糊程度、模糊顏色，當我們設定偏移為 0，模糊的程度也為0，就可以發現透明顏色的文字變成了具有 shadow 顏色的文字，從下圖可以看到，原本應該透明的字，變成了紅色的字。  </p>
 <p><img src="/img/articles/201407/20140726_1_02.png" alt="CSS 模糊效果 "></p>
 <p>html:  </p>
-<pre><code>&lt;div class=&quot;blur0&quot;&gt;BLUR&lt;/div&gt;
+<pre class="prettyprint"><code>&lt;div class="blur0"&gt;BLUR&lt;/div&gt;
 </code></pre><p>CSS:</p>
-<pre><code>.blur0{
+<pre class="prettyprint"><code>.blur0{
   font-size:50px;
   color:rgba(0,0,0,0);
   text-shadow:0 0 0 rgba(255,0,0,1);
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>了解了這個原理之後，我們只要調整模糊的程度，就能夠做出不同模糊效果的文字。( 而且還可以跨平台 )  </p>
 <p><img src="/img/articles/201407/20140726_1_03.png" alt="CSS 模糊效果 "></p>
 <p>html:</p>
-<pre><code>&lt;div class=&quot;blur1&quot;&gt;BLUR 1&lt;/div&gt;
-&lt;div class=&quot;blur2&quot;&gt;BLUR 2&lt;/div&gt;
-&lt;div class=&quot;blur3&quot;&gt;BLUR 3&lt;/div&gt;
-&lt;div class=&quot;blur4&quot;&gt;BLUR 4&lt;/div&gt;
-&lt;div class=&quot;blur5&quot;&gt;BLUR 5&lt;/div&gt;
+<pre class="prettyprint"><code>&lt;div class="blur1"&gt;BLUR 1&lt;/div&gt;
+&lt;div class="blur2"&gt;BLUR 2&lt;/div&gt;
+&lt;div class="blur3"&gt;BLUR 3&lt;/div&gt;
+&lt;div class="blur4"&gt;BLUR 4&lt;/div&gt;
+&lt;div class="blur5"&gt;BLUR 5&lt;/div&gt;
 </code></pre><p>CSS:</p>
-<pre><code>.blur1,.blur2,.blur3,.blur4,.blur5{
+<pre class="prettyprint"><code>.blur1,.blur2,.blur3,.blur4,.blur5{
   font-size:30px;
   color:rgba(0,0,0,0);
 }
@@ -136,18 +107,18 @@
 .blur5{
   text-shadow:0 0 8px rgba(255,0,0,1);
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>學會了文字的效果之後，接下來我們來嘗試形狀的模糊，和文字模糊效果的做法相同，文字使用 text-shadow，形狀則使用 box-shadow，只是對於形狀的模糊，單純使用 CSS 有著先天上的限制，因為我們是使用陰影來偽裝成模糊，所以會導致視覺上形狀越模糊，尺寸也會越大，若要讓形狀不要越來越大，就必須使用 -webkit-transform:scale 來使其變小 ( 或 transform ),至於要變得多小，就自己看當時的情況去去拿捏囉！  </p>
 <p><img src="/img/articles/201407/20140726_1_04.png" alt="CSS 模糊效果 "></p>
 <p>HTML:</p>
-<pre><code>&lt;div class=&quot;boxblur0&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;boxblur1&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;boxblur2&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;boxblur3&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;boxblur4&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;boxblur5&quot;&gt;&lt;/div&gt;
+<pre class="prettyprint"><code>&lt;div class="boxblur0"&gt;&lt;/div&gt;
+&lt;div class="boxblur1"&gt;&lt;/div&gt;
+&lt;div class="boxblur2"&gt;&lt;/div&gt;
+&lt;div class="boxblur3"&gt;&lt;/div&gt;
+&lt;div class="boxblur4"&gt;&lt;/div&gt;
+&lt;div class="boxblur5"&gt;&lt;/div&gt;
 </code></pre><p>CSS:</p>
-<pre><code>.boxblur0,.boxblur1,.boxblur2,.boxblur3,.boxblur4,.boxblur5{
+<pre class="prettyprint"><code>.boxblur0,.boxblur1,.boxblur2,.boxblur3,.boxblur4,.boxblur5{
   width:100px;
   height:50px;
   background:rgba(0,150,200,1);
@@ -168,20 +139,20 @@
 .boxblur5{
   box-shadow:0 0 5px 3px rgba(0,150,200,1);
 }
-</code></pre><p><br/></p>
-<p>這裡有個比較需要注意的地方，就是我們必須使用 box-shadow 比 text-shadow 所多出來的第五個屬性：陰影擴展，如果沒有進行陰影擴展的調整，就會發生像下圖這樣的現象，真正變成 &quot;陰影&quot; 了：  </p>
+</code></pre><p><br></p>
+<p>這裡有個比較需要注意的地方，就是我們必須使用 box-shadow 比 text-shadow 所多出來的第五個屬性：陰影擴展，如果沒有進行陰影擴展的調整，就會發生像下圖這樣的現象，真正變成 "陰影" 了：  </p>
 <p><img src="/img/articles/201407/20140726_1_05.png" alt="CSS 模糊效果 "></p>
-<pre><code>.boxblur20{
+<pre class="prettyprint"><code>.boxblur20{
   width:100px;
   height:50px;
   background:rgba(0,150,200,1);
   color:#fff;
   box-shadow:0 0 20px rgba(0,150,200,1);
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>如果我們使用了陰影擴展，才能夠讓陰影與邊緣接合，讓整體看起來像是模糊了一般，但也因為擴展的緣故，會導致整個大小變大，這時候就必須藉由 -webkit-transform:scale 或 transform:scale 來讓整體恢復我們所需要的大小 ( 缺點就是內容也會跟著變 )。  </p>
 <p><img src="/img/articles/201407/20140726_1_06.png" alt="CSS 模糊效果 "></p>
-<pre><code>.boxblur20{
+<pre class="prettyprint"><code>.boxblur20{
   width:100px;
   height:50px;
   background:rgba(0,150,200,1);
@@ -190,19 +161,19 @@
   -webkit-transform:scale(.85);
   transform:scale(.85);
 }
-</code></pre><p><br/></p>
-<p>了解了形狀和文字的模糊後，其實我們可以綜合兩者，就能做出 &quot;形狀外框&quot; 模糊的效果 ( 如下圖 )，原理其實就是讓形狀沒有被景色，單靠外陰影與內陰影產生邊框，不過由於只有一組內外陰影所產生的邊框較透明，因此必須使用兩組內外陰影來達成，或使用陰影擴展的屬性來產生邊框。  </p>
+</code></pre><p><br></p>
+<p>了解了形狀和文字的模糊後，其實我們可以綜合兩者，就能做出 "形狀外框" 模糊的效果 ( 如下圖 )，原理其實就是讓形狀沒有被景色，單靠外陰影與內陰影產生邊框，不過由於只有一組內外陰影所產生的邊框較透明，因此必須使用兩組內外陰影來達成，或使用陰影擴展的屬性來產生邊框。  </p>
 <p><img src="/img/articles/201407/20140726_1_07.png" alt="CSS 模糊效果 "></p>
-<pre><code>.boxblur{
+<pre class="prettyprint"><code>.boxblur{
   width:100px;
   height:50px;
   background:none;
   color:#fff;
   box-shadow:0 0 0 0 rgba(0,150,200,1),inset 0 0 0 1px rgba(0,150,200,1);
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p><img src="/img/articles/201407/20140726_1_08.png" alt="CSS 模糊效果 "></p>
-<pre><code>.boxblur{
+<pre class="prettyprint"><code>.boxblur{
   width:100px;
   height:50px;
   background:none;
@@ -210,42 +181,38 @@
   color:#fff;
   box-shadow:0 0 15px 0 rgba(0,200,150,.5),inset 0 0 15px 0 rgba(0,200,150,.5);
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>以上就是使用陰影來實現模糊效果的原理，若能搭配上 CSS3 的 transition 或 animation，就能做出更多有趣的變化和應用，下面的例子就是我利用 text-shadow 和 box-shadow 所做出來的範例，是不是很炫呢！如果大家對於使用 CSS 產生模糊有更高的興致，也可以參考我的這篇文章：<a href="http://www.oxxostudio.tw/articles/201407/css-webkit-filter.html">CSS webkit filter</a>，裏頭有提到 blur 的濾鏡，能夠更輕鬆地辦到模糊的效果，但很可惜的是，從 2012 年我就已經寫過有這個濾鏡的文章，但 firefox 、IE 一直不支援，只有 chrome 和 firefox 可以運行呀！  </p>
 <p><a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=5681894561677312"><img src="/img/articles/201407/20140726_1_08.gif" alt="CSS 模糊效果 "></a></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -253,53 +220,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

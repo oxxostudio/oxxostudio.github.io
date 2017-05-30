@@ -1,101 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 研究之路 (30) - filter - feConvolveMatrix - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-10-20T23:55:00+01:00">
-
-<meta name="keywords" content="svg,filter,feConvolveMatrix,Convolve Matrix,濾鏡,矩陣">
-
-<meta name="description" content="feConvolveMatrix 透過每個像素本身與周圍像素的矩陣運算，算出這個圖形裏頭每個像素的 RGBA 分別會變成如何，演算過後有可能彼此差異變大(銳利)，也有可能差異變小(模糊)，也有可能整個反相(浮雕或反相)，也因此可以做出基本的模糊、銳利或浮雕...等的效果。">
-
-<meta itemprop="name" content="SVG 研究之路 (30) - filter - feConvolveMatrix - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/20141020_1_01.jpg">
-
-<meta itemprop="description" content="feConvolveMatrix 透過每個像素本身與周圍像素的矩陣運算，算出這個圖形裏頭每個像素的 RGBA 分別會變成如何，演算過後有可能彼此差異變大(銳利)，也有可能差異變小(模糊)，也有可能整個反相(浮雕或反相)，也因此可以做出基本的模糊、銳利或浮雕...等的效果。">
-
-<meta property="og:title" content="SVG 研究之路 (30) - filter - feConvolveMatrix - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/20141020_1_01.jpg">
-
-<meta property="og:description" content="feConvolveMatrix 透過每個像素本身與周圍像素的矩陣運算，算出這個圖形裏頭每個像素的 RGBA 分別會變成如何，演算過後有可能彼此差異變大(銳利)，也有可能差異變小(模糊)，也有可能整個反相(浮雕或反相)，也因此可以做出基本的模糊、銳利或浮雕...等的效果。">
-
-<title>SVG 研究之路 (30) - filter - feConvolveMatrix  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="之前有介紹過模糊的濾鏡 ( SVG 研究之路 (13) - filter - feGaussianBlur )，既然有模糊濾鏡，為什麼沒有銳利化的濾鏡呢？其實是有的，在 SVG 如果說要進行銳利化，便要使用 feConvolveMatrix 這個濾鏡來實現，而且 feConvolveMatrix 不僅能進行銳利化，同時它也可以進行模糊的動作，不過因為是針對每個像素與四周像素進行矩陣運算，來計算出模糊或銳利，所以要寫的數字和程式相較於單純的 feGaussianBlur 濾鏡會複雜不少，因此如果有模糊的需求，還是直接使用 feGaussianBlur 吧！以下就來介紹一下 feConvolveMatrix 這個神奇的濾鏡。">
+  <meta itemprop="description" content="之前有介紹過模糊的濾鏡 ( SVG 研究之路 (13) - filter - feGaussianBlur )，既然有模糊濾鏡，為什麼沒有銳利化的濾鏡呢？其實是有的，在 SVG 如果說要進行銳利化，便要使用 feConvolveMatrix 這個濾鏡來實現，而且 feConvolveMatrix 不僅能進行銳利化，同時它也可以進行模糊的動作，不過因為是針對每個像素與四周像素進行矩陣運算，來計算出模糊或銳利，所以要寫的數字和程式相較於單純的 feGaussianBlur 濾鏡會複雜不少，因此如果有模糊的需求，還是直接使用 feGaussianBlur 吧！以下就來介紹一下 feConvolveMatrix 這個神奇的濾鏡。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/svg-30-filter-feConvolveMatrix.jpg">
+  <meta property="og:description" content="之前有介紹過模糊的濾鏡 ( SVG 研究之路 (13) - filter - feGaussianBlur )，既然有模糊濾鏡，為什麼沒有銳利化的濾鏡呢？其實是有的，在 SVG 如果說要進行銳利化，便要使用 feConvolveMatrix 這個濾鏡來實現，而且 feConvolveMatrix 不僅能進行銳利化，同時它也可以進行模糊的動作，不過因為是針對每個像素與四周像素進行矩陣運算，來計算出模糊或銳利，所以要寫的數字和程式相較於單純的 feGaussianBlur 濾鏡會複雜不少，因此如果有模糊的需求，還是直接使用 feGaussianBlur 吧！以下就來介紹一下 feConvolveMatrix 這個神奇的濾鏡。">
+  <meta property="og:title" content="SVG 研究之路 (30) - filter - feConvolveMatrix">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/svg-30-filter-feConvolveMatrix.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 研究之路 (30) - filter - feConvolveMatrix  <span class="article-date" tag="web">OCT 20, 2014</span></h2>
-<p><img src="/img/articles/201410/20141020_1_01.jpg" class="preview-img"></p>
+<h1>SVG 研究之路 (30) - filter - feConvolveMatrix</h1>
+<p><img src="/img/articles/201410/svg-30-filter-feConvolveMatrix.jpg" class="preview-img" alt=""></p>
 <p>之前有介紹過模糊的濾鏡 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html">SVG 研究之路 (13) - filter - feGaussianBlur</a> )，既然有模糊濾鏡，為什麼沒有銳利化的濾鏡呢？其實是有的，在 SVG 如果說要進行銳利化，便要使用 feConvolveMatrix 這個濾鏡來實現，而且 feConvolveMatrix 不僅能進行銳利化，同時它也可以進行模糊的動作，不過因為是針對每個像素與四周像素進行矩陣運算，來計算出模糊或銳利，所以要寫的數字和程式相較於單純的 feGaussianBlur 濾鏡會複雜不少，因此如果有模糊的需求，還是直接使用 feGaussianBlur 吧！以下就來介紹一下 feConvolveMatrix 這個神奇的濾鏡。</p>
 <p>首先要來看一下 feConvolveMatrix 的原理，feConvolveMatrix 要把字拆開看，也就是 Convolution Matrix，我們搜尋 feConvolveMatrix 其實找不太到資料，但如果搜尋 Convolution Matrix，就會發現在圖學裡頭有一拖拉庫的東西，還牽扯到許多的演算法之類的，超複雜的呀！而且，photoshop 和 premiere 裡面竟然也有 Convolution Matrix，真是令人太驚訝啦！( 看下圖 )</p>
 <p>Photoshop ( 濾鏡&gt;其他&gt;自訂 )</p>
@@ -118,7 +89,7 @@
 <li><p><strong>order</strong></p>
 <p>  定義我們作用的圖格有幾格 ( 也就是矩陣要多大 )，預設是 3 ，也就是 3x3 的矩陣，當然你也可以設大一點，但會比較消耗 CPU。</p>
 </li>
-<li><p><strong>kernelMatrix = &quot;list of numbers&quot;</strong></p>
+<li><p><strong>kernelMatrix = "list of numbers"</strong></p>
 <p>  feConvolveMatrix 最關鍵的屬性，裏頭擺放的就是矩陣，因為在計算的時候，矩陣內容總和會作為分母，<strong>如果分母等於 0，在數學上是不成立的，這時候整體除出來的數值就會變成 1</strong>，通常在寫的時候，會以矩陣的方式換行來寫，但如果覺得換行很佔空間，也是可以把 3x3 共九個數字寫成一排，中間記得要空格就是了。
   而且在 SVG 裏頭計算起來，其實是與要相反過來看，也就是剛剛上面提到 Ax1 + Bx2 + Cx3 + Dx4 + Ex5 + Fx6 + Gx7 + Hx8 + Ix9，在 SVG 實際上是 Ax9 + Bx8 + Cx7 + Dx6 + Ex5 + Fx4 + Gx3 + Bx2 + Ax1，下圖是一個簡單的示意：</p>
 <p>  <img src="/img/articles/201410/20141020_1_09.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
@@ -132,14 +103,14 @@
 <li><p><strong>targetX、targetY</strong></p>
 <p>  目標像素的中心位置，最左邊與最上面為 0，最右邊和最下面則是整個矩陣的大小，預設都是在中心點的位置。</p>
 </li>
-<li><p><strong>edgeMode = &quot;duplicate | wrap | none&quot;</strong></p>
+<li><p><strong>edgeMode = "duplicate | wrap | none"</strong></p>
 <p>  這個屬性跟漸層的重複原理很像，none 就是不會重複，duplicate 就是進行鏡像地重複，wrap 就是進行單純的重複。</p>
 <p>  <img src="/img/articles/201410/20141020_1_10.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
 </li>
 <li><p><strong>kernelUnitLength</strong></p>
 <p>  預設只有一個數值，也可以填寫兩個數值，分別是 dx 和 dy，這個屬性讓原本作用只有一個像素的內核，可以伸縮擴展。</p>
 </li>
-<li><p><strong>preserveAlpha = &quot;false | true&quot;</strong></p>
+<li><p><strong>preserveAlpha = "false | true"</strong></p>
 <p>  預設值為 false ，表示 alpha 色版將也會一併進行矩陣運算，如果設為 true，將只會用於 RGB 色版。</p>
 </li>
 </ul>
@@ -150,103 +121,99 @@
 </li>
 <li><p>模糊 1</p>
 <p>  <img src="/img/articles/201410/20141020_1_11.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
-<pre><code>  &lt;feConvolveMatrix order=&quot;3&quot; kernelMatrix=&quot;
+<pre class="prettyprint"><code>  &lt;feConvolveMatrix order="3" kernelMatrix="
       1  1  1    
       1  1  1    
-      1  1  1&quot; edgeMode=&quot;none&quot;&gt;
+      1  1  1" edgeMode="none"&gt;
   &lt;/feConvolveMatrix&gt;
 </code></pre></li>
 <li><p>模糊 2</p>
 <p>  <img src="/img/articles/201410/20141020_1_12.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
-<pre><code>  &lt;feConvolveMatrix order=&quot;3&quot; kernelMatrix=&quot;
+<pre class="prettyprint"><code>  &lt;feConvolveMatrix order="3" kernelMatrix="
       3  0  3    
       0  0  0    
-      3  0  3&quot; edgeMode=&quot;none&quot;&gt;
+      3  0  3" edgeMode="none"&gt;
   &lt;/feConvolveMatrix&gt;
 </code></pre></li>
 <li><p>銳利 1</p>
 <p>  <img src="/img/articles/201410/20141020_1_13.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
-<pre><code>  &lt;feConvolveMatrix order=&quot;3&quot; kernelMatrix=&quot;
+<pre class="prettyprint"><code>  &lt;feConvolveMatrix order="3" kernelMatrix="
       0 -1  0    
      -1  5 -1    
-      0 -1  0&quot; edgeMode=&quot;none&quot;&gt;
+      0 -1  0" edgeMode="none"&gt;
   &lt;/feConvolveMatrix&gt;
 </code></pre></li>
 <li><p>銳利 2</p>
 <p>  <img src="/img/articles/201410/20141020_1_14.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
-<pre><code>  &lt;feConvolveMatrix order=&quot;3&quot; kernelMatrix=&quot;
+<pre class="prettyprint"><code>  &lt;feConvolveMatrix order="3" kernelMatrix="
       0 -2  0    
      -2  15 -2    
-      0 -2  0&quot; edgeMode=&quot;none&quot;&gt;
+      0 -2  0" edgeMode="none"&gt;
   &lt;/feConvolveMatrix&gt;
 </code></pre></li>
 <li><p>邊緣化</p>
 <p>  <img src="/img/articles/201410/20141020_1_15.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
-<pre><code>  &lt;feConvolveMatrix order=&quot;3&quot; kernelMatrix=&quot;
+<pre class="prettyprint"><code>  &lt;feConvolveMatrix order="3" kernelMatrix="
       1  1  1    
       1 -6  1    
-      1  1  1&quot; edgeMode=&quot;none&quot;&gt;
+      1  1  1" edgeMode="none"&gt;
   &lt;/feConvolveMatrix&gt;
 </code></pre></li>
 <li><p>浮雕 1</p>
 <p>  <img src="/img/articles/201410/20141020_1_16.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
-<pre><code>  &lt;feConvolveMatrix order=&quot;3&quot; kernelMatrix=&quot;
+<pre class="prettyprint"><code>  &lt;feConvolveMatrix order="3" kernelMatrix="
      -2 -1  0    
      -1  1  1    
-      0  1  2&quot; edgeMode=&quot;none&quot;&gt;
+      0  1  2" edgeMode="none"&gt;
   &lt;/feConvolveMatrix&gt;
 </code></pre></li>
 <li><p>浮雕 2</p>
 <p>  <img src="/img/articles/201410/20141020_1_17.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
-<pre><code>  &lt;feConvolveMatrix order=&quot;3&quot; kernelMatrix=&quot;
+<pre class="prettyprint"><code>  &lt;feConvolveMatrix order="3" kernelMatrix="
      -9 -2  0    
      -2  1  2    
-      0  2  9&quot; edgeMode=&quot;none&quot;&gt;
+      0  2  9" edgeMode="none"&gt;
   &lt;/feConvolveMatrix&gt;
 </code></pre></li>
 <li><p>浮雕 3</p>
 <p>  <img src="/img/articles/201410/20141020_1_18.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
-<pre><code>  &lt;feConvolveMatrix order=&quot;3&quot; kernelMatrix=&quot;
+<pre class="prettyprint"><code>  &lt;feConvolveMatrix order="3" kernelMatrix="
       2  0  0    
       0 -1  0    
-      0  0 -1&quot; edgeMode=&quot;none&quot; bias=&quot;100&quot;&gt;
+      0  0 -1" edgeMode="none" bias="100"&gt;
   &lt;/feConvolveMatrix&gt;
 </code></pre></li>
 </ul>
 <p>以上就是 feConvolveMatrix 的基本介紹，不過，除非真的有需要，不然這種影像處理的事情還是交給 photoshop 來解決就好了哈哈！畢竟人家才是專家咩~ 而且雖然我們可以自己手動計算，但實際上的演算法卻不是加減乘除這麼單純，而且每種利用矩陣來進行影像處理的方式，也會受到圖片本身的影響，所以這個方法學起來，雖然實際用到的情況不多，但真的有需要就會派上用處囉！</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -254,53 +221,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

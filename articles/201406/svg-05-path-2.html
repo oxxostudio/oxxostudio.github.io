@@ -1,101 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 研究之路 (5) - Path 進階篇 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-06-12T23:15:00+01:00">
-
-<meta name="keywords" content="SVG,Arcs,Path,路徑,向量,形狀,弧形,Elliptical Arc">
-
-<meta name="description" content="這一篇就要介紹 Path 最困難的 A 指令，什麼是 A 呢？就是「弧形」 ( Arcs )，更簡單來說就是畫個橢圓圓弧 ( Elliptical Arc )">
-
-<meta itemprop="name" content="SVG 研究之路 (5) - Path 進階篇 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140612_1_01.jpg">
-
-<meta itemprop="description" content="這一篇就要介紹 Path 最困難的 A 指令，什麼是 A 呢？就是「弧形」 ( Arcs )，更簡單來說就是畫個橢圓圓弧 ( Elliptical Arc )">
-
-<meta property="og:title" content="SVG 研究之路 (5) - Path 進階篇 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140612_1_01.jpg">
-
-<meta property="og:description" content="這一篇就要介紹 Path 最困難的 A 指令，什麼是 A 呢？就是「弧形」 ( Arcs )，更簡單來說就是畫個橢圓圓弧 ( Elliptical Arc )">
-
-<title>SVG 研究之路 (5) - Path 進階篇 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="上一篇 看完了 Path 大部分的指令，這一篇就要介紹最困難的 A 指令，什麼是 A 呢？就是「弧形」 ( Arcs )，更簡單來說就是畫個橢圓圓弧 ( Elliptical Arc )，這裡可能會有人有疑問，為什麼是橢圓圓弧，而不是圓形圓弧呢？因為橢圓形可以做成圓形呀就是這麼簡單ㄎㄎ，因此， A 指令裏頭參數非常之多，竟然高達 7 個參數，以下就一一為大家解釋這些參數。">
+  <meta itemprop="description" content="上一篇 看完了 Path 大部分的指令，這一篇就要介紹最困難的 A 指令，什麼是 A 呢？就是「弧形」 ( Arcs )，更簡單來說就是畫個橢圓圓弧 ( Elliptical Arc )，這裡可能會有人有疑問，為什麼是橢圓圓弧，而不是圓形圓弧呢？因為橢圓形可以做成圓形呀就是這麼簡單ㄎㄎ，因此， A 指令裏頭參數非常之多，竟然高達 7 個參數，以下就一一為大家解釋這些參數。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-05-path-2.jpg">
+  <meta property="og:description" content="上一篇 看完了 Path 大部分的指令，這一篇就要介紹最困難的 A 指令，什麼是 A 呢？就是「弧形」 ( Arcs )，更簡單來說就是畫個橢圓圓弧 ( Elliptical Arc )，這裡可能會有人有疑問，為什麼是橢圓圓弧，而不是圓形圓弧呢？因為橢圓形可以做成圓形呀就是這麼簡單ㄎㄎ，因此， A 指令裏頭參數非常之多，竟然高達 7 個參數，以下就一一為大家解釋這些參數。">
+  <meta property="og:title" content="SVG 研究之路 (5) - Path 進階篇">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-05-path-2.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 研究之路 (5) - Path 進階篇 <span class="article-date" tag="web">JUN 12, 2014</span></h2>
-<p><img src="/img/articles/201406/20140612_1_01.jpg" class="preview-img"></p>
+<h1>SVG 研究之路 (5) - Path 進階篇</h1>
+<p><img src="/img/articles/201406/svg-05-path-2.jpg" class="preview-img" alt=""></p>
 <p><a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html">上一篇</a> 看完了 Path 大部分的指令，這一篇就要介紹最困難的 A 指令，什麼是 A 呢？就是「弧形」 ( Arcs )，更簡單來說就是畫個橢圓圓弧 ( Elliptical Arc )，這裡可能會有人有疑問，為什麼是橢圓圓弧，而不是圓形圓弧呢？因為橢圓形可以做成圓形呀就是這麼簡單ㄎㄎ，因此， A 指令裏頭參數非常之多，竟然高達 7 個參數，以下就一一為大家解釋這些參數。</p>
 <ul>
 <li>rx ： 橢圓的 x 軸半徑 ( 根據不同的終點換算成比例 )</li>
@@ -108,86 +79,82 @@
 </ul>
 <p>首先來看一個利用 A 指令畫出來的弧形：扁長型，x,y 軸半徑比例為 5:1，小角度弧線，<strong>逆時針</strong>方向  </p>
 <p><img src="/img/articles/201406/20140612_1_02.png" alt="SVG-Path">  </p>
-<pre><code>&lt;path d=&quot;M0 0 A100 20,0 0 0 50 100&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;/&gt;
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>&lt;path d="M0 0 A100 20,0 0 0 50 100" stroke="#000" fill="none"/&gt;
+</code></pre><p><br></p>
 <p>扁長型，x,y 軸半徑比例為 5:1，小角度弧線，<strong>順時針</strong>方向  </p>
 <p><img src="/img/articles/201406/20140612_1_03.png" alt="SVG-Path">  </p>
-<pre><code>&lt;path d=&quot;M0 0 A100 20,0 0 1 50 100&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;/&gt;
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>&lt;path d="M0 0 A100 20,0 0 1 50 100" stroke="#000" fill="none"/&gt;
+</code></pre><p><br></p>
 <p>扁長型，x,y 軸半徑比例為 5:1，<strong>大角度</strong>弧線，順時針方向 ( 因為只有兩個點，所以大小角度結果相同，返回原來的點了 ) </p>
 <p><img src="/img/articles/201406/20140612_1_03.png" alt="SVG-Path"> </p>
-<pre><code>&lt;path d=&quot;M0 0 A100 20,0 1 1 50 100&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;/&gt;
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>&lt;path d="M0 0 A100 20,0 1 1 50 100" stroke="#000" fill="none"/&gt;
+</code></pre><p><br></p>
 <p>看到上圖可能很多人會混淆，為什麼大小角度是相同的結果，只因為 Path 裏頭我們只提供了兩個點，兩個點只有一條線，不會有角度的問題，因此為了實際測試，我們多增加一個點，就可以看出大小角度的差異。  </p>
 <p><img src="/img/articles/201406/20140612_1_04.png" alt="SVG-Path"> </p>
-<pre><code>大角度 ( 黑色線 )
-&lt;path d=&quot;M0 0 L50 50 A50 50,0 1 0 100 0&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;/&gt;
+<pre class="prettyprint"><code>大角度 ( 黑色線 )
+&lt;path d="M0 0 L50 50 A50 50,0 1 0 100 0" stroke="#000" fill="none"/&gt;
 小角度 ( 紅色線 )
-&lt;path d=&quot;M0 0 L50 50 A50 50,0 0 0 100 0&quot; stroke=&quot;#f00&quot; fill=&quot;none&quot;/&gt;
-</code></pre><p><br/></p>
+&lt;path d="M0 0 L50 50 A50 50,0 0 0 100 0" stroke="#f00" fill="none"/&gt;
+</code></pre><p><br></p>
 <p>不過這裡要注意，如果弧形的 x,y 軸的長度相加，小於弧線兩點之間的距離，那麼就會一律以大角度弧線顯示，以上面的公式來說，弧線兩點之間的長度為：50的平方加50的平方然後開根號，大約是 70.7 左右，因此如果小於弧線的兩個軸的長度相加小於 70.71 ，就會一律用大角度弧線表示</p>
 <p>小於 70.71 ( 加起來 60，兩條弧線重疊 )  </p>
 <p><img src="/img/articles/201406/20140612_1_05.png" alt="SVG-Path"> </p>
-<pre><code>大角度 ( 黑色線 )
-&lt;path d=&quot;M0 0 L50 50 A50 10,0 1 0 100 0&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;/&gt;
+<pre class="prettyprint"><code>大角度 ( 黑色線 )
+&lt;path d="M0 0 L50 50 A50 10,0 1 0 100 0" stroke="#000" fill="none"/&gt;
 
 小角度 ( 紅色線 )
-&lt;path d=&quot;M0 0 L50 50 A50 10,0 0 0 100 0&quot; stroke=&quot;#f00&quot; fill=&quot;none&quot;/&gt;
+&lt;path d="M0 0 L50 50 A50 10,0 0 0 100 0" stroke="#f00" fill="none"/&gt;
 </code></pre><p>大於 70.71 ( 加起來 80，兩條弧線分開 )  </p>
 <p><img src="/img/articles/201406/20140612_1_06.png" alt="SVG-Path"> </p>
-<pre><code>大角度 ( 黑色線 )
-&lt;path d=&quot;M0 0 L50 50 A50 30,0 1 0 100 0&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;/&gt;
+<pre class="prettyprint"><code>大角度 ( 黑色線 )
+&lt;path d="M0 0 L50 50 A50 30,0 1 0 100 0" stroke="#000" fill="none"/&gt;
 
 小角度 ( 紅色線 )
-&lt;path d=&quot;M0 0 L50 50 A50 30,0 0 0 100 0&quot; stroke=&quot;#f00&quot; fill=&quot;none&quot;/&gt;
+&lt;path d="M0 0 L50 50 A50 30,0 0 0 100 0" stroke="#f00" fill="none"/&gt;
 </code></pre><p>為什麼會這樣呢？主要因為小角度的弧線，是指三角形的三個內角合小於 180 度，但不代表弧線和直線的合可以變成負值，因為如果變成負值，計算起來也會變成大角度的弧線，這也是要非常注意的地方！下面這張圖是很好的說明範例：  </p>
 <p><img src="/img/articles/201406/20140612_1_07.png" alt="SVG-Path"> </p>
-<p><br/></p>
+<p><br></p>
 <p>關於 A 的指令，最難的就是上述的大角度小角度弧線，而最後一個參數，就是指弧線跟的 x 軸和畫面 x 軸的夾角，我們看以下的範例：  </p>
 <p><img src="/img/articles/201406/20140612_1_08.png" alt="SVG-Path"> </p>
-<pre><code>夾角 0 度 ( 黑色線 )
-&lt;path d=&quot;M0 0 A50 100,0 0 0 100 0&quot; stroke=&quot;#000&quot; fill=&quot;none&quot;/&gt;
+<pre class="prettyprint"><code>夾角 0 度 ( 黑色線 )
+&lt;path d="M0 0 A50 100,0 0 0 100 0" stroke="#000" fill="none"/&gt;
 
 夾角 30 度 ( 紅色線 )
-&lt;path d=&quot;M0 0 A50 100,30 0 0 100 0&quot; stroke=&quot;#f00&quot; fill=&quot;none&quot;/&gt;
+&lt;path d="M0 0 A50 100,30 0 0 100 0" stroke="#f00" fill="none"/&gt;
 
 夾角 60 度 ( 橘色線 )
-&lt;path d=&quot;M0 0 A50 100,60 0 0 100 0&quot; stroke=&quot;#f90&quot; fill=&quot;none&quot;/&gt;
-</code></pre><p><br/></p>
+&lt;path d="M0 0 A50 100,60 0 0 100 0" stroke="#f90" fill="none"/&gt;
+</code></pre><p><br></p>
 <p>以上就是 Path 裏頭最讓人混亂的 A 指令啦！</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -195,53 +162,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

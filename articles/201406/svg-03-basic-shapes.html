@@ -1,182 +1,149 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 研究之路 (3) - 基本形狀 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-06-09T23:35:00+01:00">
-
-<meta name="keywords" content="SVG,Path,向量,形狀">
-
-<meta name="description" content="通常我們在學習向量圖，第一個一定是學基本形狀，基本形狀不外乎這幾個：矩形、圓角矩形、圓形、橢圓、多邊形，因此 SVG 的基本形狀也從這幾個出發，當然，如果會使用 Illustrator，我也會建議直接用 Illustrator 拉形狀，然後儲存成 SVG，再去理解 SVG 的程式碼奧妙是很不錯的方式。">
-
-<meta itemprop="name" content="SVG 研究之路 (3) - 基本形狀 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140609_2_01.jpg">
-
-<meta itemprop="description" content="通常我們在學習向量圖，第一個一定是學基本形狀，基本形狀不外乎這幾個：矩形、圓角矩形、圓形、橢圓、多邊形，因此 SVG 的基本形狀也從這幾個出發，當然，如果會使用 Illustrator，我也會建議直接用 Illustrator 拉形狀，然後儲存成 SVG，再去理解 SVG 的程式碼奧妙是很不錯的方式。">
-
-<meta property="og:title" content="SVG 研究之路 (3) - 基本形狀 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-03-basic-shapes.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140609_2_01.jpg">
-
-<meta property="og:description" content="通常我們在學習向量圖，第一個一定是學基本形狀，基本形狀不外乎這幾個：矩形、圓角矩形、圓形、橢圓、多邊形，因此 SVG 的基本形狀也從這幾個出發，當然，如果會使用 Illustrator，我也會建議直接用 Illustrator 拉形狀，然後儲存成 SVG，再去理解 SVG 的程式碼奧妙是很不錯的方式。">
-
-<title>SVG 研究之路 (3) - 基本形狀 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="通常我們在學習向量圖，第一個一定是學基本形狀，基本形狀不外乎這幾個：矩形、圓角矩形、圓形、橢圓、多邊形，因此 SVG 的基本形狀也從這幾個出發，當然，如果會使用 Illustrator，我也會建議直接用 Illustrator 拉形狀，然後儲存成 SVG，再去理解 SVG 的程式碼奧妙是很不錯的方式。">
+  <meta itemprop="description" content="通常我們在學習向量圖，第一個一定是學基本形狀，基本形狀不外乎這幾個：矩形、圓角矩形、圓形、橢圓、多邊形，因此 SVG 的基本形狀也從這幾個出發，當然，如果會使用 Illustrator，我也會建議直接用 Illustrator 拉形狀，然後儲存成 SVG，再去理解 SVG 的程式碼奧妙是很不錯的方式。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-03-basic-shapes.jpg">
+  <meta property="og:description" content="通常我們在學習向量圖，第一個一定是學基本形狀，基本形狀不外乎這幾個：矩形、圓角矩形、圓形、橢圓、多邊形，因此 SVG 的基本形狀也從這幾個出發，當然，如果會使用 Illustrator，我也會建議直接用 Illustrator 拉形狀，然後儲存成 SVG，再去理解 SVG 的程式碼奧妙是很不錯的方式。">
+  <meta property="og:title" content="SVG 研究之路 (3) - 基本形狀">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-03-basic-shapes.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-03-basic-shapes.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 研究之路 (3) - 基本形狀 <span class="article-date" tag="web">JUN 9, 2014</span></h2>
-<p><img src="/img/articles/201406/20140609_2_01.jpg" class="preview-img"></p>
+<h1>SVG 研究之路 (3) - 基本形狀</h1>
+<p><img src="/img/articles/201406/svg-03-basic-shapes.jpg" class="preview-img" alt=""></p>
 <p>通常我們在學習向量圖，第一個一定是學基本形狀，基本形狀不外乎這幾個：矩形、圓角矩形、圓形、橢圓、多邊形，因此 SVG 的基本形狀也從這幾個出發，當然，如果會使用 Illustrator，我也會建議直接用 Illustrator 拉形狀，然後儲存成 SVG，再去理解 SVG 的程式碼奧妙是很不錯的方式。</p>
 <p>SVG 裏頭針對基本形狀，其實程式碼超級簡單的，也就是一個該形狀的名稱，加上一些設定就完成，舉例來說，就有點類似 Illustrator 或 Flash 裏頭的形狀工具名稱，搭配屬性面板去做設定。</p>
 <ul>
 <li><p><strong>矩形：</strong>  </p>
 <p>矩形就是指正方形或是長方形，下列這段程式碼可以產生兩個不同顏色的矩形，如同之前 <a href="http://www.oxxostudio.tw/articles/201406/svg-02-layer.html">layer</a> 章節提過的，<code>id</code>是該形狀的名稱，而<code>x</code>和<code>y</code>則是矩形左上角的座標，<code>fill</code>代表填充的顏色，<code>stroke</code>代表線段的顏色，<code>stroke-width</code>是線段的寬度，，<code>width</code>和<code>height</code>就是寬和高，數值均是使用螢幕的 pixel 值。  </p>
 <p>  <img src="/img/articles/201406/20140609_2_02.png" alt="SVG-矩形"></p>
-<pre><code>  &lt;rect id=&quot;A&quot; x=&quot;33&quot; y=&quot;34&quot; fill=&quot;#FF6CC4&quot; stroke=&quot;#C30D23&quot; stroke-width=&quot;3&quot; width=&quot;75&quot; height=&quot;75&quot;/&gt;
-  &lt;rect id=&quot;B&quot; x=&quot;119&quot; y=&quot;54&quot; fill=&quot;#6EA9FF&quot; stroke=&quot;#036EB7&quot; stroke-width=&quot;3&quot; width=&quot;117&quot; height=&quot;55&quot;/&gt;
+<pre class="prettyprint"><code>  &lt;rect id="A" x="33" y="34" fill="#FF6CC4" stroke="#C30D23" stroke-width="3" width="75" height="75"/&gt;
+  &lt;rect id="B" x="119" y="54" fill="#6EA9FF" stroke="#036EB7" stroke-width="3" width="117" height="55"/&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>圓角矩形：</strong>  </p>
 <p>圓角矩形就是在矩形的<code>rect</code>屬性內額外增加<code>rx</code>、<code>ry</code>的圓角半徑屬性，不過這裡要注意一點，如果是使用 Illustrator 存出的 SVG，圓角矩形會被轉換為<code>path</code>。 ( <code>path</code>會在之後介紹 )  </p>
 <p>  <img src="/img/articles/201406/20140609_2_03.png" alt="SVG-圓角矩形"></p>
-<pre><code>  &lt;rect x=&quot;60&quot; y=&quot;10&quot; rx=&quot;10&quot; ry=&quot;10&quot; width=&quot;75&quot; height=&quot;75&quot; stroke=&quot;#FF5500&quot; stroke-width=&quot;5&quot; fill=&quot;#FFB255&quot;/&gt;
+<pre class="prettyprint"><code>  &lt;rect x="60" y="10" rx="10" ry="10" width="75" height="75" stroke="#FF5500" stroke-width="5" fill="#FFB255"/&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>圓形：</strong>  </p>
 <p>圓形的標籤顧名思義就是<code>circle</code>，屬性的設定比較不同的，是使用<code>cx</code>和<code>cy</code>代表圓心 ( c:center )，<code>r</code>代表半徑。 </p>
 <p>  <img src="/img/articles/201406/20140609_2_04.png" alt="SVG-圓形"></p>
-<pre><code>  &lt;circle fill=&quot;#FF4343&quot; stroke=&quot;#890000&quot; stroke-width=&quot;5&quot; cx=&quot;80.141&quot; cy=&quot;73.446&quot; r=&quot;44&quot;/&gt;
+<pre class="prettyprint"><code>  &lt;circle fill="#FF4343" stroke="#890000" stroke-width="5" cx="80.141" cy="73.446" r="44"/&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>橢圓：</strong>  </p>
 <p>橢圓和圓形最大的不同點，就在於橢圓形具有 x 方向的半徑<code>rx</code>與 y 方向的半徑<code>ry</code>，看起來容易理解，但實際上橢圓的公式卻是頗為複雜，可以參考 <a href="http://zh.wikipedia.org/wiki/%E6%A4%AD%E5%9C%86">維基百科：橢圓</a>，或是可由下列這張圖來表示：  </p>
 <p>  <img src="/img/articles/201406/20140609_2_06.gif" alt="SVG-橢圓"> </p>
 <p>  <img src="/img/articles/201406/20140609_2_05.png" alt="SVG-橢圓"></p>
-<pre><code>  &lt;ellipse fill=&quot;#77DD47&quot; stroke=&quot;#246614&quot; stroke-width=&quot;5&quot; cx=&quot;100&quot; cy=&quot;75&quot; rx=&quot;67&quot; ry=&quot;44&quot;/&gt;
+<pre class="prettyprint"><code>  &lt;ellipse fill="#77DD47" stroke="#246614" stroke-width="5" cx="100" cy="75" rx="67" ry="44"/&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>多邊形：</strong></p>
 <p>多邊形是使用<code>polygon</code>標籤，在當中<code>point</code>表示有幾個點，每個點的座標，當然三角形有三個點，五邊形有五個點，星形則有十個點，其餘的設定都跟矩形依樣喔！ </p>
 <p>  <img src="/img/articles/201406/20140609_2_06.png" alt="SVG-多邊形"></p>
-<pre><code>  &lt;polygon fill=&quot;#D271FF&quot; points=&quot;100,56 62,107 37,49&quot;/&gt;
-  &lt;polygon fill=&quot;#68EADD&quot; points=&quot;151,39 163,63 189,66 170,85 175,111 151,99 127,111 132,85 
-      113,66 139,63 &quot;/&gt;
-  &lt;polygon fill=&quot;#FF7900&quot; points=&quot;219,110 206,70 240,46 274,70 261,110 &quot;/&gt;
+<pre class="prettyprint"><code>  &lt;polygon fill="#D271FF" points="100,56 62,107 37,49"/&gt;
+  &lt;polygon fill="#68EADD" points="151,39 163,63 189,66 170,85 175,111 151,99 127,111 132,85 
+      113,66 139,63 "/&gt;
+  &lt;polygon fill="#FF7900" points="219,110 206,70 240,46 274,70 261,110 "/&gt;
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <p>以上就是 SVG 的基本形狀介紹，這些基本形狀不僅簡單，又很容易使用，也是一定要理解的基礎。</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -184,53 +151,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -2,415 +2,354 @@
   "tag": "tag-web",
   "title": "LINE BOT 實戰 ( 聊天篇 )",
   "site": "/articles/201701/line-bot-2.html",
-  "img": "/img/articles/201701/20170115_2_01.jpg",
   "date": "JAN 1, 2017"
 },{
   "tag": "tag-web",
   "title": "LINE BOT 實戰 ( 原理篇 )",
   "site": "/articles/201701/line-bot.html",
-  "img": "/img/articles/201701/20170115_1_01.jpg",
   "date": "JAN 1, 2017"
 },{
   "tag": "tag-photo",
   "title": "玩玩 360 度 ( 繪圖設計 )",
   "site": "/articles/201608/panorama-360-3.html",
-  "img": "/img/articles/201608/20160801_1_01.jpg",
   "date": "AUG 1, 2016"
 },{
   "tag": "tag-photo",
   "title": "玩玩 360 度 ( 進階編修 )",
   "site": "/articles/201607/panorama-360-2.html",
-  "img": "/img/articles/201607/20160731_1_01.jpg",
   "date": "JUL 31, 2016"
 },{
   "tag": "tag-photo",
   "title": "玩玩 360 度 ( 基本介紹 )",
   "site": "/articles/201607/panorama-360-1.html",
-  "img": "/img/articles/201607/20160728_1_01.jpg",
   "date": "JUL 28, 2016"
 },{
   "tag": "tag-web",
   "title": "JavaScript 筆記 ( Prototype )",
   "site": "/articles/201603/javascript-prototype.html",
-  "img": "/img/articles/201603/20160329_1_01.jpg",
   "date": "MAR 29, 2016"
 },{
   "tag": "tag-css",
   "title": "用 LESS 寫 CSS ( 判斷式、迴圈、Function )",
   "site": "/articles/201601/css-less-03.html",
-  "img": "/img/articles/201601/20160106_1_01.jpg",
   "date": "JAN 6, 2016"
 },{
   "tag": "tag-css",
   "title": "用 LESS 寫 CSS ( Mixin、Extend )",
   "site": "/articles/201601/css-less-02.html",
-  "img": "/img/articles/201601/20160105_1_01.jpg",
   "date": "JAN 5, 2016"
 },{
   "tag": "tag-css",
   "title": "用 LESS 寫 CSS ( 入門、Import、變數 )",
   "site": "/articles/201601/css-less-01.html",
-  "img": "/img/articles/201601/20160104_1_01.jpg",
   "date": "JAN 4, 2016"
 },{
   "tag": "tag-web",
   "title": "獲取錄音資訊 (getUserMedia)",
   "site": "/articles/201601/web-audio-recorder.html",
-  "img": "/img/articles/201601/20160103_2_01.jpg",
   "date": "JAN 3, 2016"
 },{
   "tag": "tag-web",
   "title": "建立音樂頻譜 2 ( analyser )",
   "site": "/articles/201601/web-audio-api-Analyser.html",
-  "img": "/img/articles/201601/20160103_1_01.jpg",
   "date": "JAN 3, 2016"
 },{
   "tag": "tag-web",
   "title": "做個簡單的爬蟲 ( 幣值、空污 PM2.5 )",
   "site": "/articles/201512/spider-basic.html",
-  "img": "/img/articles/201512/20151223_1_01.jpg",
   "date": "DEC 23, 2015"
 },{
   "tag": "tag-web",
   "title": "建立音樂頻譜 ( createMediaElementSource )",
   "site": "/articles/201512/web-audio-api-createmediaelementsource.html",
-  "img": "/img/articles/201512/20151221_1_01.jpg",
   "date": "DEC 21, 2015"
 },{
   "tag": "tag-web",
   "title": "點選複製 Clipboard.js",
   "site": "/articles/201510/clipboard-js.html",
-  "img": "/img/articles/201510/20151029_1_01.jpg",
   "date": "OCT 29, 2015"
 },{
   "tag": "tag-web",
   "title": "聲音濾波器 ( BiquadFilterNode )",
   "site": "/articles/201510/web-audio-api-biquadfilternode.html",
-  "img": "/img/articles/201510/20151006_1_01.jpg",
   "date": "OCT 6, 2015"
 },{
   "tag": "tag-web",
   "title": "立體聲 ( PannerNode,StereoPannerNode )",
   "site": "/articles/201509/web-audio-api-stereo-pannernode.html",
-  "img": "/img/articles/201509/20150930_1_01.jpg",
   "date": "SEP 30, 2015"
 },{
   "tag": "tag-web",
   "title": "聲音參數與音量節點 ( AudioParam,GainNode ) ",
   "site": "/articles/201509/web-audio-api-audioparam-gainnode.html",
-  "img": "/img/articles/201509/20150929_1_01.jpg",
   "date": "SEP 29, 2015"
 },{
   "tag": "tag-web",
   "title": "初探 Web Audio API",
   "site": "/articles/201509/web-audio-api.html",
-  "img": "/img/articles/201509/20150928_1_01.jpg",
   "date": "SEP 28, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 直條圖 ( 以登革熱數據為例 )",
   "site": "/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html",
-  "img": "/img/articles/201509/20150920_1_01.jpg",
   "date": "SEP 20, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 直條圖 ( Bar Chart )",
   "site": "/articles/201509/svg-d3-19-bar-chart.html",
-  "img": "/img/articles/201509/20150919_1_01.gif",
   "date": "SEP 19, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - Enter、Update 和 Exit",
   "site": "/articles/201509/svg-d3-18-enter-update-exit.html",
-  "img": "/img/articles/201509/20150917_1_01.jpg",
   "date": "SEP 17, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 縮放行為 ( Zoom Behavior )",
   "site": "/articles/201509/svg-d3-17-zoom-behavior.html",
-  "img": "/img/articles/201509/20150915_1_01.jpg",
   "date": "SEP 15, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 拖拉行為 ( Drag Behavior )",
   "site": "/articles/201509/svg-d3-16-drag-behavior.html",
-  "img": "/img/articles/201509/20150914_1_01.gif",
+  "img": "/img/articles/201509/svg-d3-16-drag-behavior.gif",
   "date": "SEP 14, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - transition ( tween、interpolate )",
   "site": "/articles/201509/svg-d3-15-transition-tween.html",
-  "img": "/img/articles/201509/20150912_1_01.gif",
+  "img": "/img/articles/201509/svg-d3-15-transition-tween.gif",
   "date": "SEP 12, 2015"
 },{
   "tag": "tag-photo",
   "title": "Photoshop SandStorm 沙塵暴效果",
   "site": "/articles/201509/sandstorm.html",
-  "img": "/img/articles/201509/20150907_1_01.jpg",
   "date": "SEP 7, 2015"
 },{
   "tag": "tag-web",
   "title": "Google 語音辨識 API",
   "site": "/articles/201509/web-speech-api.html",
-  "img": "/img/articles/201509/20150906_1_01.jpg",
   "date": "SEP 6, 2015"
 },{
   "tag": "tag-web",
   "title": "自動選取某個區域的文字",
   "site": "/articles/201508/select-text.html",
-  "img": "/img/articles/201508/20150817_1_01.jpg",
   "date": "AUG 17, 2015"
 },{
   "tag": "tag-web",
   "title": "FIGlet - ASCII Decorator",
   "site": "/articles/201508/figlet-ascii-decorator.html",
-  "img": "/img/articles/201508/20150808_1_01.jpg",
   "date": "AUG 8, 2015"
 },{
   "tag": "tag-others",
   "title": "用 Gulp 展開新的 blog 編輯旅程",
   "site": "/articles/201508/edit-blog-by-gulp.html",
-  "img": "/img/articles/201508/20150805_1_01.jpg",
   "date": "AUG 5, 2015"
 },{
   "tag": "tag-web",
   "title": "HTML5 控制裝置陀螺儀 ( 三軸 )",
   "site": "/articles/201506/html5-device-orientation.html",
-  "img": "/img/articles/201506/20150630_1_01.jpg",
   "date": "JUN 30, 2015"
 },{
   "tag": "tag-css",
   "title": "玩轉 CSS 3D - 正八面體與正十二面體",
   "site": "/articles/201506/css-3d-platonic-solid-2.html",
-  "img": "/img/articles/201506/20150620_2_01.gif",
+  "img": "/img/articles/201506/css-3d-platonic-solid-2.gif",
   "date": "JUN 20, 2015"
 },{
   "tag": "tag-css",
   "title": "玩轉 CSS 3D - 正四面體與正六面體",
   "site": "/articles/201506/css-3d-platonic-solid-1.html",
-  "img": "/img/articles/201506/20150620_1_01.gif",
+  "img": "/img/articles/201506/css-3d-platonic-solid-1.gif",
   "date": "JUN 20, 2015"
 },{
   "tag": "tag-css",
   "title": "玩轉 CSS 3D - 原理篇",
   "site": "/articles/201506/css-3d.html",
-  "img": "/img/articles/201506/20150619_1_01.jpg",
   "date": "JUN 19, 2015"
 },{
   "tag": "tag-others",
   "title": "oxxo.studio 一周年生日快樂",
   "site": "/articles/201505/oxxostudio.html",
-  "img": "/img/articles/201505/20150501_01.jpg",
   "date": "MAY 1, 2015"
 },{
   "tag": "tag-css",
   "title": "運用 clip-path 的純 CSS 形狀變換",
   "site": "/articles/201503/css-clip-path.html",
-  "img": "/img/articles/201503/20150330_1_01.jpg",
   "date": "MAR 30, 2015"
 },{
   "tag": "tag-css",
   "title": "單一 div 的正多邊形變換 ( 純 CSS )",
   "site": "/articles/201503/css-regular-polygon-transform.html",
-  "img": "/img/articles/201503/20150329_1_01.jpg",
   "date": "MAR 29, 2015"
 },{
   "tag": "tag-css",
   "title": "純 CSS Material Design 風格按鈕",
   "site": "/articles/201503/css-material-design-icon.html",
-  "img": "/img/articles/201503/20150325_1_01.gif",
+  "img": "/img/articles/201503/css-material-design-icon.gif",
   "date": "MAR 25, 2015"
 },{
   "tag": "tag-css",
   "title": "純 CSS 繪製圓餅圖",
   "site": "/articles/201503/css-pie-chart.html",
-  "img": "/img/articles/201503/20150324_2_01.gif",
+  "img": "/img/articles/201503/css-pie-chart.gif",
   "date": "MAR 24, 2015"
 },{
   "tag": "tag-css",
   "title": "改變 HTML5 range 樣式的兩種方法",
   "site": "/articles/201503/html5-input-range-style.html",
-  "img": "/img/articles/201503/20150324_1_01.jpg",
   "date": "MAR 24, 2015"
 },{
   "tag": "tag-web",
   "title": "Gulp 學習 6 - 架設 Markdown 轉 HTML 環境",
   "site": "/articles/201503/gulp-6-markdown-to-html.html",
-  "img": "/img/articles/201503/20150313_1_01.jpg",
   "date": "MAR 13, 2015"
 },{
   "tag": "tag-share",
   "title": "SublimeText - Seti_UI theme",
   "site": "/articles/201503/sublimetext-seti-theme.html",
-  "img": "/img/articles/201503/20150310_1_01.jpg",
   "date": "MAR 10, 2015"
 },{
   "tag": "tag-web",
   "title": "Gulp 學習 5 - 建立 HTML 模板",
   "site": "/articles/201503/gulp-5-html-extend.html",
-  "img": "/img/articles/201503/20150309_1_01.jpg",
   "date": "MAR 9, 2015"
 },{
   "tag": "tag-creative",
   "title": "Low-Poly Art",
   "site": "/articles/201503/low-poly-art.html",
-  "img": "/img/articles/201503/20150308_2_01.jpg",
   "date": "MAR 8, 2015"
 },{
   "tag": "tag-web",
   "title": "Gulp 學習 4 - 建立 SCSS/SASS 編輯環境",
   "site": "/articles/201503/gulp-4-scss-sass.html",
-  "img": "/img/articles/201503/20150308_1_01.jpg",
   "date": "MAR 8, 2015"
 },{
   "tag": "tag-web",
   "title": "Gulp 學習 3 - 打包壓縮 HTML",
   "site": "/articles/201503/gulp-3-compress-html.html",
-  "img": "/img/articles/201503/20150307_1_01.jpg",
   "date": "MAR 7, 2015"
 },{
   "tag": "tag-web",
   "title": "Gulp 學習 2 - 打包壓縮 CSS 與 JS",
   "site": "/articles/201503/gulp-2-compress-js-css.html",
-  "img": "/img/articles/201503/20150306_1_01.jpg",
   "date": "MAR 6, 2015"
 },{
   "tag": "tag-web",
   "title": "Gulp 學習 1 - 安裝與執行",
   "site": "/articles/201503/gulp-install-webserver.html",
-  "img": "/img/articles/201503/20150302_1_01.jpg",
   "date": "MAR 2, 2015"
 },{
   "tag": "tag-web",
   "title": "用 GitBook 來寫本書吧！",
   "site": "/articles/201502/gitbook.html",
-  "img": "/img/articles/201502/20150211_1_01.jpg",
   "date": "FEB 11, 2015"
 },{
   "tag": "tag-css",
   "title": "有趣的 CSS 彈跳動畫",
   "site": "/articles/201502/css-bounce.html",
-  "img": "/img/articles/201502/20150209_1_01.gif",
+  "img": "/img/articles/201502/css-bounce.gif",
   "date": "FEB 9, 2015"
 },{
   "tag": "tag-css",
   "title": "CSS 垂直置中的七個方法",
   "site": "/articles/201502/css-vertical-align-7methods.html",
-  "img": "/img/articles/201502/20150201_1_01.jpg",
   "date": "FEB 1, 2015"
 },{
   "tag": "tag-css",
   "title": "深入解析 CSS Flexbox",
   "site": "/articles/201501/css-flexbox.html",
-  "img": "/img/articles/201501/20150130_1_01.jpg",
   "date": "JAN 30, 2015"
 },{
   "tag": "tag-web",
   "title": "點選自動複製 ( ZeroClipboard )",
   "site": "/articles/201501/zeroclipboard.html",
-  "img": "/img/articles/201501/20150126_1_01.jpg",
   "date": "JAN 26, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - transition 基本篇",
   "site": "/articles/201501/svg-d3-14-transition-1.html",
-  "img": "/img/articles/201501/20150124_1_01.jpg",
   "date": "JAN 24, 2015"
 },{
   "tag": "tag-css",
   "title": "CSS 搞怪的 text-decoration",
   "site": "/articles/201501/css-text-decoration.html",
-  "img": "/img/articles/201501/20150113_2_01.jpg",
   "date": "JAN 13, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - CSV 數據處理",
   "site": "/articles/201501/svg-d3-13-csv.html",
-  "img": "/img/articles/201501/20150113_1_01.jpg",
   "date": "JAN 13, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 數字格式 ( Formatting )",
   "site": "/articles/201501/svg-d3-12-formatting.html",
-  "img": "/img/articles/201501/20150111_1_01.jpg",
   "date": "JAN 11, 2015"
 },{
   "tag": "tag-photo",
   "title": "認識 300 dpi",
   "site": "/articles/201501/know-300-dpi.html",
-  "img": "/img/articles/201501/20150105_1_01.jpg",
   "date": "JAN 5, 2015"
 },{
   "tag": "tag-web",
   "title": "Mac Dock 實作",
   "site": "/articles/201501/mac-dock.html",
-  "img": "/img/articles/201501/20150103_1_01.gif",
+  "img": "/img/articles/201501/mac-dock.gif",
   "date": "JAN 3, 2015"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 時間格式 ( Time Formatting )",
   "site": "/articles/201412/svg-d3-11-time.html",
-  "img": "/img/articles/201412/20141229_1_01.jpg",
   "date": "DEC 29, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 定義色彩 - 應用篇 ( colors )",
   "site": "/articles/201412/svg-d3-10-colors-2.html",
-  "img": "/img/articles/201412/20141226_1_01.jpg",
   "date": "DEC 26, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 定義色彩 - 基本篇 ( colors )",
   "site": "/articles/201412/svg-d3-09-colors-1.html",
-  "img": "/img/articles/201412/20141225_1_01.jpg",
   "date": "DEC 25, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 序數比例尺 ( ordinal )",
   "site": "/articles/201412/svg-d3-08-ordinal.html",
-  "img": "/img/articles/201412/20141223_1_01.jpg",
   "date": "DEC 23, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 陣列數據地圖 ( d3.map )",
   "site": "/articles/201412/svg-d3-07-data-map.html",
-  "img": "/img/articles/201412/20141216_1_01.jpg",
   "date": "DEC 16, 2014"
 },{
   "tag": "tag-creative",
   "title": "2010 年工作的插畫 ( 2 )",
   "site": "/articles/201412/doublegreen-draw2.html",
-  "img": "/img/articles/201412/20141214_1_01.jpg",
   "date": "DEC 14, 2014"
 },{
   "tag": "tag-creative",
   "title": "2010 年工作的插畫 ( 1 )",
   "site": "/articles/201412/doublegreen-draw1.html",
-  "img": "/img/articles/201412/20141211_1_01.jpg",
   "date": "DEC 11, 2014"
 },{
   "tag": "tag-css",
   "title": "box-sizing 與 background-clip",
   "site": "/articles/201412/css-boxsizing-backgroundclip.html",
-  "img": "/img/articles/201412/20141210_1_01.jpg",
   "date": "DEC 10, 2014"
 },{
   "tag": "tag-creative",
   "title": "設計個性化 QR Code",
   "site": "/articles/201412/design-qrcode.html",
-  "img": "/img/articles/201412/20141207_1_01.jpg",
   "date": "DEC 7, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 巢狀數據結構 ( d3.nest )",
   "site": "/articles/201412/svg-d3-06-data-nest.html",
-  "img": "/img/articles/201412/20141206_1_01.jpg",
   "date": "DEC 6, 2014"
 },{
   "tag": "tag-css",
   "title": "點擊後的 CSS 載入效果",
   "site": "/articles/201412/css-click-loading.html",
-  "img": "/img/articles/201412/20141202_1_01.jpg",
   "date": "DEC 2, 2014"
 },{
   "tag": "tag-web",
@@ -422,438 +361,373 @@
   "tag": "tag-web",
   "title": "SVG D3.js - 區域 ( area )",
   "site": "/articles/201411/svg-d3-05-area.html",
-  "img": "/img/articles/201411/20141116_1_01.jpg",
   "date": "NOV 16, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 座標軸 ( Axis )",
   "site": "/articles/201411/svg-d3-04-axis.html",
-  "img": "/img/articles/201411/20141113_1_01.jpg",
   "date": "NOV 13, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 定義比例 ( scale.linear() )",
   "site": "/articles/201411/svg-d3-03-scale-linear.html",
-  "img": "/img/articles/201411/20141112_1_01.jpg",
   "date": "NOV 12, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 繪製線段",
   "site": "/articles/201411/svg-d3-02-line.html",
-  "img": "/img/articles/201411/20141103_1_01.jpg",
   "date": "NOV 3, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 淺談 D3.js 的資料處理",
   "site": "/articles/201411/svg-d3-01-data.html",
-  "img": "/img/articles/201411/20141101_1_01.jpg",
   "date": "NOV 1, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 起手式",
   "site": "/articles/201410/svg-d3-info.html",
-  "img": "/img/articles/201410/20141031_1_01.jpg",
   "date": "OCT 31, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG D3.js - 初體驗",
   "site": "/articles/201410/svg-d3-js.html",
-  "img": "/img/articles/201410/20141030_1_01.jpg",
   "date": "OCT 30, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 完整教學 31 天",
   "site": "/articles/201410/svg-tutorial.html",
-  "img": "/img/articles/201410/20141022_1_01.jpg",
   "date": "OCT 22, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (30) - filter - feConvolveMatrix",
   "site": "/articles/201410/svg-30-filter-feConvolveMatrix.html",
-  "img": "/img/articles/201410/20141020_1_01.jpg",
   "date": "OCT 20, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (29) - filter - 水波效果",
   "site": "/articles/201410/svg-29-filter-water-ripple.html",
-  "img": "/img/articles/201410/20141010_1_01.gif",
+  "img": "/img/articles/201410/svg-29-filter-water-ripple.gif",
   "date": "OCT 10, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (28) - filter - feDisplacementMap",
   "site": "/articles/201410/svg-28-filter-feDisplacementMap.html",
-  "img": "/img/articles/201410/20141009_1_01.jpg",
   "date": "OCT 9, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (27) - filter - feImage",
   "site": "/articles/201410/svg-27-filter-feImage.html",
-  "img": "/img/articles/201410/20141005_1_01.jpg",
   "date": "OCT 5, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (26) - 有趣的 Patterns",
   "site": "/articles/201409/svg-26-patterns.html",
-  "img": "/img/articles/201409/20140928_1_01.jpg",
   "date": "SEP 28, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (25) - 再談漸層填色",
   "site": "/articles/201409/svg-25-gradients-patterns.html",
-  "img": "/img/articles/201409/20140927_2_01.jpg",
   "date": "SEP 27, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (24) - 寫 jquery 產生圓餅圖",
   "site": "/articles/201409/svg-24-jquery-pie-chart.html",
-  "img": "/img/articles/201409/20140927_1_01.jpg",
   "date": "SEP 27, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (23) - 理解 viewport 與 viewbox",
   "site": "/articles/201409/svg-23-viewpoint-viewBox.html",
-  "img": "/img/articles/201409/20140925_1_01.jpg",
   "date": "SEP 25, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (22) - 深入理解 SMIL Animation",
   "site": "/articles/201409/svg-22-smil-animation-2.html",
-  "img": "/img/articles/201409/20140921_2_01.jpg",
   "date": "SEP 22, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (21) - 初探 SMIL Animation",
   "site": "/articles/201409/svg-21-smil-animation.html",
-  "img": "/img/articles/201409/20140921_1_01.jpg",
   "date": "SEP 21, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (20) - transform Matrix",
   "site": "/articles/201409/svg-20-transform-matrix.html",
-  "img": "/img/articles/201409/20140920_2_01.jpg",
   "date": "SEP 20, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (19) - transform 基礎篇",
   "site": "/articles/201409/svg-19-transform.html",
-  "img": "/img/articles/201409/20140920_1_01.jpg",
   "date": "SEP 20, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (18) - 再談 defs",
   "site": "/articles/201409/svg-18-defs.html",
-  "img": "/img/articles/201409/20140916_1_01.jpg",
   "date": "SEP 16, 2014"
 },{
   "tag": "tag-share",
   "title": "中秋節與 APPLE 發表會",
   "site": "/articles/201409/apple-moon.html",
-  "img": "/img/articles/201409/20140908_2_01.jpg",
   "date": "SEP 8, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (17) - Stroke-marker",
   "site": "/articles/201409/svg-17-storke-marker.html",
-  "img": "/img/articles/201409/20140908_1_01.jpg",
   "date": "SEP 8, 2014"
 },{
   "tag": "tag-web",
   "title": "SVG 研究之路 (16) - Stroke-miterlimit",
   "site": "/articles/201409/svg-16-storke-miterlimit.html",
-  "img": "/img/articles/201409/20140906_1_01.jpg",
   "date": "SEP 6, 2014"
 },{
   "tag": "tag-css",
   "title": "穿透的 div ( pointer-events )",
   "site": "/articles/201409/pointer-events.html",
-  "img": "/img/articles/201409/20140902_1_01.jpg",
   "date": "SEP 2, 2014"
 },{
   "tag": "tag-css",
   "title": "CSS 垂直置中的三個方法",
   "site": "/articles/201408/css-vertical-align.html",
-  "img": "/img/articles/201408/20140831_1_01.jpg",
   "date": "Aug 31, 2014"
 },{
   "tag": "tag-css",
   "title": "噁心黏黏球 ( 純 CSS )",
   "site": "/articles/201408/sticky-ball.html",
-  "img": "/img/articles/201408/20140829_1_01.gif",
+  "img": "/img/articles/201408/sticky-ball.gif",
   "date": "Aug 29, 2014"
 },{
   "tag": "tag-css",
   "title": "CSS Water Wave (水波效果)",
   "site": "/articles/201407/css-water-wave.html",
-  "img": "/img/articles/201407/20140729_1_01.gif",
+  "img": "/img/articles/201407/css-water-wave.gif",
   "date": "JUL 29, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (15) - filter - feComponentTransfer",
   "site": "/articles/201407/svg-15-filter-feComponentTransfer.html",
-  "img": "/img/articles/201407/20140728_1_01.jpg",
   "date": "JUL 28, 2014"
 }, {
   "tag": "tag-css",
   "title": "CSS webkit filter",
   "site": "/articles/201407/css-webkit-filter.html",
-  "img": "/img/articles/201407/20140726_2_01.jpg",
   "date": "JUL 26, 2014"
 }, {
   "tag": "tag-css",
   "title": "CSS 模糊效果",
   "site": "/articles/201407/css-blur.html",
-  "img": "/img/articles/201407/20140726_1_01.jpg",
   "date": "JUL 26, 2014"
 }, {
   "tag": "tag-css",
   "title": "電子時鐘效果 ( CSS 偽元素的應用 )",
   "site": "/articles/201407/css-clock.html",
-  "img": "/img/articles/201407/20140717_1_01.jpg",
   "date": "JUL 17, 2014"
 }, {
   "tag": "tag-web",
   "title": "Material Design - Progress and Activity",
   "site": "/articles/201407/svg-progress-bar.html",
-  "img": "/img/articles/201407/20140710_1_01.gif",
+  "img": "/img/articles/201407/svg-progress-bar.gif",
   "date": "JUL 10, 2014"
 }, {
   "tag": "tag-share",
   "title": "WorldCup 2014 - Google Doodle 16~25",
   "site": "/articles/201407/google-doodle-worldcup2014-16-25.html",
-  "img": "/img/articles/201407/20140702_1_01.gif",
+  "img": "/img/articles/201407/google-doodle-worldcup2014-16-25.gif",
   "date": "JUL 2, 2014"
 }, {
   "tag": "tag-share",
   "title": "WorldCup 2014 - Google Doodle 11~15",
   "site": "/articles/201407/google-doodle-worldcup2014-11-15.html",
-  "img": "/img/articles/201407/20140701_2_01.gif",
+  "img": "/img/articles/201407/google-doodle-worldcup2014-11-15.gif",
   "date": "JUL 1, 2014"
 }, {
   "tag": "tag-share",
   "title": "WorldCup 2014 - Google Doodle 1~10",
   "site": "/articles/201407/google-doodle-worldcup2014-1-10.html",
-  "img": "/img/articles/201407/20140701_1_01.gif",
+  "img": "/img/articles/201407/google-doodle-worldcup2014-1-10.gif",
   "date": "JUL 1, 2014"
 }, {
   "tag": "tag-css",
   "title": "CSS3動畫 - Google Loading Animation",
   "site": "/articles/201406/css-google-loading.html",
-  "img": "/img/articles/201406/20140629_1_01.gif",
+  "img": "/img/articles/201406/css-google-loading.gif",
   "date": "JUN 29, 2014"
 }, {
   "tag": "tag-ui",
   "title": "這一年來的一些網頁設計",
   "site": "/articles/201406/oxxo-web-design.html",
-  "img": "/img/articles/201406/20140628_2_01.jpg",
   "date": "JUN 28, 2014"
 }, {
   "tag": "tag-css",
   "title": "CSS3 Cubic Bezier",
   "site": "/articles/201406/css-cubic-bezier.html",
-  "img": "/img/articles/201406/20140628_1_01.jpg",
   "date": "JUN 28, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (14) - 控制 SVG 的注意事項",
   "site": "/articles/201406/svg-14-control-SVG.html",
-  "img": "/img/articles/201406/20140626_1_01.jpg",
   "date": "JUN 26, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (13) - filter - feGaussianBlur",
   "site": "/articles/201406/svg-13-filter-feGaussianBlur.html",
-  "img": "/img/articles/201406/20140625_1_01.jpg",
   "date": "JUN 25, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (12) - pie chart 圓餅圖實作",
   "site": "/articles/201406/svg-12-pie-chart.html",
-  "img": "/img/articles/201406/20140623_1_01.jpg",
   "date": "JUN 24, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (11) - filter:feColorMatrix",
   "site": "/articles/201406/svg-11-filter-feColorMatrix.html",
-  "img": "/img/articles/201406/20140621_1_01.jpg",
   "date": "JUN 22, 2014"
 }, {
   "tag": "tag-photo",
   "title": "淺談位元色版 color channel",
   "site": "/articles/201406/color-channel.html",
-  "img": "/img/articles/201406/20140621_2_01.jpg",
   "date": "JUN 21, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (10) - 初探 filter",
   "site": "/articles/201406/svg-10-filter-1.html",
-  "img": "/img/articles/201406/20140618_1_01.jpg",
   "date": "JUN 18, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (9) - Clipping and Masking",
   "site": "/articles/201406/svg-09-clipping-masking.html",
-  "img": "/img/articles/201406/20140616_1_01.jpg",
   "date": "JUN 16, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (8) - text 文字",
   "site": "/articles/201406/svg-08-text.html",
-  "img": "/img/articles/201406/20140615_1_01.jpg",
   "date": "JUN 15, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (7) - fill 填色",
   "site": "/articles/201406/svg-07-fill.html",
-  "img": "/img/articles/201406/20140614_1_01.jpg",
   "date": "JUN 14, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (6) - stroke 邊框",
   "site": "/articles/201406/svg-06-stroke.html",
-  "img": "/img/articles/201406/20140613_1_01.jpg",
   "date": "JUN 13, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (5) - Path 進階篇",
   "site": "/articles/201406/svg-05-path-2.html",
-  "img": "/img/articles/201406/20140612_1_01.jpg",
   "date": "JUN 12, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (4) - Path 基礎篇",
   "site": "/articles/201406/svg-04-path-1.html",
-  "img": "/img/articles/201406/20140611_1_01.jpg",
   "date": "JUN 11, 2014"
 }, {
   "tag": "tag-creative",
   "title": "視覺創作 - 表情",
   "site": "/articles/201406/face.html",
-  "img": "/img/articles/201406/20140610_1_01.jpg",
   "date": "JUN 10, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (3) - 基本形狀",
   "site": "/articles/201406/svg-03-basic-shapes.html",
-  "img": "/img/articles/201406/20140609_2_01.jpg",
   "date": "JUN 9, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (2) - Layer",
   "site": "/articles/201406/svg-02-layer.html",
-  "img": "/img/articles/201406/20140609_1_01.jpg",
   "date": "JUN 9, 2014"
 }, {
   "tag": "tag-web",
   "title": "SVG 研究之路 (1) - 初探 SVG",
   "site": "/articles/201406/svg-01-intro.html",
-  "img": "/img/articles/201406/20140608_1_01.jpg",
   "date": "JUN 8, 2014"
 }, {
   "tag": "tag-creative",
   "title": "Dreamsmile 影片製作",
   "site": "/articles/201406/dreamsmile-video.html",
-  "img": "/img/articles/201406/20140607_2_01.jpg",
   "date": "JUN 7, 2014"
 }, {
   "tag": "tag-css",
   "title": "Icon Font 的使用方式",
   "site": "/articles/201406/css-icon-font.html",
-  "img": "/img/articles/201406/20140607_1_01.jpg",
   "date": "JUN 7, 2014"
 }, {
   "tag": "tag-css",
   "title": "Web Font 的使用",
   "site": "/articles/201406/css-web-font.html",
-  "img": "/img/articles/201406/20140606_1_01.jpg",
   "date": "JUN 6, 2014"
 }, {
   "tag": "tag-web",
   "title": "Google Code Prettify",
   "site": "/articles/201406/google-code-prettify.html",
-  "img": "/img/articles/201406/20140604_2_01.jpg",
   "date": "JUN 4, 2014"
 }, {
   "tag": "tag-css",
   "title": "SCSS 安裝與執行",
   "site": "/articles/201406/scss-01-install.html",
-  "img": "/img/articles/201406/20140604_1_01.jpg",
   "date": "JUN 4, 2014"
 }, {
   "tag": "tag-css",
   "title": "CSS 文字的換行",
   "site": "/articles/201406/css-word-break.html",
-  "img": "/img/articles/201406/20140602_2_01.jpg",
   "date": "JUN 2, 2014"
 }, {
   "tag": "tag-ui",
   "title": "Dreamsmile 網頁設計",
   "site": "/articles/201406/dreamsmile-web.html",
-  "img": "/img/articles/201406/20140602_1_01.jpg",
   "date": "JUN 2, 2014"
 }, {
   "tag": "tag-web",
   "title": "結構化資料 SEO 與 meta 標籤",
   "site": "/articles/201406/social-meta.html",
-  "img": "/img/articles/201406/20140601_1_01.jpg",
   "date": "JUN 1, 2014"
 }, {
   "tag": "tag-photo",
   "title": "修圖與攝影",
   "site": "/articles/201405/edit-photo.html",
-  "img": "/img/articles/201405/20140531_1_01.jpg",
   "date": "MAY 31, 2014"
 }, {
   "tag": "tag-css",
   "title": "CSS Specificity",
   "site": "/articles/201405/css-specificity.html",
-  "img": "/img/articles/201405/20140530_1_01.jpg",
   "date": "MAY 30, 2014"
 }, {
   "tag": "tag-ui",
   "title": "搖控器 APP UI 設計",
   "site": "/articles/201405/remote-control-ui.html",
-  "img": "/img/articles/201405/20140529_1_01.jpg",
   "date": "MAY 29, 2014"
 }, {
   "tag": "tag-css",
   "title": "CSS 偽類 child 和 of-type",
   "site": "/articles/201405/css-selector.html",
-  "img": "/img/articles/201405/20140527_1_01.jpg",
   "date": "MAY 27, 2014"
 }, {
   "tag": "tag-creative",
   "title": "從小我就愛隨手畫畫",
   "site": "/articles/201405/painting.html",
-  "img": "/img/articles/201405/20140525_3_01.jpg",
   "date": "MAY 25, 2014"
 }, {
   "tag": "tag-web",
   "title": "SublimeText 組合快速鍵",
   "site": "/articles/201405/keyboard-shortcuts.html",
-  "img": "/img/articles/201405/20140525_2_01.jpg",
   "date": "MAY 25, 2014"
 }, {
   "tag": "tag-creative",
   "title": "人中伯貼圖設計",
   "site": "/articles/201405/ozsun.html",
-  "img": "/img/articles/201405/20140525_1_01.jpg",
   "date": "MAY 25, 2014"
 }, {
   "tag": "tag-web",
   "title": "SublimeText Package",
   "site": "/articles/201405/sublimetext-package.html",
-  "img": "/img/articles/201405/20140520_1_01.jpg",
   "date": "MAY 20, 2014"
 }, {
   "tag": "tag-others",
   "title": "Contact",
   "site": "/articles/201405/contact.html",
-  "img": "/img/articles/201405/20140518_2_01.jpg",
   "date": "MAY 18, 2014"
 }, {
   "tag": "tag-others",
   "title": "About Me",
   "site": "/articles/201405/about-me.html",
-  "img": "/img/articles/201405/20140518_1_01.jpg",
   "date": "MAY 18, 2014"
 }]

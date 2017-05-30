@@ -1,101 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 縮放行為 ( Zoom Behavior ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-09-15T00:10:00+01:00">
-
-<meta name="keywords" content="svg,d3,d3js,zoom,zoom behavior">
-
-<meta name="description" content="上一篇我們提到了拖拉行為 Drag Behavior，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的。">
-
-<meta itemprop="name" content="SVG D3.js - 縮放行為 ( Zoom Behavior ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150915_1_01b.jpg">
-
-<meta itemprop="description" content="上一篇我們提到了拖拉行為 Drag Behavior，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的。">
-
-<meta property="og:title" content="SVG D3.js - 縮放行為 ( Zoom Behavior ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-17-zoom-behavior.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150915_1_01b.jpg">
-
-<meta property="og:description" content="上一篇我們提到了拖拉行為 Drag Behavior，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的。">
-
-<title>SVG D3.js - 縮放行為 ( Zoom Behavior ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="上一篇我們提到了拖拉行為 Drag Behavior，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的，畢竟縮放的效果在 web 領域是比較少見也比較不容易實做，而 d3.js 與 svg 的結合，讓這個效果可以輕鬆愜意的展現。">
+  <meta itemprop="description" content="上一篇我們提到了拖拉行為 Drag Behavior，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的，畢竟縮放的效果在 web 領域是比較少見也比較不容易實做，而 d3.js 與 svg 的結合，讓這個效果可以輕鬆愜意的展現。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-17-zoom-behavior.jpg">
+  <meta property="og:description" content="上一篇我們提到了拖拉行為 Drag Behavior，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的，畢竟縮放的效果在 web 領域是比較少見也比較不容易實做，而 d3.js 與 svg 的結合，讓這個效果可以輕鬆愜意的展現。">
+  <meta property="og:title" content="SVG D3.js - 縮放行為 ( Zoom Behavior )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-17-zoom-behavior.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-17-zoom-behavior.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG D3.js - 縮放行為 ( Zoom Behavior ) <span class="article-date" tag="web">SEP 15, 2015</span></h2>
-<p><img src="/img/articles/201509/20150915_1_01.jpg" class="preview-img"></p>
+<h1>SVG D3.js - 縮放行為 ( Zoom Behavior )</h1>
+<p><img src="/img/articles/201509/svg-d3-17-zoom-behavior.jpg" class="preview-img" alt=""> </p>
 <p>上一篇我們提到了<a href="http://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html">拖拉行為 Drag Behavior</a>，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的，畢竟縮放的效果在 web 領域是比較少見也比較不容易實做，而 d3.js 與 svg 的結合，讓這個效果可以輕鬆愜意的展現。</p>
 <p>zoom 的用法和 drag 滿類似的，都是一開始要先用<code>d3.behavior.zoom();</code>宣告行為，然後再使用<code>call</code>來呼叫，不過 zoom 相對又稍微複雜了些，因為又多了一些參數需要設定，讓我們先來看一下它提供了哪些 api：</p>
 <blockquote>
@@ -110,108 +81,108 @@
 <li>zoom.event(selection)：執行當下事件</li>
 </ul>
 </blockquote>
-<p><br/></p>
+<p><br></p>
 <p>雖然都列出來，不過預設值為 null 的 center、x 和 y 看了許多範例也沒有看到相關的用法，難怪會預設為 null 了，可能之後做得比較複雜會用到也不一定，所以這三個就不在這篇介紹，這篇主要來介紹「基本的縮放」、「點選放大」以及「reset 回原本尺寸」的實作。</p>
 <p>首先我們先用 d3.js 來放入 svg，設定長寬，並給予一個邊框。( 如果不知道怎麼使用的，可以參考我之前的<a href="http://www.oxxostudio.tw/list.html">文章</a>，在標題搜尋輸入「d3」 )</p>
-<pre><code>var w = 800;
+<pre class="prettyprint"><code>var w = 800;
 var h = 400;
 
-var svg = d3.select(&#39;body&#39;)
-.append(&#39;svg&#39;)
+var svg = d3.select('body')
+.append('svg')
 .attr({
-  &#39;width&#39;:&#39;100%&#39;,
-  &#39;height&#39;:&#39;100%&#39;
+  'width':'100%',
+  'height':'100%'
 }).style({
-  &#39;border&#39;:&#39;1px solid #000&#39;
+  'border':'1px solid #000'
 });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>接著在 svg 裏頭放入一個變數名為 container 的群組 g，把要縮放的東西全都丟進去裡面，首先要丟進去的是垂直和水平的灰線，這裡我用了<code>d3.range</code>來快速畫線，<code>d3.range</code>有三個屬性，第一個和第二個是範圍，第三個是中間自動產生的數值的間距，由我的設定可以看出，假設 0 到 w 是 300，每 30 做一個區分，所以 x 方向會有 11 個數字產生，而 y 方向也是一樣的做法，由此我們便可以由這些數字畫出對應的線條了。</p>
-<pre><code>var container = svg.append(&#39;g&#39;);
+<pre class="prettyprint"><code>var container = svg.append('g');
 
-container.append(&#39;g&#39;)
-  .selectAll(&#39;line&#39;)
+container.append('g')
+  .selectAll('line')
   .data(d3.range(0, w, 30))
   .enter()
-  .append(&#39;line&#39;)
+  .append('line')
   .attr({
-    &#39;x1&#39;: function(d) { return d; },
-    &#39;y1&#39;: 0,
-    &#39;x2&#39;: function(d) { return d; },
-    &#39;y2&#39;: h,
-    &#39;stroke&#39;:&#39;#ddd&#39;,
-    &#39;fill&#39;:&#39;none&#39;
+    'x1': function(d) { return d; },
+    'y1': 0,
+    'x2': function(d) { return d; },
+    'y2': h,
+    'stroke':'#ddd',
+    'fill':'none'
   });
 
-container.append(&#39;g&#39;)
-  .selectAll(&#39;line&#39;)
+container.append('g')
+  .selectAll('line')
   .data(d3.range(0, h, 30))
   .enter()
-  .append(&#39;line&#39;)
+  .append('line')
   .attr({
-    &#39;x1&#39;: 0,
-    &#39;y1&#39;: function(d) { return d; },
-    &#39;x2&#39;: w,
-    &#39;y2&#39;: function(d) { return d; },
-    &#39;stroke&#39;:&#39;#ddd&#39;,
-    &#39;fill&#39;:&#39;none&#39;
+    'x1': 0,
+    'y1': function(d) { return d; },
+    'x2': w,
+    'y2': function(d) { return d; },
+    'stroke':'#ddd',
+    'fill':'none'
   });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>再來就是在畫面上放入一些圓球，這裏直接用一個 data 的陣列來產生這些球，也因為這些球也要縮放，所以同樣放在 container 裡頭。</p>
-<pre><code>var data = [
-  {&#39;cx&#39;:150, &#39;cy&#39;:210, &#39;r&#39;:50, &#39;fill&#39;:&#39;#ff0000&#39;},
-  {&#39;cx&#39;:75, &#39;cy&#39;:55, &#39;r&#39;:40, &#39;fill&#39;:&#39;#00cc00&#39;},
-  {&#39;cx&#39;:200, &#39;cy&#39;:30, &#39;r&#39;:30, &#39;fill&#39;:&#39;#0000ff&#39;},
-  {&#39;cx&#39;:650, &#39;cy&#39;:190, &#39;r&#39;:70, &#39;fill&#39;:&#39;#0099cc&#39;},
-  {&#39;cx&#39;:300, &#39;cy&#39;:200, &#39;r&#39;:30, &#39;fill&#39;:&#39;#ff9900&#39;}
+<pre class="prettyprint"><code>var data = [
+  {'cx':150, 'cy':210, 'r':50, 'fill':'#ff0000'},
+  {'cx':75, 'cy':55, 'r':40, 'fill':'#00cc00'},
+  {'cx':200, 'cy':30, 'r':30, 'fill':'#0000ff'},
+  {'cx':650, 'cy':190, 'r':70, 'fill':'#0099cc'},
+  {'cx':300, 'cy':200, 'r':30, 'fill':'#ff9900'}
 ];
 
-container.append(&quot;g&quot;).selectAll(&#39;circle&#39;)
+container.append("g").selectAll('circle')
   .data(data)
   .enter()
-  .append(&#39;circle&#39;)
+  .append('circle')
   .attr({
-    &#39;cx&#39;: function(d){return d.cx;},
-    &#39;cy&#39;: function(d){return d.cy;},
-    &#39;r&#39;: function(d){return d.r;},
-    &#39;fill&#39;: function(d){return d.fill;}
+    'cx': function(d){return d.cx;},
+    'cy': function(d){return d.cy;},
+    'r': function(d){return d.r;},
+    'fill': function(d){return d.fill;}
   })
   .style({
-    &#39;cursor&#39;:&#39;pointer&#39;
+    'cursor':'pointer'
   });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>如果沒有意外，完成後的長相應該會像下圖這樣，不過還不能縮放，因為我們還沒有寫 zoom 的程式進去。( 範例：<a href="/demo/201509/svg-d3-17-zoom-behavior-demo01.html">svg-d3-17-zoom-behavior-demo01.html</a> )</p>
 <p><img src="/img/articles/201509/20150915_1_02.jpg" alt="SVG D3.js - 縮放行為 ( Zoom Behavior )"></p>
 <p>再來就是要針對 SVG 加入 zoom 的行為，我們先新增三個全域變數 x、y、s，作為紀錄縮放改變大小的位置偏移量以及縮放尺寸，如此一來我們「要縮回去原本大小的時候，就有一個參考的準則」，接著設置一個 zoom 的行為，一開始的 translate 設為 0,0，也就是會對齊左上角，scaleExtent 設為 [1,10]，最大值鎖定在 10 倍大，預設的 scale 設為 1，然後寫一下在 zoom 發生時要執行的 function，重點在利用<code>d3.event.translate</code>獲取當下的偏移量，用<code>d3.event.scale</code>獲得當下的縮放比例，最後設置新的偏移量以及尺寸。( 在這裡不用煩惱滑鼠與座標的轉換，因為在 d3.event 裏頭已經幫我們算好了 )</p>
 <p>然後最重要的，在剛剛的 svg 後方加入 call，呼叫 zoom 的行為，到這個步驟，打開範例我們已經可以用滑鼠的滾輪，或是手勢來進行縮放了。
 ( 範例：<a href="/demo/201509/svg-d3-17-zoom-behavior-demo02.html">svg-d3-17-zoom-behavior-demo02.html</a> )</p>
-<pre><code>var x,y,s;
+<pre class="prettyprint"><code>var x,y,s;
 
 var zoom = d3.behavior.zoom()
     .translate([0, 0])
     .scaleExtent([1, 10])
     .scale(1)
-    .on(&quot;zoom&quot;, zoomed);
+    .on("zoom", zoomed);
 
 function zoomed() {
   x=d3.event.translate[0];
   y=d3.event.translate[1];
   s=d3.event.scale;
-  container.attr(&quot;transform&quot;, &quot;translate(&quot; + d3.event.translate + &quot;) scale(&quot; + d3.event.scale + &quot;)&quot;);
+  container.attr("transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
 }
 
-var svg = d3.select(&#39;body&#39;)
-.append(&#39;svg&#39;)
+var svg = d3.select('body')
+.append('svg')
 .attr({
-  &#39;width&#39;:&#39;100%&#39;,
-  &#39;height&#39;:&#39;100%&#39;
+  'width':'100%',
+  'height':'100%'
 }).style({
-  &#39;border&#39;:&#39;1px solid #000&#39;
+  'border':'1px solid #000'
 })
 .call(zoom);
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>接著，我在畫面裡頭放上一個 id 為 reset 的按鈕，目的在於點選這個按鈕的時候，不論今天我把畫面縮放到如何，都會恢復為預設的大小和位置，當然因為是按鈕，會有「click」事件，直接用 d3.js 提供的 on api 就可以，不過如果只有恢復原本的大小，畫面就會是跳動的，不會有中間的補間動畫，因此這裡我利用之前提過的「<a href="http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html">tween</a>」，來加入補間動畫，由於要從現在縮放的大小跑到預設值，就必須要用到一開始的全域變數 s、x 和 y，最後呼叫<code>zoom.event</code>，就可以很流暢的恢復到原本的大小。</p>
-<pre><code>d3.select(&#39;#reset&#39;).on(&#39;click&#39;,function(){
-  d3.transition().duration(250).tween(&quot;zoom&quot;, function() {
+<pre class="prettyprint"><code>d3.select('#reset').on('click',function(){
+  d3.transition().duration(250).tween("zoom", function() {
     var si = d3.interpolate(s, 1);
     var xi = d3.interpolate(x, 0);
     var yi = d3.interpolate(y, 0);
@@ -220,14 +191,14 @@ var svg = d3.select(&#39;body&#39;)
     }
   });
 });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>但只有這樣子我還不滿足，應該還要加上一個點選圓形就會放大的效果，所以我們在每個圓形上都加上 click 事件，利用<code>getAttribute</code>獲得圓心座標，然後利用<code>(w-r)/2-4*cx</code>或<code>(h-r)/2-4*cy</code>的簡單數學計算讓放大的時候圓心會置中 ( 放大四倍就乘四 )，最後同樣用搭配<code>tween</code>和<code>zoom.event</code>就可以完成點擊放大的效果。</p>
-<pre><code>d3.selectAll(&#39;circle&#39;).on(&#39;click&#39;,function(){
+<pre class="prettyprint"><code>d3.selectAll('circle').on('click',function(){
   var circle = d3.select(this);
-  circle.transition().duration(250).tween(&quot;zoom&quot;, function() {
-    var r = this.getAttribute(&#39;r&#39;)*1;
-    var cx = this.getAttribute(&#39;cx&#39;)*1;
-    var cy = this.getAttribute(&#39;cy&#39;)*1;
+  circle.transition().duration(250).tween("zoom", function() {
+    var r = this.getAttribute('r')*1;
+    var cx = this.getAttribute('cx')*1;
+    var cy = this.getAttribute('cy')*1;
     var si = d3.interpolate(s, 4);
     var xi = d3.interpolate(x, (w-r)/2-4*cx);
     var yi = d3.interpolate(y, (h-r)/2-4*cy);
@@ -240,37 +211,33 @@ var svg = d3.select(&#39;body&#39;)
 <p><img src="/img/articles/201509/20150915_1_03.gif" alt="SVG D3.js - 縮放行為 ( Zoom Behavior )"></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -278,53 +245,67 @@ var svg = d3.select(&#39;body&#39;)
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

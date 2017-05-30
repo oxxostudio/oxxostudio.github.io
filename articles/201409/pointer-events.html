@@ -1,109 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>穿透的 div ( pointer-events ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-09-02T23:55:00+01:00">
-
-<meta name="keywords" content="css,css3,hover,svg,pointer-events,div,穿透">
-
-<meta name="description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。">
-
-<meta itemprop="name" content="穿透的 div ( pointer-events ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/20140902_1_01.jpg">
-
-<meta itemprop="description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。">
-
-<meta property="og:title" content="穿透的 div ( pointer-events ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/pointer-events.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/20140902_1_01.jpg">
-
-<meta property="og:description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。">
-
-<title>穿透的 div ( pointer-events ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。除了 auto 和 none，這是完整的屬性列表：pointer-events: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit，除了 auto 與 none，其他都是控制 SVG 的屬性，若採用預設值，則 SVG 就是以 visiblePainted 來表現。">
+  <meta itemprop="description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。除了 auto 和 none，這是完整的屬性列表：pointer-events: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit，除了 auto 與 none，其他都是控制 SVG 的屬性，若採用預設值，則 SVG 就是以 visiblePainted 來表現。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/pointer-events.jpg">
+  <meta property="og:description" content="pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。除了 auto 和 none，這是完整的屬性列表：pointer-events: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit，除了 auto 與 none，其他都是控制 SVG 的屬性，若採用預設值，則 SVG 就是以 visiblePainted 來表現。">
+  <meta property="og:title" content="穿透的 div ( pointer-events )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/pointer-events.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/pointer-events.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>穿透的 div ( pointer-events ) <span class="article-date" tag="css">SEP 2, 2014</span></h2>
-<p><img src="/img/articles/201409/20140902_1_01.jpg" class="preview-img"></p>
+<h1>穿透的 div ( pointer-events )</h1>
+<p><img src="/img/articles/201409/pointer-events.jpg" class="preview-img" alt=""></p>
 <p>pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。除了 auto 和 none，這是完整的屬性列表：<code>pointer-events: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit</code>，除了 auto 與 none，其他都是控制 SVG 的屬性，若採用預設值，則 SVG 就是以 visiblePainted 來表現。</p>
 <p>首先看到 <code>pointer-events: auto</code>，就是我們一般常見的，一個 div 被另外一個 div 遮住，就無法進行點擊或 hover 的動作，如下圖：  </p>
 <p><img src="/img/articles/201409/20140902_1_02.gif" alt="穿透的 div ( pointer-events )"></p>
 <p>HTML：</p>
-<pre><code>&lt;div class=&quot;ybox&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;gbox&quot;&gt;&lt;/div&gt;
+<pre class="prettyprint"><code>&lt;div class="ybox"&gt;&lt;/div&gt;
+&lt;div class="gbox"&gt;&lt;/div&gt;
 </code></pre><p>CSS：</p>
-<pre><code>.ybox {
+<pre class="prettyprint"><code>.ybox {
   background: rgba(255, 200, 0, .8);
   margin: 20px;
   z-index: 3;
@@ -142,11 +113,11 @@
 <p>例如我們畫面中有一個 SVG 所繪製的矩形，就可以控制讓滑鼠移到邊框變色，或是移到填滿區域才變色，這是設為 fill 的結果：</p>
 <p><img src="/img/articles/201409/20140902_1_04.gif" alt="穿透的 div ( pointer-events )"></p>
 <p>HTML：</p>
-<pre><code>&lt;svg width=&quot;200&quot; height=&quot;140&quot;&gt;
-  &lt;rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;#f00&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; x=&quot;20&quot; y=&quot;20&quot; id=&quot;test&quot;&gt;&lt;/rect&gt;
+<pre class="prettyprint"><code>&lt;svg width="200" height="140"&gt;
+  &lt;rect width="100" height="100" fill="#f00" stroke="#000" stroke-width="10" x="20" y="20" id="test"&gt;&lt;/rect&gt;
 &lt;/svg&gt;
 </code></pre><p>CSS：</p>
-<pre><code>#test {
+<pre class="prettyprint"><code>#test {
   pointer-events: fill;
 }
 #test:hover {
@@ -157,37 +128,33 @@
 <p>這就是 pointer-events 的用法，其實搞懂之後，因為可以點擊到被覆蓋的 div 下方的東西，就可以做出許多應用喔！真是迫不及待想要用用看啦！</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -195,53 +162,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

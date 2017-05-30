@@ -1,100 +1,71 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>FIGlet - ASCII Decorator - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-08-08T23:55:00+01:00">
-
-<meta name="keywords" content="ascii,ascii decorator, figlet,ascii art,ascii font,sublimetext">
-
-<meta name="description" content="首先談到這種字體的由來，它其實有幾個固定名稱，幾種比較主要的稱呼分別是：「ASCII TEXT」、「ASCII TEXT Banner」、「ASCII Art」、「ASCII Decorator」和「FIGlet」，「FIGlet」這個詞應該是最標準的用法，因為這個詞可是在維基百科上頭有介紹的。">
-
-<meta itemprop="name" content="FIGlet - ASCII Decorator - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201508/20150808_1_01b.jpg">
-
-<meta itemprop="description" content="首先談到這種字體的由來，它其實有幾個固定名稱，幾種比較主要的稱呼分別是：「ASCII TEXT」、「ASCII TEXT Banner」、「ASCII Art」、「ASCII Decorator」和「FIGlet」，「FIGlet」這個詞應該是最標準的用法，因為這個詞可是在維基百科上頭有介紹的。">
-
-<meta property="og:title" content="FIGlet - ASCII Decorator - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201508/20150808_1_01b.jpg">
-
-<meta property="og:description" content="首先談到這種字體的由來，它其實有幾個固定名稱，幾種比較主要的稱呼分別是：「ASCII TEXT」、「ASCII TEXT Banner」、「ASCII Art」、「ASCII Decorator」和「FIGlet」，「FIGlet」這個詞應該是最標準的用法，因為這個詞可是在維基百科上頭有介紹的。">
-
-<title>FIGlet - ASCII Decorator - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="早在十幾年前玩 BBS 的時候 ( 暴露年紀了 )，就已經開始玩許多利用文字與線條組成的圖形，當時甚也用 ASCII 色碼來表現顏色，真是令人不勝懷念，然而到了今時今日，因為 SublimeText 的緣故，竟然又接觸到了類似的技術，因此找了一些相關的資訊，用這篇文章做個紀錄的分享。">
+  <meta itemprop="description" content="早在十幾年前玩 BBS 的時候 ( 暴露年紀了 )，就已經開始玩許多利用文字與線條組成的圖形，當時甚也用 ASCII 色碼來表現顏色，真是令人不勝懷念，然而到了今時今日，因為 SublimeText 的緣故，竟然又接觸到了類似的技術，因此找了一些相關的資訊，用這篇文章做個紀錄的分享。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201508/figlet-ascii-decorator.jpg">
+  <meta property="og:description" content="早在十幾年前玩 BBS 的時候 ( 暴露年紀了 )，就已經開始玩許多利用文字與線條組成的圖形，當時甚也用 ASCII 色碼來表現顏色，真是令人不勝懷念，然而到了今時今日，因為 SublimeText 的緣故，竟然又接觸到了類似的技術，因此找了一些相關的資訊，用這篇文章做個紀錄的分享。">
+  <meta property="og:title" content="FIGlet - ASCII Decorator">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201508/figlet-ascii-decorator.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>FIGlet - ASCII Decorator  <span class="article-date" tag="web">AUG 8, 2015</span></h2>
+<h1>FIGlet - ASCII Decorator</h1>
 <p>早在十幾年前玩 BBS 的時候 ( 暴露年紀了 )，就已經開始玩許多利用文字與線條組成的圖形，當時甚也用 ASCII 色碼來表現顏色，真是令人不勝懷念，然而到了今時今日，因為 SublimeText 的緣故，竟然又接觸到了類似的技術，因此找了一些相關的資訊，用這篇文章做個紀錄的分享。</p>
 <p>首先談到這種字體的由來，它其實有幾個固定名稱，幾種比較主要的稱呼分別是：「ASCII TEXT」、「ASCII TEXT Banner」、「ASCII Art」、「ASCII Decorator」和「FIGlet」，「FIGlet」這個詞應該是最標準的用法，因為這個詞可是在維基百科上頭有介紹的 ( <a href="https://en.wikipedia.org/wiki/FIGlet">https://en.wikipedia.org/wiki/FIGlet</a> )，而「FIGlet」源自於 Frank、Ian 和 Glen 的信，應該就是他們當初在寫信的時候加上去的一些字體藝術 ( 參考：<a href="http://www.figlet.org/faq.html">http://www.figlet.org/faq.html</a> )</p>
 <p><img src="/img/articles/201508/20150808_1_04.jpg" alt=""></p>
@@ -109,14 +80,14 @@
 <p>做的這邊貌似結束了，但是身為一個充滿創意和好奇心的前端工程師，一定要再追根究底看看能不能自己做出一個打字就自己產生圖形的網頁，所以就開始找看看有沒有現成的 js 可以使用，不找還好，一找發現其實還滿多人做的，不過大多都是在 node.js 的環境運行居多，此外也有滿多其他開發語言，於是我就選擇了在 npm 上頭更新頻率還滿高的這個：figlet ( <a href="https://www.npmjs.com/package/figlet#horizontallayout">https://www.npmjs.com/package/figlet#horizontallayout</a> )，不過因為我只是要純粹用在網頁上，我就只使用了它的<code>figlet.js</code>和<code>fonts</code>資料庫。</p>
 <p><img src="/img/articles/201508/20150808_1_07.jpg" alt=""></p>
 <p>用在網頁裡其實沒有太大的難度，照著步驟進行就可以，重點是因為他有用到 jQuery，所以 jQuery 變成一定要載入，程式碼如下，<code>inputText</code>是要放進去的文字，第二個屬性是字體，再來是要執行的 function。</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.7.2.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;figlet.js&quot;&gt;&lt;/script&gt;
+<pre class="prettyprint"><code>&lt;script type="text/javascript" src="jquery-1.7.2.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="figlet.js"&gt;&lt;/script&gt;
 
 &lt;script&gt;
 
-  figlet(inputText, &#39;Standard&#39;, function(err, text) {
+  figlet(inputText, 'Standard', function(err, text) {
       if (err) {
-          console.log(&#39;something went wrong...&#39;);
+          console.log('something went wrong...');
           console.dir(err);
           return;
       }
@@ -124,37 +95,37 @@
   });
 
 &lt;/script&gt; 
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>所以我就照著他的作法做了一個網頁，字體庫就直接用它附帶的 fonts 資料夾即可，或是也可以直接到 figlet 的網站看看 ( <a href="http://www.figlet.org/fontdb.cgi">http://www.figlet.org/fontdb.cgi</a> )，不過我想要做的是直接輸入就可以變換內容，直接點選字體就可以變換字體，所以改成以下這樣：</p>
-<pre><code>$(function(){
-  var inputText = $(&#39;#textInput&#39;)[0].value;
-  var font = &#39;Basic&#39;;
+<pre class="prettyprint"><code>$(function(){
+  var inputText = $('#textInput')[0].value;
+  var font = 'Basic';
 
   decorator(inputText, font);
 
   function decorator(input, font) {
     figlet(inputText, font, function(err, text) {
       if (err) {
-        console.log(&#39;something went wrong...&#39;);
+        console.log('something went wrong...');
         console.dir(err);
         return;
       }
-      $(&#39;#show&#39;).html(text);
+      $('#show').html(text);
     });
   }
 
-  $(&#39;#select div&#39;).on(&#39;click&#39;,function(e){
-      $(&#39;#select div&#39;).attr(&#39;class&#39;,&#39;&#39;);
-      e.target.setAttribute(&#39;class&#39;,&#39;selected&#39;);
+  $('#select div').on('click',function(e){
+      $('#select div').attr('class','');
+      e.target.setAttribute('class','selected');
       font = e.target.innerHTML;
       decorator(inputText, font);
   });
-  $(&#39;#textInput&#39;).on(&#39;keyup&#39;, function(e) {
+  $('#textInput').on('keyup', function(e) {
       inputText = e.target.value;
       decorator(inputText, font);
   });
 });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>所以就做出來了這個簡單的網頁：<a href="http://www.oxxostudio.tw/figlet/">http://www.oxxostudio.tw/figlet/</a>，不過如果要在網頁呈現，還要千萬要記住下面兩個重點：</p>
 <ul>
 <li><p><strong>字體使用等寬字體 Monospaced Font</strong></p>
@@ -178,37 +149,33 @@
 </ul>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -216,53 +183,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

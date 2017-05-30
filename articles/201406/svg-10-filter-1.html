@@ -1,115 +1,86 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 研究之路 (10) - 初探 filter - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-06-18T23:55:00+01:00">
-
-<meta name="keywords" content="SVG,filter,濾鏡,向量">
-
-<meta name="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
-
-<meta itemprop="name" content="SVG 研究之路 (10) - 初探 filter - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140618_1_01.jpg">
-
-<meta itemprop="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
-
-<meta property="og:title" content="SVG 研究之路 (10) - 初探 filter - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-10-filter-1.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140618_1_01.jpg">
-
-<meta property="og:description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了。">
-
-<title>SVG 研究之路 (10) - 初探 filter - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( 各家瀏覽器 SVG 支援度 )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。">
+  <meta itemprop="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( 各家瀏覽器 SVG 支援度 )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-10-filter-1.jpg">
+  <meta property="og:description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( 各家瀏覽器 SVG 支援度 )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。">
+  <meta property="og:title" content="SVG 研究之路 (10) - 初探 filter">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-10-filter-1.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-10-filter-1.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 研究之路 (10) - 初探 filter <span class="article-date" tag="web">JUN 18, 2014</span></h2>
-<p><img src="/img/articles/201406/20140618_1_01.jpg" class="preview-img"></p>
+<h1>SVG 研究之路 (10) - 初探 filter</h1>
+<p><img src="/img/articles/201406/svg-10-filter-1.jpg" class="preview-img" alt=""></p>
 <p>這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( <a href="http://caniuse.com/svg-filters">各家瀏覽器 SVG 支援度</a> )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。</p>
 <p>一如往常，第一步，在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭，加入<code>&lt;filter&gt;&lt;/filter&gt;</code>的標籤，然後給它一個 id 作為識別，接著就是要在<code>filter</code>裏頭放入濾鏡，在此之前，<code>filter</code>除了 x、y、width、height 幾個基本屬性外，也幾個比較特別的屬性需要設定：</p>
 <ul>
-<li><strong>filterUnits</strong> ：&quot;userSpaceOnUse | objectBoundingBox&quot; ( 位置以 SVG 畫面為主，還是以套用的物件為主 )</li>
-<li><strong>primitiveUnits</strong> ： &quot;userSpaceOnUse | objectBoundingBox&quot; ( 預設 userSpaceOnUse )</li>
+<li><strong>filterUnits</strong> ："userSpaceOnUse | objectBoundingBox" ( 位置以 SVG 畫面為主，還是以套用的物件為主 )</li>
+<li><strong>primitiveUnits</strong> ： "userSpaceOnUse | objectBoundingBox" ( 預設 userSpaceOnUse )</li>
 <li><strong>filterRes</strong> ： 該屬性定義了中間緩存區域的大小，通常不需要提供</li>
 </ul>
 <p>因此濾鏡的程式通常都會寫成：</p>
-<pre><code>  &lt;defs&gt;
-    &lt;filter id=&quot;id名&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;100%&quot; height=&quot;100%&quot; filterUnits=&quot;userSpaceOnUse&quot;&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;filter id="id名" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse"&gt;
       濾鏡
     &lt;/filter&gt;
   &lt;/defs&gt;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>因為在 chrome 上實測仍然有很多濾鏡效果不支援 ( IE 竟然支援... )，實際上要用，可能就真的要花點心思去測試了，不然真的做完發現不支援，還真是糗很大...如果對濾鏡有興趣，可以閱讀這幾篇文章：<a href="http://www.w3.org/TR/SVG/filters.html">W3C SVG Filters</a>、<a href="http://srufaculty.sru.edu/david.dailey/svg/SVGOpen2010/Filters2.htm">Filter Effects in SVG</a>，以下是濾鏡的列表：</p>
 <ul>
 <li><strong>feBlend</strong> ：使用不同的混合模式把兩個對象合成在一起。</li>
@@ -140,37 +111,33 @@
 </ul>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -178,53 +145,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,100 +1,71 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>聲音濾波器 ( BiquadFilterNode ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-10-06T23:50:00+01:00">
-
-<meta name="keywords" content="music,audio,web audio api,BiquadFilterNode,濾波器">
-
-<meta name="description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
-
-<meta itemprop="name" content="聲音濾波器 ( BiquadFilterNode ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201510/20151006_1_01b.jpg">
-
-<meta itemprop="description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
-
-<meta property="og:title" content="聲音濾波器 ( BiquadFilterNode ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201510/web-audio-api-biquadfilternode.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201510/20151006_1_01b.jpg">
-
-<meta property="og:description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
-
-<title>聲音濾波器 ( BiquadFilterNode ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
+  <meta itemprop="description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201510/web-audio-api-biquadfilternode.jpg">
+  <meta property="og:description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
+  <meta property="og:title" content="聲音濾波器 ( BiquadFilterNode )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201510/web-audio-api-biquadfilternode.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201510/web-audio-api-biquadfilternode.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>聲音濾波器 ( BiquadFilterNode ) <span class="article-date" tag="web">OCT 6    , 2015</span></h2>
+<h1>聲音濾波器 ( BiquadFilterNode )</h1>
 <p>這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。</p>
 <p>使用 BiquadFilterNode 之前，要了解它有幾種類型 ( type ) 可以使用，如果對於文字描述不清楚的，其實只要看下面那張圖就能一目了然。</p>
 <blockquote>
@@ -121,7 +92,7 @@
 <p>frequency 與 gain 都還滿好理解，frequency 就是我們要指定一個頻率，由這個頻率和剛剛的過濾類型搭配過濾，gain 只適用 lowshelf、highshelf、peaking 這三個類型，因為這三個類型仍然會有波跑過去，而跑過去的波的音量，就由 gain 來指定，比較困擾的是這個「Q」，如果不是理工類科，大概很難理解，幸好我以前是物理系出身，又有一些好同學可以詢問，總算搞明白 Q 就是品質參數 ( Quality Factor )，舉例來說，如果今天我們要做一個頻率 1000 赫茲的帶通濾波，在不設定 Q 的情況下，帶通濾波濾出來的可能是 800 到 1200 的頻率，當 Q 變大，濾出來就會變成 990 到 1010，換句話說，Q 越大就會越精準，品質就會越好，這也就是品質參數的原理。</p>
 <p><img src="/img/articles/201510/20151006_1_03.jpg" alt="聲音濾波器 ( BiquadFilterNode )"></p>
 <p>了解原理之後就要來看範例，這裏我實作了一個可以調整濾波器的 type、frequency、Q 和 gain 的拉霸，由於 BiquadFilterNode 也是節點模組，因此我們要用<code>createBiquadFilter</code>的方式來創建。</p>
-<pre><code>var _filter = function(t,f,d,type,ff,q,g){
+<pre class="prettyprint"><code>var _filter = function(t,f,d,type,ff,q,g){
   oscillator.type = t;
   oscillator.frequency.value = f;
   oscillator.detune.value = d;
@@ -141,42 +112,38 @@ function _sound(){
     sound.connect(context.destination);
   }
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>主要的程式就是上面這一段，至於拉霸與按鈕的程式，都與之前的做法類似，就不在這篇做太多說明了，總而言之，了解濾波器的原理，往後當我們匯入了一首真正的曲目，就可以透過濾波器來做一些有趣的聲音變化了。( 範例：<a href="/demo/201510/web-audio-api-biquadfilternode-demo01.html">web-audio-api-biquadfilternode-demo01.html</a> )</p>
 <p><img src="/img/articles/201510/20151006_1_04.jpg" alt="聲音濾波器 ( BiquadFilterNode )"></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -184,53 +151,67 @@ function _sound(){
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,243 +1,210 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>Gulp 學習 3 - 打包壓縮 HTML - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-03-07T23:55:00+01:00">
-
-<meta name="keywords" content="gulp,gulp-html-replace,gulp-minify-html,打包,壓縮">
-
-<meta name="description" content="例如我們有一個網頁，裡頭載入了三個 CSS 與三個 JS，壓縮之後就會變成只有一個 min.css 和一個 min.js，如此一來原本要載入六個檔案，瞬間就變成了只需要載入兩個檔案而已，也由於由六個 request 降為兩個 request，整個網頁的流暢度也會提升。">
-
-<meta itemprop="name" content="Gulp 學習 3 - 打包壓縮 HTML - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/20150307_1_01b.jpg">
-
-<meta itemprop="description" content="例如我們有一個網頁，裡頭載入了三個 CSS 與三個 JS，壓縮之後就會變成只有一個 min.css 和一個 min.js，如此一來原本要載入六個檔案，瞬間就變成了只需要載入兩個檔案而已，也由於由六個 request 降為兩個 request，整個網頁的流暢度也會提升。">
-
-<meta property="og:title" content="Gulp 學習 3 - 打包壓縮 HTML - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/20150307_1_01b.jpg">
-
-<meta property="og:description" content="例如我們有一個網頁，裡頭載入了三個 CSS 與三個 JS，壓縮之後就會變成只有一個 min.css 和一個 min.js，如此一來原本要載入六個檔案，瞬間就變成了只需要載入兩個檔案而已，也由於由六個 request 降為兩個 request，整個網頁的流暢度也會提升。">
-
-<title>Gulp 學習 3 - 打包壓縮 HTML - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="上一篇我們看完了打包與壓縮 CSS 和 JS，為什麼打包壓縮 HTML 不要一起講呢？是因為打包壓縮 HTML 還會用到額外的套件和方法，避免混淆，所以就分成兩篇來紀錄。">
+  <meta itemprop="description" content="上一篇我們看完了打包與壓縮 CSS 和 JS，為什麼打包壓縮 HTML 不要一起講呢？是因為打包壓縮 HTML 還會用到額外的套件和方法，避免混淆，所以就分成兩篇來紀錄。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/gulp-3-compress-html.jpg">
+  <meta property="og:description" content="上一篇我們看完了打包與壓縮 CSS 和 JS，為什麼打包壓縮 HTML 不要一起講呢？是因為打包壓縮 HTML 還會用到額外的套件和方法，避免混淆，所以就分成兩篇來紀錄。">
+  <meta property="og:title" content="Gulp 學習 3 - 打包壓縮 HTML">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/gulp-3-compress-html.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>Gulp 學習 3 - 打包壓縮 HTML  <span class="article-date" tag="web">MAR 7, 2015</span></h2>
-<p><img src="/img/articles/201503/20150307_1_01.jpg" class="preview-img"></p>
+<h1>Gulp 學習 3 - 打包壓縮 HTML</h1>
+<p><img src="/img/articles/201503/gulp-3-compress-html.jpg" class="preview-img" alt=""></p>
 <p>上一篇我們看完了打包與壓縮 CSS 和 JS，為什麼打包壓縮 HTML 不要一起講呢？是因為打包壓縮 HTML 還會用到額外的套件和方法，避免混淆，所以就分成兩篇來紀錄。</p>
 <p>壓縮 HTML 與 CSS 和 JS 不同的地方，在於 CSS 和 JS 利用合併之後再混淆或壓縮，而 HTML 除了壓縮，更多了去置換內容的方式，例如我們有一個網頁，裡頭載入了三個 CSS 與三個 JS，壓縮之後就會變成只有一個 min.css 和一個 min.js，如此一來原本要載入六個檔案，瞬間就變成了只需要載入兩個檔案而已，也由於由六個 request 降為兩個 request，整個網頁的流暢度也會提升。( 就像傳送一千個小檔案，速度遠不如把一千個小檔案壓縮成一個大檔案，直接傳送大檔案還來得快 )</p>
 <p>打包壓縮 HTML 我們會用到的套件有這些：gulp-html-replace、gulp-minify-html，gulp-html-replace 的作用，是把原本的三個 CSS 置換為一個 min.css，gulp-minify-html 就是純粹的壓縮 HTML，除此之外，我們也要把上一篇的壓縮 CSS 與 JS 所需要的套件一起拿來用，畢竟打包壓縮是要成為完整 ( 壓縮 HTML、CSS、JS )才是，所以首先就安裝吧！( mac 要加 sudo，相關套件參考：<a href="https://www.npmjs.com/package/gulp-html-replace">gulp-html-replace</a>、<a href="https://www.npmjs.com/package/gulp-minify-html">gulp-minify-html</a> )</p>
-<pre><code>npm install gulp gulp-html-replace gulp-minify-html gulp-minify-css gulp-uglify gulp-concat gulp-rename -save-dev
-</code></pre><p><br/>
+<pre class="prettyprint"><code>npm install gulp gulp-html-replace gulp-minify-html gulp-minify-css gulp-uglify gulp-concat gulp-rename -save-dev
+</code></pre><p><br>
 目錄結構應該是長成這樣：</p>
 <p><img src="/img/articles/201503/20150307_1_02.jpg" alt="Gulp 學習 3 - 打包壓縮 HTML"></p>
-<p><br/>
+<p><br>
 安裝好了之後就來寫 gulpfile.js，一開始當然是先引入這些套件，引入的套件就這樣越來越多了。</p>
-<pre><code>var gulp      = require(&#39;gulp&#39;),
-  concat      = require(&#39;gulp-concat&#39;),
-  minifyCSS   = require(&#39;gulp-minify-css&#39;),
-  uglify      = require(&#39;gulp-uglify&#39;),
-  rename      = require(&quot;gulp-rename&quot;),
-  htmlreplace = require(&#39;gulp-html-replace&#39;),
-  minifyHTML  = require(&#39;gulp-minify-html&#39;);
-</code></pre><p><br/>
+<pre class="prettyprint"><code>var gulp      = require('gulp'),
+  concat      = require('gulp-concat'),
+  minifyCSS   = require('gulp-minify-css'),
+  uglify      = require('gulp-uglify'),
+  rename      = require("gulp-rename"),
+  htmlreplace = require('gulp-html-replace'),
+  minifyHTML  = require('gulp-minify-html');
+</code></pre><p><br>
 上一篇的壓縮 CSS 和 JS 就先略過，直接看到壓縮 HTML 的部分，我們先來瞧瞧未壓縮的 HTML 長怎樣，基本上裡面會包含了一大串載入的 CSS 和 JS。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
 &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta charset="UTF-8"&gt;
     &lt;title&gt;Compress&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/test1.css&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/test2.css&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/test3.css&quot;&gt;
-    &lt;script src=&quot;js/test.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="css/test1.css"&gt;
+    &lt;link rel="stylesheet" href="css/test2.css"&gt;
+    &lt;link rel="stylesheet" href="css/test3.css"&gt;
+    &lt;script src="js/test.js"&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p><br/>
+</code></pre><p><br>
 這時候我們要使用 gulp-html-replace，把這一大串載入的 CSS 和 JS 替換掉，換成我們壓縮過的 CSS 與 JS 檔案，置換的方法就是在 HTML 裏頭寫上一些特定的註解描述就可以，例如要把整段 css 替換掉，就用<code>&lt;!-- build:css --&gt;&lt;!-- endbuild --&gt;</code> 把要替換掉的地方包起來。</p>
-<pre><code>&lt;!-- build:css --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;css/test1.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;css/test2.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;css/test3.css&quot;&gt;
+<pre class="prettyprint"><code>&lt;!-- build:css --&gt;
+&lt;link rel="stylesheet" href="css/test1.css"&gt;
+&lt;link rel="stylesheet" href="css/test2.css"&gt;
+&lt;link rel="stylesheet" href="css/test3.css"&gt;
 &lt;!-- endbuild --&gt;
 &lt;!-- build:js --&gt;
-&lt;script src=&quot;js/test.js&quot;&gt;&lt;/script&gt;
+&lt;script src="js/test.js"&gt;&lt;/script&gt;
 &lt;!-- endbuild --&gt;
-</code></pre><p><br/>
+</code></pre><p><br>
 包起來之後就要在 gulpfile.js 裏頭寫出要置換的內容，同時一併把 gulp-minify-html 給寫進去，畢竟置換完就要同時壓縮，才是一個完整的打包壓縮，下面的範例將 minifyHTML 的設定寫在外面，而 htmlreplace 表示要把剛剛 css 的部分換為 all.min.css，js 的部分換為 js/all.min.js。</p>
-<pre><code>gulp.task(&#39;html-replace&#39;,function() {
+<pre class="prettyprint"><code>gulp.task('html-replace',function() {
   var opts = {comments:false,spare:false,quotes:true};
-  return gulp.src(&#39;./app/*.html&#39;)
+  return gulp.src('./app/*.html')
     .pipe(htmlreplace({
-        &#39;css&#39;: &#39;css/all.min.css&#39;,
-        &#39;js&#39;: &#39;js/all.min.js&#39;
+        'css': 'css/all.min.css',
+        'js': 'js/all.min.js'
     }))  
     .pipe(minifyHTML(opts))
-    .pipe(gulp.dest(&#39;./build/&#39;));
+    .pipe(gulp.dest('./build/'));
 });
 
-gulp.task(&#39;default&#39;, [&#39;html-replace&#39;,&#39;minify-css&#39;, &#39;uglify&#39;]);
-</code></pre><p><br/>
+gulp.task('default', ['html-replace','minify-css', 'uglify']);
+</code></pre><p><br>
 完成之後只要執行 gulp，就可以看到最後的成果：</p>
 <p><img src="/img/articles/201503/20150307_1_03.jpg" alt="Gulp 學習 3 - 打包壓縮 HTML"></p>
-<p>這裡要補充一點上一篇沒有提到的，在上一篇的 minify-css 任務，必須要在 concat 任務完成之後才會進行，但要如何保證呢？因為在 gulp 裏頭，所有任務並不會按照順序，因此很有可能當我們執行 minify-css 的時候， concat 尚未完成，就會造成產生的程式碼有問題，所以，「<strong>在每個 task 任務裏頭加上 return，接著把 minify-css 的任務寫成這樣：<code>gulp.task(&#39;minify-css&#39;, [&#39;concat&#39;], function(){})</code></strong>」，就可以保證 minify-css 會接在 concat 之後囉！最後完成的 gulpfile.js 如下：</p>
-<pre><code>var gulp      = require(&#39;gulp&#39;),
-  concat      = require(&#39;gulp-concat&#39;),
-  minifyCSS   = require(&#39;gulp-minify-css&#39;),
-  uglify      = require(&#39;gulp-uglify&#39;),
-  rename      = require(&quot;gulp-rename&quot;),
-  htmlreplace = require(&#39;gulp-html-replace&#39;),
-  minifyHTML  = require(&#39;gulp-minify-html&#39;);
+<p>這裡要補充一點上一篇沒有提到的，在上一篇的 minify-css 任務，必須要在 concat 任務完成之後才會進行，但要如何保證呢？因為在 gulp 裏頭，所有任務並不會按照順序，因此很有可能當我們執行 minify-css 的時候， concat 尚未完成，就會造成產生的程式碼有問題，所以，「<strong>在每個 task 任務裏頭加上 return，接著把 minify-css 的任務寫成這樣：<code>gulp.task('minify-css', ['concat'], function(){})</code></strong>」，就可以保證 minify-css 會接在 concat 之後囉！最後完成的 gulpfile.js 如下：</p>
+<pre class="prettyprint"><code>var gulp      = require('gulp'),
+  concat      = require('gulp-concat'),
+  minifyCSS   = require('gulp-minify-css'),
+  uglify      = require('gulp-uglify'),
+  rename      = require("gulp-rename"),
+  htmlreplace = require('gulp-html-replace'),
+  minifyHTML  = require('gulp-minify-html');
 
-gulp.task(&#39;concat&#39;, function() {
-  return gulp.src(&#39;./app/css/*.css&#39;)
-    .pipe(concat(&#39;all.css&#39;))
-    .pipe(gulp.dest(&#39;./build/css/&#39;));
+gulp.task('concat', function() {
+  return gulp.src('./app/css/*.css')
+    .pipe(concat('all.css'))
+    .pipe(gulp.dest('./build/css/'));
 });
 
-gulp.task(&#39;minify-css&#39;, [&#39;concat&#39;], function() {
-  return gulp.src(&#39;./build/css/all.css&#39;)
+gulp.task('minify-css', ['concat'], function() {
+  return gulp.src('./build/css/all.css')
     .pipe(minifyCSS({
       keepBreaks: true,
     }))
     .pipe(rename(function(path) {
-      path.basename += &quot;.min&quot;;
-      path.extname = &quot;.css&quot;;
+      path.basename += ".min";
+      path.extname = ".css";
     }))
-    .pipe(gulp.dest(&#39;./build/css/&#39;));
+    .pipe(gulp.dest('./build/css/'));
 });
 
-gulp.task(&#39;uglify&#39;, function() {
-  return gulp.src(&#39;./app/js/*.js&#39;)
+gulp.task('uglify', function() {
+  return gulp.src('./app/js/*.js')
     .pipe(uglify())
     .pipe(rename(function(path) {
-      path.basename += &quot;.min&quot;;
-      path.extname = &quot;.js&quot;;
+      path.basename += ".min";
+      path.extname = ".js";
     }))
-    .pipe(gulp.dest(&#39;./build/js/&#39;));
+    .pipe(gulp.dest('./build/js/'));
 });
 
-gulp.task(&#39;html-replace&#39;,function() {
+gulp.task('html-replace',function() {
   var opts = {comments:false,spare:false,quotes:true};
-  return gulp.src(&#39;./app/*.html&#39;)
+  return gulp.src('./app/*.html')
     .pipe(htmlreplace({
-        &#39;css&#39;: &#39;css/all.min.css&#39;,
-        &#39;js&#39;: &#39;js/all.min.js&#39;
+        'css': 'css/all.min.css',
+        'js': 'js/all.min.js'
     }))  
     .pipe(minifyHTML(opts))
-    .pipe(gulp.dest(&#39;./build/&#39;));
+    .pipe(gulp.dest('./build/'));
 });
 
-gulp.task(&#39;default&#39;, [&#39;html-replace&#39;,&#39;minify-css&#39;, &#39;uglify&#39;]);
-</code></pre><p><br/></p>
+gulp.task('default', ['html-replace','minify-css', 'uglify']);
+</code></pre><p><br></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -245,53 +212,67 @@ gulp.task(&#39;default&#39;, [&#39;html-replace&#39;,&#39;minify-css&#39;, &#39;
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

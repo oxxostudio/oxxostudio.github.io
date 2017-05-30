@@ -1,209 +1,176 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>結構化資料 SEO 與 meta 標籤 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-05-18T22:25:00+01:00">
-
-<meta name="keywords" content="meta,facebook,google plus,seo,social media,結構化資料,meta 標籤">
-
-<meta name="description" content="本篇主要在介紹，如何正確設定分享文章到 google plus 以及 facebook 的標題、縮圖與內文概要，因為有了這些正確的設定，分享到社群網站就不會跳出莫名其妙的縮圖，同時在 google 的搜尋，也會呈現作者的大頭照與姓名，這些都是會吸引更多使用者瀏覽的好方法。">
-
-<meta itemprop="name" content="結構化資料 SEO 與 meta 標籤 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140601_1_01.jpg">
-
-<meta itemprop="description" content="本篇主要在介紹，如何正確設定分享文章到 google plus 以及 facebook 的標題、縮圖與內文概要，因為有了這些正確的設定，分享到社群網站就不會跳出莫名其妙的縮圖，同時在 google 的搜尋，也會呈現作者的大頭照與姓名，這些都是會吸引更多使用者瀏覽的好方法。">
-
-<meta property="og:title" content="結構化資料 SEO 與 meta 標籤 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/social-meta.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140601_1_01.jpg">
-
-<meta property="og:description" content="本篇主要在介紹，如何正確設定分享文章到 google plus 以及 facebook 的標題、縮圖與內文概要，因為有了這些正確的設定，分享到社群網站就不會跳出莫名其妙的縮圖，同時在 google 的搜尋，也會呈現作者的大頭照與姓名，這些都是會吸引更多使用者瀏覽的好方法。">
-
-<title>結構化資料 SEO 與 meta 標籤 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="隨著這個 blog 放到網路上開始，SEO 也變得重要起來，而在 SEO 裏頭，最重要的第一項重點就是 meta 標籤，這也是要告訴搜尋引擎和社群網站，你的 blog 或是網站主旨是什麼，作者是誰，分享的縮圖是什麼...等這些我們認為理所當然的資訊，畢竟這些搜尋引擎的蜘蛛和社群網站的人工智慧，現在還無法分辨你我網站內容的重點，因此我們必須靠這些 meta 或結構化資料 itemprop，來告訴它們。">
+  <meta itemprop="description" content="隨著這個 blog 放到網路上開始，SEO 也變得重要起來，而在 SEO 裏頭，最重要的第一項重點就是 meta 標籤，這也是要告訴搜尋引擎和社群網站，你的 blog 或是網站主旨是什麼，作者是誰，分享的縮圖是什麼...等這些我們認為理所當然的資訊，畢竟這些搜尋引擎的蜘蛛和社群網站的人工智慧，現在還無法分辨你我網站內容的重點，因此我們必須靠這些 meta 或結構化資料 itemprop，來告訴它們。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/social-meta.jpg">
+  <meta property="og:description" content="隨著這個 blog 放到網路上開始，SEO 也變得重要起來，而在 SEO 裏頭，最重要的第一項重點就是 meta 標籤，這也是要告訴搜尋引擎和社群網站，你的 blog 或是網站主旨是什麼，作者是誰，分享的縮圖是什麼...等這些我們認為理所當然的資訊，畢竟這些搜尋引擎的蜘蛛和社群網站的人工智慧，現在還無法分辨你我網站內容的重點，因此我們必須靠這些 meta 或結構化資料 itemprop，來告訴它們。">
+  <meta property="og:title" content="結構化資料 SEO 與 meta 標籤">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/social-meta.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/social-meta.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>結構化資料 SEO 與 meta 標籤 <span class="article-date" tag="web">JUN 1, 2014</span></h2>
-<p><img src="/img/articles/201406/20140601_1_01.jpg" class="preview-img"></p>
+<h1>結構化資料 SEO 與 meta 標籤</h1>
+<p><img src="/img/articles/201406/social-meta.jpg" class="preview-img" alt=""></p>
 <p>隨著這個 blog 放到網路上開始，SEO 也變得重要起來，而在 SEO 裏頭，最重要的第一項重點就是 meta 標籤，這也是要告訴搜尋引擎和社群網站，你的 blog 或是網站主旨是什麼，作者是誰，分享的縮圖是什麼...等這些我們認為理所當然的資訊，畢竟這些搜尋引擎的蜘蛛和社群網站的人工智慧，現在還無法分辨你我網站內容的重點，因此我們必須靠這些 meta 或結構化資料 itemprop，來告訴它們。</p>
 <p>本篇主要在介紹，如何正確設定分享文章到 google plus 以及 facebook 的標題、縮圖與內文概要，因為有了這些正確的設定，分享到社群網站就不會跳出莫名其妙的縮圖，同時在 google 的搜尋，也會呈現作者的大頭照與姓名，這些都是會吸引更多使用者瀏覽的好方法。</p>
 <p>這是在我的網站 header 裏頭，所加入的 meta 標籤：</p>
-<pre><code>&lt;meta name=&quot;author&quot; content=&quot;作者名稱&quot;&gt;
-&lt;meta name=&quot;copyright&quot; content=&quot;版權所有人名稱&quot;&gt;
+<pre class="prettyprint"><code>&lt;meta name="author" content="作者名稱"&gt;
+&lt;meta name="copyright" content="版權所有人名稱"&gt;
 
-&lt;link rel=&quot;author&quot; href=&quot;google plus 個人頁網址/posts&quot;&gt;
-&lt;link rel=&quot;publisher&quot; href=&quot;google plus 個人頁網址&quot;&gt;
-&lt;meta name=&quot;description&quot; content=&quot;網頁描述&quot;&gt;
+&lt;link rel="author" href="google plus 個人頁網址/posts"&gt;
+&lt;link rel="publisher" href="google plus 個人頁網址"&gt;
+&lt;meta name="description" content="網頁描述"&gt;
 
-&lt;meta itemprop=&quot;name&quot; content=&quot;網站名稱或標題&quot;&gt;
-&lt;meta itemprop=&quot;image&quot; content=&quot;要顯示的縮圖網址&quot;&gt;
-&lt;meta itemprop=&quot;description&quot; content=&quot;網頁描述&quot;&gt;
+&lt;meta itemprop="name" content="網站名稱或標題"&gt;
+&lt;meta itemprop="image" content="要顯示的縮圖網址"&gt;
+&lt;meta itemprop="description" content="網頁描述"&gt;
 
-&lt;meta property=&quot;og:title&quot; content=&quot;網站名稱或標題&quot; &gt;
-&lt;meta property=&quot;og:url&quot; content=&quot;網址&quot;&gt;
-&lt;meta property=&quot;og:image&quot; content=&quot;要顯示的縮圖網址&quot;&gt;
-&lt;meta property=&quot;og:description&quot; content=&quot;網頁描述&quot; &gt;
-</code></pre><p><br/>
-其中以下這三行，是寫給搜尋引擎看的 ( 特別是 google )，當中最重要的，就是<code>rel=&quot;author&quot;</code>這一句，有寫這一段，接下來我們就可以去去 google plus 進行互相認證的作業 ( 也就是要讓 google plus 確認這個網頁的作者是你 )</p>
-<pre><code>&lt;link rel=&quot;author&quot; href=&quot;google plus 個人頁網址/posts&quot;&gt;
-&lt;link rel=&quot;publisher&quot; href=&quot;google plus 個人頁網址&quot;&gt;
-&lt;meta name=&quot;description&quot; content=&quot;網頁描述&quot;&gt;
-</code></pre><p>而認證的過程，可以點選 <a href="http://www.google.com/webmasters/tools/richsnippets">google 結構化資料測試工具</a> 連結，進行相關的認證作業，認證的過程其實也很簡單，就是進入 google plus 的個人頁面，點選「帳戶」，點選「編輯個人資料」，接著將「連結」裏頭的「作品刊載於」，新增目前的網站，接著 google plus 就會去查詢你的網站是否有放上<code>rel=&quot;author&quot;</code>，如果有，就完成囉！</p>
-<p><br/>
+&lt;meta property="og:title" content="網站名稱或標題" &gt;
+&lt;meta property="og:url" content="網址"&gt;
+&lt;meta property="og:image" content="要顯示的縮圖網址"&gt;
+&lt;meta property="og:description" content="網頁描述" &gt;
+</code></pre><p><br>
+其中以下這三行，是寫給搜尋引擎看的 ( 特別是 google )，當中最重要的，就是<code>rel="author"</code>這一句，有寫這一段，接下來我們就可以去去 google plus 進行互相認證的作業 ( 也就是要讓 google plus 確認這個網頁的作者是你 )</p>
+<pre class="prettyprint"><code>&lt;link rel="author" href="google plus 個人頁網址/posts"&gt;
+&lt;link rel="publisher" href="google plus 個人頁網址"&gt;
+&lt;meta name="description" content="網頁描述"&gt;
+</code></pre><p>而認證的過程，可以點選 <a href="http://www.google.com/webmasters/tools/richsnippets">google 結構化資料測試工具</a> 連結，進行相關的認證作業，認證的過程其實也很簡單，就是進入 google plus 的個人頁面，點選「帳戶」，點選「編輯個人資料」，接著將「連結」裏頭的「作品刊載於」，新增目前的網站，接著 google plus 就會去查詢你的網站是否有放上<code>rel="author"</code>，如果有，就完成囉！</p>
+<p><br>
 而這三行是寫給 google plus 看的，分享到 google plus 上頭，就會正確顯示</p>
-<pre><code>&lt;meta itemprop=&quot;name&quot; content=&quot;網站名稱或標題&quot;&gt;
-&lt;meta itemprop=&quot;image&quot; content=&quot;要顯示的縮圖網址&quot;&gt;
-&lt;meta itemprop=&quot;description&quot; content=&quot;網頁描述&quot;&gt;
-</code></pre><p><br/>
+<pre class="prettyprint"><code>&lt;meta itemprop="name" content="網站名稱或標題"&gt;
+&lt;meta itemprop="image" content="要顯示的縮圖網址"&gt;
+&lt;meta itemprop="description" content="網頁描述"&gt;
+</code></pre><p><br>
 而這四行是寫給 facebook 看的，分享到 facebook 上頭，就會正確顯示，如果發現都已經照著設定了，分享時仍有問題，可以點選 <a href="https://developers.facebook.com/tools/debug">Facebook Debugger</a> 進行查詢和重新設定，完成後再次分享應該就不會有問題囉！</p>
-<pre><code>&lt;meta property=&quot;og:title&quot; content=&quot;網站名稱或標題&quot; &gt;
-&lt;meta property=&quot;og:url&quot; content=&quot;網址&quot;&gt;
-&lt;meta property=&quot;og:image&quot; content=&quot;要顯示的縮圖網址&quot;&gt;
-&lt;meta property=&quot;og:description&quot; content=&quot;網頁描述&quot; &gt;
-</code></pre><p><br/>
+<pre class="prettyprint"><code>&lt;meta property="og:title" content="網站名稱或標題" &gt;
+&lt;meta property="og:url" content="網址"&gt;
+&lt;meta property="og:image" content="要顯示的縮圖網址"&gt;
+&lt;meta property="og:description" content="網頁描述" &gt;
+</code></pre><p><br>
 當然 meta 標籤絕對不止這一些，因為除了 facebook 和 google plus，還有一個世界前三大的社群平台 twitter，以下列出在這些平台上完整的 meta 標籤語法，如果有需要也可以都加進自己的網站喔！</p>
-<pre><code>&lt;!-- Update your html tag to include the itemscope and itemtype attributes. --&gt; 
-&lt;html itemscope itemtype=&quot;http://schema.org/Article&quot;&gt;
+<pre class="prettyprint"><code>&lt;!-- Update your html tag to include the itemscope and itemtype attributes. --&gt; 
+&lt;html itemscope itemtype="http://schema.org/Article"&gt;
 
 &lt;!-- Place this data between the &lt;head&gt; tags of your website --&gt; 
 &lt;title&gt;Page Title. Maximum length 60-70 characters&lt;/title&gt; 
-&lt;meta name=&quot;description&quot; content=&quot;Page description. No longer than 155 characters.&quot; /&gt;
+&lt;meta name="description" content="Page description. No longer than 155 characters." /&gt;
 
 &lt;!-- Google Authorship and Publisher Markup --&gt; 
-&lt;link rel=&quot;author&quot; href=&quot; https://plus.google.com/[Google+_Profile]/posts&quot;/&gt;
-&lt;link rel=&quot;publisher&quot; href=” https://plus.google.com/[Google+_Page_Profile]&quot;/&gt;
+&lt;link rel="author" href=" https://plus.google.com/[Google+_Profile]/posts"/&gt;
+&lt;link rel="publisher" href=” https://plus.google.com/[Google+_Page_Profile]"/&gt;
 
 &lt;!-- Schema.org markup for Google+ --&gt; 
-&lt;meta itemprop=&quot;name&quot; content=&quot;The Name or Title Here&quot;&gt; 
-&lt;meta itemprop=&quot;description&quot; content=&quot;This is the page description&quot;&gt; 
-&lt;meta itemprop=&quot;image&quot; content=&quot; http://www.example.com/image.jpg&quot;&gt;
+&lt;meta itemprop="name" content="The Name or Title Here"&gt; 
+&lt;meta itemprop="description" content="This is the page description"&gt; 
+&lt;meta itemprop="image" content=" http://www.example.com/image.jpg"&gt;
 
 &lt;!-- Twitter Card data --&gt; 
-&lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt; 
-&lt;meta name=&quot;twitter:site&quot; content=&quot;@publisher_handle&quot;&gt; 
-&lt;meta name=&quot;twitter:title&quot; content=&quot;Page Title&quot;&gt; 
-&lt;meta name=&quot;twitter:description&quot; content=&quot;Page description less than 200 characters&quot;&gt; 
-&lt;meta name=&quot;twitter:creator&quot; content=&quot;@author_handle&quot;&gt; 
+&lt;meta name="twitter:card" content="summary_large_image"&gt; 
+&lt;meta name="twitter:site" content="@publisher_handle"&gt; 
+&lt;meta name="twitter:title" content="Page Title"&gt; 
+&lt;meta name="twitter:description" content="Page description less than 200 characters"&gt; 
+&lt;meta name="twitter:creator" content="@author_handle"&gt; 
 &lt;!-- Twitter summary card with large image must be at least 280x150px --&gt; 
-&lt;meta name=&quot;twitter:image:src&quot; content=&quot; http://www.example.com/image.html&quot;&gt;
+&lt;meta name="twitter:image:src" content=" http://www.example.com/image.html"&gt;
 
 &lt;!-- Open Graph data --&gt; 
-&lt;meta property=&quot;og:title&quot; content=&quot;Title Here&quot; /&gt; 
-&lt;meta property=&quot;og:type&quot; content=&quot;article&quot; /&gt; 
-&lt;meta property=&quot;og:url&quot; content=&quot; http://www.example.com/&quot; /&gt;
-&lt;meta property=&quot;og:image&quot; content=&quot; http://example.com/image.jpg&quot; /&gt;
-&lt;meta property=&quot;og:description&quot; content=&quot;Description Here&quot; /&gt; 
-&lt;meta property=&quot;og:site_name&quot; content=&quot;Site Name, i.e. Moz&quot; /&gt; 
-&lt;meta property=&quot;article:published_time&quot; content=&quot;2013-09-17T05:59:00+01:00&quot; /&gt; 
-&lt;meta property=&quot;article:modified_time&quot; content=&quot;2013-09-16T19:08:47+01:00&quot; /&gt; 
-&lt;meta property=&quot;article:section&quot; content=&quot;Article Section&quot; /&gt; 
-&lt;meta property=&quot;article:tag&quot; content=&quot;Article Tag&quot; /&gt; 
-&lt;meta property=&quot;fb:admins&quot; content=&quot;Facebook numberic ID&quot; /&gt;
+&lt;meta property="og:title" content="Title Here" /&gt; 
+&lt;meta property="og:type" content="article" /&gt; 
+&lt;meta property="og:url" content=" http://www.example.com/" /&gt;
+&lt;meta property="og:image" content=" http://example.com/image.jpg" /&gt;
+&lt;meta property="og:description" content="Description Here" /&gt; 
+&lt;meta property="og:site_name" content="Site Name, i.e. Moz" /&gt; 
+&lt;meta property="article:published_time" content="2013-09-17T05:59:00+01:00" /&gt; 
+&lt;meta property="article:modified_time" content="2013-09-16T19:08:47+01:00" /&gt; 
+&lt;meta property="article:section" content="Article Section" /&gt; 
+&lt;meta property="article:tag" content="Article Tag" /&gt; 
+&lt;meta property="fb:admins" content="Facebook numberic ID" /&gt;
 </code></pre><p>更多的資訊也可以參考 <a href="http://moz.com/blog/meta-data-templates-123">這個網站</a>，會更有幫助和收穫喔！<br>^<em>__</em>^</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -211,53 +178,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

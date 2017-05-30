@@ -1,100 +1,71 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>聲音參數與音量節點 ( AudioParam,GainNode ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-09-29T00:10:00+01:00">
-
-<meta name="keywords" content="music,audio,web audio api,AudioParam,GainNode">
-
-<meta name="description" content="上一篇我們有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
-
-<meta itemprop="name" content="聲音參數與音量節點 ( AudioParam,GainNode ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/20150929_1_01b.jpg">
-
-<meta itemprop="description" content="上一篇我們有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
-
-<meta property="og:title" content="聲音參數與音量節點 ( AudioParam,GainNode ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api-audioparam-gainnode.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/20150929_1_01b.jpg">
-
-<meta property="og:description" content="上一篇我們有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
-
-<title>聲音參數與音量節點 ( AudioParam,GainNode ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="上一篇 有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
+  <meta itemprop="description" content="上一篇 有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api-audioparam-gainnode.jpg">
+  <meta property="og:description" content="上一篇 有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
+  <meta property="og:title" content="聲音參數與音量節點 ( AudioParam,GainNode )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api-audioparam-gainnode.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api-audioparam-gainnode.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>聲音參數與音量節點 ( AudioParam,GainNode ) <span class="article-date" tag="web">SEP 29    , 2015</span></h2>
+<h1>聲音參數與音量節點 ( AudioParam,GainNode )</h1>
 <p><a href="http://www.oxxostudio.tw/articles/201509/web-audio-api.html">上一篇</a> 有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。</p>
 <p>AudioParam 主要用來控制 AudioNode 的運作，並且可以計算出從某個時間點到某個時間點數值的變化，以音量來說，利用 AudioParam 就可以做到淡入淡出的效果，AudioParam 包含了以下幾種方法 ( 詳細數學式說明可以參考 <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html#AudioParam">W3C 解釋</a> )：</p>
 <blockquote>
@@ -107,13 +78,13 @@
 <li>cancelScheduledValues：取消所有預定的參數的變化</li>
 </ul>
 </blockquote>
-<p><br/></p>
+<p><br></p>
 <p>舉例來說，今天我們有一段聲音，使用<code>setValueAtTime</code>就可以讓聲音做階層式的跳耀，範例讓 0 秒時音量 0，一秒時直接跳到 2，兩秒時直接跳到 4，依此類推到五秒，六秒的時候就會停止。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo01.html">web-audio-api-audioparam-gainnode-demo01.html</a> )</p>
-<pre><code>var AudioContext = AudioContext || webkitAudioContext;
+<pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
 var context      = new AudioContext;
 
 var oscillator = context.createOscillator();
-oscillator.type = &quot;square&quot;;
+oscillator.type = "square";
 oscillator.frequency.value = 440;
 oscillator.detune.value = 0;
 
@@ -134,7 +105,7 @@ oscillator.stop(context.currentTime+6);
 </code></pre><p>示意圖：</p>
 <p><img src="/img/articles/201509/20150929_1_02.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p>把剛剛的範例換成<code>linearRampToValueAtTime</code>，就不會是跳耀的聲音，而會是有漸大漸小的線性變化，會聽到先大聲，再小聲，接著更大聲然後聲音慢慢變小停止，過程共八秒。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo02.html">web-audio-api-audioparam-gainnode-demo02.html</a> )</p>
-<pre><code>gainNode.gain.linearRampToValueAtTime(0, context.currentTime+0); 
+<pre class="prettyprint"><code>gainNode.gain.linearRampToValueAtTime(0, context.currentTime+0); 
 gainNode.gain.linearRampToValueAtTime(3, context.currentTime+2); 
 gainNode.gain.linearRampToValueAtTime(1, context.currentTime+4); 
 gainNode.gain.linearRampToValueAtTime(5, context.currentTime+6); 
@@ -145,7 +116,7 @@ oscillator.stop(context.currentTime+8);
 </code></pre><p>示意圖：</p>
 <p><img src="/img/articles/201509/20150929_1_03.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p>同樣的，換成<code>exponentialRampToValueAtTime</code>就會採用指數函數的變化，不過由於是指數函數，所以傳入的數值「不可以等於零或小於零」，不然就會發生錯誤 ( 數學運算的緣故 )。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo03.html">web-audio-api-audioparam-gainnode-demo03.html</a> )</p>
-<pre><code>gainNode.gain.exponentialRampToValueAtTime(1, context.currentTime+0); 
+<pre class="prettyprint"><code>gainNode.gain.exponentialRampToValueAtTime(1, context.currentTime+0); 
 gainNode.gain.exponentialRampToValueAtTime(5, context.currentTime+3); 
 gainNode.gain.exponentialRampToValueAtTime(1, context.currentTime+6); 
 
@@ -154,7 +125,7 @@ oscillator.stop(context.currentTime+6);
 </code></pre><p>示意圖：</p>
 <p><img src="/img/articles/201509/20150929_1_04.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p>這個<code>setTargetAtTime</code>表示接近該數值的時候，用指數的方式前往該數值，有三個參數，第三個參數越大，表示漸變的斜率越緩和，越小則斜率越陡，數值變化的也越快，換句話說，也就是在幾秒內要變化到那個程度。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo04.html">web-audio-api-audioparam-gainnode-demo04.html</a> )</p>
-<pre><code>gainNode.gain.setValueAtTime(0, context.currentTime+1);
+<pre class="prettyprint"><code>gainNode.gain.setValueAtTime(0, context.currentTime+1);
 gainNode.gain.setTargetAtTime(3, context.currentTime+1, 0.1);  
 gainNode.gain.setTargetAtTime(5, context.currentTime+4, 2); 
 
@@ -163,7 +134,7 @@ oscillator.stop(context.currentTime+6);
 </code></pre><p>示意圖：</p>
 <p><img src="/img/articles/201509/20150929_1_05.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p><code>setValueCurveAtTime</code>表示自定曲線，由我們自訂的曲線變換至指定的數值，也有三個參數，範例是按照 W3C 所提供的範例做成。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo05.html">web-audio-api-audioparam-gainnode-demo05.html</a> )</p>
-<pre><code>var curveLength = 44100;
+<pre class="prettyprint"><code>var curveLength = 44100;
 var curve = new Float32Array(curveLength);
 for (var i = 0; i &lt; curveLength; ++i)
     curve[i] = Math.sin(Math.PI * i / curveLength);
@@ -177,37 +148,33 @@ oscillator.stop(context.currentTime+6);
 <p>以上就是利用 GainNode 來示範 AudioParam 的效果，有了這些淡入淡出控制數值的做法，之後在處理聲音上應該也就會更得心應手了。</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -215,53 +182,67 @@ oscillator.stop(context.currentTime+6);
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

@@ -1,117 +1,88 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>獲取錄音資訊 (getUserMedia) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2016-01-03T23:50:00+01:00">
-
-<meta name="keywords" content="music,audio,web audio api,rocorder">
-
-<meta name="description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。">
-
-<meta itemprop="name" content="獲取錄音資訊 (getUserMedia)  - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201601/20160103_2_01b.jpg">
-
-<meta itemprop="description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。">
-
-<meta property="og:title" content="獲取錄音資訊 (getUserMedia)  - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201601/web-audio-recorder.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201601/20160103_2_01b.jpg">
-
-<meta property="og:description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。">
-
-<title>獲取錄音資訊 (getUserMedia)  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。( 不過錄音需要用到 https，畢竟如果隨隨便便就可以錄，還真是滿危險的...XD )">
+  <meta itemprop="description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。( 不過錄音需要用到 https，畢竟如果隨隨便便就可以錄，還真是滿危險的...XD )">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201601/web-audio-recorder.jpg">
+  <meta property="og:description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。( 不過錄音需要用到 https，畢竟如果隨隨便便就可以錄，還真是滿危險的...XD )">
+  <meta property="og:title" content="獲取錄音資訊 (getUserMedia)">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201601/web-audio-recorder.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201601/web-audio-recorder.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>獲取錄音資訊 (getUserMedia) <span class="article-date" tag="web">JAN 3, 2016</span></h2>
+<h1>獲取錄音資訊 (getUserMedia)</h1>
 <p>當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。( 不過錄音需要用到 https，畢竟如果隨隨便便就可以錄，還真是滿危險的...XD )</p>
 <p>如果有遇到出現這個畫面，按下「進階」，點選「繼續前往 www.oxxostudio.tw 網站 (不安全)」即可，會出現這個畫面主要原因就是錄音需的網址要有 SSL 憑證，而我的部落格卻沒有買憑證所以是 http 開頭，才會有這個畫面出現，所以，要試用就只能先這樣囉~ ( 不過如果跑在本機端 localhost 就沒這問題 )</p>
 <p><img src="/img/articles/201601/20160103_2_06.jpg" alt="獲取錄音資訊"></p>
 <p>HTML 先放上兩個按鈕，一個是開始，一個是暫停。</p>
-<pre><code>&lt;button id=&quot;p&quot;&gt;play&lt;/button&gt;
-&lt;button id=&quot;s&quot;&gt;pause&lt;/button&gt;
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>&lt;button id="p"&gt;play&lt;/button&gt;
+&lt;button id="s"&gt;pause&lt;/button&gt;
+</code></pre><p><br></p>
 <p>然後因為我們錄音會動用到電腦的麥克風，所以要先看看瀏覽器有沒有支援，第一行是有沒有支援 Web Audio，第二行則是要確認可以支援使用者的 media 也就是視訊或麥克風的 API。( 不過現在視訊應該有安全性的限制，只有 https 能存取 )</p>
-<pre><code>window.AudioContext = window.AudioContext || window.webkitAudioContext;
+<pre class="prettyprint"><code>window.AudioContext = window.AudioContext || window.webkitAudioContext;
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p><code>getUserMedia</code>這個 API 用法就像下面這樣，<code>constraints</code>是一個物件 ( 可以參考 <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia#Parameters">MDN MediaDevices.getUserMedia()</a> )，可以設定 audio 或 video 的 true 或 false，<code>successCallback</code>和<code>errorCallback</code>就是成功和失敗時要做的事情。</p>
-<pre><code>navigator.getUserMedia(constraints, successCallback, errorCallback);
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>navigator.getUserMedia(constraints, successCallback, errorCallback);
+</code></pre><p><br></p>
 <p>知道用法後，就可以來寫一下把麥克風收到的聲音轉換為數值陣列的程式，開始一樣先宣告一些變數，然後把剛剛的<code>getUserMedia</code>API 放進來。</p>
-<pre><code>var s = document.getElementById(&#39;s&#39;);
-var p = document.getElementById(&#39;p&#39;);
+<pre class="prettyprint"><code>var s = document.getElementById('s');
+var p = document.getElementById('p');
 var timer;
 var context = new AudioContext();
 navigator.getUserMedia({audio: true}, function(stream) {
@@ -119,11 +90,11 @@ navigator.getUserMedia({audio: true}, function(stream) {
     //把要做的事情寫在這邊
 
 }, function(){
-  console.log(&#39;error&#39;);
+  console.log('error');
 });
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>接著就把要做的事情寫在裡面，先宣告一個 microphone 變數來用音訊處理器承接麥克風的音訊 ( createMediaStreamSource )，因為進來的都是即時的，所以用 analyser 來做處理，把音訊接到 analyser 上面後就做一些基本的設定，每 20ms 分析一次，完成後打開網頁 console，對著麥克風講話，應該就可以看到數值開始跑囉！不過這裡會把<code>analyser.connect(context.destination);</code>這段給移除掉，因為如果一邊錄音又一邊播放，就會產生無窮迴圈，喇叭就會發出非常刺耳的聲音。 ( 範例：<a href="https://www.oxxostudio.tw/demo/201601/web-audio-recorder-demo01.html">web-audio-recorder-demo01.html</a> )</p>
-<pre><code>var microphone = context.createMediaStreamSource(stream);
+<pre class="prettyprint"><code>var microphone = context.createMediaStreamSource(stream);
 var analyser = context.createAnalyser();
 microphone.connect(analyser);
 analyser.connect(context.destination);
@@ -154,7 +125,7 @@ function update(){
 <p>除了把麥克風擷取的聲音化作頻譜外，有沒有方法可以把聲音儲存下來呢？其實是有的，這裏要來介紹一隻 JavaScript：Recorderjs ( <a href="https://github.com/mattdiamond/Recorderjs">https://github.com/mattdiamond/Recorderjs</a> )，他可以直接幫我們把錄製到的聲音變成 wav 的形式儲存下來，為什麼要用這隻程式呢？其實 Web audio 也是可以儲存，但原始的儲存方式仍然受到 https 的影響，而這隻 js 就是幫我們處理掉這些惱人的過程，既然是 MIT 的 opensource，就直接用囉！</p>
 <p><img src="/img/articles/201601/20160103_2_04.jpg" alt="獲取錄音資訊"></p>
 <p>Recorder.js 有幾個 API 可以用，分別是<code>record()</code>負責錄音，<code>stop()</code>停止錄音，<code>clear()</code>清除錄音緩衝區暫存，<code>exportWAV()</code>產生 wav 檔案，修改上面兩個例子，寫法大概就像下面這樣，按下「錄音」按鈕的時候，先 new 一個 Recoder 物件，物件錄製的音訊就是我們剛剛用聲音處理器截取的 microphone，接著就用<code>record()</code>來錄音，停止錄音的按鈕一開始先把計時器停下來，然後用<code>stop()</code>停止錄音，並且產生 wav 檔案以及 wav 檔案的下載連結，然後<code>clear()</code>清除錄音緩衝區暫。</p>
-<pre><code>s.onclick = function(){
+<pre class="prettyprint"><code>s.onclick = function(){
   clearTimeout(timer);
   p.disabled = false;
   s.disabled = true;
@@ -170,61 +141,57 @@ p.onclick = function(){
   s.disabled = false;
   update();
 };
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>產生 wav 檔案的函式如下，使用<code>exportWAV</code>來產生一個 wav 物件，接著在畫面上用<code>createElement</code>創造一個 audio 標籤來裝載這個 wav 物件，就可以用 HTML5 的播放器來播放，不過因為要下載，所以這裡用了一個叫做<code>createObjectURL</code>的 Web API，目的在幫我們產生一個物件的連結 ( 可以參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/URL/createObjectURL">MDN URL.createObjectURL()</a> )，這樣就可以有下載連結下載囉！ </p>
-<pre><code>function createDownloadLink(){
+<pre class="prettyprint"><code>function createDownloadLink(){
   recorder.exportWAV(function(blob) {
     var url = URL.createObjectURL(blob);
-    var li = document.createElement(&#39;li&#39;);
-    var au = document.createElement(&#39;audio&#39;);
-    var hf = document.createElement(&#39;a&#39;);
+    var li = document.createElement('li');
+    var au = document.createElement('audio');
+    var hf = document.createElement('a');
 
     au.controls = true;
     au.src = url;
     hf.href = url;
-    hf.download = new Date().toISOString() + &#39;.wav&#39;;
+    hf.download = new Date().toISOString() + '.wav';
     hf.innerHTML = hf.download;
     li.appendChild(au);
     li.appendChild(hf);
     recordingslist.appendChild(li);
   });
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>完成後，打開網頁，按下錄音就可以開始錄音，同時也會看到聲音頻譜在跳動，錄音完成就會自動產生播放器試聽與下載聲音檔案，相當有趣味的啦！( 範例：<a href="https://www.oxxostudio.tw/demo/201601/web-audio-recorder-demo03.html">web-audio-recorder-demo03.html</a> )</p>
 <p><img src="/img/articles/201601/20160103_2_05.jpg" alt="獲取錄音資訊"></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -232,53 +199,67 @@ p.onclick = function(){
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

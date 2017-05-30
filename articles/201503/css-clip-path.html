@@ -1,100 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>運用 clip-path 的純 CSS 形狀變換 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-03-30T23:55:00+01:00">
-
-<meta name="keywords" content="css,css3,clip path,clip,polygon">
-
-<meta name="description" content="在單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭。">
-
-<meta itemprop="name" content="運用 clip-path 的純 CSS 形狀變換 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/20150330_1_01b.jpg">
-
-<meta itemprop="description" content="在單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭。">
-
-<meta property="og:title" content="運用 clip-path 的純 CSS 形狀變換 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/css-clip-path.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/20150330_1_01b.jpg">
-
-<meta property="og:description" content="在單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭。">
-
-<title>運用 clip-path 的純 CSS 形狀變換 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="在 單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
+」看起來有點眼熟，因為它原本就存在於 SVG 裡頭 ( 參考：SVG 研究之路 (9) - Clipping and Masking )，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
+  <meta itemprop="description" content="在 單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
+」看起來有點眼熟，因為它原本就存在於 SVG 裡頭 ( 參考：SVG 研究之路 (9) - Clipping and Masking )，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/css-clip-path.jpg">
+  <meta property="og:description" content="在 單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
+」看起來有點眼熟，因為它原本就存在於 SVG 裡頭 ( 參考：SVG 研究之路 (9) - Clipping and Masking )，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
+  <meta property="og:title" content="運用 clip-path 的純 CSS 形狀變換">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/css-clip-path.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/css-clip-path.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>運用 clip-path 的純 CSS 形狀變換  <span class="article-date" tag="css">MAR 30, 2015</span></h2>
+<h1>運用 clip-path 的純 CSS 形狀變換</h1>
 <p>在 <a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html">單一 div 的正多邊形變換 ( 純 CSS )</a> 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭 ( 參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html">SVG 研究之路 (9) - Clipping and Masking</a> )，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。</p>
 <p>最先看到這個屬性的應用，是從這個網站看到的：<a href="http://species-in-pieces.com/">http://species-in-pieces.com/</a> ，不得不說這個網站做得實在太神了，一開始看到還真以為是用 SVG 做的，沒想到竟然是用 CSS 刻出來的... 真是太驚人啦！</p>
@@ -109,12 +83,12 @@
 <li>如果繪製時採用「比例」的方式繪製，長寬就必須要先行設定，不然有可能繪製出來的長寬和我們想像的就會有落差，使用「像素」繪製就沒有這種問題。</li>
 </ul>
 </blockquote>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>圓形 circle( 半徑 at 圓心座標 )</strong></p>
 <p>  範例：<a href="/demo/201503/css-clip-path-demo1.html">css-clip-path-demo1.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_04.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .circle{
+<pre class="prettyprint"><code>  .circle{
     width:100px;
     height:100px;
     background:#0cc;
@@ -122,12 +96,12 @@
   }
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>橢圓形 ellipse( 長、短軸半徑 at 圓心座標 )</strong></p>
 <p>  範例：<a href="/demo/201503/css-clip-path-demo2.html">css-clip-path-demo2.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_05.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .ellipse{
+<pre class="prettyprint"><code>  .ellipse{
     width:100px;
     height:100px;
     background:#aaa;
@@ -135,12 +109,12 @@
   }
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>內置矩形 inset( 上右下左的邊距 round 上右下左圓角 )</strong></p>
 <p>  範例：<a href="/demo/201503/css-clip-path-demo3.html">css-clip-path-demo3.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_06.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .inset{
+<pre class="prettyprint"><code>  .inset{
     width:100px;
     height:100px;
     background:#99f;
@@ -148,12 +122,12 @@
   }
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正三角形</strong></p>
 <p>  範例：<a href="/demo/201503/css-clip-path-demo4.html">css-clip-path-demo4.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_07.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .a{
+<pre class="prettyprint"><code>  .a{
     width:100px;
     height:87px;
     background:#c00;
@@ -161,12 +135,12 @@
   }
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正方形</strong></p>
 <p>  範例：<a href="/demo/201503/css-clip-path-demo5.html">css-clip-path-demo5.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_08.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .b{
+<pre class="prettyprint"><code>  .b{
     width:100px;
     height:100px;
     background:#069;
@@ -174,12 +148,12 @@
   }
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正五邊形</strong></p>
 <p>  正五邊形就要計算一下了，<code>59/(59+95)=38.31%</code>，<code>31/(81*2)=19.14%</code>，範例：<a href="/demo/201503/css-clip-path-demo6.html">css-clip-path-demo6.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_09.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .c{
+<pre class="prettyprint"><code>  .c{
     width:162px;
     height:154px;
     background:#095;
@@ -187,12 +161,12 @@
   }
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正六邊形</strong></p>
 <p>  正六邊形的計算比較簡單，<code>50/(100+50*2)=25%</code>，<code>150/(100+50*2)=75%</code>，範例：<a href="/demo/201503/css-clip-path-demo7.html">css-clip-path-demo7.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_10.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .d{
+<pre class="prettyprint"><code>  .d{
     width:200px;
     height:174px;
     background:#f80;
@@ -200,12 +174,12 @@
   }
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正七邊形</strong></p>
 <p>  正七邊形是這裡頭需要計算最多的形狀，<code>22/(100+62*2)=10.09%</code>，<code>202/(100+62*2)=90.18%</code>，<code>43/(43+97+78)=19.72%</code>，<code>(43+97)/(43+97+78)=64.22%</code>，<code>62/(100+62*2)=27.68%</code>，<code>(100+62)/(100+62*2)=72.32%</code>，範例：<a href="/demo/201503/css-clip-path-demo8.html">css-clip-path-demo8.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_11.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .e{
+<pre class="prettyprint"><code>  .e{
     width:224px;
     height:218px;
     background:#09c;
@@ -213,12 +187,12 @@
   }
 </code></pre></li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正八邊形</strong></p>
 <p>  正八邊形的計算如下，<code>71/(100+71*2)=29.34%</code>，<code>(71+100)/(100+71*2)=70.66%</code>，範例：<a href="/demo/201503/css-clip-path-demo9.html">css-clip-path-demo9.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_12.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
-<pre><code>  .f{
+<pre class="prettyprint"><code>  .f{
     width:242px;
     height:242px;
     background:#f69;
@@ -226,57 +200,53 @@
   }
 </code></pre></li>
 </ul>
-<p><br/>
+<p><br>
 熟練了 clip-path 之後，當然就要用它來做點動畫，下面提供兩個範例，第一個是正多邊形的變換，第二個則是三角形的變換組合，雖然看起來很簡單，但實際製作起來卻要考慮每個點的座標，為了讓形狀不要有「翻轉」的錯覺，<strong>形狀裡頭每個點在進行移動的時候，盡可能的不要交錯</strong>，因為只要一交錯，就會有交集的空白產生，就會有不自然或是翻轉的現象喔！當然同樣的，如果你希望有翻轉的效果，應該就要讓他們交錯囉！</p>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>正多邊形的變換</strong></p>
 <p>  範例：<a href="/demo/201503/css-clip-path-demo10.html">css-clip-path-demo10.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_13.gif" alt="運用 clip-path 的純 CSS 形狀變換"></p>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>三角形的變換組合</strong></p>
 <p>  範例：<a href="/demo/201503/css-clip-path-demo11.html">css-clip-path-demo11.html</a></p>
 <p>  <img src="/img/articles/201503/20150330_1_14.gif" alt="運用 clip-path 的純 CSS 形狀變換"></p>
 </li>
 </ul>
-<p><br/>
+<p><br>
 以上就是利用 clip-path 所完成的純 CSS 形狀變換，如果你不喜歡這種方式，或是瀏覽器還有一些哩哩摳摳的支援度問題，也可以純粹使用偽元素來進行形狀的變換，請參考上一篇 <a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html">單一 div 的正多邊形變換 ( 純 CSS )</a></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -284,53 +254,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

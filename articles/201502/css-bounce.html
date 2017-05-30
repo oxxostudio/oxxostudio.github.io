@@ -1,108 +1,79 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>有趣的 CSS 彈跳動畫 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-02-09T23:45:00+01:00">
-
-<meta name="keywords" content="css,bounce,animation,transform,彈跳,css 動畫">
-
-<meta name="description" content="這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。">
-
-<meta itemprop="name" content="有趣的 CSS 彈跳動畫 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201502/20150209_1_01.gif">
-
-<meta itemprop="description" content="這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。">
-
-<meta property="og:title" content="有趣的 CSS 彈跳動畫 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201502/css-bounce.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201502/20150209_1_01.gif">
-
-<meta property="og:description" content="這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。">
-
-<title>有趣的 CSS 彈跳動畫 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。">
+  <meta itemprop="description" content="這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201502/css-bounce.jpg">
+  <meta property="og:description" content="這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。">
+  <meta property="og:title" content="有趣的 CSS 彈跳動畫">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201502/css-bounce.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201502/css-bounce.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>有趣的 CSS 彈跳動畫  <span class="article-date" tag="css">FEB 9, 2015</span></h2>
+<h1>有趣的 CSS 彈跳動畫</h1>
 <p>這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。</p>
 <p>由於只使用了一個 div，要同時達到正方形旋轉與陰影縮放的效果，這裡必須使用兩個偽元素 ( before 與 after ) 來完成，嚴格來說，雖然只有一個 div，但是卻是把這個 div 當作外框，讓偽元素 before 作為旋轉的正方形，讓偽元素 after 作為陰影，如果對於偽元素不太了解的，可以參考我之前寫的這篇：<a href="http://www.oxxostudio.tw/articles/201407/css-clock.html">電子時鐘效果 ( CSS 偽元素的應用 )</a></p>
-<pre><code>.box{
+<pre class="prettyprint"><code>.box{
   position:relative;
 
 }
 .box:before{
-  content:&#39;&#39;;
+  content:'';
   position:absolute;
   z-index:2;
   top:60px;
@@ -114,7 +85,7 @@
   transform: rotate(45deg);
 }
 .box:after{
-  content:&#39;&#39;;
+  content:'';
   position:absolute;
   z-index:1;
   top:128px;
@@ -125,10 +96,10 @@
   border-radius:100%;
 }
 </code></pre><p><img src="/img/articles/201502/20150209_1_02.jpg" alt="有趣的 CSS 彈跳動畫"></p>
-<p><br/>
+<p><br>
 畫出正方形與陰影之後，再來就是要做動畫了，為了避免太過複雜，這裡我們先不要旋轉，先單純讓正方形上下跳動，然後陰影會放大縮小，下面的範例的動畫，有新增了 20% 與 80% 的 keyframe，目的是為了讓接觸的時候角落才會變圓，不然就會變成剛開始移動時尖角就變圓，就會很怪異了。(範例：<a href="/demo/201502/css-bounce-demo1.html">css-bounce-demo1.html</a>)</p>
-<pre><code>.box:before{
-  content:&#39;&#39;;
+<pre class="prettyprint"><code>.box:before{
+  content:'';
   position:absolute;
   z-index:2;
   top:60px;
@@ -159,7 +130,7 @@
   }
 }
 .box:after{
-  content:&#39;&#39;;
+  content:'';
   position:absolute;
   z-index:1;
   top:128px;
@@ -185,9 +156,9 @@
   }
 }
 </code></pre><p><img src="/img/articles/201502/20150209_1_03.gif" alt="有趣的 CSS 彈跳動畫"></p>
-<p><br/>
+<p><br>
 了解原理之後，我們只要再加上旋轉的屬性，就可以達到彈跳起來的時候有旋轉的效果，不過這裡又有用到一個小技巧，就是落下的時候是 90 度轉到 45 度，彈上去的時候從 45 旋轉到 0 度，然後在這一瞬間從 0 度變成 90 度 ( 100% 到 0% )，如此一來我們就會產生錯覺，感覺好像一直在旋轉了。(範例：<a href="/demo/201502/css-bounce-demo2.html">css-bounce-demo2.html</a>)</p>
-<pre><code>@-webkit-keyframes box{
+<pre class="prettyprint"><code>@-webkit-keyframes box{
   0%{
     top:50px;
     transform: rotate(90deg); /**/
@@ -209,45 +180,41 @@
   }
 }
 </code></pre><p><img src="/img/articles/201502/20150209_1_04.gif" alt="有趣的 CSS 彈跳動畫"></p>
-<p><br/>
+<p><br>
 舉一反三，我們也可以把角度反轉，就會往另外一邊彈跳。(範例：<a href="/demo/201502/css-bounce-demo3.html">css-bounce-demo3.html</a>)</p>
 <p><img src="/img/articles/201502/20150209_1_05.gif" alt="有趣的 CSS 彈跳動畫"></p>
-<p><br/>
+<p><br>
 如果我們把動畫裡頭添加 linear，就會變成線性的連續方式喔。(範例：<a href="/demo/201502/css-bounce-demo4.html">css-bounce-demo4.html</a>)</p>
 <p><img src="/img/articles/201502/20150209_1_06.gif" alt="有趣的 CSS 彈跳動畫"></p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -255,53 +222,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

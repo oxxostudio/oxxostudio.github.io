@@ -1,145 +1,111 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>CSS 文字的換行 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-06-02T23:18:00+01:00">
-
-<meta name="keywords" content="css,css3,文字斷行,文字換行">
-
-<meta name="description" content="這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來 pre 的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
-
-<meta itemprop="name" content="CSS 文字的換行 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140602_2_01.jpg">
-
-<meta itemprop="description" content="這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來 pre 的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
-
-
-<meta property="og:title" content="CSS 文字的換行 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-word-break.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140602_2_01.jpg">
-
-<meta property="og:description" content="這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來 pre 的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
-
-<title>CSS 文字的換行 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="由於響應式網頁技術的興起，間接造成排版上不小的挑戰和創新，其中的一小部分就是文字的排版，這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來pre的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
+  <meta itemprop="description" content="由於響應式網頁技術的興起，間接造成排版上不小的挑戰和創新，其中的一小部分就是文字的排版，這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來pre的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/css-word-break.jpg">
+  <meta property="og:description" content="由於響應式網頁技術的興起，間接造成排版上不小的挑戰和創新，其中的一小部分就是文字的排版，這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來pre的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
+  <meta property="og:title" content="CSS 文字的換行">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-word-break.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/css-word-break.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>CSS 文字的換行 <span class="article-date" tag="css">JUN 2, 2014</span></h2>
-<p><img src="/img/articles/201406/20140602_2_01.jpg" class="preview-img"></p>
+<h1>CSS 文字的換行</h1>
+<p><img src="/img/articles/201406/css-word-break.jpg" class="preview-img" alt=""></p>
 <p>由於響應式網頁技術的興起，間接造成排版上不小的挑戰和創新，其中的一小部分就是文字的排版，這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來<code>pre</code>的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。</p>
 <p>在網頁裡頭文字斷行會遇到兩種情況，第一種就是單純的文字，第二種就是被<code>pre</code>所包覆的文字，通常在<code>pre</code>裏頭，都會是完整的呈現程式碼，也是最基本展現程式碼的標籤，或許是因為這樣子的差異，我們如果只將斷行的 CSS 設定在網頁上，對於<code>pre</code>內的程式碼是沒有作用的 ( 不過如果有設定<code>overflow:scroll</code>這種方式又另當別論 )，以下整理了所有斷行的方式，如果未來又遇到的話，也才有個比較完整的參考。</p>
-<h3>word-wrap</h3>
-<p>強迫文字斷行，預設是 normal 不會斷行，但這是針對<strong>過長的英文文字</strong>，如果是<strong>整段句子</strong>還是會斷行的，我們今天要讓英文字斷行，可以直接在 CSS 寫上<code>word-wrap:break-word;</code>，這樣過長的文字就會直接被折行，除了直接由外框寬度折行，也可以在過長的文字當中加入<code>&amp;shy;</code>這個瀏覽器不會顯示的語法，這樣子過長的英文字，就會在有加入<code>&amp;shy;</code>的地方折行，同時補上「-」的符號。( 也可以加入<code>&amp;#8203;</code>這個代碼，但不會補「-」，只會補上空白 )<br>可以參考這個範例：<a href="http://codepen.io/oxxo/pen/nisIq">http://codepen.io/oxxo/pen/nisIq</a>  </p>
+<p>###word-wrap### 
+強迫文字斷行，預設是 normal 不會斷行，但這是針對<strong>過長的英文文字</strong>，如果是<strong>整段句子</strong>還是會斷行的，我們今天要讓英文字斷行，可以直接在 CSS 寫上<code>word-wrap:break-word;</code>，這樣過長的文字就會直接被折行，除了直接由外框寬度折行，也可以在過長的文字當中加入<code>&amp;shy;</code>這個瀏覽器不會顯示的語法，這樣子過長的英文字，就會在有加入<code>&amp;shy;</code>的地方折行，同時補上「-」的符號。( 也可以加入<code>&amp;#8203;</code>這個代碼，但不會補「-」，只會補上空白 )<br>可以參考這個範例：<a href="http://codepen.io/oxxo/pen/nisIq">http://codepen.io/oxxo/pen/nisIq</a>  </p>
 <p><img src="/img/articles/201406/20140602_2_02.png" alt="word-wrap"></p>
-<h3>white-space</h3>
-<p>由於<code>word-wrap</code>只能讓英文單字換行，對於整段文章無法換行該怎麼做呢？這時候我們就需要用到<code>white-space</code>的屬性，有興趣的人也可以參考 w3schools 的 <a href="http://www.w3schools.com/cssref/pr_text_white-space.asp">說明</a> 和 <a href="http://www.w3schools.com/cssref/playit.asp?filename=playcss_white-space">範例</a>，如果我們只是要單純地讓一段文章不要換行，可以使用<code>white-space:nowrap;</code>的方式，就可以讓一段文章不要換行，而這裡還有個有趣的小技巧，就是搭配<code>overflow:hidden;</code>和<code>text-overflow:ellipsis;</code>，還可以做出文字後方變成「...」的效果喔！ </p>
+<p>###white-space###
+由於<code>word-wrap</code>只能讓英文單字換行，對於整段文章無法換行該怎麼做呢？這時候我們就需要用到<code>white-space</code>的屬性，有興趣的人也可以參考 w3schools 的 <a href="http://www.w3schools.com/cssref/pr_text_white-space.asp">說明</a> 和 <a href="http://www.w3schools.com/cssref/playit.asp?filename=playcss_white-space">範例</a>，如果我們只是要單純地讓一段文章不要換行，可以使用<code>white-space:nowrap;</code>的方式，就可以讓一段文章不要換行，而這裡還有個有趣的小技巧，就是搭配<code>overflow:hidden;</code>和<code>text-overflow:ellipsis;</code>，還可以做出文字後方變成「...」的效果喔！ </p>
 <p>可以參考這個範例：<a href="http://codepen.io/oxxo/pen/GjFwL">http://codepen.io/oxxo/pen/GjFwL</a>  </p>
 <p><img src="/img/articles/201406/20140602_2_03.png" alt="white-space">  </p>
 <p>除此之外，在面對<code>pre</code>標籤的時候，<code>white-space:nowrap;</code>就無用武之處了，這時候我們就必須使用<code>white-space:pre-wrap;</code>，如此一來，在<code>pre</code>內的文字和程式碼，也就會斷行囉！</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -147,53 +113,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

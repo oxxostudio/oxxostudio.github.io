@@ -1,105 +1,76 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>電子時鐘效果 ( CSS 偽元素的應用 ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-07-17T22:25:00+01:00">
-
-<meta name="keywords" content="css,css3,css clock,css 偽元素">
-
-<meta name="description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
-
-<meta itemprop="name" content="電子時鐘效果 ( CSS 偽元素的應用 ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/20140717_1_01.jpg">
-
-<meta itemprop="description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
-
-<meta property="og:title" content="電子時鐘效果 ( CSS 偽元素的應用 ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-clock.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/20140717_1_01.jpg">
-
-<meta property="og:description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
-
-<title>電子時鐘效果 ( CSS 偽元素的應用 ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )<br>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
+  <meta itemprop="description" content="電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )<br>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/css-clock.jpg">
+  <meta property="og:description" content="電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )<br>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
+  <meta property="og:title" content="電子時鐘效果 ( CSS 偽元素的應用 )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-clock.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/css-clock.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>電子時鐘效果 ( CSS 偽元素的應用 ) <span class="article-date" tag="css">JUL 17, 2014</span></h2>
-<p><img src="/img/articles/201407/20140717_1_01.jpg" class="preview-img"></p>
+<h1>電子時鐘效果 ( CSS 偽元素的應用 )</h1>
+<p><img src="/img/articles/201407/css-clock.jpg" class="preview-img" alt=""></p>
 <p><a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6078331350941696">電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )</a><br>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。</p>
 <p>首先介紹一下偽元素這個東西，為什麼稱呼這東西叫做偽元素呢？簡單來說，偽元素並不存在於標準的 HTML 元素當中，而是跟隨在每個元素裡頭，一前一後共有兩個，分別是<code>::befor</code>和<code>::after</code>，當我們在 CSS 裡頭寫出<code>a::before</code>或<code>a::after</code>的時候，就等同於在這個 a 元素的前後加上了兩個假的元素，我們就可以更靈活的去針對 a 元素做變化。( 可以看看下面這張圖和對應的程式碼就比較清楚，搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256">範例檔案</a> ）</p>
 <p><img src="/img/articles/201407/20140717_1_02.png" alt="CSS Clock"></p>
-<pre><code>.a{
+<pre class="prettyprint"><code>.a{
   width:100px;
   height:50px;
   background:red;
@@ -107,7 +78,7 @@
   color:#fff;
 }
 .a::before{   /* 藍色的 before 區塊 */
-  content:&#39;before&#39;;
+  content:'before';
   width:50px;
   height:50px;
   background:blue;
@@ -117,7 +88,7 @@
   left:-50px;
 }
 .a::after{    /* 綠色的 after 區塊 */
-  content:&#39;after&#39;;
+  content:'after';
   width:50px;
   height:50px;
   background:green;
@@ -126,38 +97,38 @@
   top:0;
   right:-50px;
 }
-</code></pre><p><br/></p>
-<p>比較需要注意的，偽元素一定要加上<code>content:&#39;&#39;;</code>的屬性，這個屬性是讓我們可以在偽元素直接填入純文字內容，也可以使用像 alert  一樣的換行語法，這個值基本上都可以為空，但你也可以使用它搭配 HTML5  的 data attributes，就能做出更多的互動變化，也因為偽元素原本是 inline 的屬性，我們若要讓它俱有長寬，就要將其改為 block 或 inline-block。此外，如果要精准控制偽元素的位置，可以把本體的 position 設為 relative，偽元素的 position 設為 absolute，就可以由 top、left、right、bottom 控制位置。</p>
+</code></pre><p><br></p>
+<p>比較需要注意的，偽元素一定要加上<code>content:'';</code>的屬性，這個屬性是讓我們可以在偽元素直接填入純文字內容，也可以使用像 alert  一樣的換行語法，這個值基本上都可以為空，但你也可以使用它搭配 HTML5  的 data attributes，就能做出更多的互動變化，也因為偽元素原本是 inline 的屬性，我們若要讓它俱有長寬，就要將其改為 block 或 inline-block。此外，如果要精准控制偽元素的位置，可以把本體的 position 設為 relative，偽元素的 position 設為 absolute，就可以由 top、left、right、bottom 控制位置。</p>
 <p>了解了基本的偽元素之後，就可以做出這個時鐘效果了嗎？當然是不行呦～我們還必須要先了解邊框 ( border ) 的概念，如果今天一個正方形的長寬都是 0，但四個邊都有 10px 的寬度，出來的樣子就會像下圖這樣 ( 搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256">範例檔案</a> )</p>
 <p><img src="/img/articles/201407/20140717_1_03.png" alt="CSS Clock"></p>
-<pre><code>.b{
+<pre class="prettyprint"><code>.b{
   width:0;
   height:0;
   border-width:20px;
   border-style:solid;
   border-color:red blue green yellow; /* 上右下左，順時針方向四個邊 */
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>我們如果把邊框的底色設為透明，就可以輕鬆地做出三角形的效果，當然如果搭配 CSS3 的旋轉或變形，就可以做出更多形狀的變化。( 搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256">範例檔案</a> )</p>
 <p><img src="/img/articles/201407/20140717_1_04.png" alt="CSS Clock"></p>
-<pre><code>.c{
+<pre class="prettyprint"><code>.c{
   width:0;
   height:0;
   border-width:20px;
   border-style:solid;
   border-color:rgba(0,0,0,0) rgba(0,0,0,1); /* 上下、左右 */
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>搭配本體的元素，就能夠做出箭頭。( 搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256">範例檔案</a> )</p>
 <p><img src="/img/articles/201407/20140717_1_05.png" alt="CSS Clock"></p>
-<pre><code>.d{
+<pre class="prettyprint"><code>.d{
   width:100px;
   height:50px;
   background:rgba(255,200,0,1);
   position:relative;
 }
 .d::after{
-  content:&#39;&#39;;
+  content:'';
   width:0;
   height:0;
   border-width:25px;
@@ -168,10 +139,10 @@
   border-color:rgba(255,200,0,0) rgba(255,200,0,0) rgba(255,200,0,0) rgba(255,200,0,1);
   /* 上右下三個邊的邊框顏色是透明的 */
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>基本知識都都了解了之後，我們只要把各個箭頭 ( 總共七個 ) 組成八的形狀，就可以做出像液晶電子數字的 8 。 ( 搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256">範例檔案</a> )</p>
 <p><img src="/img/articles/201407/20140717_1_06.png" alt="CSS Clock"></p>
-<pre><code>.clock{
+<pre class="prettyprint"><code>.clock{
   margin:20px;
 }
 .show-time{
@@ -192,7 +163,7 @@
   height: 6px;
 }
 .clock span::before, .clock span::after {    /* 偽元素的基本樣式 */
-  content:&#39;&#39;;
+  content:'';
   position: absolute;
   border: 3px solid rgba(0, 0, 0, 0);
   width:0;
@@ -234,9 +205,9 @@
   bottom: -6px;
   border-top-color: #000;
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>接著只要在針對不同的數字，讓不同的箭頭消失，就可以做出 0~9 的數字效果。</p>
-<pre><code>.clock-1 span.s1,.clock-1 span.s2,.clock-1 span.s4,.clock-1 span.s5,.clock-1 span.s7{
+<pre class="prettyprint"><code>.clock-1 span.s1,.clock-1 span.s2,.clock-1 span.s4,.clock-1 span.s5,.clock-1 span.s7{
   opacity:0;
 }
 .clock-2 span.s2,.clock-2 span.s6{
@@ -265,41 +236,37 @@
 .clock-0 span.s4{
   opacity:0;
 }
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 <p>會做這些效果之後，只需要再利用 JS 抓取電腦時間，加上其他的 CSS 排版，就能做出非常擬真的電子時鐘囉！最後再看一次範例：<a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6078331350941696">電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )</a> </p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -307,53 +274,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

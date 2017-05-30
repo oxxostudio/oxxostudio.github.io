@@ -1,214 +1,181 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG 研究之路 (7) - fill 填色 - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2014-06-14T23:55:00+01:00">
-
-<meta name="keywords" content="SVG,fill,向量,填色">
-
-<meta name="description" content="fill 填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩。">
-
-<meta itemprop="name" content="SVG 研究之路 (7) - fill 填色 - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/20140614_1_01.jpg">
-
-<meta itemprop="description" content="fill 填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩。">
-
-<meta property="og:title" content="SVG 研究之路 (7) - fill 填色 - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/20140614_1_01.jpg">
-
-<meta property="og:description" content="fill 填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩。">
-
-<title>SVG 研究之路 (7) - fill 填色 - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="介紹過了 stroke 邊框之後，接下來就要介紹 fill 填色，填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩，以下將分別介紹三種填色的方式：">
+  <meta itemprop="description" content="介紹過了 stroke 邊框之後，接下來就要介紹 fill 填色，填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩，以下將分別介紹三種填色的方式：">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-07-fill.jpg">
+  <meta property="og:description" content="介紹過了 stroke 邊框之後，接下來就要介紹 fill 填色，填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩，以下將分別介紹三種填色的方式：">
+  <meta property="og:title" content="SVG 研究之路 (7) - fill 填色">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-07-fill.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG 研究之路 (7) - fill 填色 <span class="article-date" tag="web">JUN 14, 2014</span></h2>
+<h1>SVG 研究之路 (7) - fill 填色</h1>
 <p>介紹過了 stroke 邊框之後，接下來就要介紹 fill 填色，填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩，以下將分別介紹三種填色的方式：</p>
 <ul>
 <li><p><strong>基本純色</strong><br>基本純色其實沒什麼特別的，只需要在 fill 裏頭加上顏色的名稱或是色碼，就可以完成</p>
 <p>  <img src="/img/articles/201406/20140614_1_02.png" alt="SVG-fill"></p>
-<pre><code>  &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; fill=&quot;#f40&quot;&gt;&lt;/rect&gt;
-  &lt;rect x=&quot;170&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; fill=&quot;#0f5&quot;&gt;&lt;/rect&gt;
-  &lt;rect x=&quot;290&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;10&quot; fill=&quot;#09f&quot;&gt;&lt;/rect&gt;
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>  &lt;rect x="50" y="50" width="100" height="100" stroke="#000" stroke-width="10" fill="#f40"&gt;&lt;/rect&gt;
+  &lt;rect x="170" y="50" width="100" height="100" stroke="#000" stroke-width="10" fill="#0f5"&gt;&lt;/rect&gt;
+  &lt;rect x="290" y="50" width="100" height="100" stroke="#000" stroke-width="10" fill="#09f"&gt;&lt;/rect&gt;
+</code></pre><p><br></p>
 </li>
 <li><p><strong>漸層</strong><br>SVG 裏頭的漸層做法比較特殊，首先要先建立一個漸層的定義檔，接著讓需要漸層的元件，指向這個定義檔，就可以讓元件具有漸層，除了漸層是這麼做的，SVG 文字的變化也有一部分是使用定義檔來表現，會之後的篇幅提到。至於定義檔的寫法，會在外層統一用一個<code>&lt;defs&gt;&lt;/defs&gt;</code>( definitions ) 的標籤包著，這樣也方便識別當中的標籤是定義檔 ( 我測試過不包也是可以，不過基於 W3C 的定義規則，還是包起來吧 )，接著在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭加入<code>&lt;linearGradient&gt;&lt;/linearGradient&gt;</code>的標籤，這就完成了<strong>線性漸層</strong>漸層定義檔的架構 ( 放射狀漸層使用<code>&lt;radialGradient&gt;&lt;/radialGradient&gt;</code> ) ，不過別急，還沒結束，<code>&lt;linearGradient&gt;&lt;/linearGradient&gt;</code>裏頭還有漸層顏色的設定，就是使用<code>&lt;stop&gt;</code>的標籤來設定，可以看看下面的設定：</p>
-<pre><code>  &lt;defs&gt;
-     &lt;linearGradient id=&quot;a1&quot;&gt;
-       &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
-       &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+     &lt;linearGradient id="a1"&gt;
+       &lt;stop offset="5%" stop-color="#F00" /&gt;
+       &lt;stop offset="95%" stop-color="#ff0" /&gt;
      &lt;/linearGradient&gt;
   &lt;/defs&gt;
-</code></pre><p>  <br/></p>
+</code></pre><p>  <br></p>
 <p>  由上面的定義檔可以看到，我們給<code>&lt;linearGradient&gt;&lt;/linearGradient&gt;</code>加上了<code>id</code>，這是為了讓要套用這個定義檔的元件可以有一個指向的參考，這樣不同的元件只要套用同一個定義檔，就可以套用同樣的漸層，而<code>stop</code>裏頭的<code>offset</code>，使用百分比進行設定，<code>stop-color</code>則是該位置的顏色，可以自行添加<code>stop</code>的數量決定漸層顏色的數量。</p>
 <p>  <img src="/img/articles/201406/20140614_1_03.png" alt="SVG-fill"></p>
-<pre><code>  &lt;rect x=&quot;50&quot; y=&quot;250&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;#000&quot; stroke-width=&quot;5&quot; fill=&quot;url(#a1)&quot;&gt;&lt;/rect&gt;
-  &lt;circle cx=&quot;220&quot; cy=&quot;300&quot; r=&quot;50&quot; stroke=&quot;#000&quot; stroke-width=&quot;5&quot; fill=&quot;url(#a1)&quot;&gt;&lt;/circle&gt;
-  &lt;rect x=&quot;290&quot; y=&quot;250&quot; width=&quot;100&quot; height=&quot;100&quot; stroke=&quot;url(#a1)&quot; stroke-width=&quot;5&quot; fill=&quot;none&quot;&gt;&lt;/rect&gt;
-</code></pre><p>  <br/></p>
+<pre class="prettyprint"><code>  &lt;rect x="50" y="250" width="100" height="100" stroke="#000" stroke-width="5" fill="url(#a1)"&gt;&lt;/rect&gt;
+  &lt;circle cx="220" cy="300" r="50" stroke="#000" stroke-width="5" fill="url(#a1)"&gt;&lt;/circle&gt;
+  &lt;rect x="290" y="250" width="100" height="100" stroke="url(#a1)" stroke-width="5" fill="none"&gt;&lt;/rect&gt;
+</code></pre><p>  <br></p>
 <p>  我們也可以設定剛剛提過了<code>&lt;radialGradient&gt;&lt;/radialGradient&gt;</code>的<strong>放射狀</strong>漸層。</p>
 <p>  <img src="/img/articles/201406/20140614_1_04.png" alt="SVG-fill"></p>
-<pre><code>  &lt;defs&gt;
-     &lt;radialGradient id=&quot;a1&quot;&gt;
-       &lt;stop offset=&quot;5%&quot; stop-color=&quot;#ff0&quot; /&gt;
-       &lt;stop offset=&quot;95%&quot; stop-color=&quot;#f00&quot; /&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+     &lt;radialGradient id="a1"&gt;
+       &lt;stop offset="5%" stop-color="#ff0" /&gt;
+       &lt;stop offset="95%" stop-color="#f00" /&gt;
      &lt;/radialGradient&gt;
   &lt;/defs&gt;
-</code></pre><p>  <br/></p>
+</code></pre><p>  <br></p>
 <p>  如果看到這邊你認為結束了，那就太小看 SVG 漸層了，<code>linearGradient</code>與<code>radialGradient</code>標籤裏頭其實還有很多的屬性可以設定，可以設定線性漸層的方向，以及放射狀漸層的圓心。( 別忘了也都是用百分比設定 )</p>
 <ul>
 <li><p>換成垂直的漸層：</p>
 <p>  <img src="/img/articles/201406/20140614_1_05.png" alt="SVG-fill"></p>
-<pre><code>  &lt;defs&gt;
-     &lt;linearGradient id=&quot;a1&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;0%&quot; y2=&quot;100%&quot;&gt;
-       &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
-       &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+     &lt;linearGradient id="a1" x1="0%" y1="0%" x2="0%" y2="100%"&gt;
+       &lt;stop offset="5%" stop-color="#F00" /&gt;
+       &lt;stop offset="95%" stop-color="#ff0" /&gt;
      &lt;/linearGradient&gt;
   &lt;/defs&gt;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 </li>
 <li><p>換成傾斜的漸層</p>
 <p>  <img src="/img/articles/201406/20140614_1_06.png" alt="SVG-fill"></p>
-<pre><code>  &lt;defs&gt;
-     &lt;linearGradient id=&quot;a1&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;&gt;
-       &lt;stop offset=&quot;5%&quot; stop-color=&quot;#F00&quot; /&gt;
-       &lt;stop offset=&quot;95%&quot; stop-color=&quot;#ff0&quot; /&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+     &lt;linearGradient id="a1" x1="0%" y1="0%" x2="100%" y2="100%"&gt;
+       &lt;stop offset="5%" stop-color="#F00" /&gt;
+       &lt;stop offset="95%" stop-color="#ff0" /&gt;
      &lt;/linearGradient&gt;
   &lt;/defs&gt;
-</code></pre><p><br/></p>
+</code></pre><p><br></p>
 </li>
 <li><p>改變中心點的漸層</p>
 <p>  <img src="/img/articles/201406/20140614_1_07.png" alt="SVG-fill"></p>
-<pre><code>  &lt;defs&gt;
-     &lt;radialGradient id=&quot;a1&quot; cx=&quot;20%&quot; cy=&quot;40%&quot;&gt;
-       &lt;stop offset=&quot;5%&quot; stop-color=&quot;#ff0&quot; /&gt;
-       &lt;stop offset=&quot;95%&quot; stop-color=&quot;#f00&quot; /&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+     &lt;radialGradient id="a1" cx="20%" cy="40%"&gt;
+       &lt;stop offset="5%" stop-color="#ff0" /&gt;
+       &lt;stop offset="95%" stop-color="#f00" /&gt;
      &lt;/radialGradient&gt;
   &lt;/defs&gt;
 </code></pre></li>
 </ul>
 </li>
 </ul>
-<p><br/></p>
+<p><br></p>
 <ul>
 <li><p><strong>圖案</strong><br>  看完了漸層，最後一個就是利用圖案來表現 fill ，要利用圖案來填色，第一步仍然是和漸層使用相同的做法，就是先建立一個定義檔，接著在<code>defs</code>裡加入<code>&lt;pattern&gt;&lt;/pattern&gt;</code>的標籤，<code>pattern</code>表示的是一個圖案的區域，會用這個區域進行重複排列圖案的動作，因此我們要重複的圖案，必須要比<code>pattern</code>小，不然就會被裁切掉了。</p>
-<pre><code>  &lt;defs&gt;
-    &lt;pattern id=&quot;a2&quot; patternUnits=&quot;userSpaceOnUse&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;30&quot; height=&quot;30&quot;&gt;
-      &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;25&quot; height=&quot;25&quot; stroke=&quot;#none&quot; fill=&quot;#09f&quot;&gt;&lt;/rect&gt;
+<pre class="prettyprint"><code>  &lt;defs&gt;
+    &lt;pattern id="a2" patternUnits="userSpaceOnUse" x="0" y="0" width="30" height="30"&gt;
+      &lt;rect x="0" y="0" width="25" height="25" stroke="#none" fill="#09f"&gt;&lt;/rect&gt;
     &lt;/pattern&gt; 
   &lt;/defs&gt;
 </code></pre><p>  接著在我們要填色的區域和定義檔連結就可以完成圖案的填色</p>
 <p>  <img src="/img/articles/201406/20140614_1_08.png" alt="SVG-fill"></p>
-<pre><code>  &lt;circle cx=&quot;220&quot; cy=&quot;300&quot; r=&quot;50&quot; stroke=&quot;#000&quot; stroke-width=&quot;5&quot; fill=&quot;url(#a2)&quot;&gt;&lt;/circle&gt;
-</code></pre><p><br/></p>
+<pre class="prettyprint"><code>  &lt;circle cx="220" cy="300" r="50" stroke="#000" stroke-width="5" fill="url(#a2)"&gt;&lt;/circle&gt;
+</code></pre><p><br></p>
 </li>
 </ul>
 <p>其實填色是千變萬化的，這裡只是將填色的方式做了一個最基本的介紹，至於如何能填出漂亮的顏色，就真的要看個人的經驗和練習囉！( 更詳細的設定可以參考 <a href="http://www.w3.org/TR/SVG/pservers.html">W3C 的介紹</a> )</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -216,53 +183,67 @@
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

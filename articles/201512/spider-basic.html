@@ -1,114 +1,85 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>做個簡單的爬蟲 ( 幣值、空污 PM2.5 ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-12-23T23:50:00+01:00">
-
-<meta name="keywords" content="spider,cheerio,爬蟲,網路爬蟲,request,nodejs,fs">
-
-<meta name="description" content="幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。">
-
-<meta itemprop="name" content="做個簡單的爬蟲 ( 幣值、空污 PM2.5 ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201512/20151223_1_01b.jpg">
-
-<meta itemprop="description" content="幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。">
-
-<meta property="og:title" content="做個簡單的爬蟲 ( 幣值、空污 PM2.5 ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201512/spider-basic.html" target="_blank">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201512/20151223_1_01b.jpg">
-
-<meta property="og:description" content="幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。">
-
-<title>做個簡單的爬蟲 ( 幣值、空污 PM2.5 ) - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。">
+  <meta itemprop="description" content="幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201512/spider-basic.jpg">
+  <meta property="og:description" content="幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。">
+  <meta property="og:title" content="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201512/spider-basic.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201512/spider-basic.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>做個簡單的爬蟲 ( 幣值、空污 PM2.5 ) <span class="article-date" tag="web">DEC 23    , 2015</span></h2>
+<h1>做個簡單的爬蟲 ( 幣值、空污 PM2.5 )</h1>
 <p>幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。</p>
 <p>爬空污數據除了直接爬網頁資料外，也可以從「<a href="http://data.gov.tw/node/6074">空氣品質即時污染指標</a>」這個政府開放資料平台來撈，這裏有提供 CSV、JSON 和 XML 的格式，不過因為這篇在爬蟲，所以我要爬的網站是這個：「<a href="http://taqm.epa.gov.tw/taqm/tw/Pm25Index.aspx">即時細懸浮微粒指標</a>」，加上這個網站更新的速度比開放資料的速度快 ( 雖然都是一小時更新一次，不過還是快樂十幾分鐘左右 )，所以就直接爬數據囉！</p>
 <p><img src="/img/articles/201512/20151223_1_02.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
 <p>既然要爬，就要先來看看他的網頁原始碼，才知道要從何爬起，看了原始碼才發現他不是用什麼 json 資料的載入，而是把數據直接寫在原始碼內，意思就是只要爬出來 class 為 jTip 的 area，就可以獲得資料。</p>
 <p><img src="/img/articles/201512/20151223_1_03.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
 <p>知道要爬什麼東西之後，就要來寫 NodeJS 了，這裏先 npm install 兩個模組，分別是「request」和「cheerio」，request 可以想像成就是在後端載入一個網頁，而 cheerio 就是這個網頁裡面的 jQuery ( 用法一樣，因為它的核心就是 jQuery )，install 之後我這邊建立一個 test.js，開頭先寫入這三行，request 和 cheerio 沒問題，fs 則是 NodeJS 的檔案系統模組，包含讀取、刪除、寫入、更名等等的檔案操作。</p>
-<pre><code>var request = require(&quot;request&quot;);
-var cheerio = require(&quot;cheerio&quot;);
-var fs = require(&quot;fs&quot;);
+<pre class="prettyprint"><code>var request = require("request");
+var cheerio = require("cheerio");
+var fs = require("fs");
 </code></pre><p>然後我先建立一個名為 pm25 的函式，一開始就先用了 request，網址就是空污的網址，方法使用 GET，後面接著一個 callback 函式，裡面有三個參數，分別是 error、response 和 body，一直到 body 載入之後我們再來分析。</p>
-<pre><code>var pm25 = function() {
+<pre class="prettyprint"><code>var pm25 = function() {
   request({
-    url: &quot;http://taqm.epa.gov.tw/taqm/tw/Pm25Index.aspx&quot;,
-    method: &quot;GET&quot;
+    url: "http://taqm.epa.gov.tw/taqm/tw/Pm25Index.aspx",
+    method: "GET"
   }, function(error, response, body) {
     if (error || !body) {
       return;
@@ -117,26 +88,26 @@ var fs = require(&quot;fs&quot;);
   });
 };
 </code></pre><p>body 載入之後要做的事情就是下面這段，一開始用 cheerio 載入 body，宣告一個 title 的變數裝載<code>area.jTip</code>，接著把資料拋進 result 的陣列裡，並用<code>fs.writeFile</code>將這個陣列寫入 result.json 這個 json 檔裡，最後接著一個完成後 callback 的函式，裡面分析這個陣列，取出「前鎮區」的 PM2.5 數值，用 console 印出。( 為什麼選擇前鎮呢？因為我在前鎮呀ㄎㄎ )</p>
-<pre><code>var $ = cheerio.load(body);
+<pre class="prettyprint"><code>var $ = cheerio.load(body);
 var result = [];
-var titles = $(&quot;area.jTip&quot;);
+var titles = $("area.jTip");
 var location;
 for (var i = 0; i &lt; titles.length; i++) {
-  result.push(titles.eq(i).attr(&#39;jtitle&#39;));
+  result.push(titles.eq(i).attr('jtitle'));
 }
-fs.writeFile(&quot;result.json&quot;, result, function() {
+fs.writeFile("result.json", result, function() {
 
   var varTime = new Date();
   for (var j = 0; j &lt; result.length; j++) {
     var data = JSON.parse(result[j]);
-    if(data.SiteName==&#39;前鎮&#39;){
-      console.log(data.SiteName + &#39;, PM2.5: &#39;+ data.PM25 +&#39; (&#39; + varTime.toLocaleTimeString() + &#39;)&#39;);
+    if(data.SiteName=='前鎮'){
+      console.log(data.SiteName + ', PM2.5: '+ data.PM25 +' (' + varTime.toLocaleTimeString() + ')');
     }
   }
 
 });
 </code></pre><p>最後，就要要用<code>setInterval</code>來做出一段時間抓一次數據的功能，如此一來就大功告成，執行<code>node test</code>就會看到結果囉！</p>
-<pre><code>pm25();
+<pre class="prettyprint"><code>pm25();
 setInterval(pm25,30*60*1000);
 </code></pre><p><img src="/img/articles/201512/20151223_1_04.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
 <p>會抓空污資料之後，我又異想天開的想說因為過一陣子要去日本玩，因為要兌換日幣，不如做一個自動抓取幣值的爬蟲好了，這樣就可以掌握幣值的變化，當幣值匯率到多少的時候，還會自動發個通知該多好，所以我就拿台灣銀行的幣值牌告匯率網頁來練習：<a href="http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm">http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm</a>。</p>
@@ -146,30 +117,30 @@ setInterval(pm25,30*60*1000);
 <p>前面的程式碼都大同小異，直接進到載入 body 之後的動作，這裏抓取 table 每一列都有的 class：decimal，抓出來之後會發現是一串很大串的陣列，裡面塞了一大堆物件與陣列，由於我們要的只是一開始的國家幣值名稱以及前兩個欄位買進賣出的匯率，所以就直接篩選出來。</p>
 <p><img src="/img/articles/201512/20151223_1_07.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
 <p>篩選之後這裏用了個偷雞的方法，因為日圓排在第八位，所以就直接用<code>result[7]</code>來取值了。</p>
-<pre><code>var $ = cheerio.load(body);
+<pre class="prettyprint"><code>var $ = cheerio.load(body);
 var varTime = new Date();
 var result = [];
-var title = $(&quot;.titleLeft&quot;);
-var decimal = $(&quot;.decimal&quot;);
+var title = $(".titleLeft");
+var decimal = $(".decimal");
 for (var i = 0; i &lt; title.length; i++) {
-  result.push(&#39;{&quot;&#39;+title[i].children[1].data+&#39;&quot;:[&#39;+decimal[4*i].children[0].data + &#39;,&#39;+decimal[4*i+1].children[0].data+&#39;]}&#39;);
+  result.push('{"'+title[i].children[1].data+'":['+decimal[4*i].children[0].data + ','+decimal[4*i+1].children[0].data+']}');
 }
-fs.writeFile(&quot;result.json&quot;, result, function() {
+fs.writeFile("result.json", result, function() {
 
   var varTime = new Date();
   var a = JSON.parse(result[7]);
-  console.log(varTime.toLocaleTimeString()+&#39;: &#39;+a[&#39; 日圓 (JPY)&#39;][1]);
+  console.log(varTime.toLocaleTimeString()+': '+a[' 日圓 (JPY)'][1]);
 
 });
 </code></pre><p>最後一樣使用<code>setInterval</code>五分鐘撈一次資料，就可以囉！( Github：<a href="https://github.com/oxxostudio/pm25">https://github.com/oxxostudio/pm25</a> )</p>
-<pre><code>pm();
+<pre class="prettyprint"><code>pm();
 setInterval(pm,5*60*1000);
 </code></pre><p>不過這裡如果發通知要怎麼做呢？我原本使用了 firebase 來串接，當數據改變時，就會透過瀏覽器發一個 alert 通知，但還有一個更快的方法，就是我使用了自家研發的 Webduino 產品，當匯率改變時，就透過蜂鳴器發出聲音，或透過 LED 閃爍來提醒，就更方便囉！範例程式就像下面這樣，當匯率小於 0.27 就把 led 燈點亮。</p>
-<pre><code>var led;
-boardReady(&#39;35PQ&#39;, function(board) {
+<pre class="prettyprint"><code>var led;
+boardReady('35PQ', function(board) {
   board.samplingInterval = 20;
   led = getLed(board, 11);
-  if (a[&#39; 日圓 (JPY)&#39;][1] &lt; 0.27) {
+  if (a[' 日圓 (JPY)'][1] &lt; 0.27) {
     led.on();
   } else {
     led.off();
@@ -178,37 +149,33 @@ boardReady(&#39;35PQ&#39;, function(board) {
 </code></pre><p>不過要在 NodeJS 使用 Webduino，要先 npm install 這兩支程式：<code>webduino-js</code>和<code>webduino-blockly</code>，就可以順利使用囉！</p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -216,53 +183,67 @@ boardReady(&#39;35PQ&#39;, function(board) {
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

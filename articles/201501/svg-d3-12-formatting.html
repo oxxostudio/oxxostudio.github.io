@@ -1,111 +1,82 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="UTF-8">
   <meta http-equiv="pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 數字格式 ( Formatting ) - OXXO.STUDIO</title>
 
-<meta property="article:published_time" content="2015-01-11T23:05:00+01:00">
-
-<meta name="keywords" content="svg,d3,d3.js,d3js,Formatting,數字格式,數據格式">
-
-<meta name="description" content="來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。">
-
-<meta itemprop="name" content="SVG D3.js - 數字格式 ( Formatting ) - OXXO.STUDIO">
-
-<meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/20150111_1_01b.jpg">
-
-<meta itemprop="description" content="來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。">
-
-<meta property="og:title" content="SVG D3.js - 數字格式 ( Formatting ) - OXXO.STUDIO">
-
-<meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html">
-
-<meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/20150111_1_01b.jpg">
-
-<meta property="og:description" content="來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。">
-
-<title>SVG D3.js - 數字格式 ( Formatting )  - OXXO.STUDIO</title> 
-
-
-
- 
-
-<link rel="stylesheet" href="/style/css/articles.css">
-<link rel="stylesheet" href="/style/lib/tomorrow.css">
-
-
-
-  <script src="/js/lib/jquery.min.js"></script>
-
-
-
+  <meta name="description" content="在 SVG D3.js - 時間格式 ( Time Formatting ) 這篇文章裡看完了時間的格式，接著就要來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。其實講到數據的格式化，讓我想到一個強迫症藝術家 Ursus Wehrli 的一系列作品 ( Tidying Up Art )，從一堆雜亂無章的數據當中把這些數據分門別類並且格式化，意境上非常的雷同呀喔哈！( 所以這篇文章的圖片就用這系列藝術作品來表現吧！ )">
+  <meta itemprop="description" content="在 SVG D3.js - 時間格式 ( Time Formatting ) 這篇文章裡看完了時間的格式，接著就要來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。其實講到數據的格式化，讓我想到一個強迫症藝術家 Ursus Wehrli 的一系列作品 ( Tidying Up Art )，從一堆雜亂無章的數據當中把這些數據分門別類並且格式化，意境上非常的雷同呀喔哈！( 所以這篇文章的圖片就用這系列藝術作品來表現吧！ )">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/svg-d3-12-formatting.jpg">
+  <meta property="og:description" content="在 SVG D3.js - 時間格式 ( Time Formatting ) 這篇文章裡看完了時間的格式，接著就要來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。其實講到數據的格式化，讓我想到一個強迫症藝術家 Ursus Wehrli 的一系列作品 ( Tidying Up Art )，從一堆雜亂無章的數據當中把這些數據分門別類並且格式化，意境上非常的雷同呀喔哈！( 所以這篇文章的圖片就用這系列藝術作品來表現吧！ )">
+  <meta property="og:title" content="SVG D3.js - 數字格式 ( Formatting )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/svg-d3-12-formatting.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div id="header">
-        <div id="top-menu">
-            <ul class="top-menu-left">
-                <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
-                <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
-                <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
-            </ul>
-            <a href="/rss.xml" title="RSS" target="_blank"><div class="rss"><i></i></div></a>
-            <div class="search" title="站內搜尋">
-                <div id='cse-search-form' style='width: 100%;'></div>
-            </div>
-        </div>
-        <div id="banner">
-            <h1>OXXO.STUDIO</h1>
-            <a href="/">
-            <i class="bubble"></i>
-            <i class="hihi"></i>
-            <img src="/img/layout/banner.png">
-            <h2>Design thinking is everywhere</h2>
-            </a>
-        </div>
-        <div id="main-menu">
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul>
-                <li class="tag-all"><i></i>ALL</li>
-                <li class="tag-creative"><i></i>Creative</li>
-                <li class="tag-ui"><i></i>UI & UX</li>
-                <li class="tag-photo"><i></i>PHOTO</li>
-                <li class="tag-css"><i></i>CSS</li>
-                <li class="tag-web"><i></i>WEB TECH</li>
-                <li class="tag-share"><i></i>Share</li>
-                <li class="tag-others"><i></i>OTHERS</li>
-            </ul>
-        </div>
-        <div class="body-line"></div>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
     </div>
-    <div id="wrapper">
-        <div id="container">
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
 
+  <main>
+    <article>
+      <i class="tag"></i>
 
-
-
-          <div class="content">
-            <i class="tag"></i>
-            <div class="md">
-
-<h2>SVG D3.js - 數字格式 ( Formatting )  <span class="article-date" tag="web">JAN 11, 2015</span></h2>
-<p><img src="/img/articles/201501/20150111_1_01.jpg" class="preview-img"></p>
+<h1>SVG D3.js - 數字格式 ( Formatting )</h1>
+<p><img src="/img/articles/201501/svg-d3-12-formatting.jpg" class="preview-img" alt=""></p>
 <p>在 <a href="http://www.oxxostudio.tw/articles/201412/svg-d3-11-time.html">SVG D3.js - 時間格式 ( Time Formatting )</a> 這篇文章裡看完了時間的格式，接著就要來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。其實講到數據的格式化，讓我想到一個強迫症藝術家 Ursus Wehrli 的一系列作品 ( <a href="https://www.google.com.tw/search?q=Tidying+Up+Art&amp;es_sm=122&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ei=iYuyVK_nLei9mgX424KgBw&amp;ved=0CAgQ_AUoAQ&amp;biw=1527&amp;bih=850#imgdii=_">Tidying Up Art</a> )，從一堆雜亂無章的數據當中把這些數據分門別類並且格式化，意境上非常的雷同呀喔哈！( 所以這篇文章的圖片就用這系列藝術作品來表現吧！ )</p>
 <p>d3.js 格式化數字的方法，就像下面的範例這樣，先宣告一個格式化的方法，然後把數字放進去，就會得到格式化的「字串」。( 注意，得到的結果是字串 )</p>
-<pre><code>var formatting = d3.format(&quot;&quot;);
-formatting(123); // &#39;123&#39;
-</code></pre><p><br/>
+<pre class="prettyprint"><code>var formatting = d3.format("");
+formatting(123); // '123'
+</code></pre><p><br>
 知道用法之後，就來看看 d3.js 格式化數據的用法，下面這串是 d3.js 所提供的格式，每個項目都是可以單獨填寫或混合使用，這時候看不明白不打緊，後面會繼續介紹相關用法。</p>
 <blockquote>
 <p>[[fill]align][sign][symbol][0][width][,][.precision][type]</p>
 </blockquote>
-<p><br/>
+<p><br>
 首先我們先從<code>type</code>看起，因為 d3.js 的官方文件也是最著墨在這邊，<code>type</code>有以下幾種，不同的<code>type</code>就會把數字產生成不同格式的字串顯示。</p>
 <blockquote>
 <ul>
@@ -124,10 +95,10 @@ formatting(123); // &#39;123&#39;
 <li>s：以 r 為基礎，但帶有一個單位碼 ( 例如 9.5M、或 1.00µ  )</li>
 </ul>
 </blockquote>
-<p><br/>
+<p><br>
 了解有這些 type 之後，直接用一個範例來看看數據產生出來的樣子為何。 ( 範例都要開 console 出來看喔 )</p>
 <p>e 範例：<a href="/demo/201501/svg-d3-12-formatting-demo1.html">svg-d3-12-formatting-demo1.html</a></p>
-<pre><code>var _e = d3.format(&quot;e&quot;);
+<pre class="prettyprint"><code>var _e = d3.format("e");
 
 console.log(_e(100));  //1e+2
 console.log(_e(10));   //1e+1
@@ -137,7 +108,7 @@ console.log(_e(0.01)); //1e-2
 console.log(_e(-10));  //-1e+1
 console.log(_e(-0.01));//-1e-2
 </code></pre><p>g 範例：<a href="/demo/201501/svg-d3-12-formatting-demo2.html">svg-d3-12-formatting-demo2.html</a></p>
-<pre><code>var _g1 = d3.format(&quot;.9g&quot;);
+<pre class="prettyprint"><code>var _g1 = d3.format(".9g");
 
 console.log(_g1(10000));  //10000.0000
 console.log(_g1(10));     //10.0000000
@@ -147,7 +118,7 @@ console.log(_g1(0.0001)); //0.000100000000
 console.log(_g1(-10));    //-10.0000000
 console.log(_g1(-0.01));  //-0.0100000000
 
-var _g2 = d3.format(&quot;5g&quot;);
+var _g2 = d3.format("5g");
 
 console.log(_g2(10000));  //10000
 console.log(_g2(10));     //   10 &lt;-- 前面有空白
@@ -157,7 +128,7 @@ console.log(_g2(0.0001)); //0.0001
 console.log(_g2(-10));    //  -10
 console.log(_g2(-0.01));  //-0.01
 </code></pre><p>f 範例：<a href="/demo/201501/svg-d3-12-formatting-demo3.html">svg-d3-12-formatting-demo3.html</a></p>
-<pre><code>var _f1 = d3.format(&quot;.6f&quot;);
+<pre class="prettyprint"><code>var _f1 = d3.format(".6f");
 
 console.log(_f1(10000));  //10000.000000
 console.log(_f1(10));     //10.000000
@@ -167,7 +138,7 @@ console.log(_f1(0.0001)); //0.000100
 console.log(_f1(-10));    //-10.000000
 console.log(_f1(-0.01));  //-0.010000
 
-var _f2 = d3.format(&quot;6f&quot;);
+var _f2 = d3.format("6f");
 
 console.log(_f2(10000));  // 10000 &lt;-- 前面有空白
 console.log(_f2(10));     //    10
@@ -177,7 +148,7 @@ console.log(_f2(0.0001)); //     0
 console.log(_f2(-10));    //   -10
 console.log(_f2(-0.01));  //    -0 &lt;-- -0
 </code></pre><p>d 範例：<a href="/demo/201501/svg-d3-12-formatting-demo4.html">svg-d3-12-formatting-demo4.html</a></p>
-<pre><code>var _d1 = d3.format(&quot;d&quot;);
+<pre class="prettyprint"><code>var _d1 = d3.format("d");
 
 console.log(_d1(10000));  //10000
 console.log(_d1(10));     //10
@@ -187,7 +158,7 @@ console.log(_d1(0.0001)); //
 console.log(_d1(-10));    //-10
 console.log(_d1(-0.01));  //
 
-var _d2 = d3.format(&quot;6d&quot;);
+var _d2 = d3.format("6d");
 
 console.log(_d2(10000));  // 10000 &lt;-- 前面有空白
 console.log(_d2(10));     //    10
@@ -197,7 +168,7 @@ console.log(_d2(0.0001)); //
 console.log(_d2(-10));    //   -10
 console.log(_d2(-0.01));  //
 </code></pre><p>r 範例：<a href="/demo/201501/svg-d3-12-formatting-demo5.html">svg-d3-12-formatting-demo5.html</a></p>
-<pre><code>var _r1 = d3.format(&quot;5r&quot;);
+<pre class="prettyprint"><code>var _r1 = d3.format("5r");
 
 console.log(_r1(100));      //  100 &lt;-- 前面有空白
 console.log(_r1(10));       //   10
@@ -207,7 +178,7 @@ console.log(_r1(0.012345)); //0.012345
 console.log(_r1(-10));      //  -10
 console.log(_r1(-0.123));   //-0.123
 
-var _r2 = d3.format(&quot;.5r&quot;);
+var _r2 = d3.format(".5r");
 
 console.log(_r2(100));      //100.00
 console.log(_r2(10));       //10.000
@@ -217,7 +188,7 @@ console.log(_r2(0.012345)); //0.012345
 console.log(_r2(-10));      //-10.000
 console.log(_r2(-0.123));   //-0.12300
 </code></pre><p>% 範例：<a href="/demo/201501/svg-d3-12-formatting-demo6.html">svg-d3-12-formatting-demo6.html</a></p>
-<pre><code>var _pc1 = d3.format(&quot;%&quot;);
+<pre class="prettyprint"><code>var _pc1 = d3.format("%");
 
 console.log(_pc1(100));      //10000%
 console.log(_pc1(10));       //1000%
@@ -227,7 +198,7 @@ console.log(_pc1(0.012345)); //1%
 console.log(_pc1(-10));      //-1000%
 console.log(_pc1(-0.123));   //-12%
 
-var _pc2 = d3.format(&quot;3%&quot;);
+var _pc2 = d3.format("3%");
 
 console.log(_pc2(100));      //10000%
 console.log(_pc2(10));       //1000%
@@ -237,7 +208,7 @@ console.log(_pc2(0.012345)); //1%
 console.log(_pc2(-10));      //-1000%
 console.log(_pc2(-0.123));   //-12%
 
-var _pc3 = d3.format(&quot;.3%&quot;);
+var _pc3 = d3.format(".3%");
 
 console.log(_pc3(100));      //10000.000%
 console.log(_pc3(10));       //1000.000%
@@ -247,7 +218,7 @@ console.log(_pc3(0.012345)); //1.234%   &lt;-- 後面刪除了
 console.log(_pc3(-10));      //-1000.000%
 console.log(_pc3(-0.123));   //-12.300%
 </code></pre><p>p 範例：<a href="/demo/201501/svg-d3-12-formatting-demo7.html">svg-d3-12-formatting-demo7.html</a></p>
-<pre><code>var _p1 = d3.format(&quot;p&quot;);
+<pre class="prettyprint"><code>var _p1 = d3.format("p");
 
 console.log(_p1(100));      //10000%
 console.log(_p1(10));       //1000%
@@ -257,7 +228,7 @@ console.log(_p1(0.012345)); //1.2345%
 console.log(_p1(-10));      //-1000%
 console.log(_p1(-0.123));   //-12.3%
 
-var _p2 = d3.format(&quot;3p&quot;);
+var _p2 = d3.format("3p");
 
 console.log(_p2(100));      //10000%
 console.log(_p2(10));       //1000%
@@ -267,7 +238,7 @@ console.log(_p2(0.012345)); //1.2345%
 console.log(_p2(-10));      //-1000%
 console.log(_p2(-0.123));   //-12.3%
 
-var _p3 = d3.format(&quot;.3p&quot;);
+var _p3 = d3.format(".3p");
 
 console.log(_p3(100));      //10000.000%
 console.log(_p3(10));       //1000.000%
@@ -277,7 +248,7 @@ console.log(_p3(0.012345)); //1.23%  &lt;-- 四捨五入了
 console.log(_p3(-10));      //-1000.000%
 console.log(_p3(-0.123));   //-12.3%
 </code></pre><p>p 範例：<a href="/demo/201501/svg-d3-12-formatting-demo8.html">svg-d3-12-formatting-demo8.html</a></p>
-<pre><code>var _b1 = d3.format(&quot;b&quot;);
+<pre class="prettyprint"><code>var _b1 = d3.format("b");
 
 console.log(_b1(100));      //1100100
 console.log(_b1(10));       //1010
@@ -287,7 +258,7 @@ console.log(_b1(0.012345)); //
 console.log(_b1(-10));      //-1010
 console.log(_b1(-0.123));   //
 </code></pre><p>o 範例：<a href="/demo/201501/svg-d3-12-formatting-demo9.html">svg-d3-12-formatting-demo9.html</a></p>
-<pre><code>var _o1 = d3.format(&quot;o&quot;);
+<pre class="prettyprint"><code>var _o1 = d3.format("o");
 
 console.log(_o1(100));      //144
 console.log(_o1(10));       //12
@@ -297,7 +268,7 @@ console.log(_o1(0.012345)); //
 console.log(_o1(-10));      //-12
 console.log(_o1(-0.123));   //
 </code></pre><p>x 範例：<a href="/demo/201501/svg-d3-12-formatting-demo10.html">svg-d3-12-formatting-demo10.html</a></p>
-<pre><code>var _x1 = d3.format(&quot;x&quot;);
+<pre class="prettyprint"><code>var _x1 = d3.format("x");
 
 console.log(_x1(1000));     //3e8
 console.log(_x1(10));       //a
@@ -307,7 +278,7 @@ console.log(_x1(0.012345)); //
 console.log(_x1(-10));      //-a
 console.log(_x1(-0.123));   //
 </code></pre><p>X 範例：<a href="/demo/201501/svg-d3-12-formatting-demo11.html">svg-d3-12-formatting-demo11.html</a></p>
-<pre><code>var _X1 = d3.format(&quot;X&quot;);
+<pre class="prettyprint"><code>var _X1 = d3.format("X");
 
 console.log(_X1(1000));     //3E8
 console.log(_X1(10));       //A
@@ -317,13 +288,13 @@ console.log(_X1(0.012345)); //
 console.log(_X1(-10));      //-A
 console.log(_X1(-0.123));   //
 </code></pre><p>c 範例：<a href="/demo/201501/svg-d3-12-formatting-demo12.html">svg-d3-12-formatting-demo12.html</a></p>
-<pre><code>var _c1 = d3.format(&quot;c&quot;);
+<pre class="prettyprint"><code>var _c1 = d3.format("c");
 
 console.log(_c1(13256));     //㏈
 console.log(_c1(1256));      //Ө
 console.log(_c1(13899));     //㙋
 </code></pre><p>s 範例：<a href="/demo/201501/svg-d3-12-formatting-demo13.html">svg-d3-12-formatting-demo13.html</a></p>
-<pre><code>var _s1 = d3.format(&quot;s&quot;);
+<pre class="prettyprint"><code>var _s1 = d3.format("s");
 
 console.log(_s1(10000));   //10k
 console.log(_s1(100));     //100
@@ -333,7 +304,7 @@ console.log(_s1(0.0001));  //100µ
 console.log(_s1(-100));    //-100
 console.log(_s1(-0.01));   //-10m
 
-var _s2 = d3.format(&quot;10s&quot;);
+var _s2 = d3.format("10s");
 
 console.log(_s2(10000));   //        10k  &lt;-- 前面有空格
 console.log(_s2(100));     //       100
@@ -343,7 +314,7 @@ console.log(_s2(0.0001));  //       100µ
 console.log(_s2(-100));    //      -100
 console.log(_s2(-0.01));   //       -10m
 
-var _s3 = d3.format(&quot;.5s&quot;);
+var _s3 = d3.format(".5s");
 
 console.log(_s3(10000));   //10.000k
 console.log(_s3(100));     //100.00
@@ -352,119 +323,115 @@ console.log(_s3(0.01));    //10.000m
 console.log(_s3(0.0001));  //100.00µ
 console.log(_s3(-100));    //-100.00
 console.log(_s3(-0.01));   //-10.000m
-</code></pre><p><br/>
+</code></pre><p><br>
 以上的範例應該就可以看出<code>type</code>對於格式化數據的影響力，上述的範例除了是介紹 type，其實無形當中也介紹了一些額外的格式化方法，例如我們在格式化<code>type</code>的前面加上一個整數，就是 d3.js Formatting 裏頭的<code>[width]</code>，也就是格式化數據的寬度，換句話說就是有幾個整數的位數，這也是為什麼在上面的範例，會看到有些轉換出來的數據格式「<strong>前面有空格</strong>」了;至於加上小數點，就是<code>[.precision]</code>，意思是「<strong>加上小數點之後總共會有幾位數</strong>」，也因此套用後就會發現整數後面多了一些 0 的小數在後面。</p>
 <p>除了加上整數和小數，當我們加上<strong>逗號</strong>，數據就會自動被逗號來區隔：(範例：<a href="/demo/201501/vg-d3-12-formatting-demo14.html">svg-d3-12-formatting-demo14.html</a>)</p>
-<pre><code>var _comma = d3.format(&quot;,&quot;);
+<pre class="prettyprint"><code>var _comma = d3.format(",");
 
 console.log(_comma(1000000));   //1,000,000
 console.log(_comma(10000));     //10,000
 console.log(_comma(1));         //1
 console.log(_comma(-10000));    //-10,000
-</code></pre><p><br/>
+</code></pre><p><br>
 我們也可以<strong>用組合的方式</strong>來組合，但組合的順序記得要按照這個規則進行：(範例：<a href="/demo/201501/svg-d3-12-formatting-demo15.html">svg-d3-12-formatting-demo15.html</a>)</p>
 <blockquote>
 <p>[[fill]align][sign][symbol][0][width][,][.precision][type]</p>
 </blockquote>
-<pre><code>console.log(d3.format(&quot;,.5e&quot;)(10000));   //1.00000e+4
-console.log(d3.format(&quot;,.5g&quot;)(10000));   //10,000
-console.log(d3.format(&quot;,.5f&quot;)(10000));   //10,000.00000
-console.log(d3.format(&quot;,.5d&quot;)(10000));   //10,000
-console.log(d3.format(&quot;,.5r&quot;)(10000));   //10,000.0
-console.log(d3.format(&quot;,.5%&quot;)(10000));   //1,000,000.00000%
-console.log(d3.format(&quot;,.5p&quot;)(10000));   //1,000,000%
-console.log(d3.format(&quot;,.5b&quot;)(10000));   //10,011,100,010,000
-console.log(d3.format(&quot;,.5o&quot;)(10000));   //23,420
-console.log(d3.format(&quot;,.5x&quot;)(10000));   //2,710
-console.log(d3.format(&quot;,.5s&quot;)(10000));   //10.000k
+<pre class="prettyprint"><code>console.log(d3.format(",.5e")(10000));   //1.00000e+4
+console.log(d3.format(",.5g")(10000));   //10,000
+console.log(d3.format(",.5f")(10000));   //10,000.00000
+console.log(d3.format(",.5d")(10000));   //10,000
+console.log(d3.format(",.5r")(10000));   //10,000.0
+console.log(d3.format(",.5%")(10000));   //1,000,000.00000%
+console.log(d3.format(",.5p")(10000));   //1,000,000%
+console.log(d3.format(",.5b")(10000));   //10,011,100,010,000
+console.log(d3.format(",.5o")(10000));   //23,420
+console.log(d3.format(",.5x")(10000));   //2,710
+console.log(d3.format(",.5s")(10000));   //10.000k
 
-console.log(d3.format(&quot;10,.5e&quot;)(10000));   //1.00000e+4
-console.log(d3.format(&quot;10,.5g&quot;)(10000));   //    10,000  &lt;-- 前面有空格
-console.log(d3.format(&quot;10,.5f&quot;)(10000));   //10,000.00000
-console.log(d3.format(&quot;10,.5d&quot;)(10000));   //    10,000
-console.log(d3.format(&quot;10,.5r&quot;)(10000));   //  10,000.0
-console.log(d3.format(&quot;10,.5%&quot;)(10000));   //1,000,000.00000%
-console.log(d3.format(&quot;10,.5p&quot;)(10000));   // 1,000,000%
-console.log(d3.format(&quot;10,.5b&quot;)(10000));   //10,011,100,010,000
-console.log(d3.format(&quot;10,.5o&quot;)(10000));   //    23,420
-console.log(d3.format(&quot;10,.5x&quot;)(10000));   //     2,710
-console.log(d3.format(&quot;10,.5s&quot;)(10000));   //    10.000k
-</code></pre><p><br/>
+console.log(d3.format("10,.5e")(10000));   //1.00000e+4
+console.log(d3.format("10,.5g")(10000));   //    10,000  &lt;-- 前面有空格
+console.log(d3.format("10,.5f")(10000));   //10,000.00000
+console.log(d3.format("10,.5d")(10000));   //    10,000
+console.log(d3.format("10,.5r")(10000));   //  10,000.0
+console.log(d3.format("10,.5%")(10000));   //1,000,000.00000%
+console.log(d3.format("10,.5p")(10000));   // 1,000,000%
+console.log(d3.format("10,.5b")(10000));   //10,011,100,010,000
+console.log(d3.format("10,.5o")(10000));   //    23,420
+console.log(d3.format("10,.5x")(10000));   //     2,710
+console.log(d3.format("10,.5s")(10000));   //    10.000k
+</code></pre><p><br>
 了解組合之後，接著看到<code>[0]</code>，意思是我們可以在<strong>剛剛留白的地方補 0</strong>，看看下面的範例就會清楚了：(範例：<a href="/demo/201501/svg-d3-12-formatting-demo16.html">svg-d3-12-formatting-demo16.html</a>)</p>
-<pre><code>console.log(d3.format(&quot;08,.5e&quot;)(1000));   //1.00000e+3
-console.log(d3.format(&quot;08,.5g&quot;)(1000));   //01,000.0
-console.log(d3.format(&quot;08,.5f&quot;)(1000));   //1,000.00000
-console.log(d3.format(&quot;08,.5d&quot;)(1000));   //0,001,000
-console.log(d3.format(&quot;08,.5r&quot;)(1000));   //01,000.0
-console.log(d3.format(&quot;08,.5%&quot;)(1000));   //100,000.00000%
-console.log(d3.format(&quot;08,.5p&quot;)(1000));   //0,100,000%
-console.log(d3.format(&quot;08,.5b&quot;)(1000));   //1,111,101,000
-console.log(d3.format(&quot;08,.5o&quot;)(1000));   //0,001,750
-console.log(d3.format(&quot;08,.5x&quot;)(1000));   //0,000,3e8
-console.log(d3.format(&quot;08,.5s&quot;)(1000));   //001.0000k
-</code></pre><p><br/>
+<pre class="prettyprint"><code>console.log(d3.format("08,.5e")(1000));   //1.00000e+3
+console.log(d3.format("08,.5g")(1000));   //01,000.0
+console.log(d3.format("08,.5f")(1000));   //1,000.00000
+console.log(d3.format("08,.5d")(1000));   //0,001,000
+console.log(d3.format("08,.5r")(1000));   //01,000.0
+console.log(d3.format("08,.5%")(1000));   //100,000.00000%
+console.log(d3.format("08,.5p")(1000));   //0,100,000%
+console.log(d3.format("08,.5b")(1000));   //1,111,101,000
+console.log(d3.format("08,.5o")(1000));   //0,001,750
+console.log(d3.format("08,.5x")(1000));   //0,000,3e8
+console.log(d3.format("08,.5s")(1000));   //001.0000k
+</code></pre><p><br>
 再來就是<code>[sign][symbol]</code>，這兩個沒有太大的區隔，主要就是一些標記符號例如 $ 這個錢幣符號，而正負號也是可以添加的，不過負號只有在負數的情形才會出現。(範例：<a href="/demo/201501/svg-d3-12-formatting-demo17.html">svg-d3-12-formatting-demo17.html</a>)</p>
-<pre><code>console.log(d3.format(&quot;$08,.5e&quot;)(1000));   //$1.00000e+4
-console.log(d3.format(&quot;$08,.5g&quot;)(1000));   //$10,000
-console.log(d3.format(&quot;$08,.5f&quot;)(1000));   //$10,000.00000
-console.log(d3.format(&quot;$08,.5d&quot;)(1000));   //$10,000
-console.log(d3.format(&quot;$08,.5r&quot;)(1000));   //$10,000.0
-console.log(d3.format(&quot;+08,.5%&quot;)(1000));   //+1,000,000.00000%
-console.log(d3.format(&quot;+08,.5p&quot;)(1000));   //+1,000,000%
-console.log(d3.format(&quot;+08,.5b&quot;)(1000));   //+10,011,100,010,000
-console.log(d3.format(&quot;+08,.5o&quot;)(1000));   //+0,001,750
-console.log(d3.format(&quot;-08,.5x&quot;)(1000));   //0,000,3e8    
-console.log(d3.format(&quot;-08,.5s&quot;)(1000));   //001.0000k
-console.log(d3.format(&quot;-08,.5x&quot;)(-1000));  //-0,000,3e8
-console.log(d3.format(&quot;-08,.5s&quot;)(-1000));  //-001.0000k
-</code></pre><p><br/>
+<pre class="prettyprint"><code>console.log(d3.format("$08,.5e")(1000));   //$1.00000e+4
+console.log(d3.format("$08,.5g")(1000));   //$10,000
+console.log(d3.format("$08,.5f")(1000));   //$10,000.00000
+console.log(d3.format("$08,.5d")(1000));   //$10,000
+console.log(d3.format("$08,.5r")(1000));   //$10,000.0
+console.log(d3.format("+08,.5%")(1000));   //+1,000,000.00000%
+console.log(d3.format("+08,.5p")(1000));   //+1,000,000%
+console.log(d3.format("+08,.5b")(1000));   //+10,011,100,010,000
+console.log(d3.format("+08,.5o")(1000));   //+0,001,750
+console.log(d3.format("-08,.5x")(1000));   //0,000,3e8    
+console.log(d3.format("-08,.5s")(1000));   //001.0000k
+console.log(d3.format("-08,.5x")(-1000));  //-0,000,3e8
+console.log(d3.format("-08,.5s")(-1000));  //-001.0000k
+</code></pre><p><br>
 最後就是<code>[[fill]align]</code>了，這可以在空白填充字串，然後把我們原本的數字對齊，對齊的方式有三種：</p>
 <blockquote>
 <ul>
-<li>&quot;^&quot; 置中</li>
-<li>&quot;&lt;&quot; 靠左</li>
-<li>&quot;&gt;&quot; 靠右</li>
+<li>"^" 置中</li>
+<li>"&lt;" 靠左</li>
+<li>"&gt;" 靠右</li>
 </ul>
 </blockquote>
 <p>直接看看範例就會比較清楚了：(範例：<a href="/demo/201501/svg-d3-12-formatting-demo18.html">svg-d3-12-formatting-demo18.html</a>)</p>
-<pre><code>console.log(d3.format(&quot;哈^8&quot;)(1));   //哈哈哈哈1哈哈哈
-console.log(d3.format(&quot;哈&lt;8&quot;)(1));   //1哈哈哈哈哈哈哈
-console.log(d3.format(&quot;哈&gt;8&quot;)(1));   //哈哈哈哈哈哈哈1
-</code></pre><p><br/>
+<pre class="prettyprint"><code>console.log(d3.format("哈^8")(1));   //哈哈哈哈1哈哈哈
+console.log(d3.format("哈&lt;8")(1));   //1哈哈哈哈哈哈哈
+console.log(d3.format("哈&gt;8")(1));   //哈哈哈哈哈哈哈1
+</code></pre><p><br>
 以上就是 d3.js 數字格式 ( Formatting ) 的用法，相信熟練之後，在數據視覺化的圖表裡，就可以把顯示的數字做一個統一的格式處理囉！ </p>
 
 
-            <div class="social-icon">
-                <i class="icon-home"><i></i><span>Back Home</span></i>
-                <i class="icon-list"><i></i><span>Article List</span></i>
-                <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
-                <i class="icon-google"><i></i><span>Share on Google+</span></i>
-                <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
-                <i class="goto-top"><i></i><span>Back to Top</span></i>
-            </div>
-							<a class="arrow-left">
-								<i></i>
-							</a>
-							<a class="arrow-right">
-								<i></i>
-							</a>
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
 
-
-            </div>
-          </div>
-        </div>  
-    </div>
-
+    </article>
+  </main>
   <div id="other-articles">
     <div class="previous-next previous-article">
-        前一篇文章：
-        <br/>
-        <h4></h4>
+      前一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <div class="previous-next next-article">
-        下一篇文章：
-        <br/>
-        <h4></h4>
+      下一篇文章：
+      <br>
+      <h4></h4>
     </div>
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
@@ -472,53 +439,67 @@ console.log(d3.format(&quot;哈&gt;8&quot;)(1));   //哈哈哈哈哈哈哈1
     <div id="disqus_thread"></div>
   </div>
 
-
-    <div id="footer">
-        <div class="footer-line"></div>
-        <div class="footer-link">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <div class="license">Copyright 2014 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-</body>
-<script src="/js/layout.js"></script>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
 
-<script src="/js/articles.js"></script>
-<script src="/js/lib/run_prettify.js"></script>
-<script src="/js/lib/disqus.js"></script>
-
-
-
-<script src='//www.google.com/jsapi' type='text/javascript'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
   ga('create', 'UA-2708968-3', 'auto');
   ga('send', 'pageview');
-</script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-  google.load('search', '1', {language: 'zh-Hant', style: google.loader.themes.V2_DEFAULT});
-  google.setOnLoadCallback(function() {
-    var customSearchOptions = {};
-    var orderByOptions = {};
-    orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
-    customSearchOptions['enableOrderBy'] = true;
-    customSearchOptions['orderByOptions'] = orderByOptions;
-    var customSearchControl =   new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.enableSearchboxOnly('/search-results.html', 's');
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse-search-form', options);
-  }, true);
-</script>
-</html>
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>
