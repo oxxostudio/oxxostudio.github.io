@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>SVG 研究之路 (17) - Stroke-marker</h1>
-<p>在 <a href="http://www.oxxostudio.tw/articles/201409/svg-16-storke-miterlimit.html">SVG 研究之路 (16) - Stroke-miterlimit</a> 和 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html">SVG 研究之路 (6) - stroke 邊框</a> 都有介紹了 stroke 的用法，其實 stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。</p>
+<p>在 <a href="http://www.oxxostudio.tw/articles/201409/svg-16-storke-miterlimit.html" target="_blank">SVG 研究之路 (16) - Stroke-miterlimit</a> 和 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" target="_blank">SVG 研究之路 (6) - stroke 邊框</a> 都有介紹了 stroke 的用法，其實 stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。</p>
 <p>不過 marker 並不是寫在 stroke 的屬性裏頭，而是用<code>defs</code>來定義，再使用<code>marker-start</code>、<code>marker-mid</code>和<code>marker-end</code>來將其放入線段當中，原本我想使用 illustrator 來表現，不過在 illustrator 裏頭，是用<code>g</code> ( group ) 把符號和線段組合，並不是使用 marker 的方式，但我們仍然可以使用 illustrator 來繪製圖案。</p>
 <p>例如今天要做一支愛神之箭，必須要有愛心箭頭和羽毛尾巴，利用 illustrator 繪製這兩個形狀之後存成 SVG ( 就可以看到程式碼 )，接著在<code>defs</code>裏頭加入 marker，就可以和線段串接在一起。  </p>
 <p><img src="/img/articles/201409/20140908_1_02.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>

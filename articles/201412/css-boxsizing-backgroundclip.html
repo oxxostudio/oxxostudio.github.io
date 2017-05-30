@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>box-sizing 與 background-clip</h1>
-<p>過去在學習 CSS 的時候，首要任務就是要理解「box model」，因為　box model 是 CSS 裏頭很重要的模型概念，描述了 padding、margin、border 與 content 的空間定位 ( 參考 <a href="http://www.w3.org/TR/CSS2/box.html">W3C Box model</a> )，雖然 CSS 是我吃飯的工具，但今天的專案竟然卡在一個簡單的小問題，因此就用一篇文章做個紀錄提醒自己不要忘記，也避免之後遭遇到又會卡住了。( 下圖就是 CSS 的 box model )</p>
+<p>過去在學習 CSS 的時候，首要任務就是要理解「box model」，因為　box model 是 CSS 裏頭很重要的模型概念，描述了 padding、margin、border 與 content 的空間定位 ( 參考 <a href="http://www.w3.org/TR/CSS2/box.html" target="_blank">W3C Box model</a> )，雖然 CSS 是我吃飯的工具，但今天的專案竟然卡在一個簡單的小問題，因此就用一篇文章做個紀錄提醒自己不要忘記，也避免之後遭遇到又會卡住了。( 下圖就是 CSS 的 box model )</p>
 <p><img src="/img/articles/201412/20141210_1_02.jpg" alt="box-sizing 與 background-clip"></p>
 <p>今天遇到的問題是出在我用了一個半透明的 border，但卻無法順利地透過並顯示背景的圖案或顏色，後來發現原來 box 預設的 border ，其實是在這個 box 之內的，雖然 border 在 box 的內部，但其實與剛剛的 box model 並沒有相違背，因為 border 包住的空間，仍然是 padding 與 content，只是如果把 border 變成半透明，就會把原本 box 的底色給呈現出來。( 如下圖 )</p>
 <p><img src="/img/articles/201412/20141210_1_03.jpg" alt="box-sizing 與 background-clip"></p>

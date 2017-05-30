@@ -86,7 +86,7 @@
             .style({'left':'50px','top':'50px'})
             .call(drag);
 </code></pre><p><br></p>
-<p>完成之後我們就要來寫一下 drag 要做些什麼事情，因為我們已經宣告了 rect 這個變數，所以我們在 drag 裏頭就可以使用 ( 因為 rect 會呼叫 drag，所以變數的宣告 drag 要寫在前面 )，這時候要用到<code>d3.event</code>來獲取 drag 當下的事件，因為要知道有哪些事件，所以我們先用 console 來看看，如果用 console 印出每個<code>d3.event</code>，可以看到裡面主要包含「type」以及「sourceEvent」，「type」表示拖拉的識別行為，而「sourceEvent」則是我們網頁原本會有的事件，像是偵測滑鼠座標的 pageX 和 pageY 都在裡頭，而<code>drag</code>幫我們把滑鼠座標給直接取出到外層變成物件，就可以直接坐設定了。( 範例：<a href="/demo/201509/svg-d3-16-drag-behavior-demo1.html">svg-d3-16-drag-behavior-demo1.html</a> )</p>
+<p>完成之後我們就要來寫一下 drag 要做些什麼事情，因為我們已經宣告了 rect 這個變數，所以我們在 drag 裏頭就可以使用 ( 因為 rect 會呼叫 drag，所以變數的宣告 drag 要寫在前面 )，這時候要用到<code>d3.event</code>來獲取 drag 當下的事件，因為要知道有哪些事件，所以我們先用 console 來看看，如果用 console 印出每個<code>d3.event</code>，可以看到裡面主要包含「type」以及「sourceEvent」，「type」表示拖拉的識別行為，而「sourceEvent」則是我們網頁原本會有的事件，像是偵測滑鼠座標的 pageX 和 pageY 都在裡頭，而<code>drag</code>幫我們把滑鼠座標給直接取出到外層變成物件，就可以直接坐設定了。( 範例：<a href="/demo/201509/svg-d3-16-drag-behavior-demo1.html" target="_blank">svg-d3-16-drag-behavior-demo1.html</a> )</p>
 <pre class="prettyprint"><code>var drag = d3.behavior.drag()  
             .on('dragstart', function() { 
               console.log(d3.event);
@@ -98,7 +98,7 @@
               console.log(d3.event);
             });
 </code></pre><p><img src="/img/articles/201509/20150914_1_02.jpg" alt="SVG D3.js - 拖拉行為 ( Drag Behavior )"></p>
-<p>有了滑鼠事件之後，就可以實作拖拉的行為了，<code>dragstart</code>和<code>dragend</code>只需要負責改變顏色，<code>drag</code>就讓方塊的中心點可以跟著滑鼠座標移動，移動的時候還會變成綠色。( 範例：<a href="/demo/201509/svg-d3-16-drag-behavior-demo2.html">svg-d3-16-drag-behavior-demo2.html</a> )</p>
+<p>有了滑鼠事件之後，就可以實作拖拉的行為了，<code>dragstart</code>和<code>dragend</code>只需要負責改變顏色，<code>drag</code>就讓方塊的中心點可以跟著滑鼠座標移動，移動的時候還會變成綠色。( 範例：<a href="/demo/201509/svg-d3-16-drag-behavior-demo2.html" target="_blank">svg-d3-16-drag-behavior-demo2.html</a> )</p>
 <pre class="prettyprint"><code>var drag = d3.behavior.drag()  
             .on('dragstart', function() { 
               rect.style({'background':'red'}); 
@@ -118,7 +118,7 @@ var rect = d3.select('#r')
             .style({'left':'50px','top':'50px'})
             .call(drag);
 </code></pre><p><img src="/img/articles/201509/20150914_1_03.gif" alt="SVG D3.js - 拖拉行為 ( Drag Behavior )"></p>
-<p>不過，今天如果只有單純拖拉的行為好像不足以表現 d3.js 的長處，所以我們把 drag 換成 svg，根據 data 來產生一些圓形，並讓這些圓形都可以拖拉，一開始我們先設定 data ( 或是引入 data 也可以 )，然後設定 drag 行為，在 body 裡面放入 svg，有了 svg 之後就根據 data，利用<code>.data(data).enter()</code>產生圓形，呼叫 drag 行為，就完成囉！( 範例：<a href="/demo/201509/svg-d3-16-drag-behavior-demo3.html">svg-d3-16-drag-behavior-demo3.html</a> )</p>
+<p>不過，今天如果只有單純拖拉的行為好像不足以表現 d3.js 的長處，所以我們把 drag 換成 svg，根據 data 來產生一些圓形，並讓這些圓形都可以拖拉，一開始我們先設定 data ( 或是引入 data 也可以 )，然後設定 drag 行為，在 body 裡面放入 svg，有了 svg 之後就根據 data，利用<code>.data(data).enter()</code>產生圓形，呼叫 drag 行為，就完成囉！( 範例：<a href="/demo/201509/svg-d3-16-drag-behavior-demo3.html" target="_blank">svg-d3-16-drag-behavior-demo3.html</a> )</p>
 <pre class="prettyprint"><code>var data = [
   {'cx':210, 'cy':210, 'r':50, 'fill':'#ff0000'},
   {'cx':75, 'cy':75, 'r':40, 'fill':'#00cc00'},

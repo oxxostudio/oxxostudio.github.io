@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>SVG 研究之路 (22) - 深入理解 SMIL Animation</h1>
-<p><a href="http://www.oxxostudio.tw/articles/201409/svg-21-smil-animation.html">上一篇</a> 應該已經大概明白 SVG 的動畫是怎麼一回事，但仍然有很多屬性和設定沒有解釋清楚，然而這些屬性和設定，才是 SVG 動畫的最精華所在，讓我們繼續看下去~ XD (英文夠好的人也可以來 <a href="http://www.w3.org/TR/SVG/animate.html#TargetAttributes">W3C 這邊</a> 瞧瞧)</p>
+<p><a href="http://www.oxxostudio.tw/articles/201409/svg-21-smil-animation.html" target="_blank">上一篇</a> 應該已經大概明白 SVG 的動畫是怎麼一回事，但仍然有很多屬性和設定沒有解釋清楚，然而這些屬性和設定，才是 SVG 動畫的最精華所在，讓我們繼續看下去~ XD (英文夠好的人也可以來 <a href="http://www.w3.org/TR/SVG/animate.html#TargetAttributes" target="_blank">W3C 這邊</a> 瞧瞧)</p>
 <p>SVG 的動畫具有以下幾個重要的也是共用的屬性，分別是：</p>
 <ul>
 <li><p><strong>xlink:href</strong></p>
@@ -141,7 +141,7 @@
 <p><br></p>
 </li>
 <li><p><strong>keySplines</strong></p>
-<p>  keySplines 跟 CSS3 Cubic Bezier 其實超像的 ( 參考：<a href="http://www.oxxostudio.tw/articles/201406/css-cubic-bezier.html">CSS3 Cubic Bezier</a> )，不過 keySplines 的彈性沒有 CSS3 Cubic Bezier 來得大，只能限定在 0-1 之間的範圍，而且必須與 keyTimes 一同使用，一個值裡面有四個數字，以分號隔開，比 keyTimes 少一個值，我們可由下圖看到藉由控制 keySplines，可以達到讓動畫加減速的效果。
+<p>  keySplines 跟 CSS3 Cubic Bezier 其實超像的 ( 參考：<a href="http://www.oxxostudio.tw/articles/201406/css-cubic-bezier.html" target="_blank">CSS3 Cubic Bezier</a> )，不過 keySplines 的彈性沒有 CSS3 Cubic Bezier 來得大，只能限定在 0-1 之間的範圍，而且必須與 keyTimes 一同使用，一個值裡面有四個數字，以分號隔開，比 keyTimes 少一個值，我們可由下圖看到藉由控制 keySplines，可以達到讓動畫加減速的效果。
   ( 別忘記還要在 calcMode="spline" 的情形下使用)</p>
 <p>  <img src="/img/articles/201409/20140921_2_06.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 <pre class="prettyprint"><code>  &lt;rect width="60" height="60" x="50" y="50" fill="#0cc"&gt;

@@ -71,7 +71,7 @@
 <p>不過因為 SublimeText 的擴充特性，衍伸出有一大票的 Package，如果缺少了這些 Package 的輔助，SublimeText 可能就真的只是套好用的文字編輯器，有了這些 Package，SublimeText 則化身為超好用的開發工具！由於 Package 實在太多，我自己也裝了一大堆，為了避免每次重灌都要去想或去找，就用這篇文章做個紀錄。</p>
 <p>在安裝之前，我們必須要先安裝<code>Package Control</code>，按下 <strong>Ctrl+`</strong>，然後貼上這些程式碼，按下 Enter 就可以安裝。<br>( 這裡是 SublimeText3 的版本使用的 )</p>
 <blockquote>
-<p>import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( '<a href="http://packagecontrol.io/">http://packagecontrol.io/</a>' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)  </p>
+<p>import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( '<a href="http://packagecontrol.io/" target="_blank">http://packagecontrol.io/</a>' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)  </p>
 </blockquote>
 <p>安裝完成後，只要按下 <strong>Ctrl + Shift + p</strong>，輸入 install package，點選後就可以看到一大堆可以安裝的 Package 列表囉！
 <br>

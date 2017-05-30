@@ -67,8 +67,8 @@
 
 <h1>SVG 研究之路 (23) - 理解 viewport 與 viewbox</h1>
 <p><img src="/img/articles/201409/svg-23-viewpoint-viewBox.jpg" class="preview-img" alt=""> </p>
-<p>記得我初次接觸 SVG 的時候，常常為了定位和大小感到相當的疑惑，有時候明明設定了這樣的大小，莫名其妙的又變成了另外的大小，也不知道該如何去設定，直到看了 <a href="http://www.w3.org/TR/SVG/coords.html#ViewBoxAttribute">W3C 的定義</a> 之後，總算才明白了箇中原理，雖然我們都知道 SVG 該如何去使用，但往往一開始卻忽略了 SVG 的許多設定，所以這篇文章我們回頭仔細看看相關的設定，對於之後的圖形操作，也才能夠真正的融會貫通，也不需要一查再查了。</p>
-<p>在 <a href="http://www.oxxostudio.tw/articles/201409/svg-17-storke-marker.html">SVG 研究之路 (17) - Stroke-marker</a> 裡其實也有提到 viewbox ，但是總覺得沒有直接來篇文章介紹，觀念上再遇到的時候又會亂掉了。這篇主要會介紹 viewport ，當中包含了 viewbox 和 preserveAspectRatio 兩個屬性。</p>
+<p>記得我初次接觸 SVG 的時候，常常為了定位和大小感到相當的疑惑，有時候明明設定了這樣的大小，莫名其妙的又變成了另外的大小，也不知道該如何去設定，直到看了 <a href="http://www.w3.org/TR/SVG/coords.html#ViewBoxAttribute" target="_blank">W3C 的定義</a> 之後，總算才明白了箇中原理，雖然我們都知道 SVG 該如何去使用，但往往一開始卻忽略了 SVG 的許多設定，所以這篇文章我們回頭仔細看看相關的設定，對於之後的圖形操作，也才能夠真正的融會貫通，也不需要一查再查了。</p>
+<p>在 <a href="http://www.oxxostudio.tw/articles/201409/svg-17-storke-marker.html" target="_blank">SVG 研究之路 (17) - Stroke-marker</a> 裡其實也有提到 viewbox ，但是總覺得沒有直接來篇文章介紹，觀念上再遇到的時候又會亂掉了。這篇主要會介紹 viewport ，當中包含了 viewbox 和 preserveAspectRatio 兩個屬性。</p>
 <ul>
 <li><p><strong>viewport</strong></p>
 <p>  簡單來說這也不算是個屬性，這是指「視圖」或「視區」，也就是圖片可視區域的大小，除了 SVG 本身，一些指定的元素也是有視區的機制存在，例如 symbol、image、pattern、marker 都是，如果我們以 SVG 來說，width="300" height="300" 就表示我們定義了一個 300x300 的視區，與 HTML 和 CSS 比較不同的地方，SVG 本身定義這些屬性是沒有單位的，不過基本上就是以「像素 px」為單位。</p>

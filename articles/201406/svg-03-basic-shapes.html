@@ -71,7 +71,7 @@
 <p>SVG 裏頭針對基本形狀，其實程式碼超級簡單的，也就是一個該形狀的名稱，加上一些設定就完成，舉例來說，就有點類似 Illustrator 或 Flash 裏頭的形狀工具名稱，搭配屬性面板去做設定。</p>
 <ul>
 <li><p><strong>矩形：</strong>  </p>
-<p>矩形就是指正方形或是長方形，下列這段程式碼可以產生兩個不同顏色的矩形，如同之前 <a href="http://www.oxxostudio.tw/articles/201406/svg-02-layer.html">layer</a> 章節提過的，<code>id</code>是該形狀的名稱，而<code>x</code>和<code>y</code>則是矩形左上角的座標，<code>fill</code>代表填充的顏色，<code>stroke</code>代表線段的顏色，<code>stroke-width</code>是線段的寬度，，<code>width</code>和<code>height</code>就是寬和高，數值均是使用螢幕的 pixel 值。  </p>
+<p>矩形就是指正方形或是長方形，下列這段程式碼可以產生兩個不同顏色的矩形，如同之前 <a href="http://www.oxxostudio.tw/articles/201406/svg-02-layer.html" target="_blank">layer</a> 章節提過的，<code>id</code>是該形狀的名稱，而<code>x</code>和<code>y</code>則是矩形左上角的座標，<code>fill</code>代表填充的顏色，<code>stroke</code>代表線段的顏色，<code>stroke-width</code>是線段的寬度，，<code>width</code>和<code>height</code>就是寬和高，數值均是使用螢幕的 pixel 值。  </p>
 <p>  <img src="/img/articles/201406/20140609_2_02.png" alt="SVG-矩形"></p>
 <pre class="prettyprint"><code>  &lt;rect id="A" x="33" y="34" fill="#FF6CC4" stroke="#C30D23" stroke-width="3" width="75" height="75"/&gt;
   &lt;rect id="B" x="119" y="54" fill="#6EA9FF" stroke="#036EB7" stroke-width="3" width="117" height="55"/&gt;
@@ -96,7 +96,7 @@
 <p><br></p>
 <ul>
 <li><p><strong>橢圓：</strong>  </p>
-<p>橢圓和圓形最大的不同點，就在於橢圓形具有 x 方向的半徑<code>rx</code>與 y 方向的半徑<code>ry</code>，看起來容易理解，但實際上橢圓的公式卻是頗為複雜，可以參考 <a href="http://zh.wikipedia.org/wiki/%E6%A4%AD%E5%9C%86">維基百科：橢圓</a>，或是可由下列這張圖來表示：  </p>
+<p>橢圓和圓形最大的不同點，就在於橢圓形具有 x 方向的半徑<code>rx</code>與 y 方向的半徑<code>ry</code>，看起來容易理解，但實際上橢圓的公式卻是頗為複雜，可以參考 <a href="http://zh.wikipedia.org/wiki/%E6%A4%AD%E5%9C%86" target="_blank">維基百科：橢圓</a>，或是可由下列這張圖來表示：  </p>
 <p>  <img src="/img/articles/201406/20140609_2_06.gif" alt="SVG-橢圓"> </p>
 <p>  <img src="/img/articles/201406/20140609_2_05.png" alt="SVG-橢圓"></p>
 <pre class="prettyprint"><code>  &lt;ellipse fill="#77DD47" stroke="#246614" stroke-width="5" cx="100" cy="75" rx="67" ry="44"/&gt;

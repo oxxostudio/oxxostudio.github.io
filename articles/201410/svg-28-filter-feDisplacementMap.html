@@ -67,7 +67,7 @@
 
 <h1>SVG 研究之路 (28) - filter - feDisplacementMap</h1>
 <p><img src="/img/articles/201410/svg-28-filter-feDisplacementMap.jpg" class="preview-img" alt=""></p>
-<p>在玩 photoshop 的時候，我時常會使用一個名為「移置」的特效，這個特效說難不難，可以參考我在 2008 年寫的的教學：<a href="http://oxxo-studio-past.blogspot.tw/2008/01/photoshop_5142.html">photoshop：國旗飄揚皺折</a>，在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。</p>
+<p>在玩 photoshop 的時候，我時常會使用一個名為「移置」的特效，這個特效說難不難，可以參考我在 2008 年寫的的教學：<a href="http://oxxo-studio-past.blogspot.tw/2008/01/photoshop_5142.html" target="_blank">photoshop：國旗飄揚皺折</a>，在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。</p>
 <p>同樣的，SVG 裡也有提供這種功能，就叫做 feDisplacementMap，也因為有了這個濾鏡，我們更可以做出許多有趣的變化，現在就讓我們來繼續看下去~</p>
 <p>feDisplacementMap 的屬性：</p>
 <ul>
@@ -79,7 +79,7 @@
 </ul>
 <p>在解釋這些屬性之前，可以先看到 SVG 裡頭關於每個像素移置的公式：「<code>P'(x,y) &lt;- P( x + scale * (XC(x,y) - .5), y + scale * (YC(x,y) - .5))</code>」，看起來很難，翻成中文就是：P’(x,y) 是移置過的該像素坐標，公式就是原本的坐標 ( x,y ) 加上振幅比例 ( scale ) 與 xChannelSelector 或 yChannelSelector 的乘積。</p>
 <p>好像很難理解？沒關係，我再講的直白一點，簡單來說就是我們提供一張以 R 或 G  或 B 或 A 為主的圖片，目的在作為另外一張圖片的移置參考，會怎麼移置取決了我們提供的圖片內容顏色以及被移置的圖片內容顏色，如果今天以 R ( 紅色 ) 通道為例，越紅移置的比例越高，但如果圖片裡面沒有紅色，則 R 作為移置的效用就不明顯或與其他顏色通道不同。</p>
-<p>然而和 Photoshop 最大的不同，SVG 裡頭可以選擇四種通道顏色，也就是 RGBA，換句話說，我們在 HTML 的色彩，寫成 red 或 #f00 其實只描述了 RGB，如果寫成 rgba(255,0,0,1) 就會更容易理解，如果對於這些寫法不容易轉換的話，也可以開啟 photoshop 或繪圖軟體的調色盤，通常都可以看到色彩的數值。( 不明白 rgba 的請參考這篇文章 <a href="http://zh.wikipedia.org/wiki/RGBA">http://zh.wikipedia.org/wiki/RGBA</a>，這裡就不介紹了 )</p>
+<p>然而和 Photoshop 最大的不同，SVG 裡頭可以選擇四種通道顏色，也就是 RGBA，換句話說，我們在 HTML 的色彩，寫成 red 或 #f00 其實只描述了 RGB，如果寫成 rgba(255,0,0,1) 就會更容易理解，如果對於這些寫法不容易轉換的話，也可以開啟 photoshop 或繪圖軟體的調色盤，通常都可以看到色彩的數值。( 不明白 rgba 的請參考這篇文章 <a href="http://zh.wikipedia.org/wiki/RGBA" target="_blank">http://zh.wikipedia.org/wiki/RGBA</a>，這裡就不介紹了 )</p>
 <p>上面其實就是在介紹 scale、xChannelSelector 和 yChannelSelector 這三個屬性，至於剩下的 in 和 in2 屬性，<strong>in 代表要被套用的圖片 ( 要變形的 )，in2 則是要套用的圖片 ( RGBA 通道使用 )，而要套用的 feImage，則必須要寫上 result，就可以被套用</strong>。</p>
 <p>講到這裡非常多的解釋，不如直接來幾張示意圖才比較好理解，下面我先拿一張黑白棋盤圖作為要變形的圖片 ( 通常變形都會拿這種圖來解釋，因為最明顯也最清楚 )，我們先看看套用紅黑漸層移置的效果：</p>
 <p><img src="/img/articles/201410/20141009_1_02.png" alt="SVG 研究之路 (28) - filter - feDisplacementMap"></p>

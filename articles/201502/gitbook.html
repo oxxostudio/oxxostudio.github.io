@@ -67,12 +67,12 @@
 
 <h1>用 GitBook 來寫本書吧！</h1>
 <p><img src="/img/articles/201502/gitbook.jpg" class="preview-img" alt=""></p>
-<p>自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「<a href="http://whitebook.kptaipei.tw/">政策白皮書</a>」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！( <a href="https://www.gitbook.com/blog/authors/taipei-mayor-writes-gitbook">連結參考</a> ) </p>
+<p>自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「<a href="http://whitebook.kptaipei.tw/" target="_blank">政策白皮書</a>」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！( <a href="https://www.gitbook.com/blog/authors/taipei-mayor-writes-gitbook" target="_blank">連結參考</a> ) </p>
 <p>然而 GitBook 這個服務也不是這時候才開始，根據他們官方說法，2014 年結束時在上頭已經有 3300 本電子書，而我也在 2014 上架了一本公司產品的教學手冊 ( 截至今日瀏覽人次快五千 )，目前也在籌備要上架自己的教學手冊。</p>
 <p>因為 GitBook 是基於 GitHub 的方式運作，所以最基本發佈的方式與 Git 沒有太大的差異，而 GitBook 又是由 Node.js 開發而成，所以若要使用本機環境進行編寫書籍，就必須要安裝 Node.js，同時也要使用 Markdown 的語法來編輯，簡單來說，如果要用自己的編輯器 ( sublimeText、筆記本...等 ) 來編輯，就是安裝 Node.js 以及了解基本的 Git 與 Markdown。</p>
-<p>不過其實也不用太過擔心，因為 GitBook 的團隊很貼心的提供了線上的編輯器，在線上編輯器之前是提供桌面安裝版本的編輯器，不管是線上編輯器或是安裝版本的編輯器，都讓使用者可以在不會 Node.js 和 Git 的情況下進行書籍的編寫，不過仍然要會 Markdown 就是了。( Markdown 是一種非常輕量的語言，只需要撰寫純文字，加上簡單的標記，就可以把整篇文章的純文字轉換為 HTML 語言，相信不到半小時就能學會，參考：<a href="http://zh.wikipedia.org/wiki/Markdown">Markdown</a> )</p>
+<p>不過其實也不用太過擔心，因為 GitBook 的團隊很貼心的提供了線上的編輯器，在線上編輯器之前是提供桌面安裝版本的編輯器，不管是線上編輯器或是安裝版本的編輯器，都讓使用者可以在不會 Node.js 和 Git 的情況下進行書籍的編寫，不過仍然要會 Markdown 就是了。( Markdown 是一種非常輕量的語言，只需要撰寫純文字，加上簡單的標記，就可以把整篇文章的純文字轉換為 HTML 語言，相信不到半小時就能學會，參考：<a href="http://zh.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a> )</p>
 <p><br>
-廢話說盡，首先來看一下 GitBook 的線上編輯器該如何使用，第一步當然是要註冊一個帳號，請前往 GitBook 吧！( <a href="http://www.gitbook.com">www.gitbook.com</a> )</p>
+廢話說盡，首先來看一下 GitBook 的線上編輯器該如何使用，第一步當然是要註冊一個帳號，請前往 GitBook 吧！( <a href="http://www.gitbook.com" target="_blank">www.gitbook.com</a> )</p>
 <p><img src="/img/articles/201502/20150211_1_02.jpg" alt="用 GitBook 來寫本書吧！"></p>
 <p><br>
 註冊完成並且登入之後，應該就會看到跟我一樣的畫面。</p>
@@ -93,10 +93,10 @@ show more option 點下去之後還會看到其他選項，最主要的就是公
 再來就是新增檔案，從右上方的「+」就可以新增，新增完成的檔案就會出現在最左邊，新增的時候也可以指定資料夾，就會自動產生資料夾，而資料夾內不能為空，如果資料夾內沒有東西，就會自動消失了。</p>
 <p><img src="/img/articles/201502/20150211_1_08.jpg" alt="用 GitBook 來寫本書吧！"></p>
 <p><br>
-整本 GitBook 電子書最重要的地方，就是 SUMMARY.md 這個檔案，可以參考 GitBook 官方的說明 <a href="http://help.gitbook.com/format/chapters.html">Chapters and Subchapters</a> 重點就是必須在 SUMMARY.md 內建立清單，這樣 GitBook 才會自動產生左側對應的選單。( SUMMARY.md 不會出現在書籍內，它的作用就是左側頁面的清單 )</p>
+整本 GitBook 電子書最重要的地方，就是 SUMMARY.md 這個檔案，可以參考 GitBook 官方的說明 <a href="http://help.gitbook.com/format/chapters.html" target="_blank">Chapters and Subchapters</a> 重點就是必須在 SUMMARY.md 內建立清單，這樣 GitBook 才會自動產生左側對應的選單。( SUMMARY.md 不會出現在書籍內，它的作用就是左側頁面的清單 )</p>
 <p><img src="/img/articles/201502/20150211_1_09.jpg" alt="用 GitBook 來寫本書吧！"></p>
 <p><br>
-理解 SUMMARY.md 之後，就是要開始編輯內容，編輯內容都是使用 Markdown，這裏就不多加贅述，大家可以直接參考 GitBook 團隊所寫的 Markdown 教學：<a href="http://gitbookio.gitbooks.io/markdown/content/">Learn Markdown</a>，總之，純粹利用 Markdown 來撰寫，就像用筆記本寫文字一樣簡單的喔！</p>
+理解 SUMMARY.md 之後，就是要開始編輯內容，編輯內容都是使用 Markdown，這裏就不多加贅述，大家可以直接參考 GitBook 團隊所寫的 Markdown 教學：<a href="http://gitbookio.gitbooks.io/markdown/content/" target="_blank">Learn Markdown</a>，總之，純粹利用 Markdown 來撰寫，就像用筆記本寫文字一樣簡單的喔！</p>
 <p><img src="/img/articles/201502/20150211_1_10.jpg" alt="用 GitBook 來寫本書吧！"></p>
 <p><br>
 在右上角的選單裡，我們可以添加一些 plugin ( 後面會繼續介紹 )，還有新增書籍封面，基本上都是相當的人性化，附帶一提，書籍封面的檔名必須是 cover.jpg，大小也盡量是按照 GitBook 的建議使用 1800×2360 ( 個人猜測是為了印刷使用啦 )。</p>
@@ -106,7 +106,7 @@ show more option 點下去之後還會看到其他選項，最主要的就是公
 <p><img src="/img/articles/201502/20150211_1_12.jpg" alt="用 GitBook 來寫本書吧！"></p>
 <p><br>
 以上就是單純利用 GitBook 的線上編輯器來撰寫電子書，實在是非常的容易，不過其實我們也可以不使用他的線上編輯器進行編輯，特別是針對有多人共同編輯的電子書，或對於電子書有特殊需求的人而言，線上編輯器就顯得不敷使用了，因此再來要介紹如何不使用線上編輯器來進行 GitBook 的編輯。</p>
-<p>首先我們必須要先安裝 Node.js，請到 Node.js 的網站下載安裝，安裝之後基本上就會連同 Node.js 的 npm 一起安裝完成。( <a href="http://nodejs.org/">http://nodejs.org/</a> )</p>
+<p>首先我們必須要先安裝 Node.js，請到 Node.js 的網站下載安裝，安裝之後基本上就會連同 Node.js 的 npm 一起安裝完成。( <a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a> )</p>
 <p><img src="/img/articles/201502/20150211_1_13.jpg" alt="用 GitBook 來寫本書吧！"></p>
 <p><br>
 接著就是打開 cmd ( windows ) 或 terminal ( Mac )，安裝 gitbook，安裝的方法就是直接輸入下列命令，就可以將 gitbook 安裝到全域。</p>
@@ -117,7 +117,7 @@ show more option 點下去之後還會看到其他選項，最主要的就是公
 <pre class="prettyprint"><code>gitbook init
 </code></pre><p><img src="/img/articles/201502/20150211_1_15.jpg" alt="用 GitBook 來寫本書吧！"></p>
 <p><br>
-接著就是要新增一個名為 book.json 的檔案，我們可以將一些 plugin 寫在裏頭，如此一來我們就可以在 GitBook 裏頭，使用 Google Analytics ( Google 分析 )、Disqus ( 社群&amp;留言板 ) 和 youtube ...等外掛，同時你也可以從 npm 的網站，自行尋找需要的 <a href="https://www.npmjs.com/search?q=gitbook-plugin">Gitbook plugin</a>。</p>
+接著就是要新增一個名為 book.json 的檔案，我們可以將一些 plugin 寫在裏頭，如此一來我們就可以在 GitBook 裏頭，使用 Google Analytics ( Google 分析 )、Disqus ( 社群&amp;留言板 ) 和 youtube ...等外掛，同時你也可以從 npm 的網站，自行尋找需要的 <a href="https://www.npmjs.com/search?q=gitbook-plugin" target="_blank">Gitbook plugin</a>。</p>
 <pre class="prettyprint"><code>{
   "plugins": ["disqus"],
   "pluginsConfig": {
@@ -146,7 +146,7 @@ show more option 點下去之後還會看到其他選項，最主要的就是公
 <p><img src="/img/articles/201502/20150211_1_21.jpg" alt="用 GitBook 來寫本書吧！"></p>
 <p><br>
 以上就是一些我自己使用 GitBook 的心得與經驗分享，其實 GitBook 本身還有提供了很多好用的外掛供我們使用，但基本上熟練上述的做法以及熟悉 Markdown 的寫作方式，就可以輕鬆的寫出一本書，不過仍然要總歸一句，一本書的成功與否，並不在於這本書用什麼工具或什麼平台，而是在於這本書的內容好或不好！^_^</p>
-<p>最後提供一下在 GitBook 上頭有人翻譯的資料給大家參考：<a href="http://wastemobile.gitbooks.io/gitbook-chinese/content/">http://wastemobile.gitbooks.io/gitbook-chinese/content/</a></p>
+<p>最後提供一下在 GitBook 上頭有人翻譯的資料給大家參考：<a href="http://wastemobile.gitbooks.io/gitbook-chinese/content/" target="_blank">http://wastemobile.gitbooks.io/gitbook-chinese/content/</a></p>
 
 
       <div class="social-icon">

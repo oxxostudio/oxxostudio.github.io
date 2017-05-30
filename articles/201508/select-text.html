@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>自動選取某個區域的文字</h1>
-<p>最近在工作上需要一個功能，就是點選一個按鈕可以全選某個區域內的文字，由於，找了一些解法大多都是針對文 input 的 text 或 textarea 所設計，，後來總算是在 Stack Overflow 發現了完美的解法，( 參考連結：<a href="http://goo.gl/uAHGuS">http://goo.gl/uAHGuS</a> ) 根據這個解法我就做出來了可以選取特定區域文字的範例，程式碼的長相如下：<br>( 範例：<a href="/demo/201508/select-text-demo01.html">select-text-demo01.html</a> )</p>
+<p>最近在工作上需要一個功能，就是點選一個按鈕可以全選某個區域內的文字，由於，找了一些解法大多都是針對文 input 的 text 或 textarea 所設計，，後來總算是在 Stack Overflow 發現了完美的解法，( 參考連結：<a href="http://goo.gl/uAHGuS" target="_blank">http://goo.gl/uAHGuS</a> ) 根據這個解法我就做出來了可以選取特定區域文字的範例，程式碼的長相如下：<br>( 範例：<a href="/demo/201508/select-text-demo01.html" target="_blank">select-text-demo01.html</a> )</p>
 <p>HTML：</p>
 <pre class="prettyprint"><code>&lt;div id="textA"&gt;點選 A 會選取我&lt;/div&gt;
 &lt;div id="textB"&gt;點選 B 會選取我&lt;/div&gt;
@@ -99,7 +99,7 @@ document.getElementById('btnB').addEventListener('click', function() {
 </code></pre><p><br>
 判斷式裡的<code>createTextRange</code>只有 IE 支援，所以上面這段程式碼之所以要加上判斷，主要也是區分瀏覽器使用，因為自己不用 IE 也沒辦法測試 ( mac 沒有 IE )，所以就直接忽略第一個判斷式裡頭的東西。</p>
 <p>再來可能是自己 javascript 見識淺薄，第一次看到<code>getSelection()</code>與<code>createRange()</code>這兩個方法，<code>getSelection()</code>目的在返回一個 selection 對象開始選取，而<code>createRange()</code>則定義了一個範圍 range，在上面的範例裏，使用了<code>selectNodeContents()</code>的方法，讓我們可以全選指定的 DOM 內的文字 ( 應該說選取整個指定的 DOM )。</p>
-<p>除了全選，我們也可以使用<code>setStart()</code>以及<code>setEnd()</code>的方法，指定要選取的文字，不過因為這兩個方法是針對「節點 Node」的操作，所以放在裡面的，就是我們要選擇節點，以及從這個節點起算的第幾個字元，因為我們要獲取文字，所以，可以參考以下的程式碼，當我們按下 A 的按鈕，第一行會有部分文字被選取起來，當我們按下 B 的按鈕，換成第二行有部分文字被選取起來。<br>( 範例：<a href="/demo/201508/select-text-demo02.html">select-text-demo02.html</a> )</p>
+<p>除了全選，我們也可以使用<code>setStart()</code>以及<code>setEnd()</code>的方法，指定要選取的文字，不過因為這兩個方法是針對「節點 Node」的操作，所以放在裡面的，就是我們要選擇節點，以及從這個節點起算的第幾個字元，因為我們要獲取文字，所以，可以參考以下的程式碼，當我們按下 A 的按鈕，第一行會有部分文字被選取起來，當我們按下 B 的按鈕，換成第二行有部分文字被選取起來。<br>( 範例：<a href="/demo/201508/select-text-demo02.html" target="_blank">select-text-demo02.html</a> )</p>
 <pre class="prettyprint"><code>function SelectText(element) {
   var doc = document,
     text = doc.getElementById(element),
@@ -132,7 +132,7 @@ document.getElementById('btnB').addEventListener('click', function() {
   SelectText('textB');
 });
 </code></pre><p><br></p>
-<p>除了純粹的選取之外，我們也可以使用<code>cloneContents()</code>的方法來同時複製並貼上，使用<code>deleteContents()</code>來刪除，使用<code>extractContents()</code>同時剪下並貼上 ( 移動 )，下面的範例做出三個按鈕，分別套用這三個方法。( 範例：<a href="/demo/201508/select-text-demo03.html">select-text-demo03.html</a> )</p>
+<p>除了純粹的選取之外，我們也可以使用<code>cloneContents()</code>的方法來同時複製並貼上，使用<code>deleteContents()</code>來刪除，使用<code>extractContents()</code>同時剪下並貼上 ( 移動 )，下面的範例做出三個按鈕，分別套用這三個方法。( 範例：<a href="/demo/201508/select-text-demo03.html" target="_blank">select-text-demo03.html</a> )</p>
 <pre class="prettyprint"><code>var p = document.getElementById('p');
 
 function SelectText(element, check) {
@@ -185,10 +185,10 @@ document.getElementById('btnC').addEventListener('click', function() {
 <p>最後附上這一篇文章我的參考資料：</p>
 <blockquote>
 <ul>
-<li><a href="http://blog.kkbruce.net/2012/02/javascript-w3c-dom.html#.VdHiKVOqqkp">JAVASCRIPT - W3C DOM簡介</a></li>
-<li><a href="http://www.cnblogs.com/rainman/archive/2011/02/28/1967488.html">Javascript标准DOM Range操作</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getSelection">MDN Window.getSelection</a></li>
-<li><a href="http://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse/987376#987376">Selecting text in an element</a></li>
+<li><a href="http://blog.kkbruce.net/2012/02/javascript-w3c-dom.html#.VdHiKVOqqkp" target="_blank">JAVASCRIPT - W3C DOM簡介</a></li>
+<li><a href="http://www.cnblogs.com/rainman/archive/2011/02/28/1967488.html" target="_blank">Javascript标准DOM Range操作</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getSelection" target="_blank">MDN Window.getSelection</a></li>
+<li><a href="http://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse/987376#987376" target="_blank">Selecting text in an element</a></li>
 </ul>
 </blockquote>
 

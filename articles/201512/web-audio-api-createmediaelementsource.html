@@ -67,7 +67,7 @@
 
 <h1>建立音樂頻譜 ( createMediaElementSource )</h1>
 <p>最近好忙，一陣子沒寫這系列的文章，還回頭複習了一陣子，前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )</p>
-<p>在這系列的 <a href="http://www.oxxostudio.tw/articles/201509/web-audio-api.html">第一篇</a> 有介紹過<code>createOscillator()</code>這個振盪器產生單音的方法，這篇要來介紹<code>createMediaElementSource</code>這個把外部音軌作為 source 的方法，這個方法需要搭配 HTML5 的<code>audio</code>標籤來實施，因為它預設就是會以 HTML5 所載入的音頻為主，以下面的例子來說，我們要先在 HTML 裡放入聲音，<code>controls</code>表示會載入預設的播放器介面，<code>autoplay</code>預設為一開始就自動播放。( mp3 格式基本上已經被所有瀏覽器接受，如果不能播放也可以採用 ogg 格式 )</p>
+<p>在這系列的 <a href="http://www.oxxostudio.tw/articles/201509/web-audio-api.html" target="_blank">第一篇</a> 有介紹過<code>createOscillator()</code>這個振盪器產生單音的方法，這篇要來介紹<code>createMediaElementSource</code>這個把外部音軌作為 source 的方法，這個方法需要搭配 HTML5 的<code>audio</code>標籤來實施，因為它預設就是會以 HTML5 所載入的音頻為主，以下面的例子來說，我們要先在 HTML 裡放入聲音，<code>controls</code>表示會載入預設的播放器介面，<code>autoplay</code>預設為一開始就自動播放。( mp3 格式基本上已經被所有瀏覽器接受，如果不能播放也可以採用 ogg 格式 )</p>
 <pre class="prettyprint"><code>&lt;audio controls autoplay&gt;
   &lt;source src="test.mp3"&gt;
 &lt;/audio&gt;
@@ -75,7 +75,7 @@
 <pre class="prettyprint"><code>var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 var myAudio = document.querySelector('audio');
 var source = audioCtx.createMediaElementSource(myAudio);
-</code></pre><p>再來我們可以做一個簡單的實驗，使用在之前 <a href="http://localhost:3000/articles/201509/web-audio-api-audioparam-gainnode.html">聲音參數與音量節點</a> 有介紹過的音量節點 Gain 來控制音樂的音量大小，因此在這裡可以獲取整個視窗滑鼠的座標，把座標轉換為音量大小，因為音量最大不會超過 1，所以把視窗的高度當作分母，往下音量就會越大，往上聲音就會越小聲，同時也把音量顯示在畫面的 span 裡頭。( 範例：<a href="/demo/201512/web-audio-api-createmediaelementsource-demo1.html">web-audio-api-createmediaelementsource-demo1.html</a> )</p>
+</code></pre><p>再來我們可以做一個簡單的實驗，使用在之前 <a href="http://localhost:3000/articles/201509/web-audio-api-audioparam-gainnode.html" target="_blank">聲音參數與音量節點</a> 有介紹過的音量節點 Gain 來控制音樂的音量大小，因此在這裡可以獲取整個視窗滑鼠的座標，把座標轉換為音量大小，因為音量最大不會超過 1，所以把視窗的高度當作分母，往下音量就會越大，往上聲音就會越小聲，同時也把音量顯示在畫面的 span 裡頭。( 範例：<a href="/demo/201512/web-audio-api-createmediaelementsource-demo1.html" target="_blank">web-audio-api-createmediaelementsource-demo1.html</a> )</p>
 <pre class="prettyprint"><code>var gainNode = audioCtx.createGain();
 source.connect(gainNode);
 gainNode.connect(audioCtx.destination);
@@ -150,7 +150,7 @@ window.onmousemove = function(e){
   margin: 0 0 0 1px;
   vertical-align: bottom;
 }
-</code></pre><p>完成後開始執行，就會看到一個有音量頻譜的顯示，同時我們也可以用滑鼠上下移動來操控大小聲囉！( 範例：<a href="/demo/201512/web-audio-api-createmediaelementsource-demo2.html">web-audio-api-createmediaelementsource-demo2.html</a> )</p>
+</code></pre><p>完成後開始執行，就會看到一個有音量頻譜的顯示，同時我們也可以用滑鼠上下移動來操控大小聲囉！( 範例：<a href="/demo/201512/web-audio-api-createmediaelementsource-demo2.html" target="_blank">web-audio-api-createmediaelementsource-demo2.html</a> )</p>
 <p><img src="/img/articles/201512/20151221_1_03.jpg" alt="建立音樂頻譜 ( createMediaElementSource )"></p>
 
 

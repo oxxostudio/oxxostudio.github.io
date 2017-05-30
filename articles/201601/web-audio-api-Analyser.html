@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>建立音樂頻譜 2 ( analyser )  <span class="article-date" tag="web">JAN 3, 2016</span></h1>
-<p>之前寫了一篇了用 createScriptProcessor 來製作音樂頻譜的功能，這裏要來介紹另外一個製作方式，就是使用 analyser 節點，analyser 節點可以針對經過它的音頻做分析 ( 顧名思義咩 )，所以相較 createScriptProcessor 會建立緩衝區來保留音頻訊號，處理速度會較快，但缺點是會失去一些高頻的訊號，不過如果只是要單純顯示音樂頻譜，倒是一個不錯的選擇。( 圖片來源：<a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode">https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode</a> ) </p>
+<p>之前寫了一篇了用 createScriptProcessor 來製作音樂頻譜的功能，這裏要來介紹另外一個製作方式，就是使用 analyser 節點，analyser 節點可以針對經過它的音頻做分析 ( 顧名思義咩 )，所以相較 createScriptProcessor 會建立緩衝區來保留音頻訊號，處理速度會較快，但缺點是會失去一些高頻的訊號，不過如果只是要單純顯示音樂頻譜，倒是一個不錯的選擇。( 圖片來源：<a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode</a> ) </p>
 <p><img src="/img/articles/201601/20160103_1_02.jpg" alt="建立音樂頻譜 2 ( analyser )"></p>
 <p>先看到 HTML 的部分，一開始我們同樣先用 HTML5 的 audio 標籤來載入音樂，然後放入兩個按鈕，來做播放和暫停的動作。</p>
 <pre class="prettyprint"><code>&lt;audio controls autoplay&gt;
@@ -116,16 +116,16 @@ p.onclick = function(){
   update();
 };
 </code></pre><p><br></p>
-<p>實際跑一次，打開 console，就會看到音樂的頻譜數值跑出來了 ( 範例：<a href="/demo/201601/web-audio-api-Analyser-demo1.html">web-audio-api-Analyser-demo1.html</a> )</p>
+<p>實際跑一次，打開 console，就會看到音樂的頻譜數值跑出來了 ( 範例：<a href="/demo/201601/web-audio-api-Analyser-demo1.html" target="_blank">web-audio-api-Analyser-demo1.html</a> )</p>
 <p><img src="/img/articles/201601/20160103_1_04.jpg" alt="建立音樂頻譜 2 ( analyser )"></p>
-<p>既然有數值，下一步就是要來把數值畫成圖，和之前畫頻譜類似，這裏用比較簡單的方法 ( 不用 SVG、D3 或 Canvas )，純粹先用 div 來表現，首先在畫面裡用 JavaScript 放入 256 個 div，讓 div 依據陣列數值變化高度和背景顏色，圖畫出來就可以看到，越往右邊數值就開始消失了，這也是使用 analyser 的一個問題吧，不過如果只是純粹要畫頻譜，倒是滿方便又高效率的做法。 ( 範例：<a href="/demo/201601/web-audio-api-Analyser-demo2.html">web-audio-api-Analyser-demo2.html</a> )</p>
+<p>既然有數值，下一步就是要來把數值畫成圖，和之前畫頻譜類似，這裏用比較簡單的方法 ( 不用 SVG、D3 或 Canvas )，純粹先用 div 來表現，首先在畫面裡用 JavaScript 放入 256 個 div，讓 div 依據陣列數值變化高度和背景顏色，圖畫出來就可以看到，越往右邊數值就開始消失了，這也是使用 analyser 的一個問題吧，不過如果只是純粹要畫頻譜，倒是滿方便又高效率的做法。 ( 範例：<a href="/demo/201601/web-audio-api-Analyser-demo2.html" target="_blank">web-audio-api-Analyser-demo2.html</a> )</p>
 <p><img src="/img/articles/201601/20160103_1_05.jpg" alt="建立音樂頻譜 2 ( analyser )"></p>
 <p>參考資源：</p>
 <ul>
-<li>關於 FFT 理論 ( <a href="http://goo.gl/79mRtJ">http://goo.gl/79mRtJ</a> )</li>
-<li>FFT基本概念總整理 ( <a href="http://goo.gl/gW7chw">http://goo.gl/gW7chw</a> )</li>
-<li>AnalyserNode ( <a href="http://goo.gl/QzxrY9">http://goo.gl/QzxrY9</a> )</li>
-<li>AnalyserNode MDN ( <a href="https://goo.gl/4BSKe7">https://goo.gl/4BSKe7</a> )</li>
+<li>關於 FFT 理論 ( <a href="http://goo.gl/79mRtJ" target="_blank">http://goo.gl/79mRtJ</a> )</li>
+<li>FFT基本概念總整理 ( <a href="http://goo.gl/gW7chw" target="_blank">http://goo.gl/gW7chw</a> )</li>
+<li>AnalyserNode ( <a href="http://goo.gl/QzxrY9" target="_blank">http://goo.gl/QzxrY9</a> )</li>
+<li>AnalyserNode MDN ( <a href="https://goo.gl/4BSKe7" target="_blank">https://goo.gl/4BSKe7</a> )</li>
 </ul>
 
 

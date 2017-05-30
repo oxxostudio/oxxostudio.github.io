@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>SVG 研究之路 (16) - Stroke-miterlimit</h1>
-<p>在之前 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html">SVG 研究之路 (6) - stroke 邊框</a> 有介紹過邊框的用法，不過其實 Stroke 還有其他的屬性可以設定使用，以下將介紹：「stroke-miterlimit」這個線段屬性，與之前相同，這篇仍舊會搭配一些 illustrator 來說明，因為我覺得，能回歸圖形思考，才是向量「圖」的真實面貌。</p>
+<p>在之前 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" target="_blank">SVG 研究之路 (6) - stroke 邊框</a> 有介紹過邊框的用法，不過其實 Stroke 還有其他的屬性可以設定使用，以下將介紹：「stroke-miterlimit」這個線段屬性，與之前相同，這篇仍舊會搭配一些 illustrator 來說明，因為我覺得，能回歸圖形思考，才是向量「圖」的真實面貌。</p>
 <p>首先我們仍然先使用 illustrator 畫出一段折線，並存檔成為 SVG。  </p>
 <p><img src="/img/articles/201409/20140906_1_02.png" alt="SVG 研究之路 (16) - Stroke-miterlimit"></p>
 <p>接著我們把 SVG 的程式碼打開，可以看到這段折線的程式碼長得這樣：</p>
@@ -76,7 +76,7 @@
 <p><img src="/img/articles/201409/20140906_1_03.png" alt="SVG 研究之路 (16) - Stroke-miterlimit"></p>
 <p>我們嘗試將 10 調整為 1，就可以發現有趣的現象，原本線段交界的交折處，尖角會開始變成不是尖角的形式。  </p>
 <p><img src="/img/articles/201409/20140906_1_04.gif" alt="SVG 研究之路 (16) - Stroke-miterlimit"></p>
-<p>在解釋為什麼之前，我們也可以藉由 illustrator 的屬性面板裏頭發現，若將線段的交折處設定為「圓角」或「斜角」，則不會有「限度」這個屬性可以設定，同理，圓角與斜角在 SVG Stroke 裡的屬性分別為<code>stroke-linejoin="round"</code>以及<code>stroke-linejoin="bevel"</code>( 參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html">SVG 研究之路 (6) - stroke 邊框</a> )，因為圓角不會有尖角的突出，斜角則已經是切邊的狀態。  </p>
+<p>在解釋為什麼之前，我們也可以藉由 illustrator 的屬性面板裏頭發現，若將線段的交折處設定為「圓角」或「斜角」，則不會有「限度」這個屬性可以設定，同理，圓角與斜角在 SVG Stroke 裡的屬性分別為<code>stroke-linejoin="round"</code>以及<code>stroke-linejoin="bevel"</code>( 參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" target="_blank">SVG 研究之路 (6) - stroke 邊框</a> )，因為圓角不會有尖角的突出，斜角則已經是切邊的狀態。  </p>
 <p><img src="/img/articles/201409/20140906_1_05.gif" alt="SVG 研究之路 (16) - Stroke-miterlimit"></p>
 <p>藉由 illustrator 快速瞭解了之後，就來解釋一下原理，<code>stroke-miterlimit</code>這個屬性很特別的地方，它其實是「斜切長度除以線段寬度」的值 ( 如下圖 )，也因此我們在 illustrator 的屬性面板可以看到它的單位不是 pt 也不是 px，而是一個「x」。</p>
 <p><img src="/img/articles/201409/20140906_1_06.png" alt="SVG 研究之路 (16) - Stroke-miterlimit"></p>

@@ -66,12 +66,12 @@
       <i class="tag"></i>
 
 <h1>點選複製 Clipboard.js</h1>
-<p>之前有介紹過 <a href="http://www.oxxostudio.tw/articles/201501/zeroclipboard.html">點選自動複製 ( ZeroClipboard )</a> 這個透過 flash 的方式，繞過瀏覽器安全性限制，將網頁元素內容複製到剪貼簿的方法，但因為必須走 flash 的緣故，在不支援 flash 的瀏覽器裡反而變成了一個隱性的問題，從以前那篇文章可以看到，當初其實是參考了 Github 的做法，結果前一陣子在 Github 裡頭，赫然發現他的那顆按鈕已經不是 flash，變成用純粹的 JavaScript 就可以複製到剪貼簿，真是太令人感到意外！</p>
-<p>再差不多同一時間，從 Facebook 的 Front-End Developers Taiwan 社團看到了 Rplus Chen 大大發的一篇文章：「<a href="https://zenorocha.github.io/clipboard.js/">Clipboard.js</a>」，就這麼巧同樣也是在講不走 flash 就能複製到剪貼簿的 JavaScript，找了一些資料，發現 W3C 也開始支援 ( 參考：<a href="http://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a> )，就先把這些內容收藏著，等待時機派上用場。</p>
+<p>之前有介紹過 <a href="http://www.oxxostudio.tw/articles/201501/zeroclipboard.html" target="_blank">點選自動複製 ( ZeroClipboard )</a> 這個透過 flash 的方式，繞過瀏覽器安全性限制，將網頁元素內容複製到剪貼簿的方法，但因為必須走 flash 的緣故，在不支援 flash 的瀏覽器裡反而變成了一個隱性的問題，從以前那篇文章可以看到，當初其實是參考了 Github 的做法，結果前一陣子在 Github 裡頭，赫然發現他的那顆按鈕已經不是 flash，變成用純粹的 JavaScript 就可以複製到剪貼簿，真是太令人感到意外！</p>
+<p>再差不多同一時間，從 Facebook 的 Front-End Developers Taiwan 社團看到了 Rplus Chen 大大發的一篇文章：「<a href="https://zenorocha.github.io/clipboard.js/" target="_blank">Clipboard.js</a>」，就這麼巧同樣也是在講不走 flash 就能複製到剪貼簿的 JavaScript，找了一些資料，發現 W3C 也開始支援 ( 參考：<a href="http://www.w3.org/TR/clipboard-apis/" target="_blank">Clipboard API and events</a> )，就先把這些內容收藏著，等待時機派上用場。</p>
 <p>一直到最近，工作上總算是需要用到這個方法 ( 之前一直都用需要 flash 的版本 )，在實作的過程中又遇到了一點小坑，不過做完之後覺得真是滿方便的，趕緊寫篇文章記錄一下。</p>
-<p>首先我們先連結到 Clipboard.js 的官方網站：<a href="https://zenorocha.github.io/clipboard.js/">https://zenorocha.github.io/clipboard.js/</a>，當然直接連結去他的 Github 也可以，星星超多 Der！</p>
+<p>首先我們先連結到 Clipboard.js 的官方網站：<a href="https://zenorocha.github.io/clipboard.js/" target="_blank">https://zenorocha.github.io/clipboard.js/</a>，當然直接連結去他的 Github 也可以，星星超多 Der！</p>
 <p><img src="/img/articles/201510/20151029_1_02.jpg" alt="點選複製 Clipboard.js"></p>
-<p>一開始他說的是 node.js 的安裝方式，如果要直接用在網頁上，其實直接載入對應的 js 就可以，大概就像下面這樣，不過作者也附上了 CDN 的網址。( <a href="https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers">https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers</a> )</p>
+<p>一開始他說的是 node.js 的安裝方式，如果要直接用在網頁上，其實直接載入對應的 js 就可以，大概就像下面這樣，不過作者也附上了 CDN 的網址。( <a href="https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers" target="_blank">https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers</a> )</p>
 <pre class="prettyprint"><code>&lt;script src="dist/clipboard.min.js"&gt;&lt;/script&gt;
 </code></pre><p><br></p>
 <p>載入之後就要來看用法，要用這支 js 最主要的目的，就是讓我們可以「一點就複製」，因此要先把行為綁定在需要點選的元素上，這裏作者稱之為「Trigger」，以下面的程式碼來說，最重要的就是要寫上<code>data-clipboard-target</code>這段，這指定了要複製的元素 id，點選後就會自動複製這個 id 的內容。</p>
@@ -91,7 +91,7 @@
 <p>寫完 HTML 就要來看程式，結果 JavaScript 的部份異常簡單，一段 code 就搞定，只要有這行，new 了一個 Clipboard 的物件之後，就可以點選複製或點選剪下了。</p>
 <pre class="prettyprint"><code>var clipboard = new Clipboard('btn');
 </code></pre><p><br></p>
-<p>不過作者當然不只有提供這些功能，他還提供了成功與失敗的事件，而取消選取的方法，就可以寫在「成功」的事件裡頭，複製完就會自動取消選取。( 想當初還花了很大的功夫寫了一篇 <a href="http://www.oxxostudio.tw/articles/201508/select-text.html">自動選取某個區域的文字</a> )</p>
+<p>不過作者當然不只有提供這些功能，他還提供了成功與失敗的事件，而取消選取的方法，就可以寫在「成功」的事件裡頭，複製完就會自動取消選取。( 想當初還花了很大的功夫寫了一篇 <a href="http://www.oxxostudio.tw/articles/201508/select-text.html" target="_blank">自動選取某個區域的文字</a> )</p>
 <pre class="prettyprint"><code>clipboard.on('success', function(e) {
     console.info('Action:', e.action);
     console.info('Text:', e.text);

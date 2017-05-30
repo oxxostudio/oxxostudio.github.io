@@ -102,7 +102,7 @@ d3.select('div div').style({
   'width':'120px'
   });
 </code></pre><p><img src="/img/articles/201410/20141031_1_03.png" alt="SVG D3 - 起手式"></p>
-<p>除了塞 HTML 的 DOM 之外，更重要的是可以塞 SVG 的形狀，還記得在我之前的文章：<a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html">SVG 研究之路 (14) - 控制 SVG 的注意事項</a>，因為 SVG 本身不屬於 HTML 的標準元素，所以都要用額外的方式才能動態添加內容，但自從有了 D3，就都沒有這問題了，直接添加即可，下列程式碼會產生一個圓形 ( 如果對 SVG 形狀不了解的可以參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-03-basic-shapes.html">SVG 研究之路 (3) - 基本形狀</a> )：</p>
+<p>除了塞 HTML 的 DOM 之外，更重要的是可以塞 SVG 的形狀，還記得在我之前的文章：<a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html" target="_blank">SVG 研究之路 (14) - 控制 SVG 的注意事項</a>，因為 SVG 本身不屬於 HTML 的標準元素，所以都要用額外的方式才能動態添加內容，但自從有了 D3，就都沒有這問題了，直接添加即可，下列程式碼會產生一個圓形 ( 如果對 SVG 形狀不了解的可以參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-03-basic-shapes.html" target="_blank">SVG 研究之路 (3) - 基本形狀</a> )：</p>
 <pre class="prettyprint"><code>  d3.select('body')
     .append('svg')
     .attr({

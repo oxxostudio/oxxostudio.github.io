@@ -67,7 +67,7 @@
 
 <h1>SVG 研究之路 (10) - 初探 filter</h1>
 <p><img src="/img/articles/201406/svg-10-filter-1.jpg" class="preview-img" alt=""></p>
-<p>這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( <a href="http://caniuse.com/svg-filters">各家瀏覽器 SVG 支援度</a> )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。</p>
+<p>這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了 ( <a href="http://caniuse.com/svg-filters" target="_blank">各家瀏覽器 SVG 支援度</a> )，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。</p>
 <p>一如往常，第一步，在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭，加入<code>&lt;filter&gt;&lt;/filter&gt;</code>的標籤，然後給它一個 id 作為識別，接著就是要在<code>filter</code>裏頭放入濾鏡，在此之前，<code>filter</code>除了 x、y、width、height 幾個基本屬性外，也幾個比較特別的屬性需要設定：</p>
 <ul>
 <li><strong>filterUnits</strong> ："userSpaceOnUse | objectBoundingBox" ( 位置以 SVG 畫面為主，還是以套用的物件為主 )</li>
@@ -81,10 +81,10 @@
     &lt;/filter&gt;
   &lt;/defs&gt;
 </code></pre><p><br></p>
-<p>因為在 chrome 上實測仍然有很多濾鏡效果不支援 ( IE 竟然支援... )，實際上要用，可能就真的要花點心思去測試了，不然真的做完發現不支援，還真是糗很大...如果對濾鏡有興趣，可以閱讀這幾篇文章：<a href="http://www.w3.org/TR/SVG/filters.html">W3C SVG Filters</a>、<a href="http://srufaculty.sru.edu/david.dailey/svg/SVGOpen2010/Filters2.htm">Filter Effects in SVG</a>，以下是濾鏡的列表：</p>
+<p>因為在 chrome 上實測仍然有很多濾鏡效果不支援 ( IE 竟然支援... )，實際上要用，可能就真的要花點心思去測試了，不然真的做完發現不支援，還真是糗很大...如果對濾鏡有興趣，可以閱讀這幾篇文章：<a href="http://www.w3.org/TR/SVG/filters.html" target="_blank">W3C SVG Filters</a>、<a href="http://srufaculty.sru.edu/david.dailey/svg/SVGOpen2010/Filters2.htm" target="_blank">Filter Effects in SVG</a>，以下是濾鏡的列表：</p>
 <ul>
 <li><strong>feBlend</strong> ：使用不同的混合模式把兩個對象合成在一起。</li>
-<li><strong>feColorMatrix</strong> ：應用矩陣轉換。( <a href="http://en.wikipedia.org/wiki/Matrix_multiplication">Matrix multiplication</a> )</li>
+<li><strong>feColorMatrix</strong> ：應用矩陣轉換。( <a href="http://en.wikipedia.org/wiki/Matrix_multiplication" target="_blank">Matrix multiplication</a> )</li>
 <li><strong>feComponentTransfer</strong> ：允許圖片由四個色彩通道重新定義<ul>
 <li>feFuncA、feFuncB、feFuncG、feFuncR</li>
 </ul>

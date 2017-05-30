@@ -108,7 +108,7 @@
 <li>%Y : 西元年</li>
 <li>%Z : 時區偏移量</li>
 </ul>
-<p>至於要如何使用呢？可以參考下面的範例，先把宣告一個 d3.js 的 time 物件，制定好格式，再將時間放入，就會變成相關格式的時間囉！( 範例：<a href="/demo/201412/svg-d3-11-time-demo1.html">svg-d3-11-time-demo1.html</a> )</p>
+<p>至於要如何使用呢？可以參考下面的範例，先把宣告一個 d3.js 的 time 物件，制定好格式，再將時間放入，就會變成相關格式的時間囉！( 範例：<a href="/demo/201412/svg-d3-11-time-demo1.html" target="_blank">svg-d3-11-time-demo1.html</a> )</p>
 <pre class="prettyprint"><code>  var d = new Date('2014,12,01,12:16:05');
 
   var _a = d3.time.format("%a");
@@ -160,7 +160,7 @@
   console.log(_y(d)); //14
   console.log(_Y(d)); //2014
   console.log(_Z(d)); //+0800
-</code></pre><p>  了解運作原理之後，接著就可以利用組合的方式，做出我們想要的格式。( 範例：<a href="/demo/201412/svg-d3-11-time-demo2.html">svg-d3-11-time-demo2.html</a> )</p>
+</code></pre><p>  了解運作原理之後，接著就可以利用組合的方式，做出我們想要的格式。( 範例：<a href="/demo/201412/svg-d3-11-time-demo2.html" target="_blank">svg-d3-11-time-demo2.html</a> )</p>
 <pre class="prettyprint"><code>  var Ymd = d3.time.format("%Y-%m-%d");
   var pIM = d3.time.format("(%p)%I:%M");
 
@@ -171,7 +171,7 @@
 <p><br></p>
 <ul>
 <li><p><strong>format.parse(string)</strong></p>
-<p>  針對經由 d3.time.format 的物件字串，轉換為原始的時間格式，如果沒有經過 time 格式化，出來可能會報錯獲釋返回 null。( 範例：<a href="/demo/201412/svg-d3-11-time-demo3.html">svg-d3-11-time-demo3.html</a> )</p>
+<p>  針對經由 d3.time.format 的物件字串，轉換為原始的時間格式，如果沒有經過 time 格式化，出來可能會報錯獲釋返回 null。( 範例：<a href="/demo/201412/svg-d3-11-time-demo3.html" target="_blank">svg-d3-11-time-demo3.html</a> )</p>
 <pre class="prettyprint"><code>  var _x = d3.time.format("%x");
 
   var a=_x(d);
@@ -186,7 +186,7 @@
 <p><br></p>
 <ul>
 <li><p><strong>d3.time.format.multi(formats)</strong></p>
-<p>  multi 有多選或複合的意思，這個 API 主要針對時間的尺度而設計，可以讓時間根據不同的尺度，自動從多個格式中挑出最適當的格式 ( 返回 true 即套用該格式 )，因此當從年分逐漸縮減到小時或分鐘，都可以在同一個畫面中呈現，在下方的範例中，time.scale 的用法就像之前提過的 scale 一樣，把一段時間放到一個範圍內顯示，而 customTimeFormat 就是負責要顯示那些時間出來，因為這個範例是一年份，所以左右就變成了年份，中間就是月份。 ( 可以參考 d3 原作者<a href="http://bl.ocks.org/mbostock/4149176">範例</a>，或 <a href="/demo/201412/svg-d3-11-time-demo4.html">svg-d3-11-time-demo4.html</a> )</p>
+<p>  multi 有多選或複合的意思，這個 API 主要針對時間的尺度而設計，可以讓時間根據不同的尺度，自動從多個格式中挑出最適當的格式 ( 返回 true 即套用該格式 )，因此當從年分逐漸縮減到小時或分鐘，都可以在同一個畫面中呈現，在下方的範例中，time.scale 的用法就像之前提過的 scale 一樣，把一段時間放到一個範圍內顯示，而 customTimeFormat 就是負責要顯示那些時間出來，因為這個範例是一年份，所以左右就變成了年份，中間就是月份。 ( 可以參考 d3 原作者<a href="http://bl.ocks.org/mbostock/4149176" target="_blank">範例</a>，或 <a href="/demo/201412/svg-d3-11-time-demo4.html" target="_blank">svg-d3-11-time-demo4.html</a> )</p>
 <pre class="prettyprint"><code>  var customTimeFormat = d3.time.format.multi([
     [".%L", function(d) { return d.getMilliseconds(); }],
     [":%S", function(d) { return d.getSeconds(); }],
@@ -221,7 +221,7 @@
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 </code></pre><p>  <img src="/img/articles/201412/20141229_1_02.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
-<p>  當我們把時間間隔縮減，就會發現時間軸的格式自動變化了。( 範例：<a href="/demo/201412/svg-d3-11-time-demo5.html">svg-d3-11-time-demo5.html</a> )</p>
+<p>  當我們把時間間隔縮減，就會發現時間軸的格式自動變化了。( 範例：<a href="/demo/201412/svg-d3-11-time-demo5.html" target="_blank">svg-d3-11-time-demo5.html</a> )</p>
 <pre class="prettyprint"><code>  var x = d3.time.scale()
   .domain([new Date(2012, 0, 1), new Date(2012, 3, 1)])
   .range([0, width]);
@@ -237,7 +237,7 @@
 <p><br></p>
 <ul>
 <li><p><strong>d3.time.format.iso</strong></p>
-<p>  一個完整的 ISO 8601 UTC 時間格式為 <code>%Y-%m-%dT%H:%M:%S.%LZ</code>。( 範例：<a href="/demo/201412/svg-d3-11-time-demo6.html">svg-d3-11-time-demo6.html</a> )</p>
+<p>  一個完整的 ISO 8601 UTC 時間格式為 <code>%Y-%m-%dT%H:%M:%S.%LZ</code>。( 範例：<a href="/demo/201412/svg-d3-11-time-demo6.html" target="_blank">svg-d3-11-time-demo6.html</a> )</p>
 <pre class="prettyprint"><code>  var d = new Date();
 
   var f = d3.time.format("%c");

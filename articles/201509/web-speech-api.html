@@ -67,7 +67,7 @@
 
 <h1>Google 語音辨識 API</h1>
 <p>又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！( 不過我相信未來應該會支援的，畢竟瀏覽器的發展就是這樣咩，而且 iOS 平台的 Google App 也有內建語音辨識呀，但也不太一定，畢竟 iOS 上頭有個 Siri... )</p>
-<p>有興趣的人可以先到這個 demo 網站看看：<a href="https://www.google.com/intl/en/chrome/demos/speech.html">https://www.google.com/intl/en/chrome/demos/speech.html</a>，下拉選單選擇自己要念的語言，按一下右上的麥克風，就可以開始玩語音輸入了。</p>
+<p>有興趣的人可以先到這個 demo 網站看看：<a href="https://www.google.com/intl/en/chrome/demos/speech.html" target="_blank">https://www.google.com/intl/en/chrome/demos/speech.html</a>，下拉選單選擇自己要念的語言，按一下右上的麥克風，就可以開始玩語音輸入了。</p>
 <p><img src="/img/articles/201509/20150906_1_02.jpg" alt="Google 語音辨識 API"></p>
 <p>接著要來看一下怎麼實作語音辨識，語音辨識一開始要判斷「<strong>webkitSpeechRecognition</strong>」有沒有存在瀏覽器裡，因為這是內建於瀏覽器的 api，從 webkit 的字樣我們也可以知道，Firefox 和 IE 是一定 GG 的，所以一開始的程式可以這樣寫：</p>
 <pre class="prettyprint"><code>if (!('webkitSpeechRecognition' in window)) {
@@ -88,7 +88,7 @@
 <p>  這個屬性也是布林值，如果設定為 true，表示在我們講話的當下就會即時辨識，不然就會在一段話結束之後，才會開始辨識。</p>
 </li>
 <li><p><strong>recognition.lang="語系"</strong></p>
-<p>  設定辨識的語系，如果是講中文，就要設定為「cmn-Hant-TW」，如果是英文，就可以設定為「en-US」，當然 Google 所提供的語系非常多，可以從上面<a href="https://www.google.com/intl/en/chrome/demos/speech.html">範例連結</a>的原始碼看到對應的語系喔！不過也是因為要連結到 Google 的語系資料庫，所以基本上沒有網路也就無法進行語音辨識了。</p>
+<p>  設定辨識的語系，如果是講中文，就要設定為「cmn-Hant-TW」，如果是英文，就可以設定為「en-US」，當然 Google 所提供的語系非常多，可以從上面<a href="https://www.google.com/intl/en/chrome/demos/speech.html" target="_blank">範例連結</a>的原始碼看到對應的語系喔！不過也是因為要連結到 Google 的語系資料庫，所以基本上沒有網路也就無法進行語音辨識了。</p>
 </li>
 <li><p><strong>recognition.onstart=function(){}</strong></p>
 <p>  「開始」辨識的時候要執行什麼函式。</p>
@@ -103,7 +103,7 @@
 <p>  「停止辨識」的 API。</p>
 </li>
 <li><p><strong>recognition.onresult=function(event){}</strong></p>
-<p>  當「辨識有結果」的時候，要做什麼事情，這也是進行語音辨識最關鍵的動作，所以我們要來解構一下語音辨識時的結果，首先用下面的範例來看看 event 長怎樣，當我們講話進行辨識的時候，就會印出 event。( 範例：<a href="/demo/201509/web-speech-api-demo01.html">web-speech-api-demo01.html</a> )</p>
+<p>  當「辨識有結果」的時候，要做什麼事情，這也是進行語音辨識最關鍵的動作，所以我們要來解構一下語音辨識時的結果，首先用下面的範例來看看 event 長怎樣，當我們講話進行辨識的時候，就會印出 event。( 範例：<a href="/demo/201509/web-speech-api-demo01.html" target="_blank">web-speech-api-demo01.html</a> )</p>
 <pre class="prettyprint"><code>var recognition = new webkitSpeechRecognition();
 
 recognition.continuous=true;
@@ -145,7 +145,7 @@ recognition.start();
 </li>
 </ul>
 <p><br>
-有了上面的屬性列表，我們就可以做一個即時辨識並把文字顯示在網頁上頭的範例：( 範例：<a href="/demo/201509/web-speech-api-demo02.html">web-speech-api-demo02.html</a> )</p>
+有了上面的屬性列表，我們就可以做一個即時辨識並把文字顯示在網頁上頭的範例：( 範例：<a href="/demo/201509/web-speech-api-demo02.html" target="_blank">web-speech-api-demo02.html</a> )</p>
 <pre class="prettyprint"><code>var show = document.getElementById('show');
 var recognition = new webkitSpeechRecognition();
 

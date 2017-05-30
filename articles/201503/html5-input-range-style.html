@@ -97,7 +97,7 @@
   transition:.2s;        /* 點選放大時候的漸變時間 */
 }
 </code></pre><p><br>
- 寫完上面這兩段，應該就可以看到 range slider 變成下面這個樣子只有一個紅點，然後這個紅點可以左右拉動。( 範例：<a href="/demo/201503/html5-input-range-style-demo1.html">html5-input-range-style-demo1.html</a>)</p>
+ 寫完上面這兩段，應該就可以看到 range slider 變成下面這個樣子只有一個紅點，然後這個紅點可以左右拉動。( 範例：<a href="/demo/201503/html5-input-range-style-demo1.html" target="_blank">html5-input-range-style-demo1.html</a>)</p>
 <p><img src="/img/articles/201503/20150324_1_03.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
 <p>再來要進行的步驟就是要來加上一些顏色和效果，主要讓圓點左邊的區域是紅色，右邊的區域是淺紅色，這樣看起來才像是不同的 range，為了達到這個目的，我們要使用「偽元素裡面的偽元素」，也就是在 webkit 的<code>::-webkit-slider-thumb</code>偽元素的前後，各再安插<code>:before</code>和<code>:after</code>的偽元素，並讓這兩個偽元素顏色不同，就可以做出前後顏色差異的效果。</p>
 <pre class="prettyprint"><code>input[type="range"]::-webkit-slider-thumb:before,
@@ -121,7 +121,7 @@ input[type="range"]::-webkit-slider-thumb:after {
   background: #edc;
 }
 </code></pre><p><br>
-這樣寫完之後，應該就已經可以看到前後不同顏色的 range slider 效果。( 範例：<a href="/demo/201503/html5-input-range-style-demo2.html">html5-input-range-style-demo2.html</a>)</p>
+這樣寫完之後，應該就已經可以看到前後不同顏色的 range slider 效果。( 範例：<a href="/demo/201503/html5-input-range-style-demo2.html" target="_blank">html5-input-range-style-demo2.html</a>)</p>
 <p><img src="/img/articles/201503/20150324_1_04.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
 <p>不過光是這樣還不夠，接著我們要來讓點擊的時候圓圈會變大，本來想做滑鼠移上去就會變大，但兩層偽元素雖然會變大，但位置卻無法控制，所以就只好用 active 來代替。</p>
 <pre class="prettyprint"><code>input[type="range"]:active::-webkit-slider-thumb:before,
@@ -139,7 +139,7 @@ input[type="range"]:active::-webkit-slider-thumb:after {
   left: 16px;
 }
 </code></pre><p><br>
-完成之後的長相就會像下圖這樣。( 範例：<a href="/demo/201503/html5-input-range-style-demo3.html">html5-input-range-style-demo3.html</a>)</p>
+完成之後的長相就會像下圖這樣。( 範例：<a href="/demo/201503/html5-input-range-style-demo3.html" target="_blank">html5-input-range-style-demo3.html</a>)</p>
 <p><img src="/img/articles/201503/20150324_1_05.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
 <p>不過如果是 Firefox，就必須要做一些修改，因為 Firefox 是認不得 webkit 的，要在 Firefox 跑的 CSS 就要寫成下面這樣，相較於 webkit，Firefox 就顯得比較直覺，因為他裡面具有一個<code>::-moz-range-progress</code>的偽元素，利用這個偽元素，我們就不用在前後加個區塊，他直接就可以呈現 range 的色彩囉！</p>
 <pre class="prettyprint"><code>input[type="range"]{
@@ -205,7 +205,7 @@ input[type="range"]::-webkit-slider-thumb:active{
   height:16px;
 }
 </code></pre><p><br>
-因為背景是用漸層產生的呀，如果要動態改背景，就不是純 CSS 能辦得到的領域，這時候就要借助 jquery 來幫忙了，利用簡單的<code>focus</code>和<code>mousemove</code>，我們就可以讓背景跟著移動囉！ ( 範例：<a href="/demo/201503/html5-input-range-style-demo4.html">html5-input-range-style-demo4.html</a>)</p>
+因為背景是用漸層產生的呀，如果要動態改背景，就不是純 CSS 能辦得到的領域，這時候就要借助 jquery 來幫忙了，利用簡單的<code>focus</code>和<code>mousemove</code>，我們就可以讓背景跟著移動囉！ ( 範例：<a href="/demo/201503/html5-input-range-style-demo4.html" target="_blank">html5-input-range-style-demo4.html</a>)</p>
 <pre class="prettyprint"><code>$(function(){
   var r = $('input');
   r.on('mouseenter',function(){
@@ -231,10 +231,10 @@ input[type="range"]::-webkit-slider-thumb:active{
 <p><br>
 參考文章：</p>
 <ul>
-<li><a href="https://gist.github.com/webtobesocial/aefd6e25064c08e0cc9a">Styling native elements</a></li>
-<li><a href="http://daker.me/2014/06/how-i-did-make-the-ubuntu-html5-range-slider.html">How I Did Make The Ubuntu HTML5 Range Slider</a></li>
-<li><a href="http://www.oxxostudio.tw/articles/201409/pointer-events.html">穿透的 div ( pointer-events )</a></li>
-<li><a href="http://www.oxxostudio.tw/articles/201407/css-clock.html">電子時鐘效果 ( CSS 偽元素的應用 )</a></li>
+<li><a href="https://gist.github.com/webtobesocial/aefd6e25064c08e0cc9a" target="_blank">Styling native elements</a></li>
+<li><a href="http://daker.me/2014/06/how-i-did-make-the-ubuntu-html5-range-slider.html" target="_blank">How I Did Make The Ubuntu HTML5 Range Slider</a></li>
+<li><a href="http://www.oxxostudio.tw/articles/201409/pointer-events.html" target="_blank">穿透的 div ( pointer-events )</a></li>
+<li><a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">電子時鐘效果 ( CSS 偽元素的應用 )</a></li>
 </ul>
 
 

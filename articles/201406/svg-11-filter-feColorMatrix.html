@@ -67,7 +67,7 @@
 
 <h1>SVG 研究之路 (11) - filter:feColorMatrix</h1>
 <p><img src="/img/articles/201406/svg-11-filter-feColorMatrix.jpg" class="preview-img" alt=""></p>
-<p>feColorMatrix 顧名思義就是色彩矩陣的濾鏡，用一個矩陣的計算，將圖片的色彩重新計算後輸出，便可以達到各種不同的色彩變化效果，在此之前，要先介紹一下圖片顏色定義，因為如果不了解圖片的顏色組成原理，就會無法明白色彩該如何去計算。( 可以先閱讀我的這篇文章：<a href="http://www.oxxostudio.tw/articles/201406/color-channel.html">淺談位元色版</a> )</p>
+<p>feColorMatrix 顧名思義就是色彩矩陣的濾鏡，用一個矩陣的計算，將圖片的色彩重新計算後輸出，便可以達到各種不同的色彩變化效果，在此之前，要先介紹一下圖片顏色定義，因為如果不了解圖片的顏色組成原理，就會無法明白色彩該如何去計算。( 可以先閱讀我的這篇文章：<a href="http://www.oxxostudio.tw/articles/201406/color-channel.html" target="_blank">淺談位元色版</a> )</p>
 <p>基本上在網路的圖片裡頭 ( jpg、png )，每一個像素的顏色，都是由 R ( 紅 ) 、G ( 綠 ) 、B ( 藍 ) 、A ( 透明 / Alpha ) 四個色版所組成 ( 使用過 Photoshop 應該很清楚，不清楚的請好好重學 Photoshop ) ，每一個色版具有 0~255 階 ( 2 的八次方 )，透過色彩矩陣的換算，我們可以輕易地改變圖片裡每一個像素的顏色，色彩矩陣的公式如下：  </p>
 <p><img src="/img/articles/201406/20140621_1_02.png" alt="SVG filter - feColorMatrix"></p>
 <p><img src="/img/articles/201406/20140621_1_03.png" alt="SVG filter - feColorMatrix">  </p>
@@ -167,7 +167,7 @@
 <p><br></p>
 <ul>
 <li><p><strong>type="hueRotate"</strong>：  </p>
-<p>  顧名思義就是色相，values 帶入的是角度，也就是 <a href="http://zh.wikipedia.org/wiki/%E8%89%B2%E7%9B%B8">色相環</a> 要旋轉的角度。</p>
+<p>  顧名思義就是色相，values 帶入的是角度，也就是 <a href="http://zh.wikipedia.org/wiki/%E8%89%B2%E7%9B%B8" target="_blank">色相環</a> 要旋轉的角度。</p>
 <pre class="prettyprint"><code>  &lt;feColorMatrix type="hueRotate" values="0" /&gt;
 </code></pre><p>  <img src="/img/articles/201406/20140621_1_18.png" alt="SVG filter - feColorMatrix">  </p>
 <pre class="prettyprint"><code>  &lt;feColorMatrix type="hueRotate" values="90" /&gt;
@@ -187,13 +187,13 @@
 <p><br></p>
 <p>以上就是 SVG filter feColorMatrix 的介紹，相同的 colormatrix 原理同樣可以應用在 HTML5 的色彩運算上，說難不難，但是真的要深入去計算每個數值，讓產生的圖片變成最完美的效果，就是很難又很複雜的學問了！最後補充上一大堆的參考資料：</p>
 <ul>
-<li><a href="http://www.w3.org/TR/SVG/filters.html#feColorMatrixTypeAttribute">W3C Filter primitive feColorMatrix</a></li>
-<li><a href="http://docs.webplatform.org/wiki/svg/tutorials/smarter_svg_filters">SVG filters</a></li>
-<li><a href="http://www.cnblogs.com/dreign/archive/2007/12/29/dreign.html">颜色调整矩阵 ColorMatrix 详解</a></li>
-<li><a href="http://www.codeproject.com/Articles/3772/ColorMatrix-Basics-Simple-Image-Color-Adjustment">ColorMatrix Basics</a></li>
-<li><a href="http://www.adobetutorialz.com/articles/1987/1/Color-Matrix">Color Matrix</a></li>
-<li><a href="http://srufaculty.sru.edu/david.dailey/svg/SVGOpen2010/Filters2.htm">Filter Effects in SVG</a></li>
-<li><a href="http://floopily.com/blog/2012/11/11/svg-shinies-5">Shiny Stuff with SVG, Part 5: Primitives II</a></li>
+<li><a href="http://www.w3.org/TR/SVG/filters.html#feColorMatrixTypeAttribute" target="_blank">W3C Filter primitive feColorMatrix</a></li>
+<li><a href="http://docs.webplatform.org/wiki/svg/tutorials/smarter_svg_filters" target="_blank">SVG filters</a></li>
+<li><a href="http://www.cnblogs.com/dreign/archive/2007/12/29/dreign.html" target="_blank">颜色调整矩阵 ColorMatrix 详解</a></li>
+<li><a href="http://www.codeproject.com/Articles/3772/ColorMatrix-Basics-Simple-Image-Color-Adjustment" target="_blank">ColorMatrix Basics</a></li>
+<li><a href="http://www.adobetutorialz.com/articles/1987/1/Color-Matrix" target="_blank">Color Matrix</a></li>
+<li><a href="http://srufaculty.sru.edu/david.dailey/svg/SVGOpen2010/Filters2.htm" target="_blank">Filter Effects in SVG</a></li>
+<li><a href="http://floopily.com/blog/2012/11/11/svg-shinies-5" target="_blank">Shiny Stuff with SVG, Part 5: Primitives II</a></li>
 </ul>
 
 

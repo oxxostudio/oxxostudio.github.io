@@ -66,10 +66,9 @@
       <i class="tag"></i>
 
 <h1>LINE BOT 實戰 ( 原理篇 )</h1>
-<p>最近剛撰寫完 IT 鐵人賽的「實戰智慧插座」系列文章 ( <a href="https://goo.gl/hI1mEa">https://goo.gl/hI1mEa</a> )，原本最後兩篇想用個 LINE BOT 來完美收尾，但天不從人願 ( 自己後端的能力太弱 ），沒辦法順利完成，但趁著這個週末，總算是搞定了 LINE BOT ( LINE 聊天機器人 )。</p>
-<p><br></p>
+<p>最近剛撰寫完 IT 鐵人賽的「實戰智慧插座」系列文章 ( <a href="https://goo.gl/hI1mEa" target="_blank">https://goo.gl/hI1mEa</a> )，原本最後兩篇想用個 LINE BOT 來完美收尾，但天不從人願 ( 自己後端的能力太弱 ），沒辦法順利完成，但趁著這個週末，總算是搞定了 LINE BOT ( LINE 聊天機器人 )。</p>
 <h2>1. LINE BOT 設定</h2>
-<p>因為要使用 LINE 的機器人，一定要先到 「LINE Business Center」 建立 「BOT 帳號」( <a href="https://business.line.me/zh-hant/">https://business.line.me/zh-hant/</a> )。</p>
+<p>因為要使用 LINE 的機器人，一定要先到 「LINE Business Center」 建立 「BOT 帳號」( <a href="https://business.line.me/zh-hant/" target="_blank">https://business.line.me/zh-hant/</a> )。</p>
 <p><img src="/img/articles/201701/20170115_1_02.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>登入當然就是用自己的 LINE 帳號登入，登入會要求要手機輸入驗證碼，反正如果帳號是自己的應該都可以順利登入 ( 咦？XD )，登入之後點選右上方帳號旁邊的「尚未選擇公司/經營者」，然後新增「公司/經營者」。</p>
 <p><img src="/img/articles/201701/20170115_1_03.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
@@ -89,10 +88,9 @@
 <p><img src="/img/articles/201701/20170115_1_10.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>開發者頁面第一個選項「Basic information」是最重要的，在這邊我們要記住「Channel ID」、「Channel Secret」( 點選 SHOW 會出現 ) 和「Channel Access Token」( 點選 ISSUE 會產生 )，而「Webhook URL」則是一個要放在「https」的網址，用作和 LINE BOT 溝通使用，到這邊基本上我們已經完成了 LINE BOT 的設定，接著就來看看 Webhook URL 要怎麼做。</p>
 <p><img src="/img/articles/201701/20170115_1_11.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
-<p><br></p>
 <h2>2. 製作 Webhook URL ( Node.js )</h2>
-<p>我這邊使用 Node.js 來建構我的 Webhook 頁面，首先我們要使用 「<strong>linebot</strong>」這個 Node.js 模組 ( 參考 <a href="https://www.npmjs.com/package/linebot">https://www.npmjs.com/package/linebot</a> )，然後伺服器端使用「<strong>express</strong>」這個模組。</p>
-<p>因為 LINE BOT 要求要「https」，所以我選擇了「<strong>heroku</strong>」( <a href="https://www.heroku.com/">https://www.heroku.com/</a> ) 作為我的伺服器，也因為要部署到上面去，所以必須要有一個 package.json 檔案，所以一開始我到我的資料夾，輸入<code>npm init</code>。( 安裝 Ｎode.js 在這邊就不提了，建議安裝 4.2 版本以上的 Node.js )</p>
+<p>我這邊使用 Node.js 來建構我的 Webhook 頁面，首先我們要使用 「<strong>linebot</strong>」這個 Node.js 模組 ( 參考 <a href="https://www.npmjs.com/package/linebot" target="_blank">https://www.npmjs.com/package/linebot</a> )，然後伺服器端使用「<strong>express</strong>」這個模組。</p>
+<p>因為 LINE BOT 要求要「https」，所以我選擇了「<strong>heroku</strong>」( <a href="https://www.heroku.com/" target="_blank">https://www.heroku.com/</a> ) 作為我的伺服器，也因為要部署到上面去，所以必須要有一個 package.json 檔案，所以一開始我到我的資料夾，輸入<code>npm init</code>。( 安裝 Ｎode.js 在這邊就不提了，建議安裝 4.2 版本以上的 Node.js )</p>
 <p>然後比較重要的是部署上去之後，要告訴 heroku 啟動的命令，所以我們手動在 package.json 裡面增加<code>"start": "node ."</code>。</p>
 <pre class="prettyprint"><code>{
   "name": "linechat",
@@ -105,8 +103,7 @@
   "author": "",
   "license": "ISC"
 }
-</code></pre><p><br></p>
-<p>完成後輸入指令列 <code>npm install linebot express --save</code> 安裝模組 ( 注意，<code>name</code>不要和安裝的模組重複了 )，安裝好了以後，建立一個 index.js，輸入下列指令，並填入自己 LINE BOT 的 channel Id、channel Secret 和 channel Access Token。</p>
+</code></pre><p>完成後輸入指令列 <code>npm install linebot express --save</code> 安裝模組 ( 注意，<code>name</code>不要和安裝的模組重複了 )，安裝好了以後，建立一個 index.js，輸入下列指令，並填入自己 LINE BOT 的 channel Id、channel Secret 和 channel Access Token。</p>
 <pre class="prettyprint"><code>var linebot = require('linebot');
 var express = require('express');
 
@@ -115,8 +112,7 @@ var bot = linebot({
   channelSecret: channel Secret,
   channelAccessToken: channel Access Token
 });
-</code></pre><p><br></p>
-<p>鍵入下列程式碼，這會在我們部署到 heroku 上頭之後，在收到 LINE 的訊息的時候把 <code>event</code> 印出，然後因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過另外一段程式碼作轉換。( 參考：<a href="http://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000">http://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000</a> )。</p>
+</code></pre><p>鍵入下列程式碼，這會在我們部署到 heroku 上頭之後，在收到 LINE 的訊息的時候把 <code>event</code> 印出，然後因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過另外一段程式碼作轉換。( 參考：<a href="http://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000" target="_blank">http://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000</a> )。</p>
 <pre class="prettyprint"><code>bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
 });
@@ -130,9 +126,8 @@ var server = app.listen(process.env.PORT || 8080, function() {
   var port = server.address().port;
   console.log("App now running on port", port);
 });
-</code></pre><p><br></p>
-<h2>3. 部署到 Heroku</h2>
-<p>程式都寫好之後，就可以部署到 Heroku 上面看看狀況 ( 先看看能否順利收到 LINE 的訊息 )，要部署上去，首先要有 Heroku 的帳號，然後就是登入 Heroku ( <a href="https://www.heroku.com/">https://www.heroku.com/</a> )，登入之後右上角點選「New」，選擇「Create new app」。</p>
+</code></pre><h2>3. 部署到 Heroku</h2>
+<p>程式都寫好之後，就可以部署到 Heroku 上面看看狀況 ( 先看看能否順利收到 LINE 的訊息 )，要部署上去，首先要有 Heroku 的帳號，然後就是登入 Heroku ( <a href="https://www.heroku.com/" target="_blank">https://www.heroku.com/</a> )，登入之後右上角點選「New」，選擇「Create new app」。</p>
 <p><img src="/img/articles/201701/20170115_1_12.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>建立完成後，在「Settings」的頁面，就可以看到對應的 git 網址，待會我們只要把程式透過 git push 到這邊，就會自動完成安裝。</p>
 <p><img src="/img/articles/201701/20170115_1_13.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
@@ -148,8 +143,7 @@ var server = app.listen(process.env.PORT || 8080, function() {
 <p><img src="/img/articles/201701/20170115_1_18.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>記下剛剛打開的網址，回到 LINE Developers 裡面，填入 Webhook URL，如果按下 VERIFY 後出現 success 的字樣，就是大功告成！可以傳 LINE 給機器人囉！</p>
 <p><img src="/img/articles/201701/20170115_1_19.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
-<p><br></p>
-<h3>4. 傳 LINE 給 LINE BOT</h3>
+<h2>4. 傳 LINE 給 LINE BOT</h2>
 <p>透過 QRCode 我們可以加入 LINE BOT 聊天室開始聊天，一開始會有一個自動訊息。</p>
 <p><img src="/img/articles/201701/20170115_1_20.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>然後我們可以傳一個訊息，就可以從 Heroku 的 log 裡面看到 LINE 的訊息格式，從裡面可以發現訊息是存在 <code>message</code> 的 <code>text</code> 屬性裡面，這也是我們之後可以拿來利用的部分。</p>

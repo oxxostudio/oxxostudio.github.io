@@ -66,9 +66,9 @@
       <i class="tag"></i>
 
 <h1>玩轉 CSS 3D - 正四面體與正六面體</h1>
-<p>繼 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html">上一篇</a> 我們理解了 CSS 3D 的箇中原理之後，廢話就不用多說，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了。</p>
-<p>首先看一下 <a href="https://goo.gl/ZsQZHm">維基百科</a> 對於正多面體的介紹：「多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。</p>
-<p>開始之前，如果有不會用 CSS 畫正多邊形的，請先參考我之前寫過的：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html">單一 div 的正多邊形變換 ( 純 CSS )</a></p>
+<p>繼 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html" target="_blank">上一篇</a> 我們理解了 CSS 3D 的箇中原理之後，廢話就不用多說，直接來畫正多面體吧！只要正多面體可以畫出來，基本上在 CSS 3D 的領域裡，大概就沒甚麼難得倒我們了。</p>
+<p>首先看一下 <a href="https://goo.gl/ZsQZHm" target="_blank">維基百科</a> 對於正多面體的介紹：「多面體，或稱柏拉圖立體， 指各面都是全等的正多邊形且每一個頂點所接的面數都是一樣的凸多面體。」簡單來說，就是非常對稱的立方體，而且每一個面都是由正多邊形組成，因此在這一篇，將會畫出正四面體、正六面體。</p>
+<p>開始之前，如果有不會用 CSS 畫正多邊形的，請先參考我之前寫過的：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html" target="_blank">單一 div 的正多邊形變換 ( 純 CSS )</a></p>
 <p><br></p>
 <ul>
 <li><p><strong>正六面體</strong></p>
@@ -125,7 +125,7 @@
   }
 </code></pre><p>  <img src="/img/articles/201506/20150620_1_06.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
 <p>  <br>
-  box3 剛好在 box1 的正對面，所以只要旋轉 180 度即可，但很重要的是旋轉之後整個 Z 軸會跟著旋轉 180 度，為了避免錯亂，先把 box3 往 Z 軸後面移動 100px，旋轉後就會正常。( 先寫 translateZ 再寫 rotateY，不明白的可以參考我寫的 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html">玩轉 CSS 3D - 原理篇</a> )</p>
+  box3 剛好在 box1 的正對面，所以只要旋轉 180 度即可，但很重要的是旋轉之後整個 Z 軸會跟著旋轉 180 度，為了避免錯亂，先把 box3 往 Z 軸後面移動 100px，旋轉後就會正常。( 先寫 translateZ 再寫 rotateY，不明白的可以參考我寫的 <a href="http://www.oxxostudio.tw/articles/201506/css-3d.html" target="_blank">玩轉 CSS 3D - 原理篇</a> )</p>
 <pre class="prettyprint"><code>  .box3{
       background:rgba(0,255,0,.2);
       transform:translateX(50px) translateY(50px) translateZ(-100px) rotateY(180deg);
@@ -152,10 +152,10 @@
       transform:translateX(50px) translateY(150px) rotateX(-90deg);
   }
 </code></pre><p>  <br></p>
-<p>  完成之後應該就會順利地看到一個正六面體，這時候我們可以改變 camera 的 perspective，可以更加清楚。( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo01.html">css-3d-platonic-solid-1-demo01.html</a> )</p>
+<p>  完成之後應該就會順利地看到一個正六面體，這時候我們可以改變 camera 的 perspective，可以更加清楚。( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo01.html" target="_blank">css-3d-platonic-solid-1-demo01.html</a> )</p>
 <p>  <img src="/img/articles/201506/20150620_1_02.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
 <p>  <br>
-  我們可以在 space 套用 animate 的效果，透過 space 的旋轉，彷彿就是一個正立方體在旋轉囉！( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo02.html">css-3d-platonic-solid-1-demo02.html</a> )</p>
+  我們可以在 space 套用 animate 的效果，透過 space 的旋轉，彷彿就是一個正立方體在旋轉囉！( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo02.html" target="_blank">css-3d-platonic-solid-1-demo02.html</a> )</p>
 <pre class="prettyprint"><code>  .space{
       position:relative;
       width:100%;
@@ -178,7 +178,7 @@
 <p><br></p>
 <ul>
 <li><p><strong>正四面體</strong></p>
-<p>  理解正六面體之後，正四面體就比較好上手了，正四面體由四個正三角形組成 ( 不會畫正三角形的可以參考這篇：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html">單一 div 的正多邊形變換 ( 純 CSS )</a> )，每個面之間的夾角為 70.5 度，所以待會旋轉的角度也就是 70.5 度。</p>
+<p>  理解正六面體之後，正四面體就比較好上手了，正四面體由四個正三角形組成 ( 不會畫正三角形的可以參考這篇：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html" target="_blank">單一 div 的正多邊形變換 ( 純 CSS )</a> )，每個面之間的夾角為 70.5 度，所以待會旋轉的角度也就是 70.5 度。</p>
 <p>  首先看到 HTML 的結構就是只有四個 div 而已。</p>
 <pre class="prettyprint"><code>  &lt;div class="camera"&gt;
       &lt;div class="space"&gt;
@@ -227,10 +227,10 @@
       transform-origin:left bottom;
       transform:translateX(50px) translateY(50px) rotateY(-60deg) rotateX(19.5deg);
   }
-</code></pre><p>  按照上面做，應該就可以得到下圖的結果：( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo03.html">css-3d-platonic-solid-1-demo03.html</a> )</p>
+</code></pre><p>  按照上面做，應該就可以得到下圖的結果：( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo03.html" target="_blank">css-3d-platonic-solid-1-demo03.html</a> )</p>
 <p>  <img src="/img/articles/201506/20150620_1_04.jpg" alt="玩轉 CSS 3D - 正四面體與正六面體"></p>
 <p>  <br></p>
-<p>  同樣的，把 space 加上動畫，就可以看到正四面體旋轉囉！比較不同的地方是中心點的位移為 29px，為什麼呢？因為要抓取正三角形的中心點，數學式為：tan(30deg) x 50 = 28.86。( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo04.html">css-3d-platonic-solid-1-demo04.html</a> )</p>
+<p>  同樣的，把 space 加上動畫，就可以看到正四面體旋轉囉！比較不同的地方是中心點的位移為 29px，為什麼呢？因為要抓取正三角形的中心點，數學式為：tan(30deg) x 50 = 28.86。( 範例：<a href="/demo/201506/css-3d-platonic-solid-1-demo04.html" target="_blank">css-3d-platonic-solid-1-demo04.html</a> )</p>
 <pre class="prettyprint"><code>  .space{
       position:relative;
       width:100%;
