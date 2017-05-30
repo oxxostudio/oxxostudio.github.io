@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>JavaScript 筆記 ( Prototype )</h1>
-<p><img src="/img/articles/201603/20160329_1_01.jpg" class="preview-img" alt=""></p>
+<p><img src="/img/articles/201603/javascript-prototype.jpg" class="preview-img" alt=""></p>
 <p>這陣子實在好忙 ( 這樣說好像也不是一兩個月了... )，然後因為工作夥伴都是 JavaScript 神之等級的工程師，從中也學到不少知識，畢竟就是要和強者工作才會成長呀！為了想好好瞭解他們寫的程式碼，所以就只好深入來理解一下 JavaScript 裏頭 Prototype 這個惱人的「原型」，在兩年前我有去上保哥 ( <a href="http://blog.miniasp.com/" target="_blank">http://blog.miniasp.com/</a> ) 的 JavaScript，以自己當年的程度，加上工作上沒有真正的實戰機會，真的是聽完就忘了，隨著年紀增長，現在回頭再來看才發現真是滿有趣的，打鐵趁熱趁著搞懂了，趕快做個筆記。</p>
 <p>JavaScript 裡面所有物件都具有 Prototype 這個原型物件，但只有函式物件才有公開的原型物件，其他的物件都只有私有的原型物件，凡是原型物件裡面的屬性或方法，都會直接繼承到它的實體物件上頭，這實在是講得很繞口，白話一點來說，就是我們每個人都具備「人類」這個 Prototype，而「人類」這個原型，具備了「用雙腳行走」、「可以用嘴講話」...等行為 ( 也就是方法 Method )，但對於每個人來說，各自有各自的屬性，例如「姓名」、「膚色」...等，這大概就是物件與其 Prototype 的關係。</p>
 <p>好像比較理解了，現在就直接用程式碼來看看：</p>
