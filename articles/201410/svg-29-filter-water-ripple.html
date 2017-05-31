@@ -6,10 +6,10 @@
   <meta name="copyright" content="oxxo.studio">
   <title>SVG 研究之路 (29) - filter - 水波效果 - OXXO.STUDIO</title>
 
-  <meta name="description" content="在 SVG 研究之路 (28) - filter - feDisplacementMap 我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
-  <meta itemprop="description" content="在 SVG 研究之路 (28) - filter - feDisplacementMap 我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
+  <meta name="description" content="在上一篇我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
+  <meta itemprop="description" content="在上一篇我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/svg-29-filter-water-ripple.jpg">
-  <meta property="og:description" content="在 SVG 研究之路 (28) - filter - feDisplacementMap 我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
+  <meta property="og:description" content="在上一篇我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
   <meta property="og:title" content="SVG 研究之路 (29) - filter - 水波效果">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-29-filter-water-ripple.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/svg-29-filter-water-ripple.jpg">
@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>SVG 研究之路 (29) - filter - 水波效果</h1>
-<p>在 <a href="http://www.oxxostudio.tw/articles/201410/svg-28-filter-feDisplacementMap.html" target="_blank">SVG 研究之路 (28) - filter - feDisplacementMap</a> 我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！</p>
+<p>在上一篇我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！</p>
 <p>說是補充其實也只是上一篇少講了這個 <a href="http://www.w3.org/Graphics/SVG/Test/20030813/htmlframe/full-filters-displace-01-f.html" target="_blank">W3C 的範例</a> ( 看下圖 )，裏頭同樣是使用黑白的棋盤圖來做移置，不過作為移置的參考漸層圖是有設計過的漸層，可以讓整體的移置剛好旋轉 20 度，而且如果是以 png 作為漸層移置參考，就不會有鋸齒狀的效果。</p>
 <p><img src="/img/articles/201410/20141010_1_02.png" alt="SVG 研究之路 (29) - filter - 水波效果"></p>
 <p>OK 補充完了，繼續來看一下這篇的主題：水波效果，在上一篇我使用的漸層，是利用漸層本身的重複性 spreadMethod="reflect" 來做重複的漸層，但如果應用在漸層的動畫上，就會有些問題了，因為漸層的重複性很多層面取決於 r 的大小，所以無法做出由內而外不斷重複的動畫，於是換個角度思考，直接從製作的漸層顏色 stop-offset 著手，製作出許多的漸層環，搭配動畫的時間差，就可以讓漸層看起來完全連接在一起。</p>

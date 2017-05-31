@@ -6,10 +6,10 @@
   <meta name="copyright" content="oxxo.studio">
   <title>SVG D3.js - 定義比例 ( scale.linear() ) - OXXO.STUDIO</title>
 
-  <meta name="description" content="這篇原本要延續上一篇 SVG D3.js - 繪製線段，然後立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
-  <meta itemprop="description" content="這篇原本要延續上一篇 SVG D3.js - 繪製線段，然後立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
+  <meta name="description" content="這篇原本要延續上一篇立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
+  <meta itemprop="description" content="這篇原本要延續上一篇立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-03-scale-linear.jpg">
-  <meta property="og:description" content="這篇原本要延續上一篇 SVG D3.js - 繪製線段，然後立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
+  <meta property="og:description" content="這篇原本要延續上一篇立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
   <meta property="og:title" content="SVG D3.js - 定義比例 ( scale.linear() )">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-03-scale-linear.jpg">
@@ -66,7 +66,7 @@
       <i class="tag"></i>
 
 <h1>SVG D3.js - 定義比例 ( scale.linear() )</h1>
-<p>這篇原本要延續上一篇 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" target="_blank">SVG D3.js - 繪製線段</a>，然後立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。</p>
+<p>這篇原本要延續上一篇立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。</p>
 <p>什麼是比例 Scale 呢？最常見到比例尺的地方應該就是在地圖上，例如台灣面積大約 36,188 平方公里，要把台灣塞進一張 A4 大小的地圖根本就是天方夜譚，這時候就必須要用到比例了。</p>
 <p><img src="/img/articles/201411/20141112_1_02.png" alt="SVG D3 - 定義比例 ( scale.linear() )"></p>
 <p><br>

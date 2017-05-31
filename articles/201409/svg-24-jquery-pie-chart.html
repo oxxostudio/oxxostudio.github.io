@@ -6,10 +6,10 @@
   <meta name="copyright" content="oxxo.studio">
   <title>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖 - OXXO.STUDIO</title>
 
-  <meta name="description" content="之前我們提過了 SVG 研究之路 (12) - pie chart 圓餅圖實作 和 SVG 研究之路 (14) - 控制 SVG 的注意事項，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選上面的連結回去再次閱讀一下吧！ )">
-  <meta itemprop="description" content="之前我們提過了 SVG 研究之路 (12) - pie chart 圓餅圖實作 和 SVG 研究之路 (14) - 控制 SVG 的注意事項，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選上面的連結回去再次閱讀一下吧！ )">
+  <meta name="description" content="之前我們提過了「SVG 研究之路 (12) - pie chart 圓餅圖實作」和「SVG 研究之路 (14) - 控制 SVG 的注意事項」，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選下面的連結回去再次閱讀一下吧！ )">
+  <meta itemprop="description" content="之前我們提過了「SVG 研究之路 (12) - pie chart 圓餅圖實作」和「SVG 研究之路 (14) - 控制 SVG 的注意事項」，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選下面的連結回去再次閱讀一下吧！ )">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/svg-24-jquery-pie-chart.jpg">
-  <meta property="og:description" content="之前我們提過了 SVG 研究之路 (12) - pie chart 圓餅圖實作 和 SVG 研究之路 (14) - 控制 SVG 的注意事項，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選上面的連結回去再次閱讀一下吧！ )">
+  <meta property="og:description" content="之前我們提過了「SVG 研究之路 (12) - pie chart 圓餅圖實作」和「SVG 研究之路 (14) - 控制 SVG 的注意事項」，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選下面的連結回去再次閱讀一下吧！ )">
   <meta property="og:title" content="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-24-jquery-pie-chart.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/svg-24-jquery-pie-chart.jpg">
@@ -67,7 +67,10 @@
 
 <h1>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖</h1>
 <p><img src="/img/articles/201409/svg-24-jquery-pie-chart.jpg" class="preview-img" alt=""> </p>
-<p>之前我們提過了 <a href="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html" target="_blank">SVG 研究之路 (12) - pie chart 圓餅圖實作</a> 和 <a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html" target="_blank">SVG 研究之路 (14) - 控制 SVG 的注意事項</a>，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選上面的連結回去再次閱讀一下吧！ )</p>
+<p>之前我們提過了「SVG 研究之路 (12) - pie chart 圓餅圖實作」和「SVG 研究之路 (14) - 控制 SVG 的注意事項」，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選下面的連結回去再次閱讀一下吧！ )</p>
+<blockquote>
+<p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html" target="_blank">SVG 研究之路 (12) - pie chart 圓餅圖實作</a>、<a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html" target="_blank">SVG 研究之路 (14) - 控制 SVG 的注意事項</a></p>
+</blockquote>
 <p>使用 jquery 畫出圓餅圖的原理很簡單，就是要在 SVG 內部放入 path 的路徑，不過由於 SVG 是 xmlns 而非 HTML，因此瀏覽器不認識 rect 或 path 等元素，所以在程式之初必須先加上這段：</p>
 <pre class="prettyprint"><code> function makeSVG(tag, attrs) {
    var el = document.createElementNS('http://www.w3.org/2000/svg', tag);

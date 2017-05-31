@@ -6,13 +6,13 @@
   <meta name="copyright" content="oxxo.studio">
   <title>運用 clip-path 的純 CSS 形狀變換 - OXXO.STUDIO</title>
 
-  <meta name="description" content="在 單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
-」看起來有點眼熟，因為它原本就存在於 SVG 裡頭 ( 參考：SVG 研究之路 (9) - Clipping and Masking )，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
-  <meta itemprop="description" content="在 單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
-」看起來有點眼熟，因為它原本就存在於 SVG 裡頭 ( 參考：SVG 研究之路 (9) - Clipping and Masking )，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
+  <meta name="description" content="在「單一 div 的正多邊形變換 ( 純 CSS )」這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
+」看起來有點眼熟，因為它原本就存在於 SVG 裡頭，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
+  <meta itemprop="description" content="在「單一 div 的正多邊形變換 ( 純 CSS )」這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
+」看起來有點眼熟，因為它原本就存在於 SVG 裡頭，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/css-clip-path.jpg">
-  <meta property="og:description" content="在 單一 div 的正多邊形變換 ( 純 CSS ) 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
-」看起來有點眼熟，因為它原本就存在於 SVG 裡頭 ( 參考：SVG 研究之路 (9) - Clipping and Masking )，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
+  <meta property="og:description" content="在「單一 div 的正多邊形變換 ( 純 CSS )」這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
+」看起來有點眼熟，因為它原本就存在於 SVG 裡頭，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
   <meta property="og:title" content="運用 clip-path 的純 CSS 形狀變換">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/css-clip-path.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/css-clip-path.jpg">
@@ -69,8 +69,11 @@
       <i class="tag"></i>
 
 <h1>運用 clip-path 的純 CSS 形狀變換</h1>
-<p>在 <a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html" target="_blank">單一 div 的正多邊形變換 ( 純 CSS )</a> 這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
-」看起來有點眼熟，因為它原本就存在於 SVG 裡頭 ( 參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html" target="_blank">SVG 研究之路 (9) - Clipping and Masking</a> )，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。</p>
+<p>在「單一 div 的正多邊形變換 ( 純 CSS )」這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
+」看起來有點眼熟，因為它原本就存在於 SVG 裡頭，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。</p>
+<blockquote>
+<p>參考：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html" target="_blank">單一 div 的正多邊形變換 ( 純 CSS )</a>、<a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html" target="_blank">SVG 研究之路 (9) - Clipping and Masking</a></p>
+</blockquote>
 <p>最先看到這個屬性的應用，是從這個網站看到的：<a href="http://species-in-pieces.com/" target="_blank">http://species-in-pieces.com/</a> ，不得不說這個網站做得實在太神了，一開始看到還真以為是用 SVG 做的，沒想到竟然是用 CSS 刻出來的... 真是太驚人啦！</p>
 <p><img src="/img/articles/201503/20150330_1_02.jpg" alt="運用 clip-path 的純 CSS 形狀變換"></p>
 <p>接著在找資料的過程中，又發現一個很強的網站：<a href="http://bennettfeely.com/clippy/" target="_blank">http://bennettfeely.com/clippy/</a> ，專門介紹「clip-path」這個 CSS3 的屬性，你可以直接在上面拖拉或修改，除了貝茲曲線外，幾乎任何形狀都做得出來 ( 中空的部分要用組合的 )</p>

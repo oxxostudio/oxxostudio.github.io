@@ -6,10 +6,10 @@
   <meta name="copyright" content="oxxo.studio">
   <title>SVG D3.js - 巢狀數據結構 ( d3.nest ) - OXXO.STUDIO</title>
 
-  <meta name="description" content="之前在 SVG D3.js - 淺談 D3.js 的資料處理 提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。">
-  <meta itemprop="description" content="之前在 SVG D3.js - 淺談 D3.js 的資料處理 提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。">
+  <meta name="description" content="之前在「SVG D3.js - 淺談 D3.js 的資料處理」提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。">
+  <meta itemprop="description" content="之前在「SVG D3.js - 淺談 D3.js 的資料處理」提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/svg-d3-06-data-nest.jpg">
-  <meta property="og:description" content="之前在 SVG D3.js - 淺談 D3.js 的資料處理 提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。">
+  <meta property="og:description" content="之前在「SVG D3.js - 淺談 D3.js 的資料處理」提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。">
   <meta property="og:title" content="SVG D3.js - 巢狀數據結構 ( d3.nest )">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/svg-d3-06-data-nest.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/svg-d3-06-data-nest.jpg">
@@ -67,7 +67,10 @@
 
 <h1>SVG D3.js - 巢狀數據結構 ( d3.nest )</h1>
 <p><img src="/img/articles/201412/svg-d3-06-data-nest.jpg" class="preview-img" alt=""></p>
-<p>之前在 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html" target="_blank">SVG D3.js - 淺談 D3.js 的資料處理</a> 提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。</p>
+<p>之前在「SVG D3.js - 淺談 D3.js 的資料處理」提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。</p>
+<blockquote>
+<p>參考：<a href="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html" target="_blank">SVG D3.js - 淺談 D3.js 的資料處理</a></p>
+</blockquote>
 <p>nest 就是「巢」的意思 ( 不是潮喔~ 雖然 d3.js 好像有點潮 )，透過 d3.nest 的轉換，可以將原本的數據變成以 key 和 value 為主的巢狀結構，並且可以針對巢狀結構的每個節點進行排序，而所得到的巢狀結構數據，可以在程式裡重複使用而不會影響到原本的數據。</p>
 <p>光是看文字其實是搞不清楚的，直接用個簡單的範例來說明一下，下面是一個 json 的檔案格式，是四個班級學生的得分，分別有 name、score 和 type。</p>
 <pre class="prettyprint"><code>var data = [

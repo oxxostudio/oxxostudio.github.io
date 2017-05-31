@@ -6,10 +6,10 @@
   <meta name="copyright" content="oxxo.studio">
   <title>初探 Web Audio API - OXXO.STUDIO</title>
 
-  <meta name="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：http://webaudio.github.io/web-audio-api/">
-  <meta itemprop="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：http://webaudio.github.io/web-audio-api/">
+  <meta name="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。">
+  <meta itemprop="description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api.jpg">
-  <meta property="og:description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：http://webaudio.github.io/web-audio-api/">
+  <meta property="og:description" content="隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。">
   <meta property="og:title" content="初探 Web Audio API">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api.jpg">
@@ -67,7 +67,10 @@
 
 <h1>初探 Web Audio API</h1>
 <p><img src="/img/articles/201509/web-audio-api.jpg" class="preview-img" alt=""> </p>
-<p>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。而 Web Audio API 的主要文件可以參考：<a href="http://webaudio.github.io/web-audio-api/" target="_blank">http://webaudio.github.io/web-audio-api/</a></p>
+<p>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。</p>
+<blockquote>
+<p>Web Audio API 參考：<a href="http://webaudio.github.io/web-audio-api/" target="_blank">http://webaudio.github.io/web-audio-api/</a></p>
+</blockquote>
 <p>要使用 Web Audio API，第一步就是要創建一個 AudioContext，AudioContext 是一個聲音的容器，在 AudioContext 裡，我們可以針對聲音做各種的處理，在裡頭，AudioSourceNode 表示音訊來源，而聲音是以節點的方式 ( AudioNode ) 存在，每個節點都有輸入和輸出，只有來源節點沒有輸入，聲音除了可以用外部的輸入 ( wav、mp3、ogg...等 )，也可以使用振盪器 ( Oscillators ) 來產生，原理就有點像我們彈奏弦樂器，也是利用樂器內的弦震盪來發聲。</p>
 <p>既然是初探 Web Audio API，就用一個簡單的例子入手，由於我們在範例裡要用的是 Web Audio API，就一定會用到 AudioContext，所以我們要先來看看瀏覽器有沒有支援 ( 行動裝置目前還不支援 )，一開始先這樣寫，套用有支援的 AudioContext。</p>
 <pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;

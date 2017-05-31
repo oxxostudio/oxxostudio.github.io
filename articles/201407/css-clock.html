@@ -6,10 +6,10 @@
   <meta name="copyright" content="oxxo.studio">
   <title>電子時鐘效果 ( CSS 偽元素的應用 ) - OXXO.STUDIO</title>
 
-  <meta name="description" content="電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )<br>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
-  <meta itemprop="description" content="電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )<br>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
+  <meta name="description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
+  <meta itemprop="description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/css-clock.jpg">
-  <meta property="og:description" content="電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )<br>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
+  <meta property="og:description" content="這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。">
   <meta property="og:title" content="電子時鐘效果 ( CSS 偽元素的應用 )">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-clock.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/css-clock.jpg">
@@ -67,7 +67,10 @@
 
 <h1>電子時鐘效果 ( CSS 偽元素的應用 )</h1>
 <p><img src="/img/articles/201407/css-clock.jpg" class="preview-img" alt=""></p>
-<p><a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6078331350941696" target="_blank">電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )</a><br>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。</p>
+<p>這是單純利用 CSS 做出來的時鐘，大量的應用了 CSS 裡頭的偽元素 ( ::before 和 ::after )，配合簡單的 JS 所作出的效果，以下就來介紹是如何做出來的。</p>
+<blockquote>
+<p><a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6078331350941696" target="_blank">電子時鐘效果範例</a>  </p>
+</blockquote>
 <p>首先介紹一下偽元素這個東西，為什麼稱呼這東西叫做偽元素呢？簡單來說，偽元素並不存在於標準的 HTML 元素當中，而是跟隨在每個元素裡頭，一前一後共有兩個，分別是<code>::befor</code>和<code>::after</code>，當我們在 CSS 裡頭寫出<code>a::before</code>或<code>a::after</code>的時候，就等同於在這個 a 元素的前後加上了兩個假的元素，我們就可以更靈活的去針對 a 元素做變化。( 可以看看下面這張圖和對應的程式碼就比較清楚，搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256" target="_blank">範例檔案</a> ）</p>
 <p><img src="/img/articles/201407/20140717_1_02.png" alt="CSS Clock"></p>
 <pre class="prettyprint"><code>.a{

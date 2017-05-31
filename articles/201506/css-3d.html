@@ -6,10 +6,10 @@
   <meta name="copyright" content="oxxo.studio">
   <title>玩轉 CSS 3D - 原理篇 - OXXO.STUDIO</title>
 
-  <meta name="description" content="這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！">
-  <meta itemprop="description" content="這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！">
+  <meta name="description" content="這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 這個可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！">
+  <meta itemprop="description" content="這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 這個可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201506/css-3d.jpg">
-  <meta property="og:description" content="這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！">
+  <meta property="og:description" content="這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 這個可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！">
   <meta property="og:title" content="玩轉 CSS 3D - 原理篇">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201506/css-3d.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201506/css-3d.jpg">
@@ -67,7 +67,10 @@
 
 <h1>玩轉 CSS 3D - 原理篇</h1>
 <p><img src="/img/articles/201506/css-3d.jpg" class="preview-img" alt=""></p>
-<p>這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 <a href="http://webduino.io" target="_blank">Webduino</a> 可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！</p>
+<p>這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 這個可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！</p>
+<blockquote>
+<p>參考：<a href="http://webduino.io" target="_blank">Webduino</a></p>
+</blockquote>
 <p>雖然 CSS 3D 並非真的 3D，CSS 3D 坦白說就是純粹利用計算的方法，藉由瀏覽器的高效能，在 2D 的空間繪製一個 3D 的圖形，就像我們拿張紙，用鉛筆在上頭畫個正立方體之類的，也因為是藉用了瀏覽器來運算，自然而然非常地耗效能，往往只要有過多的形狀轉換為 3D 呈現，就會發現電腦的風扇開始狂轉，這也是使用 CSS 3D 必須要注意的地方，畢竟 CSS 原本就不是拿來做 3D 應用的技術，可以畫 3D，只是可以加強 CSS 呈現的美感和能力，但用在精細的 3D 動畫或轉場效果，還是交給專業的 3D 繪圖軟體來進行。</p>
 <p>從這篇開始以及再來的一兩篇，將會深入介紹 CSS 3D 的繪圖以及直接做些應用，如果你已經會了 CSS 3D，不妨也可以看看正多面體該如何製作，可以參考這兩篇：<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html" target="_blank">玩轉 CSS 3D - 正四面體與正六面體</a>、<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-2.html" target="_blank">玩轉 CSS 3D - 正八面體與正十二面體</a>。</p>
 <p><br></p>

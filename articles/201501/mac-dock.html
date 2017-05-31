@@ -6,13 +6,10 @@
   <meta name="copyright" content="oxxo.studio">
   <title>Mac Dock 實作 - OXXO.STUDIO</title>
 
-  <meta name="description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。( 完成範例：mac-dock-demo.html )
-Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：">
-  <meta itemprop="description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。( 完成範例：mac-dock-demo.html )
-Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：">
+  <meta name="description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。">
+  <meta itemprop="description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/mac-dock.jpg">
-  <meta property="og:description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。( 完成範例：mac-dock-demo.html )
-Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：">
+  <meta property="og:description" content="2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。">
   <meta property="og:title" content="Mac Dock 實作">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/mac-dock.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/mac-dock.jpg">
@@ -70,8 +67,11 @@ Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transit
 
 <h1>Mac Dock 實作</h1>
 <p><img src="/img/articles/201501/mac-dock.gif" class="preview-img" alt=""></p>
-<p>2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。( 完成範例：<a href="/demo/201501/mac-dock-demo.html" target="_blank">mac-dock-demo.html</a> )
-Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：</p>
+<p>2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。</p>
+<blockquote>
+<p>完成範例：<a href="/demo/201501/mac-dock-demo.html" target="_blank">mac-dock-demo.html</a></p>
+</blockquote>
+<p>Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：</p>
 <p><img src="/img/articles/201501/20150103_1_02.jpg" alt="Mac Docker 實作"></p>
 <p>看不懂沒關係，來看一下程式碼的組成，首先看一下 HTML，外圍用一個 div 包著一個清單，清單的<code>li</code>都有一個<code>text</code>的 HTML5 data attribute，這裡的目的是讓 CSS3 的偽元素<code>::before</code>直接讀取，就可以在完全不用 JS 的情況下載入文字。</p>
 <pre class="prettyprint"><code>&lt;div id='mouse_area'&gt;
