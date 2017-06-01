@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - transition ( tween、interpolate ) - demo1</title>
+  <style>
+    #show{
+      font-size:100px;
+    }
+  </style>
+  <script src="/js/lib/d3.v3.min.js"></script>
+  <script>
+    window.addEventListener('load',function(){
+      var show = d3.select('#show');
+
+      show.transition().tween("number", function() {
+        var i = d3.interpolateRound(0, 100);
+        return function(t) {
+          this.textContent = i(t);
+        };
+      });
+    },false);
+  </script>
+</head>
+
+<body>
+  <div id="show"></div>
+</body>
+
+</html>

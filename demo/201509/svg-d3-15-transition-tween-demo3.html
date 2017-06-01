@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - transition ( tween、interpolate ) - demo3</title>
+  <style>
+    div{
+      font-size:50px;
+      line-height: 60px;
+    }
+  </style>
+  <script src="/js/lib/d3.v3.min.js"></script>
+  <script>
+    window.addEventListener('load',function(){
+      var n = d3.select('#number');
+      var s = d3.select('#string');
+      var c = d3.select('#color');
+
+      var ni = d3.interpolate(0, 200);
+      var si = d3.interpolate('Apple1','Apple5');
+      var ci = d3.interpolate('#ff0000','#00ffff');
+
+      n.text(ni(0.3));
+      s.text(si(0.3));
+      c.text(ci(0.3));
+    },false);
+  </script>
+</head>
+
+<body>
+  <div id="number"></div>
+  <div id="string"></div>
+  <div id="color"></div>
+</body>
+
+</html>

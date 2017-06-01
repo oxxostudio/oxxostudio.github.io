@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 時間格式 ( Time Formatting ) demo1</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+var d = new Date('2014,12,01,12:16:05');
+
+var _a = d3.time.format("%a");
+var _A = d3.time.format("%A");
+var _b = d3.time.format("%b");
+var _B = d3.time.format("%B");
+var _c = d3.time.format("%c");
+var _d = d3.time.format("%d");
+var _e = d3.time.format("%e");
+var _H = d3.time.format("%H");
+var _I = d3.time.format("%I");
+var _j = d3.time.format("%j");
+var _m = d3.time.format("%m");
+var _M = d3.time.format("%M");
+var _L = d3.time.format("%L");
+var _p = d3.time.format("%p");
+var _S = d3.time.format("%S");
+var _U = d3.time.format("%U"); 
+var _w = d3.time.format("%w");
+var _W = d3.time.format("%W");
+var _x = d3.time.format("%x");
+var _X = d3.time.format("%X");
+var _y = d3.time.format("%y");
+var _Y = d3.time.format("%Y");
+var _Z = d3.time.format("%Z");
+
+console.log(d); //Mon Dec 01 2014 12:16:05 GMT+0800 (台北標準時間)
+
+console.log(_a(d)); //Mon
+console.log(_A(d)); //Monday
+console.log(_b(d)); //Dec
+console.log(_B(d)); //December
+console.log(_c(d)); //Mon Dec  1 12:16:05 2014
+console.log(_d(d)); //01
+console.log(_e(d)); // 1
+console.log(_H(d)); //12
+console.log(_I(d)); //12
+console.log(_j(d)); //335
+console.log(_m(d)); //12
+console.log(_M(d)); //16
+console.log(_L(d)); //000
+console.log(_p(d)); //PM
+console.log(_S(d)); //05
+console.log(_U(d)); //48
+console.log(_w(d)); //1
+console.log(_W(d)); //48
+console.log(_x(d)); //12/01/2014
+console.log(_X(d)); //12:16:05
+console.log(_y(d)); //14
+console.log(_Y(d)); //2014
+console.log(_Z(d)); //+0800
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 區域 ( area ) - demo 3</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <svg id="s"></svg>
+  
+  <script>
+  var data = [
+  {x:0, y0:0, y1:20},
+  {x:20, y0:10, y1:30},
+  {x:40, y0:30, y1:80},
+  {x:60, y0:60, y1:70},
+  {x:80, y0:40, y1:40},
+  {x:100, y0:40, y1:20},
+  {x:120, y0:50, y1:30},
+  {x:140, y0:50, y1:40},
+  {x:160, y0:40, y1:20},
+  ];
+
+  var width = 200,
+    height = 200;
+
+  var s = d3.select('#s');
+
+  s.attr({
+      'width': width,
+      'height': height,
+    });
+
+  var area = d3.svg.area()
+      .x(function(d) { return d.x; })
+      .y0(function(d) { return d.y0; })
+      .y1(function(d) { return d.y1; });
+
+    s.append('path')
+      .attr({
+      	'd':area(data),
+      	'stroke':'#c00',
+      	'fill':'rgba(255,0,0,.3)',
+        'transform':'translate(2,2)'
+      });
+  </script>
+</body>
+
+</html>

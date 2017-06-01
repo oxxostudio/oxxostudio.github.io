@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>單一 div 的正多邊形變換 ( 純 CSS ) - demo7</title>
+	<style>
+    body{
+      margin:100px;
+    }
+    .s{
+      position:absolute;
+      -webkit-animation:s 5s infinite linear alternate;
+    }
+    .a{
+      position:relative;
+      width:0;
+      height:0;
+      border-width:0 50px 87px ;
+      border-style:solid;
+      border-color:transparent transparent #095;
+      -webkit-animation:a 5s infinite linear alternate;
+    }
+    .a:before,.a:after{
+      position:absolute;
+      content:"";
+      border-width:0;
+      border-style:solid;
+    }
+    .a:before{
+      -webkit-animation:ab 5s infinite linear alternate;
+    }
+    .a:after{
+      -webkit-animation:af 5s infinite linear alternate;
+    }
+    @-webkit-keyframes a{
+      0%,5%{
+        width:0;
+        height:0;
+        border-width:0 50px 87px ;
+        border-color:transparent transparent #095;
+      }
+      23%{
+        width:0;
+        height:0;
+        border-width:0 50px 0 ;
+        border-color:transparent transparent #c00;
+      }
+      42%{
+        width:0;
+        height:0;
+        border-width:0 81px 59px;
+        border-color:transparent transparent #069;
+      }
+      61%{
+        width:100px;
+        height:0;
+        border-width:0 50px 87px;
+        border-color:transparent transparent #f80;
+      }
+      80%{
+        width:0;
+        height:0;
+        border-width:0 90px 43px;
+        border-color:transparent transparent #09c;
+      }
+      95%,100%{
+        width:100px;
+        height:0;
+        border-width:0 71px 71px;
+        border-color:transparent transparent  #f69;
+      }
+    }
+    @-webkit-keyframes ab{
+      0%,5%{
+        top:87px;
+        left:-50px;
+        width:100px;
+        height:0;
+        background:#095;
+        border-width:0;
+        border-color:#095 transparent transparent;
+      }
+      22.99%{
+        top:0;
+        left:-50px;
+        width:100px;
+        height:100px;
+        background:#c00;
+        border-width:0;
+        border-color:#c00 transparent transparent;
+      }
+      23%{
+        top:0;
+        left:-50px;
+        width:100px;
+        height:0;
+        background:none;
+        border-width:100px 0 0;
+        border-color:#c00 transparent transparent;
+      }
+      42%{
+        top:59px;
+        left:-81px;
+        width:100px;
+        height:0;
+        background:none;
+        border-width:95px 31px 0;
+        border-color:#069 transparent transparent;
+      }
+      61%{
+        top:87px;
+        left:-50px;
+        width:100px;
+        height:0;
+        border-width:87px 50px 0;
+        border-color:#f80 transparent transparent;
+      }
+      80%{
+        top:140px;
+        left:-112px;
+        width:100px;
+        height:0;
+        border-width:78px 62px 0;
+        border-color:#09c transparent transparent;
+      }
+      95%,100%{
+        top:171px;
+        left:-71px;
+        width:100px;
+        height:0;
+        border-width:71px 71px 0;
+        border-color: #f69 transparent transparent;
+      }
+    }
+    @-webkit-keyframes af{
+      0%,61%{
+        top:87px;
+        left:-50px;
+        width:200px;
+        height:0;
+        border-width:0;
+        background:none;
+        border-color:transparent transparent #f80;
+      }
+      80%{
+        top:43px;
+        left:-112px;
+        width:180px;
+        height:0;
+        border-width:0 22px 99px;
+        background:none;
+        border-style:solid;
+        border-color:transparent transparent #09c;
+      }
+      95%,100%{
+        top:71px;
+        left:-71px;
+        width:242px;
+        height:0;
+        border-width:0 0 100px;
+        background:none;
+        border-style:solid;
+        border-color:transparent transparent #f69;
+      }
+    }
+    @-webkit-keyframes s{
+      0%,5%{
+        -webkit-transform:translateX(0) translateY(0) scale(1);
+      }
+      23%{
+        -webkit-transform:translateX(-15px) translateY(-10px) scale(.9);
+      }
+      42%{
+        -webkit-transform:translateX(-50px) translateY(-20px) scale(.8);
+      }
+      61%{
+        -webkit-transform:translateX(-70px) translateY(-25px) scale(.7);
+      }
+      80%{
+        -webkit-transform:translateX(-80px) translateY(-25px) scale(.6);
+      }
+      95%,100%{
+        -webkit-transform:translateX(-100px) translateY(-25px) scale(.5);
+      }
+    }
+
+	</style>
+</head>
+<body>
+  <div class="s">
+    <div class="a"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>CSS 垂直置中的七個方法 demo2</title>
+</head>
+<style>
+	.use-transform{
+		width:200px;
+		height:150px;
+		border:1px solid #000;
+	}
+	.use-transform div{
+		position: relative;
+		width:100px;
+		height:50px;
+		top:50%;
+		margin:0 auto;
+		transform:translateY(-50%);
+		background:#095;
+	}
+</style>
+
+<body>
+<div class="use-transform">
+	<div></div>
+</div>
+</body>
+
+</html>

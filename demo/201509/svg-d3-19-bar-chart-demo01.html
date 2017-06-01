@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 直條圖 ( Bar Chart )  - demo01</title>
+  <script src="/js/lib/d3.v3.min.js"></script>
+  <script>
+    window.addEventListener('load',function(){
+
+      var data=[
+        {x:1, w:Math.floor(Math.random()*500)},
+        {x:2, w:Math.floor(Math.random()*500)},
+        {x:3, w:Math.floor(Math.random()*500)},
+        {x:4, w:Math.floor(Math.random()*500)},
+        {x:5, w:Math.floor(Math.random()*500)},
+      ];
+
+      var s = d3.select('body')
+                .append('svg')
+                .attr({
+                  'width':300,
+                  'height':300
+                });
+
+      s.selectAll('rect')
+       .data(data)
+       .enter()
+       .append('rect')
+       .attr({
+        'fill':'#09c',
+        'width':function(d){
+          return d.w;
+        },
+        'height':30,
+        'x':0,
+        'y':function(d){
+          return (d.x-1) * 35;
+        }
+       });
+
+    },false);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

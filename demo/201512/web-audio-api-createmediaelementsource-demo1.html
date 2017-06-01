@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>建立音樂頻譜 ( createMediaElementSource ) - demo01</title>
+</head>
+
+<body>  
+  <audio controls autoplay>
+    <source src="test.mp3">
+  </audio>
+  <span id="s"></span>
+</body>
+  <script>
+  var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+  var myAudio = document.querySelector('audio');
+  var source = audioCtx.createMediaElementSource(myAudio);
+  var gainNode = audioCtx.createGain();
+  source.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  window.onmousemove = function(e){
+    var v = e.pageY/window.innerHeight;
+    console.log(v);
+    gainNode.gain.value = v;
+    s.innerHTML = v;
+    myAudio.volume = v;
+  };
+
+  </script>
+</html>

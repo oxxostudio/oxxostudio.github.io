@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 巢狀數據結構 ( nest ) demo9</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<body>
+	<script>
+	var data = [
+	  {name:'Tom'   , score:98, type:'class1' , sex:'man'},
+	  {name:'Jack'  , score:72, type:'class2' , sex:'man'},
+	  {name:'Owen'  , score:93, type:'class3' , sex:'man'},
+	  {name:'Mark'  , score:41, type:'class4' , sex:'man'},
+	  {name:'Marry' , score:67, type:'class4' , sex:'woman'},
+	  {name:'Rock'  , score:59, type:'class2' , sex:'man'},
+	  {name:'Jason' , score:83, type:'class1' , sex:'man'},
+	  {name:'Peter' , score:47, type:'class3' , sex:'man'},
+	  {name:'Cherry', score:53, type:'class1' , sex:'woman'},
+	  {name:'Jean'  , score:68, type:'class4' , sex:'woman'}
+	];
+
+
+	var a = d3.nest()
+	        .key(function(d){return d.sex;})
+	        .key(function(d){return d.type;})
+			    .entries(data);
+
+	var b = d3.nest()
+	        .key(function(d){return d.sex;})
+	        .key(function(d){return d.type;})
+			    .map(data);
+
+  console.log(a);
+  console.log(b);
+
+	</script>
+</body>
+</html>

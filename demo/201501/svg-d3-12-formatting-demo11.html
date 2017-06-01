@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 數字格式 ( Formatting ) demo11</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+	var _X1 = d3.format("X");
+	
+	console.log(_X1(1000));     //3E8
+	console.log(_X1(10));       //A
+	console.log(_X1(1));        //1
+	console.log(_X1(0.0123));   //
+	console.log(_X1(0.012345)); //
+	console.log(_X1(-10));      //-A
+	console.log(_X1(-0.123));   //
+
+
+
+	</script>
+</body>
+</html>

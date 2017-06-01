@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 時間格式 ( Time Formatting ) demo6</title>
+
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+var d = new Date();
+
+var f = d3.time.format("%c");
+var u = d3.time.format.utc(f(d));
+var i = d3.time.format.iso(d);
+
+console.log(d);    //Mon Dec 29 2014 23:15:05 GMT+0800 (台北標準時間)
+console.log(f(d)); //Mon Dec 29 23:15:05 2014
+console.log(u);    //Mon Dec 29 23:15:05 2014
+console.log(i);    //2014-12-29T15:15:05.665Z
+
+
+
+	</script>
+</body>
+</html>

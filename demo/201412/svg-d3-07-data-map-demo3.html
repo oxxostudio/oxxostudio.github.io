@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 陣列數據地圖 ( d3.map ) demo3</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+		var data = [
+		  {name:'Tom'   , type:['a','b','c']},
+		  {name:'Jack'  , type:['b,c']},
+		  {name:'Owen'  , type:['c','d','e']},
+		  {name:'Mark'  , type:['a','c']},
+		  {name:'Marry' , type:['a','b','c','d']},
+		  {name:'Rock'  , type:['a','c']},
+		  {name:'Jason' , type:['b','c']},
+		  {name:'Peter' , type:['a','b','c']},
+		  {name:'Cherry', type:['c','d']},
+		  {name:'Jean'  , type:['a','c','d']}
+		];
+		var i = d3.map(data,function(d){return d.name;});
+
+		console.log(i.get('Tom'));  
+		console.log(i.get('Owen')); 
+		console.log(i.get('oxxo'));  
+	</script>
+</body>
+</html>

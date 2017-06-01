@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>點選自動複製 ( ZeroClipboard、zClip ) demo1</title>
+</head>
+<script src="/js/lib/jquery.min.js"></script>
+<script src="/lib/ZeroClipboard.js"></script>
+
+<body>
+  <button class="clipboard fa fa-copy" data-clipboard-text="Copied Button 1 Text" title="Copy button 1 text">點我複製</button>
+  <button class="clipboard fa fa-copy" data-clipboard-text="Copied Button 2 Text" title="Copy button 2 text">22</button>
+
+
+  <div>
+    <h3>Logs:</h3>
+    <ul id="logger"></ul>
+  </div>
+  <script>
+  var $logger = $("#logger");
+
+  function log(msg) {
+    $logger.prepend("<li>" + msg + "</li>");
+  }
+
+  var client = new ZeroClipboard($("button[data-clipboard-text]"));
+
+  client.on("error", function(e) {
+    log("ERROR! [" + e.name + "] " + e.message);
+  });
+
+  client.on("ready", function(e) {
+    log("Ready!");
+
+    client.on("aftercopy", function(e) {
+      log((e.success["text/plain"] ? "Copied" : "FAILED to copy") + ": " + e.data["text/plain"]);
+      showActive(e.target);
+    });
+  });
+  </script>
+</body>
+
+</html>

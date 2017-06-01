@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tw">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 淺談 D3.js 的資料處理 - demo4</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+<script>
+  var data = [38,69,72,42,58,87];
+
+	d3.select('body').selectAll('div')
+		.data(data)
+		.enter()
+		.append('div')
+		.text(function(d){
+			return d;
+		}).style({
+			'color':function(d){
+				if(d<60){
+					return 'red'
+				}
+			},
+			'width':function(d){
+				return d+'px'
+			},
+			'margin':'2px 0',
+			'background':'#aaa',
+		});
+</script>
+	
+</body>
+</html>

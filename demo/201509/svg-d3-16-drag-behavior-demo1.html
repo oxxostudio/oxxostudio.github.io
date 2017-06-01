@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - 拖拉行為 ( Drag Behavior )  - demo1</title>
+  <style>
+    #r{
+      position:absolute;
+      width:50px;
+      height:50px;
+      background:#000;
+    }
+  </style>
+  <script src="/js/lib/d3.v3.min.js"></script>
+  <script>
+    window.addEventListener('load',function(){
+
+      var drag = d3.behavior.drag()  
+                  .on('dragstart', function() { 
+                    console.log(d3.event);
+                  })
+                  .on('drag', function() { 
+                    console.log(d3.event);
+                  })
+                  .on('dragend', function() { 
+                    console.log(d3.event);
+                  });
+        
+      var rect = d3.select('#r')
+                  .style({'left':'50px','top':'50px'})
+                  .call(drag);
+    },false);
+  </script>
+</head>
+
+<body>
+  <div id="r"></div>
+</body>
+
+</html>

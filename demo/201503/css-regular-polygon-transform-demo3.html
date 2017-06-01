@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>單一 div 的正多邊形變換 ( 純 CSS ) - demo3</title>
+	<style>
+		.a{
+  		position:relative;
+	    width:0;
+	    height:0;
+	    border-width:0 81px 59px;
+  		border-style:solid;
+	    border-color:transparent transparent #069;
+		}
+		.a:before{
+		  position:absolute;
+		  content:"";
+	    top:59px;
+	    left:-81px;
+	    width:100px;
+	    height:0;
+	    background:none;
+	    border-width:95px 31px 0;
+		  border-style:solid;	
+	    border-color:#069 transparent transparent;
+  	}
+	</style>
+</head>
+<body>
+	<div class="a"></div>
+</body>
+</html>

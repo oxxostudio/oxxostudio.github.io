@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>SVG D3.js - transition 基本篇 demo3</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+
+
+<style>
+	div{
+		position:absolute;
+		display:inline-block;
+		box-sizing: border-box;
+		width:60px;
+		height:60px;
+		padding:5px;
+		font-size:12px;
+		color:#fff;
+		background:#f55;
+	}
+	.box1{
+		left:10px;
+	}
+	.box2{
+		left:80px;
+	}
+	.box3{
+		left:150px;
+	}
+	.box4{
+		left:220px;
+	}
+	.box5{
+		left:290px;
+	}
+	.box6{
+		left:360px;
+	}
+	.box7{
+		left:430px;
+	}
+	.box8{
+		left:500px;
+	}
+	.box9{
+		left:570px;
+	}
+	.box10{
+		left:640px;
+	}
+</style>
+<body>
+	<button onclick="d3Transition()">RESET</button>
+	<br/>
+  <div class="box1">linear</div>
+  <div class="box2">poly(2)</div>
+  <div class="box3">quad</div>
+  <div class="box4">cubic</div>
+  <div class="box5">sin</div>
+  <div class="box6">exp</div>
+  <div class="box7">circle</div>
+  <div class="box8">elastic</div>
+  <div class="box9">back</div>
+  <div class="box10">bounce</div>
+
+	<script>
+	d3Transition();
+	function d3Transition(){
+		var h = '200px';
+		d3.selectAll('div')
+		  .style({
+				'top':'30px'
+		  });
+		d3.select('.box1')
+			.transition()
+			.duration(1000)
+			.ease('linear')
+			.style({
+				'top': h
+			});
+		d3.select('.box2')
+			.transition()
+			.duration(1000)
+			.ease('poly','2')
+			.style({
+				'top': h
+			});
+		d3.select('.box3')
+			.transition()
+			.duration(1000)
+			.ease('quad')
+			.style({
+				'top': h
+			});
+		d3.select('.box4')
+			.transition()
+			.duration(1000)
+			.ease('cubic')
+			.style({
+				'top': h
+			});
+		d3.select('.box5')
+			.transition()
+			.duration(1000)
+			.ease('sin')
+			.style({
+				'top': h
+			});
+		d3.select('.box6')
+			.transition()
+			.duration(1000)
+			.ease('exp')
+			.style({
+				'top': h
+			});
+		d3.select('.box7')
+			.transition()
+			.duration(1000)
+			.ease('circle')
+			.style({
+				'top': h
+			});
+		d3.select('.box8')
+			.transition()
+			.duration(1000)
+			.ease('elastic',1.2)
+			.style({
+				'top': h
+			});
+		d3.select('.box9')
+			.transition()
+			.duration(1000)
+			.ease('back')
+			.style({
+				'top': h
+			});
+		d3.select('.box10')
+			.transition()
+			.duration(1000)
+			.ease('bounce')
+			.style({
+				'top': h
+			});
+	}
+	</script>
+</body>
+
+</html>

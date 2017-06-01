@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>SVG D3.js - 數字格式 ( Formatting ) demo15</title>
+</head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="/js/lib/d3.v3.min.js"></script> -->
+<body>
+	<script>
+	
+	console.log(d3.format(",.5e")(10000));   //1.00000e+4
+	console.log(d3.format(",.5g")(10000));   //10,000
+	console.log(d3.format(",.5f")(10000));   //10,000.00000
+	console.log(d3.format(",.5d")(10000));   //10,000
+	console.log(d3.format(",.5r")(10000));   //10,000.0
+	console.log(d3.format(",.5%")(10000));   //1,000,000.00000%
+	console.log(d3.format(",.5p")(10000));   //1,000,000%
+	console.log(d3.format(",.5b")(10000));   //10,011,100,010,000
+	console.log(d3.format(",.5o")(10000));   //23,420
+	console.log(d3.format(",.5x")(10000));   //2,710
+	console.log(d3.format(",.5s")(10000));   //10.000k
+
+
+	console.log(d3.format("10,.5e")(10000));   //1.00000e+4
+	console.log(d3.format("10,.5g")(10000));   //    10,000  <-- 前面有空格
+	console.log(d3.format("10,.5f")(10000));   //10,000.00000
+	console.log(d3.format("10,.5d")(10000));   //    10,000
+	console.log(d3.format("10,.5r")(10000));   //  10,000.0
+	console.log(d3.format("10,.5%")(10000));   //1,000,000.00000%
+	console.log(d3.format("10,.5p")(10000));   // 1,000,000%
+	console.log(d3.format("10,.5b")(10000));   //10,011,100,010,000
+	console.log(d3.format("10,.5o")(10000));   //    23,420
+	console.log(d3.format("10,.5x")(10000));   //     2,710
+	console.log(d3.format("10,.5s")(10000));   //    10.000k
+
+
+
+	</script>
+</body>
+</html>

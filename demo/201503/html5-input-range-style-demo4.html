@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+	<title>改變 HTML5 range 樣式的兩種方法 - demo4</title>
+	<style>
+		input[type="range"]{
+		  -webkit-appearance: none;
+		  border-radius:2px;
+		  width:200px;
+		  height:3px;
+		  background-image:-webkit-linear-gradient(left ,#f22 0%,#f22 50%,#fff 50%, #fff 100%);
+		  box-shadow:inset #ebb 0 0 5px;
+		  outline : none;
+		  transition:.1s;
+		}
+		input[type="range"]::-webkit-slider-thumb{
+		  -webkit-appearance: none;
+		  width:10px;
+		  height:10px;
+		  background:#f22;
+		  border-radius:50%;
+		  transition:.1s;
+		}
+		
+		input[type="range"]::-webkit-slider-thumb:hover,
+		input[type="range"]::-webkit-slider-thumb:active{
+		  width:16px;
+		  height:16px;
+		}
+	</style>
+	<script src="http://www.oxxostudio.tw/js/lib/jquery.min.js"></script>
+	<script>	
+		$(function(){
+		  var r = $('input');
+		  r.on('mouseenter',function(){
+		    var p = r.val();
+		    r.on('click',function(){
+		      p = r.val();
+		      bg(p);
+		    });
+		    r.on('mousemove',function(){
+		      p = r.val();
+		      bg(p);
+		    });
+		  });
+		  function bg(n){
+		      r.css({
+		        'background-image':'-webkit-linear-gradient(left ,#f22 0%,#f22 '+n+'%,#fff '+n+'%, #fff 100%)'
+		      });
+		  }
+		});
+	</script>
+</head>
+<body>
+	<input type="range" min="0" max="100" step="1" value="50">
+</body>
+</html>

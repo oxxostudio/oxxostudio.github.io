@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>深入解析 CSS Flexbox demo3</title>
+</head>
+<style>
+	body{
+		margin:20px;
+		font-family:"Verdana";
+		font-size:12px;
+		color:#fff;
+	}
+	.flex-start,
+	.flex-end,
+	.center,
+	.space-between,	
+	.space-around{
+		display:flex;
+		width:300px;
+		height:60px;
+		margin:10px;
+		border:1px solid #000;
+		vertical-align: top;
+	}
+	.flex-start{
+		justify-content:flex-start;
+	}
+	.flex-end{
+		justify-content:flex-end;
+	}
+	.center{
+		justify-content:center;
+	}
+	.space-between{
+		justify-content:space-between;
+	}
+	.space-around{
+		justify-content:space-around;
+	}
+	.flex-item{
+		width:60px;
+		height:60px;
+		text-align:center;
+		line-height: 60px;
+	}
+	.item1{
+		background:#c00;
+	}
+	.item2{
+		background:#095;
+	}
+	.item3{
+		background:#059;
+	}
+</style>
+
+<body>
+<div class="flex-start">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="flex-end">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="center">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="space-between">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<div class="space-around">
+	<div class="flex-item item1">1</div>
+	<div class="flex-item item2">2</div>
+	<div class="flex-item item3">3</div>
+</div>
+<span>
+</body>
+
+</html>
