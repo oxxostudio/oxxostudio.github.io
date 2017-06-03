@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>偽元素 ( JavaScript 操控 ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="由於偽元素不存在於網頁元素內，所以 JavaScript 無法透過正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
+  <meta itemprop="description" content="由於偽元素不存在於網頁元素內，所以 JavaScript 無法透過正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-3.jpg">
+  <meta property="og:description" content="由於偽元素不存在於網頁元素內，所以 JavaScript 無法透過正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
+  <meta property="og:title" content="偽元素 ( JavaScript 操控 )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/pseudo-element-3.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-3.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>偽元素 ( JavaScript 操控 )</h1>
+<p>由於偽元素不存在於網頁元素內，所以 JavaScript 無法透過正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。</p>
+<h2>讀取偽元素屬性</h2>
+<p>一般來說使用 JavaScript 讀取某個元素 DOM 裡頭的屬性不難，但相對來說要讀取一個不存在網頁裡的元素就不容易，如果要讀取偽元素屬性，可以透過<code>getComputedStyle</code>來獲得，<code>getComputedStyle</code>是個可以獲取當前元素「所有最終使用的 CSS 屬性值」，讀取後會返回一個 Object CSSStyleDeclaration，而這個物件是唯讀的，無法進行修改。</p>
+<blockquote>
+<p>使用方法：<code>window.getComputedStyle('元素', '偽元素')</code></p>
+</blockquote>
+<p>舉例來說 html 放入一個 div 以及一個 span，待會會用這個 span 來顯示 div 的 ::before 屬性。</p>
+<pre class="prettyprint"><code>&lt;div id="d"&gt;我是 div&lt;/div&gt;
+&lt;span id="s"&gt;&lt;/span&gt;
+</code></pre><p>CSS 的部分指定偽元素的 content 和 color。</p>
+<pre class="prettyprint"><code>#d::before{
+  content:'偽元素的 content ';
+  color:red;
+}
+</code></pre><p>JavaScript 使用<code>window.getComputedStyle(d,'::before')</code>獲取 div 裡頭偽元素最終使用的 style，然後顯示在 span 裡面。</p>
+<pre class="prettyprint"><code>var d = document.getElementById('d');
+var s = document.getElementById('s');
+var b = window.getComputedStyle(d,'::before');
+s.innerHTML = b.content +'&lt;br/&gt;'+b.color;
+</code></pre><p>最後呈現的結果，第一段就是原本的 div 加上紅色的偽元素文字，下方第一段是 content 的內容，緊接著是偽元素的顏色屬性。</p>
+<p><img src="/img/articles/201706/pseudo-element-3-01.jpg" alt=""></p>
+<h2>修改偽元素屬性</h2>
+<p>可以讀取屬性值也就一定要嘗試修改，不過修改偽元素的屬性其實比想像的不容易，必須透過<code>insertRule</code>這個方法在指定的 style 裡插入「預設的規則」，讓這個規則去影響偽元素的屬性表現。</p>
+<blockquote>
+<p>用法：<code>style 標籤元素.insertRule(樣式規則, 0)</code></p>
+</blockquote>
+<p>舉例來說我們的網頁長相如下，一開始開頭的部分有兩組 style，第一組是我們賦予元素的樣式屬性，第二組則是要來定義規則的 style，因為要加入規則，所以讓第二組 style 有一個 id。至於 html 就放入一個 div。</p>
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width"&gt;
+  &lt;title&gt;JS Bin&lt;/title&gt;
+  &lt;style&gt;
+    #d::before{
+      content:'偽元素的 content ';
+      color:red;
+    }
+  &lt;/style&gt;
+  &lt;style id="css"&gt;&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="d"&gt;我是 div&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>在完全沒有撰寫 JavaScript 的狀態，應該會呈現如下圖的樣子：</p>
+<p><img src="/img/articles/201706/pseudo-element-3-02.jpg" alt=""></p>
+<p>JavaScript 開始先用一個變數 css，透過 id 抓取 style，然後使用在指定一個變數給<code>css.sheet</code>，就可以透過<code>insertRule</code>的方法修改了。這邊比較需要注意的是，由於<em>規則加入時會放在整串 style 的開頭 ( 第二個值預設 0 )，所以純粹使用一個<code>#d</code>是無法覆蓋原本的屬性 ( CSS 權重問題 )</em>，所以這邊使用<code>#d#d</code>兩次，就可以在權重上壓過原本的屬性。( 當然如果要用<code>!important</code>也是可以 )</p>
+<pre class="prettyprint"><code>var css = document.getElementById('css');
+var d = document.getElementById('d');
+var c = css.sheet;
+c.insertRule("#d#d::before{content:'我是修改的 content ';}", 0);
+c.insertRule("#d#d::before{color:blue;}", 0);
+</code></pre><p>如此一來，呈現出來的樣貌就會是透過 JavaScript 修改的。</p>
+<p><img src="/img/articles/201706/pseudo-element-3-03.jpg" alt=""></p>
+<h2>修改偽元素 content</h2>
+<p>我們知道 ::before 和 ::after 的 content 可以透過 attr 抓取父元素的舉屬性，因此透過改變這個屬性，就能連帶改變 content 的內容，舉例來說有個 div，我們指定它的<code>data-text="我是預設文字"</code>，然後放兩個按鈕，期望點選不同的按鈕，會更換 content 不同的內容。</p>
+<pre class="prettyprint"><code>&lt;button id="b1"&gt;顯示 ABC&lt;/button&gt;
+&lt;button id="b2"&gt;顯示 123&lt;/button&gt;
+&lt;div data-text="我是預設文字"&gt;我是 div&lt;/div&gt;
+</code></pre><p>接著設定 CSS，關鍵在使用 content 的<code>attr</code>，讓偽元素直接顯示父元素屬性的內容。</p>
+<pre class="prettyprint"><code>button{
+  font-size:16px;
+}
+div{
+  margin:10px;
+  font-size:20px;
+}
+div::before{
+  content: attr(data-text) '，';
+}
+</code></pre><p>最後就是 JavaScript 的部分，透過<code>setAttribute</code>變更 div 的屬性，就會看到 content 的內容跟著做更換了。</p>
+<pre class="prettyprint"><code>var b1 = document.getElementById('b1');
+var b2 = document.getElementById('b2');
+var d = document.querySelector('div');
+
+b1.addEventListener('click',function(){
+  d.setAttribute('data-text','ABC');
+});
+b2.addEventListener('click',function(){
+  d.setAttribute('data-text','123');
+});
+</code></pre><p><img src="/img/articles/201706/pseudo-element-3-01.gif" alt=""></p>
+<h2>小結</h2>
+<p>雖然說我們可以透過 JavaScript 來操控偽元素，但偽元素終究不是真正的網頁元素，也因此操作起來也不如基本操作網頁元素 DOM 來的簡便，所以如果可以，還是盡量用正常的操控模式吧。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

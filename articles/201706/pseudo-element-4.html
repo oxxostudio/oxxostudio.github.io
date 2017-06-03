@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>偽元素 ( first-line、first-letter、selection) - OXXO.STUDIO</title>
+
+  <meta name="description" content="除了 ::before 和 ::after，偽元素還有 ::first-line、::first-letter 和 ::selection 這三個，這三個相對來說就簡單得多，用法也較為單純。">
+  <meta itemprop="description" content="除了 ::before 和 ::after，偽元素還有 ::first-line、::first-letter 和 ::selection 這三個，這三個相對來說就簡單得多，用法也較為單純。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-4.jpg">
+  <meta property="og:description" content="除了 ::before 和 ::after，偽元素還有 ::first-line、::first-letter 和 ::selection 這三個，這三個相對來說就簡單得多，用法也較為單純。">
+  <meta property="og:title" content="偽元素 ( first-line、first-letter、selection)">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/pseudo-element-4.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-4.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>偽元素 ( first-line、first-letter、selection)</h1>
+<p>除了 ::before 和 ::after，偽元素還有 ::first-line、::first-letter 和 ::selection 這三個，這三個相對來說就簡單得多，用法也較為單純。</p>
+<h2>::first-line</h2>
+<p>::first-line 顧名思義就是「第一行」，透過這個偽元素可以輕鬆指定文字的第一行，比較需要注意的是 ::first-line <em>「不能」作用於<code>display:inline</code></em>的元素。以下面的例子，html 裡有一段文字寫在<code>&lt;p&gt;&lt;/p&gt;</code>裡面。</p>
+<pre class="prettyprint"><code>&lt;p&gt; 我畢業於台灣藝術大學多媒體動畫藝術研究所，專長是 UI 與 UX 設計、網頁設計...等視覺設計領域，凡是眼睛所見關於「美」的東西，都是我所熱愛與追求的！&lt;/p&gt;
+</code></pre><p>CSS 只要這樣寫，呈現出來的第一行就會是綠色的，不論視窗如何縮放，就只有第一行會是綠色的。</p>
+<pre class="prettyprint"><code>p::first-line{
+  color:green;
+}
+</code></pre><p><img src="/img/articles/201706/pseudo-element-4-01.jpg" alt=""></p>
+<h2>::first-letter</h2>
+<p>::first-line 顧名思義就是「第一個字」，透過這個偽元素，可以做出許多文章第一個字放大或變色的效果，我們這裡就用剛剛上面那段文字為例，把第一個字用下列的 CSS 來做變化，就可以看到第一個字放大且變色了。</p>
+<pre class="prettyprint"><code>p::first-letter{
+  font-weight:bold;
+  font-size:38px;
+  color:red;
+}
+</code></pre><p><img src="/img/articles/201706/pseudo-element-4-02.jpg" alt=""></p>
+<p>雖然把第一個字放大了，但排列上仍然有點亂，所以可以加入<code>line-height</code>、<code>float</code>或<code>padding</code>來進行修正，如此一來就會真的很像報章雜誌會出現的效果了。</p>
+<pre class="prettyprint"><code>p::first-letter{
+  font-weight:bold;
+  font-size:38px;
+  color:red;
+  line-height:26px;
+  float:left;
+  padding:10px 5px 0 0;
+}
+</code></pre><p><img src="/img/articles/201706/pseudo-element-4-03.jpg" alt=""></p>
+<p>不過很有趣的是，在實作的過程裡，發現「有一些符號」是無法套用 ::first-letter 的，例如「『 {} [] 都不行，但如果後方加上其他文字或符號，又會跟著一起放大...( 到底是怎樣？ )</p>
+<p><img src="/img/articles/201706/pseudo-element-4-05.jpg" alt=""></p>
+<p>經過查詢 W3C 的資訊，發現了下面這段話，意思大概就是說網頁裡面有定義一些所謂「<em>包覆式、點綴式的標點符號</em>」，如果是這些包覆式的標點符號，基本上就無法放大，反而需要搭配其它字元使用，也因如此，在使用第一個字元變化的時候，就要注意有這種特殊狀況會發生。</p>
+<blockquote>
+<p>參考：<a href="https://www.w3.org/TR/CSS21/selector.html#first-letter" target="_blank">https://www.w3.org/TR/CSS21/selector.html#first-letter</a></p>
+</blockquote>
+<p><img src="/img/articles/201706/pseudo-element-4-04.jpg" alt=""></p>
+<h2>::selection</h2>
+<p>::selection 是個十分常見的偽元素，它就是負責一段選取文字的效果，以下面這段 CSS 來說，選取後的文字，就會是深色背景，黃色文字。</p>
+<pre class="prettyprint"><code>p::selection{
+  color:yellow;
+  background:#543;
+}
+</code></pre><p><img src="/img/articles/201706/pseudo-element-4-06.jpg" alt=""></p>
+<h2>小結</h2>
+<p>連續四篇深入的介紹了偽元素的用法，雖然說大部分的時候用不太到，但某些時候也不失為強化網頁效果、或是優化網頁程式碼的好方法。</p>
+<blockquote>
+<ul>
+<li><a href="pseudo-element-1.html">偽元素 ( before 與 after )</a></li>
+<li><a href="pseudo-element-2.html">偽元素 ( content 與 counter )</a></li>
+<li><a href="pseudo-element-3.html">偽元素 ( JavaScript 操控 )</a></li>
+<li><a href="pseudo-element-4.html">偽元素 ( first-line、first-letter、selection)</a></li>
+</ul>
+</blockquote>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>
