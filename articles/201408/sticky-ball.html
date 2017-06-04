@@ -86,7 +86,7 @@
   &lt;div class="blackball"&gt;&lt;/div&gt;
   &lt;div class="redball"&gt;&lt;/div&gt;
 &lt;/div&gt;
-</code></pre><p>只要對 blackball 和 redball 加入模糊的濾鏡，對 effect 加入對比的濾鏡，就能夠達到 Photoshop 裡面的特效，而模糊的濾鏡必須使用<code>-webkit-filter:blur(數值)</code>，對比則使用<code>-webkit-filter:blur(數值)</code>，這個只能夠運行在 Chrome 和 Safari 這兩個使用 webkit 核心的瀏覽器，所以 firefox 和 IE 就抱歉啦！</p>
+</code></pre><p>只要對 blackball 和 redball 加入模糊的濾鏡，對 effect 加入對比的濾鏡，就能夠達到 Photoshop 裡面的特效，而模糊的濾鏡必須使用<code>-webkit-filter:blur(數值)</code>，對比則使用<code>-webkit-filter:contrast(數值)</code>，這個只能夠運行在 Chrome 和 Safari 這兩個使用 webkit 核心的瀏覽器，所以 firefox 和 IE 就抱歉啦！</p>
 <p><img src="/img/articles/201408/20140829_1_07.gif" alt=""></p>
 <p>CSS 的長相會長這樣：</p>
 <pre class="prettyprint"><code>.effect{
