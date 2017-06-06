@@ -1,4 +1,9 @@
 [{
+  "tag": "tag-web",
+  "title": "JavaScript 同步延遲 ( Promise、setTimeout )",
+  "site": "/articles/201706/javascript-promise-settimeout.html",
+  "date": "JUN 4, 2017"
+},{
   "tag": "tag-css",
   "title": "偽元素 ( first-line、first-letter、selection)",
   "site": "/articles/201706/pseudo-element-4.html",

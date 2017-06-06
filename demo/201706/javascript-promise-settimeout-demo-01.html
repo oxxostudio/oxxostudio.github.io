@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>JavaScript 同步延遲 ( Promise + setTimeout )</title>
+  <script>
+  var delay = function(s) {
+    return new Promise(function(resolve, reject) {
+      setTimeout(resolve, s);
+    });
+  };
+
+  delay().then(function() {
+    console.log(1); // 顯示 1
+    return delay(1000); // 延遲ㄧ秒
+  }).then(function() {
+    console.log(2); // 顯示 2
+    return delay(1000); // 延遲一秒
+  }).then(function() {
+    console.log(3); // 顯示 3
+  });
+  </script>
+</head>
+
+<body>
+請打開 console 看結果
+</body>
+
+</html>
