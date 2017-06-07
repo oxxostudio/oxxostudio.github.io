@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>Promise 與 Opendata - OXXO.STUDIO</title>
+
+  <meta name="description" content="Opendata 是個很好用的練習資料，之前都是透過 jQuery 內建的 getJSON 或 AJAX 來完成資料串接取得，這篇將會透過XMLHttpRequest()來實作，並且搭配 Promise 的用法，載入一組資料之後再載另外一組資料，避免同時載入的情況發生。">
+  <meta itemprop="description" content="Opendata 是個很好用的練習資料，之前都是透過 jQuery 內建的 getJSON 或 AJAX 來完成資料串接取得，這篇將會透過XMLHttpRequest()來實作，並且搭配 Promise 的用法，載入一組資料之後再載另外一組資料，避免同時載入的情況發生。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/javascript-promise-opendata.jpg">
+  <meta property="og:description" content="Opendata 是個很好用的練習資料，之前都是透過 jQuery 內建的 getJSON 或 AJAX 來完成資料串接取得，這篇將會透過XMLHttpRequest()來實作，並且搭配 Promise 的用法，載入一組資料之後再載另外一組資料，避免同時載入的情況發生。">
+  <meta property="og:title" content="Promise 與 Opendata">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/javascript-promise-opendata.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/javascript-promise-opendata.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;"></div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Promise 與 Opendata</h1>
+<p>Opendata 是個很好用的練習資料，之前都是透過 jQuery 內建的 getJSON 或 AJAX 來完成資料串接取得，這篇將會透過<code>XMLHttpRequest()</code>來實作，並且搭配 Promise 的用法，載入一組資料之後再載另外一組資料，避免同時載入的情況發生。</p>
+<h2>Opendata 哪裡找</h2>
+<p>基本上我們的縣市政府網站，都有提供不少 Opendata 的資訊讓開發者使用，我自己很喜歡到「政府資料開放平臺」上面去挖寶，或是「台北市政府資料開放平臺」，這兩個平台的開放資料都是相當完整且容易介接。</p>
+<blockquote>
+<ul>
+<li>政府資料開放平臺：<a href="http://data.gov.tw/" target="_blank">http://data.gov.tw/</a></li>
+<li>台北市政府資料開放平臺：<a href="http://data.taipei/" target="_blank">http://data.taipei/</a></li>
+</ul>
+</blockquote>
+<p>在這邊列出一些我覺得還滿實用，至少都是每小時更新的 Opendata：</p>
+<blockquote>
+<ul>
+<li>即時海水水位：<a href="http://data.gov.tw/node/35077" target="_blank">http://data.gov.tw/node/35077</a></li>
+<li>即時水位 ( 10min 更新 )：<a href="http://data.gov.tw/node/25768" target="_blank">http://data.gov.tw/node/25768</a></li>
+<li>即時雨量 ( 10 min 更新 )：<a href="http://data.gov.tw/node/7879" target="_blank">http://data.gov.tw/node/7879</a></li>
+<li>空氣品質指標 ( AQI )：<a href="http://data.gov.tw/node/40448" target="_blank">http://data.gov.tw/node/40448</a></li>
+<li>空氣品質即時污染指標：<a href="http://data.gov.tw/node/6074" target="_blank">http://data.gov.tw/node/6074</a></li>
+<li>高雄機場國內線即時到站航班：<a href="http://data.gov.tw/node/33649" target="_blank">http://data.gov.tw/node/33649</a></li>
+<li>紫外線即時監測資料：<a href="http://data.gov.tw/node/6076" target="_blank">http://data.gov.tw/node/6076</a></li>
+<li>曾文水庫即時水情資訊：<a href="http://data.gov.tw/node/32733" target="_blank">http://data.gov.tw/node/32733</a></li>
+<li>台北捷運列車到站：<a href="https://goo.gl/m1WM1n" target="_blank">https://goo.gl/m1WM1n</a></li>
+</ul>
+</blockquote>
+<h2>讀取 Opendata</h2>
+<p>原本要透過<code>XMLHttpRequest()</code>來讀取 Opendata，因為 jQuery 的 Ajax 即運用非標準的 XMLHttpRequest 物件，並配合伺服器端的 Script 進行通訊，詳細介紹可以參考下面這些文章。</p>
+<blockquote>
+<p>延伸閱讀：<a href="https://segmentfault.com/a/1190000004322487" target="_blank">你真的會使用 XMLHttpRequest 嗎？</a>、<a href="https://developer.mozilla.org/zh-TW/docs/AJAX/Getting_Started" target="_blank">AJAX 上手篇</a>、<a href="https://www.html5rocks.com/zh/tutorials/file/xhr2/" target="_blank">XMLHttpRequest2 新技巧</a></p>
+</blockquote>
+<p>但是在實作的過程中，遇到跨域的問題無法解決 ( 殘念 )，只好再回歸 jQuery 的<code>.getJSON</code>，畢竟支援 JSONP 還是比較方便，透過下面這段程式碼，可以載入空氣質的數據，並在載入完成後透過 console 顯示。</p>
+<blockquote>
+<p>範例展示：<a href="/demo/201706/javascript-promise-opendata-demo-01.html" target="_blank">demo-01.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var url = "http://opendata2.epa.gov.tw/AQX.json";
+var myArr;
+$.getJSON(url,function(e){
+  console.log(e);
+});
+</code></pre><h2>同步處理 Opendata</h2>
+<p>因為載入 Opendata 需要時間 ( 看檔案大小與網路速度 )，加上 XMLHttpRequest 非同步的特性，如果你在程式碼最下面放個<code>console(123);</code>，就會看到 123 先顯示，然後才出現 Opendata 的資料 ( 如果你以為「放在最下面就會最後才出現」就錯了 )。</p>
+<p><img src="/img/articles/201706/javascript-promise-opendata-01.jpg" alt=""></p>
+<p>這時候最簡單的做法就是將 console 放到 getJSON 程式內，就可以看到 Opendata 先出現，接著才出現 123。</p>
+<blockquote>
+<p>範例展示：<a href="/demo/201706/javascript-promise-opendata-demo-02.html" target="_blank">demo-02.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var url = "http://opendata2.epa.gov.tw/AQX.json";
+var myArr;
+$.getJSON(url,function(e){
+  console.log(e);
+  console.log(123); // 把 123 放在這邊
+});
+</code></pre><p><img src="/img/articles/201706/javascript-promise-opendata-02.jpg" alt=""></p>
+<p>如果在只有一組 Opendata 的時候是很方便的，但誠如之前說過的，若是今天需要呼叫很多個檔案，相對來說得要使用一堆的 callback 來解決，這時候就可以把 Promise 派上用場，我們將<code>$.getJSON</code>變成一個 Promise 物件，這樣就可以透過<code>.then</code>不斷連結下去，也就可以在程式碼很乾淨的情況下，做到先載入完成一組 Opendata，再載入另外一組的流程。( 範例把兩個網址載入先後順序互換，就更能清楚看出來哪個先載入 )</p>
+<blockquote>
+<p>範例展示：<a href="/demo/201706/javascript-promise-opendata-demo-03.html" target="_blank">demo-03.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var data1 = "http://opendata2.epa.gov.tw/AQX.json";
+var data2 = "http://opendata.epa.gov.tw/ws/Data/RainTenMin/?format=json&amp;callback=?"; // 加上 &amp;callback=? 是 JSONP 格式
+
+var myArr;
+var p = function(url) {
+  return new Promise(function(resolve, reject) {
+    $.getJSON(url, function(e) {
+      resolve([e, url]);  // 把多個值用成一個陣列傳遞下去 ( 因為 resolve 只有一個回傳值 )
+    });
+  });
+}
+
+p(data2).then(function(v) {
+  console.log(v[1]);  // 顯示 opendata 網址
+  console.log(v[0]);  // 顯示資料內容
+  return p(data1);
+}).then(function(v) {
+  console.log(v[1]);  // 顯示 opendata 網址
+  console.log(v[0]);  // 顯示資料內容
+});
+</code></pre><p><img src="/img/articles/201706/javascript-promise-opendata-03.jpg" alt=""></p>
+<h2>小結</h2>
+<p>Opendata 其實有很多好玩的資料等著我們去應用，學會 Promise 的用法之後更是如虎添翼，當然純前端串接 Opendata 一定會遇到一些安全性或是瀏覽器先天的問題，但相信透過現成技術的輔助和陸續支援，應該會有越來越多的發揮與想像空間。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  // google.load('search', '1', {
+  //   language: 'zh-Hant',
+  //   style: google.loader.themes.V2_DEFAULT
+  // });
+  // google.setOnLoadCallback(function() {
+  //   var customSearchOptions = {};
+  //   var orderByOptions = {};
+  //   orderByOptions['keys'] = [{
+  //     label: 'Relevance',
+  //     key: ''
+  //   }, {
+  //     label: 'Date',
+  //     key: 'date'
+  //   }];
+  //   customSearchOptions['enableOrderBy'] = true;
+  //   customSearchOptions['orderByOptions'] = orderByOptions;
+  //   var customSearchControl = new google.search.CustomSearchControl('018175492205832613185:g5mvl2qoy5a', customSearchOptions);
+  //   customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  //   var options = new google.search.DrawOptions();
+  //   options.enableSearchboxOnly('/search-results.html', 's');
+  //   options.setAutoComplete(true);
+  //   customSearchControl.draw('cse-search-form', options);
+  // }, true);
+  </script>
+
+
+
+
+</body></html>

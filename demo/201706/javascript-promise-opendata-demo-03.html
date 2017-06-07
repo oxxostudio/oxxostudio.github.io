@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>Promise 與 Opendata</title>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script>
+  var data1 = "http://opendata2.epa.gov.tw/AQX.json";
+  var data2 = "http://opendata.epa.gov.tw/ws/Data/RainTenMin/?format=json&callback=?"; // 加上 &callback=? 是 JSONP 格式
+
+  var myArr;
+  var p = function(url) {
+    return new Promise(function(resolve, reject) {
+      $.getJSON(url, function(e) {
+        resolve([e, url]);  // 把多個值用成一個陣列傳遞下去 ( 因為 resolve 只有一個回傳值 )
+      });
+    });
+  }
+
+  p(data2).then(function(v) {
+    console.log(v[1]);  // 顯示 opendata 網址
+    console.log(v[0]);  // 顯示資料內容
+    return p(data1);
+  }).then(function(v) {
+    console.log(v[1]);  // 顯示 opendata 網址
+    console.log(v[0]);  // 顯示資料內容
+  });
+  </script>
+</head>
+
+<body>
+  opendata1 網址：http://opendata2.epa.gov.tw/AQX.json
+  <br/>
+  opendata2 網址：http://opendata.epa.gov.tw/ws/Data/RainTenMin/?format=json&callback=?
+  <br/>
+  請打開 console 看結果
+</body>
+
+</html>

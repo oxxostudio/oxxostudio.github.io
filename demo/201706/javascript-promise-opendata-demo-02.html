@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>Promise 與 Opendata</title>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script>
+  var url = "http://opendata2.epa.gov.tw/AQX.json";
+  var myArr;
+  $.getJSON(url,function(e){
+    console.log(e);
+    console.log(123);
+  });
+  </script>
+</head>
+
+<body>
+  opendata 網址：http://opendata2.epa.gov.tw/AQX.json
+  <br/>
+  請打開 console 看結果
+</body>
+
+</html>
