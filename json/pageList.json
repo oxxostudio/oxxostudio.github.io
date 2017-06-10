@@ -1,5 +1,10 @@
 [{
   "tag": "tag-web",
+  "title": "Google 試算表 (2) - 讀取儲存格數值",
+  "site": "/articles/201706/google-spreadsheet-2-read-data.html",
+  "date": "JUN 10, 2017"
+},{
+  "tag": "tag-web",
   "title": "Google 試算表 (1) - 讀取試算表資訊",
   "site": "/articles/201706/google-spreadsheet-1.html",
   "date": "JUN 8, 2017"

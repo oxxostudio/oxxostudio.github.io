@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>Google 試算表 (2) - 讀取儲存格數值 - OXXO.STUDIO</title>
+
+  <meta name="description" content="前一篇已經可以透過 Google Apps Script 取得試算表的檔名、頁籤名等資訊，現在就要從這份試算表的儲存格裡取出數值，並透過 Google Apps Script 的 log 顯示出來。">
+  <meta itemprop="description" content="前一篇已經可以透過 Google Apps Script 取得試算表的檔名、頁籤名等資訊，現在就要從這份試算表的儲存格裡取出數值，並透過 Google Apps Script 的 log 顯示出來。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-2-read-data.jpg">
+  <meta property="og:description" content="前一篇已經可以透過 Google Apps Script 取得試算表的檔名、頁籤名等資訊，現在就要從這份試算表的儲存格裡取出數值，並透過 Google Apps Script 的 log 顯示出來。">
+  <meta property="og:title" content="Google 試算表 (2) - 讀取儲存格數值">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/google-spreadsheet-2-read-data.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-2-read-data.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google 試算表 (2) - 讀取儲存格數值</h1>
+<p>前一篇已經可以透過 Google Apps Script 取得試算表的檔名、頁籤名等資訊，現在就要從這份試算表的儲存格裡取出數值，並透過 Google Apps Script 的 log 顯示出來。</p>
+<h2>讀取儲存格數值</h2>
+<p>延續上一篇的試算表和 Google Apps Script，把試算表裡面的儲存格打上一些內容。( 不知道怎麼做可以參考 <a href="google-spreadsheet-1.html" target="_blank">Google 試算表 (1) - 讀取試算表資訊</a> )</p>
+<p><img src="/img/articles/201706/google-spreadsheet-2-read-data-01.jpg" alt=""></p>
+<p>打開 Google Apps Script，把「程式碼.gs」改成下面這段程式碼，透過程式碼將試算表與試算表名稱提交給 Spreadsheet 和 SheetName 這兩個變數。</p>
+<blockquote>
+<p>這邊很容易搞混的是，讀取試算表是用「網址」讀取，讀取之後最上面整份試算表文件的名稱並不是<code>.getSheetByName</code>裡面的 Name，<strong>這邊的 Name 表示下方單一試算表頁籤的名字</strong>。</p>
+</blockquote>
+<pre class="prettyprint"><code>function doGet(e) {
+  var url = '試算表網址';
+  var name = '工作表1'
+  var SpreadSheet = SpreadsheetApp.openByUrl(url);
+  var SheetName = SpreadSheet.getSheetByName(name);
+}
+</code></pre><p><img src="/img/articles/201706/google-spreadsheet-2-read-data-02.jpg" alt=""></p>
+<p>接著要使用<code>getSheetValues</code>來取得儲存格的值，這個 getSheetValues 包含了四個參數在裡面，分別是 startRow、startColumn、numRows 和 numColumns，顧名思義就是從「左上儲存格至右下儲存格」中間區域所包含的儲存格數值，這些儲存格的座標不像試算表上顯示的英文字母，英文字母都對應從 1 開始的阿拉伯數字，例如 A1 儲存格，實際上表現為 Row 1，Column 1，如果是 D3 儲存格，就是 Row 3，Column 4，依此類推。</p>
+<pre class="prettyprint"><code>getSheetValues(startRow, startColumn, numRows, numColumns)
+</code></pre><p>如果只要取得單一個儲存格的數值，就要這樣表現：</p>
+<pre class="prettyprint"><code>getSheetValues(startRow, startColumn, 1,1)
+</code></pre><p>了解原理之後，透過下列的程式碼，就可以將「工作表 1」的 A1 和 B4 儲存格數值，顯示在 log 裡面。</p>
+<pre class="prettyprint"><code>function doGet(e) {
+  var url = '試算表網址';
+  var name = '工作表1'
+  var SpreadSheet = SpreadsheetApp.openByUrl(url);
+  var SheetName = SpreadSheet.getSheetByName(name);
+  Logger.log(SheetName.getSheetValues(1,1,1,1));   // 取得 A1 數值
+  Logger.log(SheetName.getSheetValues(4,2,1,1));   // 取得 B4 數值
+}
+</code></pre><p><img src="/img/articles/201706/google-spreadsheet-2-read-data-03.jpg" alt=""></p>
+<p>執行之後，可以從紀錄看到我們已經讀取了儲存格的數值，並且是用一個二維陣列來表現。</p>
+<p><img src="/img/articles/201706/google-spreadsheet-2-read-data-04.jpg" alt=""></p>
+<p>換個角度思考，如果取出「一個範圍的數值」，應該就會用陣列的形式表現出來，以下面的程式碼來說，執行之後，就可以在記錄裡 A1 到 B4 中間所有儲存格的資訊，在陣列裡，亦可很清楚的看到 A1 的數值為 123，B4 的數值為 abc。</p>
+<blockquote>
+<p>同樣的方法，也可以使用<code>getRange</code>搭配<code>getValues</code>來實現，參考：<a href="https://developers.google.com/apps-script/reference/spreadsheet/sheet#getRange" target="_blank">getRange</a></p>
+</blockquote>
+<pre class="prettyprint"><code>function doGet(e) {
+  var url = '試算表網址';
+  var name = '工作表1'
+  var SpreadSheet = SpreadsheetApp.openByUrl(url);
+  var SheetName = SpreadSheet.getSheetByName(name);
+  Logger.log(SheetName.getSheetValues(1,1,4,4));
+}
+</code></pre><p><img src="/img/articles/201706/google-spreadsheet-2-read-data-05.jpg" alt=""></p>
+<h2>getLastColumn()、getLastRow()</h2>
+<p>雖然我們已經知道如何取得儲存格數值後，會衍生出另外一個疑問：「如果資料很多，要如何才能載入所有的資料呢？」這時候我們可以透過<code>getLastColumn()</code>和<code>getLastRow()</code>來幫我們實現，這個倆方法分別可以取得「<strong>最後一欄或最後一列，有資料的儲存格座標</strong>」，只要將程式碼改成向下列這樣，就可以抓取範圍內的儲存格數值了。</p>
+<pre class="prettyprint"><code>function doGet(e) {
+  var url = '試算表網址';
+  var name = '工作表1'
+  var SpreadSheet = SpreadsheetApp.openByUrl(url);
+  var SheetName = SpreadSheet.getSheetByName(name);
+  var lastColumn = SheetName.getLastColumn();
+  var lastRow = SheetName.getLastRow();
+  Logger.log(SheetName.getSheetValues(1,1,lastRow,lastColumn));
+}
+</code></pre><p><img src="/img/articles/201706/google-spreadsheet-2-read-data-06.jpg" alt=""></p>
+<h1>小結</h1>
+<p>讀取試算表除了上述的用法，其實還有一些比較不知道要拿來做什麼的功能，例如<code>.getColumnWidth(欄編號)</code>可以抓取那一個欄的寬度，或是<code>.getRowHeight(列編號)</code>可以抓取哪個列的高度，甚至還有<code>.getTabColor()</code>可以抓取「試算表 tab 的顏色」，可能現在還沒用到，以後就用到了也說不定。</p>
+<pre class="prettyprint"><code>function doGet(e) {
+  var url = '試算表網址';
+  var name = '工作表1'
+  var SpreadSheet = SpreadsheetApp.openByUrl(url);
+  var SheetName = SpreadSheet.getSheetByName(name);
+  var lastColumn = SheetName.getLastColumn();
+  var lastRow = SheetName.getLastRow();
+  Logger.log(SheetName.getSheetValues(1,1,lastRow,lastColumn));
+  Logger.log(SheetName.getColumnWidth(1));  // 抓取 A 的寬度
+  Logger.log(SheetName.getRowHeight(1));    // 抓取第一列高度
+  Logger.log(SheetName.getTabColor());      // 抓取 tab 顏色，沒有指定顏色就會顯示 null
+}
+</code></pre><p><img src="/img/articles/201706/google-spreadsheet-2-read-data-07.jpg" alt=""></p>
+<p>既然可以讀取了，下一篇就要來介紹如何將讀取到的資料，在網頁上顯示出來。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- oxxo.studio desktop -->
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="9127554809"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>
