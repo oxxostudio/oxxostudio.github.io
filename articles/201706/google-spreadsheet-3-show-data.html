@@ -96,8 +96,8 @@
   var name = params.name;  
   var startRow = params.startRow; 
   var startColumn = params.startColumn; 
-  var endRow = (!endRow)?1:params.endRow; // 如果沒有 endRow，就讓 endRow=1
-  var endColumn = (!endColumn)?1:params.endColumn;  // 如果沒有 endColumn，就讓 endColumn=1
+  var endRow = (!params.endRow)?1:params.endRow; // 如果沒有 endRow，就讓 endRow=1
+  var endColumn = (!params.endRow)?1:params.endColumn;  // 如果沒有 endColumn，就讓 endColumn=1
   var SpreadSheet = SpreadsheetApp.openByUrl(url);
   var SheetName = SpreadSheet.getSheetByName(name);
   var data = SheetName.getSheetValues(startRow,startColumn,endRow,endColumn);
