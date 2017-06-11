@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google 試算表 (3) - 網頁顯示儲存格數值 demo 01</title>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <style>
+  	input{
+  		width:300px;
+  		font-size:15px;
+  		margin:2px 0;
+  		padding:2px 5px;
+  	}
+  </style>
+</head>
+
+<body>
+  Google App Script：<input id="appUrl"><br/> 
+  試算表網址：<input id="sheetsUrl"><br/> 
+  工作表名稱：<input id="sheetName"><br/> 
+  列：<input id="startRow"><br/> 
+  欄：<input id="startColumn"><br/>
+  <button id="sendBtn">查詢</button><br/>
+  <h2 id="show"></h2>
+  <script>
+  var appUrl = $('#appUrl'),
+  	sheetsUrl = $('#sheetsUrl'),
+    sheetName = $('#sheetName'),
+    startRow = $('#startRow'),
+    startColumn = $('#startColumn'),
+    sendBtn = $('#sendBtn'),
+    show = $('#show');
+  var parameter = {};
+
+  sendBtn.on('click',function() {
+    parameter = {
+      url: sheetsUrl.val(),
+      name: sheetName.val(),
+      startRow: startRow.val()*1,
+      startColumn: startColumn.val()*1
+    };
+	  $.get(appUrl.val(), parameter, function(data) {
+	  	if(!data){
+	    	show.text('無資料');
+	  	}else{
+	    	show.text(data);
+	  	}
+	  });
+  });
+  </script>
+</body>
+
+</html>

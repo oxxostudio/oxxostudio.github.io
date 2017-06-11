@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>Google 試算表 (3) - 網頁顯示儲存格數值 - OXXO.STUDIO</title>
+
+  <meta name="description" content="只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。">
+  <meta itemprop="description" content="只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-3-show-data.jpg">
+  <meta property="og:description" content="只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。">
+  <meta property="og:title" content="Google 試算表 (3) - 網頁顯示儲存格數值">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/google-spreadsheet-3-show-data.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-3-show-data.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google 試算表 (3) - 網頁顯示儲存格數值</h1>
+<p>只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。</p>
+<h2>使用 debug 來測試</h2>
+<p>回想一下，在 <a href="google-spreadsheet-1.html" target="_blank">Google 試算表 (1) - 讀取試算表資訊</a> 有介紹 debug 的用法，這裡我們把前一篇的程式碼做點小修改，變數的部分全部由 debug.gs 提供，這樣也才可以比較有彈性的指定不同儲存格或是指定不同試算表。</p>
+<p>先看到 debug.gs，把要抓取的儲存格 row 與 column 號碼變成 parameter 的屬性，網址和工作表名稱也變成變數，執行後把 parameter 傳給 doGet 即可。</p>
+<pre class="prettyprint"><code>function debug() {
+  doGet(
+    {
+      "parameter":{
+        startRow:1,
+        startColumn:1,
+        url: "試算表網址",
+        name: "工作表1"
+      }
+    }
+  );
+}
+</code></pre><p><img src="/img/articles/201706/google-spreadsheet-3-show-data-01.jpg" alt=""></p>
+<p>因為把網址和儲存格都改成變數了，程式碼.gs 理所當然也要做點修改，除了把網址、名稱和儲存格設為變數外，也把結束的儲存格設成變數，同時用個三元運算子判斷，如果我們提供的 parameter 沒有這個屬性，就自動將其設為 1，最後又因為我們要在外面的網頁去接資料，所以必須要利用<code>ContentService.createTextOutput</code>把資料拋出。</p>
+<blockquote>
+<p>參考：<a href="https://developers.google.com/apps-script/reference/content/content-service" target="_blank">Class ContentService</a></p>
+</blockquote>
+<pre class="prettyprint"><code>function doGet(e) {
+  var params = e.parameter;
+  var url = params.url;  
+  var name = params.name;  
+  var startRow = params.startRow; 
+  var startColumn = params.startColumn; 
+  var endRow = (!endRow)?1:params.endRow; // 如果沒有 endRow，就讓 endRow=1
+  var endColumn = (!endColumn)?1:params.endColumn;  // 如果沒有 endColumn，就讓 endColumn=1
+  var SpreadSheet = SpreadsheetApp.openByUrl(url);
+  var SheetName = SpreadSheet.getSheetByName(name);
+  var data = SheetName.getSheetValues(startRow,startColumn,endRow,endColumn);
+  Logger.log(data);
+  return ContentService.createTextOutput(data); // 將資料透過 ContentService 拋出
+}
+</code></pre><p><img src="/img/articles/201706/google-spreadsheet-3-show-data-02.jpg" alt=""></p>
+<p>正式開始前，先回到 debug.gs，點選上方三角形的執行，如果沒有問題，應該就可以在紀錄裡面看到取得 A1 儲存格的數值 123。</p>
+<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-03.jpg" alt=""></p>
+<h2>部署 Google App Script</h2>
+<p>要在外部的網頁透過 Google App Script 讀取資料，就得先把程式部署到網路上，第一個步驟是點選上方的「<em>發佈 &gt; 部署為網路應用程式</em>」。</p>
+<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-04.jpg" alt=""></p>
+<p>開啟部署畫面後，將具有應用程式存取權的使用者，設定為「<strong>任何人，甚至是匿名使用者</strong>」。</p>
+<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-05.jpg" alt=""></p>
+<p>點選「部署」後，就完成部署的手續，這段應用程式的網址，就可以用來進行用網頁讀取試算表資料了。</p>
+<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-06.jpg" alt=""></p>
+<h2>網頁顯示試算表的資料</h2>
+<p>要使用網頁讀取，一開始先把 parameter 像剛剛 debug.gs 一樣，設定為物件，裡面屬性有試算表的網址、工作表名稱、startRow 和 startColumn，然後透過 jQuery 的<code>$.get</code>來把資料傳入並讀取，第一個參數放上剛剛 Google App Script 的部屬網址，第二個參數是要傳入的 parameter，第三個則是傳入之後，Google App Script 會拋回來數值，透過 console 印出。</p>
+<blockquote>
+<p>因為使用<code>$.get()</code>，網頁要記得要載入 jQuery。</p>
+</blockquote>
+<pre class="prettyprint"><code>var parameter = {
+  url: '試算表網址',
+  name: '工作表1',
+  startRow: 1,
+  startColumn: 1
+};
+$.get('Google App Script 網址', parameter, function(data) {
+  console.log(data);
+});
+</code></pre><p>網頁執行之後，應該就可以看到 console 的地方顯示 A1 儲存格的資料 123 了。</p>
+<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-07.jpg" alt=""></p>
+<p>我們可以把彈性做得再大一點，在網頁 html 的部分放入一些欄位，這樣就可以用填入的方式填入網址、欄位...等資訊，而不是直接寫死在程式碼內，然後按下按鈕的時候，可以把資訊顯示在 h2 的標籤內。</p>
+<pre class="prettyprint"><code>Google App Script：&lt;input id="appUrl"&gt;&lt;br/&gt; 
+試算表網址：&lt;input id="sheetsUrl"&gt;&lt;br/&gt; 
+工作表名稱：&lt;input id="sheetName"&gt;&lt;br/&gt; 
+列：&lt;input id="startRow"&gt;&lt;br/&gt; 
+欄：&lt;input id="startColumn"&gt;&lt;br/&gt;
+&lt;button id="sendBtn"&gt;查詢&lt;/button&gt;&lt;br/&gt;
+&lt;h2 id="show"&gt;&lt;/h2&gt;
+</code></pre><p>JavaScript 的地方一開始先把欄位、按鈕、顯示區域都宣告成 jQuery 變數，按下按鈕的時候，把欄位的數值傳給 parameter，然後執行<code>$.get</code>，在<code>$.get</code>裡面多加一個邏輯判斷，如果沒有資料，就顯示「無資料」，不然就把資料數值顯示出來。</p>
+<pre class="prettyprint"><code>var appUrl = $('#appUrl'),
+    sheetsUrl = $('#sheetsUrl'),
+  sheetName = $('#sheetName'),
+  startRow = $('#startRow'),
+  startColumn = $('#startColumn'),
+  sendBtn = $('#sendBtn'),
+  show = $('#show');
+var parameter = {};
+
+sendBtn.on('click',function() {
+  parameter = {
+    url: sheetsUrl.val(),
+    name: sheetName.val(),
+    startRow: startRow.val()*1,
+    startColumn: startColumn.val()*1
+  };
+  $.get(appUrl.val(), parameter, function(data) {
+      if(!data){
+        show.text('無資料');
+      }else{
+        show.text(data);
+      }
+  });
+});
+</code></pre><p>沒有意外的話，執行網頁，填入對應的網址、欄位數字之後，按下查詢按鈕，就可以看到資料顯示在網頁裡了。</p>
+<blockquote>
+<p>範例：<a href="/demo/201706/google-spreadsheet-3-show-data-demo-01.html" target="_blank">demo-01.html</a></p>
+</blockquote>
+<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-08.jpg" alt=""></p>
+<h2>小結</h2>
+<p>可以用網頁查詢試算表資料是很方便的，因為在不會資料庫的情況下，我們也可以把 Google 試算表當作是簡單的資料庫使用，甚至透過網頁做出更多不同的變化。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- oxxo.studio desktop -->
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="9127554809"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>

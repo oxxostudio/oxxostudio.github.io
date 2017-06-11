@@ -78,7 +78,7 @@
 <p>回到雲端硬碟，這時候再度點選左上方的新增按鈕，就可以看到 Google Apps Script 了。</p>
 <p><img src="/img/articles/201706/google-spreadsheet-1-04.jpg" alt=""></p>
 <h2>測試 Google Apps Script</h2>
-<p>點選 Google Apps Script 後會開啟一個新專案的編輯畫面，我先把這個專案的名稱改為：test-write。</p>
+<p>點選 Google Apps Script 後會開啟一個新專案的編輯畫面，我先把這個專案的名稱改為：test-read。</p>
 <p><img src="/img/articles/201706/google-spreadsheet-1-05.jpg" alt=""></p>
 <p>接著點選「程式碼.gs」開始編輯，裡頭預設有一個名為 myFunction 的流程，將其改為 doGet，一定要是這個名稱，因為這是 Google Apps Script 規定的。doGet 包含一個 e 的參數作為傳值使用，屆時我們只要把要儲存的資料提交給 e，就可以儲存，然後我們在 goGet(e) 裡設一個區域變數 data 來接收 e.parameter 所解析出來的值，最後由<code>Logger.log()</code>顯示出來。</p>
 <blockquote>
@@ -106,7 +106,10 @@
 <p>點選執行之後，從檔案的紀錄裡 ( <em>檢視 &gt; 紀錄</em> )，就可以看到「大家好」三個字，表示我們這樣子編輯是沒有問題的。</p>
 <p><img src="/img/articles/201706/google-spreadsheet-1-11.jpg" alt=""></p>
 <h2>建立試算表</h2>
-<p>再來就是要建立準備拿來讀取的試算表了，回到雲端硬碟，透過新增按鈕新增一份 Google 試算表，隨便輸入一個檔名，這個檔案名稱<strong>不是試算表的名稱，而是這份文件的名稱</strong>，文件裡每個試算表的名稱在最下方，文件 id 與試算表的 gid 在網址就可以看到。</p>
+<p>再來就是要建立準備拿來讀取的試算表了，回到雲端硬碟，透過新增按鈕新增一份 Google 試算表，隨便輸入一個檔名，這個檔案名稱<strong>是試算表的名稱，不是工作表的名稱</strong>，每個試算表可以包含很多個工作表，工作表在下方用一個個的 tab 來區分，而試算表的 id 與工作表的 gid 在網址就可以看到。</p>
+<blockquote>
+<p>此處名稱容易混淆，只要記得<strong>試算表可以包含很多的工作表</strong>就可以。</p>
+</blockquote>
 <p><img src="/img/articles/201706/google-spreadsheet-1-06.jpg" alt=""></p>
 <p>由於可能會測試寫入或讀取資料，所以得先把試算表的權限打開為「<strong>任何知道連結的使用者，都可以編輯</strong>」，到這邊差不多就完成試算表的基本設定，可以準備來用 Google Apps Script 操控試算表了。</p>
 <p><img src="/img/articles/201706/google-spreadsheet-1-07.jpg" alt=""></p>
