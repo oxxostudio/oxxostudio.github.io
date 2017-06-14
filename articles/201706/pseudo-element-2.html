@@ -5,13 +5,13 @@
   <meta name="copyright" content="oxxo.studio">
   <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
 
-  <title>偽元素 ( content 與 counter ) - OXXO.STUDIO</title>
+  <title>CSS 偽元素 ( content 與 counter ) - OXXO.STUDIO</title>
 
-  <meta name="description" content="前面介紹過 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
-  <meta itemprop="description" content="前面介紹過 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
+  <meta name="description" content="前面介紹過 CSS 裡的 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
+  <meta itemprop="description" content="前面介紹過 CSS 裡的 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-2.jpg">
-  <meta property="og:description" content="前面介紹過 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
-  <meta property="og:title" content="偽元素 ( content 與 counter )">
+  <meta property="og:description" content="前面介紹過 CSS 裡的 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
+  <meta property="og:title" content="CSS 偽元素 ( content 與 counter )">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/pseudo-element-2.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-2.jpg">
   <script src="/js/lib/run_prettify.js"></script>
@@ -68,8 +68,8 @@
     <article>
       <i class="tag"></i>
 
-<h1>偽元素 ( content 與 counter )</h1>
-<p>前面介紹過 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。</p>
+<h1>CSS 偽元素 ( content 與 counter )</h1>
+<p>前面介紹過 CSS 裡的 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。</p>
 <h2>counter 基本用法</h2>
 <p>在 CSS 裏頭，counter 是個很有意思的功能，最常見得就是如果我們使用 list 清單，樣式選擇 decimal 十進位，當清單變多的時候數字也會跟著增加，底層貌似就是使用 counter 來做的，也因為 counter 所產生的數值並不存在於網頁的元素內，所以如果我們要在清單元素之外使用，就必須透過 ::before 或 ::after 的 content 來實現。</p>
 <p>counter 最的基本用法一定要有一個父元素和子元素 ( 類似 list 的原理，使用 ul 包著 li )，所以長相會類似下面這段 html：</p>

@@ -5,13 +5,13 @@
   <meta name="copyright" content="oxxo.studio">
   <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
 
-  <title>偽元素 ( JavaScript 操控 ) - OXXO.STUDIO</title>
+  <title>CSS 偽元素 ( JavaScript 操控 ) - OXXO.STUDIO</title>
 
-  <meta name="description" content="由於偽元素不存在於網頁元素內，所以 JavaScript 無法透過正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
-  <meta itemprop="description" content="由於偽元素不存在於網頁元素內，所以 JavaScript 無法透過正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
+  <meta name="description" content="雖然我們能用 CSS 操控由於偽元素，但因為偽元素不存在於網頁元素內，所以無法透過  JavaScript 正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
+  <meta itemprop="description" content="雖然我們能用 CSS 操控由於偽元素，但因為偽元素不存在於網頁元素內，所以無法透過  JavaScript 正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-3.jpg">
-  <meta property="og:description" content="由於偽元素不存在於網頁元素內，所以 JavaScript 無法透過正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
-  <meta property="og:title" content="偽元素 ( JavaScript 操控 )">
+  <meta property="og:description" content="雖然我們能用 CSS 操控由於偽元素，但因為偽元素不存在於網頁元素內，所以無法透過  JavaScript 正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。">
+  <meta property="og:title" content="CSS 偽元素 ( JavaScript 操控 )">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/pseudo-element-3.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-3.jpg">
   <script src="/js/lib/run_prettify.js"></script>
@@ -68,8 +68,8 @@
     <article>
       <i class="tag"></i>
 
-<h1>偽元素 ( JavaScript 操控 )</h1>
-<p>由於偽元素不存在於網頁元素內，所以 JavaScript 無法透過正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。</p>
+<h1>CSS 偽元素 ( JavaScript 操控 )</h1>
+<p>雖然我們能用 CSS 操控由於偽元素，但因為偽元素不存在於網頁元素內，所以無法透過  JavaScript 正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。</p>
 <h2>讀取偽元素屬性</h2>
 <p>一般來說使用 JavaScript 讀取某個元素 DOM 裡頭的屬性不難，但相對來說要讀取一個不存在網頁裡的元素就不容易，如果要讀取偽元素屬性，可以透過<code>getComputedStyle</code>來獲得，<code>getComputedStyle</code>是個可以獲取當前元素「所有最終使用的 CSS 屬性值」，讀取後會返回一個 Object CSSStyleDeclaration，而這個物件是唯讀的，無法進行修改。</p>
 <blockquote>

@@ -5,13 +5,13 @@
   <meta name="copyright" content="oxxo.studio">
   <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
 
-  <title>偽元素 ( before 與 after ) - OXXO.STUDIO</title>
+  <title>CSS 偽元素 ( before 與 after ) - OXXO.STUDIO</title>
 
-  <meta name="description" content="最近因為一些網頁的需要，比較深入的使用了「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
-  <meta itemprop="description" content="最近因為一些網頁的需要，比較深入的使用了「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
+  <meta name="description" content="最近因為一些網頁的需要，比較深入的使用了 CSS 的「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
+  <meta itemprop="description" content="最近因為一些網頁的需要，比較深入的使用了 CSS 的「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-1.jpg">
-  <meta property="og:description" content="最近因為一些網頁的需要，比較深入的使用了「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
-  <meta property="og:title" content="偽元素 ( before 與 after )">
+  <meta property="og:description" content="最近因為一些網頁的需要，比較深入的使用了 CSS 的「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
+  <meta property="og:title" content="CSS 偽元素 ( before 與 after )">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/pseudo-element-1.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-1.jpg">
   <script src="/js/lib/run_prettify.js"></script>
@@ -68,8 +68,8 @@
     <article>
       <i class="tag"></i>
 
-<h1>偽元素 ( before 與 after )</h1>
-<p>最近因為一些網頁的需要，比較深入的使用了「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。</p>
+<h1>CSS 偽元素 ( before 與 after )</h1>
+<p>最近因為一些網頁的需要，比較深入的使用了 CSS 的「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。</p>
 <h2>什麼是「偽元素」？</h2>
 <p>「偽元素」之所以稱作「偽」，除了英文從「Pseudo」翻譯過來之外，就是因為它並不是真正網頁裡的元素，但行為與表現又和真正網頁元素一樣，也可以對其使用 CSS 操控。</p>
 <p>跟偽元素類似的還有「偽類」(  Pseudo classes )，在 W3C 的定義裡總共有五個偽元素 ( 其他仍在測試階段 )，分別是<code>::before</code>、<code>::after</code>、<code>::first-line</code>、<code>::first-letter</code>和<code>::selection</code>，為了和偽類區分，偽元素使用<em>兩個冒號「::」開頭</em>，而偽類使用一個冒號「:」開頭 ( 像是 :hover、:target...等 )。</p>
