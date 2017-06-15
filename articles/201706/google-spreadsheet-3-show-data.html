@@ -109,6 +109,9 @@
 <p><img src="/img/articles/201706/google-spreadsheet-3-show-data-03.jpg" alt=""></p>
 <h2>部署 Google App Script</h2>
 <p>要在外部的網頁透過 Google App Script 讀取資料，就得先把程式部署到網路上，第一個步驟是點選上方的「<em>發佈 &gt; 部署為網路應用程式</em>」。</p>
+<blockquote>
+<p>注意，如果要透過外部網頁操控，Google App Script 有規範<strong>名稱一定要是 doGet(e) 或 doPost(e)</strong>，如果名稱不是這兩個請返回修改。參考：<a href="https://developers.google.com/apps-script/guides/web#url_parameters" target="_blank">URL parameters</a></p>
+</blockquote>
 <p><img src="/img/articles/201706/google-spreadsheet-3-show-data-04.jpg" alt=""></p>
 <p>開啟部署畫面後，將具有應用程式存取權的使用者，設定為「<strong>任何人，甚至是匿名使用者</strong>」。</p>
 <p><img src="/img/articles/201706/google-spreadsheet-3-show-data-05.jpg" alt=""></p>
