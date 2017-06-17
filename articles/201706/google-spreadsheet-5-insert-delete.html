@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>Google 試算表 (5) - 欄和列的插入與刪除 - OXXO.STUDIO</title>
+
+  <meta name="description" content="除了可以寫入資料到儲存格外，使用 Google 試算表一定會用到的功能就是「插入列或欄」以及「刪除列或欄」，除了可以指定在第一列或第一欄，也可以在中間的區域進行插入或刪除，透過 Google App Script 的輔助，讓試算表的功能更加彈性與方便。">
+  <meta itemprop="description" content="除了可以寫入資料到儲存格外，使用 Google 試算表一定會用到的功能就是「插入列或欄」以及「刪除列或欄」，除了可以指定在第一列或第一欄，也可以在中間的區域進行插入或刪除，透過 Google App Script 的輔助，讓試算表的功能更加彈性與方便。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-5-insert-delete.jpg">
+  <meta property="og:description" content="除了可以寫入資料到儲存格外，使用 Google 試算表一定會用到的功能就是「插入列或欄」以及「刪除列或欄」，除了可以指定在第一列或第一欄，也可以在中間的區域進行插入或刪除，透過 Google App Script 的輔助，讓試算表的功能更加彈性與方便。">
+  <meta property="og:title" content="Google 試算表 (5) - 欄和列的插入與刪除">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/google-spreadsheet-5-insert-delete.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-5-insert-delete.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google 試算表 (5) - 欄和列的插入與刪除</h1>
+<p>除了可以寫入資料到儲存格外，使用 Google 試算表一定會用到的功能就是「插入列或欄」以及「刪除列或欄」，除了可以指定在第一列或第一欄，也可以在中間的區域進行插入或刪除，透過 Google App Script 的輔助，讓試算表的功能更加彈性與方便。</p>
+<blockquote>
+<p>參考：<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet" target="_blank">Class Spreadsheet Methods</a></p>
+</blockquote>
+<p>為了待會測試的時候比較明顯，在試算表裡面先放入一些資料，當插入或刪除的時候，這些資料就會位移或消失。</p>
+<p><img src="/img/articles/201706/google-spreadsheet-5-insert-delete-01.jpg" alt=""></p>
+<h2>插入欄位 Insert Column</h2>
+<ul>
+<li><p><em>insertColumns(columnIndex, numColumns)</em></p>
+<p>  這個方法有兩個參數，第一個 columnIndex 表示要在這個指定的欄位「之前」插入欄位，第二個參數 numColumns 預設為 1，如果不填就是 1，表示插入一欄，下列的程式碼會在 B 前插入一欄，原本的 B 就會跑到 C。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertColumns(2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-02.jpg" alt=""></p>
+<p>  如果第二個參數填入 2，就會在 B 之前插入兩欄，B 就會跑到 D。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertColumns(2,2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-03.jpg" alt=""></p>
+</li>
+<li><p><em>insertColumnBefore(beforePosition)</em></p>
+<p>  這個方法等同於 insertColumns 只填入第一個參數，會在指定的欄位「之前」新增一個欄位。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertColumnBefore(2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-02.jpg" alt=""></p>
+</li>
+<li><p><em>insertColumnsBefore(beforePosition, howMany)</em></p>
+<p>  這個方法等同於 insertColumns 填入兩個參數，注意在 insertColumnsBefore 的 Columns 是有 s 的，表示可以在指定欄位「之前」加入多個欄位。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertColumnsBefore(2,2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-03.jpg" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><em>insertColumnAfter(afterPosition)</em></p>
+<p>  這個方法可以在指定的欄位「之後」加入欄位，因為 insertColumnAfter 的 Column 沒有 s，所以只能插入一欄。</p>
+<pre class="prettyprint"><code>  var SpreadSheet = SpreadsheetApp.openByUrl(url);
+  var SheetName = SpreadSheet.getSheetByName(name);
+  SheetName.insertColumnAfter(2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-04.jpg" alt=""></p>
+</li>
+<li><p><em>insertColumnsAfter(afterPosition, howMany)</em></p>
+<p>  這個方法和 insertColumnsBefore 相反，是在指定的欄位「之後」加入多個欄位，因為 insertColumnsAfter 的 Columns 有 s，表示可以加入多個欄位。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertColumnsAfter(2,2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-05.jpg" alt=""></p>
+</li>
+</ul>
+<h2>刪除欄位 Delete Column</h2>
+<ul>
+<li><p><em>deleteColumn(columnPosition)</em></p>
+<p>  刪除一個欄位，當中只有一個參數表示要刪除的欄位次序，欄位刪除後，後方的欄位就會自動遞補到前面。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.deleteColumn(2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-06.jpg" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><em>deleteColumns(columnPosition, howMany)</em></p>
+<p>  刪除多個欄位，第一個參數是起始的欄位編號，後方則是要刪除的欄位數量，欄位刪除後，後方的欄位就會自動遞補到前面，注意 Columns 有加 s。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.deleteColumns(2,2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-07.jpg" alt=""></p>
+</li>
+</ul>
+<h2>插入列 Insert Row</h2>
+<ul>
+<li><p><em>insertRows(rowIndex, numRows)</em></p>
+<p>  這個方法有兩個參數，第一個 rowIndex 表示要在這個指定的列「上方」插入列，第二個參數 numRowss 預設為 1，如果不填就是 1，表示插入一列，下列的程式碼會在第 3 列前插入一列，原本的 3 就會跑到 4。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertRows(3);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-08.jpg" alt=""></p>
+<p>  如果第二個參數填入 2，就會在第 3 列之前插入兩列，第 3 列就會跑到 5。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertRows(3,2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-09.jpg" alt=""></p>
+</li>
+<li><p><em>insertRowBefore(beforePosition)</em></p>
+<p>  這個方法等同於 insertRows 只填入第一個參數，會在指定的列「上方」新增一列。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertRowAfter(3);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-08.jpg" alt=""></p>
+</li>
+<li><p><em>insertRowsBefore(beforePosition, howMany)</em></p>
+<p>  這個方法等同於 insertRows 填入兩個參數，注意在 insertRowsBefore 的 Rows 是有 s 的，表示可以在指定的列「上方」加入多個列。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertRowsBefore(3,2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-09.jpg" alt=""></p>
+</li>
+<li><p><em>insertRowAfter(afterPosition)</em></p>
+<p>  這個方法可以在指定的列「下方」加入列，因為 insertRowAfter 的 Row 沒有 s，所以只能插入一列。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertRowAfter(2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-10.jpg" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><em>insertRowsAfter(beforePosition, howMany)</em></p>
+<p>  這個方法和 insertRowsBefore 相反，是在指定的列「下方」加入多個列，因為 insertRowsBefore 的 Rows 有 s，表示可以加入多個列。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.insertRowsAfter(2,2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-11.jpg" alt=""></p>
+</li>
+</ul>
+<h2>刪除列 Delete Row</h2>
+<ul>
+<li><p><em>deleteRow(rowPosition)</em></p>
+<p>  刪除一列，當中只有一個參數表示要刪除的列的次序，把指定的列刪除後，下方的列就會自動遞補到上面。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.deleteRow(3);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-12.jpg" alt=""></p>
+</li>
+<li><p><em>deleteRows(rowPosition, howMany)</em></p>
+<p>  刪除多個列，第一個參數是起始的列的編號，後方則是要刪除的列的數量，把指定的列刪除後，下方的列就會自動遞補到上面，注意 Rows 有加 s。</p>
+<pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
+var SheetName = SpreadSheet.getSheetByName(name);
+SheetName.deleteRows(3,2);
+</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-13.jpg" alt=""></p>
+</li>
+</ul>
+<h2>小結</h2>
+<p>認識了插入、刪除列與欄之後，下一篇將要透過網頁來執行寫入、插入、刪除...等動作，一起來發揮試算表超強的儲存能力吧！</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- oxxo.studio desktop -->
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="9127554809"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>
