@@ -137,7 +137,6 @@
 <p>參考：<a href="https://www.npmjs.com/package/request" target="_blank">request npm</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var request = require("request");
-var cheerio = require("cheerio");
 </code></pre><p>接著因為股票的 JSON 網址裡面有日期，所以直接用當前的日期轉換即可，不過因為網址的日期如果是個位數都會補零，所以要多做個判斷式來補零。</p>
 <pre class="prettyprint"><code>var date = new Date();
 var y = date.getFullYear();
@@ -152,8 +151,8 @@ if (d &lt; 10) {
 }
 
 var today = y + '' + m + '' + d;
-</code></pre><p>再來看到主結構，一開始我們可以把想要抓取的股票代碼做個陣列，然後設定 stockIndex 為 0，表示從陣列的第一個開始抓，再來就是寫個 run 的流程，裡頭把股票代碼與日期放入網址內，在執行 run 的時候會做判斷，如果 stockIndex 小於 stock 陣列長度，在進行完 request 之後，就會在執行一次並抓取下一個網址的資料，如果每個陣列都處理完，就進行下一個 sheet 的流程。</p>
-<p>因為裡面會用到<code>JSON.parse(body)</code>把字串轉換成 json 物件，轉換的過程會花多時間並不清楚，<em>為了避免同步載入造成錯誤的情況發生，所以這裡用 Promise 來確保資料格式轉換完成後再進行下一步</em>。</p>
+</code></pre><p>再來看到主結構，一開始我們可以把想要抓取的股票代碼做個陣列，然後設定 stockIndex 為 0，表示從陣列的第一個開始抓，再來就是寫個 run 的流程，裡頭把股票代碼與日期放入網址內，在執行 run 的時候會做判斷，如果有 stock 的數值，在進行完 request 之後，就會在執行一次並抓取下一個網址的資料，如果每個陣列都處理完，就進行下一個 sheet 的流程。</p>
+<p>這邊有多寫一個判斷式，判斷<code>body.indexOf('html') != -1</code>，因為在抓取的過程中，有時候會遇到抓不到資料報錯，產生抓到的資料是 404 網頁而造成流程當掉，透過這個判斷，在沒有資料的時候重抓，就可以確保不會有問題發生了。</p>
 <pre class="prettyprint"><code>var stock = [2454, 2317, 2002, 2330, 2412];
 var stockIndex = 0;
 var num = '',
@@ -163,7 +162,8 @@ var num = '',
 var run = function() {
   var stockNo = stock[stockIndex];
   var jsonUrl = "http://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&amp;date=" + today + "&amp;stockNo=" + stockNo;
-  if (stockIndex &lt; stock.length) {
+  if (stockNo) {
+    console.log(stockNo);
     request({
       url: jsonUrl,
       method: "GET"
@@ -171,8 +171,12 @@ var run = function() {
       if (error || !body) {
         return;
       } else {
-          // 不能確保 JSON.parse(body) 要花多久時間，所以用 Promise 來確保動作完成
-        Promise.resolve(JSON.parse(body)).then(function(b) {
+          // 如果沒有資料，會出現 404 的 html 網頁，此時就重新抓取
+        if (body.indexOf('html') != -1) {
+          console.log('reload');
+          run2();
+        } else {
+          b = JSON.parse(body);
           var json = b.data;
           var title = b.title.split(' ');
           var data = json[json.length - 1];
@@ -180,15 +184,15 @@ var run = function() {
           name = name + title[2] + ',';
           price = price + data[data.length - 3] + ',';
           stockIndex = stockIndex + 1;
-          run();  // 完成後就再度進行 run
-        });
+          run();
+        }
       }
     });
   } else {
     console.log(num);
     console.log(name);
     console.log(price);
-    sheet(); // 如果每個陣列都處理完，就進行下一個 sheet 的流程。
+    sheet();
   }
 };
 </code></pre><p>再來就是 sheet 的流程，裡面設定一個變數 parameter，就是我們要存入試算表的變數，跟剛剛的 debug.gs 有異曲同工之妙，有了這個變數之後，再緊接著另外的 request，比較需要注意的是要<em>使用<code>qs</code>的屬性來傳遞變數</em>。</p>
