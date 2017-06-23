@@ -132,7 +132,10 @@
 }
 </code></pre><p><img src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-03.jpg" alt=""></p>
 <h2>Node.js</h2>
-<p>開始之前要先用命令輸入視窗，進入程式的資料夾，用 npm 安裝兩個模組，分別是「request」和「cheerio」，request 可以想像成就是在後端載入一個網頁，而 cheerio 就是這個網頁裡面的 jQuery ( 用法一樣，因為它的核心就是 jQuery )，開頭就先宣告兩個變數 request 和 cheerio。</p>
+<p>開始之前要先用命令輸入視窗，進入程式的資料夾，用 npm 安裝 request 模組，透過這個模組來載入網頁、json 或 xml 檔案，並且也可以發送 GET 或 POST 的指令。</p>
+<blockquote>
+<p>參考：<a href="https://www.npmjs.com/package/request" target="_blank">request npm</a></p>
+</blockquote>
 <pre class="prettyprint"><code>var request = require("request");
 var cheerio = require("cheerio");
 </code></pre><p>接著因為股票的 JSON 網址裡面有日期，所以直接用當前的日期轉換即可，不過因為網址的日期如果是個位數都會補零，所以要多做個判斷式來補零。</p>
@@ -150,7 +153,7 @@ if (d &lt; 10) {
 
 var today = y + '' + m + '' + d;
 </code></pre><p>再來看到主結構，一開始我們可以把想要抓取的股票代碼做個陣列，然後設定 stockIndex 為 0，表示從陣列的第一個開始抓，再來就是寫個 run 的流程，裡頭把股票代碼與日期放入網址內，在執行 run 的時候會做判斷，如果 stockIndex 小於 stock 陣列長度，在進行完 request 之後，就會在執行一次並抓取下一個網址的資料，如果每個陣列都處理完，就進行下一個 sheet 的流程。</p>
-<p>因為裡面會用到<code>JSON.parse(body)</code>把字串轉換成 json 物件，轉換的過程會花多時間並不清楚，為了避免同步載入造成錯誤的情況發生，所以這裡用個 Promise 來確保資料格式轉換完成後再進行下一步。</p>
+<p>因為裡面會用到<code>JSON.parse(body)</code>把字串轉換成 json 物件，轉換的過程會花多時間並不清楚，<em>為了避免同步載入造成錯誤的情況發生，所以這裡用 Promise 來確保資料格式轉換完成後再進行下一步</em>。</p>
 <pre class="prettyprint"><code>var stock = [2454, 2317, 2002, 2330, 2412];
 var stockIndex = 0;
 var num = '',
