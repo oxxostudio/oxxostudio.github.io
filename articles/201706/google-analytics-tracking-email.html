@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>Google Analytics 追蹤 Email 與點擊成效 - OXXO.STUDIO</title>
+
+  <meta name="description" content="在做網路行銷的時候，其中一個最重要的課題就是「追蹤」，這篇就來探討一下，如何透過 Google Analytics，來針對網路行銷常常用 Email 寄送的電子報、 EDM 來進行追蹤，進一步了解「開信率」以及「點閱率」。">
+  <meta itemprop="description" content="在做網路行銷的時候，其中一個最重要的課題就是「追蹤」，這篇就來探討一下，如何透過 Google Analytics，來針對網路行銷常常用 Email 寄送的電子報、 EDM 來進行追蹤，進一步了解「開信率」以及「點閱率」。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/google-analytics-tracking-email.jpg">
+  <meta property="og:description" content="在做網路行銷的時候，其中一個最重要的課題就是「追蹤」，這篇就來探討一下，如何透過 Google Analytics，來針對網路行銷常常用 Email 寄送的電子報、 EDM 來進行追蹤，進一步了解「開信率」以及「點閱率」。">
+  <meta property="og:title" content="Google Analytics 追蹤 Email 與點擊成效">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/google-analytics-tracking-email.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/google-analytics-tracking-email.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Analytics 追蹤 Email 與點擊成效</h1>
+<p>在做網路行銷的時候，其中一個最重要的課題就是「追蹤」，這篇就來探討一下，如何透過 Google Analytics，來針對網路行銷常常用 Email 寄送的電子報、 EDM 來進行追蹤，進一步了解「開信率」以及「點閱率」。</p>
+<h2>追蹤 Email 開信率</h2>
+<p>Google Analytics 提供了一個非常方便 Email 追蹤方式，就是透過「Measurement Protocol」的協定來產生一個圖片檔，這個圖片檔並不是真的圖片，是把圖檔的 src 換成 GA 追蹤的事件代碼，當使用者把信件打開<strong>且這張圖片被下載</strong>，就會觸發對應的 GA 事件，圖片的範例程式碼如下：</p>
+<p><em><code>http://www.google-analytics.com/collect?v=1&amp;tid=UA-12345678-1&amp;cid=CLIENT_ID_NUMBER&amp;t=event&amp;ec=email&amp;ea=open&amp;el=recipient_id&amp;cs=newsletter&amp;cm=email&amp;cn=Campaign_Name</code></em></p>
+<p>操作的方式還頗簡單的，首先要在 Email 裡頭放張圖片，圖片的程式碼長相如下，如果像是 Gmail 就可以使用「插入圖片」，選擇「網址」，將圖片網址貼上就可以安裝追蹤的圖片了，圖片相關的參數會在下面介紹。</p>
+<p><img src="/img/articles/201706/google-analytics-tracking-email-01.jpg" alt=""></p>
+<p>雖然說可以用這種方式追蹤，但如果遇到使用者的收信軟體會阻擋圖片，也就無法進行偵測了，但在這個大家幾乎都有 Gmail 的年代，大致上應該沒有問題。</p>
+<blockquote>
+<p>參考：<a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/email" target="_blank">Email Tracking - Measurement Protocol</a></p>
+</blockquote>
+<h2>Email 追蹤程式碼解析</h2>
+<p>程式碼雖然看起來很長，但拆解出來可以變成下列幾個部分：</p>
+<ul>
+<li><em>GA 網址</em>：開頭會有一段網址<code>http://www.google-analytics.com/collect?v=1</code>，這段是不能做更動的，直接複製貼上就可以。</li>
+<li><em>tid</em>：GA 追蹤 ID，每個 GA 帳戶下的資源都會有一組。</li>
+<li><em>cid</em>：Client ID，客戶的識別 ID，可以自訂，<strong>如果要避免「重複」，每封信的 cid 都要不同</strong>。</li>
+<li><em>t</em>：事件類型，因為要追蹤事件，所以設定為「event」。</li>
+<li><em>ec</em>：事件類別，設定為「email」。</li>
+<li><em>ea</em>：事件活動，設定為「open」。</li>
+<li><em>el</em>：事件標籤，設定為「test@test.test」( 可以輸入收件人的 email 之類的 )</li>
+<li><em>cs</em>：廣告活動來源，設定為「電子報」</li>
+<li><em>cm</em>：廣告活動媒介，設定為「email」</li>
+<li><em>cn</em>：廣告活動名稱，設定為「我的第一個廣告活動」</li>
+</ul>
+<p>最後完成的網址應該就長得像下面這樣：</p>
+<p><em><code>http://www.google-analytics.com/collect?v=1&amp;tid=UA-12345678-1&amp;cid=12345678&amp;t=event&amp;ec=email&amp;ea=open&amp;el=test@test.tes&amp;cs=電子報&amp;cm=email&amp;cn=我的第一個廣告活動</code></em></p>
+<p>將這張帶有追蹤圖片的 Email 寄出，當使用者打開這封信，GA 就會收到對應的事件，我們也就可以進行後續的分析。</p>
+<p><img src="/img/articles/201706/google-analytics-tracking-email-02.jpg" alt=""></p>
+<p><img src="/img/articles/201706/google-analytics-tracking-email-03.jpg" alt=""></p>
+<h2>使用 UTM 追蹤連結點擊</h2>
+<p>除了可以透過追蹤圖片來追蹤開信率，第二個要追蹤的就是「點擊率」，追蹤的方式就要用我們常聽到的「UTM，Urchin Tracking Module」，方法就是使用 Google 的 Campaign URL Builder 產生廣告專用的追蹤網址，並將連結導向有安裝 GA 追蹤碼的網頁，如果使用者點擊了追蹤網址，就能分析各種廣告管道的成效，在這部分 Google 提供了很完整的說明手冊，可以參考下方的相關連結：</p>
+<blockquote>
+<ul>
+<li><a href="https://support.google.com/analytics/answer/1033867?hl=zh-Hant" target="_blank">為廣告網址產生自訂廣告活動參數</a>、<a href="https://support.google.com/analytics/answer/1033863" target="_blank">自訂廣告活動</a></li>
+<li><a href="https://ga-dev-tools.appspot.com/campaign-url-builder/" target="_blank">Campaign URL Builder</a></li>
+</ul>
+</blockquote>
+<p><img src="/img/articles/201706/google-analytics-tracking-email-04.jpg" alt=""></p>
+<p>使用 Campaign URL Builder 之後，會產生下列這串追蹤網址：</p>
+<p><em><code>https://www.example.com/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=hello_promotion&amp;utm_term=hello&amp;utm_content=text</code></em></p>
+<p>一開始的網址<code>https://www.example.com/</code>裡面必須有對應的 GA 追蹤碼，這樣這串追蹤網址的參數才會出現在 GA 分析中，GA 也才能區分不同的廣告活動和客群，而五個參數分別是：</p>
+<ul>
+<li><p><em>Campaign Source 廣告來源</em></p>
+<p>  對應代碼為<code>utm_source</code>，表示為你帶來流量網站或是來源，例如搜尋引擎、Facebook、Email。</p>
+<pre class="prettyprint"><code>utm_source=google, utm_source=facebook
+</code></pre></li>
+<li><p><em>Campaign Meduim 廣告媒介</em></p>
+<p>  對應代碼為<code>utm_medium</code>，表示廣告或行銷媒介，例如單次點擊出價、橫幅廣告或電子報。</p>
+<pre class="prettyprint"><code>utm_medium=cpc, utm_medium=newsletter
+</code></pre></li>
+<li><p><em>Campaign Name 廣告名稱</em></p>
+<p>  對應代碼為<code>utm_campaign</code>，表示產品的個別廣告活動名稱、廣告標語和促銷代碼等。</p>
+<pre class="prettyprint"><code>utm_campaign=hello_promotion
+</code></pre></li>
+<li><p><em>Campaign Term 廣告關鍵字詞</em></p>
+<p>  對應代碼為<code>utm_term</code>，表示辨識付費搜尋關鍵字。可以使用 utm_term 來指定關鍵字。</p>
+<pre class="prettyprint"><code>utm_term=hello
+</code></pre></li>
+<li><p><em>Campaign content 廣告活動內容</em></p>
+<p>  對應代碼為<code>utm_content</code>，用來區分同一個廣告中的相似內容或連結，也就是所謂的 A/B 測試。</p>
+<pre class="prettyprint"><code>utm_content=link, utm_contetnt=banner
+</code></pre></li>
+</ul>
+<p>產生網址之後，只要使用者點擊了這段網址，在 GA 內就可以看到分析數據，舉例來說只要有使用者透過追蹤連結到我的測試頁面，就會在 GA 裡面看到相關資訊 ( 客戶開發 &gt; 廣告活動 )。</p>
+<p><img src="/img/articles/201706/google-analytics-tracking-email-05.jpg" alt=""></p>
+<h2>使用 Google 短網址追蹤點擊狀況</h2>
+<p>不過有時候不見得網頁都有埋入自己的追蹤代碼，甚至有時候是透過一些線上活動網站舉辦活動，這時候要如何進行追蹤呢？這時候我們可以使用「Google 短網址」來做簡單的追蹤，雖然說短網址打開後還是會跑到另外一個網頁，但短網址本身會記錄點擊資訊，透過這些資訊亦可做些簡單的分析。</p>
+<p>舉例來說 <a href="https://goo.gl/CydUus" target="_blank">https://goo.gl/CydUus</a> 這是一個連到我的部落格的短網址，複製這串短網址 ( 不要點選 )，在瀏覽器的網址列貼上，並在後方輸入一個「+」號，按下 enter 連結，就可以看到短網址偵測到的資訊，雖然說沒有辦法像 GA 一般的詳盡，但對於一些無法加入 GA 追蹤碼的頁面來說，也不失為一個觀察的好方法。</p>
+<blockquote>
+<p>觀察連結：<a href="https://goo.gl/CydUus+" target="_blank">https://goo.gl/CydUus+</a></p>
+</blockquote>
+<p><img src="/img/articles/201706/google-analytics-tracking-email-06.jpg" alt=""></p>
+<h2>小結</h2>
+<p>在做網路行銷或是網路廣告的時候，最重要的不只是要賣出產品，還有包含後續的追蹤分析，因為透過追蹤分析才能知道顧客真正的回饋，也才能及時的修正廣告與行銷策略，並且掌握真正的客群與使用動線，也才能把手上有限的資源做最大化的利用喔。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+  <!-- oxxo.studio AD -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>
