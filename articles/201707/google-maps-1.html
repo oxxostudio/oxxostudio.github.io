@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>Google Maps API (1) - 網頁載入地圖 ( 起手式 ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="Google Maps API 是我一直以來都很想研究的主題，在手機、行車記錄器與網路、GPS 發達的年代，每個人應該都有用過 Google Map，接下來想花些時間，好好的把 Google Maps API 學習學習，搞不好之後會很常用到也說不定。">
+  <meta itemprop="description" content="Google Maps API 是我一直以來都很想研究的主題，在手機、行車記錄器與網路、GPS 發達的年代，每個人應該都有用過 Google Map，接下來想花些時間，好好的把 Google Maps API 學習學習，搞不好之後會很常用到也說不定。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201707/google-maps-1.jpg">
+  <meta property="og:description" content="Google Maps API 是我一直以來都很想研究的主題，在手機、行車記錄器與網路、GPS 發達的年代，每個人應該都有用過 Google Map，接下來想花些時間，好好的把 Google Maps API 學習學習，搞不好之後會很常用到也說不定。">
+  <meta property="og:title" content="Google Maps API (1) - 網頁載入地圖 ( 起手式 )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201707/google-maps-1.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201707/google-maps-1.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps API (1) - 網頁載入地圖 ( 起手式 )</h1>
+<p>Google Maps API 是我一直以來都很想研究的主題，在手機、行車記錄器與網路、GPS 發達的年代，每個人應該都有用過 Google Map，接下來想花些時間，好好的把 Google Maps API 學習學習，搞不好之後會很常用到也說不定。</p>
+<h2>啟用 Google Maps Embed API</h2>
+<p>如果要更近一步的操作地圖，必須使用 Google Maps API 來實現，要使用對應的 API，則是要用 Google 帳號登入 Google API Console，裡面包含了各式各樣的服務，每種服務都有提供一個以上的 API。</p>
+<blockquote>
+<p>參考：<a href="https://console.developers.google.com/" target="_blank">Google API Console</a></p>
+</blockquote>
+<p><img src="/img/articles/201707/google-maps-1-03.jpg" alt=""></p>
+<p>一開始，最基本要啟用的是 Google Maps Embed API，點選 Google Maps Embed API 並且啟用就可以，啟用後，在專案的資訊主頁裡，就會看到出現對應的 API。</p>
+<p><img src="/img/articles/201707/google-maps-1-04.jpg" alt=""></p>
+<h2>建立憑證</h2>
+<p>在使用 Google Map 服務的時候，都必須先申請憑證才能使用，點選「憑證」，接著點選「建立憑證」，選擇 API 金鑰，就可以開始建立專屬的金鑰 key。</p>
+<p><img src="/img/articles/201707/google-maps-1-05.jpg" alt=""></p>
+<p>API 金鑰就是一段很長的代碼，這段代碼可以讓 Google 識別是哪個使用者在用對應的服務，並且根據使用者權限和使用的服務，提供對應的功能和限制。</p>
+<p><img src="/img/articles/201707/google-maps-1-06.jpg" alt=""></p>
+<p>建立金鑰之後最重要的事情，就是<strong>限制金鑰</strong>，限制金鑰也就是保護金鑰，避免金鑰外流造成別人也能用 ( 假設這個金鑰一天只能用 100 次，外流之後別人用了 99 次，你就只能用 1 次 )，限制的方法有以下幾種：HTTP 參照網址、IP 位址、Android 應用程式與 iOS 應用程式，舉例來說如果我將我申請的金鑰限制設定為 HTTP 參照網址，並且輸入我的 domain name 作為規則，<strong>這組金鑰就只能在我的部落格使用，別的網站就無法使用</strong>。</p>
+<p><img src="/img/articles/201707/google-maps-1-07.jpg" alt=""></p>
+<h2>網頁嵌入地圖</h2>
+<p>記下剛剛申請的金鑰，就可以來把地圖放到網頁裡，放進去的語法只是用個<code>iframe</code>表現，填入金鑰以及地點，執行後就會看到網頁出現地圖，並且按照標示我們輸入的地址或地點，網址<code>src</code>的 URL，須按照 Google Maps Embed API 的要求撰寫：</p>
+<p><code>https://www.google.com/maps/embed/v1/模式?key=你的金鑰&amp;參數</code></p>
+<p>先看到模式，模式分成下列五種：</p>
+<ul>
+<li><p><em>place 地點模式</em></p>
+<p>  模式使用 place，就可以定義一個位置或地址，使用 place 時，後方會用<code>q</code>參數定義要在地圖上著重展示的地點，如果有遇到「空格」，可用 + 號表示，舉例來說，將 q 等於「高雄市政府」，打開網頁之後就會看到高雄市政府所在地出現標記。</p>
+<blockquote>
+<p>範例：<a href="/demo/201707/google-maps-1-demo-01.html" target="_blank">demo01.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  &lt;iframe 
+      width="600" 
+      height="450" 
+      frameborder="0" 
+      style="border:0" 
+      src="https://www.google.com/maps/embed/v1/place?key=你的金鑰&amp;q=高雄市政府" 
+      allowfullscreen&gt;
+  &lt;/iframe&gt;
+</code></pre><p>  <img src="/img/articles/201707/google-maps-1-08.jpg" alt=""></p>
+</li>
+<li><p><em>directions  路線規劃模式</em></p>
+<p>  路線規劃模式有幾個參數可以選擇，分別是：</p>
+<blockquote>
+<ul>
+<li><em>origin</em> 路線起點 ( 必須 )</li>
+<li><em>destination</em> 路線終點 ( 必須 )</li>
+<li><em>waypoints</em> 路線中間的點，可使用 | 符號分隔。</li>
+<li><em>mode</em> 旅行方式，包含 driving、walking、bicycling、transit 和 flying。</li>
+<li><em>avoid</em> 避開一些特殊線，包含 tolls、ferries 和 highways，可使用 | 符號分隔。。</li>
+<li><em>units</em> 單位，包含 metric 或 imperial。</li>
+</ul>
+</blockquote>
+<p>  舉例來說，下方的程式將會在地圖上，標記出從台北市政府前往台北小巨蛋的路線，路線沿途會經過台北 101 與國父紀念館。</p>
+<blockquote>
+<p>範例：<a href="/demo/201707/google-maps-1-demo-02.html" target="_blank">demo02.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  &lt;iframe
+    width="600"
+    height="450"
+    frameborder="0" 
+    style="border:0"
+    src="https://www.google.com/maps/embed/v1/directions?key=你的金鑰&amp;origin=台北市政府&amp;waypoints=台北101|國父紀念館&amp;destination=台北小巨蛋"&gt;
+  &lt;/iframe&gt;
+</code></pre><p>  <img src="/img/articles/201707/google-maps-1-09.jpg" alt=""></p>
+</li>
+</ul>
+<ul>
+<li><p><em>Search 搜尋模式</em></p>
+<p>  搜尋模式有三個參數：</p>
+<blockquote>
+<ul>
+<li><em>q</em>：搜尋的關鍵詞 ( 必須 )。</li>
+<li><em>zoom</em>：地圖的縮放大小，範圍從 0 到 21。</li>
+<li><em>center</em>：中心點經緯度。</li>
+</ul>
+</blockquote>
+<p>  以下面的例子來說，將會標記出台北 101 周圍的 711 位置。</p>
+<blockquote>
+<p>範例：<a href="/demo/201707/google-maps-1-demo-03.html" target="_blank">demo03.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  &lt;iframe
+    width="600"
+    height="450"
+    frameborder="0" 
+    style="border:0"
+    src="https://www.google.com/maps/embed/v1/search?key=你的金鑰&amp;q=711&amp;zoom=14&amp;center=25.033952,121.564360"&gt;
+  &lt;/iframe&gt;
+</code></pre><p>  <img src="/img/articles/201707/google-maps-1-10.jpg" alt=""></p>
+</li>
+<li><p><em>View 檢視模式</em></p>
+<p>  在 view 的模式下，會傳回沒有標記或路線的地圖，而這個模式有幾個參數：</p>
+<blockquote>
+<ul>
+<li><em>center</em>：中心點經緯度 ( 必須 )。</li>
+<li><em>zoom</em>：地圖縮放大小，範圍從 0 到 21。</li>
+<li><em>maptype</em>：定義載入的地圖方塊類型，包含 roadmap 和 satellite ( 衛星空照 )。</li>
+<li><em>language</em>：定義 UI 元素以及地圖方塊上顯示的標籤要使用的語言。</li>
+<li><em>region</em>：根據地緣政治敏感度，定義要顯示的適當邊界與標籤。</li>
+</ul>
+</blockquote>
+<p>  以下面的例子來說，將會使用衛星空照圖，以台北 101 為中心顯示。</p>
+<blockquote>
+<p>範例：<a href="/demo/201707/google-maps-1-demo-04.html" target="_blank">demo04.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  &lt;iframe
+    width="600"
+    height="450"
+    frameborder="0" 
+    style="border:0"
+    src="https://www.google.com/maps/embed/v1/view?key=你的金鑰&amp;zoom=14&amp;center=25.033952,121.564360&amp;maptype=satellite"&gt;
+  &lt;/iframe&gt;
+</code></pre><p>  <img src="/img/articles/201707/google-maps-1-11.jpg" alt=""></p>
+</li>
+<li><p><em>streetview 街景服務模式</em></p>
+<p>  街景模式能提供一個可將全景轉譯為球體的檢視器，而相機將位於球體的正中間，提供單一位置的完整 360 度檢視。 影像包含 360 度的水平檢視（全方位環繞）以及 180 度垂直檢視（垂直上下），這個模式有以下幾個參數：</p>
+<blockquote>
+<ul>
+<li><em>location</em>：經緯度，以逗號分隔 ( 必須 )。</li>
+<li><em>pano</em>：特定的全景 ID，如果沒有 location 一定要有這個參數。</li>
+<li><em>heading</em>：從北方順時針旋轉的角度指出相機指南針所指的方向 ( -180 ~ 360 )。</li>
+<li><em>pitch</em>：指定相機往上或往下的角度，預設為 0 ( -90 ~ 90 )。</li>
+<li><em>fov</em>：影像的水平視野，數字越大視野越廣，預設為 90 ( 10 ~ 100 )。</li>
+<li><em>language</em>：定義 UI 元素以及地圖方塊上顯示的標籤要使用的語言。</li>
+<li><em>region</em>：根據地緣政治敏感度，定義要顯示的適當邊界與標籤。</li>
+</ul>
+</blockquote>
+<p>  以下面的例子來說，會顯示完整的台北 101 街景圖。</p>
+<blockquote>
+<p>範例：<a href="/demo/201707/google-maps-1-demo-05.html" target="_blank">demo05.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  &lt;iframe
+    width="600"
+    height="450"
+    frameborder="0" 
+    style="border:0"
+    src="https://www.google.com/maps/embed/v1/streetview?key=你的金鑰&amp;location=25.032863,121.562943&amp;heading=60&amp;pitch=30&amp;fov=90"&gt;
+  &lt;/iframe&gt;
+</code></pre></li>
+</ul>
+<h2>小結</h2>
+<p>以上就是透過最基本的 Google Maps Embed API 所實現的地圖做法，這個做法雖然陽春，但也能滿足部分的地圖需求，接下來會在繼續把 Google 地圖的用法做個完整的練習。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+  <!-- oxxo.studio AD -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>
