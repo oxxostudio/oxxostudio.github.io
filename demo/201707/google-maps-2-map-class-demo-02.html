@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps API (2) - 使用地圖與地圖設定 demo 02</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 40.689104, lng: -74.044599},
+        zoom: 16,
+        mapTypeControl:true,
+        fullscreenControl:true,
+        rotateControl:true,
+        scaleControl:true,
+        streetViewControl:true,
+        zoomControl:true,
+        mapTypeControlOptions:{position:google.maps.ControlPosition.TOP_CENTER},
+        fullscreenControlOptions:{position:google.maps.ControlPosition.TOP_RIGHT},
+        rotateControlOptions:{position:google.maps.ControlPosition.RIGHT_CENTER},
+        scaleControlOptions:{position:google.maps.ControlPosition.RIGHT_BOTTOM},
+        streetViewControlOptions:{position:google.maps.ControlPosition.TOP_LEFT},
+        zoomControlOptions:{position:google.maps.ControlPosition.RIGHT_BOTTOM}
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>

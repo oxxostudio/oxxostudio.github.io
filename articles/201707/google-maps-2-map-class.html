@@ -1,0 +1,412 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <meta name="keywords" content="oxxo,D3,SVG,CSS,jQuery,網頁前端,UI,UX,視覺設計,網頁設計,設計,介面設計,創意,創作,攝影,web,前端技術,web design,design,web,ui design,front-end,css3,photoshop,illustrator">
+
+  <title>Google Maps API (2) - 使用地圖與基本設定 - OXXO.STUDIO</title>
+
+  <meta name="description" content="有別於 Embed API，如果要開始使用 Google Map 的功能，就必須透過 JavaScript API 才能實現，這篇將會記錄相關的用法以及做些範例展示。">
+  <meta itemprop="description" content="有別於 Embed API，如果要開始使用 Google Map 的功能，就必須透過 JavaScript API 才能實現，這篇將會記錄相關的用法以及做些範例展示。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201707/google-maps-2-map-class.jpg">
+  <meta property="og:description" content="有別於 Embed API，如果要開始使用 Google Map 的功能，就必須透過 JavaScript API 才能實現，這篇將會記錄相關的用法以及做些範例展示。">
+  <meta property="og:title" content="Google Maps API (2) - 使用地圖與基本設定">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201707/google-maps-2-map-class.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201707/google-maps-2-map-class.jpg">
+  <script src="/js/lib/run_prettify.js"></script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps API (2) - 使用地圖與基本設定</h1>
+<p>有別於 Embed API，如果要開始使用 Google Map 的功能，就必須透過 JavaScript API 才能實現，這篇將會記錄相關的用法以及做些範例展示。</p>
+<h2>Google Maps JavaScript API</h2>
+<p>要使用 JavaScript API 得先到 <a href="https://console.developers.google.com/" target="_blank">Google API Console</a> 裡啟用。</p>
+<p><img src="/img/articles/201707/google-maps-2-map-class-01.jpg" alt=""></p>
+<p>雖然和 Embed API 類似，但 JavaScript API 不能免費無限次數使用，免費的版本一天有 25,000 次的使用限制，超過之後當天就無法使用，所以必須善用金鑰的保護限制，避免金鑰外流。</p>
+<blockquote>
+<p>收費規範參考：<a href="https://developers.google.com/maps/documentation/javascript/usage" target="_blank">Google Maps JavaScript API 使用限制</a>。</p>
+</blockquote>
+<p><img src="/img/articles/201707/google-maps-2-map-class-02.jpg" alt=""></p>
+<h2>載入地圖</h2>
+<p>載入地圖的方法一開始在 html 裡放入一個 div 作為地圖區域，並指定一個 id。</p>
+<pre class="prettyprint"><code>&lt;div id="map"&gt;&lt;/div&gt;
+</code></pre><p>設定這個 div 的寬高，以下方的例子來說，設定為滿版的地圖。</p>
+<pre class="prettyprint"><code>html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  height: 100%;
+  width: 100%;
+}
+</code></pre><p>JavaScript 的部分透<code>new google.maps.Map</code>將地圖載入指定的 div 內，地圖包含兩個<strong>必要</strong>的屬性：<strong>center 中心點經緯度</strong>、<strong>zoom 縮放層級</strong>，以下方的例子來說，網頁打開就會看到一個滿版的地圖，中心點位在紐約自由女神像。</p>
+<blockquote>
+<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-01.html" target="_blank">demo01.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>&lt;script&gt;
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 40.689104, lng: -74.044599},
+      zoom: 16
+    });
+  }
+&lt;/script&gt;
+&lt;script src="https://maps.googleapis.com/maps/api/js?key=你的金鑰&amp;callback=initMap"
+async defer&gt;&lt;/script&gt;
+</code></pre><p><img src="/img/articles/201707/google-maps-2-map-class-03.jpg" alt=""></p>
+<h2>MapOptions 必要屬性</h2>
+<p>在上面的 JavaScript 裡，使用了<code>new google.maps.Map</code>將地圖載入，這段可以直接看 Google 參考文件中的 Map class，當中包含兩個參數，第一個是指定的地圖 div 區塊，第二個則是地圖設定，使用時會 new 一個地圖物件，針對當中的 Map 屬性去做修改設定。</p>
+<blockquote>
+<p>參考：<a href="https://developers.google.com/maps/documentation/javascript/reference#Map" target="_blank">Map class</a></p>
+</blockquote>
+<pre class="prettyprint"><code>new google.maps.Map(mapDiv:Element, opts?:MapOptions)
+</code></pre><p>當中比較重要的是地圖的 MapOptions，MapOptions 的<em>必要屬性</em>有兩個：</p>
+<table>
+<thead>
+<tr>
+<th>屬性名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>center</em></td>
+<td>中心點經緯度，center 是一個物件，物件內分別有 <em>lat ( 緯度 )</em> 與 <em>lng ( 經度 )</em> 兩個屬性。</td>
+</tr>
+<tr>
+<td><em>zoom</em></td>
+<td>預設縮放大小，zoom 的數值可從 <em>0 到 21</em>，也可以透過其他設定屬性，指定最小與最大值。</td>
+</tr>
+</tbody>
+</table>
+<h2>MapOptions 控制項</h2>
+<p>控制項屬性不是必要屬性，主要讓我們能在地圖的四周添加對應的控制元件 UI，例如放大縮小、旋轉、全螢幕、街景切換...等，控制項都是用 <em>true 和 false</em> 作切換，true 會顯示，false 則不會顯示控制項有下列這幾個：</p>
+<table>
+<thead>
+<tr>
+<th>控制項名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>mapTypeControl</em></td>
+<td><em>預設 true</em>，地圖與衛星類型。</td>
+</tr>
+<tr>
+<td><em>fullscreenControl</em></td>
+<td><em>預設 false</em>，全螢幕地圖。</td>
+</tr>
+<tr>
+<td><em>rotateControl</em></td>
+<td><em>預設 false</em>，旋轉 45 度地圖，必須放大到一定程度才會出現，若不支援 45 度的地圖則不顯示。</td>
+</tr>
+<tr>
+<td><em>scaleControl</em></td>
+<td><em>預設 false</em>，比例尺。</td>
+</tr>
+<tr>
+<td><em>streetViewControl</em></td>
+<td><em>預設 true</em>，地圖與街景切換。</td>
+</tr>
+<tr>
+<td><em>zoomControl</em></td>
+<td><em>預設 true</em>，放大縮小地圖。</td>
+</tr>
+</tbody>
+</table>
+<p>這些控制項也有另外的屬性可以進行 UI 位置與樣式的設定，位置設定內容可以參考 <a href="https://developers.google.com/maps/documentation/javascript/controls#ControlPositioning" target="_blank">控制項定位</a>，樣式可以參考 <a href="https://developers.google.com/maps/documentation/javascript/controls#ControlOptions" target="_blank">控制項選項</a>，這些設定的分別是：</p>
+<table>
+<thead>
+<tr>
+<th>控制項名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>mapTypeControlOptions</em></td>
+<td>地圖與衛星類型 UI，位置預設<em>左上方</em></td>
+</tr>
+<tr>
+<td><em>fullscreenControlOptions</em></td>
+<td>全螢幕地圖 UI，位置預設<em>右上方</em></td>
+</tr>
+<tr>
+<td><em>rotateControlOptions</em></td>
+<td>旋轉 45 度地圖 UI，位置預設<em>右下方</em></td>
+</tr>
+<tr>
+<td><em>scaleControlOptions</em></td>
+<td>比例尺 UI，位置預設<em>右下方</em></td>
+</tr>
+<tr>
+<td><em>streetViewControlOptions</em></td>
+<td>地圖與街景切換 UI，位置預設<em>右下方</em></td>
+</tr>
+<tr>
+<td><em>zoomControlOptions</em></td>
+<td>放大縮小地圖 UI，位置預設<em>右下方</em></td>
+</tr>
+</tbody>
+</table>
+<p>以下面的例子來說，打開地圖後，切換為衛星檢視，放大到一定程度可以看到一個 45 度角的自由女神衛星地圖，而中間正上方是地圖與衛星圖的切換，右邊中間為旋轉的按鈕，右下方是放大縮小按鈕，右上方為全螢幕按鈕，左上方是街景圖按鈕，左下方則是比例尺。</p>
+<blockquote>
+<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-02.html" target="_blank">demo02.html</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.689104, lng: -74.044599},
+    zoom: 16,
+    mapTypeControl:true,
+    fullscreenControl:true,
+    rotateControl:true,
+    scaleControl:true,
+    streetViewControl:true,
+    zoomControl:true,
+    mapTypeControlOptions:{position:google.maps.ControlPosition.TOP_CENTER},
+    fullscreenControlOptions:{position:google.maps.ControlPosition.TOP_RIGHT},
+    rotateControlOptions:{position:google.maps.ControlPosition.RIGHT_CENTER},
+    scaleControlOptions:{position:google.maps.ControlPosition.RIGHT_BOTTOM},
+    streetViewControlOptions:{position:google.maps.ControlPosition.TOP_LEFT},
+    zoomControlOptions:{position:google.maps.ControlPosition.RIGHT_BOTTOM}
+  });
+}
+</code></pre><p><img src="/img/articles/201707/google-maps-2-map-class-04.jpg" alt=""></p>
+<h2>MapOptions 其他屬性</h2>
+<table>
+<thead>
+<tr>
+<th>控制項名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>clickableIcons</em></td>
+<td>( <em>true/false</em> ) 地點標記能否點擊，預設 true 當我們用滑鼠點擊地圖上的地點標記，會彈出資訊視窗說明。</td>
+</tr>
+<tr>
+<td><em>disableDefaultUI</em></td>
+<td>( <em>enabled/disabled</em> ) 顯示或隱藏預設 UI，預設 enabled 的 UI 會顯示相關控制項的 UI。</td>
+</tr>
+<tr>
+<td><em>disableDoubleClickZoom</em></td>
+<td>( <em>enabled/disable</em> ) 可否滑鼠點兩下放大地圖，預設 enabled 滑鼠連點兩下地圖會放大。</td>
+</tr>
+<tr>
+<td><em>scrollwheel</em></td>
+<td>( <em>true/false</em> ) 是否支援滑鼠滾輪，預設 true 可用滑鼠滾輪縮放地圖。</td>
+</tr>
+<tr>
+<td><em>draggable</em></td>
+<td>( <em>true/false</em> ) 可否拖曳移動地圖，預設 true 可以用滑鼠拖曳移動地圖。</td>
+</tr>
+<tr>
+<td><em>keyboardShortcuts</em></td>
+<td>( <em>true/false</em> ) 是否支援鍵盤熱鍵，預設 true 可以。</td>
+</tr>
+<tr>
+<td><em>tilt</em></td>
+<td>( <em>0/45</em> )指定衛星圖的顯示方式，數字 0 是 0 度 ( 正上方往下看 )，數字 45 則是 45 度地圖 ( 如果該地區地圖不支援 45 度則一律以 0 度顯示 )。</td>
+</tr>
+<tr>
+<td><em>heading</em></td>
+<td>若地圖支援 45 度地圖，可設定旋轉的方向 ( 每 90 度為一個單位 )。</td>
+</tr>
+<tr>
+<td><em>mapTypeId</em></td>
+<td>地圖類型，共有四種：<em>hybrid、roadmap、satellite 和 terrain</em>，hybrid 是地圖與衛星空照圖合在一起，roadmap 則是純粹地圖，satellite 是純粹衛星空照圖，terrain 則是地圖與地形圖合在一起 ( 參考 <a href="/img/articles/201707/google-maps-2-map-class-05.jpg" target="_blank">範例圖片</a> )。</td>
+</tr>
+<tr>
+<td><em>noClear</em></td>
+<td>( <em>true/false</em> ) 是否清除地圖 div，預設 false。</td>
+</tr>
+<tr>
+<td><em>styles</em></td>
+<td>陣列形式，表示這個地圖顯示出來的樣式。</td>
+</tr>
+<tr>
+<td><em>maxZoom</em></td>
+<td>地圖最大縮放尺寸。</td>
+</tr>
+<tr>
+<td><em>minZoom</em></td>
+<td>地圖最小縮放尺寸。</td>
+</tr>
+<tr>
+<td><em>backgroundColor</em></td>
+<td>地圖背景顏色，背景色表示地圖尚未載入之前的背景色，和 CSS 設定比較不一樣的地方，CSS 呈現的是 div 的背景色，而這個屬性是地圖在初始化時的背景色。</td>
+</tr>
+<tr>
+<td><em>draggableCursor</em></td>
+<td>在可拖曳的地圖下，滑鼠的游標圖案，設定方式和 CSS 相同。</td>
+</tr>
+<tr>
+<td><em>draggingCursor</em></td>
+<td>正在拖曳的地圖裡，滑鼠的游標圖案，設定方式和 CSS 相同。</td>
+</tr>
+</tbody>
+</table>
+<p>舉例來說，將 mapTypeId 設定為 terrain，就可以得到一個帶有地形圖地圖了。</p>
+<blockquote>
+<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-03.html" target="_blank">demo03.html</a></p>
+</blockquote>
+<p><img src="/img/articles/201707/google-maps-2-map-class-06.jpg" alt=""></p>
+<h2>小結</h2>
+<p>透過地圖本身的屬性設定，就已經可以做出一些和一般地圖不一樣的感覺，再來會慢慢修改地圖以及增加地圖上的元素，打造一個真正客製化的地圖喔~</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+  <!-- oxxo.studio AD -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>

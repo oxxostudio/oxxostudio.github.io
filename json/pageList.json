@@ -1,5 +1,10 @@
 [{
   "tag": "tag-web",
+  "title": "Google Maps API (2) - 使用地圖與基本設定",
+  "site": "/articles/201707/google-maps-2-map-class.html",
+  "date": "JUL 31, 2017"
+},{
+  "tag": "tag-web",
   "title": "Google Maps API (1) - 網頁載入地圖 ( 起手式 )",
   "site": "/articles/201707/google-maps-1.html",
   "date": "JUL 26, 2017"
