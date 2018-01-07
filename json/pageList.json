@@ -1,11 +1,16 @@
 [{
   "tag": "tag-web",
-  "title": "Google Maps API (2) - 使用地圖與基本設定",
+  "title": "Google Maps (3) - 地圖標記",
+  "site": "/articles/201801/google-maps-3-marker.html",
+  "date": "JAN 7, 2018"
+},{
+  "tag": "tag-web",
+  "title": "Google Maps (2) - 使用地圖與基本設定",
   "site": "/articles/201707/google-maps-2-map-class.html",
   "date": "JUL 31, 2017"
 },{
   "tag": "tag-web",
-  "title": "Google Maps API (1) - 網頁載入地圖 ( 起手式 )",
+  "title": "Google Maps (1) - 網頁載入地圖 ( 起手式 )",
   "site": "/articles/201707/google-maps-1.html",
   "date": "JUL 26, 2017"
 },{

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (3) - 地圖標記 demo 05</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+  var map;
+
+  function initMap() {
+    var position = {
+      lat: 25.0339031,
+      lng: 121.5623212
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 18,
+      center: position
+    });
+    var marker = new google.maps.Marker({
+      position: position,
+      map: map,
+      icon:'http://www.oxxostudio.tw/img/articles/201801/google-maps-3-marker-icon.png'
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>

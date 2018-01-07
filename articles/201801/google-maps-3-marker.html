@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (3) - 地圖標記 - OXXO.STUDIO</title>
+
+  <meta name="description" content="地圖標記是地圖裡最常見的元素，透過地圖標記，可以標明指定的地點和資訊，也能透過對應的 API，設計相對應的標記來展示地點資訊，這篇將會由基礎的地圖標記著手，逐步實做一些有趣的範例。">
+  <meta itemprop="description" content="地圖標記是地圖裡最常見的元素，透過地圖標記，可以標明指定的地點和資訊，也能透過對應的 API，設計相對應的標記來展示地點資訊，這篇將會由基礎的地圖標記著手，逐步實做一些有趣的範例。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-3-marker.jpg">
+  <meta property="og:description" content="地圖標記是地圖裡最常見的元素，透過地圖標記，可以標明指定的地點和資訊，也能透過對應的 API，設計相對應的標記來展示地點資訊，這篇將會由基礎的地圖標記著手，逐步實做一些有趣的範例。">
+  <meta property="og:title" content="Google Maps (3) - 地圖標記">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201801/google-maps-3-marker.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-3-marker.jpg">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (3) - 地圖標記</h1>
+<p>地圖標記是地圖裡最常見的元素，透過地圖標記，可以標明指定的地點和資訊，也能透過對應的 API，設計相對應的標記來展示地點資訊，這篇將會由基礎的地圖標記著手，逐步實做一些有趣的範例。</p>
+<h2>放置地圖標記</h2>
+<p>放置地圖標記的第一步要先取得「經緯度」，取得特定地點的經緯度很簡單，只要打開 Google Map，搜尋地點之後，在網址列就可以看到經緯度，第一個數字是緯度 ( latitude )，第二個數字是經度 ( Longitude )。</p>
+<p><img src="/img/articles/201801/google-maps-3-marker-01.jpg" alt=""></p>
+<p>有了經緯度之後，    透過<code>new google.maps.Marker</code>就可以產生一個 maker 物件在地圖上，以下面的例子來說，就可以放置一個標記在台北 101 大樓。</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-3-marker-demo-01.html" target="_blank">放置地圖標記</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  var position = {
+    lat: 25.0339031,
+    lng: 121.5623212
+  };
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 18,
+    center: position
+  });
+  var marker = new google.maps.Marker({
+    position: position,
+    map: map
+  });
+}
+</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-02.jpg" alt=""></p>
+<h2>地圖標記動畫 ( Marker Animations )</h2>
+<p>地圖標記的動畫效果，可以設定當點擊標記或標記載入時呈現相對應動畫，用法是在 maker 的 option 增加<code>animation</code>的屬性，內容是掉落 ( DROP ) 與彈跳 ( BOUNCE ) 兩種選項。</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-3-marker-demo-03.html" target="_blank">marker 載入時掉落</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var marker = new google.maps.Marker({
+  position: position,
+  map: map,
+  animations: google.maps.Animation.DROP
+});
+</code></pre><blockquote>
+<p>範例：<a href="/demo/201801/google-maps-3-marker-demo-02.html" target="_blank">marker 不斷彈跳</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var marker = new google.maps.Marker({
+  position: position,
+  map: map,
+  animations: google.maps.Animation.BOUNCE
+});
+</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-03.gif" alt=""></p>
+<h2>地圖標記名稱 ( Marker Labels )</h2>
+<p>如果地圖上有很多個標記，可能也就需要在每個標記上標註名稱，標註的方法就是修改<code>label</code>的屬性，不過因為標記名稱需考量標記的「大小」，所以基本上就單一個中文字、英文字母或數字比較恰當 ( 也可以透過地圖標記圖案來修改 icon 大小，才不會造成文字「爆表」的情形 )。</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-3-marker-demo-04.html" target="_blank">地圖標記名稱</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var marker = new google.maps.Marker({
+  position: position,
+  map: map,
+  label: '喔'
+});
+</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-04.jpg" alt=""></p>
+<h2>地圖標記圖案 ( Marker Icons )</h2>
+<p>如果要修改預設的地圖標記，就需要編輯<code>icon</code>的屬性，只要指定對應的圖片網址，就會看到這張圖片，變成在地圖裡的地圖標記了，但使用上要注意圖片的大小，呈現出來才會美觀也不會遮住地圖資訊，舉例來說，可以把台北 101 的圖案換成皮卡丘的圖片。( 地圖標記圖案可以玩的東西還很多，之後會找時間寫一篇來介紹 )</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-3-marker-demo-05.html" target="_blank">地圖標記圖案</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var marker = new google.maps.Marker({
+  position: position,
+  map: map,
+  icon:'http://www.oxxostudio.tw/img/articles/201801/google-maps-3-marker-icon.png'
+});
+</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-05.jpg" alt=""></p>
+<h2>可拖曳地圖標記 ( draggable )</h2>
+<p>通常地圖上的標記都是不能用滑鼠移動的，但其實可以透過<code>draggable</code>的屬性，讓我們可以移動地圖上的標記。</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-3-marker-demo-06.html" target="_blank">地圖標記圖案</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var marker = new google.maps.Marker({
+  position: position,
+  map: map,
+  draggable: true
+});
+</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-06.gif" alt=""></p>
+<h2>地圖標記階層 ( zIndex )</h2>
+<p>如果地圖上有多個標記，可能會發生一個疊一個狀況，這時候就可以透過<code>zIndex</code>的屬性，就像 CSS 裡的<code>z-index</code>一樣，數字越大的在越上層，就能控制不同地圖標記的階層了。( zIndex 預設 1 )</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-3-marker-demo-07.html" target="_blank">地圖標記階層</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var marker1 = new google.maps.Marker({
+  position: position1,
+  map: map,
+  icon:'http://www.oxxostudio.tw/img/articles/201801/google-maps-3-marker-icon.png',
+  zIndex:1
+});
+</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-07.jpg" alt=""></p>
+<h2>其他的地圖標記屬性</h2>
+<p>地圖標記的屬性還有很多，這篇只是先把我覺得滿常用的屬性列出，如果有興趣可以繼續參考：<a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference?hl=zh-tw#MarkerOptions" target="_blank">MarkerOptions object specification</a> 囉！</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <!-- oxxo.studio AD -->
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>
