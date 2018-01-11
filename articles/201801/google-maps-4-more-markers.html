@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (4) - 多個地圖標記 - OXXO.STUDIO</title>
+
+  <meta name="description" content="前一篇介紹了如何在地圖裡放入地圖標記，這篇將透過地圖標記、標籤與動畫，實現在地圖上呈現多個標記，並且透過簡單的動畫依序載入這些標記。">
+  <meta itemprop="description" content="前一篇介紹了如何在地圖裡放入地圖標記，這篇將透過地圖標記、標籤與動畫，實現在地圖上呈現多個標記，並且透過簡單的動畫依序載入這些標記。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-4-more-markers.jpg">
+  <meta property="og:description" content="前一篇介紹了如何在地圖裡放入地圖標記，這篇將透過地圖標記、標籤與動畫，實現在地圖上呈現多個標記，並且透過簡單的動畫依序載入這些標記。">
+  <meta property="og:title" content="Google Maps (4) - 多個地圖標記">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201801/google-maps-4-more-markers.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-4-more-markers.jpg">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (4) - 多個地圖標記</h1>
+<p>前一篇介紹了如何在地圖裡放入地圖標記，這篇將透過地圖標記、標籤與動畫，實現在地圖上呈現多個標記，並且透過簡單的動畫依序載入這些標記。</p>
+<h2>放入多個地圖標記</h2>
+<p>如果有多個地圖標記，可以用個陣列來裝載對應的標籤、經緯度...等資訊，舉例來說，這裡使用一個名為 position 的陣列，將五個地圖標記的資訊用物件的方式放在裡頭，同時建立一個空的 markers 陣列，用這個陣列的內容來宣告一個個新的地圖標記。</p>
+<p>在這裡有個比較需要注意的地方，就是<code>addMarker(e)</code>這個 function，如果把這個 function 放在<code>initMap()</code>的外面，會發生地圖還沒載入就執行<code>addMarker(e)</code>而發生錯誤，所以要放在裡頭。</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-01.html" target="_blank">放入多個地圖標記</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+var markers = [];
+var position = [
+  {label:'A',lat:25.0336962,lng:121.5643673},
+  {label:'B',lat:25.0333698,lng:121.5641564},
+  {label:'C',lat:25.033899,lng:121.564329},
+  {label:'D',lat:25.0338407,lng:121.5645269},
+  {label:'E',lat:25.0336377,lng:121.5645727}
+];
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 19,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    }
+  });
+
+  for (var i = 0; i &lt; position.length; i++) {
+    addMarker(i);
+  }
+}
+
+function addMarker(e) {
+  markers[e] = new google.maps.Marker({
+    position: {
+      lat: position[e].lat,
+      lng: position[e].lng
+    },
+    map: map,
+    label: position[e].label
+  });
+}
+</code></pre><p><img src="/img/articles/201801/google-maps-4-more-markers-01.jpg" alt=""></p>
+<h2>點擊按鈕，依序放入地圖標記</h2>
+<p>已經知道如何放入多個標記後，接著就來試著做個按鈕，搭配地圖標記的 DROP 動畫效果，就能在點擊按鈕的當下，讓地圖標記依序落下並且載入。</p>
+<p>首先在 html 裡放入一個 button，撰寫一點 CSS 讓這個按鈕可以置中並且浮在地圖上方，同時用滑鼠按下去的時候，也可以透過<code>active</code>來設定壓下去的感覺，此外在 HTML 的按鈕標籤裡，增加一個<code>onclick</code>的事件，讓點擊按鈕的時候，執行<code>go()</code>這個 function。</p>
+<p>HTML</p>
+<pre class="prettyprint"><code>&lt;button id="btn" onclick="go()"&gt;放置地圖標記&lt;/button&gt;
+</code></pre><p>CSS</p>
+<pre class="prettyprint"><code>#btn{
+  position:fixed;
+  z-index:99;
+  top:20px;
+  left:calc(50% - 150px);
+  font-size:30px;
+  width:80%;
+  max-width: 300px;
+  box-shadow:rgba(0,0,0,.5) 0 5px 10px;
+  border-radius: 5px;
+  padding:10px;
+  outline: none;
+  border:1px solid #999;
+}
+#btn:active{
+  box-shadow:rgba(0,0,0,.5) 0 3px 5px;
+}
+</code></pre><p><img src="/img/articles/201801/google-maps-4-more-markers-02.gif" alt=""></p>
+<p>再來看到初始化地圖的程式，其實跟剛剛的程式一模一樣，差別只在於不要在一開始的時候不要先把地圖標記放進去。</p>
+<pre class="prettyprint"><code>var map;
+var markers = [];
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 19,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    }
+  });
+}
+
+var position = [
+  {label:'A', lat:25.0336962, lng:121.5643673},
+  {label:'B', lat:25.0333698, lng:121.5641564},
+  {label:'C', lat:25.033899, lng:121.564329},
+  {label:'D', lat:25.0338407, lng:121.5645269},
+  {label:'E', lat:25.0336377, lng:121.5645727}
+];
+</code></pre><p>接著撰寫<code>go()</code>這個 function，裡面可以看到有另外兩個 function 分別是<code>clearMarkers()</code>和<code>addMarker(i)</code>，因為我們會把每個標記，宣告到 markers 的陣列元素裡，所以在一開始執行<code>go()</code>的時候，透過<code>clearMarkers()</code>來清除標記，這裡清除標記的方法為<code>markers[i].setMap(null);</code>。然而有清除就有新增，新增的方法額外使用了<code>setTimeout</code>和<code>animation: google.maps.Animation.DROP</code>來產生延遲的動畫效果，因此在執行的當下就會看到地圖標記依序落下。</p>
+<blockquote>
+<p>不過很可惜的，經過長時間的查詢，發現 label 並不會有動畫效果，所以只好忍痛把 label 給 marker 起來...</p>
+</blockquote>
+<pre class="prettyprint"><code>function go() {
+  clearMarkers();
+  for (var i = 0; i &lt; position.length; i++) {
+    addMarker(i);
+  }
+}
+
+function addMarker(e) {
+  setTimeout(function() {
+    markers[e] = new google.maps.Marker({
+      position: {
+        lat: position[e].lat,
+        lng: position[e].lng
+      },
+      map: map,
+      //label: position[e].label,
+      animation: google.maps.Animation.DROP
+    });
+  }, e * 150);
+}
+
+
+function clearMarkers() {
+  for (var i = 0; i &lt; markers.length; i++) {
+    if(markers[i]){
+      markers[i].setMap(null);
+    }
+  }
+  markers = [];
+}
+</code></pre><p>雖然到這邊好像完成，但是<strong>實際上操作起來會有問題！實際上操作起來會有問題！實際上操作起來會有問題！</strong>( 很重要所以說三次 ) 因為使用順序宣告的關係，可能會造成點擊按鈕清空標記的時候，還沒有宣告完成標記，結果就造成快速連點按鈕時，會出現地圖標記卡在地圖上的狀況。</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-02.html" target="_blank">連點會有問題的地圖標記</a></p>
+</blockquote>
+<p><img src="/img/articles/201801/google-maps-4-more-markers-03.gif" alt=""></p>
+<p>所以如果要解決這個狀況，就變成要把 marker 的部分改成用<code>push</code>的，就可以一勞永逸地解決這問題。</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-03.html" target="_blank">點擊按鈕，依序放入地圖標記</a></p>
+</blockquote>
+<pre class="prettyprint"><code>function addMarker(e) {
+  setTimeout(function() {
+    markers.push(new google.maps.Marker({
+        position: {
+          lat: position[e].lat,
+          lng: position[e].lng
+        },
+        map: map,
+        //label: position[e].label,
+        animation: google.maps.Animation.DROP
+      }));
+  }, e * 150);
+}
+</code></pre><p><img src="/img/articles/201801/google-maps-4-more-markers-04.gif" alt=""></p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <!-- oxxo.studio AD -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <!-- oxxo.studio AD2 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (4) - 多個地圖標記 demo 02</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+
+  #btn{
+    position:fixed;
+    z-index:99;
+    top:20px;
+    left:calc(50% - 150px);
+    font-size:30px;
+    width:80%;
+    max-width: 300px;
+    box-shadow:rgba(0,0,0,.5) 0 5px 10px;
+    border-radius: 5px;
+    padding:10px;
+    outline: none;
+    border:1px solid #999;
+  }
+  #btn:active{
+    box-shadow:rgba(0,0,0,.5) 0 3px 5px;
+  }
+  </style>
+</head>
+
+<body>
+  <button id="btn" onclick="go()">放置地圖標記</button>
+  <div id="map"></div>
+  <script>
+  var map;
+  var markers = [];
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 19,
+      center: {
+        lat: 25.0336962,
+        lng: 121.5643673
+      }
+    });
+  }
+
+  var position = [
+    {label:'A', lat:25.0336962, lng:121.5643673},
+    {label:'B', lat:25.0333698, lng:121.5641564},
+    {label:'C', lat:25.033899, lng:121.564329},
+    {label:'D', lat:25.0338407, lng:121.5645269},
+    {label:'E', lat:25.0336377, lng:121.5645727}
+  ];
+
+  function go() {
+    clearMarkers();
+    for (var i = 0; i < position.length; i++) {
+      addMarker(i);
+    }
+  }
+
+  function addMarker(e) {
+    setTimeout(function() {
+      markers[e] = new google.maps.Marker({
+        position: {
+          lat: position[e].lat,
+          lng: position[e].lng
+        },
+        map: map,
+        //label: position[e].label,
+        animation: google.maps.Animation.DROP
+      });
+    }, e * 150);
+  }
+
+
+  function clearMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+      if(markers[i]){
+        markers[i].setMap(null);
+      }
+    }
+    markers = [];
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>

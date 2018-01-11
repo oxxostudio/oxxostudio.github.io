@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (4) - 多個地圖標記 demo 01</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+  var map;
+  var markers = [];
+  var position = [
+    {label:'A',lat:25.0336962,lng:121.5643673},
+    {label:'B',lat:25.0333698,lng:121.5641564},
+    {label:'C',lat:25.033899,lng:121.564329},
+    {label:'D',lat:25.0338407,lng:121.5645269},
+    {label:'E',lat:25.0336377,lng:121.5645727}
+  ];
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 19,
+      center: {
+        lat: 25.0336962,
+        lng: 121.5643673
+      }
+    });
+
+    for (var i = 0; i < position.length; i++) {
+      addMarker(i);
+    }
+  }
+
+  function addMarker(e) {
+    markers[e] = new google.maps.Marker({
+      position: {
+        lat: position[e].lat,
+        lng: position[e].lng
+      },
+      map: map,
+      label: position[e].label
+    });
+  }
+
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>
