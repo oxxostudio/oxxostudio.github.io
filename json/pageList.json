@@ -1,4 +1,9 @@
 [{
+  "tag": "tag-web",
+  "title": "Slack 自動訊息通知",
+  "site": "/articles/201801/slack.html",
+  "date": "JAN 13, 2018"
+},{
   "tag": "tag-share",
   "title": "Google 試算表公式：SUMIFS",
   "site": "/articles/201801/google-spreadsheet-sumifs.html",

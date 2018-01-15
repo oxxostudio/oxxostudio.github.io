@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Slack 自動訊息通知 - OXXO.STUDIO</title>
+
+  <meta name="description" content="不知道你有沒有聽過 Slack？剛接觸 Slack 的時候，會覺得好像又是一套即時通訊軟體，但 Slack 本質上卻是個「團隊溝通平台」，有別於 Line 或 FB 訊息，Slack 更具備了特別為工作、專案...等所設計的功能和體驗，也因此現在許多的公司、團隊，都使用 Slack 作為內部訊息溝通的平台。">
+  <meta itemprop="description" content="不知道你有沒有聽過 Slack？剛接觸 Slack 的時候，會覺得好像又是一套即時通訊軟體，但 Slack 本質上卻是個「團隊溝通平台」，有別於 Line 或 FB 訊息，Slack 更具備了特別為工作、專案...等所設計的功能和體驗，也因此現在許多的公司、團隊，都使用 Slack 作為內部訊息溝通的平台。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201801/slack.jpg">
+  <meta property="og:description" content="不知道你有沒有聽過 Slack？剛接觸 Slack 的時候，會覺得好像又是一套即時通訊軟體，但 Slack 本質上卻是個「團隊溝通平台」，有別於 Line 或 FB 訊息，Slack 更具備了特別為工作、專案...等所設計的功能和體驗，也因此現在許多的公司、團隊，都使用 Slack 作為內部訊息溝通的平台。">
+  <meta property="og:title" content="Slack 自動訊息通知">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201801/slack.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201801/slack.jpg">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--   <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script> -->
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Slack 自動訊息通知</h1>
+<p><img src="/img/articles/201801/slack-s.jpg" class="preview-img" alt=""></p>
+<p>不知道你有沒有聽過 Slack？剛接觸 Slack 的時候，會覺得好像又是一套即時通訊軟體，但 Slack 本質上卻是個「團隊溝通平台」，有別於 Line 或 FB 訊息，Slack 更具備了特別為工作、專案...等所設計的功能和體驗，也因此現在許多的公司、團隊，都使用 Slack 作為內部訊息溝通的平台。</p>
+<p>Slack 內建了可以串接各個服務與推播的能力，換句話說像是日曆、專案管理軟體、甚至是程式代碼都可以和它串接，做到無縫接軌的推播功能，這篇將會介紹如何透過 Slack，實現自動訊息通知的效果。</p>
+<h2>開始使用 Slack</h2>
+<p>進入 Slack 的官網 ( <a href="https://slack.com/" target="_blank">https://slack.com/</a> ) 或下載它的軟體安裝，有別於一般的通訊軟體，Slack 的概念是要建立一個 WorkSpace 或加入已經存在的 WorkSpace，所以如果沒有 WorkSpace，是沒有辦法使用的，如果你已經有註冊，可以點選 sign in 來找自己的 WorkSpace。</p>
+<p><img src="/img/articles/201801/slack-01.jpg" alt=""></p>
+<p>進入自己的 WorkSpace 之後，可以看到有很多的 Channel 可以使用，這裡就先使用 general 這個 Channel，來作為待會訊息通知的頻道。</p>
+<p><img src="/img/articles/201801/slack-02.jpg" alt=""></p>
+<h2>安裝 Incoming WebHooks</h2>
+<p>點選 WorkSpace 右上方的小齒輪 icon，點選「Add an app」，增加一些應用程式到 WorkSpace 裡。</p>
+<p><img src="/img/articles/201801/slack-03.jpg" alt=""></p>
+<p>打開後點選上方選單的 Manage。</p>
+<p><img src="/img/articles/201801/slack-04.jpg" alt=""></p>
+<p>打開後再搜尋的地方，搜尋「Incoming WebHooks」</p>
+<p><img src="/img/articles/201801/slack-05.jpg" alt=""></p>
+<p>搜尋到 Incoming WebHooks 之後，點擊「Add configuration」將其增加到 WorkSpace 的配置當中。</p>
+<p><img src="/img/articles/201801/slack-06.jpg" alt=""></p>
+<p>接著就可以在 Manage 的 Custom Integrations 裡，看到 Incoming WebHooks，到這一步就算是安裝完成了。</p>
+<p><img src="/img/articles/201801/slack-07.jpg" alt=""></p>
+<h2>設定 Incoming WebHooks</h2>
+<p>點擊 Incoming WebHooks 後方的筆型 icon，就可以開始進行相關設定。</p>
+<p><img src="/img/articles/201801/slack-08.jpg" alt=""></p>
+<p>說設定其實也不算設定，就只是要取得這串 Webhook URL 網址，有了這串網址，我們就可以可以透過 HTTP ，發送訊息到這個 WorkSpace 裡指定的 Channel。</p>
+<p><img src="/img/articles/201801/slack-09.jpg" alt=""></p>
+<h2>發出第一則訊息</h2>
+<p>發訊息可以直接透過 CURL 命令來完成，輸入下列這些指令，就會有個名為「機器人」的通知機器人，發送出「大家好」的訊息，同時會顯示一隻「蟲」的圖案 ( empji )，按下 enter 發送成功之後就會顯示 ok，這時候在 Channel 裏頭，就會看到訊息通知了。。</p>
+<pre class="prettyprint"><code>curl -X POST \
+--data-urlencode 'payload={"channel": "#general", "username": "機器人", "text": "大家好", "icon_emoji": ":bug:"}' \
+https://hooks.slack.com/services/XXXX/XXXX/XXXXXXXXXXX
+</code></pre><p><img src="/img/articles/201801/slack-10.jpg" alt=""></p>
+<p><img src="/img/articles/201801/slack-11.jpg" alt=""></p>
+<h2>透過網頁發送訊息到 Slack</h2>
+<p>透過 JQuery 的 AJAX，就能夠很輕鬆地透過網頁，把訊息發送到 Slack 上，舉例來說，做個簡單的網頁，在裡頭放個輸入欄位和按鈕，搭配 JQuery 的寫法，就完成一個讓使用者可以發訊息給自己的簡單功能。</p>
+<p>HTML </p>
+<pre class="prettyprint"><code>&lt;input id="in"&gt;
+&lt;button id="btn"&gt;送出&lt;/button&gt;
+</code></pre><p>JavaScript</p>
+<pre class="prettyprint"><code>$('#btn').on('click', function() {
+  var text = $('#in').val();
+  slack(text);
+});
+
+function slack(t) {
+  var url = 'https://hooks.slack.com/services/XXXXX/XXXXXX/XXXXXXXX';
+  var channel = '#general';
+  var username = 'bot';
+  var emoji = ':bug:';
+  $.ajax({
+    data: 'payload=' + JSON.stringify({
+      "channel": channel,
+      "username": username,
+      "text": t,
+      "icon_emoji": emoji
+    }),
+    dataType: 'json',
+    processData: false,
+    type: 'POST',
+    url: url
+  });
+}
+</code></pre><p><img src="/img/articles/201801/slack-12.gif" alt=""></p>
+<h2>透過 Node.js 發送訊息到 Slack</h2>
+<p>既然會在網頁前端發訊息，理所當然的可以在 Node.js 裡發訊息給 Slack，透過 request，在執行 Node.js 程式的當下，就會發送訊息到 general 頻道囉！</p>
+<pre class="prettyprint"><code>var request = require("request");
+
+var slackurl = 'https://hooks.slack.com/services/XXXXX/XXXXXX/XXXXXXXX';
+var channel = '#general';
+var username = 'bot';
+var text = 'Node.js 發的訊息';
+var emoji = ':bug:';
+
+var options = {
+  url: slackurl,
+  form: 'payload=' + JSON.stringify({
+      "channel": channel,
+      "username": username,
+      "text": text,
+      "icon_emoji": emoji
+    })
+};
+request.post(options, function(error, response, body){
+  if (!error &amp;&amp; response.statusCode == 200) {
+    console.log('ok');
+  } else {
+    console.log('error: '+ response.statusCode + body);
+  }
+});
+</code></pre><h2>透過 Google App Script 發送訊息到 Slack</h2>
+<p>因為我自己沒有伺服器空間，所以就算會用 Node.js 發送訊息，但仍然沒有辦法讓這個機器人 24 小時不休息，所以就嘗試使用 Google App Script 的<code>UrlFetchApp</code>來完成，因為 App Script 可以指定「觸發時間」，舉例來說就可以指定在中午 12:00 發送個訊息提醒要吃飯，或是下午六點發訊息提醒要下班，都是可以很輕鬆的實現。</p>
+<pre class="prettyprint"><code>function myFunction() {
+  var POST_URL = "https://hooks.slack.com/services/XXXXX/XXXXXX/XXXXXXXX";
+
+  var channel = '#general';
+  var username = 'bot';
+  var text = 'cool!!!';
+  var emoji = ':bug:';
+
+  var options = {
+    "method" : "post",
+    "payload": JSON.stringify({
+        "channel": channel,
+        "username": username,
+        "text": text,
+        "icon_emoji": emoji
+    })
+  };
+   UrlFetchApp.fetch(POST_URL, options);
+}
+</code></pre><p><img src="/img/articles/201801/slack-13.jpg" alt=""></p>
+<h2>小結</h2>
+<p>以上大概就是透過幾種不同的方式，傳送訊息到 Slack 裡指定的 Channel，這個方法在公司裡其實很好用，例如我自己公司裡頭幾個厲害的工程師，寫了許多的通知程式，會在伺服器發生狀況的時候及時通知，也會提醒大家要記得訂便當，而我自己則是用它來寫寫爬蟲與寄送電子報的通知，例如爬完資料就通知一下，電子報全部寄出之後就會發送通知，很好玩也很方便呦~</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <!-- <div id="google-adsense">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8629612872829139"
+         data-ad-slot="5895423206"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br/>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8629612872829139"
+         data-ad-slot="4044542673"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div> -->
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>
