@@ -1,5 +1,10 @@
 [{
   "tag": "tag-web",
+  "title": "Google Maps (5) - 地圖標記點擊事件",
+  "site": "/articles/201801/google-maps-5-marker-click-event.html",
+  "date": "JAN 20, 2018"
+},{
+  "tag": "tag-web",
   "title": "Slack 自動訊息通知",
   "site": "/articles/201801/slack.html",
   "date": "JAN 13, 2018"
