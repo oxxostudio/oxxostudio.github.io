@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (6) - 設計地圖標記圖案 - OXXO.STUDIO</title>
+
+  <meta name="description" content="通常在自定義的 Google 地圖裡，常常會使用不同的地圖標記圖案，來表示不同地點的屬性，這篇將會使用幾種常見的更換地圖標記圖案的方法，讓地圖增添一些不同的趣味。">
+  <meta itemprop="description" content="通常在自定義的 Google 地圖裡，常常會使用不同的地圖標記圖案，來表示不同地點的屬性，這篇將會使用幾種常見的更換地圖標記圖案的方法，讓地圖增添一些不同的趣味。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-6-marker-image.jpg">
+  <meta property="og:description" content="通常在自定義的 Google 地圖裡，常常會使用不同的地圖標記圖案，來表示不同地點的屬性，這篇將會使用幾種常見的更換地圖標記圖案的方法，讓地圖增添一些不同的趣味。">
+  <meta property="og:title" content="Google Maps (6) - 設計地圖標記圖案">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201801/google-maps-6-marker-image.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-6-marker-image.jpg">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--   <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script> -->
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (6) - 設計地圖標記圖案</h1>
+<p>通常在自定義的 Google 地圖裡，常常會使用不同的地圖標記圖案，來表示不同地點的屬性，這篇將會使用幾種常見的更換地圖標記圖案的方法，讓地圖增添一些不同的趣味。</p>
+<h2>Icon</h2>
+<p>Icon 是 Google 最常用的地圖標記，用法也是最簡單的，只要有張要作為 icon 的圖片網址，就可以把地圖標記換成這個圖案，如果沒有適當的圖片來源或網頁空間，可以參考「<a href="https://sites.google.com/site/gmapsdevelopment/" target="_blank">這個網站</a>」有收集了不少 Google 地圖標記圖案，就可以直接使用。不過比較可惜，這些地圖標記都是比較舊的版本，如果要比較漂亮新穎的，可以繼續往下看 Symbol 和 SVG 的用法。</p>
+<p>此外除了使用<code>url</code>來標記圖片的網址，也可以使用<code>scaledSize</code>來改變圖片的大小</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-6-marker-image-demo-01.html" target="_blank">更換地圖標記圖案 - Icon</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+position = {
+  lat: 25.0336962,
+  lng: 121.5643673
+};
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: position
+  });
+
+  var marker = new google.maps.Marker({
+    position: position,
+    map: map,
+    icon: {
+      url: 'http://maps.google.com/mapfiles/ms/micons/cabs.png',
+      scaledSize: new google.maps.Size(50, 150)
+    }
+  });
+}
+</code></pre><p><img src="/img/articles/201801/google-maps-6-marker-image-01.jpg" alt=""></p>
+<h2>Symbol</h2>
+<p>Symbol 有別於 Icon，在地圖裡它是以向量的方式存在，Symbol 的用法和 SVG 頗類似，只是在 Google 地圖裡對於 Symbol 只有預設五種 path ( 參考 <a href="https://developers.google.com/maps/documentation/javascript/symbols?hl=zh-tw" target="_blank">符號</a> )，所以要使用 Symbol 的話就必須按照制式的寫法，不然就要繼續往下看 SVG 的用法。</p>
+<p>Symbol 有以下幾種屬性：</p>
+<ul>
+<li><p><strong>path</strong>：Symbol 的外型，有五種可以選擇，分別是 <em>BACKWARD_CLOSED_ARROW</em>、<em>BACKWARD_OPEN_ARROW</em>、<em>CIRCLE</em>、<em>FORWARD_CLOSED_ARROW</em> 和 <em>FORWARD_OPEN_ARROW</em>，只要套用在地圖上就會出現對應的形狀。</p>
+<p>  <img src="/img/articles/201801/google-maps-6-marker-image-02.jpg" alt=""></p>
+</li>
+<li><p><strong>anchor</strong>：錨點，使用<code>new google.maps.Point( x , y)</code>來表現，( x, y ) 是相對原本 Symbol 的座標 ( 0 , 0 )，x 越大越往左，y 越大越往上。</p>
+</li>
+<li><p><strong>fillColor</strong>：Symbol 填滿的顏色，預設值黑色</p>
+</li>
+<li><p><strong>fillOpacity</strong>：Symbol 填滿的透明度，預設值 0 ( 完全透明 )</p>
+</li>
+<li><p><strong>rotation</strong>：Symbol 旋轉的角度，預設值 0 ( 如果 Symbol 在地圖折線上會自動依據折線方向旋轉，此時旋轉的角度則以折線方向為基準做旋轉 )</p>
+</li>
+<li><p><strong>scale</strong>：Symbol 旋轉的放大縮小比例，預設值為 1 ( 如果在折線上，則必須保持在 22px x 22px 以內 )</p>
+</li>
+<li><p><strong>strokeColor</strong>：Symbol 外框的顏色，預設值黑色</p>
+</li>
+<li><p><strong>strokeOpacity</strong>：Symbol 外框的顏色，預設值 1</p>
+</li>
+<li><p><strong>strokeWeight</strong>：Symbol 外框的粗細，如果沒有設定，預設值等於 scale 數值</p>
+</li>
+</ul>
+<p>舉例來說先在地圖上建立一個標記的位置，接著使用<code>marker.setIcon</code>指定標記的 symbol，再來透過<code>setTimeout</code>做兩個不同 symbol 的切換，感覺就跟一般常見的標記圖案不太相同了。</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-6-marker-image-demo-02.html" target="_blank">更換地圖標記圖案 - Symbol</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+position = {
+  lat: 25.0336962,
+  lng: 121.5643673
+};
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: position
+  });
+
+  var marker = new google.maps.Marker({
+    position: position,
+    map: map
+  });
+
+  symbol1() ;
+  function symbol1(){
+    marker.setIcon({
+      path: google.maps.SymbolPath.CIRCLE,
+      strokeColor: '#c00',
+      strokeWeight: 150,
+      fillColor: '#00c00c',
+      fillOpacity: .5,
+      scale: 12,
+      anchor: new google.maps.Point(2, 5)
+    });
+    setTimeout(symbol2, 500);
+  }
+
+  function symbol2(){
+    marker.setIcon({
+      path: google.maps.SymbolPath.CIRCLE,
+      strokeColor: '#c00',
+      strokeWeight: 10,
+      fillColor: '#00c00c',
+      fillOpacity: .5,
+      scale: 50
+    });
+    setTimeout(symbol1, 500);
+  }
+
+}
+</code></pre><p><img src="/img/articles/201801/google-maps-6-marker-image-03.gif" alt=""></p>
+<h2>SVG</h2>
+<p>因為通常地圖標記不會太複雜，所以使用 SVG 形狀當作是標記圖案是相當好的做法，因為除了放大縮小不會有解析度問題之外，又保有可以程式修改的彈性，使用 SVG 有兩種做法，如果是用 icon 的方式，就一樣在標記的 icon 屬性，填入 SVG 的網址 ( 其實還有查到可以直接寫在程式碼內的方法，不過技術上比較複雜，再找篇幅好好記錄 )，如果是用 symbol 則會有些限制，因為 symbol 只支援單一 path ，所以如果是比較複雜的形狀，也就必須要用單一 path 包起來才能用 symbol。</p>
+<p>下面這段程式，就是先用 Illustrator 繪製了 SVG 的圖案，接著把圖案的 path 提供給標記的 path 使用，最後就會在地圖上呈現客製化的標記囉！</p>
+<blockquote>
+<p>範例：<a href="/demo/201801/google-maps-6-marker-image-demo-03.html" target="_blank">更換地圖標記圖案 - SVG</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+position = {
+  lat: 25.0336962,
+  lng: 121.5643673
+};
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: position
+  });
+
+  var icon='M29-63.8C24.2-75.1,13-83,0-83c-17.4,0-31.5,14.1-31.5,31.5c0,7.5,4.2,16.4,9.4,24.6C-12.8-12.5,0,0,0,0s31.5-30.8,31.5-51.5C31.5-55.9,30.6-60,29-63.8z M0-30.8c-11.4,0-20.7-9.3-20.7-20.7S-11.4-72.2,0-72.2s20.7,9.3,20.7,20.7S11.4-30.8,0-30.8z M0-59.3c-5.8,0-10.5,8.2-10.5,14c0,5.8,4.7,7.1,10.5,7.1c5.8,0,10.5-1.3,10.5-7.1C10.5-51.1,5.8-59.3,0-59.3zM0.9-43.7v1c0,0.3-0.3,0.6-0.6,0.6h-0.5c-0.3,0-0.6-0.3-0.6-0.6v-0.9c-0.7-0.1-1.6-0.4-2.3-0.8c-0.3-0.2-0.3-0.5-0.2-0.8l0.5-0.8c0.2-0.3,0.5-0.3,0.8-0.2c0.6,0.4,1.1,0.5,1.7,0.5c0.8,0,1.1-0.3,1.1-0.9c0-1.2-4-1.4-4-4.1c0-1.6,0.9-2.6,2.4-2.9v-1c0-0.3,0.3-0.6,0.6-0.6h0.6c0.3,0,0.6,0.3,0.6,0.6v1c0.8,0.1,1.4,0.4,1.9,0.9C3-52.6,3.1-52.2,2.9-52l-0.6,0.7c-0.2,0.2-0.5,0.3-0.8,0.1c-0.4-0.3-0.8-0.4-1.2-0.4c-0.7,0-1,0.2-1,0.8c0,1.2,4,1.2,4,4C3.3-45.3,2.5-44.1,0.9-43.7z M-2.2-59.8c0.7-0.2,1.4-0.3,2.2-0.3c0.7,0,1.4,0.1,2.1,0.3l1.5-4.9c0.2-0.6-0.4-1-0.9-0.8L0-64l-2.7-1.4c-0.5-0.3-1.1,0.2-0.9,0.8L-2.2-59.8z';
+
+  var marker = new google.maps.Marker({
+    position: position,
+    map: map
+  });
+
+  marker.setIcon({
+    path: icon,
+    strokeWeight: 0,
+    fillColor: '#09c',
+    fillOpacity: 1,
+    scale: 2
+  });
+
+}
+</code></pre><p><img src="/img/articles/201801/google-maps-6-marker-image-04.jpg" alt=""></p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <!-- <div id="google-adsense">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8629612872829139"
+         data-ad-slot="5895423206"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br/>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8629612872829139"
+         data-ad-slot="4044542673"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div> -->
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>

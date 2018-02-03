@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (6) - 設計地圖標記圖案 demo 02</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+  var map;
+  position = {
+    lat: 25.0336962,
+    lng: 121.5643673
+  };
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 17,
+      center: position
+    });
+
+    var marker = new google.maps.Marker({
+      position: position,
+      map: map
+    });
+
+    symbol1() ;
+    function symbol1(){
+      marker.setIcon({
+        path: google.maps.SymbolPath.CIRCLE,
+        strokeColor: '#c00',
+        strokeWeight: 150,
+        fillColor: '#00c00c',
+        fillOpacity: .5,
+        scale: 12,
+        anchor: new google.maps.Point(2, 5)
+      });
+      setTimeout(symbol2, 500);
+    }
+
+    function symbol2(){
+      marker.setIcon({
+        path: google.maps.SymbolPath.CIRCLE,
+        strokeColor: '#c00',
+        strokeWeight: 10,
+        fillColor: '#00c00c',
+        fillOpacity: .5,
+        scale: 50
+      });
+      setTimeout(symbol1, 500);
+    }
+
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>

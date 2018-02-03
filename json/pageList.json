@@ -1,5 +1,10 @@
 [{
   "tag": "tag-web",
+  "title": "Google Maps (6) - 更換地圖標記圖案",
+  "site": "/articles/201801/google-maps-6-marker-image.html",
+  "date": "JAN 31, 2018"
+},{
+  "tag": "tag-web",
   "title": "Google Maps (5) - 地圖標記點擊事件",
   "site": "/articles/201801/google-maps-5-marker-click-event.html",
   "date": "JAN 20, 2018"
