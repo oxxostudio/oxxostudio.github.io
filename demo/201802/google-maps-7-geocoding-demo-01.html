@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (7) - 地理編碼服務 ( 地址定位 ) demo 01</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+  var map, geocoder;
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 17
+    });
+
+    var address = '總統府';
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        console.log(status);
+      }
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>

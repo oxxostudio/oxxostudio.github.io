@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (7) - 地理編碼服務 ( 地址定位 ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="一開始使用地圖，總會用經緯度來標記位置，但經緯度往往不夠直覺，而且要知道某個地點的經緯度也是個問題，所以這時就必須使用 Google 地圖的地理編碼服務來實現「地址定位」，只要輸入對應的地址，就可以在地圖上標記。">
+  <meta itemprop="description" content="一開始使用地圖，總會用經緯度來標記位置，但經緯度往往不夠直覺，而且要知道某個地點的經緯度也是個問題，所以這時就必須使用 Google 地圖的地理編碼服務來實現「地址定位」，只要輸入對應的地址，就可以在地圖上標記。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-7-geocoding.jpg">
+  <meta property="og:description" content="一開始使用地圖，總會用經緯度來標記位置，但經緯度往往不夠直覺，而且要知道某個地點的經緯度也是個問題，所以這時就必須使用 Google 地圖的地理編碼服務來實現「地址定位」，只要輸入對應的地址，就可以在地圖上標記。">
+  <meta property="og:title" content="Google Maps (7) - 地理編碼服務 ( 地址定位 )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-7-geocoding.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-7-geocoding.jpg">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--   <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script> -->
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (7) - 地理編碼服務 ( 地址定位 )</h1>
+<p>一開始使用地圖，總會用經緯度來標記位置，但經緯度往往不夠直覺，而且要知道某個地點的經緯度也是個問題，所以這時就必須使用 Google 地圖的地理編碼服務來實現「地址定位」，只要輸入對應的地址，就可以在地圖上標記。</p>
+<h2>啟用 Google Maps Geocoding API</h2>
+<p>要使用地理編碼服務，首先要前往 <a href="https://console.developers.google.com/project/_/apiui/apis/enabled?hl=zh-tw" target="_blank">Google API Console</a>，進入之後，建立新的專案或是選擇現有的專案 ( 不知道怎麼做可以參考 <a href="http://www.oxxostudio.tw/articles/201707/google-maps-1.html" target="_blank">Google Maps (1) - 網頁載入地圖 ( 起手式 )</a> )，接著點選上方「<em>啟用 API 和服務</em>」。</p>
+<p><img src="/img/articles/201802/google-maps-7-geocoding-01.jpg" alt=""></p>
+<p>在搜尋欄位搜尋「<em>Google Maps Geocoding API</em>」，找到後點選並且啟用。</p>
+<p><img src="/img/articles/201802/google-maps-7-geocoding-02.jpg" alt=""></p>
+<p>啟用後，在資訊主頁最下方的 API 就會看到 Google Maps Geocoding API 的訊息，
+依據 Google API 標準方案，免費版本一天可以呼叫這個 API 2500 次，每秒可以 50 次，對於自己要練習或是簡單的程式，應該都相當夠用。</p>
+<p><img src="/img/articles/201802/google-maps-7-geocoding-03.jpg" alt=""></p>
+<h2>使用地址定位</h2>
+<p>要使用地址定位，第一步要先透過<code>google.maps.Geocoder</code>物件存取程式碼內的 Google Maps API 地理編碼服務，而<code>Geocoder.geocode()</code>方法會初始化對地理編碼服務的要求。</p>
+<pre class="prettyprint"><code>geocoder = new google.maps.Geocoder();
+</code></pre><p>接著使用<code>geocoder.geocode({ 'address': address}, callback(results, status))</code>對地址進行地理編碼，在擷取到地理編碼時會依序傳遞兩個參數 results 和 status，results 包含以下的結果物件，而最常使用的應該就是<code>geometry.location</code>，因為這回傳的就是地圖常用的經緯度 LatLng。</p>
+<pre class="prettyprint"><code>results[]: {
+ types[]: string,
+ formatted_address: string,
+ address_components[]: {
+   short_name: string,
+   long_name: string,
+   postcode_localities[]: string,
+   types[]: string
+ },
+ partial_match: boolean,
+ place_id: string,
+ postcode_localities[]: string,
+ geometry: {
+   location: LatLng,
+   location_type: GeocoderLocationType
+   viewport: LatLngBounds,
+   bounds: LatLngBounds
+ }
+}
+</code></pre><p>然而 status 回傳的是成功與否的狀態，如果回傳 OK 表示順利剖析地址並且已至少傳回一個地理編碼，以下面的範例來說，就可以透過地址編碼，將地圖標記放在「總統府」的地址上。</p>
+<blockquote>
+<p>範例：<a href="/demo/201802/google-maps-7-geocoding-demo-01.html" target="_blank">使用地址定位</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map, geocoder;
+
+function initMap() {
+  geocoder = new google.maps.Geocoder();
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17
+  });
+
+  var address = '總統府';
+
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      console.log(status);
+    }
+  });
+}
+</code></pre><p><img src="/img/articles/201802/google-maps-7-geocoding-04.jpg" alt=""></p>
+<h2>簡單的查詢地址功能</h2>
+<p>如果已經會使用地址定位，就可以來透過 HTML 的 input 和 button 做點變化，下面的例子在網頁中放入一個輸入欄位，輸入地址之後按下定位，就可以將自己指定的地址在地圖上置中，並放上標記。</p>
+<blockquote>
+<p>範例：<a href="/demo/201802/google-maps-7-geocoding-demo-02.html" target="_blank">使用地址定位</a></p>
+</blockquote>
+<pre class="prettyprint"><code>submitBtn.on('click', function() {
+  console.log(addressInput.val());
+  geocoder.geocode({
+    'address': addressInput.val()
+  }, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+      });
+    } else {
+      console.log(status);
+    }
+  });
+});
+</code></pre><p><img src="/img/articles/201802/google-maps-7-geocoding-05.jpg" alt=""></p>
+<h2>參考資料</h2>
+<p>地理編碼服務是參考 Google 官方文件 <a href="https://developers.google.com/maps/documentation/javascript/geocoding?hl=zh-tw" target="_blank">地理編碼服務</a>，如果想要了解 results 回傳的參數細節用法就可以前往閱讀，文件的後半段也提到一些地址反查的功能，不過目前還沒想到該怎麼用，就等有用到的時候再寫篇文章記錄一下好了。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <!-- <div id="google-adsense">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8629612872829139"
+         data-ad-slot="5895423206"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br/>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8629612872829139"
+         data-ad-slot="4044542673"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div> -->
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>
