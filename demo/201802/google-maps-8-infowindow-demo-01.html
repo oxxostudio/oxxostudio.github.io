@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (8) - 資訊視窗 demo 01</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <input id="address">
+    <button id="submit">定位</button>
+  </div>
+  <div id="map"></div>
+  <script>
+  var map;
+  var position = {
+    lat: 25.0336962,
+    lng: 121.5643673
+  };
+  var contentString = '<h1>大家好我是資訊視窗</h1>';
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 17,
+      center: position
+    });
+    var marker = new google.maps.Marker({
+      map: map,
+      position: position
+    });
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      position: position,
+      maxWidth:200,
+      pixelOffset: new google.maps.Size(100, -20) 
+    });
+    infowindow.open(map,marker);
+
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>

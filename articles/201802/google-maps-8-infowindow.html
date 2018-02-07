@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (8) - 資訊視窗 - OXXO.STUDIO</title>
+
+  <meta name="description" content="資訊視窗是常見於地圖的元素，通常在我們點選某個地點或地圖標記時，就會彈出資訊視窗，上面會標著一些關於這個地點的內容，這篇就來試試看在地圖上加入資訊視窗的功能。">
+  <meta itemprop="description" content="資訊視窗是常見於地圖的元素，通常在我們點選某個地點或地圖標記時，就會彈出資訊視窗，上面會標著一些關於這個地點的內容，這篇就來試試看在地圖上加入資訊視窗的功能。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-8-infowindow.jpg">
+  <meta property="og:description" content="資訊視窗是常見於地圖的元素，通常在我們點選某個地點或地圖標記時，就會彈出資訊視窗，上面會標著一些關於這個地點的內容，這篇就來試試看在地圖上加入資訊視窗的功能。">
+  <meta property="og:title" content="Google Maps (8) - 資訊視窗">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-8-infowindow.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-8-infowindow.jpg">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--   <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script> -->
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/article.css" rel="stylesheet">
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (8) - 資訊視窗</h1>
+<p>資訊視窗是常見於地圖的元素，通常在我們點選某個地點或地圖標記時，就會彈出資訊視窗，上面會標著一些關於這個地點的內容，這篇就來試試看在地圖上加入資訊視窗的功能。</p>
+<h2>資訊視窗起手式</h2>
+<p>資訊視窗也是 Google 地圖疊加層的一種 ( Google 地圖上所有東西都是疊加層 )，所以要加入資訊視窗，可以透過下列的語法加入，InfoWindowOptions 的部分是資訊視窗的內容與屬性設定。</p>
+<pre class="prettyprint"><code>var infowindow = new google.maps.InfoWindow(InfoWindowOptions)
+</code></pre><h2>資訊視窗設定</h2>
+<p>從起手式可以看到 InfoWindowOptions，這是資訊視窗的設定，這些設定有以下幾種：</p>
+<ul>
+<li><p><strong>content</strong>：資訊視窗的內容，可以是一段 html 或一段文字，內容會自動調整大小，最大不會超過資訊視窗大小，如果需要比較大的資訊視窗顯示，可以改變資訊視窗的 maxWidth 屬性。</p>
+</li>
+<li><p><strong>disableAutoPan</strong>：禁止資訊視窗出現時平移地圖，預設值為 true，也就是如果資訊視窗出現後，會在瀏覽器視窗外，則會自動將地圖平移到可以看到資訊視窗的位置，如果設為 false 就不會自動平移。</p>
+</li>
+<li><p><strong>maxWidth</strong>：資訊視窗最大寬度，輸入數字即可不用加單位，固定單位為 px，。</p>
+</li>
+<li><p><strong>pixelOffset</strong>：資訊視窗相對於其預設出現位置的位移，使用<code>new google.maps.Size(x, y)</code>來設定，除非有特殊需求不然就不設定，採用預設值。</p>
+</li>
+<li><p><strong>position</strong>：資訊視窗的位置，使用經緯度表示，如果不指定，預設會在地圖左上方出現，若將資訊視窗附加到地圖標記上，位置則會依據標記位置來決定。</p>
+</li>
+<li><p><strong>zIndex</strong>：資訊視窗的階層，數字越大在越上面。</p>
+</li>
+</ul>
+<p>舉例來說，下面這段程式碼執行後，會看到一個最大寬度為 200px，以 marker 為主往右偏移 100px 往上偏移 20px，內容寫著「大家好我是資訊視窗」的資訊視窗。</p>
+<blockquote>
+<p>範例：<a href="/demo/201802/google-maps-8-infowindow-demo-01.html" target="_blank">資訊視窗設定</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+var position = {
+  lat: 25.0336962,
+  lng: 121.5643673
+};
+var contentString = '&lt;h1&gt;大家好我是資訊視窗&lt;/h1&gt;';
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: position
+  });
+  var marker = new google.maps.Marker({
+    map: map,
+    position: position
+  });
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString,
+    position: position,
+    maxWidth:200,
+    pixelOffset: new google.maps.Size(100, -20) 
+  });
+  infowindow.open(map,marker);
+
+}
+</code></pre><p><img src="/img/articles/201802/google-maps-8-infowindow-01.jpg" alt=""></p>
+<h2>資訊視窗方法</h2>
+<p>在上面的範例中，看到了一個<code>open()</code>的方法，其實資訊視窗還包含了以下其他的方法：</p>
+<ul>
+<li><p><strong>open()</strong>：開啟資訊視窗，內容包含一個必填參數「map」和一個選填參數「位置」，map 比較容易理解基本上就是這張地圖，位置的話可以指定放在哪個地圖標記 marker，或是直接由經緯度指定位置。</p>
+</li>
+<li><p><strong>close()</strong>：關閉資訊視窗</p>
+</li>
+<li><p><strong>getContent()</strong>：獲得資訊視窗的內容。</p>
+</li>
+<li><p><strong>getPosition()</strong>：獲得資訊視窗的位置。</p>
+</li>
+<li><p><strong>setContent()</strong>：設定資訊視窗的內容。</p>
+</li>
+<li><p><strong>setPosition()</strong>：設定資訊視窗的位置。</p>
+</li>
+<li><p><strong>setZIndex()</strong>：設定資訊視窗的階層。</p>
+</li>
+<li><p><strong>setOptions()</strong>：所有資訊視窗的設定，都可用物件的方法來設定。</p>
+</li>
+</ul>
+<p>舉例來說，下面這段程式碼執行後，marker 上有個資訊視窗，裡頭有個按鈕寫著「點我」，如果你去點這個按鈕，資訊視窗的內容就會發生變化，此外如果你點選 x 關閉資訊視窗，亦可再點擊 marker 把資訊視窗打開。</p>
+<blockquote>
+<p>範例：<a href="/demo/201802/google-maps-8-infowindow-demo-02.html" target="_blank">資訊視窗方法</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+var position = {
+  lat: 25.0336962,
+  lng: 121.5643673
+};
+var a = 1;
+var contentString = '&lt;h1&gt;大家好我是資訊視窗&lt;/h1&gt;&lt;button id="btn"&gt;點我&lt;/button&gt;';
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: position
+  });
+  var marker = new google.maps.Marker({
+    map: map,
+    position: position
+  });
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString,
+    position: position
+  });
+  infowindow.open(map, marker);
+  infowindow.addListener('domready',function() {
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', function() {
+      a = a * -1;
+      if (a &gt; 0) {
+        infowindow.setContent('&lt;h1&gt;嘿嘿&lt;/h1&gt;&lt;button id="btn"&gt;點我&lt;/button&gt;');
+      } else {
+        infowindow.setContent('&lt;h1&gt;哈哈&lt;/h1&gt;&lt;button id="btn"&gt;點我&lt;/button&gt;');
+      }
+    });
+  });
+  marker.addListener('click',function(){
+    infowindow.open(map, marker);
+  });
+}
+</code></pre><p><img src="/img/articles/201802/google-maps-8-infowindow-02.gif" alt=""></p>
+<h2>資訊視窗事件</h2>
+<p>除了設定和方法，在上面的範例中，資訊視窗也可以透過<code>addListener</code>監聽以下幾種事件：</p>
+<ul>
+<li><p><strong>closeclick</strong>：當資訊視窗關閉時 ( 通常是點選 x 關閉 )。</p>
+</li>
+<li><p><strong>content_changed</strong>：當資訊視窗的內容發生改變 ( 可透過<code>setContent</code>改變 )。</p>
+</li>
+<li><p><strong>domready</strong>：當資訊視窗的 HTML DOM 準備好的時候。</p>
+</li>
+<li><p><strong>position_changed</strong>：當資訊視窗的位置發生改變 ( 可透過<code>setPosition</code>改變 )。</p>
+</li>
+<li><p><strong>zindex_changed</strong>：當資訊視窗的階層發生改變 ( 可透過<code>setZIndex</code>改變 )。</p>
+</li>
+</ul>
+<h2>小結</h2>
+<p>資訊視窗就像是在地圖上多了一個圖層，裡面塞入 html 的內容，不過基本上在 Google 地圖裡，疊上去的東西都是疊加層，資訊視窗也不例外，當熟悉了資訊視窗的用法，就更能為自己的客製化地圖，加入更多豐富的資訊。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <!-- <div id="google-adsense">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8629612872829139"
+         data-ad-slot="5895423206"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br/>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8629612872829139"
+         data-ad-slot="4044542673"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div> -->
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/disqus.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/articles.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+
+
+
+</body></html>

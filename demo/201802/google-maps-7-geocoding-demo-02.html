@@ -43,9 +43,6 @@
   </div>
   <div id="map"></div>
   <script>
-  var addressInput = $('#address');
-  var submitBtn = $('#submit');
-
   var map, geocoder;
 
   function initMap() {
@@ -56,35 +53,16 @@
 
     var address = '總統府';
 
-    geocoder.geocode({
-      'address': address
-    }, function(results, status) {
+    geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == 'OK') {
         map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
+            map: map,
+            position: results[0].geometry.location
         });
       } else {
         console.log(status);
       }
-    });
-
-    submitBtn.on('click', function() {
-      console.log(addressInput.val());
-      geocoder.geocode({
-        'address': addressInput.val()
-      }, function(results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-          });
-        } else {
-          console.log(status);
-        }
-      });
     });
   }
   </script>
