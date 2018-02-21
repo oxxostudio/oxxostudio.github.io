@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (9) - 繪製折線 demo 01</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+  var map;
+  var position = {
+    lat: 25.0336962,
+    lng: 121.5643673
+  };
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 17,
+      center: position
+    });
+
+    var polylinePathPoints = [
+      {lat: 25.0336962, lng: 121.5643673},
+      {lat: 25.033755, lng: 121.565412},
+      {lat: 25.031985, lng: 121.565380},
+      {lat: 25.032083, lng: 121.561324}
+    ];
+    var polylinePath = new google.maps.Polyline({
+      path: polylinePathPoints,
+      geodesic: true,
+      strokeColor: '#008800',
+      strokeOpacity: 0.8,
+      strokeWeight: 20,
+      editable: true,
+      geodesic: false,
+      draggable: false
+    });
+
+    polylinePath.setMap(map);
+  
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>
