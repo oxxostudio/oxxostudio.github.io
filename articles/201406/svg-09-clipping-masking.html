@@ -81,7 +81,7 @@
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-08-text.html" target="_blank">製作文字跟隨路徑</a>、<a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html" target="_blank">漸層填色</a> </p>
 </blockquote>
-<h2>Cliping</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Cliping</h2>
 <p>要建立一個 Clipping 的圖形，首先要在定義檔內放入<code>&lt;clipPath&gt;&lt;/clipPath&gt;</code>的標籤，記得要放入 id，這樣要被剪裁的圖形才能夠對應，接著在<code>&lt;clipPath&gt;&lt;/clipPath&gt;</code>裏頭放入一些圖形，這些圖形代表的是：<strong>這些圖形以外的都會被剪裁</strong>，可以看看下面的範例，圓形原本還有黃色線的面積，但是因為被藍色的矩形剪裁了，所以藍色區域以外的圓形都消失了。  </p>
 <pre class="prettyprint"><code>&lt;defs&gt;  
   &lt;clipPath id="a1"&gt;

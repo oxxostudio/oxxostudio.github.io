@@ -79,7 +79,7 @@
 <p><img src="/img/articles/201406/css-word-break.jpg" class="preview-img" alt=""></p>
 <p>由於響應式網頁技術的興起，間接造成排版上不小的挑戰和創新，其中的一小部分就是文字的排版，這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來<code>pre</code>的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。</p>
 <p>在網頁裡頭文字斷行會遇到兩種情況，第一種就是單純的文字，第二種就是被<code>pre</code>所包覆的文字，通常在<code>pre</code>裏頭，都會是完整的呈現程式碼，也是最基本展現程式碼的標籤，或許是因為這樣子的差異，我們如果只將斷行的 CSS 設定在網頁上，對於<code>pre</code>內的程式碼是沒有作用的 ( 不過如果有設定<code>overflow:scroll</code>這種方式又另當別論 )，以下整理了所有斷行的方式，如果未來又遇到的話，也才有個比較完整的參考。</p>
-<h2>word-wrap</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>word-wrap</h2>
 <p>強迫文字斷行，預設是 normal 不會斷行，但這是針對<strong>過長的英文文字</strong>，如果是<strong>整段句子</strong>還是會斷行的，我們今天要讓英文字斷行，可以直接在 CSS 寫上<code>word-wrap:break-word;</code>，這樣過長的文字就會直接被折行，除了直接由外框寬度折行，也可以在過長的文字當中加入<code>&amp;shy;</code>這個瀏覽器不會顯示的語法，這樣子過長的英文字，就會在有加入<code>&amp;shy;</code>的地方折行，同時補上「-」的符號。( 也可以加入<code>&amp;#8203;</code>這個代碼，但不會補「-」，只會補上空白 )<br>可以參考這個範例：<a href="http://codepen.io/oxxo/pen/nisIq" target="_blank">http://codepen.io/oxxo/pen/nisIq</a>  </p>
 <p><img src="/img/articles/201406/20140602_2_02.png" alt="word-wrap"></p>
 <h2>white-space</h2>

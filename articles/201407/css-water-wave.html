@@ -81,7 +81,7 @@
 <blockquote>
 <p>範例：<a href="http://goo.gl/3VQRH7" target="_blank">CSS Water Wave</a></p>
 </blockquote>
-<h2>div 的層層疊疊</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>div 的層層疊疊</h2>
 <p>雖然 webkit 具有遮色片的能力 ( webkit mask )，不過就如同我之前在 <a href="http://www.oxxostudio.tw/articles/201407/css-blur.html" target="_blank">CSS 模糊效果</a> 所提到的，webkit 雖然強大，但在跨瀏覽器上總是它的罩門，況且在效能上也是往往會造成困擾 ( 這也是為什麼 chrome 要這麼吃資源了@@ )，因此撇開 webkit 不談，我們該用什麼方法，才可以做出像 flash 水波的效果呢？答案就是用「<strong>疊</strong>」的，這個水波效果的原理其實就是用六個 div 疊在一起，接著最重要的就是將背景設為固定：<code>background-attachment:fixed;</code>，然後讓背景的尺寸有大有小，就可以完成了，只要把六個 div 疊在一起，搭配 CSS 的 animation，就可以讓六個 div 依序出現。</p>
 <p>HTML:</p>
 <pre class="prettyprint"><code>&lt;div class="wave wave5"&gt;&lt;/div&gt;

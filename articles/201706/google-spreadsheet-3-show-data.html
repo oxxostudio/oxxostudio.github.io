@@ -77,7 +77,7 @@
 
 <h1>Google 試算表 (3) - 網頁顯示儲存格數值</h1>
 <p>只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。</p>
-<h2>使用 debug 來測試</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 debug 來測試</h2>
 <p>回想一下，在 <a href="google-spreadsheet-1.html" target="_blank">Google 試算表 (1) - 讀取試算表資訊</a> 有介紹 debug 的用法，這裡我們把前一篇的程式碼做點小修改，變數的部分全部由 debug.gs 提供，這樣也才可以比較有彈性的指定不同儲存格或是指定不同試算表。</p>
 <p>先看到 debug.gs，把要抓取的儲存格 row 與 column 號碼變成 parameter 的屬性，網址和工作表名稱也變成變數，執行後把 parameter 傳給 doGet 即可。</p>
 <pre class="prettyprint"><code>function debug() {

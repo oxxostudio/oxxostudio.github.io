@@ -80,7 +80,7 @@
 <blockquote>
 <p>參考 <a href="http://www.oxxostudio.tw/articles/201409/svg-16-storke-miterlimit.html" target="_blank">SVG 研究之路 (16) - Stroke-miterlimit</a>、<a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" target="_blank">SVG 研究之路 (6) - stroke 邊框</a></p>
 </blockquote>
-<h2>使用 marker</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 marker</h2>
 <p>不過 marker 並不是寫在 stroke 的屬性裏頭，而是用<code>defs</code>來定義，再使用<code>marker-start</code>、<code>marker-mid</code>和<code>marker-end</code>來將其放入線段當中，原本我想使用 illustrator 來表現，不過在 illustrator 裏頭，是用<code>g</code> ( group ) 把符號和線段組合，並不是使用 marker 的方式，但我們仍然可以使用 illustrator 來繪製圖案。</p>
 <p>例如今天要做一支愛神之箭，必須要有愛心箭頭和羽毛尾巴，利用 illustrator 繪製這兩個形狀之後存成 SVG ( 就可以看到程式碼 )，接著在<code>defs</code>裏頭加入 marker，就可以和線段串接在一起。  </p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="400"&gt;

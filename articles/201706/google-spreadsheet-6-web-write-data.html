@@ -77,7 +77,7 @@
 
 <h1>Google 試算表 (6) - 網頁寫入資料</h1>
 <p>經過上一篇的介紹，要把資料寫入 Google 試算表中應該不困難了，接下來就要來修改 Google App Script，讓我們可以透過網頁，將資料寫入 Google 試算表中，真的把試算表拿來當作資料庫儲存資料使用。</p>
-<h2>parameter 資料格式</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>parameter 資料格式</h2>
 <p>在寫入資料的時候，在 debug.gs 裡面是正常，但要用網頁寫入就會被卡住，追根究底下去發現原來是因為資料格式導致，因為要寫入資料的時候，會向應用程式發送 HTTP GET 的請求，所以必須要按照 Google 所提出的規範來撰寫。</p>
 <blockquote>
 <p>參考：<a href="https://developers.google.com/apps-script/guides/web#url_parameters" target="_blank">URL parameters</a></p>
