@@ -77,19 +77,19 @@
 
 <h1>Google 語音辨識 API</h1>
 <p>又是因為工作的緣故，接觸到 Google 語音辨識的 api，實在覺得還滿有趣的，由於是 Chrome 內建的功能，所以不需要額外載入其他資源就可以運行，算是相當的便利，不過也很可惜的現在就只有桌上版的 Chrome 才支援，可惜了連 iPhone 和 iPad 都不能跑呀！( 不過我相信未來應該會支援的，畢竟瀏覽器的發展就是這樣咩，而且 iOS 平台的 Google App 也有內建語音辨識呀，但也不太一定，畢竟 iOS 上頭有個 Siri... )</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>體驗語音辨識</h2>
 <p>有興趣的人可以先到這個 demo 網站看看：<a href="https://www.google.com/intl/en/chrome/demos/speech.html" target="_blank">https://www.google.com/intl/en/chrome/demos/speech.html</a>，下拉選單選擇自己要念的語言，按一下右上的麥克風，就可以開始玩語音輸入了。</p>
 <p><img src="/img/articles/201509/20150906_1_02.jpg" alt="Google 語音辨識 API"></p>
+<h2>實作語音辨識</h2>
 <p>接著要來看一下怎麼實作語音辨識，語音辨識一開始要判斷「<strong>webkitSpeechRecognition</strong>」有沒有存在瀏覽器裡，因為這是內建於瀏覽器的 api，從 webkit 的字樣我們也可以知道，Firefox 和 IE 是一定 GG 的，所以一開始的程式可以這樣寫：</p>
 <pre class="prettyprint"><code>if (!('webkitSpeechRecognition' in window)) {
   // do something...
 } else {
   // do something...
 }
-</code></pre><p><br></p>
-<p>if 裡面就可以放個 alert 或顯示文字作為警告，重點放在 else 裏頭，一開始我們要先建立 webkitSpeechRecognition 物件，接著我們才可以使用這個物件的屬性來做設定。</p>
+</code></pre><p>if 裡面就可以放個 alert 或顯示文字作為警告，重點放在 else 裏頭，一開始我們要先建立 webkitSpeechRecognition 物件，接著我們才可以使用這個物件的屬性來做設定。</p>
 <pre class="prettyprint"><code>var recognition = new webkitSpeechRecognition();
-</code></pre><p><br></p>
-<p>再來我們來瞭解一下有哪些屬性可以用：</p>
+</code></pre><p>再來我們來瞭解一下有哪些屬性可以用：</p>
 <ul>
 <li><p><strong>recognition.continuous=true/false</strong></p>
 <p>  這個屬性是布林值，如果設定為 true，表示除非我們停止辨識，不然就會一直持續的辨識語音轉換為文字，如果設定為 false，在辨識一段話完成之後就會結束辨識。</p>
@@ -154,8 +154,9 @@ recognition.start();
 <p>辨識的可信度，是一個由 0 到 1 的浮點數，表示辨識的準確度。</p>
 </li>
 </ul>
-<p><br>
-有了上面的屬性列表，我們就可以做一個即時辨識並把文字顯示在網頁上頭的範例：( 範例：<a href="/demo/201509/web-speech-api-demo02.html" target="_blank">web-speech-api-demo02.html</a> )</p>
+</li>
+</ul>
+<p>有了上面的屬性列表，我們就可以做一個即時辨識並把文字顯示在網頁上頭的範例：( 範例：<a href="/demo/201509/web-speech-api-demo02.html" target="_blank">web-speech-api-demo02.html</a> )</p>
 <pre class="prettyprint"><code>var show = document.getElementById('show');
 var recognition = new webkitSpeechRecognition();
 
@@ -177,9 +178,8 @@ recognition.onresult=function(event){
 };
 
 recognition.start();  
-</code></pre><p>  <img src="/img/articles/201509/20150906_1_03.jpg" alt="Google 語音辨識 API"></p>
-</li>
-</ul>
+</code></pre><p><img src="/img/articles/201509/20150906_1_03.jpg" alt="Google 語音辨識 API"></p>
+<h2>小結</h2>
 <p>以上就是利用現成的 Chrome 語音辨識 API 的應用實例，記得要使用的時候一定要有網路，而且網路的速度也決定了辨識的速度，畢竟他的運作原理是把我們的聲音錄製即時傳送出去辨識，所以網路越慢來往的時間就會拉大，最後再附上一個我用語音辨識來操控自走車的影片，真的滿有趣的喔！</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ERY1ukVxTJM" frameborder="0" allowfullscreen=""></iframe>
 

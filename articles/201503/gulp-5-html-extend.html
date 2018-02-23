@@ -78,6 +78,7 @@
 <h1>Gulp 學習 5 - 建立 HTML 模板</h1>
 <p><img src="/img/articles/201503/gulp-5-html-extend.jpg" class="preview-img" alt=""></p>
 <p>這個部落格經營了快一年，都是利用 fire.app 替我建置「純靜態」的 blog，換句話說，其實我只是撰寫內容，然後藉由 fire.app 幫我把內容和 layout 合併在一起，如果有興趣的人可以直接購買 <a href="http://fireapp.kkbox.com/doc/tw/index.html" target="_blank">fire.app</a> 下來使用即可。不過這一篇並不是要介紹 fire.app，而是要利用 gulp，建立 HTML 的模板，同樣也是將 layout 和 content 分開，然後在預覽與上線的時候再合併。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2>
 <p>這裡我們要用到的是 gulp-html-extend 這個套件 ( 參考 <a href="https://www.npmjs.com/package/gulp-html-extend" target="_blank">gulp-html-extend</a> )，和之前介紹過的 gulp-html-replace 類似，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，在於 gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。</p>
 <p>以下面的例子來說，首先我們建立一個 layout.html 的樣版，裡頭是要共用的內容，在裡面可以看到有兩個註解，分別是<code>&lt;!-- @ @ placeholder= title --&gt;</code>和<code>&lt;!-- @ @ placeholder= content --&gt;</code>，這就是我們要合併的部分。( 因為兩個 @ 會被 markdown 用消失，所以這邊中間有空格 )</p>
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
@@ -94,8 +95,7 @@
     &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p><br>
-接著看到要和 layout.html 合併的頁面，分別是 index.html 和 index2.html，裏頭用註解區塊很清楚的標示哪裡是 title ，哪裡是 content，屆時合併之後，index.html 和 index2.html 就會具備相同的 layout了。</p>
+</code></pre><p>接著看到要和 layout.html 合併的頁面，分別是 index.html 和 index2.html，裏頭用註解區塊很清楚的標示哪裡是 title ，哪裡是 content，屆時合併之後，index.html 和 index2.html 就會具備相同的 layout了。</p>
 <p>未合併的 index.html</p>
 <pre class="prettyprint"><code>&lt;!-- @ @ master  = ../layout.html--&gt;
 
@@ -120,8 +120,7 @@
     我是 index2
 &lt;/main&gt;
 &lt;!-- @ @close--&gt;
-</code></pre><p><br>
-合併之後就會變成這樣：</p>
+</code></pre><p>合併之後就會變成這樣：</p>
 <p>合併的 index.html</p>
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -156,8 +155,8 @@
 &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p><br>
-看完 html 是如何進行合併，再來就是 gulpfile.js 要怎麼寫呢？一開始同樣是要引入套件，然後建立名為 extend 的任務，src 設定目標資料夾內的 html 檔案，然後設定 ( verbose 設定為 false 就可以在合併之後把註解移除 )</p>
+</code></pre><h2>撰寫 gulpfile.js</h2>
+<p>看完 html 是如何進行合併，再來就是 gulpfile.js 要怎麼寫呢？一開始同樣是要引入套件，然後建立名為 extend 的任務，src 設定目標資料夾內的 html 檔案，然後設定 ( verbose 設定為 false 就可以在合併之後把註解移除 )</p>
 <pre class="prettyprint"><code>var gulp      = require('gulp'),
     extender    = require('gulp-html-extend');
 
@@ -168,8 +167,7 @@ gulp.task('extend', function () {
 });
 
 gulp.task('default',['extend']);
-</code></pre><p><br>
-以上就是利用 Gulp 建立 HTML 模板的方法，下圖是整個 HTML 的資料夾結構。</p>
+</code></pre><p>以上就是利用 Gulp 建立 HTML 模板的方法，下圖是整個 HTML 的資料夾結構。</p>
 <p><img src="/img/articles/201503/20150309_1_02.jpg" alt="Gulp 學習 5 - 建立 HTML 模板"></p>
 
 

@@ -79,6 +79,7 @@
 <p><img src="/img/articles/201503/gulp-2-compress-js-css.jpg" class="preview-img" alt=""></p>
 <p>通常我們在寫網頁的時候，都會引入許多的 JS 和 CSS，而每引入一個也就會產生一個 request，當引入的越來越多，在效能和時間的等待上也就相對付出的越來越多，雖然在對於現在的網路速度和瀏覽器效能而言，看似問題都不大，但是對於一個流量超大的網站來說，一個使用者多了一個 request，在效能的處理上就相對重要許多，因此，在做網頁的時候，往往至少會分成兩個階段，一個階段是「開發時期」的版本，一個階段是「發佈上線」的版本，最主要就是會把「開發」和「上線」分開，如此一來才不會一時疏忽把還沒開發好的版本給對外公開了。</p>
 <p>在上線版本裡頭，就會使用到打包和壓縮過的 JS 或 CSS，這類型的 JS 或 CSS 會在檔案名稱加個「.min」進行區隔，而一個打包壓縮過的 JS 和 CSS，基本上可能是好幾個檔案組合在一起，過去我會利用 Yahoo 或 Google 提供的壓縮程式來處理，但許多步驟仍然要手工處理，但學習了 Gulp 之後，利用 Gulp 的套件，非常簡單的就可以做到打包壓縮的動作，甚至還可以自動重新命名檔案，一氣呵成，這篇主要會介紹如何打包壓縮的做法。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝相關套件</h2>
 <p>如同上一篇描述的，我們要先用<code>npm init</code>將專案初始化 ( 參考前一篇 )，接著輸入以下指令，安裝 gulp、gulp-minify-css、gulp-uglify、gulp-concat、gulp-rename 這五個 Node Module。( Mac 可能要加 sudo )</p>
 <p>npm install gulp gulp-minify-css gulp-uglify gulp-concat gulp-rename -save-dev</p>
 <p>安裝完成之後，先來建立一下我們檔案的目錄，首先新增一個 app 的資料夾，裡頭再放入一個 CSS 與 JS 的資料夾，分別在這些資料夾內新增一些 CSS 與 JS 檔案，接著在與 app 資料夾的同一層，新增 build 的資料夾，作為最後完成發佈使用，完成後的目錄應該長成這樣：</p>
@@ -90,6 +91,7 @@
 <li>gulp-uglify：混淆並壓縮 JS</li>
 <li>gulp-rename：重新命名檔案</li>
 </ul>
+<h2>撰寫 gulpfile.js</h2>
 <p>大概明白之後，就要來撰寫 gulpfile.js 了，首先第一個步驟，就是要引入這些套件：</p>
 <pre class="prettyprint"><code>var gulp       = require('gulp'),
     concat     = require('gulp-concat'),

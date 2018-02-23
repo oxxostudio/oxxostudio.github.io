@@ -81,7 +81,7 @@
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html" target="_blank">d3.js 基本的 transition</a></p>
 </blockquote>
-<p>tween 的用法其實滿容易的，就是<code>tween(name,factory)</code>，當中的 name 是我們自訂這個補間動畫的名稱，不過這個 name 實際上沒有太大的用處，彷彿是識別用的 ( 可以參考 stackoverflow 的<a href="http://stackoverflow.com/questions/25002417/d3-use-of-the-name-argument-in-transition-tween" target="_blank">這篇</a>，也是有人對這個 name 有同樣的困惑 )，至於第二個參數 factory 就十分重要了，裏頭主要會放上我們需要進行補間動畫的程式，以下面的這個例子來看，透過<code>interpolateRound</code>，可以計算 0 到 100 之間的補間數字，然後再透過 tween 本身的 return，就可以非常簡單的做出一個 0 到 100 跳動的效果。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo1.html" target="_blank">svg-d3-15-transition-tween-demo1.html</a> ) </p>
+<div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>tween 的用法其實滿容易的，就是<code>tween(name,factory)</code>，當中的 name 是我們自訂這個補間動畫的名稱，不過這個 name 實際上沒有太大的用處，彷彿是識別用的 ( 可以參考 stackoverflow 的<a href="http://stackoverflow.com/questions/25002417/d3-use-of-the-name-argument-in-transition-tween" target="_blank">這篇</a>，也是有人對這個 name 有同樣的困惑 )，至於第二個參數 factory 就十分重要了，裏頭主要會放上我們需要進行補間動畫的程式，以下面的這個例子來看，透過<code>interpolateRound</code>，可以計算 0 到 100 之間的補間數字，然後再透過 tween 本身的 return，就可以非常簡單的做出一個 0 到 100 跳動的效果。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo1.html" target="_blank">svg-d3-15-transition-tween-demo1.html</a> ) </p>
 <pre class="prettyprint"><code>var show = d3.select('#show');
 
 show.transition().tween("number", function() {

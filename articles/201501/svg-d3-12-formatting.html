@@ -81,16 +81,15 @@
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201412/svg-d3-11-time.html" target="_blank">SVG D3.js - 時間格式 ( Time Formatting )</a>、<a href="https://www.google.com.tw/search?q=Tidying+Up+Art&amp;es_sm=122&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ei=iYuyVK_nLei9mgX424KgBw&amp;ved=0CAgQ_AUoAQ&amp;biw=1527&amp;bih=850#imgdii=_" target="_blank">Tidying Up Art</a></p>
 </blockquote>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>格式化數字</h2>
 <p>d3.js 格式化數字的方法，就像下面的範例這樣，先宣告一個格式化的方法，然後把數字放進去，就會得到格式化的「字串」。( 注意，得到的結果是字串 )</p>
 <pre class="prettyprint"><code>var formatting = d3.format("");
 formatting(123); // '123'
-</code></pre><p><br>
-知道用法之後，就來看看 d3.js 格式化數據的用法，下面這串是 d3.js 所提供的格式，每個項目都是可以單獨填寫或混合使用，這時候看不明白不打緊，後面會繼續介紹相關用法。</p>
+</code></pre><p>知道用法之後，就來看看 d3.js 格式化數據的用法，下面這串是 d3.js 所提供的格式，每個項目都是可以單獨填寫或混合使用，這時候看不明白不打緊，後面會繼續介紹相關用法。</p>
 <blockquote>
 <p>[[fill]align][sign][symbol][0][width][,][.precision][type]</p>
 </blockquote>
-<p><br>
-首先我們先從<code>type</code>看起，因為 d3.js 的官方文件也是最著墨在這邊，<code>type</code>有以下幾種，不同的<code>type</code>就會把數字產生成不同格式的字串顯示。</p>
+<p>首先我們先從<code>type</code>看起，因為 d3.js 的官方文件也是最著墨在這邊，<code>type</code>有以下幾種，不同的<code>type</code>就會把數字產生成不同格式的字串顯示。</p>
 <blockquote>
 <ul>
 <li>e：數字的指數 ( 使用 <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number/toExponential" target="_blank">Number.toExponential</a> )</li>
@@ -108,8 +107,7 @@ formatting(123); // '123'
 <li>s：以 r 為基礎，但帶有一個單位碼 ( 例如 9.5M、或 1.00µ  )</li>
 </ul>
 </blockquote>
-<p><br>
-了解有這些 type 之後，直接用一個範例來看看數據產生出來的樣子為何。 ( 範例都要開 console 出來看喔 )</p>
+<p>了解有這些 type 之後，直接用一個範例來看看數據產生出來的樣子為何。 ( 範例都要開 console 出來看喔 )</p>
 <p>e 範例：<a href="/demo/201501/svg-d3-12-formatting-demo1.html" target="_blank">svg-d3-12-formatting-demo1.html</a></p>
 <pre class="prettyprint"><code>var _e = d3.format("e");
 
@@ -336,8 +334,7 @@ console.log(_s3(0.01));    //10.000m
 console.log(_s3(0.0001));  //100.00µ
 console.log(_s3(-100));    //-100.00
 console.log(_s3(-0.01));   //-10.000m
-</code></pre><p><br>
-以上的範例應該就可以看出<code>type</code>對於格式化數據的影響力，上述的範例除了是介紹 type，其實無形當中也介紹了一些額外的格式化方法，例如我們在格式化<code>type</code>的前面加上一個整數，就是 d3.js Formatting 裏頭的<code>[width]</code>，也就是格式化數據的寬度，換句話說就是有幾個整數的位數，這也是為什麼在上面的範例，會看到有些轉換出來的數據格式「<strong>前面有空格</strong>」了;至於加上小數點，就是<code>[.precision]</code>，意思是「<strong>加上小數點之後總共會有幾位數</strong>」，也因此套用後就會發現整數後面多了一些 0 的小數在後面。</p>
+</code></pre><p>以上的範例應該就可以看出<code>type</code>對於格式化數據的影響力，上述的範例除了是介紹 type，其實無形當中也介紹了一些額外的格式化方法，例如我們在格式化<code>type</code>的前面加上一個整數，就是 d3.js Formatting 裏頭的<code>[width]</code>，也就是格式化數據的寬度，換句話說就是有幾個整數的位數，這也是為什麼在上面的範例，會看到有些轉換出來的數據格式「<strong>前面有空格</strong>」了;至於加上小數點，就是<code>[.precision]</code>，意思是「<strong>加上小數點之後總共會有幾位數</strong>」，也因此套用後就會發現整數後面多了一些 0 的小數在後面。</p>
 <p>除了加上整數和小數，當我們加上<strong>逗號</strong>，數據就會自動被逗號來區隔：(範例：<a href="/demo/201501/vg-d3-12-formatting-demo14.html" target="_blank">svg-d3-12-formatting-demo14.html</a>)</p>
 <pre class="prettyprint"><code>var _comma = d3.format(",");
 
@@ -345,8 +342,7 @@ console.log(_comma(1000000));   //1,000,000
 console.log(_comma(10000));     //10,000
 console.log(_comma(1));         //1
 console.log(_comma(-10000));    //-10,000
-</code></pre><p><br>
-我們也可以<strong>用組合的方式</strong>來組合，但組合的順序記得要按照這個規則進行：(範例：<a href="/demo/201501/svg-d3-12-formatting-demo15.html" target="_blank">svg-d3-12-formatting-demo15.html</a>)</p>
+</code></pre><p>我們也可以<strong>用組合的方式</strong>來組合，但組合的順序記得要按照這個規則進行：(範例：<a href="/demo/201501/svg-d3-12-formatting-demo15.html" target="_blank">svg-d3-12-formatting-demo15.html</a>)</p>
 <blockquote>
 <p>[[fill]align][sign][symbol][0][width][,][.precision][type]</p>
 </blockquote>
@@ -373,8 +369,7 @@ console.log(d3.format("10,.5b")(10000));   //10,011,100,010,000
 console.log(d3.format("10,.5o")(10000));   //    23,420
 console.log(d3.format("10,.5x")(10000));   //     2,710
 console.log(d3.format("10,.5s")(10000));   //    10.000k
-</code></pre><p><br>
-了解組合之後，接著看到<code>[0]</code>，意思是我們可以在<strong>剛剛留白的地方補 0</strong>，看看下面的範例就會清楚了：(範例：<a href="/demo/201501/svg-d3-12-formatting-demo16.html" target="_blank">svg-d3-12-formatting-demo16.html</a>)</p>
+</code></pre><p>了解組合之後，接著看到<code>[0]</code>，意思是我們可以在<strong>剛剛留白的地方補 0</strong>，看看下面的範例就會清楚了：(範例：<a href="/demo/201501/svg-d3-12-formatting-demo16.html" target="_blank">svg-d3-12-formatting-demo16.html</a>)</p>
 <pre class="prettyprint"><code>console.log(d3.format("08,.5e")(1000));   //1.00000e+3
 console.log(d3.format("08,.5g")(1000));   //01,000.0
 console.log(d3.format("08,.5f")(1000));   //1,000.00000
@@ -386,8 +381,7 @@ console.log(d3.format("08,.5b")(1000));   //1,111,101,000
 console.log(d3.format("08,.5o")(1000));   //0,001,750
 console.log(d3.format("08,.5x")(1000));   //0,000,3e8
 console.log(d3.format("08,.5s")(1000));   //001.0000k
-</code></pre><p><br>
-再來就是<code>[sign][symbol]</code>，這兩個沒有太大的區隔，主要就是一些標記符號例如 $ 這個錢幣符號，而正負號也是可以添加的，不過負號只有在負數的情形才會出現。(範例：<a href="/demo/201501/svg-d3-12-formatting-demo17.html" target="_blank">svg-d3-12-formatting-demo17.html</a>)</p>
+</code></pre><p>再來就是<code>[sign][symbol]</code>，這兩個沒有太大的區隔，主要就是一些標記符號例如 $ 這個錢幣符號，而正負號也是可以添加的，不過負號只有在負數的情形才會出現。(範例：<a href="/demo/201501/svg-d3-12-formatting-demo17.html" target="_blank">svg-d3-12-formatting-demo17.html</a>)</p>
 <pre class="prettyprint"><code>console.log(d3.format("$08,.5e")(1000));   //$1.00000e+4
 console.log(d3.format("$08,.5g")(1000));   //$10,000
 console.log(d3.format("$08,.5f")(1000));   //$10,000.00000
@@ -401,8 +395,7 @@ console.log(d3.format("-08,.5x")(1000));   //0,000,3e8
 console.log(d3.format("-08,.5s")(1000));   //001.0000k
 console.log(d3.format("-08,.5x")(-1000));  //-0,000,3e8
 console.log(d3.format("-08,.5s")(-1000));  //-001.0000k
-</code></pre><p><br>
-最後就是<code>[[fill]align]</code>了，這可以在空白填充字串，然後把我們原本的數字對齊，對齊的方式有三種：</p>
+</code></pre><p>最後就是<code>[[fill]align]</code>了，這可以在空白填充字串，然後把我們原本的數字對齊，對齊的方式有三種：</p>
 <blockquote>
 <ul>
 <li>"^" 置中</li>
@@ -414,8 +407,7 @@ console.log(d3.format("-08,.5s")(-1000));  //-001.0000k
 <pre class="prettyprint"><code>console.log(d3.format("哈^8")(1));   //哈哈哈哈1哈哈哈
 console.log(d3.format("哈&lt;8")(1));   //1哈哈哈哈哈哈哈
 console.log(d3.format("哈&gt;8")(1));   //哈哈哈哈哈哈哈1
-</code></pre><p><br>
-以上就是 d3.js 數字格式 ( Formatting ) 的用法，相信熟練之後，在數據視覺化的圖表裡，就可以把顯示的數字做一個統一的格式處理囉！ </p>
+</code></pre><p>以上就是 d3.js 數字格式 ( Formatting ) 的用法，相信熟練之後，在數據視覺化的圖表裡，就可以把顯示的數字做一個統一的格式處理囉！ </p>
 
 
       <div class="social-icon">

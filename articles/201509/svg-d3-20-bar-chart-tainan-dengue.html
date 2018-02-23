@@ -78,7 +78,7 @@
 <h1>SVG D3.js - 直條圖 ( 以登革熱數據為例 )</h1>
 <p><img src="/img/articles/201509/svg-d3-20-bar-chart-tainan-dengue.jpg" class="preview-img" alt=""> </p>
 <p>上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。</p>
-<p>因為要繪圖，就需要資料，我這邊使用的資料是台南的登革熱每日病例 ( 參考 <a href="http://data.tainan.gov.tw/dataset/dengue-dist/resource/fb2e5df8-d5dc-42d6-9fc2-8d638205a7aa" target="_blank">104年臺南市本土登革熱病例數</a>，使用 csv 需要跨域，可以用後端爬一份放在自己的 server 即可，不過覺得台南市政府可以用成英文啦，中文會有編碼的問題呀！ )，我抓了一份 csv 檔，用裡面的「確診日期」以及「編號 ( 加總就變成病例數 )」，就可以得到我們要畫圖的 data。</p>
+<div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>因為要繪圖，就需要資料，我這邊使用的資料是台南的登革熱每日病例 ( 參考 <a href="http://data.tainan.gov.tw/dataset/dengue-dist/resource/fb2e5df8-d5dc-42d6-9fc2-8d638205a7aa" target="_blank">104年臺南市本土登革熱病例數</a>，使用 csv 需要跨域，可以用後端爬一份放在自己的 server 即可，不過覺得台南市政府可以用成英文啦，中文會有編碼的問題呀！ )，我抓了一份 csv 檔，用裡面的「確診日期」以及「編號 ( 加總就變成病例數 )」，就可以得到我們要畫圖的 data。</p>
 <p>接著我使用了 d3.nest 把「日期」變成「key」，如此一來就可以知道每個日期裡面的「陣列長度」，陣列長度也就是病例數，因為透過 d3.nest 的轉換，已經變成陣列，不過因為後續需要編號來做位置排列、升冪、降冪排列，所以新增一個名為 _id 的屬性。不過因為這份 CSV 數據的日期格式，讓我在做升冪降冪排序遇到一些問題 ( 9/2 會在 9/10 的後面 )，所以我就再度利用 d3.nest 把剛剛的 _id 當 key，用 _id 來排序就解決了。( 範例：<a href="/demo/201509/svg-d3-20-bar-chart-tainan-dengue-demo01.html" target="_blank">svg-d3-20-bar-chart-tainan-dengue-demo01.html</a> )</p>
 <pre class="prettyprint"><code>d3.csv("tainan-dengue.csv", function(data) {
   var day = d3.nest()

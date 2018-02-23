@@ -77,10 +77,12 @@
 
 <h1>做個簡單的爬蟲 ( 幣值、空污 PM2.5 )</h1>
 <p>幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>資料從哪裡找？</h2>
 <p>爬空污數據除了直接爬網頁資料外，也可以從「<a href="http://data.gov.tw/node/6074" target="_blank">空氣品質即時污染指標</a>」這個政府開放資料平台來撈，這裏有提供 CSV、JSON 和 XML 的格式，不過因為這篇在爬蟲，所以我要爬的網站是這個：「<a href="http://taqm.epa.gov.tw/taqm/tw/Pm25Index.aspx" target="_blank">即時細懸浮微粒指標</a>」，加上這個網站更新的速度比開放資料的速度快 ( 雖然都是一小時更新一次，不過還是快樂十幾分鐘左右 )，所以就直接爬數據囉！</p>
 <p><img src="/img/articles/201512/20151223_1_02.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
 <p>既然要爬，就要先來看看他的網頁原始碼，才知道要從何爬起，看了原始碼才發現他不是用什麼 json 資料的載入，而是把數據直接寫在原始碼內，意思就是只要爬出來 class 為 jTip 的 area，就可以獲得資料。</p>
 <p><img src="/img/articles/201512/20151223_1_03.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
+<h2>撰寫 Node.js</h2>
 <p>知道要爬什麼東西之後，就要來寫 NodeJS 了，這裏先 npm install 兩個模組，分別是「request」和「cheerio」，request 可以想像成就是在後端載入一個網頁，而 cheerio 就是這個網頁裡面的 jQuery ( 用法一樣，因為它的核心就是 jQuery )，install 之後我這邊建立一個 test.js，開頭先寫入這三行，request 和 cheerio 沒問題，fs 則是 NodeJS 的檔案系統模組，包含讀取、刪除、寫入、更名等等的檔案操作。</p>
 <pre class="prettyprint"><code>var request = require("request");
 var cheerio = require("cheerio");
