@@ -80,6 +80,7 @@
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a></p>
 </blockquote>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 line() 畫線</h2>
 <p>先來了解一下如何利用 D3.js 的 line() 畫線，一開始一定要有一些 data，而且這些 data 必須要有 x 座標和 y 座標 ( 因為有「點」才有「線」，點是由 x 與 y 構成 )，因此我們的 data 陣列的值，都會是個「具有 x 與 y 屬性的物件」 ( 大括號為物件，內容是屬性 )，第一個點的座標就是<code>data[0].x</code>和<code>data[0].y</code>，依此類推。</p>
 <pre class="prettyprint"><code>var data = [
   {x:10,y:10},
@@ -87,16 +88,14 @@
   {x:60,y:50},
   {x:100,y:30}
 ];
-</code></pre><p><br>
-有了 data 之後，再來就是要把 data 餵給 SVG 的線條上的每個點，讓它們按照 data 長出來，首先先放一個 svg 到 body 裏頭</p>
+</code></pre><p>有了 data 之後，再來就是要把 data 餵給 SVG 的線條上的每個點，讓它們按照 data 長出來，首先先放一個 svg 到 body 裏頭</p>
 <pre class="prettyprint"><code>  var svg = d3.select('body')
     .append('svg')
     .attr({
       'width': 800,
       'height': 800
     });
-</code></pre><p><br>
-然後使用 line().x() 以及 line().y()，讓座標由 data 長出來</p>
+</code></pre><p>然後使用 line().x() 以及 line().y()，讓座標由 data 長出來</p>
 <pre class="prettyprint"><code>  var line = d3.svg.line()
     .x(function(d) {
       return d.x;
@@ -104,8 +103,7 @@
     .y(function(d) {
       return d.y;
     });
-</code></pre><p><br>
-最後就是利用 append 的方式在 svg 裏頭放入一個 path，d 是用<code>line(data)</code>將 data 餵給剛剛的 line，如此各個點的座標就會依序長出 </p>
+</code></pre><p>最後就是利用 append 的方式在 svg 裏頭放入一個 path，d 是用<code>line(data)</code>將 data 餵給剛剛的 line，如此各個點的座標就會依序長出 </p>
 <pre class="prettyprint"><code>  svg.append('path')
     .attr({
       'd': line(data),
@@ -116,31 +114,30 @@
     });
 </code></pre><p>結果就會像下圖這樣：</p>
 <p><img src="/img/articles/201411/20141103_1_02.png" alt="SVG D3 - 繪製線段"></p>
-<p><br>
-打開開發者工具就可以看到每個點的座標都照 data 畫出來了  ( 範例：<a href="/demo/201411/svg-d3-02-line-demo1.html" target="_blank">svg-d3-02-line-demo1.html</a> )</p>
+<p>打開開發者工具就可以看到每個點的座標都照 data 畫出來了  ( 範例：<a href="/demo/201411/svg-d3-02-line-demo1.html" target="_blank">svg-d3-02-line-demo1.html</a> )</p>
 <p><img src="/img/articles/201411/20141103_1_03.png" alt="SVG D3 - 繪製線段"></p>
-<p><br>
-從上面的例子，雖然還看不出有多強大，但如果有一百個點要畫，就可以靠 D3 幫我們省下不少寫座標的功夫，但 line() 特別的地方還不在此，有個很神奇的<code>.interpolate()</code>，可以幫我們算出各種線段的樣式，再來就看一下這個神奇的<code>.interpolate()</code>，<code>.interpolate()</code>總共有 13 個模式可以設定，這是十三個模式分別是：</p>
+<h2>.interpolate() 的模式</h2>
+<p>從上面的例子，雖然還看不出有多強大，但如果有一百個點要畫，就可以靠 D3 幫我們省下不少寫座標的功夫，但 line() 特別的地方還不在此，有個很神奇的<code>.interpolate()</code>，可以幫我們算出各種線段的樣式，再來就看一下這個神奇的<code>.interpolate()</code>，<code>.interpolate()</code>總共有 13 個模式可以設定，這是十三個模式分別是：</p>
+<blockquote>
 <ul>
-<li>linear：預設值，就是剛剛的演示。 </li>
-<li>linear-closed：封閉的線段。 </li>
-<li>step：一律以水平線段或垂直線段顯示，採中間點的方式做連接。 </li>
-<li>step-before：以起始點垂直畫線方式開始。 </li>
-<li>step-after：以終點垂直畫線方式結束。 </li>
-<li>basis：基於 <a href="http://en.wikipedia.org/wiki/B-spline" target="_blank">B-spline</a> 的定義長出曲線。 </li>
-<li>basis-open：開放的 B-spline，不包含起點與終點 ( 大於三個點 )。 </li>
-<li>basis-closed：封閉的 B-spline。 </li>
-<li>bundle：基於 B-spline 之上，但包含了 tension 參數。 </li>
-<li>cardinal：基於 <a href="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline" target="_blank">Cardinal spline</a> 的線段。</li>
-<li>cardinal-open：開放的 Cardinal spline，不包含起點與終點 ( 大於三個點 )。</li>
-<li>cardinal-closed：封閉的 Cardinal spline。</li>
-<li>monotone：基於 <a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#line_x" target="_blank">cubic interpolation</a> 的線段。</li>
+<li><em>linear</em>：預設值，就是剛剛的演示。 </li>
+<li><em>linear-closed</em>：封閉的線段。 </li>
+<li><em>step</em>：一律以水平線段或垂直線段顯示，採中間點的方式做連接。 </li>
+<li><em>step-before</em>：以起始點垂直畫線方式開始。 </li>
+<li><em>step-after</em>：以終點垂直畫線方式結束。 </li>
+<li><em>basis</em>：基於 <a href="http://en.wikipedia.org/wiki/B-spline" target="_blank">B-spline</a> 的定義長出曲線。 </li>
+<li><em>basis-open</em>：開放的 B-spline，不包含起點與終點 ( 大於三個點 )。 </li>
+<li><em>basis-closed</em>：封閉的 B-spline。 </li>
+<li><em>bundle</em>：基於 B-spline 之上，但包含了 tension 參數。 </li>
+<li><em>cardinal</em>：基於 <a href="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline" target="_blank">Cardinal spline</a> 的線段。</li>
+<li><em>cardinal-open</em>：開放的 Cardinal spline，不包含起點與終點 ( 大於三個點 )。</li>
+<li><em>cardinal-closed</em>：封閉的 Cardinal spline。</li>
+<li><em>monotone</em>：基於 <a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#line_x" target="_blank">cubic interpolation</a> 的線段。</li>
 </ul>
-<p><br>
-很好，看完上面的十三個模式應該已經暈頭轉向，完全搞不懂字面上的意思是啥，我也是一模一樣的情形，所以這時候就要直接實作看看，應該就能明白箇中道理，因為 linear 剛剛是預設值，也就是剛剛的範例所以就不介紹，直接從 linear-closed 開始  ( data 還是剛剛那一組喔~ )：</p>
+</blockquote>
+<p>很好，看完上面的十三個模式應該已經暈頭轉向，完全搞不懂字面上的意思是啥，我也是一模一樣的情形，所以這時候就要直接實作看看，應該就能明白箇中道理，因為 linear 剛剛是預設值，也就是剛剛的範例所以就不介紹，直接從 linear-closed 開始  ( data 還是剛剛那一組喔~ )：</p>
 <ul>
-<li><p>linear-closed：</p>
-<p>  <img src="/img/articles/201411/20141103_1_04.png" alt="SVG D3 - 繪製線段"></p>
+<li><p><strong>linear-closed</strong>：</p>
 <pre class="prettyprint"><code>  var line2 = d3.svg.line()
                 .x(function(d){
                   return d.x;
@@ -149,54 +146,30 @@
                   return d.y;
                 })
                 .interpolate('linear-closed');
-</code></pre></li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>step ( 圖中紅色的點為 data 的座標提示，程式碼與上面相同，差別只在於 interpolate 的模式名稱 )：</p>
+</code></pre><p>  <img src="/img/articles/201411/20141103_1_04.png" alt="SVG D3 - 繪製線段"></p>
+</li>
+<li><p><strong>step</strong> ( 圖中紅色的點為 data 的座標提示，程式碼與上面相同，差別只在於 interpolate 的模式名稱 )：</p>
 <p>  <img src="/img/articles/201411/20141103_1_05.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>step-before：</p>
+<li><p><strong>step-before</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_06.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>step-after：</p>
+<li><p><strong>step-after</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_07.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>basis：</p>
+<li><p><strong>basis</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_08.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br>`</p>
-<ul>
-<li><p>basis-open：</p>
+<li><p><strong>basis-open</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_09.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>basis-closed：</p>
+<li><p><strong>basis-closed</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_10.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>bundle：</p>
+<li><p><strong>bundle</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_11.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>bundle + tension：</p>
-<p>  <img src="/img/articles/201411/20141103_1_12.png" alt="SVG D3 - 繪製線段"></p>
+<li><p><strong>bundle + tension</strong>：</p>
 <pre class="prettyprint"><code>  var line2 = d3.svg.line()
                 .x(function(d){
                   return d.x;
@@ -206,34 +179,23 @@
                 })
                 .interpolate('linear-closed')
                 .tension(2);
-</code></pre></li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>cardinal：</p>
+</code></pre><p>  <img src="/img/articles/201411/20141103_1_12.png" alt="SVG D3 - 繪製線段"></p>
+</li>
+<li><p><strong>cardinal：</strong></p>
 <p>  <img src="/img/articles/201411/20141103_1_13.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>cardinal-open：</p>
+<li><p><strong>cardinal-open</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_14.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>cardinal-closed：</p>
+<li><p><strong>cardinal-closed</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_15.png" alt="SVG D3 - 繪製線段"></p>
 </li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>monotone：</p>
+<li><p><strong>monotone</strong>：</p>
 <p>  <img src="/img/articles/201411/20141103_1_16.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 </ul>
-<p><br>
-從上面各種模式所產生的線段就可以發現，D3.js 其實已經幫我們解決了很多想像不到的情形，特別是如果今天畫出來的線段希望它 smooth 一些，都可以藉由 D3.js 輕鬆實現，不需要再自己去計算 C 或是 Q ( 參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a> )，最後實現的範例：<a href="/demo/201411/svg-d3-02-line-demo2.html" target="_blank">svg-d3-02-line-demo2.html</a></p>
+<h2>小結</h2>
+<p>從上面各種模式所產生的線段就可以發現，D3.js 其實已經幫我們解決了很多想像不到的情形，特別是如果今天畫出來的線段希望它 smooth 一些，都可以藉由 D3.js 輕鬆實現，不需要再自己去計算 C 或是 Q ( 參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a> )，最後實現的範例：<a href="/demo/201411/svg-d3-02-line-demo2.html" target="_blank">svg-d3-02-line-demo2.html</a></p>
 <p>不過 D3.js 的 line() 其實還有不少其他的用法，之後研究之後再來慢慢分享。^_^</p>
 
 

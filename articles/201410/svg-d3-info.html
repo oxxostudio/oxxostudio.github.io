@@ -78,6 +78,7 @@
 <h1>SVG D3.js - 起手式</h1>
 <p><img src="/img/articles/201410/svg-d3-info.jpg" class="preview-img" alt=""></p>
 <p>雖然說對 D3.js 的印象是從圖形的表現開始，但 D3.js 真正的強項卻是在它的資料處理 ( data )，也因為能夠用很簡單的方式處理資料，將資料餵給 HTML 或 SVG，才能夠輕鬆的長出漂漂亮亮的圖形，也才更能將心力放在設計一個完美個圖表上，而 D3.js 的 data 也不見得只適用在 SVG 的圖形產生，只要是 HTML 的 DOM 也都可以藉由這個方式作成，例如以往要將一百個一千個資料放到 DOM 裡或產出 DOM，必須用上 for 迴圈或是 each 的方式，這部分 D3 也幫我們都解決掉了，真是相當的方便。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 D3.js</h2>
 <p>在介紹資料處理之前，一定得先來一段 D3.js 的起手式，第一步，掛載 D3.js：</p>
 <pre class="prettyprint"><code>&lt;script src="http://d3js.org/d3.v3.min.js"&gt;&lt;/script&gt;
 </code></pre><p>掛載完 D3.js 之後，接下來就是要使用 D3，與 jquery 的「$」符號很像的地方，要使用 D3，也是要有 d3 開頭，以下面的範例來說，就是選取了所有的 p 標籤,跟 jquery 裏頭的選擇器很像 ( $('p') )，而 D3 也可以和 jquery 混著使用，因為 D3 都會是 d3 開頭，基本上並不會有甚麼衝突的情形發生。</p>
@@ -112,6 +113,7 @@ d3.select('div div').style({
   'width':'120px'
   });
 </code></pre><p><img src="/img/articles/201410/20141031_1_03.png" alt="SVG D3 - 起手式"></p>
+<h2>使用 SVG</h2>
 <p>除了塞 HTML 的 DOM 之外，更重要的是可以塞 SVG 的形狀，還記得在我之前的文章：<a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html" target="_blank">SVG 研究之路 (14) - 控制 SVG 的注意事項</a>，因為 SVG 本身不屬於 HTML 的標準元素，所以都要用額外的方式才能動態添加內容，但自從有了 D3，就都沒有這問題了，直接添加即可，下列程式碼會產生一個圓形 ( 如果對 SVG 形狀不了解的可以參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-03-basic-shapes.html" target="_blank">SVG 研究之路 (3) - 基本形狀</a> )：</p>
 <pre class="prettyprint"><code>  d3.select('body')
     .append('svg')
@@ -131,6 +133,7 @@ d3.select('div div').style({
     'stroke-width':'5px'
     });
 </code></pre><p><img src="/img/articles/201410/20141031_1_04.png" alt="SVG D3 - 起手式"></p>
+<h2>小結</h2>
 <p>以上就是一些 D3 起手式的介紹，雖然 D3 可以做到和 jquery 差不多的事情，但整體而言還是 jquery 比較方便，因為畢竟 D3 誕生的目的原本就和 jquery 不同，D3 是為了讓數據可以用視覺圖像化的方式而誕生的，所以上述基本的用法，其實也會跟隨著 data 來自動產生，會在之後用一些篇幅仔細分享。 </p>
 
 

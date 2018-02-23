@@ -78,6 +78,7 @@
 <h1>SVG D3.js - 淺談 D3.js 的資料處理</h1>
 <p><img src="/img/articles/201411/svg-d3-01-data.jpg" class="preview-img" alt=""></p>
 <p>D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，有別於一般我們要塞資料進 HTML，或要利用資料自動長出元素，不外乎都要用到 for 迴圈或是 each 的方式來進行，但對於 D3 來說，這些基本的功能已經全部包辦，甚至連同亂數和排序都內建在裏頭，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>依序放入 data</h2>
 <p>先來看看這個例子，有一個 data 的陣列，要把這個陣列的值分別放到五個 div 裏頭，過去應該會寫個 for 迴圈一一把值丟進去長出來，但在 D3 裏頭可以這樣寫 ( 阿對了，忘記說一點，D3 的 script 放在 header，D3 的執行 script 放在 body 裏頭, 放錯位置可就跑不出來了 ) ：</p>
 <pre class="prettyprint"><code>var data = [1,2,3,4,5];
 
@@ -100,7 +101,8 @@ d3.select('body').selectAll('div')
   });
 </code></pre><p>可以點選範例  ( <a href="/demo/201411/svg-d3-01-data-demo2.html" target="_blank">svg-d3-01-data-demo2.html</a> )  參考，為什麼會這樣呢？D3 讓我們在使用各個方法裏頭，都可以利用一個匿名函數的 function 來獲取存在背景的資料，而這些資料會依序放在 function 的第一個變數裏頭，因此 <code>return d</code> 就可以依序返回該有的數值，也就會按照 1,2,3,4,5 來呈現。</p>
 <p><img src="/img/articles/201411/20141101_1_03.jpg" alt="SVG D3 - 淺談 D3.js 的資料處理"></p>
-<p>因為有了這個神奇的「d」，就可以做出許多有趣的變化，舉例來說，現在有一個全班的成績，要讓不及格的數字是紅色，就可以這樣寫 ( <a href="/demo/201411/svg-d3-01-data-demo3.html" target="_blank">svg-d3-01-data-demo3.html</a> ) ：</p>
+<h2>神奇的 d</h2>
+<p>上面看到有 return 一個 d，這個神奇的「d」可以做出許多有趣的變化，舉例來說，現在有一個全班的成績，要讓不及格的數字是紅色，就可以這樣寫 ( <a href="/demo/201411/svg-d3-01-data-demo3.html" target="_blank">svg-d3-01-data-demo3.html</a> ) ：</p>
 <pre class="prettyprint"><code>  var data = [38,69,72,42,58,87];
 
 d3.select('body').selectAll('div')
@@ -149,6 +151,7 @@ console.log('extent: '+ d3.extent(data));   //最小值與最大值
 console.log('mean: '+ d3.mean(data));       //平均數
 console.log('shuffle: '+ d3.shuffle(data)); //亂數排列
 </code></pre><p><img src="/img/articles/201411/20141101_1_06.jpg" alt="SVG D3 - 淺談 D3.js 的資料處理"></p>
+<h2>小結</h2>
 <p>其實 D3 在數據的處理上還有很多方法無法在這篇闡述完成 ( 敝人功力太弱 &gt;_&lt; )，相信熟悉之後一定會更容易處理數據，理解之後也會再一一分享的啦！</p>
 
 

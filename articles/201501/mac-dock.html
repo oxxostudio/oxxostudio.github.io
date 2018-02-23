@@ -81,6 +81,7 @@
 <blockquote>
 <p>完成範例：<a href="/demo/201501/mac-dock-demo.html" target="_blank">mac-dock-demo.html</a></p>
 </blockquote>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>HTML 結構</h2>
 <p>Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：</p>
 <p><img src="/img/articles/201501/20150103_1_02.jpg" alt="Mac Docker 實作"></p>
 <p>看不懂沒關係，來看一下程式碼的組成，首先看一下 HTML，外圍用一個 div 包著一個清單，清單的<code>li</code>都有一個<code>text</code>的 HTML5 data attribute，這裡的目的是讓 CSS3 的偽元素<code>::before</code>直接讀取，就可以在完全不用 JS 的情況下載入文字。</p>
@@ -101,8 +102,8 @@
       &lt;li text='Yahoo'&gt;&lt;img src='mac_img/13.png' /&gt;&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;
-</code></pre><p><br>
-接著看一下 CSS，這裡大多都只是基本的 CSS，比較需要注意的是<code>::before</code>這一段，意思是讓每個 li 都有一個偽元素<code>::before</code>，而其內容<code>content</code>會自動讀取對應 li 的 text，也就是<code>attr(text)</code>，如此一來，每個 li 的 text 文字都會自動放到<code>::before</code>裏頭囉！此外，最後面多增加了一個具有 id 的 style 區塊，因為<code>::before</code>這種偽元素，並不是 HTML 的標準元素，也因此 jquery 無法控制這些偽元素，當我想讓偽元素寬度是動態的，就必須要額外將 style 寫入，所以多增加一組 style 讓 jquery 把樣式加進去。</p>
+</code></pre><h2>CSS 結構</h2>
+<p>接著看一下 CSS，這裡大多都只是基本的 CSS，比較需要注意的是<code>::before</code>這一段，意思是讓每個 li 都有一個偽元素<code>::before</code>，而其內容<code>content</code>會自動讀取對應 li 的 text，也就是<code>attr(text)</code>，如此一來，每個 li 的 text 文字都會自動放到<code>::before</code>裏頭囉！此外，最後面多增加了一個具有 id 的 style 區塊，因為<code>::before</code>這種偽元素，並不是 HTML 的標準元素，也因此 jquery 無法控制這些偽元素，當我想讓偽元素寬度是動態的，就必須要額外將 style 寫入，所以多增加一組 style 讓 jquery 把樣式加進去。</p>
 <pre class="prettyprint"><code>&lt;style&gt;
   #mouse_area {
     position: absolute;
@@ -152,21 +153,19 @@
   }
 &lt;/style&gt;
 &lt;style id="before-class"&gt;&lt;/style&gt;  &lt;!-- 額外加入樣式 --
-</code></pre><p><br>
-看完了 HTML 與 CSS，就來進入重點的 jquery code，一開始的這一段，用來定義 icon 的大小，以及整組 icon 的位置，順便把常用的選擇器宣告起來。</p>
+</code></pre><h2>寫寫 jQuery</h2>
+<p>看完了 HTML 與 CSS，就來進入重點的 jquery code，一開始的這一段，用來定義 icon 的大小，以及整組 icon 的位置，順便把常用的選擇器宣告起來。</p>
 <pre class="prettyprint"><code>var limin = 30,  //icon縮小時候的寬度
     limax = 64,  //icon放大時候的寬度
     areax = 50, //整組 icon 的位置
     areay = 100,
     diff = limax - limin;
 var $icon =  $('#mac_button li');
-</code></pre><p><br>
-接著根據不同的 icon 大小，把偽元素的大小和位置也給定位好。</p>
+</code></pre><p>接著根據不同的 icon 大小，把偽元素的大小和位置也給定位好。</p>
 <pre class="prettyprint"><code>$('#before-class').html(
         '#mac_button li::before{width:'+(limax+4)+'px;left:'+((limin-(limax+4)*0.6)/2)+'px}'
     );  //修改::before樣式，利用 ::before 來產生說明文字
-</code></pre><p><br>
-定義每個 icon 的大小，還有整個按鈕群的大小，為什麼要定義整個按鈕群的大小呢？目的是為了讓按鈕群置中，如此一來才不會發生當按鈕變大的時候，最右邊的按鈕會凸出去縮進來的窘境，以及未來在整個畫面的編排上，也比較容易定位。</p>
+</code></pre><p>定義每個 icon 的大小，還有整個按鈕群的大小，為什麼要定義整個按鈕群的大小呢？目的是為了讓按鈕群置中，如此一來才不會發生當按鈕變大的時候，最右邊的按鈕會凸出去縮進來的窘境，以及未來在整個畫面的編排上，也比較容易定位。</p>
 <pre class="prettyprint"><code>$icon.css({
   'width': limin + 'px',  
   'height': limin + 'px'
@@ -177,11 +176,9 @@ $('#mouse_area').css({
   'top': areay + 'px',
   'left': areax + 'px'
 });  //定義左右滑鼠區域，目的為了讓 icon 群置中
-</code></pre><p><br>
-這裡我用了一個簡單的變數來判斷滑鼠是否還在按鈕群裏頭，目的是要讓滑鼠第一次滑上去的時候，icon 會有放大的動畫效果，而不是蹦一下的變大</p>
+</code></pre><p>這裡我用了一個簡單的變數來判斷滑鼠是否還在按鈕群裏頭，目的是要讓滑鼠第一次滑上去的時候，icon 會有放大的動畫效果，而不是蹦一下的變大</p>
 <pre class="prettyprint"><code>var a = 0;  //判斷滑鼠是否還在icon群裏頭的簡單參數
-</code></pre><p><br>
-接著進入重點程式，讓滑鼠滑上去的 icon 有個 class 名稱識別，這個 icon 的左右兩個 icon 也有 class 名稱識別，如此一來就可以動態設定它們的尺寸。</p>
+</code></pre><p>接著進入重點程式，讓滑鼠滑上去的 icon 有個 class 名稱識別，這個 icon 的左右兩個 icon 也有 class 名稱識別，如此一來就可以動態設定它們的尺寸。</p>
 <pre class="prettyprint"><code>$icon.hover(function(e) {
   $(this).addClass('lihover');        //讓滑鼠 hover 與其左右 li 都有 class
   $(this).next().addClass('linext');
@@ -191,8 +188,7 @@ $('#mouse_area').css({
     'height': limin + 'px',
     'margin-top': '0'
   });  //讓沒有 class 的 icon 恢復最小長寬
-</code></pre><p><br>
-這是最關鍵的計算公式，原理其實就是當滑鼠在 icon 上頭 ( hover ) 的時候，把這個 icon 的中心點和滑鼠座標的差值，分別套用到左右兩個 icon 的尺寸裏頭，就可以做到這個效果。</p>
+</code></pre><p>這是最關鍵的計算公式，原理其實就是當滑鼠在 icon 上頭 ( hover ) 的時候，把這個 icon 的中心點和滑鼠座標的差值，分別套用到左右兩個 icon 的尺寸裏頭，就可以做到這個效果。</p>
 <pre class="prettyprint"><code>  if (a == 0) {
     var licenterx = $('.lihover').offset().left + $('.lihover').width() * 0.5,  //hover icon 的中心位置
             mousex = e.pageX,
@@ -228,8 +224,7 @@ $('#mouse_area').css({
 }, function() {
   $icon.removeClass('lihover linext liprev').off('mousemove');
 });
-</code></pre><p><br>
-當滑鼠離開按鈕群的時候，所有按鈕恢復原狀。</p>
+</code></pre><p>當滑鼠離開按鈕群的時候，所有按鈕恢復原狀。</p>
 <pre class="prettyprint"><code>$('#mac_button').on('mouseleave', function() {
   a = 0;
   $('li').stop().animate({
@@ -238,8 +233,7 @@ $('#mouse_area').css({
     'margin-top': '0'
   }, 200);
 });
-</code></pre><p><br>
-最後這是剛剛 callback 的程式，是在滑鼠移動的時候，立馬計算左右 icon 的尺寸。</p>
+</code></pre><p>最後這是剛剛 callback 的程式，是在滑鼠移動的時候，立馬計算左右 icon 的尺寸。</p>
 <pre class="prettyprint"><code>function _mouseMove(e) {
   var licenterx2 = $('.lihover').offset().left + $('.lihover').width() * 0.5,
           mousex2 = e.pageX,
@@ -271,8 +265,8 @@ $('#mouse_area').css({
     'margin-top': '0'
   });
 }
-</code></pre><p><br>
-以上，就是我這個效果的完整程式碼，不是很難，真正難的是要理解變大變小的原理，不過實際上 Mac Dock 好像也不是用這種方式，有興趣的可以參考美國專利局裏頭 Mac Dock 的專利說明：<a href="http://www.google.com/patents/US7434177" target="_blank">http://www.google.com/patents/US7434177</a>。</p>
+</code></pre><h2>小結</h2>
+<p>以上，就是我這個效果的完整程式碼，不是很難，真正難的是要理解變大變小的原理，不過實際上 Mac Dock 好像也不是用這種方式，有興趣的可以參考美國專利局裏頭 Mac Dock 的專利說明：<a href="http://www.google.com/patents/US7434177" target="_blank">http://www.google.com/patents/US7434177</a>。</p>
 <p>( 完成範例：<a href="/demo/201501/mac-dock-demo.html" target="_blank">mac-dock-demo.html</a> )</p>
 <p><img src="/img/articles/201501/20150103_1_03.gif" alt="Mac Docker 實作"></p>
 

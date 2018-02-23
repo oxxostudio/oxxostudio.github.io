@@ -96,15 +96,13 @@
     minifyCSS  = require('gulp-minify-css'),
     uglify     = require('gulp-uglify'),
     rename     = require("gulp-rename");
-</code></pre><p><br>
-然後因為我新增了三個 css 檔案，所以我要先把這三個合併起來，才進行壓縮，合併採用的套件為：gulp-concat，它可以把目標資料夾內所有指定的檔案合併成為 all.css，然後放到 build 的資料夾內。( 可以參考 <a href="https://www.npmjs.com/package/gulp-concat" target="_blank">gulp-concat</a> )</p>
+</code></pre><p>然後因為我新增了三個 css 檔案，所以我要先把這三個合併起來，才進行壓縮，合併採用的套件為：gulp-concat，它可以把目標資料夾內所有指定的檔案合併成為 all.css，然後放到 build 的資料夾內。( 可以參考 <a href="https://www.npmjs.com/package/gulp-concat" target="_blank">gulp-concat</a> )</p>
 <pre class="prettyprint"><code>gulp.task('concat', function() {
     return gulp.src('./app/css/*.css')
         .pipe(concat('all.css'))
         .pipe(gulp.dest('./build/css/'));
 });
-</code></pre><p><br>
-再來我們壓縮 CSS，這裡要用到的是 gulp-minify-css 和 gulp-rename，下面的寫法是建立一個名為 minify-css 的任務，裡頭先使用 minifyCSS 壓縮，壓縮之後直接用 rename 對壓縮的檔案重新命名，命名時可以設定 basename 與 extname，完成後就把壓縮好的檔案，同樣放在 build 的資料夾裡頭。( 可以參考 <a href="https://www.npmjs.com/package/gulp-minify-css" target="_blank">gulp-minify-css</a> 和 <a href="https://www.npmjs.com/package/gulp-rename" target="_blank">gulp-rename</a> )</p>
+</code></pre><p>再來我們壓縮 CSS，這裡要用到的是 gulp-minify-css 和 gulp-rename，下面的寫法是建立一個名為 minify-css 的任務，裡頭先使用 minifyCSS 壓縮，壓縮之後直接用 rename 對壓縮的檔案重新命名，命名時可以設定 basename 與 extname，完成後就把壓縮好的檔案，同樣放在 build 的資料夾裡頭。( 可以參考 <a href="https://www.npmjs.com/package/gulp-minify-css" target="_blank">gulp-minify-css</a> 和 <a href="https://www.npmjs.com/package/gulp-rename" target="_blank">gulp-rename</a> )</p>
 <pre class="prettyprint"><code>gulp.task('minify-css',['concat'], function() {
   return gulp.src('./build/css/all.css')
     .pipe(minifyCSS({
@@ -116,8 +114,7 @@
     }))
     .pipe(gulp.dest('./build/css/'));
 });
-</code></pre><p><br>
-第三步使用 uglify 混淆與壓縮 javascript，用法和 minifyCSS 幾乎相同。( 可以參考：<a href="https://www.npmjs.com/package/gulp-uglify" target="_blank">gulp-uglify</a> )</p>
+</code></pre><p>第三步使用 uglify 混淆與壓縮 javascript，用法和 minifyCSS 幾乎相同。( 可以參考：<a href="https://www.npmjs.com/package/gulp-uglify" target="_blank">gulp-uglify</a> )</p>
 <pre class="prettyprint"><code>gulp.task('uglify', function() {
     return gulp.src('./app/js/*.js')
         .pipe(uglify())
@@ -127,11 +124,9 @@
         }))
         .pipe(gulp.dest('./build/js/'));
 });
-</code></pre><p><br>
-到這邊幾乎已經完成囉，最後只要寫上 default 的任務就可以執行 gulp 看看。</p>
+</code></pre><p>到這邊幾乎已經完成囉，最後只要寫上 default 的任務就可以執行 gulp 看看。</p>
 <pre class="prettyprint"><code>gulp.task('default',['minify-css','uglify']);
-</code></pre><p><br>
-執行 gulp 後，就會發現我們的檔案，已經被壓縮好並且重新命名，放在指定的位置了，這就是最基本的打包壓縮 CSS 與 JS 的 Gulp 用法。( 執行 gulp 就是直接在 cammand 輸入 gulp 就可以 )</p>
+</code></pre><p>執行 gulp 後，就會發現我們的檔案，已經被壓縮好並且重新命名，放在指定的位置了，這就是最基本的打包壓縮 CSS 與 JS 的 Gulp 用法。( 執行 gulp 就是直接在 cammand 輸入 gulp 就可以 )</p>
 <p><img src="/img/articles/201503/20150306_1_02.jpg" alt="Gulp 學習筆記 2 - 打包壓縮 CSS 與 JS"></p>
 <p>完整的 gulpfile.js 長這樣：</p>
 <pre class="prettyprint"><code>var gulp       = require('gulp'),
@@ -169,8 +164,7 @@ gulp.task('uglify', function() {
 });
 
 gulp.task('default',['minify-css','uglify']);
-</code></pre><p><br></p>
-
+</code></pre>
 
       <div class="social-icon">
         <i class="icon-home"><i></i><span>Back Home</span></i>
