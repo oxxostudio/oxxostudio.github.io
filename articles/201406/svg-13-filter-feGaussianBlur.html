@@ -81,47 +81,46 @@
 <blockquote>
 <p>參考：<a href="https://dl.dropboxusercontent.com/u/59597657/oxxo_code/Jquery_20120712_imageBlurMask.html" target="_blank">我以前做的效果</a></p>
 </blockquote>
+<h2>feGaussianBlur 簡介</h2>
 <p><code>feGaussianBlur</code>應該算是 SVG filter 裏頭最簡單的濾鏡，因為它只有一個參數需要注意：<code>stdDeviation</code>，這也是控制模糊程度的參數，數字越大越模糊，數字為零則是圖片原本的狀態，在這邊有一個比較需要注意的地方，就是要記得設定 filter 的<code>filterUnits</code>為 userSpaceOnUse ，因為預設值是會讓 filter 跟隨著套用該 filter 的物件跑，所以要記得設定成跟隨整個 SVG space。</p>
-<p><img src="/img/articles/201406/20140625_1_03.png" alt=""></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
 &lt;filter width="200" height="200" x="0" y="0" id="blur" filterUnits="userSpaceOnUse"&gt;
   &lt;feGaussianBlur stdDeviation="1" /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur") /&gt;
-</code></pre><p><img src="/img/articles/201406/20140625_1_02.png" alt=""></p>
+</code></pre><p><img src="/img/articles/201406/20140625_1_03.png" alt=""></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
 &lt;filter width="200" height="200" x="0" y="0" id="blur" filterUnits="userSpaceOnUse"&gt;
   &lt;feGaussianBlur stdDeviation="5" /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur") /&gt;
-</code></pre><p><img src="/img/articles/201406/20140625_1_04.png" alt=""></p>
+</code></pre><p><img src="/img/articles/201406/20140625_1_02.png" alt=""></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
 &lt;filter width="200" height="200" x="0" y="0" id="blur" filterUnits="userSpaceOnUse"&gt;
   &lt;feGaussianBlur stdDeviation="10" /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur") /&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201406/20140625_1_04.png" alt=""></p>
 <p><code>feGaussianBlur</code>的<code>stdDeviation</code>還有一個鮮為人知且相當好用的設定，就是可以撰寫兩個數值在裏頭，分別代表水平與垂直方向的模糊程度。</p>
-<p><img src="/img/articles/201406/20140625_1_08.png" alt=""></p>
 <pre class="prettyprint"><code>&lt;filter width="200" height="200" x="0" y="0" id="blur1" filterUnits="userSpaceOnUse" &gt;
   &lt;feGaussianBlur stdDeviation="1 15"/&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#ff4500" filter=url("#blur1") /&gt;
-</code></pre><p><img src="/img/articles/201406/20140625_1_09.png" alt=""></p>
+</code></pre><p><img src="/img/articles/201406/20140625_1_08.png" alt=""></p>
 <pre class="prettyprint"><code>&lt;filter width="200" height="200" x="0" y="0" id="blur1" filterUnits="userSpaceOnUse" &gt;
   &lt;feGaussianBlur stdDeviation="15 1"/&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#ff4500" filter=url("#blur1") /&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201406/20140625_1_09.png" alt=""></p>
+<h2>效果變化</h2>
 <p>理解了<code>feGaussianBlur</code>的用法之後，我們就可以利用它來做一些與眾不同的變化，例如：  </p>
 <ul>
-<li><p>不同的景深</p>
-<p>  <img src="/img/articles/201406/20140625_1_05.png" alt=""></p>
+<li><p><strong>不同的景深</strong></p>
 <pre class="prettyprint"><code>    &lt;defs&gt;
     &lt;filter width="200" height="200" x="0" y="0" id="blur1" filterUnits="userSpaceOnUse"&gt;
       &lt;feGaussianBlur stdDeviation="10" /&gt;
@@ -136,13 +135,10 @@
       &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur1") /&gt;
       &lt;circle cx="100" cy="100" r="50" fill="#09a" filter=url("#blur2") /&gt;
       &lt;rect x="100" y="100" width="70" height="70" fill="#fa0" filter=url("#blur3") /&gt;
-</code></pre></li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>陰影  </p>
+</code></pre><p>  <img src="/img/articles/201406/20140625_1_05.png" alt=""></p>
+</li>
+<li><p><strong>陰影</strong>  </p>
 <p>  陰影其實說好做很好做，就做一個黑色的色塊讓它模糊即可，不過這裡用了一個比較有趣的方法，就是讓濾鏡套用在物件的 Aplha 色版 ( in="SourceAlpha" )，如此一來也可以做出陰影。</p>
-<p>  <img src="/img/articles/201406/20140625_1_06.png" alt=""></p>
 <pre class="prettyprint"><code>    &lt;defs&gt;
     &lt;filter width="200" height="200" x="0" y="0" id="blur1" filterUnits="userSpaceOnUse" &gt;
       &lt;feGaussianBlur stdDeviation="5" in="SourceAlpha"  /&gt;
@@ -150,12 +146,9 @@
     &lt;/defs&gt;
       &lt;rect x="30" y="35" width="70" height="70" fill="#f00" filter=url("#blur1") /&gt;
       &lt;rect x="30" y="30" width="70" height="70" fill="#6f9"/&gt;
-</code></pre></li>
-</ul>
-<p><br></p>
-<ul>
-<li><p>不同形狀的陰影</p>
-<p>  <img src="/img/articles/201406/20140625_1_07.png" alt=""></p>
+</code></pre><p>  <img src="/img/articles/201406/20140625_1_06.png" alt=""></p>
+</li>
+<li><p><strong>不同形狀的陰影</strong></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
 &lt;filter width="200" height="200" x="0" y="0" id="blur1" filterUnits="userSpaceOnUse" &gt;
   &lt;feGaussianBlur stdDeviation="5"/&gt;
@@ -163,9 +156,10 @@
 &lt;/defs&gt;
   &lt;path d="M30 30 L100 30 Q90 65 100 100 L30 100 Q40 65 30 30" fill="#000" filter=url("#blur1") /&gt;
   &lt;rect x="30" y="30" width="70" height="70" fill="#6f9"/&gt;
-</code></pre></li>
+</code></pre><p>  <img src="/img/articles/201406/20140625_1_07.png" alt=""></p>
+</li>
 </ul>
-<p><br></p>
+<h2>小結</h2>
 <p>陰影的做法萬變不離其宗，跟我們以往使用 photoshop 和 illustrator 總是幾分類似，畢竟身為設計師，最拿手的也應該就是利用光影的變化來欺騙眼睛，學會了 SVG 的<code>feGaussianBlur</code>，相信一定能做出更多有趣的效果。</p>
 
 

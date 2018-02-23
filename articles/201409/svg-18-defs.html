@@ -77,16 +77,16 @@
 
 <h1>SVG 研究之路 (18) - 再談 defs</h1>
 <p>在前面的 SVG 研究之路裡，不斷看到 defs 這個元素的身影，從顏色的填充、線段的圖案、濾鏡的定義...等許多的效果，都必須使用 defs 來定義，因此就直接寫了這篇關於 defs 的文章，也把這個常見但用法又時常不同的元素，一次做一個整理，也方便之後使用的參考。</p>
+<h2>什麼是 defs</h2>
 <p>defs 顧名思義就是「definitions」：定義，我們可以把許多重複性質高的元素，放入 defs 元素內，讓它變成一個可以重複利用的物件，原理就有點類似當年 flash 裏頭把一些動畫或是圖案轉換成物件一樣；首先我們來看到最常見的 defs 例子：「重複的圖形」，下面利用 defs 定義了一個矩形的長寬顏色，再使用 use 元素把矩形表現在畫面上，而 use 元素具有 x 與 y 的座標屬性，就可以輕鬆的做出許多不同位置的矩形。</p>
-<p><img src="/img/articles/201409/20140916_1_02.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;rect id="rect1" width="100" height="50" x="10" y="10" fill="#c00"/&gt;
 &lt;/defs&gt;
 &lt;use xlink:href="#rect1"/&gt;
 &lt;use xlink:href="#rect1" x="110"/&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201409/20140916_1_02.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
+<h2>defs 實例</h2>
 <p>也可以將 g 元素 ( 群組 ) 放在 defs 元素裏頭：</p>
-<p><img src="/img/articles/201409/20140916_1_03.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
     &lt;g id="g1"&gt;
           &lt;rect id="rect1" width="100" height="50" x="10" y="10" fill="#c00"/&gt;
@@ -96,9 +96,8 @@
 &lt;use xlink:href="#g1"/&gt;
 &lt;use xlink:href="#rect1" x="110"/&gt;
 &lt;use xlink:href="#circle1" x="210"/&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201409/20140916_1_03.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <p>定義漸層色 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html" target="_blank">SVG 研究之路 (7) - fill 填色</a> )：</p>
-<p><img src="/img/articles/201409/20140916_1_04.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
    &lt;linearGradient id="a1"&gt;
      &lt;stop offset="5%" stop-color="#F00" /&gt;
@@ -108,9 +107,8 @@
 &lt;rect x="50" y="250" width="100" height="100" stroke="#000" stroke-width="5" fill="url(#a1)"&gt;&lt;/rect&gt;
 &lt;circle cx="220" cy="300" r="50" stroke="#000" stroke-width="5" fill="url(#a1)"&gt;&lt;/circle&gt;
 &lt;rect x="290" y="250" width="100" height="100" stroke="url(#a1)" stroke-width="5" fill="none"&gt;&lt;/rect&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201409/20140916_1_04.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <p>定義文字路徑 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-08-text.html" target="_blank">SVG 研究之路 (8) - text 文字</a> )：</p>
-<p><img src="/img/articles/201409/20140916_1_05.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;path id="a1" d="M0 50 C150 150 100 -50 300 50" stroke="#000" fill="none"/&gt;
 &lt;/defs&gt;
@@ -118,18 +116,16 @@
    &lt;textPath xlink:href="#a1"&gt;這是隨著路徑跑的文字，很酷吧
   &lt;/textPath&gt;
 &lt;/text&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201409/20140916_1_05.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <p>定義剪裁 Cliping ( <a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html" target="_blank">SVG 研究之路 (9) - Clipping and Masking</a> )：</p>
-<p><img src="/img/articles/201409/20140916_1_06.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <pre class="prettyprint"><code>&lt;defs&gt;  
   &lt;clipPath id="a1"&gt;
   &lt;rect x="0" y="0" width="200" height="100" /&gt;
 &lt;/clipPath&gt;
 &lt;/defs&gt;
 &lt;circle cx="100" cy="100" r="100" clip-path="url(#a1)" fill="#000" /&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201409/20140916_1_06.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <p>定義剪裁 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html" target="_blank">SVG 研究之路 (9) - Clipping and Masking</a> )：</p>
-<p><img src="/img/articles/201409/20140916_1_09.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;mask id="mask1"&gt; 
     &lt;rect  x="50" y="50" width="100" height="100" fill="#ccc"/&gt;
@@ -138,9 +134,8 @@
 &lt;/defs&gt;
   &lt;rect id="box1" x="50" y="50" width="150" height="150" fill="#0f0"/&gt;
   &lt;rect id="box2" x="50" y="50" width="150" height="150" fill="#f00" mask="url(#mask1)"/&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201409/20140916_1_09.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <p>定義線段 marker ( <a href="http://www.oxxostudio.tw/articles/201409/svg-17-storke-marker.html" target="_blank">SVG 研究之路 (17) - Stroke-marker</a> )：</p>
-<p><img src="/img/articles/201409/20140916_1_07.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;marker id="r" viewBox="-10 -10 70 70" refX="25" refY="25" markerWidth="15" markerHeight="15" orient="auto" &gt;
       &lt;circle fill="#fff" stroke="#000" stroke-width="10" cx="25" cy="25" r="25"/&gt;
@@ -153,16 +148,15 @@
   &lt;/marker&gt;
 &lt;/defs&gt;
 &lt;polyline points="20,100 50,100 80,20 110,80 140,30 170,100 200,100" fill="none" stroke="black" stroke-width="1" marker-end="url(#b)" marker-start="url(#r)" marker-mid="url(#g)"&gt;&lt;/polyline&gt;
-</code></pre><p><br></p>
-<p>使用 defs 定義 filter ( <a href="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html" target="_blank">SVG 研究之路 (13) - filter - feGaussianBlur</a> )：    </p>
-<p><img src="/img/articles/201409/20140916_1_08.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
+</code></pre><p><img src="/img/articles/201409/20140916_1_07.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
+<p>使用 defs 定義 filter ( <a href="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html" target="_blank">SVG 研究之路 (13) - filter - feGaussianBlur</a> )：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
 &lt;filter width="200" height="200" x="0" y="0" id="blur" filterUnits="userSpaceOnUse"&gt;
   &lt;feGaussianBlur stdDeviation="5" /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur") /&gt;
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201409/20140916_1_08.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
 
 
       <div class="social-icon">

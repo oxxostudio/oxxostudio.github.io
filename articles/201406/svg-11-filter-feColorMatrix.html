@@ -81,11 +81,11 @@
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201406/color-channel.html" target="_blank">淺談位元色版</a></p>
 </blockquote>
+<h2>色彩矩陣</h2>
 <p>基本上在網路的圖片裡頭 ( jpg、png )，每一個像素的顏色，都是由 R ( 紅 ) 、G ( 綠 ) 、B ( 藍 ) 、A ( 透明 / Alpha ) 四個色版所組成 ( 使用過 Photoshop 應該很清楚，不清楚的請好好重學 Photoshop ) ，每一個色版具有 0~255 階 ( 2 的八次方 )，透過色彩矩陣的換算，我們可以輕易地改變圖片裡每一個像素的顏色，色彩矩陣的公式如下：  </p>
 <p><img src="/img/articles/201406/20140621_1_02.png" alt="SVG filter - feColorMatrix"></p>
 <p><img src="/img/articles/201406/20140621_1_03.png" alt="SVG filter - feColorMatrix">  </p>
-<p><br>
-裏頭的 R in 代表原來的紅色色版，R out 代表轉換過的紅色色版，依此類推 G 和 B 也是如此，最後一個 1 是可以額外增加的參數就先別理他了，因此由公式我們可以知道，經過這個色彩矩陣的轉換，我們可以輕鬆地把一張圖片裏頭的某些顏色換成另外的顏色，或是把某些顏色直接拿掉，直接看下面的範例圖比較容易理解：</p>
+<p>裏頭的 R in 代表原來的紅色色版，R out 代表轉換過的紅色色版，依此類推 G 和 B 也是如此，最後一個 1 是可以額外增加的參數就先別理他了，因此由公式我們可以知道，經過這個色彩矩陣的轉換，我們可以輕鬆地把一張圖片裏頭的某些顏色換成另外的顏色，或是把某些顏色直接拿掉，直接看下面的範例圖比較容易理解：</p>
 <p>這是一張 RGB 色光的色彩模型 ( 背景透明 )  </p>
 <p><img src="/img/articles/201406/20140621_1_04.png" alt="SVG filter - feColorMatrix">  </p>
 <p>利用下面的矩陣，我們可以把紅色的數值 255 給變成 0</p>
@@ -93,8 +93,7 @@
                        0 1 0 0 0
                        0 0 1 0 0
                        0 0 0 1 0" /&gt;
-</code></pre><p>輸出結果：</p>
-<p><img src="/img/articles/201406/20140621_1_05.png" alt="SVG filter - feColorMatrix">  </p>
+</code></pre><p><img src="/img/articles/201406/20140621_1_05.png" alt="SVG filter - feColorMatrix">  </p>
 <p>為什麼會這樣呢？因為紅色的 255 數值 ( 純紅色的色碼： FF0000 ) 經過矩陣轉換後，變成： (255/255)x0 + (G/255)x0 + (B/255)x0 + (alpha/255)x0 = 0，因為 0*255 = 0，在色碼表中 0 所代表的就是黑色，因此紅色的區域就變成黑色了 ( 000000 )，同樣的道理，我們也可以讓藍色和綠色都消失：</p>
 <pre class="prettyprint"><code>&lt;feColorMatrix values="1 0 0 0 0
                        0 0 0 0 0
@@ -118,8 +117,8 @@
                        0 0 1 0 0
                        0 0 0 .5 0" /&gt;
 </code></pre><p><img src="/img/articles/201406/20140621_1_08.png" alt="SVG filter - feColorMatrix"> </p>
-<p><br>
-看完了單純 RGBA 的圖片說明，對於色彩矩陣應該有了初步的認識，接下來就來點比較複雜的，直接用一張具有各種色彩的圖片來玩玩看！以下我選擇了我最喜歡的超現實主義大師 Rene Magritte 的代表作 The Son of Man 的截圖來向大師致敬！</p>
+<h2>色彩轉換</h2>
+<p>看完了單純 RGBA 的圖片說明，對於色彩矩陣應該有了初步的認識，接下來就來點比較複雜的，直接用一張具有各種色彩的圖片來玩玩看！以下我選擇了我最喜歡的超現實主義大師 Rene Magritte 的代表作 The Son of Man 的截圖來向大師致敬！</p>
 <p><img src="/img/articles/201406/20140621_1_09.png" alt="SVG filter - feColorMatrix"> </p>
 <p>假設我們今天要把圖片的飽和度提高，該怎麼做呢？首先當然是想想飽和度的成因，就是紅的越紅，藍的越藍，綠的越綠，由這個成因出發，我們的矩陣就可以寫成下面的樣子，看到矩陣當中出現了 3 和 -1，一定會很那悶這是怎麼來的，箇中原理其實很容易理解，讓我們假設某一個像素的 RGB 分別是 (200/255),(100/255),(50/255)，呈現的應該是有點暗沉的橘色，經過矩陣的換算，R 變成了 200/255x3-100/255-50/255= 1.76, G 變成 200/255x(-1)+100/255*3-50/255=0.2，B 變成 200x(-1)+100x(-1)+50x3=-0.59，因此 RGB 轉換後就是：200x1.76,100x0.2,50x-0.5。</p>
 <pre class="prettyprint"><code>&lt;feColorMatrix values="3 -1 -1 0 0
@@ -127,8 +126,7 @@
                        -1 -1 3 0 0
                        0 0 0 1 0" /&gt;
 </code></pre><p><img src="/img/articles/201406/20140621_1_10.png" alt="SVG filter - feColorMatrix">  </p>
-<p><br>
-如果今天要讓一張圖片變成灰階，其實我們可以這麼做：</p>
+<p>如果今天要讓一張圖片變成灰階，其實我們可以這麼做：</p>
 <pre class="prettyprint"><code>&lt;feColorMatrix values="1 0 0 0 0
                        1 0 0 0 0
                        1 0 0 0 0
@@ -140,8 +138,7 @@
                        .5 .2 .3 0 0
                        0 0 0 1 0" /&gt;
 </code></pre><p><img src="/img/articles/201406/20140621_1_12.png" alt="SVG filter - feColorMatrix">  </p>
-<p><br>
-此外也可以單純針對 alpha 色版做變化，就可以單純針對紅色、綠色、藍色的 alpha 值，進行遮色片的效果 ( 就有點類似 photoshop 的遮色片 )，我在下方放了一個色塊，就可以清楚知道各個遮色片的效果</p>
+<p>此外也可以單純針對 alpha 色版做變化，就可以單純針對紅色、綠色、藍色的 alpha 值，進行遮色片的效果 ( 就有點類似 photoshop 的遮色片 )，我在下方放了一個色塊，就可以清楚知道各個遮色片的效果</p>
 <pre class="prettyprint"><code>&lt;feColorMatrix values="0 0 0 0 0
                        0 0 0 0 0
                        0 0 0 0 0
@@ -162,6 +159,7 @@
                        0 0 0 0 0
                        0 0 1 0 0" /&gt;
 </code></pre><p><img src="/img/articles/201406/20140621_1_16.png" alt="SVG filter - feColorMatrix">  </p>
+<h2>濾鏡效果</h2>
 <p>我了解看到這邊，大家應該已經「灰起」了，總之這就是色彩矩陣的計算原理，不過其實也不用太擔心，SVG 裏頭其實已經幫我們設定好了幾組，只需要輸入 type 名稱以及數值，就可以輕鬆的產生濾鏡效果，也大幅度減少了自己動手運算的門檻，</p>
 <ul>
 <li><p><strong>type="matrix"</strong>：  </p>
@@ -177,7 +175,6 @@
 </code></pre><p>  <img src="/img/articles/201406/20140621_1_19.png" alt="SVG filter - feColorMatrix">  </p>
 </li>
 </ul>
-<p><br></p>
 <ul>
 <li><p><strong>type="hueRotate"</strong>：  </p>
 <p>  顧名思義就是色相，values 帶入的是角度，也就是 <a href="http://zh.wikipedia.org/wiki/%E8%89%B2%E7%9B%B8" target="_blank">色相環</a> 要旋轉的角度。</p>
@@ -189,7 +186,6 @@
 </code></pre><p>  <img src="/img/articles/201406/20140621_1_21.png" alt="SVG filter - feColorMatrix">  </p>
 </li>
 </ul>
-<p><br></p>
 <ul>
 <li><p><strong>type="luminanceToAlpha"</strong>： </p>
 <p>  直接變成遮色片的形式，沒有 values 值。</p>
@@ -197,7 +193,7 @@
 </code></pre><p>  <img src="/img/articles/201406/20140621_1_22.png" alt="SVG filter - feColorMatrix">  </p>
 </li>
 </ul>
-<p><br></p>
+<h2>小結</h2>
 <p>以上就是 SVG filter feColorMatrix 的介紹，相同的 colormatrix 原理同樣可以應用在 HTML5 的色彩運算上，說難不難，但是真的要深入去計算每個數值，讓產生的圖片變成最完美的效果，就是很難又很複雜的學問了！最後補充上一大堆的參考資料：</p>
 <ul>
 <li><a href="http://www.w3.org/TR/SVG/filters.html#feColorMatrixTypeAttribute" target="_blank">W3C Filter primitive feColorMatrix</a></li>

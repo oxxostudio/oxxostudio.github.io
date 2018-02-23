@@ -81,8 +81,8 @@
 <blockquote>
 <p><a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6078331350941696" target="_blank">電子時鐘效果範例</a>  </p>
 </blockquote>
+<h2>偽元素簡介</h2>
 <p>首先介紹一下偽元素這個東西，為什麼稱呼這東西叫做偽元素呢？簡單來說，偽元素並不存在於標準的 HTML 元素當中，而是跟隨在每個元素裡頭，一前一後共有兩個，分別是<code>::befor</code>和<code>::after</code>，當我們在 CSS 裡頭寫出<code>a::before</code>或<code>a::after</code>的時候，就等同於在這個 a 元素的前後加上了兩個假的元素，我們就可以更靈活的去針對 a 元素做變化。( 可以看看下面這張圖和對應的程式碼就比較清楚，搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256" target="_blank">範例檔案</a> ）</p>
-<p><img src="/img/articles/201407/20140717_1_02.png" alt="CSS Clock"></p>
 <pre class="prettyprint"><code>.a{
   width:100px;
   height:50px;
@@ -110,10 +110,10 @@
   top:0;
   right:-50px;
 }
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201407/20140717_1_02.png" alt="CSS Clock"></p>
 <p>比較需要注意的，偽元素一定要加上<code>content:'';</code>的屬性，這個屬性是讓我們可以在偽元素直接填入純文字內容，也可以使用像 alert  一樣的換行語法，這個值基本上都可以為空，但你也可以使用它搭配 HTML5  的 data attributes，就能做出更多的互動變化，也因為偽元素原本是 inline 的屬性，我們若要讓它俱有長寬，就要將其改為 block 或 inline-block。此外，如果要精准控制偽元素的位置，可以把本體的 position 設為 relative，偽元素的 position 設為 absolute，就可以由 top、left、right、bottom 控制位置。</p>
+<h2>邊框概念</h2>
 <p>了解了基本的偽元素之後，就可以做出這個時鐘效果了嗎？當然是不行呦～我們還必須要先了解邊框 ( border ) 的概念，如果今天一個正方形的長寬都是 0，但四個邊都有 10px 的寬度，出來的樣子就會像下圖這樣 ( 搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256" target="_blank">範例檔案</a> )</p>
-<p><img src="/img/articles/201407/20140717_1_03.png" alt="CSS Clock"></p>
 <pre class="prettyprint"><code>.b{
   width:0;
   height:0;
@@ -121,9 +121,8 @@
   border-style:solid;
   border-color:red blue green yellow; /* 上右下左，順時針方向四個邊 */
 }
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201407/20140717_1_03.png" alt="CSS Clock"></p>
 <p>我們如果把邊框的底色設為透明，就可以輕鬆地做出三角形的效果，當然如果搭配 CSS3 的旋轉或變形，就可以做出更多形狀的變化。( 搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256" target="_blank">範例檔案</a> )</p>
-<p><img src="/img/articles/201407/20140717_1_04.png" alt="CSS Clock"></p>
 <pre class="prettyprint"><code>.c{
   width:0;
   height:0;
@@ -131,9 +130,8 @@
   border-style:solid;
   border-color:rgba(0,0,0,0) rgba(0,0,0,1); /* 上下、左右 */
 }
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201407/20140717_1_04.png" alt="CSS Clock"></p>
 <p>搭配本體的元素，就能夠做出箭頭。( 搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256" target="_blank">範例檔案</a> )</p>
-<p><img src="/img/articles/201407/20140717_1_05.png" alt="CSS Clock"></p>
 <pre class="prettyprint"><code>.d{
   width:100px;
   height:50px;
@@ -152,9 +150,9 @@
   border-color:rgba(255,200,0,0) rgba(255,200,0,0) rgba(255,200,0,0) rgba(255,200,0,1);
   /* 上右下三個邊的邊框顏色是透明的 */
 }
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201407/20140717_1_05.png" alt="CSS Clock"></p>
+<h2>組合時鐘</h2>
 <p>基本知識都都了解了之後，我們只要把各個箭頭 ( 總共七個 ) 組成八的形狀，就可以做出像液晶電子數字的 8 。 ( 搭配 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6236140528992256" target="_blank">範例檔案</a> )</p>
-<p><img src="/img/articles/201407/20140717_1_06.png" alt="CSS Clock"></p>
 <pre class="prettyprint"><code>.clock{
   margin:20px;
 }
@@ -218,7 +216,7 @@
   bottom: -6px;
   border-top-color: #000;
 }
-</code></pre><p><br></p>
+</code></pre><p><img src="/img/articles/201407/20140717_1_06.png" alt="CSS Clock"></p>
 <p>接著只要在針對不同的數字，讓不同的箭頭消失，就可以做出 0~9 的數字效果。</p>
 <pre class="prettyprint"><code>.clock-1 span.s1,.clock-1 span.s2,.clock-1 span.s4,.clock-1 span.s5,.clock-1 span.s7{
   opacity:0;
@@ -249,7 +247,7 @@
 .clock-0 span.s4{
   opacity:0;
 }
-</code></pre><p><br></p>
+</code></pre><h2>小結</h2>
 <p>會做這些效果之後，只需要再利用 JS 抓取電腦時間，加上其他的 CSS 排版，就能做出非常擬真的電子時鐘囉！最後再看一次範例：<a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=6078331350941696" target="_blank">電子時鐘效果範例 ( 使用 EZoApp，點選 preview 可以預覽 )</a> </p>
 
 

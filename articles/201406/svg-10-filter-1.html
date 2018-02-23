@@ -78,6 +78,7 @@
 <h1>SVG 研究之路 (10) - 初探 filter</h1>
 <p><img src="/img/articles/201406/svg-10-filter-1.jpg" class="preview-img" alt=""></p>
 <p>這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。</p>
+<h2>定義濾鏡</h2>
 <p>一如往常，第一步，在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭，加入<code>&lt;filter&gt;&lt;/filter&gt;</code>的標籤，然後給它一個 id 作為識別，接著就是要在<code>filter</code>裏頭放入濾鏡，在此之前，<code>filter</code>除了 x、y、width、height 幾個基本屬性外，也幾個比較特別的屬性需要設定：</p>
 <ul>
 <li><strong>filterUnits</strong> ："userSpaceOnUse | objectBoundingBox" ( 位置以 SVG 畫面為主，還是以套用的物件為主 )</li>
@@ -85,39 +86,39 @@
 <li><strong>filterRes</strong> ： 該屬性定義了中間緩存區域的大小，通常不需要提供</li>
 </ul>
 <p>因此濾鏡的程式通常都會寫成：</p>
-<pre class="prettyprint"><code>  &lt;defs&gt;
-    &lt;filter id="id名" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse"&gt;
-      濾鏡
-    &lt;/filter&gt;
-  &lt;/defs&gt;
-</code></pre><p><br></p>
+<pre class="prettyprint"><code>&lt;defs&gt;
+  &lt;filter id="id名" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse"&gt;
+    濾鏡
+  &lt;/filter&gt;
+&lt;/defs&gt;
+</code></pre><h2>濾鏡列表</h2>
 <p>因為在 chrome 上實測仍然有很多濾鏡效果不支援 ( IE 竟然支援... )，實際上要用，可能就真的要花點心思去測試了，不然真的做完發現不支援，還真是糗很大...如果對濾鏡有興趣，可以閱讀這幾篇文章：<a href="http://www.w3.org/TR/SVG/filters.html" target="_blank">W3C SVG Filters</a>、<a href="http://srufaculty.sru.edu/david.dailey/svg/SVGOpen2010/Filters2.htm" target="_blank">Filter Effects in SVG</a>，以下是濾鏡的列表：</p>
 <ul>
-<li><strong>feBlend</strong> ：使用不同的混合模式把兩個對象合成在一起。</li>
-<li><strong>feColorMatrix</strong> ：應用矩陣轉換。( <a href="http://en.wikipedia.org/wiki/Matrix_multiplication" target="_blank">Matrix multiplication</a> )</li>
-<li><strong>feComponentTransfer</strong> ：允許圖片由四個色彩通道重新定義<ul>
+<li><em>feBlend</em> ：使用不同的混合模式把兩個對象合成在一起。</li>
+<li><em>feColorMatrix</em> ：應用矩陣轉換。( <a href="http://en.wikipedia.org/wiki/Matrix_multiplication" target="_blank">Matrix multiplication</a> )</li>
+<li><em>feComponentTransfer</em> ：允許圖片由四個色彩通道重新定義<ul>
 <li>feFuncA、feFuncB、feFuncG、feFuncR</li>
 </ul>
 </li>
-<li><strong>feComposite</strong> ：混合圖片，可以以百分比的方式進行混合</li>
-<li><strong>feConvolveMatrix</strong> ：透過矩陣運算，做出模糊，邊緣檢測，銳化，浮雕和斜角...等效果。</li>
-<li><strong>feDiffuseLighting</strong> ：使用 alpha channel 計算凹凸</li>
-<li><strong>feDisplacementMap</strong> ：置換每一英吋的圖像</li>
-<li><strong>feDistantLight</strong> ：定義光源<ul>
+<li><em>feComposite</em> ：混合圖片，可以以百分比的方式進行混合</li>
+<li><em>feConvolveMatrix</em> ：透過矩陣運算，做出模糊，邊緣檢測，銳化，浮雕和斜角...等效果。</li>
+<li><em>feDiffuseLighting</em> ：使用 alpha channel 計算凹凸</li>
+<li><em>feDisplacementMap</em> ：置換每一英吋的圖像</li>
+<li><em>feDistantLight</em> ：定義光源<ul>
 <li>fePointLight、feSpecularLighting、feSpotLight</li>
 </ul>
 </li>
-<li><strong>feFlood</strong> ：重新繪製矩形並和其他物件結合</li>
-<li><strong>feGaussianBlur</strong> ：高斯模糊</li>
-<li><strong>feImage</strong> ：插入一張圖片成為濾鏡</li>
-<li><strong>feMerge</strong> ：不同濾鏡的組合 ( merge )    <ul>
+<li><em>feFlood</em> ：重新繪製矩形並和其他物件結合</li>
+<li><em>feGaussianBlur</em> ：高斯模糊</li>
+<li><em>feImage</em> ：插入一張圖片成為濾鏡</li>
+<li><em>feMerge</em> ：不同濾鏡的組合 ( merge )    <ul>
 <li>feMergeNode</li>
 </ul>
 </li>
-<li><strong>feMorphology</strong></li>
-<li><strong>feOffset</strong> ：移動套用濾鏡的物件位置位置</li>
-<li><strong>feTile</strong> ：讓圖像以重複模式進入濾鏡</li>
-<li><strong>feTurbulence</strong> ：創建震盪與紋理</li>
+<li><em>feMorphology</em></li>
+<li><em>feOffset</em> ：移動套用濾鏡的物件位置位置</li>
+<li><em>feTile</em> ：讓圖像以重複模式進入濾鏡</li>
+<li><em>feTurbulence</em> ：創建震盪與紋理</li>
 </ul>
 
 
