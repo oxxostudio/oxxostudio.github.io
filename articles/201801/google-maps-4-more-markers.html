@@ -6,10 +6,10 @@
 
   <title>Google Maps (4) - 多個地圖標記 - OXXO.STUDIO</title>
 
-  <meta name="description" content="前一篇介紹了如何在地圖裡放入地圖標記，這篇將透過地圖標記、標籤與動畫，實現在地圖上呈現多個標記，並且透過簡單的動畫依序載入這些標記。">
-  <meta itemprop="description" content="前一篇介紹了如何在地圖裡放入地圖標記，這篇將透過地圖標記、標籤與動畫，實現在地圖上呈現多個標記，並且透過簡單的動畫依序載入這些標記。">
+  <meta name="description" content="前一篇介紹了如何在地圖裡放入地圖標記 ( Marker )，這篇將透過 Google Maps API，做出地圖標記、標籤與動畫，甚至實現在地圖上放入多個標記，並且透過簡單的動畫依序載入這些標記。">
+  <meta itemprop="description" content="前一篇介紹了如何在地圖裡放入地圖標記 ( Marker )，這篇將透過 Google Maps API，做出地圖標記、標籤與動畫，甚至實現在地圖上放入多個標記，並且透過簡單的動畫依序載入這些標記。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-4-more-markers.jpg">
-  <meta property="og:description" content="前一篇介紹了如何在地圖裡放入地圖標記，這篇將透過地圖標記、標籤與動畫，實現在地圖上呈現多個標記，並且透過簡單的動畫依序載入這些標記。">
+  <meta property="og:description" content="前一篇介紹了如何在地圖裡放入地圖標記 ( Marker )，這篇將透過 Google Maps API，做出地圖標記、標籤與動畫，甚至實現在地圖上放入多個標記，並且透過簡單的動畫依序載入這些標記。">
   <meta property="og:title" content="Google Maps (4) - 多個地圖標記">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201801/google-maps-4-more-markers.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-4-more-markers.jpg">
@@ -76,7 +76,7 @@
       <i class="tag"></i>
 
 <h1>Google Maps (4) - 多個地圖標記</h1>
-<p>前一篇介紹了如何在地圖裡放入地圖標記，這篇將透過地圖標記、標籤與動畫，實現在地圖上呈現多個標記，並且透過簡單的動畫依序載入這些標記。</p>
+<p>前一篇介紹了如何在地圖裡放入地圖標記 ( Marker )，這篇將透過 Google Maps API，做出地圖標記、標籤與動畫，甚至實現在地圖上放入多個標記，並且透過簡單的動畫依序載入這些標記。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>放入多個地圖標記</h2>
 <p>如果有多個地圖標記，可以用個陣列來裝載對應的標籤、經緯度...等資訊，舉例來說，這裡使用一個名為 position 的陣列，將五個地圖標記的資訊用物件的方式放在裡頭，同時建立一個空的 markers 陣列，用這個陣列的內容來宣告一個個新的地圖標記。</p>
 <p>在這裡有個比較需要注意的地方，就是<code>addMarker(e)</code>這個 function，如果把這個 function 放在<code>initMap()</code>的外面，會發生地圖還沒載入就執行<code>addMarker(e)</code>而發生錯誤，所以要放在裡頭。</p>
