@@ -79,14 +79,18 @@
 <h1>Google Maps (9) - 繪製折線</h1>
 <p>「折線」是 Google 地圖裡最基本的一種「形狀」，折線顧名思義就是可以幫助我們在地圖上繪製直線，繪製的方法需使用 Google Maps API 的 Polyline 建構函式，只要在裡頭設定對應的座標陣列和一些設定，就能輕輕鬆鬆在地圖上繪製。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>繪製折線起手式</h2>
-<p>Polyline 建構函式使用一組指定線條 LatLng 座標的 PolylineOptions，以及一組調整折線視覺行為的樣式，下列 PolylineOptions 的部分是資訊視窗的內容與屬性設定。</p>
+<p>Polyline 建構函式使用一組指定線條 LatLng 座標的 Path，以及一組調整折線視覺行為的樣式，下列 PolylineOptions 的部分是資訊視窗的內容與屬性設定。</p>
 <pre class="prettyprint"><code>var polylinePath = new google.maps.Polyline(PolylineOptions)
 </code></pre><h2>折線設定 Polyline Options</h2>
 <p>從起手式中可以看到 PolylineOptions，這是折線的設定，這些設定有以下幾種：</p>
 <ul>
+<li><p><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把折線放到地圖裡。</p>
+</li>
 <li><p><strong>path</strong>：折線的路徑，使用陣列來表示，每個陣列元素是經緯度的物件，必須包含對應的經緯度座標才能繪製。</p>
 </li>
 <li><p><strong>icons</strong>：折線上每個座標的圖示，使用陣列來表示，如果沒有 icon 則不會有圖案顯示。</p>
+</li>
+<li><p><strong>strokeColor</strong>：折線線條的顏色。</p>
 </li>
 <li><p><strong>strokeOpacity</strong>：折線的線條透明度，0.0 ~ 1.0 之間，越接近 0 表示越透明。</p>
 </li>
