@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (12) - 形狀 ( 圓形與矩形 ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。">
+  <meta itemprop="description" content="圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-12-rect-circle.jpg">
+  <meta property="og:description" content="圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。">
+  <meta property="og:title" content="Google Maps (12) - 形狀 ( 圓形與矩形 )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-12-rect-circle.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-12-rect-circle.jpg">
+  <link href="/css/article.css?20180220" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (12) - 形狀 ( 圓形與矩形 )</h1>
+<p>圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>起手式</h2>
+<p><strong>圓形</strong>：的建構函式為 Circle，使用一組 LatLng 座標來指定圓心，半徑則是以公尺為單位表現，下列 CircleOptions 的部分是相關屬性設定。</p>
+<pre class="prettyprint"><code>var circle = new google.maps.Circle(CircleOptions)
+</code></pre><p><strong>矩形</strong>：的建構函式為 Rectangle，使用兩組 LatLng 座標來指定兩個端點 ( 四個邊 )，下列 RectangleOptions 的部分是相關屬性設定。</p>
+<pre class="prettyprint"><code>var rectangle = new google.maps.Rectangle(RectangleOptions)
+</code></pre><h2>圓形設定 Circle Options</h2>
+<ul>
+<li><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把圓形放到地圖裡。</li>
+<li><strong>center</strong>：圓形的圓心，使用一組經緯度座標表示。</li>
+<li><strong>radius</strong>：圓形的半徑，單位是「公尺」。</li>
+<li><strong>fillColor</strong>：圓形填滿的顏色。</li>
+<li><strong>fillOpacity</strong>：圓形填滿的透明度，0.0 ~ 1.0 之間，越接近 0 表示越透明。</li>
+<li><strong>strokeColor</strong>：圓形外框線條的顏色。</li>
+<li><strong>strokeWeight</strong>：圓形外框線條寬度，使用 pixel 表示。</li>
+<li><strong>strokeOpacity</strong>：圓形外框線條透明度，0.0 ~ 1.0 之間，越接近 0 表示越透明。</li>
+<li><p><strong>strokePosition</strong>：圓形外框線條是在的位置，有三種選項，「<em>CENTER</em>」表示線條的中線貼齊圓形邊緣，「<em>INSIDE</em>」表示線條最外緣貼齊圓形最外緣 ( 線條在形狀內 )，「<em>OUTSIDE</em>」表示線條的最內緣貼齊圓形最外緣 ( 線條在形狀外 )。</p>
+<pre class="prettyprint"><code>  strokePosition: google.maps.StrokePosition.選項
+</code></pre></li>
+<li><strong>zIndex</strong>：圓形階層，數字越大在越上面。</li>
+<li><strong>visible</strong>：是否可以看見圓形，預設值 true，如果設定 false 就看不見。</li>
+<li><strong>clickable</strong>：是否可以點擊圓形，預設值 true，如果設為 false 則不能點擊。</li>
+<li><strong>draggable</strong>：是否可以拖曳邊圓形，預設值為 false，如果設為 true，則可以把整個多邊形拖曳到別的地方 ( 如果是要個別修改形狀邊緣的點，可以使用 editable )。</li>
+<li><strong>editable</strong>：是否可以編輯圓形，預設值為 false，如果設為 true，透過滑鼠就可以更改圓形大小。</li>
+</ul>
+<h2>圓形方法 Circle Methods</h2>
+<ul>
+<li><strong>setMap(Map)</strong>：設定地圖，將圓形放到指定的地圖上，如果設定的值為 null，則會移除圓形。</li>
+<li><strong>setDraggable(boolean)</strong>：設定是否可以拖曳圓形，true 可以，false 不可以。</li>
+<li><strong>setEditable(boolean)</strong>：設定是否可以編輯圓形，true 可以，false 不可以。</li>
+<li><strong>setOptions(CircleOptions)</strong>：重新設定圓形。</li>
+<li><strong>setCenter(center)</strong>：設定圓形圓心，用法等同 CircleOptions。</li>
+<li><strong>setRadius(radius)</strong>：設定圓形半徑，用法等同 CircleOptions。</li>
+<li><strong>setVisible(boolean)</strong>：設定圓形是否可見，true 可以，false 不可以。</li>
+<li><strong>getDraggable()</strong>：獲取圓形是否可以拖曳的狀態。</li>
+<li><strong>getEditable()</strong>：獲取圓形是否可以編輯的狀態。</li>
+<li><strong>getMap()</strong>：獲取圓形所在地圖。</li>
+<li><strong>getBounds()</strong>：獲取圓形上下左右四個端點的座標。</li>
+<li><strong>getCenter()</strong>：獲取圓形的圓心座標。</li>
+<li><strong>getRadius()</strong>：獲取圓形的半徑。</li>
+<li><strong>getVisible()</strong>：獲取圓形是否可見的狀態。</li>
+</ul>
+<h2>圓形事件 Circle Events</h2>
+<ul>
+<li><strong>click</strong>：滑鼠點擊。</li>
+<li><strong>dblclick</strong>：滑鼠連點兩下。</li>
+<li><strong>center_changed</strong>：圓心發生改變。</li>
+<li><strong>radius_changed</strong>：半徑發生改變。</li>
+<li><strong>drag</strong>：拖曳多邊形。</li>
+<li><strong>dragend</strong>：拖曳多邊形結束。</li>
+<li><strong>dragstart</strong>：拖曳多邊形開始。</li>
+<li><strong>mousedown</strong>：按下滑鼠。</li>
+<li><strong>mouseup</strong>：放開放開。</li>
+<li><strong>mousemove</strong>：移動滑鼠。</li>
+<li><strong>mouseout</strong>：滑鼠移出多邊形外。</li>
+<li><strong>mouseover</strong>：滑鼠移到多邊形內。</li>
+<li><strong>rightclick</strong>：滑鼠右鍵點擊。</li>
+</ul>
+<p>知道圓形的用法之後，可以在地圖上指定相對應的座標化圓，並搭配標記 marker，實現不同數值有不同半徑大小的圓形，下面的範例先用一個 position 陣列放座標經緯度，然後 num 是半徑的基準數值，實際呈現時會乘以 10。</p>
+<blockquote>
+<p>範例：<a href="/demo/201802/google-maps-12-rect-circle-demo-01.html" target="_blank">在 Google 地圖畫圓形</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+
+var position = [{
+  lat: 25.0336962,
+  lng: 121.5643673
+}, {
+  lat: 25.036518,
+  lng: 121.562546
+}, {
+  lat: 25.033164,
+  lng: 121.557472
+}];
+
+var num = [10, 20, 30];
+var circle = [];
+var marker = [];
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 16,
+    center: position[1]
+  });
+
+  position.forEach(function(e, i) {
+    circle[i] = new google.maps.Circle({
+      center: e,
+      radius: num[i] * 10,
+      strokeOpacity: 0,
+      fillColor: '#f00',
+      fillOpacity: 0.35,
+      map: map
+    });
+    marker[i] = new google.maps.Marker({
+      position: e,
+      map: map,
+      label: num[i].toString()
+    });
+  });
+
+}
+</code></pre><p><img src="/img/articles/201802/google-maps-12-rect-circle-01.jpg" alt=""></p>
+<h2>矩形設定  Rectangle Options</h2>
+<p>矩形和圓形大同小異，扣除圓形的<code>center</code>和<code>radius</code>其他都相同，這邊就僅列出不同的部分。</p>
+<ul>
+<li><strong>bounds</strong>：設定矩形 north、south、east 和 west 的座標，換句話說也就是指定四個邊的線段經緯度。</li>
+</ul>
+<h2>矩形方法 Rectangle Methods</h2>
+<p>除了圓形的<code>setCenter(center)</code>、<code>setRadius(radius)</code>、<code>getCenter()</code>和<code>getRadius()</code>其他都相同，這邊僅列出不同的部分。</p>
+<ul>
+<li><strong>setBounds(Bounds)</strong>：設定座標。</li>
+<li><strong>getBounds()</strong>：獲得座標。</li>
+</ul>
+<h2>矩形事件 Rectangle Events</h2>
+<p>除了圓形的<code>center_changed</code>和<code>radius_changed</code>其他都相同，這邊僅列出不同的部分。</p>
+<ul>
+<li><strong>bounds_changed</strong>：當矩形的端點發生改變。</li>
+</ul>
+<p>下方是矩形的簡單範例，在地圖上放置矩形，並讓矩形的端點可以編輯。</p>
+<blockquote>
+<p>範例：<a href="/demo/201802/google-maps-12-rect-circle-demo-02.html" target="_blank">在 Google 地圖畫圓形</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    }
+  });
+
+  var rect = new google.maps.Rectangle({
+    bounds: {
+      north: 25.034962,
+      south: 25.033115,
+      east: 121.565422,
+      west: 121.563523
+    },
+    strokeOpacity: 0,
+    fillColor: '#00f',
+    fillOpacity: 0.35,
+    editable: true,
+    map: map
+  });
+
+}
+</code></pre><p><img src="/img/articles/201802/google-maps-12-rect-circle-02.jpg" alt=""></p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180220"></script>
+  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>

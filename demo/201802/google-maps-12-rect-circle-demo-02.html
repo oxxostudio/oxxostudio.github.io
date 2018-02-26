@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (12) - 形狀 ( 圓形與矩形 ) demo 02</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+  var map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 17,
+      center: {
+        lat: 25.0336962,
+        lng: 121.5643673
+      }
+    });
+
+    var rect = new google.maps.Rectangle({
+      bounds: {
+        north: 25.034962,
+        south: 25.033115,
+        east: 121.565422,
+        west: 121.563523
+      },
+      strokeOpacity: 0,
+      fillColor: '#00f',
+      fillOpacity: 0.35,
+      editable: true,
+      map: map
+    });
+
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps (12) - 形狀 ( 圓形與矩形 ) demo 01</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+  var map;
+
+  var position = [{
+    lat: 25.0336962,
+    lng: 121.5643673
+  }, {
+    lat: 25.036518,
+    lng: 121.562546
+  }, {
+    lat: 25.033164,
+    lng: 121.557472
+  }];
+
+  var num = [10, 20, 30];
+  var circle = [];
+  var marker = [];
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: position[1]
+    });
+
+    position.forEach(function(e, i) {
+      circle[i] = new google.maps.Circle({
+        center: e,
+        radius: num[i] * 10,
+        strokeOpacity: 0,
+        fillColor: '#f00',
+        fillOpacity: 0.35,
+        map: map
+      });
+      marker[i] = new google.maps.Marker({
+        position: e,
+        map: map,
+        label: num[i].toString()
+      });
+    });
+
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+</body>
+
+</html>
