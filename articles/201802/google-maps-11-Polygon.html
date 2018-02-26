@@ -1,5 +1,7 @@
 <!DOCTYPE html><html lang="zh-TW"><head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
@@ -13,17 +15,7 @@
   <meta property="og:title" content="Google Maps (11) - 形狀 ( 多邊形 )">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-11-Polygon.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-11-Polygon.jpg">
-  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-8629612872829139",
-    enable_page_level_ads: true
-  });
-  </script>
-  <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link href="/css/article.css" rel="stylesheet">
-  <link href="/css/lib/theme.min.css" rel="stylesheet">
+  <link href="/css/article.css?20180220" rel="stylesheet">
 </head>
 
 <body>
@@ -79,42 +71,28 @@
 <h1>Google Maps (11) - 形狀 ( 多邊形 )</h1>
 <p>使用 Google Mpas API 在 地圖上繪製多邊形跟繪製折線一樣簡單，換句話說只要把折線填滿，就變成了多邊形，折線使用 Polyline 形狀是 Polygon，多邊形可以點擊的區域也比折線大得多，這篇就來探討一下如何在地圖上繪製多邊形吧！</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>繪製多邊形起手式</h2>
-<p>Polygon 建構函式使用一組指定多邊形 LatLng 座標的 Paths，以及一組調整折線視覺行為的樣式，下列 PolygonOptions 的部分是資訊視窗的內容與屬性設定。</p>
+<p>Polygon 建構函式使用一組指定多邊形 LatLng 座標的 Paths，以及一組調整折線視覺行為的樣式，下列 PolygonOptions 的部分是相關屬性設定。</p>
 <pre class="prettyprint"><code>var polygonPath = new google.maps.Polygon(PolygonOptions)
 </code></pre><h2>多邊形設定 Polygon Options</h2>
 <p>上面起手式的 PolygonOptions 是多邊形的設定，這些設定有以下幾種：</p>
 <ul>
-<li><p><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把多邊形放到地圖裡。</p>
-</li>
-<li><p><strong>path</strong>：多邊形的路徑，使用陣列來表示，每個陣列元素是經緯度的物件，必須包含對應的經緯度座標才能繪製。</p>
-</li>
-<li><p><strong>paths</strong>：多邊形的路徑，使用二維陣列來表示，表示有幾個形狀組合在一起，比較有趣的是，<em>如果外圈是順時針，內圈是逆時針，組合起來的圖形就會變成「交集」的方式呈現</em>。( 後面會有實例介紹 )</p>
-</li>
-<li><p><strong>fillColor</strong>：多邊形填滿的顏色。</p>
-</li>
-<li><p><strong>fillOpacity</strong>：多邊形填滿的透明度，0.0 ~ 1.0 之間，越接近 0 表示越透明。</p>
-</li>
-<li><p><strong>strokeColor</strong>：多邊形外框線條的顏色。</p>
-</li>
-<li><p><strong>strokeWeight</strong>：多邊形外框線條寬度，使用 pixel 表示。</p>
-</li>
-<li><p><strong>strokeOpacity</strong>：多邊形外框線條透明度，0.0 ~ 1.0 之間，越接近 0 表示越透明。</p>
-</li>
+<li><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把多邊形放到地圖裡。</li>
+<li><strong>path</strong>：多邊形的路徑，使用陣列來表示，每個陣列元素是經緯度的物件，必須包含對應的經緯度座標才能繪製。</li>
+<li><strong>paths</strong>：多邊形的路徑，使用二維陣列來表示，表示有幾個形狀組合在一起，比較有趣的是，<em>如果外圈是順時針，內圈是逆時針，組合起來的圖形就會變成「交集」的方式呈現</em>。( 後面會有實例介紹 )</li>
+<li><strong>fillColor</strong>：多邊形填滿的顏色。</li>
+<li><strong>fillOpacity</strong>：多邊形填滿的透明度，0.0 ~ 1.0 之間，越接近 0 表示越透明。</li>
+<li><strong>strokeColor</strong>：多邊形外框線條的顏色。</li>
+<li><strong>strokeWeight</strong>：多邊形外框線條寬度，使用 pixel 表示。</li>
+<li><strong>strokeOpacity</strong>：多邊形外框線條透明度，0.0 ~ 1.0 之間，越接近 0 表示越透明。</li>
 <li><p><strong>strokePosition</strong>：多邊形外框線條是在的位置，有三種選項，「<em>CENTER</em>」表示線條的中線貼齊多邊形邊緣，「<em>INSIDE</em>」表示線條最外緣貼齊多邊形最外緣 ( 線條在形狀內 )，「<em>OUTSIDE</em>」表示線條的最內緣貼齊多邊形最外緣 ( 線條在形狀外 )。</p>
 <pre class="prettyprint"><code>  strokePosition: google.maps.StrokePosition.選項
 </code></pre></li>
-<li><p><strong>zIndex</strong>：多邊形階層，數字越大在越上面。</p>
-</li>
-<li><p><strong>visible</strong>：是否可以看見多邊形，預設值 true，如果設定 false 就看不見。</p>
-</li>
-<li><p><strong>clickable</strong>：是否可以點擊多邊形，預設值 true，如果設為 false 則不能點擊。</p>
-</li>
-<li><p><strong>draggable</strong>：是否可以拖曳邊多邊形，預設值為 false，如果設為 true，則可以把整個多邊形拖曳到別的地方 ( 如果是要個別修改形狀邊緣的點，可以使用 editable )。</p>
-</li>
-<li><p><strong>editable</strong>：是否可以編輯多邊形邊緣上的每個點，預設值為 false，如果設為 true，在多邊形邊緣上就會出現可以拖曳的圓點標記，透過滑鼠就可以更改每個點的位置。</p>
-</li>
-<li><p><strong>geodesic</strong>：是否要依照「地球弧度」繪製多邊形，預設值為 flase，表示一律採「直線」顯示，若設定為 true，在地圖縮小到一定比例， 類似可以在同個畫面看到完整的台灣，就會看到多邊形邊緣變成「弧線」，因為地球本身是橢圓形，所以如果有看過飛機航線就知道，航線都會是弧線顯示 ( 在地球表面，最短的距離不是直線，是弧線 )。</p>
-</li>
+<li><strong>zIndex</strong>：多邊形階層，數字越大在越上面。</li>
+<li><strong>visible</strong>：是否可以看見多邊形，預設值 true，如果設定 false 就看不見。</li>
+<li><strong>clickable</strong>：是否可以點擊多邊形，預設值 true，如果設為 false 則不能點擊。</li>
+<li><strong>draggable</strong>：是否可以拖曳邊多邊形，預設值為 false，如果設為 true，則可以把整個多邊形拖曳到別的地方 ( 如果是要個別修改形狀邊緣的點，可以使用 editable )。</li>
+<li><strong>editable</strong>：是否可以編輯多邊形邊緣上的每個點，預設值為 false，如果設為 true，在多邊形邊緣上就會出現可以拖曳的圓點標記，透過滑鼠就可以更改每個點的位置。</li>
+<li><strong>geodesic</strong>：是否要依照「地球弧度」繪製多邊形，預設值為 flase，表示一律採「直線」顯示，若設定為 true，在地圖縮小到一定比例， 類似可以在同個畫面看到完整的台灣，就會看到多邊形邊緣變成「弧線」，因為地球本身是橢圓形，所以如果有看過飛機航線就知道，航線都會是弧線顯示 ( 在地球表面，最短的距離不是直線，是弧線 )。</li>
 </ul>
 <p>舉例來說，下面這段程式碼執行後，會看到一個紅色的愛心框住台北 101，在邊緣上的點都可以用滑鼠去拖曳修改位置，如果仔細看，因為多邊形的 strokePosition 設為 CENTER，所以會看到邊緣重疊在多邊形上。</p>
 <blockquote>
@@ -215,58 +193,34 @@ function initMap() {
 <h2>多邊形方法 Polygon Methods</h2>
 <p>Polygon 除了有以上的設定外，也有下列這些方法可以使用：</p>
 <ul>
-<li><p><strong>setMap(Map)</strong>：設定地圖，將多邊形放到指定的地圖上，如果設定的值為 null，則會移除多邊形。</p>
-</li>
-<li><p><strong>setDraggable(boolean)</strong>：設定是否可以拖曳多邊形，true 可以，false 不可以。</p>
-</li>
-<li><p><strong>setEditable(boolean)</strong>：設定是否可以編輯折多邊形，true 可以，false 不可以。</p>
-</li>
-<li><p><strong>setOptions(PolylineOptions)</strong>：重新設定多邊形。</p>
-</li>
-<li><p><strong>setPath(path)</strong>：設定多邊形，path 用法等同 PolygonOptions。</p>
-</li>
-<li><p><strong>setPaths(paths)</strong>：設定多邊形，paths 用法等同 PolygonOptions。</p>
-</li>
-<li><p><strong>setVisible(boolean)</strong>：設定多邊形是否可見，true 可以，false 不可以。</p>
-</li>
-<li><p><strong>getDraggable()</strong>：獲取多邊形是否可以拖曳的狀態。</p>
-</li>
-<li><p><strong>getEditable()</strong>：獲取多邊形是否可以編輯的狀態。</p>
-</li>
-<li><p><strong>getMap()</strong>：獲取多邊形所在地圖。</p>
-</li>
-<li><p><strong>getPath()</strong>：獲取多邊形。</p>
-</li>
-<li><p><strong>getPaths()</strong>：獲取多邊形。</p>
-</li>
-<li><p><strong>getVisible()</strong>：獲取多邊形是否可見的狀態。</p>
-</li>
+<li><strong>setMap(Map)</strong>：設定地圖，將多邊形放到指定的地圖上，如果設定的值為 null，則會移除多邊形。</li>
+<li><strong>setDraggable(boolean)</strong>：設定是否可以拖曳多邊形，true 可以，false 不可以。</li>
+<li><strong>setEditable(boolean)</strong>：設定是否可以編輯折多邊形，true 可以，false 不可以。</li>
+<li><strong>setOptions(PolylineOptions)</strong>：重新設定多邊形。</li>
+<li><strong>setPath(path)</strong>：設定多邊形，path 用法等同 PolygonOptions。</li>
+<li><strong>setPaths(paths)</strong>：設定多邊形，paths 用法等同 PolygonOptions。</li>
+<li><strong>setVisible(boolean)</strong>：設定多邊形是否可見，true 可以，false 不可以。</li>
+<li><strong>getDraggable()</strong>：獲取多邊形是否可以拖曳的狀態。</li>
+<li><strong>getEditable()</strong>：獲取多邊形是否可以編輯的狀態。</li>
+<li><strong>getMap()</strong>：獲取多邊形所在地圖。</li>
+<li><strong>getPath()</strong>：獲取多邊形路徑。</li>
+<li><strong>getPaths()</strong>：獲取多邊形路徑。</li>
+<li><strong>getVisible()</strong>：獲取多邊形是否可見的狀態。</li>
 </ul>
 <h2>多邊形事件 Polygon Events</h2>
 <p>多邊形也可以使用 addListener 監聽事件，事件有以下幾種：</p>
 <ul>
-<li><p><strong>click</strong>：滑鼠點擊。</p>
-</li>
-<li><p><strong>dblclick</strong>：滑鼠連點兩下。</p>
-</li>
-<li><p><strong>drag</strong>：拖曳多邊形。</p>
-</li>
-<li><p><strong>dragend</strong>：拖曳多邊形結束。</p>
-</li>
-<li><p><strong>dragstart</strong>：拖曳多邊形開始。</p>
-</li>
-<li><p><strong>mousedown</strong>：按下滑鼠。</p>
-</li>
-<li><p><strong>mouseup</strong>：放開放開。</p>
-</li>
-<li><p><strong>mousemove</strong>：移動滑鼠。</p>
-</li>
-<li><p><strong>mouseout</strong>：滑鼠移出多邊形外。</p>
-</li>
-<li><p><strong>mouseover</strong>：滑鼠移到多邊形內。</p>
-</li>
-<li><p><strong>rightclick</strong>：滑鼠右鍵點擊。</p>
-</li>
+<li><strong>click</strong>：滑鼠點擊。</li>
+<li><strong>dblclick</strong>：滑鼠連點兩下。</li>
+<li><strong>drag</strong>：拖曳多邊形。</li>
+<li><strong>dragend</strong>：拖曳多邊形結束。</li>
+<li><strong>dragstart</strong>：拖曳多邊形開始。</li>
+<li><strong>mousedown</strong>：按下滑鼠。</li>
+<li><strong>mouseup</strong>：放開放開。</li>
+<li><strong>mousemove</strong>：移動滑鼠。</li>
+<li><strong>mouseout</strong>：滑鼠移出多邊形外。</li>
+<li><strong>mouseover</strong>：滑鼠移到多邊形內。</li>
+<li><strong>rightclick</strong>：滑鼠右鍵點擊。</li>
 </ul>
 <p>透過 Polygon 的方法與事件，可以簡單做出「當滑鼠移到多邊形上就變綠色，按下滑鼠就變藍色」的效果。</p>
 <blockquote>
@@ -356,9 +310,18 @@ polygonPath.addListener('mouseup',function(){
     <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
   </div>
 
-  <script src="/js/lib/disqus.js"></script>
-  <script src="/js/layout.js"></script>
-  <script src="/js/articles.js"></script>
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180220"></script>
+  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
   <script src="https://www.google.com/jsapi"></script>
   <script>
   (function(i, s, o, g, r, a, m) {
@@ -388,6 +351,7 @@ polygonPath.addListener('mouseup',function(){
   })();
   </script>
 
+  <script src="/js/lib/disqus.js"></script>
 
 
 

@@ -1,5 +1,7 @@
 <!DOCTYPE html><html lang="zh-TW"><head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
@@ -13,17 +15,7 @@
   <meta property="og:title" content="Google Maps (8) - 資訊視窗">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-8-infowindow.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-8-infowindow.jpg">
-  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-8629612872829139",
-    enable_page_level_ads: true
-  });
-  </script>
-  <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/lib/run_prettify.js"></script>
-  <link href="/css/article.css" rel="stylesheet">
-  <link href="/css/lib/theme.min.css" rel="stylesheet">
+  <link href="/css/article.css?20180220" rel="stylesheet">
 </head>
 
 <body>
@@ -84,18 +76,12 @@
 </code></pre><h2>資訊視窗設定 InfoWindow Options</h2>
 <p>從起手式可以看到 InfoWindowOptions，這是資訊視窗的設定，這些設定有以下幾種：</p>
 <ul>
-<li><p><strong>content</strong>：資訊視窗的內容，可以是一段 html 或一段文字，內容會自動調整大小，最大不會超過資訊視窗大小，如果需要比較大的資訊視窗顯示，可以改變資訊視窗的 maxWidth 屬性。</p>
-</li>
-<li><p><strong>disableAutoPan</strong>：禁止資訊視窗出現時平移地圖，預設值為 true，也就是如果資訊視窗出現後，會在瀏覽器視窗外，則會自動將地圖平移到可以看到資訊視窗的位置，如果設為 false 就不會自動平移。</p>
-</li>
-<li><p><strong>maxWidth</strong>：資訊視窗最大寬度，輸入數字即可不用加單位，固定單位為 px，。</p>
-</li>
-<li><p><strong>pixelOffset</strong>：資訊視窗相對於其預設出現位置的位移，使用<code>new google.maps.Size(x, y)</code>來設定，除非有特殊需求不然就不設定，採用預設值。</p>
-</li>
-<li><p><strong>position</strong>：資訊視窗的位置，使用經緯度表示，如果不指定，預設會在地圖左上方出現，若將資訊視窗附加到地圖標記上，位置則會依據標記位置來決定。</p>
-</li>
-<li><p><strong>zIndex</strong>：資訊視窗的階層，數字越大在越上面。</p>
-</li>
+<li><strong>content</strong>：資訊視窗的內容，可以是一段 html 或一段文字，內容會自動調整大小，最大不會超過資訊視窗大小，如果需要比較大的資訊視窗顯示，可以改變資訊視窗的 maxWidth 屬性。</li>
+<li><strong>disableAutoPan</strong>：禁止資訊視窗出現時平移地圖，預設值為 true，也就是如果資訊視窗出現後，會在瀏覽器視窗外，則會自動將地圖平移到可以看到資訊視窗的位置，如果設為 false 就不會自動平移。</li>
+<li><strong>maxWidth</strong>：資訊視窗最大寬度，輸入數字即可不用加單位，固定單位為 px，。</li>
+<li><strong>pixelOffset</strong>：資訊視窗相對於其預設出現位置的位移，使用<code>new google.maps.Size(x, y)</code>來設定，除非有特殊需求不然就不設定，採用預設值。</li>
+<li><strong>position</strong>：資訊視窗的位置，使用經緯度表示，如果不指定，預設會在地圖左上方出現，若將資訊視窗附加到地圖標記上，位置則會依據標記位置來決定。</li>
+<li><strong>zIndex</strong>：資訊視窗的階層，數字越大在越上面。</li>
 </ul>
 <p>舉例來說，下面這段程式碼執行後，會看到一個最大寬度為 200px，以 marker 為主往右偏移 100px 往上偏移 20px，內容寫著「大家好我是資訊視窗」的資訊視窗。</p>
 <blockquote>
@@ -130,22 +116,14 @@ function initMap() {
 <h2>資訊視窗方法 InfoWindow Methods</h2>
 <p>在上面的範例中，看到了一個<code>open()</code>的方法，其實資訊視窗還包含了以下其他的方法：</p>
 <ul>
-<li><p><strong>open()</strong>：開啟資訊視窗，內容包含一個必填參數「map」和一個選填參數「位置」，map 比較容易理解基本上就是這張地圖，位置的話可以指定放在哪個地圖標記 marker，或是直接由經緯度指定位置。</p>
-</li>
-<li><p><strong>close()</strong>：關閉資訊視窗</p>
-</li>
-<li><p><strong>getContent()</strong>：獲得資訊視窗的內容。</p>
-</li>
-<li><p><strong>getPosition()</strong>：獲得資訊視窗的位置。</p>
-</li>
-<li><p><strong>setContent()</strong>：設定資訊視窗的內容。</p>
-</li>
-<li><p><strong>setPosition()</strong>：設定資訊視窗的位置。</p>
-</li>
-<li><p><strong>setZIndex()</strong>：設定資訊視窗的階層。</p>
-</li>
-<li><p><strong>setOptions()</strong>：所有資訊視窗的設定，都可用物件的方法來設定。</p>
-</li>
+<li><strong>open()</strong>：開啟資訊視窗，內容包含一個必填參數「map」和一個選填參數「位置」，map 比較容易理解基本上就是這張地圖，位置的話可以指定放在哪個地圖標記 marker，或是直接由經緯度指定位置。</li>
+<li><strong>close()</strong>：關閉資訊視窗</li>
+<li><strong>getContent()</strong>：獲得資訊視窗的內容。</li>
+<li><strong>getPosition()</strong>：獲得資訊視窗的位置。</li>
+<li><strong>setContent()</strong>：設定資訊視窗的內容。</li>
+<li><strong>setPosition()</strong>：設定資訊視窗的位置。</li>
+<li><strong>setZIndex()</strong>：設定資訊視窗的階層。</li>
+<li><strong>setOptions()</strong>：所有資訊視窗的設定，都可用物件的方法來設定。</li>
 </ul>
 <p>舉例來說，下面這段程式碼執行後，marker 上有個資訊視窗，裡頭有個按鈕寫著「點我」，如果你去點這個按鈕，資訊視窗的內容就會發生變化，此外如果你點選 x 關閉資訊視窗，亦可再點擊 marker 把資訊視窗打開。</p>
 <blockquote>
@@ -192,16 +170,11 @@ function initMap() {
 <h2>資訊視窗事件 InfoWindow Events</h2>
 <p>除了設定和方法，在上面的範例中，資訊視窗也可以透過<code>addListener</code>監聽以下幾種事件：</p>
 <ul>
-<li><p><strong>closeclick</strong>：當資訊視窗關閉時 ( 通常是點選 x 關閉 )。</p>
-</li>
-<li><p><strong>content_changed</strong>：當資訊視窗的內容發生改變 ( 可透過<code>setContent</code>改變 )。</p>
-</li>
-<li><p><strong>domready</strong>：當資訊視窗的 HTML DOM 準備好的時候。</p>
-</li>
-<li><p><strong>position_changed</strong>：當資訊視窗的位置發生改變 ( 可透過<code>setPosition</code>改變 )。</p>
-</li>
-<li><p><strong>zindex_changed</strong>：當資訊視窗的階層發生改變 ( 可透過<code>setZIndex</code>改變 )。</p>
-</li>
+<li><strong>closeclick</strong>：當資訊視窗關閉時 ( 通常是點選 x 關閉 )。</li>
+<li><strong>content_changed</strong>：當資訊視窗的內容發生改變 ( 可透過<code>setContent</code>改變 )。</li>
+<li><strong>domready</strong>：當資訊視窗的 HTML DOM 準備好的時候。</li>
+<li><strong>position_changed</strong>：當資訊視窗的位置發生改變 ( 可透過<code>setPosition</code>改變 )。</li>
+<li><strong>zindex_changed</strong>：當資訊視窗的階層發生改變 ( 可透過<code>setZIndex</code>改變 )。</li>
 </ul>
 <h2>小結</h2>
 <p>資訊視窗就像是在地圖上多了一個圖層，裡面塞入 html 的內容，不過基本上在 Google 地圖裡，疊上去的東西都是疊加層，資訊視窗也不例外，當熟悉了資訊視窗的用法，就更能為自己的客製化地圖，加入更多豐富的資訊。</p>
@@ -265,9 +238,18 @@ function initMap() {
     <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
   </div>
 
-  <script src="/js/lib/disqus.js"></script>
-  <script src="/js/layout.js"></script>
-  <script src="/js/articles.js"></script>
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180220"></script>
+  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/lib/run_prettify.js"></script>
+  <link href="/css/lib/theme.min.css" rel="stylesheet">
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
   <script src="https://www.google.com/jsapi"></script>
   <script>
   (function(i, s, o, g, r, a, m) {
@@ -297,6 +279,7 @@ function initMap() {
   })();
   </script>
 
+  <script src="/js/lib/disqus.js"></script>
 
 
 
