@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
-  <title>Google Maps (3) - 地圖標記 demo 06 - OXXO.STUDIO</title>
+  <title>Google Maps (13) - 熱度圖 demo 01 - OXXO.STUDIO</title>
   <style>
   html,
   body {
@@ -29,23 +29,36 @@
   var map;
 
   function initMap() {
-    var position = {
-      lat: 25.0310348,
-      lng: 121.5619465
-    };
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 18,
-      center: position
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: {
+        lat: 25.033090,
+        lng: 121.563438
+      }
     });
-    var marker = new google.maps.Marker({
-      position: position,
+
+    var heatmap = new google.maps.visualization.HeatmapLayer({
       map: map,
-      draggable: true
+      data: [
+        new google.maps.LatLng(25.033090, 121.563438),
+        new google.maps.LatLng(25.033261, 121.563540),
+        new google.maps.LatLng(25.033025, 121.563331),
+        new google.maps.LatLng(25.033065, 121.563696),
+        new google.maps.LatLng(25.033364, 121.563419),
+        new google.maps.LatLng(25.032099, 121.561341),
+        new google.maps.LatLng(25.032021, 121.562895),
+        new google.maps.LatLng(25.031958, 121.558931),
+        new google.maps.LatLng(25.031248, 121.558455),
+        new google.maps.LatLng(25.032119, 121.560154),
+        new google.maps.LatLng(25.035347, 121.559460),
+        new google.maps.LatLng(25.035095, 121.557516)
+      ],
+      radius: 65
+
     });
   }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
-  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap&libraries=visualization" async defer></script>
   <style>
   #info {
     position: fixed;
