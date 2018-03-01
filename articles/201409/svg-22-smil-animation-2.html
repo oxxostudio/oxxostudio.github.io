@@ -83,7 +83,7 @@
   &lt;rect width="60" height="60" x="50" y="50" fill="none" stroke="#000"&gt;
   &lt;/rect&gt;
   &lt;animate dur="2s" attributeName="x" repeatCount="indefinite" to="100" xlink:href="#qq"/&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_02.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_02.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><strong>attributeName</strong></p>
 <p>  屬性的名稱，顧名思義就是當你設定了這個屬性，就會以這個屬性去進行動畫，下面的範例分別讓正方形水平和垂直移動。</p>
@@ -93,7 +93,7 @@
   &lt;rect width="60" height="60" x="50" y="50" fill="none" stroke="#000"&gt;
     &lt;animate dur="2s" attributeName="y" repeatCount="indefinite" to="100"/&gt;
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_03.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_03.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><strong>attributeType ( auto | CSS | XML )</strong></p>
 <p>  屬性的類別，預設值為 auto，如果明確知道該屬性是 CSS 還是 XML ，就可以直接在這邊下定義，不過其實使用自動就好，因為會自動先去 CSS 的屬性找，找不到再去 XML 的屬性找，原則上來說應該都不會有問題。</p>
@@ -112,7 +112,7 @@
   &lt;rect width="60" height="60" x="50" y="50" fill="none" stroke="#000"&gt;
     &lt;animate dur="2s" attributeName="x" repeatCount="indefinite" to="100"/&gt;
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_04.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_04.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><strong>keyTimes</strong></p>
 <p>  keyTimes 就是指動畫的時間，根據 W3C 的規範，若要使用 keyTimes，則必須遵守幾個原則：</p>
@@ -134,7 +134,7 @@
       &lt;rect width="60" height="60" x="50" y="50" fill="none" stroke="#000"&gt;
         &lt;animate dur="2s" attributeName="x" repeatCount="indefinite" to="100"/&gt;
       &lt;/rect&gt;    
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_05.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_05.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><strong>keySplines</strong></p>
 <p>  keySplines 跟 CSS3 Cubic Bezier 其實超像的 ( 參考：<a href="http://www.oxxostudio.tw/articles/201406/css-cubic-bezier.html" target="_blank">CSS3 Cubic Bezier</a> )，不過 keySplines 的彈性沒有 CSS3 Cubic Bezier 來得大，只能限定在 0-1 之間的範圍，而且必須與 keyTimes 一同使用，一個值裡面有四個數字，以分號隔開，比 keyTimes 少一個值，我們可由下圖看到藉由控制 keySplines，可以達到讓動畫加減速的效果。( 別忘記還要在 calcMode="spline" 的情形下使用)</p>
@@ -144,7 +144,7 @@
   &lt;rect width="60" height="60" x="50" y="50" fill="none" stroke="#000"&gt;
     &lt;animate dur="2s" attributeName="x" repeatCount="indefinite" to="100"/&gt;
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_06.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_06.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><strong>from</strong></p>
 <p>  動畫起始時的屬性數值</p>
@@ -178,7 +178,7 @@
     &lt;animate id="a1" dur="2s" attributeName="x" to="300"/&gt; 
     &lt;animate dur="2s" attributeName="y" to="100" begin="a1.end-1s"/&gt; 
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_07.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_07.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><em>id.event;event</em></p>
 <p>  指定某個 id 的事件或是某個事件之後，就執行動畫，下面的範例，點選灰色矩形，就會執行動畫。</p>
@@ -186,7 +186,7 @@
   &lt;rect width="60" height="60" x="50" y="50" fill="#0c0"&gt;
     &lt;animate dur="2s" attributeName="x" to="100" begin="qq.click"/&gt;  
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_08.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_08.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><em>id.repeat(整數)</em></p>
 <p>  某個 id 元素的動畫執行幾次之後就會接續執行。</p>
@@ -194,7 +194,7 @@
     &lt;animate id="r1"   dur="1s" attributeName="width" to="120" repeatCount="indefinite" /&gt;
     &lt;animate dur="2s" attributeName="y" to="100" begin="r1.repeat(3)"/&gt; 
   &lt;/rect&gt;    
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_09.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_09.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><em>indefinite</em></p>
 <p>  可以直接使用超連結來控制動畫。</p>
@@ -202,7 +202,7 @@
     &lt;animate id="a1" dur="2s" attributeName="y" to="100" begin="indefinite" repeatCount="indefinite"/&gt; 
   &lt;/rect&gt;
   &lt;a xlink:href="#a1"&gt;&lt;text x="50" y="30"&gt;開始動畫&lt;/text&gt;&lt;/a&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_10.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_10.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 </ul>
 </li>
@@ -220,7 +220,7 @@
   &lt;rect width="60" height="60" x="50" y="50" fill="none" stroke="#000"&gt;
     &lt;animate dur="4s" attributeName="x" repeatCount="indefinite" to="100"/&gt;
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_11.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_11.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><strong>restart (always | whenNotActive | never)</strong></p>
 <p>  剛剛上面的範例有提到「可以使用超連結來控制動畫」，以及某個 id 點擊事件來觸發動畫，但使用的過程中會發現，每點一次動畫就跑一次，坦白說還真是有點討厭，這時候就必須使用 restart 的屬性，restart 總共有三個設定值，預設是 always，也就是每點一次就會執行一次，而 never 也很好理解就是永遠不會再觸發點擊的動作，另外一個設定就是 whenNotActive，這表示動畫正在執行的時候，點擊是沒有做用的。下面的範例設定動畫跑了三秒會停止，在動畫進行中，怎麼點擊按鈕都是沒有反應的。</p>
@@ -228,7 +228,7 @@
       &lt;animate id="a1" dur="1s" attributeName="width" to="100" begin="indefinite" repeatCount="indefinite" restart="whenNotActive" max="3s"/&gt; 
   &lt;/rect&gt;
   &lt;a xlink:href="#a1"&gt;&lt;text x="50" y="30"&gt;開始動畫&lt;/text&gt;&lt;/a&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_12.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_12.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><strong>repeatCount</strong></p>
 <p>  動畫執行的次數，設定 indefinite 則是無限次循環。</p>
@@ -244,7 +244,7 @@
   &lt;rect width="60" height="60" x="50" y="50" fill="none" stroke="#000"&gt;
     &lt;animate dur="2s" attributeName="x" to="100" fill="remove"/&gt;
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_13.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_13.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 </ul>
 <h2>動畫添加與合併屬性</h2>
@@ -256,7 +256,7 @@
     &lt;animateTransform attributeName="transform" dur="2s" type="scale" from="1" to="2"  repeatCount="indefinite" additive="sum"/&gt;
     &lt;animateTransform attributeName="transform" dur="2s" type="rotate" from="0,80,80" to="360,80,80" repeatCount="indefinite" additive="sum"/&gt;
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_14.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_14.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 <li><p><strong>accumulate ( none | sum )</strong></p>
 <p>  設定動畫結束後，是否從結束的地方接續動畫下去，none 是預設值，如果我們使用 sum，則會在第一段動畫結束的狀態繼續往下加，例如一開始縮放是 1&gt;2，下一段就是2&gt;4，下一段就是4&gt;6，依此類推，不過使用者個屬性有規定，如果不是重複的動畫就不能使用。</p>
@@ -266,7 +266,7 @@
   &lt;rect width="10" height="10" x="0" y="0" fill="#c00"&gt; 
     &lt;animateTransform attributeName="transform" dur="2s" type="scale" from="1" to="2"  repeatCount="indefinite" accumulate="none"/&gt;
   &lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140921_2_15.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_2_15.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 </ul>
 <h2>小結</h2>

@@ -74,25 +74,25 @@
 <p>SVG 裏頭針對基本形狀，其實程式碼超級簡單的，也就是一個該形狀的名稱，加上一些設定就完成，舉例來說，就有點類似 Illustrator 或 Flash 裏頭的形狀工具名稱，搭配屬性面板去做設定。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>矩形</h2>
 <p>矩形就是指正方形或是長方形，下列這段程式碼可以產生兩個不同顏色的矩形，如同之前 [layer][1] 章節提過的，<code>id</code>是該形狀的名稱，而<code>x</code>和<code>y</code>則是矩形左上角的座標，<code>fill</code>代表填充的顏色，<code>stroke</code>代表線段的顏色，<code>stroke-width</code>是線段的寬度，，<code>width</code>和<code>height</code>就是寬和高，數值均是使用螢幕的 pixel 值。  </p>
-<p><img class="lazy" data-src="/img/articles/201406/20140609_2_02.png" alt="SVG-矩形"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140609_2_02.png" alt="SVG-矩形"></p>
 <pre class="prettyprint"><code>&lt;rect id="A" x="33" y="34" fill="#FF6CC4" stroke="#C30D23" stroke-width="3" width="75" height="75"/&gt;
 &lt;rect id="B" x="119" y="54" fill="#6EA9FF" stroke="#036EB7" stroke-width="3" width="117" height="55"/&gt;
 </code></pre><h2>圓角矩形</h2>
 <p>圓角矩形就是在矩形的<code>rect</code>屬性內額外增加<code>rx</code>、<code>ry</code>的圓角半徑屬性，不過這裡要注意一點，如果是使用 Illustrator 存出的 SVG，圓角矩形會被轉換為<code>path</code>。 ( <code>path</code>會在之後介紹 )  </p>
-<p><img class="lazy" data-src="/img/articles/201406/20140609_2_03.png" alt="SVG-圓角矩形"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140609_2_03.png" alt="SVG-圓角矩形"></p>
 <pre class="prettyprint"><code>&lt;rect x="60" y="10" rx="10" ry="10" width="75" height="75" stroke="#FF5500" stroke-width="5" fill="#FFB255"/&gt;
 </code></pre><h2>圓形</h2>
 <p>圓形的標籤顧名思義就是<code>circle</code>，屬性的設定比較不同的，是使用<code>cx</code>和<code>cy</code>代表圓心 ( c:center )，<code>r</code>代表半徑。 </p>
-<p><img class="lazy" data-src="/img/articles/201406/20140609_2_04.png" alt="SVG-圓形"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140609_2_04.png" alt="SVG-圓形"></p>
 <pre class="prettyprint"><code>&lt;circle fill="#FF4343" stroke="#890000" stroke-width="5" cx="80.141" cy="73.446" r="44"/&gt;
 </code></pre><h2>橢圓</h2>
 <p>橢圓和圓形最大的不同點，就在於橢圓形具有 x 方向的半徑<code>rx</code>與 y 方向的半徑<code>ry</code>，看起來容易理解，但實際上橢圓的公式卻是頗為複雜，可以參考 <a href="http://zh.wikipedia.org/wiki/%E6%A4%AD%E5%9C%86" target="_blank">維基百科：橢圓</a>，或是可由下列這張圖來表示：  </p>
-<p><img class="lazy" data-src="/img/articles/201406/20140609_2_06.gif" alt="SVG-橢圓"> </p>
-<p><img class="lazy" data-src="/img/articles/201406/20140609_2_05.png" alt="SVG-橢圓"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140609_2_06.gif" alt="SVG-橢圓"> </p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140609_2_05.png" alt="SVG-橢圓"></p>
 <pre class="prettyprint"><code>&lt;ellipse fill="#77DD47" stroke="#246614" stroke-width="5" cx="100" cy="75" rx="67" ry="44"/&gt;
 </code></pre><h2>多邊形</h2>
 <p>多邊形是使用<code>polygon</code>標籤，在當中<code>point</code>表示有幾個點，每個點的座標，當然三角形有三個點，五邊形有五個點，星形則有十個點，其餘的設定都跟矩形依樣喔！ </p>
-<p><img class="lazy" data-src="/img/articles/201406/20140609_2_06.png" alt="SVG-多邊形"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140609_2_06.png" alt="SVG-多邊形"></p>
 <pre class="prettyprint"><code>&lt;polygon fill="#D271FF" points="100,56 62,107 37,49"/&gt;
 &lt;polygon fill="#68EADD" points="151,39 163,63 189,66 170,85 175,111 151,99 127,111 132,85 
     113,66 139,63 "/&gt;

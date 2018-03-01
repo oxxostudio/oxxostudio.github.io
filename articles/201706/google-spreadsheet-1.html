@@ -72,14 +72,14 @@
 <p>自從參加完 2017 IT 幫幫忙鐵人賽之後，就有很多主題讓我躍躍欲試，這次要來寫的系列是 Google 試算表，主要不是介紹試算表的操作，而是透過一些網頁前端的語法，把試算表當作簡易的資料庫，實現試算表讀取和寫入的能力。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立 Google Apps Script</h2>
 <p>不論要讀取或是寫入資料到 Google 試算表，都得透過 Google Apps Script 作為介接才能辦到，要使用的話必須要先有一個 Google 的帳號 ( 這年頭誰沒有 Google 帳號 )，如果是第一次使用 Google Apps Script 必須要從雲端硬碟新增，首先打開雲端硬碟，在左上角點選「新增」，選擇「更多」，點選「連結更多應用程式」。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-02.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-02.jpg" alt=""></p>
 <p>搜尋 app script，就會看到 Google Apps Script，點選後方「連接」，就可以加入雲端硬碟。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-03.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-03.jpg" alt=""></p>
 <p>回到雲端硬碟，這時候再度點選左上方的新增按鈕，就可以看到 Google Apps Script 了。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-04.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-04.jpg" alt=""></p>
 <h2>測試 Google Apps Script</h2>
 <p>點選 Google Apps Script 後會開啟一個新專案的編輯畫面，我先把這個專案的名稱改為：test-read。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-05.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-05.jpg" alt=""></p>
 <p>接著點選「程式碼.gs」開始編輯，裡頭預設有一個名為 myFunction 的流程，將其改為 doGet，一定要是這個名稱，因為這是 Google Apps Script 規定的。doGet 包含一個 e 的參數作為傳值使用，屆時我們只要把要儲存的資料提交給 e，就可以儲存，然後我們在 goGet(e) 裡設一個區域變數 data 來接收 e.parameter 所解析出來的值，最後由<code>Logger.log()</code>顯示出來。</p>
 <blockquote>
 <p>參考：<a href="https://developers.google.com/apps-script/guides/web#requirements_for_web_apps" target="_blank">Requirements for web apps</a>、<a href="https://developers.google.com/apps-script/guides/web#url_parameters" target="_blank">URL parameters</a>、<a href="https://developers.google.com/apps-script/reference/base/logger" target="_blank">Class Logger</a></p>
@@ -89,9 +89,9 @@
   var data = params.data;  
   Logger.log(data);
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-08.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-08.jpg" alt=""></p>
 <p>為了測試這個 doGet 是管用的，建立一個 debug.gs 來測試，點選上方「<em>檔案 &gt; 新增 &gt; 指令碼檔案</em>」就可以新增，新增後把這個檔案命名為 debug。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-09.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-09.jpg" alt=""></p>
 <p>將 debug.gs 裡面的 function 換成下面的程式碼，存檔之後，點選上方的執行按鈕。</p>
 <pre class="prettyprint"><code>function debug() {
   doGet(
@@ -102,17 +102,17 @@
     }
   );
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-10.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-10.jpg" alt=""></p>
 <p>點選執行之後，從檔案的紀錄裡 ( <em>檢視 &gt; 紀錄</em> )，就可以看到「大家好」三個字，表示我們這樣子編輯是沒有問題的。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-11.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-11.jpg" alt=""></p>
 <h2>建立試算表</h2>
 <p>再來就是要建立準備拿來讀取的試算表了，回到雲端硬碟，透過新增按鈕新增一份 Google 試算表，隨便輸入一個檔名，這個檔案名稱<strong>是試算表的名稱，不是工作表的名稱</strong>，每個試算表可以包含很多個工作表，工作表在下方用一個個的 tab 來區分，而試算表的 id 與工作表的 gid 在網址就可以看到。</p>
 <blockquote>
 <p>此處名稱容易混淆，只要記得<strong>試算表可以包含很多的工作表</strong>就可以。</p>
 </blockquote>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-06.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-06.jpg" alt=""></p>
 <p>由於可能會測試寫入或讀取資料，所以得先把試算表的權限打開為「<strong>任何知道連結的使用者，都可以編輯</strong>」，到這邊差不多就完成試算表的基本設定，可以準備來用 Google Apps Script 操控試算表了。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-07.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-07.jpg" alt=""></p>
 <h2>讀取試算表基本資訊</h2>
 <p>回到 Google Apps Script，把剛剛寫的「程式碼.gs」內容換成下面這段程式碼，從裡面可以看到一個叫做 <em>SpreadsheetApp</em> 的變數，要讀取或寫入 Google 試算表，都會透過這個 SpreadsheetApp 所包含的屬性或方法來實現，它預設包含兩種打開 Google 試算表的基本作法，第一種是 <em>openById(id)</em>，表示透過文件的 id 來打開，第二種是 <em>openByUrl(url)</em>，表示透過網址來開啟。</p>
 <p>這段程式碼是透過<code>SpreadsheetApp.openByUrl(url)</code>打開試算表，接著透過<code>SpreadSheet.getName()</code>把試算表的名稱印出來。</p>
@@ -124,19 +124,19 @@
   var SpreadSheet = SpreadsheetApp.openByUrl(url);
   Logger.log(SpreadSheet.getName());
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-14.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-14.jpg" alt=""></p>
 <p>儲存之後點選上方三角形的執行按鈕，會彈出一個視窗需要進行授權，點選「核對權限」。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-12.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-12.jpg" alt=""></p>
 <p>核對權限的目的主要在於我們要操控 Google 試算表，因為這個 Script 同時可以建立、編輯或刪除試算表，所以需要我們允許才可以執行。( 點選「允許」 )</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-13.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-13.jpg" alt=""></p>
 <p>點選後從檔案的紀錄裡 ( <em>檢視 &gt; 紀錄</em> )，就可以看到試算表的文件名稱「測試寫入資料」，表示已經可以透過 Google Apps Script 讀取試算表資訊了，如果把檢視紀錄那段換成<code>Logger.log(SpreadSheet.getActiveSheet().getName());</code>，就可以秀出目前這個網址的試算表名稱。( 由網址後方接的<code>gid=0</code>判斷 )</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-15.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-15.jpg" alt=""></p>
 <h2>小結</h2>
 <p>以上只是先小試身手，先獲得試算表的文件名稱與試算表名稱，在 Google 官方網站的 Reference 裡有非常豐富的操控方法可以讓我們使用，如果有興趣的一定要詳細閱讀，接下來會繼續介紹更多有趣的用法。</p>
 <blockquote>
 <p>參考資源：<a href="https://developers.google.com/apps-script/reference/spreadsheet/" target="_blank">Spreadsheet Service</a></p>
 </blockquote>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-1-01.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-1-01.jpg" alt=""></p>
 
 
       <div class="social-icon">

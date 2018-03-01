@@ -96,7 +96,7 @@
   &lt;circle cx="150" cy="80" r="50" stroke="#000" fill="url(#p)" /&gt;
   &lt;rect width="60" height="60" x="1" y="1" stroke="#00f" stroke-width="2" fill="url(#p)" /&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_02.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_02.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <p>如果還是不明白，跟下面這個範例對照一下，下面的範例我將 pattern 的尺寸改為 40x40，出來的圖案白色間距就會變窄了</p>
 <pre class="prettyprint"><code>&lt;svg width="240" height="160"&gt;
   &lt;defs&gt;
@@ -108,14 +108,14 @@
   &lt;circle cx="150" cy="80" r="50" stroke="#0a0" stroke-width="2" fill="url(#p)" /&gt;
   &lt;rect width="40" height="40" x="1" y="1" stroke="#00f" stroke-width="2" fill="url(#p)" /&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_03.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_03.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <p>換句話說，如果我把 pattern 裏頭的 rect ，位置超過了 pattern 的範圍，就會發現 rect 會被裁切掉。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;pattern id="p" patternUnits="userSpaceOnUse" width="40" height="40"&gt;
     &lt;rect width="30" height="30" fill="#f99" x="30" y="0"&gt;&lt;/rect&gt;
   &lt;/pattern&gt;
 &lt;/defs&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_04.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_04.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <p>這就是我們將 patternUnits 設為<code>userSpaceOnUse</code>的效果呈現，至於<code>objectBoundingBox</code>是 patternUnits 的預設參數，也就是以我們畫出來的形狀為基準，這時候我們設定的 pattern 長寬，就<strong>變成了「比例」，而不是數值！</strong>這點非常非常非常的重要！因為是比例，如果我們寫 60，就會是畫出來圖形長或寬的六十倍！下面的範例，我們將 width 設為 1，height 也設為 1，就表示 pattern 的長寬等於畫出來的圖形長寬，由於內容只有一個 rect，也就只填滿了一個 rect 而已。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;pattern id="p" patternUnits="objectBoundingBox" width="1" height="1"&gt;
@@ -124,7 +124,7 @@
 &lt;/defs&gt;
 &lt;circle cx="180" cy="80" r="50" stroke="#0a0" stroke-width="2" fill="url(#p)" /&gt;
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p)" /&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_05.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_05.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <p>如果到這邊已經混亂了，可以跟下面這個範例比較，下面的範例將 width 設為 .4，height 設為 .4，換算成 100x100 的圖形，則是 40x40 的 pattern，畫出來的背景圖案就會是帶有 10 的寬度間距的重複圖案。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;pattern id="p" patternUnits="objectBoundingBox" width=".4" height=".4"&gt;
@@ -133,7 +133,7 @@
 &lt;/defs&gt;
 &lt;circle cx="180" cy="80" r="50" stroke="#0a0" stroke-width="2" fill="url(#p)" /&gt;
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p)" /&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_06.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_06.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <p>如果使用兩個不同的矩形套用，出來的結果也會不同：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;pattern id="p" patternUnits="objectBoundingBox" width=".4" height=".4"&gt;
@@ -141,7 +141,7 @@
   &lt;/pattern&gt;
 &lt;/defs&gt;&lt;rect width="80" height="80" x="120" y="30" stroke="#000" stroke-width="2" fill="url(#p)" /&gt;
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p)" /&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_07.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_07.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <p>所以啦，<strong>設定為<code>userSpaceOnUse</code>代表是實際的寬度或高度數值 ( SVG 的 )，而設定為<code>objectBoundingBox</code>的則是比例，實際數值要乘上套用的圖案長寬</strong>，要非常非常之注意喔！</p>
 <h2>patternContentUnits = "userSpaceOnUse | objectBoundingBox"</h2>
 <p>patternContentUnits 跟剛剛提到的 patternUnits 幾乎是異曲同工，只是這個屬性是用來定義 pattern 內容畫出來的圖形單位，同樣的，設定為<code>userSpaceOnUse</code>代表是實際的寬度或高度數值，設定為<code>objectBoundingBox</code>的則是比例，但是！又是非常重要的但是！但是<strong>它的預設值為<code>userSpaceOnUse</code></strong>，整個擺明整人呀！</p>
@@ -157,7 +157,7 @@
 
 &lt;rect width="100" height="100" x="120" y="30" stroke="#000" stroke-width="2" fill="url(#p1)" /&gt;
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p2)" /&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_08.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_08.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <h2>patternTransform</h2>
 <p>讓我們可以直接對 pattern 下達 transform，範例中我們讓圖形旋轉 45 度，搭配剛剛提到的 patternUnits 和 patternContentUnits，就可以做出斜線的填滿。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
@@ -168,7 +168,7 @@
 &lt;/defs&gt;
 
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p1)" /&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_09.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_09.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <h2>x,y,width,height</h2>
 <p>這四個屬性跟 patternUnits 設定為<code>userSpaceOnUse</code>或<code>objectBoundingBox</code>息息相關，反正只要記住，<strong>設定為<code>userSpaceOnUse</code>就是標準長寬數值，而設定為<code>objectBoundingBox</code>就是比例</strong>，千萬別忘記！</p>
 <h2>xlink:href</h2>
@@ -183,7 +183,7 @@
 
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p1)" /&gt;
 &lt;rect width="100" height="100" x="120" y="30" stroke="#000" stroke-width="2" fill="url(#p2)" /&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_10.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_10.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <h2>preserveAspectRatio = "[defer] <align> [<meetorslice>]"</meetorslice></align></h2>
 <p>看到 preserveAspectRatio 這個屬性，就表示我們的 pattern 可以使用 viewbox，什麼是 viewbox 呢？請參考 <a href="http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html" target="_blank">SVG 研究之路 (23) - 理解 viewport 與 viewbox</a> 有非常完整的教學，下面是範例，使用 viewbox 來控制圖案的長寬尺寸。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
@@ -197,7 +197,7 @@
 
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p1)" /&gt;
 &lt;rect width="100" height="100" x="120" y="30" stroke="#000" stroke-width="2" fill="url(#p2)" /&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140928_1_11.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140928_1_11.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <h2>小結</h2>
 <p>以上就是完整的 SVG Patterns 的介紹，心動的話就趕快畫點圖案來填滿吧！喔哈！</p>
 

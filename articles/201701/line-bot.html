@@ -75,25 +75,25 @@
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>1. LINE BOT 設定</h2>
 <p>因為要使用 LINE 的機器人，一定要先到 「LINE Business Center」 建立 「BOT 帳號」( <a href="https://business.line.me/zh-hant/" target="_blank">https://business.line.me/zh-hant/</a> )。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_02.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_02.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>登入當然就是用自己的 LINE 帳號登入，登入會要求要手機輸入驗證碼，反正如果帳號是自己的應該都可以順利登入 ( 咦？XD )，登入之後點選右上方帳號旁邊的「尚未選擇公司/經營者」，然後新增「公司/經營者」。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_03.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_03.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>註冊資訊基本上填寫「個人」就可以。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_04.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_04.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>完成後就可以開始使用服務，這邊我使用的是「Messaging API」。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_05.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_05.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>點選進入，選擇「開始使用Developer Trial」。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_06.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_06.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>輸入帳戶名稱 ( 給機器人用的名稱 )，換張顯示圖片，然後選擇業種，按下確定之後，就會建立這個機器人專用的帳號。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_07.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_07.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>完成後，到外面記得按下「申請」，就會出現申請完成的畫面。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_08.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_08.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>進入「LINE Manager」，選擇「Bot 設定」，點選「開始使用 API」。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_09.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_09.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>設定的部分，記得勾選「允許 Webhook 傳訊」，然後「取消」自動回應，接著就可以點選「LINE Developers」進入開發者頁面。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_10.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_10.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>開發者頁面第一個選項「Basic information」是最重要的，在這邊我們要記住「Channel ID」、「Channel Secret」( 點選 SHOW 會出現 ) 和「Channel Access Token」( 點選 ISSUE 會產生 )，而「Webhook URL」則是一個要放在「https」的網址，用作和 LINE BOT 溝通使用，到這邊基本上我們已經完成了 LINE BOT 的設定，接著就來看看 Webhook URL 要怎麼做。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_11.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_11.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <h2>2. 製作 Webhook URL ( Node.js )</h2>
 <p>我這邊使用 Node.js 來建構我的 Webhook 頁面，首先我們要使用 「<strong>linebot</strong>」這個 Node.js 模組 ( 參考 <a href="https://www.npmjs.com/package/linebot" target="_blank">https://www.npmjs.com/package/linebot</a> )，然後伺服器端使用「<strong>express</strong>」這個模組。</p>
 <p>因為 LINE BOT 要求要「https」，所以我選擇了「<strong>heroku</strong>」( <a href="https://www.heroku.com/" target="_blank">https://www.heroku.com/</a> ) 作為我的伺服器，也因為要部署到上面去，所以必須要有一個 package.json 檔案，所以一開始我到我的資料夾，輸入<code>npm init</code>。( 安裝 Ｎode.js 在這邊就不提了，建議安裝 4.2 版本以上的 Node.js )</p>
@@ -134,24 +134,24 @@ var server = app.listen(process.env.PORT || 8080, function() {
 });
 </code></pre><h2>3. 部署到 Heroku</h2>
 <p>程式都寫好之後，就可以部署到 Heroku 上面看看狀況 ( 先看看能否順利收到 LINE 的訊息 )，要部署上去，首先要有 Heroku 的帳號，然後就是登入 Heroku ( <a href="https://www.heroku.com/" target="_blank">https://www.heroku.com/</a> )，登入之後右上角點選「New」，選擇「Create new app」。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_12.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_12.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>建立完成後，在「Settings」的頁面，就可以看到對應的 git 網址，待會我們只要把程式透過 git push 到這邊，就會自動完成安裝。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_13.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_13.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>因為要用到 git，所以先建立一個「.gitignore」的檔案，因為 node_modules 的檔案是不用 push 上去的。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_14.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_14.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>不論用指令也好，還是像我自己喜歡用 souretree，總之就把剛剛的程式 push 到 Heroku 上面。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_15.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_15.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>接著回到 Heroku，看到 logs 的地方，就可以看到程式已經成功部署成功，如果有錯，這邊也會顯示出來。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_16.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_16.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>只有部署成功還不夠，還要進入 Heroku 的 Settings 頁面，在 Config Vars 的地方填入 LINE BOT 的 ChannelAccessToken 和 ChannelSecret。( 記得不要有空格 )</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_17.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_17.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>最後點選右上方的 Open APP，如果出現這個畫面，應該就是全部設定完成了。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_18.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_18.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>記下剛剛打開的網址，回到 LINE Developers 裡面，填入 Webhook URL，如果按下 VERIFY 後出現 success 的字樣，就是大功告成！可以傳 LINE 給機器人囉！</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_19.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_19.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <h2>4. 傳 LINE 給 LINE BOT</h2>
 <p>透過 QRCode 我們可以加入 LINE BOT 聊天室開始聊天，一開始會有一個自動訊息。</p>
-<p><img class="lazy" data-src="/img/articles/201701/20170115_1_20.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_20.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>然後我們可以傳一個訊息，就可以從 Heroku 的 log 裡面看到 LINE 的訊息格式，從裡面可以發現訊息是存在 <code>message</code> 的 <code>text</code> 屬性裡面，這也是我們之後可以拿來利用的部分。</p>
 <pre class="prettyprint"><code>{ type: 'message',
   replyToken: 'xxxxxxx',
@@ -167,7 +167,7 @@ var server = app.listen(process.env.PORT || 8080, function() {
       content: [Function] },
   reply: [Function] }
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201701/20170115_1_21.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201701/20170115_1_21.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>就這樣，基本上到這個步驟，我們已經可以實際的跟我們的 LINE BOT 傳訊息了，下一篇將會繼續來完成一個可以和我們對話的 LINE 機器人。</p>
 
 

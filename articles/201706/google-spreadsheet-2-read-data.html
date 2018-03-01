@@ -72,7 +72,7 @@
 <p>前一篇已經可以透過 Google Apps Script 取得試算表的檔名、頁籤名等資訊，現在就要從這份試算表的儲存格裡取出數值，並透過 Google Apps Script 的 log 顯示出來。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>讀取儲存格數值</h2>
 <p>延續上一篇的試算表和 Google Apps Script，把試算表裡面的儲存格打上一些內容。( 不知道怎麼做可以參考 <a href="google-spreadsheet-1.html" target="_blank">Google 試算表 (1) - 讀取試算表資訊</a> )</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-2-read-data-01.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-2-read-data-01.jpg" alt=""></p>
 <p>打開 Google Apps Script，把「程式碼.gs」改成下面這段程式碼，透過程式碼將試算表與試算表名稱提交給 Spreadsheet 和 SheetName 這兩個變數。</p>
 <blockquote>
 <p>這邊很容易搞混的是，讀取試算表是用「網址」讀取，讀取之後最上面整份試算表文件的名稱並不是<code>.getSheetByName</code>裡面的 Name，<strong>這邊的 Name 表示下方單一試算表頁籤的名字</strong>。</p>
@@ -83,7 +83,7 @@
   var SpreadSheet = SpreadsheetApp.openByUrl(url);
   var SheetName = SpreadSheet.getSheetByName(name);
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-2-read-data-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-2-read-data-02.jpg" alt=""></p>
 <p>接著要使用<code>getSheetValues</code>來取得儲存格的值，這個 getSheetValues 包含了四個參數在裡面，分別是 startRow、startColumn、numRows 和 numColumns，顧名思義就是從「左上儲存格至右下儲存格」中間區域所包含的儲存格數值，這些儲存格的座標不像試算表上顯示的英文字母，英文字母都對應從 1 開始的阿拉伯數字，例如 A1 儲存格，實際上表現為 Row 1，Column 1，如果是 D3 儲存格，就是 Row 3，Column 4，依此類推。</p>
 <pre class="prettyprint"><code>getSheetValues(startRow, startColumn, numRows, numColumns)
 </code></pre><p>如果只要取得單一個儲存格的數值，就要這樣表現：</p>
@@ -97,9 +97,9 @@
   Logger.log(SheetName.getSheetValues(1,1,1,1));   // 取得 A1 數值
   Logger.log(SheetName.getSheetValues(4,2,1,1));   // 取得 B4 數值
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-2-read-data-03.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-2-read-data-03.jpg" alt=""></p>
 <p>執行之後，可以從紀錄看到我們已經讀取了儲存格的數值，並且是用一個二維陣列來表現。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-2-read-data-04.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-2-read-data-04.jpg" alt=""></p>
 <p>換個角度思考，如果取出「一個範圍的數值」，應該就會用陣列的形式表現出來，以下面的程式碼來說，執行之後，就可以在記錄裡 A1 到 B4 中間所有儲存格的資訊，在陣列裡，亦可很清楚的看到 A1 的數值為 123，B4 的數值為 abc。</p>
 <blockquote>
 <p>同樣的方法，也可以使用<code>getRange</code>搭配<code>getValues</code>來實現，參考：<a href="https://developers.google.com/apps-script/reference/spreadsheet/sheet#getRange" target="_blank">getRange</a></p>
@@ -111,7 +111,7 @@
   var SheetName = SpreadSheet.getSheetByName(name);
   Logger.log(SheetName.getSheetValues(1,1,4,4));
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-2-read-data-05.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-2-read-data-05.jpg" alt=""></p>
 <h2>getLastColumn()、getLastRow()</h2>
 <p>雖然我們已經知道如何取得儲存格數值後，會衍生出另外一個疑問：「如果資料很多，要如何才能載入所有的資料呢？」這時候我們可以透過<code>getLastColumn()</code>和<code>getLastRow()</code>來幫我們實現，這個倆方法分別可以取得「<strong>最後一欄或最後一列，有資料的儲存格座標</strong>」，只要將程式碼改成向下列這樣，就可以抓取範圍內的儲存格數值了。</p>
 <pre class="prettyprint"><code>function doGet(e) {
@@ -123,7 +123,7 @@
   var lastRow = SheetName.getLastRow();
   Logger.log(SheetName.getSheetValues(1,1,lastRow,lastColumn));
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-2-read-data-06.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-2-read-data-06.jpg" alt=""></p>
 <h1>小結</h1>
 <p>讀取試算表除了上述的用法，其實還有一些比較不知道要拿來做什麼的功能，例如<code>.getColumnWidth(欄編號)</code>可以抓取那一個欄的寬度，或是<code>.getRowHeight(列編號)</code>可以抓取哪個列的高度，甚至還有<code>.getTabColor()</code>可以抓取「試算表 tab 的顏色」，可能現在還沒用到，以後就用到了也說不定。</p>
 <pre class="prettyprint"><code>function doGet(e) {
@@ -138,7 +138,7 @@
   Logger.log(SheetName.getRowHeight(1));    // 抓取第一列高度
   Logger.log(SheetName.getTabColor());      // 抓取 tab 顏色，沒有指定顏色就會顯示 null
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-2-read-data-07.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-2-read-data-07.jpg" alt=""></p>
 <p>既然可以讀取了，下一篇就要來介紹如何將讀取到的資料，在網頁上顯示出來。</p>
 
 

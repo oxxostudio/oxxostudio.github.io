@@ -94,7 +94,7 @@ show.transition()
     this.textContent = i(t);
   };
 });
-</code></pre><p><img class="lazy" data-src="/img/articles/201509/20150912_1_02.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150912_1_02.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 <p>比較清楚 tween 在幹嘛之後，接著要先來看一下 interpolate 的用法，畢竟 tween 的精髓還是在 interpolate，其實在之前已經有出現過 interpolate ( <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" target="_blank">SVG D3.js - 繪製線段</a> )，是幫我們自動去計算線段之間的插值，而 interpolate 主要有以下這幾種：</p>
 <ul>
 <li><p><strong>d3.interpolate(a, b)</strong></p>
@@ -110,7 +110,7 @@ var ci = d3.interpolate('#ff0000','#00ffff');
 n.text(ni(0.3));
 s.text(si(0.3));
 c.text(ci(0.3));
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201509/20150912_1_03.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150912_1_03.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 </ul>
 <ul>
@@ -126,7 +126,7 @@ c.text(ci(0.3));
 var si = d3.interpolateString('Hello 123 World', 'Cool 456');
 
 s.text(si(0.33));
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201509/20150912_1_04.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150912_1_04.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 <li><p><strong>d3.interpolateRgb(a, b)</strong></p>
 <p>  回傳顏色插值，類似的還有<code>d3.interpolateHsl(a, b)</code>、<code>d3.interpolateLab(a, b)</code>、<code>d3.interpolateLab(a, b)</code>，這裏就直接用 RGB 的來介紹就可以，因為用法一樣，使用這個 API 我們就可以很簡單的做出在某個區間內的顏色。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo5.html" target="_blank">svg-d3-15-transition-tween-demo5.html</a> </p>
@@ -139,7 +139,7 @@ c.text(ci(0.6));
 show.style({
   'background':ci(0.6)
 });
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201509/20150912_1_05.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150912_1_05.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 <li><p><strong>d3.interpolateArray(a, b)</strong></p>
 <p>  回傳陣列的插值，比較需要注意的地方是，不管 a 或 b 陣列長度如何，最終的結果都會是相同長度的陣列，舉例來說，如果今天 a 陣列是 [0,1] 而 b 陣列是 [1,10,100]，那麼 0.5 的時候就會回傳 [0.5,5,100]，最後就自動補上 100 了。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo6.html" target="_blank">svg-d3-15-transition-tween-demo6.html</a></p>
@@ -147,7 +147,7 @@ show.style({
 var ai = d3.interpolateArray([0,1], [1,50,100]);
 
 a.text(ai(0.5));
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201509/20150912_1_06.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150912_1_06.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 </ul>
 <ul>
@@ -159,7 +159,7 @@ var oi = d3.interpolateObject(
 );
 
 console.log(oi(0.5));
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201509/20150912_1_07.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150912_1_07.jpg" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 <li><p><strong>d3.interpolateTransform(a, b)</strong></p>
 <p>  如果要純粹針對 SVG 的 transform，就可以使用 d3.interpolateTransform 來回傳變形的插值。( 如果是用在一般 CSS 可能會有錯誤，因為如果在 translate 內加上 px 就會錯了 )( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo8.html" target="_blank">svg-d3-15-transition-tween-demo8.html</a></p>
@@ -175,7 +175,7 @@ box.transition()
        d3.select(this).attr("transform", interpolate(t));
     }
   });
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201509/20150912_1_08.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150912_1_08.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 </li>
 </ul>
 <p>到這邊基本上已經可以利用 interpolate 和 tween 做出自己的補間動畫，這個方式其實在許多視覺畫圖表的動態都滿常見的，最後我們將前面的集合在一起做個變化，就會有頗酷的效果囉！( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo9.html" target="_blank">svg-d3-15-transition-tween-demo9.html</a></p>
@@ -193,7 +193,7 @@ show.transition()
     console.log(cc.textContent);
     cc.innerHTML = c(t);
   };
-</code></pre><p><img class="lazy" data-src="/img/articles/201509/svg-d3-15-transition-tween.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/svg-d3-15-transition-tween.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
 
 
       <div class="social-icon">

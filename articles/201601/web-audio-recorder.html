@@ -71,7 +71,7 @@
 <h1>獲取錄音資訊 (getUserMedia)</h1>
 <p>當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。( 不過錄音需要用到 https，畢竟如果隨隨便便就可以錄，還真是滿危險的...XD )</p>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>如果有遇到出現這個畫面，按下「進階」，點選「繼續前往 www.oxxostudio.tw 網站 (不安全)」即可，會出現這個畫面主要原因就是錄音需的網址要有 SSL 憑證，而我的部落格卻沒有買憑證所以是 http 開頭，才會有這個畫面出現，所以，要試用就只能先這樣囉~ ( 不過如果跑在本機端 localhost 就沒這問題 )</p>
-<p><img class="lazy" data-src="/img/articles/201601/20160103_2_06.jpg" alt="獲取錄音資訊"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201601/20160103_2_06.jpg" alt="獲取錄音資訊"></p>
 <p>HTML 先放上兩個按鈕，一個是開始，一個是暫停。</p>
 <pre class="prettyprint"><code>&lt;button id="p"&gt;play&lt;/button&gt;
 &lt;button id="s"&gt;pause&lt;/button&gt;
@@ -122,11 +122,11 @@ function update(){
   analyser.getByteFrequencyData(dataArray);
   timer = setTimeout(update,20);
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201601/20160103_2_02.jpg" alt="獲取錄音資訊"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201601/20160103_2_02.jpg" alt="獲取錄音資訊"></p>
 <p>當然只有數值一定不有趣，把數值轉換成視覺化的頻譜才特別，和之前畫頻譜都類似，這裏用比較簡單的方法 ( 不用 SVG、D3 或 Canvas )，純粹先用 div 來表現，首先在畫面裡用 JavaScript 放入 256 個 div，讓 div 依據陣列數值變化高度和背景顏色。( 範例：<a href="https://www.oxxostudio.tw/demo/201601/web-audio-recorder-demo02.html" target="_blank">web-audio-recorder-demo02.html</a> )</p>
-<p><img class="lazy" data-src="/img/articles/201601/20160103_2_03.jpg" alt="獲取錄音資訊"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201601/20160103_2_03.jpg" alt="獲取錄音資訊"></p>
 <p>除了把麥克風擷取的聲音化作頻譜外，有沒有方法可以把聲音儲存下來呢？其實是有的，這裏要來介紹一隻 JavaScript：Recorderjs ( <a href="https://github.com/mattdiamond/Recorderjs" target="_blank">https://github.com/mattdiamond/Recorderjs</a> )，他可以直接幫我們把錄製到的聲音變成 wav 的形式儲存下來，為什麼要用這隻程式呢？其實 Web audio 也是可以儲存，但原始的儲存方式仍然受到 https 的影響，而這隻 js 就是幫我們處理掉這些惱人的過程，既然是 MIT 的 opensource，就直接用囉！</p>
-<p><img class="lazy" data-src="/img/articles/201601/20160103_2_04.jpg" alt="獲取錄音資訊"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201601/20160103_2_04.jpg" alt="獲取錄音資訊"></p>
 <p>Recorder.js 有幾個 API 可以用，分別是<code>record()</code>負責錄音，<code>stop()</code>停止錄音，<code>clear()</code>清除錄音緩衝區暫存，<code>exportWAV()</code>產生 wav 檔案，修改上面兩個例子，寫法大概就像下面這樣，按下「錄音」按鈕的時候，先 new 一個 Recoder 物件，物件錄製的音訊就是我們剛剛用聲音處理器截取的 microphone，接著就用<code>record()</code>來錄音，停止錄音的按鈕一開始先把計時器停下來，然後用<code>stop()</code>停止錄音，並且產生 wav 檔案以及 wav 檔案的下載連結，然後<code>clear()</code>清除錄音緩衝區暫。</p>
 <pre class="prettyprint"><code>s.onclick = function(){
   clearTimeout(timer);
@@ -165,7 +165,7 @@ p.onclick = function(){
 }
 </code></pre><p><br></p>
 <p>完成後，打開網頁，按下錄音就可以開始錄音，同時也會看到聲音頻譜在跳動，錄音完成就會自動產生播放器試聽與下載聲音檔案，相當有趣味的啦！( 範例：<a href="https://www.oxxostudio.tw/demo/201601/web-audio-recorder-demo03.html" target="_blank">web-audio-recorder-demo03.html</a> )</p>
-<p><img class="lazy" data-src="/img/articles/201601/20160103_2_05.jpg" alt="獲取錄音資訊"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201601/20160103_2_05.jpg" alt="獲取錄音資訊"></p>
 
 
       <div class="social-icon">

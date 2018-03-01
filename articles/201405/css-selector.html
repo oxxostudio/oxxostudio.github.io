@@ -100,32 +100,32 @@
     background:#ccc;
     margin:5px;
 }
-</code></pre><p>那麼出來的長相應該會是這樣：<br><img class="lazy" data-src="/img/articles/201405/20140527_1_02.png" alt="CSS 偽類 child 和 of-type"></p>
+</code></pre><p>那麼出來的長相應該會是這樣：<br><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_02.png" alt="CSS 偽類 child 和 of-type"></p>
 <p>現在我們來試試看 <code>:first-child</code>，照著以下的 CSS 來寫</p>
 <pre class="prettyprint"><code>li:first-child{
     background:#c00;    
 }
-</code></pre><p>所呈現的畫面就會變成這樣：<br><img class="lazy" data-src="/img/articles/201405/20140527_1_03.png" alt="CSS 偽類 child 和 of-type"></p>
+</code></pre><p>所呈現的畫面就會變成這樣：<br><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_03.png" alt="CSS 偽類 child 和 of-type"></p>
 <p><code>last-child</code></p>
 <pre class="prettyprint"><code>li:last-child{
     background:#00c;    
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201405/20140527_1_04.png" alt="CSS 偽類 child 和 of-type"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_04.png" alt="CSS 偽類 child 和 of-type"></p>
 <p><code>:nth-child(數字)</code> 挑選第幾個 ( 注意，這裡是 1 起頭，不是 0 )</p>
 <pre class="prettyprint"><code>li:nth-child(2){
     background:#c00;    
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201405/20140527_1_10.jpg" alt="CSS 偽類 child 和 of-type"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_10.jpg" alt="CSS 偽類 child 和 of-type"></p>
 <p><code>:nth-child(2n)</code> 把偶數的挑出來 ( 應該說是把 2 的倍數挑出來 )</p>
 <pre class="prettyprint"><code>li:nth-child(2n){
     background:#c00;    
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201405/20140527_1_05.png" alt="CSS 偽類 child 和 of-type"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_05.png" alt="CSS 偽類 child 和 of-type"></p>
 <p><code>:nth-child(2n+1)</code> 把奇數的挑出來，其他就依此類推</p>
 <pre class="prettyprint"><code>li:nth-child(2n+1){
     background:#c00;    
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201405/20140527_1_06.png" alt="CSS 偽類 child 和 of-type"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_06.png" alt="CSS 偽類 child 和 of-type"></p>
 <p>至於 <code>nth-last-child()</code> 剛好就和 nth-child 相反過來，是從後面數過來的，這裡就不多做說明，而最後一個 <code>only-child()</code>，只適用於父元素內只有一個子元素的情形，例如你的程式碼是：</p>
 <pre class="prettyprint"><code>&lt;ul&gt;
     &lt;li&gt;ok&lt;/li&gt;
@@ -139,7 +139,7 @@
     &lt;li&gt;5&lt;/li&gt;
 &lt;/ul&gt;
 </code></pre><p>當我們撰寫 <code>li:only-child{ background:#c00; }</code>，只有第一組 ul 會變色而已，因為第一組 <code>ul</code> 只有一個元素，第二組 <code>ul</code> 則具有五個元素，就如同下圖所示：</p>
-<p><img class="lazy" data-src="/img/articles/201405/20140527_1_07.png" alt="CSS 偽類 child 和 of-type"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_07.png" alt="CSS 偽類 child 和 of-type"></p>
 <p>不過，不要以為 <code>child</code> 的偽類就這麼簡單，裏頭隱藏著一個很容易搞混的地方，如果今天子元素不是單純的 <code>li</code>，而是許多元素混雜而成的，你就會發現 <code>:first-child</code> 無法精準地控制第一個子元素了，例如：</p>
 <pre class="prettyprint"><code>&lt;div id="test"&gt;
     &lt;div&gt;1&lt;/div&gt;
@@ -159,7 +159,7 @@
     margin:5px;
 }
 </code></pre><p>長相會是這樣：</p>
-<p><img class="lazy" data-src="/img/articles/201405/20140527_1_08.png" alt="CSS 偽類 child 和 of-type"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_08.png" alt="CSS 偽類 child 和 of-type"></p>
 <p>這時候如果我們寫了</p>
 <pre class="prettyprint"><code>#test span:first-child{
     background:#c00;
@@ -176,7 +176,7 @@
 <pre class="prettyprint"><code>#test span:first-of-type{
     background:#c00;
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201405/20140527_1_09.png" alt="CSS 偽類 child 和 of-type"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201405/20140527_1_09.png" alt="CSS 偽類 child 和 of-type"></p>
 <p>就會如上圖看到的，第一個 <code>span</code> 就變色了，也因如此，善用這些好用的偽類，我們更可以精準地控制我們所要控制的元素囉！</p>
 
 

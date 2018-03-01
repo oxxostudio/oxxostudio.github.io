@@ -103,7 +103,7 @@ function initMap() {
     }
   });
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-5-marker-click-event-01.gif" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/google-maps-5-marker-click-event-01.gif" alt=""></p>
 <h2>點擊後更換地圖標記圖片</h2>
 <p>除了動畫之外，也可以透過<code>setIcon</code>的方法，更換地圖標記的顯示圖片，這裏設定當滑鼠事件發生 click 的時候，圖片就會改變。</p>
 <blockquote>
@@ -139,7 +139,7 @@ function initMap() {
     }
   });
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-5-marker-click-event-02.gif" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/google-maps-5-marker-click-event-02.gif" alt=""></p>
 <h2>點擊後開啟資訊視窗</h2>
 <p>在 Google 地圖裡，「資訊視窗 InfoWindow」常常會出現和地圖標記搭配，資訊視窗會在之後再找篇幅介紹，這裏先實作當我們點擊地圖標記時，就會把資訊視窗打開，然後再點一下，就可以把資訊視窗關閉的效果。</p>
 <blockquote>
@@ -178,7 +178,7 @@ function initMap() {
     }
   });
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-5-marker-click-event-03.gif" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/google-maps-5-marker-click-event-03.gif" alt=""></p>
 <p>不過如果單純是上面的寫法，沒有判斷資訊視窗自帶的「x」關閉按鈕，所以要再加入下面這段代碼，監聽資訊視窗關閉按鈕的點擊事件，就會比較正常。</p>
 <pre class="prettyprint"><code>google.maps.event.addListener(infowindow, 'closeclick', function(){
   a = a * -1;

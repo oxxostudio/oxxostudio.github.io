@@ -102,40 +102,40 @@
   &lt;set attributeName="x" to="40" begin="2s"&gt;
 &lt;/rect&gt;
 &lt;rect width="50" height="50" x="10" y="10" fill="none" stroke="#000"/&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140921_1_02.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_1_02.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
 <h2>animate</h2>
 <p>animate 元素就真的是一個動畫的元素 ( 廢話哈哈 )，下方的範例，設定兩秒內正方形會移到 x=60 的地方 ( dur="2s" )，同時無限次播放 ( repeatCount="indefinite" )。</p>
 <pre class="prettyprint"><code>&lt;rect width="50" height="50" x="10" y="10" fill="#09c"&gt;
   &lt;animate attributeName="x" to="60" dur="2s" repeatCount="indefinite"&gt; 
 &lt;/rect&gt;
 &lt;rect width="50" height="50" x="10" y="10" fill="none" stroke="#000"/&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140921_1_03.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_1_03.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
 <h2>animateMotion</h2>
 <p>這個屬性是讓我們的圖形，可以跟隨路徑移動，甚至可以設定跟隨路徑自動旋轉，如果對於路徑 path 還不熟悉的，可以參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html" target="_blank">SVG 研究之路 (5) - Path 進階篇</a>，比較需要注意的是，當我們設定了 animateMotion，則圖形位置以 path 的起點 M 開始計算，也就是會把 M 當作圖形的 (0,0) 的座標，因此下面的範例將 x 設為 0，y 設為 -10。</p>
 <pre class="prettyprint"><code>&lt;rect width="20" height="10" x="0" y="-10" fill="#09c"&gt;
   &lt;animateMotion dur="5s" path="M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3" repeatCount="indefinite" rotate="auto" /&gt; 
 &lt;/rect&gt;
 &lt;path fill="none" stroke="#000" d="M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3"/&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140921_1_04.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_1_04.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
 <p>如果沒有這樣設定，則會出現這樣的情況：</p>
 <pre class="prettyprint"><code>&lt;rect width="20" height="10" x="20" y="20" fill="#09c"&gt;
   &lt;animateMotion dur="5s" path="M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3" repeatCount="indefinite" rotate="auto" /&gt; 
 &lt;/rect&gt;
 &lt;path fill="none" stroke="#000" d="M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3"/&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140921_1_05.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_1_05.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
 <h2>animateTransform</h2>
 <p>這是控制圖形 transform 動畫的屬性，要使用這個屬性，就非得掌握 SVG transform 的基礎知識，可以參考之前的文章：<a href="http://www.oxxostudio.tw/articles/201409/svg-19-transform.html" target="_blank">SVG 研究之路 (19) - transform 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html" target="_blank">SVG 研究之路 (20) - transform Matrix</a>，下面的範例可以看到我們設定 type 是 scale，從 1 的比例變成 1.5 的比例。</p>
 <pre class="prettyprint"><code>&lt;rect width="60" height="60" x="10" y="10" fill="#0c0"&gt;
   &lt;animateTransform dur="2s" attributeName="transform" repeatCount="indefinite" type="scale" from="1" to="1.5"/&gt; 
 &lt;/rect&gt;
 &lt;rect width="60" height="60" x="10" y="10" fill="none" stroke="#000"&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140921_1_06.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_1_06.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
 <p>也可以把 type 設為 rotate，就可以讓圖形旋轉</p>
 <pre class="prettyprint"><code>&lt;rect width="60" height="60" x="50" y="50" fill="#0c0"&gt;
   &lt;animateTransform dur="2s" attributeName="transform" repeatCount="indefinite" type="rotate" from="0,80,80" to="360,80,80"/&gt; 
 &lt;/rect&gt;
 &lt;rect width="60" height="60" x="50" y="50" fill="none" stroke="#000"&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140921_1_07.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140921_1_07.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
 <h2>小結</h2>
 <p>其實 SVG animation 的設定還有很多，上述只是讓我們從最基本的「圖動起來」著手，避免一開始就介紹一大堆的屬性設定，喪失了對於動畫的好奇和熱情，下一篇即將介紹動畫更進階的設定，了解了這些設定之後，相信一定可以做出不錯的效果喔！</p>
 

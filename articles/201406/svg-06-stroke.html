@@ -82,14 +82,14 @@
 </ul>
 </blockquote>
 <p>上述的這些設定，我們都可以在 Illustrator 的屬性面板中看到，所以如果會用 Illustrator 的應該會覺得很熟悉。</p>
-<p><img class="lazy" data-src="/img/articles/201406/20140613_1_02.png" alt="SVG-stroke"></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140613_1_02.png" alt="SVG-stroke"></p>
 <p>除了邊框的顏色和寬度，storke 最重要的只有剩下的三個屬性，首先我們看到<code>stroke-linecap</code>和<code>stroke-linejoin</code>，分別代表了兩個端點的屬性，以及兩條線段尖角接合處的屬性 ( 如果不是尖角，則必定是使用貝茲曲線劃出的曲線 )，下圖可以非常清楚的看出各個屬性所代表的意義，裏頭只有一個要注意的，<code>round</code>是有半徑的圓弧形，直徑就是我們所設定的寬度。</p>
 <pre class="prettyprint"><code>&lt;polyline fill="none" stroke="#000000" stroke-width="10" points="83.678,119.133 113.376,89.434 143.075,119.133 "/&gt;
 &lt;polyline fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" points="193.546,119.133 
     223.245,89.434 252.943,119.133 "/&gt;
 &lt;polyline fill="none" stroke="#000000" stroke-width="10" stroke-linecap="square" stroke-linejoin="bevel" points="
     307.677,116.758 337.376,87.059 367.076,116.758 "/&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140613_1_03.png" alt="SVG-stroke"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140613_1_03.png" alt="SVG-stroke"></p>
 <p>最後一個屬性是<code>stroke-dasharray</code>，裏頭的值是一個陣列，代表線段長度與虛線間隔長度的交錯數字，通常是兩個數字一組 ( 長度和間隔 )，如果是奇數，則最後數字接續的間隔，長度會以第一個數字為預設值，下方的圖片可以看出不同設定所造成的差異：</p>
 <pre class="prettyprint"><code>&lt;line fill="none" stroke="#000000" stroke-dasharray="2" x1="0" y1="0" x2="100" y2="0"/&gt;
 &lt;line fill="none" stroke="#000000" stroke-dasharray="2,5" x1="0" y1="10" x2="100" y2="10"/&gt;
@@ -97,7 +97,7 @@
 &lt;line fill="none" stroke="#000000" stroke-dasharray="2,5,3,10" x1="0" y1="30" x2="100" y2="30"/&gt;
 &lt;line fill="none" stroke="#000000" stroke-dasharray="2,5,3,10,5" x1="0" y1="40" x2="100" y2="40"/&gt;
 &lt;line fill="none" stroke="#000000" stroke-dasharray="2,5,3,10,5,1" x1="0" y1="50" x2="100" y2="50"/&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140613_1_04.png" alt="SVG-stroke"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140613_1_04.png" alt="SVG-stroke"></p>
 <p>以上就是 stroke 的基本介紹，其實跟 illustrator 的屬性設定幾乎一模一樣，應該很容易理解囉！</p>
 
 

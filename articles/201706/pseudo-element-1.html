@@ -88,7 +88,7 @@ div::after{
     content:"我是 after";
     color:red;
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-1-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-1-01.jpg" alt=""></p>
 <h2>實用的 content</h2>
 <p>上述的內容乍看之下很容易理解，比較需要注意的是<em>一定要具備 content 的屬性</em>，就算是只有<code>content:"";</code>都可以，因為沒有 content 的偽元素是不會出現在畫面上的，然而 content 是個很特別的屬性，它可以使用 attr 直接獲取內容元素的屬性值 ( attribute )，舉例來說，在 HTML 裡有一個超連結，點擊後會彈出新視窗並連結至 Google：</p>
 <pre class="prettyprint"><code>&lt;a href="https://www.google.com" target="_blank"&gt;google&lt;/a&gt;
@@ -101,7 +101,7 @@ a::after{
   content: attr(target);
   color:green;
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-1-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-1-02.jpg" alt=""></p>
 <p>此外 content 內容是可以「<em>相加</em>」的，不過用法不像 JavaScript 使用 + 號來相連，而是直接用一個空白鍵就可以不斷的累加下去，以下面的程式碼來說，可以在剛剛擷取的超連結文字後方和 target 屬性前方，加入標點符號。</p>
 <pre class="prettyprint"><code>a::before{
   content: "( " attr(href) " ) &lt; ";
@@ -111,12 +111,12 @@ a::after{
   content: " &gt; ( " attr(target) " ) ";
   color:green;
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-1-03.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-1-03.jpg" alt=""></p>
 <p>content 甚至可以使用 url 放入圖片圖片的功能，下列的程式碼會呈現出三張圖片。</p>
 <pre class="prettyprint"><code>div::before{
   content:url(圖片網址) url(圖片網址) url(圖片網址);
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-1-04.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-1-04.jpg" alt=""></p>
 <p>透過 border 的變化，我們可以實現上下左右的三角形，而這個變化同樣也適用於 content，由於我之前已經寫過好幾篇類似的文章，所以在這邊就不多作介紹，有興趣的可以直接參考下面這些文章：</p>
 <blockquote>
 <ul>
@@ -133,12 +133,12 @@ a::after{
 <pre class="prettyprint"><code>q{
   quotes: ' &lt; ' ' &gt; ';
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-1-05.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-1-05.jpg" alt=""></p>
 <p>如果寫了三層，就會看到出現三種括號，支援把文字當作括號使用。</p>
 <pre class="prettyprint"><code>q{
   quotes: ' &lt; ' ' &gt; ' ' ya ' ' ya ' ' ( ' ' ) ' ;
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-1-06.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-1-06.jpg" alt=""></p>
 <p>同樣的道理，我們可以應用在 content 裡面，而且透過偽元素已 ::before 和 ::after 已經處於前後的預設位置，甚至不用<code>&lt;q&gt;&lt;/q&gt;</code>就實現前後括號的效果，以下面這段 HTML 文字舉例，把剛剛的 q 全部換成 span：</p>
 <pre class="prettyprint"><code>最外層&lt;span&gt;第一層&lt;span&gt;第二層&lt;/span&gt;&lt;span&gt;第二層&lt;span&gt;第三層&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;。
 </code></pre><p>CSS 的部分比較特別，在偽元素 content 裡使用了 <em>open-quote ( 啟始括號 ) 和 close-quote ( 結束括號 )</em> 這兩個有趣的值，換句話說 open-quote 對應到<code>&lt;q&gt;</code>，close-quote 對應到<code>&lt;/q&gt;</code>，此外也由於括號是在偽元素內，就可以指定不同的顏色或樣式了。</p>
@@ -153,7 +153,7 @@ span::after{
   content:close-quote;
   color:#aaa;
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-1-07.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-1-07.jpg" alt=""></p>
 <h2>小結</h2>
 <p>雖然說偽元素很好用，但偽元素的內容實際上不存在網頁裡 ( 如果打開瀏覽器的開發者工具，是看不到內容的 )，所以如果在裡頭塞了太多的重要的內容，反而會影響到 SEO 的成效，因此對於使用偽元素的定位，還是當作「輔助」性質會比較恰當。</p>
 <p>下一篇會繼續介紹 content 的部份玩些特別 ( 比較少用到 ) 的技法。</p>

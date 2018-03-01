@@ -134,7 +134,7 @@
   &lt;/defs&gt;
   &lt;rect width="70" height="70" x="40" y="50" stroke="#000" fill="url(#userSpaceOnUse)" /&gt;
   &lt;rect width="70" height="70" x="140" y="50" stroke="#000"  fill="url(#bg)" /&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_02.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_02.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 <li><p><strong>gradientTransform</strong></p>
 <p>  可以把漸層套用 transform 的效果，也就是可以縮放、旋轉、傾斜、Matrix...等，不過用到的時間點還真的不常見，畢竟漸層都已經可以手動調整方向了，實際用到 gradientTransform 的機會也不多，下面是範例，把漸層旋轉 45 度。(    你一定會發現，明明是藍到白的漸層，旋轉後為什麼藍色區域變多了呢？因為旋轉以後，藍色後面沒有漸層，延伸出去是一片藍色，藍色區域就增加了 )</p>
@@ -150,7 +150,7 @@
   &lt;/defs&gt;
   &lt;rect width="250" height="200" x="0" y="0" fill="url(#bg)" /&gt;
   &lt;rect width="70" height="70" x="40" y="50" stroke="#000" fill="url(#userSpaceOnUse)" /&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_03.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_03.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 <li><p><strong>spreadMethod = "pad | reflect | repeat"</strong></p>
 <p>  這是個對於漸層來說頗重要也頗特別的屬性，可以下達三種指令，第一個 pad 是預設值，也就是按照我們的漸層填色，第二個 reflect 是鏡射，就是按照鏡射的方式用我們定義的漸層，補滿漸層的頭尾，第三個 repeat 就是重複，就是使用重複的漸層來補滿頭尾，看看下圖會比較清楚：</p>
@@ -171,7 +171,7 @@
   &lt;rect width="70" height="70" x="30" y="50" stroke="#000" fill="url(#pad)"&gt;&lt;/rect&gt;
   &lt;rect width="70" height="70" x="130" y="50" stroke="#000" fill="url(#reflect)"&gt;&lt;/rect&gt;
   &lt;rect width="70" height="70" x="230" y="50" stroke="#000" fill="url(#repeat)"&gt;&lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_04.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_04.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 <li><p><strong>xlink:href</strong></p>
 <p>  讓漸層可以引用其它元素的設定，也就是說我們可以先定義漸層的顏色，，就可以套用在不同的起始點和終點，例如下面的範例：</p>
@@ -187,7 +187,7 @@
   &lt;rect width="70" height="70" x="30" y="50" stroke="#000" fill="url(#b1)"&gt;&lt;/rect&gt;
   &lt;rect width="70" height="70" x="130" y="50" stroke="#000" fill="url(#b2)"&gt;&lt;/rect&gt;
   &lt;rect width="70" height="70" x="230" y="50" stroke="#000" fill="url(#b3)"&gt;&lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_05.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_05.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 </ul>
 <h2>線性漸層 linearGradient</h2>
@@ -195,7 +195,7 @@
 <ul>
 <li><p><strong>x1,y1,x2,y2</strong></p>
 <p>  這個非常容易理解，<code>x1,y1</code>就是漸層色的起點，<code>x2,y2</code>就是漸層色的終點，數值是 0~1 的數字 ( 可以小數 )，或是 0%~100% 的數值，至於要如何和內容的 stop offset 做區分呢？可以參考下面這張示意圖，<code>x1,y1,x2,y2</code>是指整個漸層填色的區域位置，而stop offset 則是在填色區域內的 0% ~ 100% 。</p>
-<p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_08.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_08.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 <p>  x1="0",y1="0" 或 x1="0%" y1="0%" 表示從左上開始，x2="1" y2="1" 或 x2="100%" y2="100%" 表示結束在右下角，如果這樣設定就會變成左上到右下的漸層，了解之後就可以做出許多變化：</p>
 <pre class="prettyprint"><code>  &lt;defs&gt;
     &lt;linearGradient id="a1"&gt;
@@ -206,7 +206,7 @@
     &lt;linearGradient id="b2" x1="0" y1=".5" x2="0"  y2="0.6" xlink:href="#a1" /&gt;
     &lt;linearGradient id="b3" x1="0" y1="0.4" x2="0.7"  y2="0" xlink:href="#a1" /&gt;
   &lt;/defs&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_06.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_06.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 <p>  你也可以運用 stop-opacity 改變漸層透明度，結合多種漸層：</p>
 <pre class="prettyprint"><code>  &lt;defs&gt;
     &lt;linearGradient id="b1" x1="0" y1="0" x2="0" y2="1"&gt;
@@ -220,7 +220,7 @@
   &lt;/defs&gt;
     &lt;rect width="100" height="100" x="0" y="0" stroke="#000" fill="url(#b1)"&gt;&lt;/rect&gt;
     &lt;rect width="100" height="100" x="0" y="0" stroke="#000" fill="url(#b2)"&gt;&lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_07.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_07.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 </ul>
 <h2>圓形漸層 radialGradient</h2>
@@ -244,7 +244,7 @@
   &lt;rect width="100" height="100" x="5" y="50" stroke="#000" fill="url(#r1)"&gt;&lt;/rect&gt;
   &lt;rect width="100" height="100" x="115" y="50" stroke="#000" fill="url(#r2)"&gt;&lt;/rect&gt;
   &lt;rect width="100" height="100" x="225" y="50" stroke="#000" fill="url(#r3)"&gt;&lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_09.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_09.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 <li><p><strong>fx,fy</strong></p>
 <p>  這兩個參數很有意思，這兩個參數預設是沒有值的，如果我們設定了這兩個參數，則剛剛的<code>cx,cy</code>就會變成圓形漸層填色的「<strong>範圍</strong>」圓心，然後漸層色會填滿這個「圓的範圍」</p>
@@ -260,7 +260,7 @@
   &lt;/defs&gt;
   &lt;rect width="150" height="150" x="5" y="10" stroke="#000" fill="url(#r1)"&gt;&lt;/rect&gt;
   &lt;rect width="150" height="150" x="160" y="10" stroke="#000" fill="url(#r2)"&gt;&lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_10.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_10.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 <p>  如果搭配剛剛的鏡射或重複的屬性，就會發生有趣的變化</p>
 <pre class="prettyprint"><code>  &lt;defs&gt;
     &lt;radialGradient id="r1" cx=".5" cy=".5" r=".4" fx=".75" fy=".75" spreadMethod="reflect"&gt;
@@ -274,7 +274,7 @@
   &lt;/defs&gt;
   &lt;rect width="150" height="150" x="5" y="10" stroke="#000" fill="url(#r1)"&gt;&lt;/rect&gt;
   &lt;rect width="150" height="150" x="160" y="10" stroke="#000" fill="url(#r2)" &gt;&lt;/rect&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201409/20140927_2_11.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_11.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 </ul>
 <h2>小結</h2>
@@ -288,7 +288,7 @@
   &lt;/linearGradient&gt;
 &lt;/defs&gt;
 &lt;&lt;circle cx="85" cy="85" r="75" fill="url(#r1)"/&gt;
-</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140927_2_12.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140927_2_12.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 
 
       <div class="social-icon">

@@ -213,12 +213,12 @@ svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
-</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141229_1_02.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201412/20141229_1_02.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
 <p>當我們把時間間隔縮減，就會發現時間軸的格式自動變化了。( 範例：<a href="/demo/201412/svg-d3-11-time-demo5.html" target="_blank">svg-d3-11-time-demo5.html</a> )</p>
 <pre class="prettyprint"><code>var x = d3.time.scale()
 .domain([new Date(2012, 0, 1), new Date(2012, 3, 1)])
 .range([0, width]);
-</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141229_1_03.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201412/20141229_1_03.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
 <h2>d3.time.format.utc(specifier)</h2>
 <p>utc 是標準定位時間格式 ( UTC time )，以台灣來說，就是 UTC+8:00，utc 對於跨時區或涉及多個國家地區的時候，設定為 utc 的時間會比較方便，UTC 傳回參數日期的 GMT ( 由 1970年1月1日零時零分計起，以微秒為單位 )</p>
 <h2>d3.time.format.iso</h2>

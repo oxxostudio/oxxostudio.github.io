@@ -177,14 +177,14 @@ parameter.data = data.toString();
     }
   });
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-01.jpg" alt=""></p>
 <p>在 debug.gs 點選上方三角形的執行按鈕，就可以看到資料插入在試算表原本內容的下方。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-02.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-02.jpg" alt=""></p>
 <p>如果把 insertType 的 bottom 換成 top，就會在上方插入。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-03.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-03.jpg" alt=""></p>
 <h2>網頁寫入資料</h2>
 <p>如果剛剛上面都沒問題，先把寫好的程式碼部署到網路上，將存取權設定為「任何人，甚至是匿名使用者」。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-04.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-04.jpg" alt=""></p>
 <p>部署完成之後，就要來看看網頁端怎麼進行，網頁一開始在 HTML 先載入 jQuery，然後放入一些欄位，包含試算表網址、Google App Script 網址、工作表名稱、寫入方式...等，資料的話預設寫入一列三欄 ( 因為用 input 寫入陣列要做一些轉換，這邊就用最簡單的方法展示 )。</p>
 <pre class="prettyprint"><code>Google App Script：&lt;input id="appUrl"&gt;&lt;br/&gt; 
 試算表網址：&lt;input id="sheetsUrl"&gt;&lt;br/&gt; 
@@ -227,7 +227,7 @@ sendBtn.on('click', function() {
   };
   $.get(appUrl.val(), parameter);
 });
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-05.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-05.jpg" alt=""></p>
 <h2>小結</h2>
 <p>其實寫入資料到試算表內沒有想像的麻煩，只要了解資料的格式，在對這些格式做點轉換，就可以把試算表拿來當作資料庫使用囉。</p>
 

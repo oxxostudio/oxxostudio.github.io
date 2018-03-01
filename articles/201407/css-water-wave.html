@@ -137,7 +137,7 @@
     height:300px;
   }
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201407/20140729_1_02.gif" alt="CSS Water Wave"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140729_1_02.gif" alt="CSS Water Wave"></p>
 <h2>製作水波</h2>
 <p>上面有幾個地方要稍微注意一下，第一個是因為位置都使用了絕對位置 ( absolute )，因此我們要將所有的 div 定位在圓心一定有難度，這時候就必須使用 CSS3 的好用工具：<code>calc</code>，<code>calc</code>可以自動計算位置，藉由這個方式，我們直接可以讓 CSS 替我們計算出圓心，相當的方便。( 注意！<code>calc</code> 的 + 、 - 號前後必須有空格，不然會出錯 )，然後就是每個 animation 要逐一加上延遲時間，就可以逐一地冒出來，如果我們再把半徑設大一點，就會變成圓形或是橢圓形囉！</p>
 <p>了解了水波的原理之後，再來我們只要把上面的顏色換成背景圖，就可以順利的產生水波了。</p>
@@ -204,7 +204,7 @@
     height:300px;
   }
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201407/20140729_1_03.gif" alt="CSS Water Wave"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140729_1_03.gif" alt="CSS Water Wave"></p>
 <h2>逼真的水波</h2>
 <p>比較需要注意的地方，就是背景的位置<strong>千萬要設為固定 ( background-attachment:fixed; )</strong>，然然統一將背景置中，如此一來，背景的位置相同，但背景的大小不同，就會讓欺騙眼睛，讓眼睛認為看到了水波，不過裏頭也用了一個小技巧讓水波看起來更逼真，就是讓每一個背景大小都不同，換句話說就是<strong>讓水波的震幅越來越小</strong>，讓背景大小從 106 &gt; 102 &gt; 104 &gt; 101 &gt; 102 &gt; 100，如此一來就會讓水波更逼真囉！</p>
 <p>以上就是單純利用 CSS 製作水波的原理，當然最後就是要撰寫一段 JS 讓水波可以在滑鼠點擊的剎那產生，而且下一個水波必須覆蓋上一個水波，然後水波產生後會自動消失，避免過多的 div 造成畫面延遲。</p>
@@ -236,7 +236,7 @@ function _wave(i, j, k) {
   }, 3000);
 }
 </code></pre><p>範例：<a href="http://goo.gl/3VQRH7" target="_blank">CSS Water Wave</a> ( 使用 EZoApp 設計工具，點選 preview 可以看效果喔！ )</p>
-<p><a href="http://goo.gl/3VQRH7" target="_blank"><img class="lazy" data-src="/img/articles/201407/20140729_1_04.gif" alt="CSS Water Wave"></a></p>
+<p><a href="http://goo.gl/3VQRH7" target="_blank"><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140729_1_04.gif" alt="CSS Water Wave"></a></p>
 
 
       <div class="social-icon">

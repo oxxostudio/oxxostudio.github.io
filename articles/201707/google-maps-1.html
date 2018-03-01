@@ -75,16 +75,16 @@
 <blockquote>
 <p>參考：<a href="https://console.developers.google.com/" target="_blank">Google API Console</a></p>
 </blockquote>
-<p><img class="lazy" data-src="/img/articles/201707/google-maps-1-03.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-03.jpg" alt=""></p>
 <p>一開始，最基本要啟用的是 Google Maps Embed API，點選 Google Maps Embed API 並且啟用就可以，啟用後，在專案的資訊主頁裡，就會看到出現對應的 API。</p>
-<p><img class="lazy" data-src="/img/articles/201707/google-maps-1-04.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-04.jpg" alt=""></p>
 <h2>建立憑證</h2>
 <p>在使用 Google Map 服務的時候，都必須先申請憑證才能使用，點選「憑證」，接著點選「建立憑證」，選擇 API 金鑰，就可以開始建立專屬的金鑰 key。</p>
-<p><img class="lazy" data-src="/img/articles/201707/google-maps-1-05.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-05.jpg" alt=""></p>
 <p>API 金鑰就是一段很長的代碼，這段代碼可以讓 Google 識別是哪個使用者在用對應的服務，並且根據使用者權限和使用的服務，提供對應的功能和限制。</p>
-<p><img class="lazy" data-src="/img/articles/201707/google-maps-1-06.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-06.jpg" alt=""></p>
 <p>建立金鑰之後最重要的事情，就是<strong>限制金鑰</strong>，限制金鑰也就是保護金鑰，避免金鑰外流造成別人也能用 ( 假設這個金鑰一天只能用 100 次，外流之後別人用了 99 次，你就只能用 1 次 )，限制的方法有以下幾種：HTTP 參照網址、IP 位址、Android 應用程式與 iOS 應用程式，舉例來說如果我將我申請的金鑰限制設定為 HTTP 參照網址，並且輸入我的 domain name 作為規則，<strong>這組金鑰就只能在我的部落格使用，別的網站就無法使用</strong>。</p>
-<p><img class="lazy" data-src="/img/articles/201707/google-maps-1-07.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-07.jpg" alt=""></p>
 <h2>網頁嵌入地圖</h2>
 <p>記下剛剛申請的金鑰，就可以來把地圖放到網頁裡，放進去的語法只是用個<code>iframe</code>表現，填入金鑰以及地點，執行後就會看到網頁出現地圖，並且按照標示我們輸入的地址或地點，網址<code>src</code>的 URL，須按照 Google Maps Embed API 的要求撰寫：</p>
 <p><code>https://www.google.com/maps/embed/v1/模式?key=你的金鑰&amp;參數</code></p>
@@ -103,7 +103,7 @@
       src="https://www.google.com/maps/embed/v1/place?key=你的金鑰&amp;q=高雄市政府" 
       allowfullscreen&gt;
   &lt;/iframe&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201707/google-maps-1-08.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-08.jpg" alt=""></p>
 </li>
 <li><p><em>directions  路線規劃模式</em></p>
 <p>  路線規劃模式有幾個參數可以選擇，分別是：</p>
@@ -128,7 +128,7 @@
     style="border:0"
     src="https://www.google.com/maps/embed/v1/directions?key=你的金鑰&amp;origin=台北市政府&amp;waypoints=台北101|國父紀念館&amp;destination=台北小巨蛋"&gt;
   &lt;/iframe&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201707/google-maps-1-09.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-09.jpg" alt=""></p>
 </li>
 </ul>
 <ul>
@@ -152,7 +152,7 @@
     style="border:0"
     src="https://www.google.com/maps/embed/v1/search?key=你的金鑰&amp;q=711&amp;zoom=14&amp;center=25.033952,121.564360"&gt;
   &lt;/iframe&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201707/google-maps-1-10.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-10.jpg" alt=""></p>
 </li>
 <li><p><em>View 檢視模式</em></p>
 <p>  在 view 的模式下，會傳回沒有標記或路線的地圖，而這個模式有幾個參數：</p>
@@ -176,7 +176,7 @@
     style="border:0"
     src="https://www.google.com/maps/embed/v1/view?key=你的金鑰&amp;zoom=14&amp;center=25.033952,121.564360&amp;maptype=satellite"&gt;
   &lt;/iframe&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201707/google-maps-1-11.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-11.jpg" alt=""></p>
 </li>
 <li><p><em>streetview 街景服務模式</em></p>
 <p>  街景模式能提供一個可將全景轉譯為球體的檢視器，而相機將位於球體的正中間，提供單一位置的完整 360 度檢視。 影像包含 360 度的水平檢視（全方位環繞）以及 180 度垂直檢視（垂直上下），這個模式有以下幾個參數：</p>
@@ -202,7 +202,7 @@
     style="border:0"
     src="https://www.google.com/maps/embed/v1/streetview?key=你的金鑰&amp;location=25.032863,121.562943&amp;heading=60&amp;pitch=30&amp;fov=90"&gt;
   &lt;/iframe&gt;
-</code></pre><p>  <img class="lazy" data-src="/img/articles/201707/google-maps-1-12.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201707/google-maps-1-12.jpg" alt=""></p>
 </li>
 </ul>
 <h2>小結</h2>

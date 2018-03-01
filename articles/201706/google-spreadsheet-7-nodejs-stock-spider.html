@@ -78,9 +78,9 @@
 <blockquote>
 <p>連結：<a href="http://www.tse.com.tw/zh/page/trading/exchange/STOCK_DAY.html" target="_blank">台灣證卷交易所 個股日成交資訊</a></p>
 </blockquote>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-01.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-01.jpg" alt=""></p>
 <p>打開網頁開發者工具，頁籤選擇 Network，在上方股票代碼處，填入對應的股票代碼，按下查詢，這時候應該可以看到 Network 的資訊中出現了一個 json 的資料格式，這就是這支股票的成交資訊，也是待會我們會用到的。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-02.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-02.jpg" alt=""></p>
 <p>這個 json 的網址有固定的格式，<code>date=20170621</code>表示日期，<code>stockNo=2330</code>表示這支股票編號，後面那串 &amp;_ 不知道做什麼用的 ( 刪掉好像沒影響所以就刪掉吧 :p )，了解格式之後待會我們就會把想要抓取的股票代碼，動態的塞入網址內，就可以取得對應的資料了。</p>
 <blockquote>
 <p><em>www.tse.com.tw/exchangeReport/STOCK<em>DAY?response=json&amp;date=20170621&amp;stockNo=2330&amp;</em>=1498059436321</em></p>
@@ -130,7 +130,7 @@
     }
   );
 }
-</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-03.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-03.jpg" alt=""></p>
 <h2>Node.js</h2>
 <p>開始之前要先用命令輸入視窗，進入程式的資料夾，用 npm 安裝 request 模組，透過這個模組來載入網頁、json 或 xml 檔案，並且也可以發送 GET 或 POST 的指令。</p>
 <blockquote>
@@ -215,7 +215,7 @@ var run = function() {
 
 run();
 </code></pre><p>最後就是執行 run 的流程，這樣當我們回到命令輸入的視窗，輸入<code>node js名稱</code>，應該就可以看到試算表內順利的存入抓到的股票資訊了。</p>
-<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-04.gif" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-04.gif" alt=""></p>
 <h2>小結</h2>
 <p>過去在沒有資料庫的情況下，大多都是用個網頁來呈現，現在透過 Google App Script 和 Google 試算表的搭配，我們就可以更簡便的儲存與分析資料囉。</p>
 
