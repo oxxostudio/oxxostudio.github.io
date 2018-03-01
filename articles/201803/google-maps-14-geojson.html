@@ -1,0 +1,382 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (14) - 顯示 GeoJSON 資料 - OXXO.STUDIO</title>
+
+  <meta name="description" content="透過 Google Maps API 在地圖上繪製圖形不困難，但「取得地圖上的資料」卻令人頭痛，幸好隨著科技的進步，我們可以透過 GeoJSON 這種專門處理地理資訊結構的格式，更方便的在地圖上顯示各種資訊，這篇就來簡單介紹一下 GeoJSON，並在 Google 地圖上顯示對應的樣貌。">
+  <meta itemprop="description" content="透過 Google Maps API 在地圖上繪製圖形不困難，但「取得地圖上的資料」卻令人頭痛，幸好隨著科技的進步，我們可以透過 GeoJSON 這種專門處理地理資訊結構的格式，更方便的在地圖上顯示各種資訊，這篇就來簡單介紹一下 GeoJSON，並在 Google 地圖上顯示對應的樣貌。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-14-geojson.jpg">
+  <meta property="og:description" content="透過 Google Maps API 在地圖上繪製圖形不困難，但「取得地圖上的資料」卻令人頭痛，幸好隨著科技的進步，我們可以透過 GeoJSON 這種專門處理地理資訊結構的格式，更方便的在地圖上顯示各種資訊，這篇就來簡單介紹一下 GeoJSON，並在 Google 地圖上顯示對應的樣貌。">
+  <meta property="og:title" content="Google Maps (14) - 顯示 GeoJSON 資料">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-14-geojson.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-14-geojson.jpg">
+  <link href="/css/article.css?20180228" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (14) - 顯示 GeoJSON 資料</h1>
+<p>透過 Google Maps API 在地圖上繪製圖形不困難，但「取得地圖上的資料」卻令人頭痛，幸好隨著科技的進步，我們可以透過 GeoJSON 這種專門處理地理資訊結構的格式，更方便的在地圖上顯示各種資訊，這篇就來簡單介紹一下 GeoJSON，並在 Google 地圖上顯示對應的樣貌。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>GeoJSON 簡介</h2>
+<p>GeoJSON 是一種對地理資訊結構進行編碼的格式，基於 JavaScript 物件標記的地理空間資訊資料交換格式 ( 所以才會是 Geo + json )，GeoJSON 支援像是<strong>點、線、多邊形、多點、多線、多個多邊形</strong>的幾何形狀，當中也包含了特徵或特徵的集合資訊。</p>
+<p>舉例來說，一個 GeoJSON 最外層包含一個 type 為 <em>FeatureCollection</em> 的屬性，接著 <em>features</em> 的屬性包含了許多 type 為 <em>Feature</em> 的物件，這些 Feature 物件裡包含 <em>properties</em> 的屬性，可以設定區域的顏色、邊框...等樣式，也包含了 <em>geometry</em> 的屬性，定義地圖上形狀的面貌，以下面這段 GeoJSON 來說，就是在台北 101 旁的松壽路上，畫「<em>一段粗細 10px，透明度 0.5 的紅色直線</em>」。</p>
+<pre class="prettyprint"><code>{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#ff0000",
+        "stroke-width": 10,
+        "stroke-opacity": 0.5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            121.56351685523987,
+            25.03585799721269
+          ],
+          [
+            121.56548023223877,
+            25.0358093932627
+          ]
+        ]
+      }
+    }
+  ]
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-01.jpg" alt=""></p>
+<p>上面的例子中，type 設定為 <em>LineString</em> 呈現的是直線，如果要呈現多邊形，就要將 type 設為 <em>Polygon</em>，下面的 GeoJSON 呈現的是台北 101 被一個「黑色實線、紅色半透明填滿的正方形」圍住。</p>
+<pre class="prettyprint"><code>{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#000000",
+        "stroke-width": 2,
+        "stroke-opacity": 1,
+        "fill": "#ff2600",
+        "fill-opacity": 0.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.56345248222352,
+              25.03295144714567
+            ],
+            [
+              121.5654158592224,
+              25.03295144714567
+            ],
+            [
+              121.5654158592224,
+              25.03476926411677
+            ],
+            [
+              121.56345248222352,
+              25.03476926411677
+            ],
+            [
+              121.56345248222352,
+              25.03295144714567
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-02.jpg" alt=""></p>
+<h2>產生 GeoJSON</h2>
+<p>雖然說已經知道了 GeoJSON 的格式，但要產生 GeoJSON 最麻煩的仍然是那些小數點好多位數的「座標」，這時候就要透過 geojson.io 這個線上服務，來幫我們產生標準又漂亮的 GeoJSON。</p>
+<blockquote>
+<p>參考連結：<a href="http://geojson.io/" target="_blank">http://geojson.io/</a></p>
+</blockquote>
+<p>打開網頁後，映入眼簾的是左右兩個視窗，左邊的視窗是地圖，右上角有繪圖的工具，右邊的視窗會根據所繪製的圖案，自動產生 GroJSON。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-03.jpg" alt=""></p>
+<p>用「多邊形」工具把台北 101 旁邊的台北世界貿易中心框起來，就會看到對應的 GeoJSON 自動產生出來。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-04.jpg" alt=""></p>
+<p>用滑鼠點擊畫好的多邊形，就可以修改多邊形的屬性，修改後在 GeoJSON 裡的 properties 也會自動產生，下圖就是把繪製的多邊形，改成黑色外框紅色填滿的屬性。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-05.jpg" alt=""></p>
+<p>透過 geojson.io 這個方便好用的網站，要產生 GeoJSON 已經不再那麼困難，接著就來實作如何用 Google 地圖顯示 GeoJSON 資料。</p>
+<h2>Google 地圖顯示 GeoJSON 資料</h2>
+<p>匯入 GeoJSON 資料其實很簡單，每個 Google 地圖都有一個 map.data 物件，做為任意地理空間資料（包括 GeoJSON）的資料圖層，只要呼叫 data 物件的<code>loadGeoJSON()</code>方法就可以，用法如下：</p>
+<pre class="prettyprint"><code>map.data.loadGeoJson('GeoJSON.json');
+</code></pre><p>舉例來說，下面這段程式碼，就會在地圖上載入上面我們所畫好的台北世貿中心。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-01.html" target="_blank">Google 地圖顯示 GeoJSON 資料</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: {lat: 25.034010, lng:121.562428}
+  });
+
+  map.data.loadGeoJson('geojson.demo.json');
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-06.jpg" alt=""></p>
+<p>不過很神奇的，載入之後我們原本設定的樣式反而不見了，這時候就得使用<code>Data.setStyle()</code>方法來指定資料外觀，以剛剛的例子來說，只要改寫成下面這樣，就能讓原本的形狀多了些色彩。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-02.html" target="_blank">Google 地圖顯示 GeoJSON 資料 - 改變樣式 1</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: {lat: 25.034010, lng:121.562428}
+  });
+
+  map.data.loadGeoJson('geojson.demo.json');
+
+  map.data.setStyle({
+    strokeWeight: 20,
+    strokeOpacity: .5,
+    strokeColor: '#f00',
+    fillColor: '#0c0',
+    fillOpacity: .35
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-07.jpg" alt=""></p>
+<p>如果還是想使用我們自定義的 GeoJSON 樣式該怎麼做呢？這時就得用到<code>map.data.setStyle(function(feature)){}</code>來取的每筆資料的屬性，下面的例子將會把我們自定義的 properties 的樣式取出，套用到 Google 地圖上。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-03.html" target="_blank">Google 地圖顯示 GeoJSON 資料 - 改變樣式 2</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: {lat: 25.034010, lng:121.562428}
+  });
+
+  map.data.loadGeoJson('geojson.demo.json');
+
+  map.data.setStyle(function(feature){
+    return {
+      strokeWeight: feature.getProperty('stroke-width'),
+      strokeOpacity: feature.getProperty('stroke-opacity'),
+      strokeColor: feature.getProperty('stroke'),
+      fillColor: feature.getProperty('fill'),
+      fillOpacity: feature.getProperty('fill-opacity')
+    }
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-08.jpg" alt=""></p>
+<p>同樣道理，如果我們手動在 properties 內定義一個名為 name 的屬性，就可以在「多個形狀」的資料下，指定每筆資料產生的形狀樣式，以下面的例子來說，透過 name 的屬性，就能指定紅色和綠色的區塊按照 GeoJSON 的配置顯示色彩，而另外一個區塊就用預設的 Google 形狀來顯示。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-04.html" target="_blank">Google 地圖顯示 GeoJSON 資料 - 多個形狀</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: {lat: 25.034010, lng:121.562428}
+  });
+
+  map.data.loadGeoJson('geojson.demo2.json');
+
+  map.data.setStyle(function(feature){
+    if(feature.getProperty('name')=='red' || feature.getProperty('name')=='green'){
+      return {
+        strokeWeight: feature.getProperty('stroke-width'),
+        strokeOpacity: feature.getProperty('stroke-opacity'),
+        strokeColor: feature.getProperty('stroke'),
+        fillColor: feature.getProperty('fill'),
+        fillOpacity: feature.getProperty('fill-opacity')
+      }
+    }
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-09.jpg" alt=""></p>
+<h2>小結</h2>
+<p>基本上透過 Google 地圖來顯示 GeoJSON 資料沒有太大的難度，比較難的是讀取資料後要怎麼用視覺化呈現，讓使用者可以一目瞭然，接下來會再嘗試讀取資料後再做一些變化，敬請期待囉~ ^_^</p>
+<h2>參考</h2>
+<ul>
+<li><a href="http://geojson.io/" target="_blank">http://geojson.io/</a></li>
+<li><a href="https://github.com/g0v/twgeojson/" target="_blank">g0v twgeojson</a></li>
+<li><a href="https://developers.google.com/maps/documentation/javascript/datalayer?hl=zh-tw" target="_blank">Google Mpas API 資料圖層</a></li>
+<li><a href="https://kuro.tw/posts/2015/04/28/through-the-google-maps-api-geojson-data/" target="_blank">透過 Google Maps API 處理 GeoJSON 資料</a></li>
+</ul>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180220"></script>
+  <script src="/js/articles.js?20180301v2"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
