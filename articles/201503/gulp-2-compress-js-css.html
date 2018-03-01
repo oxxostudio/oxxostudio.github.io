@@ -76,7 +76,7 @@
 <p>如同上一篇描述的，我們要先用<code>npm init</code>將專案初始化 ( 參考前一篇 )，接著輸入以下指令，安裝 gulp、gulp-minify-css、gulp-uglify、gulp-concat、gulp-rename 這五個 Node Module。( Mac 可能要加 sudo )</p>
 <p>npm install gulp gulp-minify-css gulp-uglify gulp-concat gulp-rename -save-dev</p>
 <p>安裝完成之後，先來建立一下我們檔案的目錄，首先新增一個 app 的資料夾，裡頭再放入一個 CSS 與 JS 的資料夾，分別在這些資料夾內新增一些 CSS 與 JS 檔案，接著在與 app 資料夾的同一層，新增 build 的資料夾，作為最後完成發佈使用，完成後的目錄應該長成這樣：</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201503/20150306_1_02.jpg" alt="Gulp 學習筆記 2 - 打包壓縮 CSS 與 JS"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150306_1_02.jpg" alt="Gulp 學習筆記 2 - 打包壓縮 CSS 與 JS"></p>
 <p>好了，模擬一個簡單的專案目錄之後，先解釋一下剛剛安裝的這幾個套件是在幹嘛用的：</p>
 <ul>
 <li>gulp-concat：合併檔案</li>
@@ -122,7 +122,7 @@
 </code></pre><p>到這邊幾乎已經完成囉，最後只要寫上 default 的任務就可以執行 gulp 看看。</p>
 <pre class="prettyprint"><code>gulp.task('default',['minify-css','uglify']);
 </code></pre><p>執行 gulp 後，就會發現我們的檔案，已經被壓縮好並且重新命名，放在指定的位置了，這就是最基本的打包壓縮 CSS 與 JS 的 Gulp 用法。( 執行 gulp 就是直接在 cammand 輸入 gulp 就可以 )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201503/20150306_1_02.jpg" alt="Gulp 學習筆記 2 - 打包壓縮 CSS 與 JS"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150306_1_02.jpg" alt="Gulp 學習筆記 2 - 打包壓縮 CSS 與 JS"></p>
 <p>完整的 gulpfile.js 長這樣：</p>
 <pre class="prettyprint"><code>var gulp       = require('gulp'),
     concat     = require('gulp-concat'),

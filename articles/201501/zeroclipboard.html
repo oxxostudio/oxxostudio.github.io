@@ -70,15 +70,15 @@
 
 <h1>點選自動複製 ( ZeroClipboard )</h1>
 <p>自從用了 Github 開始，一直都覺得它裏頭複製網址的方法做得很好，只需要點一個按鈕就可以複製 ( 也有可能因為文字欄位太短才用這種方式 )，仔細看了一下它怎麼寫的，發現上面用 div 疊了一層 flash 的 swf ，百般不思其解的狀態下找了一些資料，發現原來不能用純 javascript 的方法來做是因為瀏覽器的安全性限制，不能夠單純用前端存取剪貼簿的資料，所以才會用 flash 作為介接。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201501/20150126_1_02.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_02.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>ZeroClipboard 套件</h2>
 <p>再仔細看看 Github 用了甚麼套件，發現它是使用一套名為「<strong>ZeroClipboard</strong>」的純 javascript 插件，主要是在需要點選自動複製的按鈕上方，覆蓋了一層 flash 的 swf，藉由點擊這個 flash 的事件，完成剪貼簿的複製和貼上，實際的運作原理我們就一一看下去。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201501/20150126_1_04.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_04.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <p>先列出 ZeroClipboard 的 <a href="http://zeroclipboard.org/" target="_blank">官方網站</a> 和 <a href="https://github.com/zeroclipboard/zeroclipboard" target="_blank">Github</a>，內容其實有不少的 API 可以供大家使用，這裡就不一一贅述，只把基本常用的功能列出，相信對於單純需要「自動複製貼上」的情境，應該就已經綽綽有餘。( 換句話說現在除了 Github，真的很少見到有人這樣用呀，畢竟手機上不支援 flash 是一大隱憂 )</p>
 <p>要實作之前，有一個前置作業要做，就是電腦上必須要有安裝 IIS 或 Apache 的 http 伺服器，同時藉由伺服器來瀏覽 ( 當然在這邊點選範例就不用，因為已經是網頁伺服器的環境 )，如果沒有透過伺服器瀏覽網頁，flash 的作用將會失效，至於要如何安裝呢？建議可以下載 MAMP ( <a href="http://www.mamp.info/en/" target="_blank">http://www.mamp.info/en/</a> ) 這套在 Mac 與 Windows 都相當好用的一鍵架站軟體，下載免費版的就很好用囉！</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201501/20150126_1_05.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_05.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <p>有了 http 的伺服器環境之後，接著就是要去 ZeroClipboard 的 <a href="https://github.com/zeroclipboard/zeroclipboard" target="_blank">Github</a> 把整包給下載下來，裏頭有兩個檔案最為重要，一個是 ZeroClipboard.js，另一個就是 ZeroClipboard.swf，ZeroClipboard.js 是在一開始引入的 js，ZeroClipboard.swf 則是要和「<strong>和 ZeroClipboard.js 放在同一個目錄</strong>」的 swf 檔，當然也不一定要在同一個目錄下，只需要去修改 ZeroClipboard.js 裏頭的<code>swfPath</code>即可，這在後續會介紹。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201501/20150126_1_06.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_06.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <h2>如何使用</h2>
 <p>再來就是介紹如何使用，當我們引入 jquery 和 ZeroClipboard.js 之後，要先宣告一個 ZeroClipboard 物件，如此一來才能使用它的 API。( 參考 <a href="https://github.com/zeroclipboard/zeroclipboard/blob/master/docs/instructions.md#a-more-complete-example" target="_blank">ZeroClipboard 說明文件</a> )</p>
 <p>HTML：</p>
@@ -89,7 +89,7 @@
     var client = new ZeroClipboard($(".clipboard"));
     });
 </code></pre><p>上面的 HTML 我多放了一個 textarea，目的就是複製之後可以直接貼上，大家可以點選這個範例： <a href="/demo/201501/zeroclipboard-demo1.html" target="_blank">zeroclipboard-demo1.html</a>,實際感受一下複製貼上，同時也可以在按鈕上面按右鍵，就會發現它上面多了一層 flash。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201501/20150126_1_07.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_07.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <p>箇中原理其實就在於這段：<code>data-clipboard-text="12345"</code>，我們把要複製到剪貼簿的文字寫在裡面，點選之後就會把這段字複製起來，不過，總是不能所有東西都寫在裏頭，還是必須有寫在外面的時候，這時就必須用到 <code>data-clipboard-target</code>，裡面放上要複製區域的 id，就可以進行複製。( 範例： <a href="/demo/201501/zeroclipboard-demo2.html" target="_blank">zeroclipboard-demo2.html</a> )</p>
 <p>HTML：</p>
 <pre class="prettyprint"><code>輸入要複製的內容：
@@ -103,7 +103,7 @@
 貼上測試：
 &lt;br/&gt;
 &lt;textarea id="text"&gt;&lt;/textarea&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201501/20150126_1_08.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_08.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <p>以上就是非常簡單就可以使用 ZeroClipboard.js 的作法，當然如果你 CSS 夠強，其實也可以利用 <a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">偽元素</a> 做出對話框的效果囉！( 範例： <a href="/demo/201501/zeroclipboard-demo3.html" target="_blank">zeroclipboard-demo3.html</a> )</p>
 <p>HTML：</p>
 <pre class="prettyprint"><code>&lt;button class="clipboard" data-clipboard-text="12345" data-hover="複製：12345" data-copied="複製完成！"&gt;點我複製&lt;/button&gt;
@@ -154,7 +154,7 @@
     $('.clipboard').addClass('copied');
   });
 });
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201501/20150126_1_09.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_09.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <p>上面個範例的做法，有用到一些 HTML5 與 CSS 的小技巧，就是<strong>利用 CSS 偽元素的<code>content</code>的屬性</strong>，自動讀取 HTML5 裏頭的 data-attribute，就可以做到在不用撰寫 JS 的情形下，自動把 HTML5 的內容帶入 CSS 裏頭呈現。當然最後寫的 JS 只是在點擊上做了點小小的判斷而已，相信大家如果熟練，就可以很簡單的做出「點選自動複製」的按鈕囉！</p>
 <p>最後，忘記剛剛說要補充<code>swfPath</code>要從哪裡修改，以我的 blog 為例，打開 ZeroClipboard.js，搜尋「swfPath」，可以看到這一段，從這段就可以修改 swfPath 囉！如果沒有修改的話，記得要將 swf 的檔案和 ZeroClipboard.js 放在同一個目錄，就可以正確運作。</p>
 <pre class="prettyprint"><code>  var _globalConfig = {

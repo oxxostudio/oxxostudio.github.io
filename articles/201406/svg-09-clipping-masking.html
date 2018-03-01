@@ -82,7 +82,7 @@
 &lt;/clipPath&gt;
 &lt;/defs&gt;
 &lt;circle cx="100" cy="100" r="100" clip-path="url(#a1)" fill="#000" /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140616_1_02.png" alt="SVG-Clipping and Masking"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140616_1_02.png" alt="SVG-Clipping and Masking"></p>
 <p>而 clipping 裏頭還可以套用 clipping，就可以做出許多不同的變化。( 或是自己用 path 去畫也是可以 )  </p>
 <pre class="prettyprint"><code>&lt;clipPath id="a1"&gt;
     &lt;polygon id="a1Shape" points="100,10 40,180 190,60 10,60 160,180 100,10" stroke="blue" /&gt;        
@@ -110,15 +110,15 @@
     clip-path="url(#b1)" transform="translate(400)" /&gt;
 &lt;rect x="10" y="10" width="180" height="180" fill="#f90" 
     clip-path="url(#b2)" transform="translate(600)" /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140616_1_03.png" alt="SVG-Clipping and Masking"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140616_1_03.png" alt="SVG-Clipping and Masking"></p>
 <p>上面的程式碼用到了一個很有趣的標籤：<code>&lt;use&gt;</code>，這個標籤其實用法就跟字面上一樣，就是去使用一個帶有 id 的物件，把這個物件放在<code>&lt;use&gt;</code>所指定的位置上，換句話說就是複製一個同樣的物件，但這個物件本體改了，<code>&lt;use&gt;</code>裏頭的也會被改掉，就像是火影忍者裏頭的鳴人的影分身一樣，如果把鳴人換成佐助，影分身出來的就會是佐助而不是鳴人了，如果鳴人本體死亡，影分身自然也就會死亡了，差不多的意思哈哈！  </p>
 <pre class="prettyprint"><code>&lt;rect id="box" x="50" y="50" width="50" height="50" fill="#069"/&gt;
 &lt;use xlink:href="#box" x="50" y="50" style="fill:#f00;" /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140616_1_04.png" alt="SVG-Clipping and Masking"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140616_1_04.png" alt="SVG-Clipping and Masking"></p>
 <p>如果物件的本體有設定 fill 或 stroke ，則<code>&lt;use&gt;</code>就無法使用 style 去控制，如果沒有設定，則可以使用 style 控制樣式。  </p>
 <pre class="prettyprint"><code>&lt;rect id="box" x="50" y="50" width="50" height="50"/&gt;
 &lt;use xlink:href="#box" x="50" y="50" style="fill:#f00;" /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140616_1_05.png" alt="SVG-Clipping and Masking"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140616_1_05.png" alt="SVG-Clipping and Masking"></p>
 <h2>Masking</h2>
 <p>遮色片的觀念對於設計師來說一定不陌生，也應該是每個設計師吃飯的必備工具之一，若轉換為程式看起來，概念也是差不多，只需要把握一個原則：越黑越透明，越白越不透明，而遮色片只有黑到白的灰階分布，所以如果作為遮色片的顏色是灰階以外的顏色，都會被轉換為灰階。 </p>
 <p>有了觀念之後，就來看看程式怎麼寫，和<code>Cliping</code>相同的作法，在<code>defs</code>裏頭寫下<code>&lt;mask&gt;&lt;/mask&gt;</code>的標籤並給它一個 id，接著在裡面放入要當成遮色片的圖形，接著再用需要遮色片的物件去跟這個遮色片連結即可。</p>
@@ -130,7 +130,7 @@
 &lt;/defs&gt;
   &lt;rect id="box1" x="50" y="50" width="150" height="150" fill="#0f0"/&gt;
   &lt;rect id="box2" x="50" y="50" width="150" height="150" fill="#f00" mask="url(#mask1)"/&gt;  
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140616_1_06.png" alt="SVG-Clipping and Masking"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140616_1_06.png" alt="SVG-Clipping and Masking"></p>
 <p>從上面我們可以看到，比較灰色的部分 ( #ccc )，透明度就比較高，如果還是不太清楚，可以參考下面的範例，用不同灰階的遮色片，做出不同的透明度。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;mask id="mask1"&gt; 
@@ -154,7 +154,7 @@
   &lt;rect x="100" y="0" width="50" height="50" fill="#f00" mask="url(#mask3)"/&gt;
   &lt;rect x="150" y="0" width="50" height="50" fill="#f00" mask="url(#mask4)"/&gt;
   &lt;rect x="200" y="0" width="50" height="50" fill="#f00" mask="url(#mask5)"/&gt;  
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140616_1_07.png" alt="SVG-Clipping and Masking"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140616_1_07.png" alt="SVG-Clipping and Masking"></p>
 <p>除了純色，遮色片也可以做漸層的變化。  </p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;linearGradient id="Gradient"&gt;
@@ -168,7 +168,7 @@
 
 &lt;rect x="0" y="0" width="200" height="200" fill="green" /&gt;
 &lt;rect x="0" y="0" width="200" height="200" fill="red" mask="url(#Mask)" /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140616_1_08.png" alt="SVG-Clipping and Masking"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140616_1_08.png" alt="SVG-Clipping and Masking"></p>
 <p>其實我自己在向量圖的時候，遮色片倒是是比較少用，大部分都是用在 photoshop 裏頭使用，不過如果可以用程式控制遮色片和剪裁，相信也可以做出許多不錯的變化。不過剪裁和遮色片還有許多的用法，有興趣的也可以直接參考 <a href="http://www.w3.org/TR/SVG/masking.html" target="_blank">W3C 的文章喔</a>！</p>
 
 

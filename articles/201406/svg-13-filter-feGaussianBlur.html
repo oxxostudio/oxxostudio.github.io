@@ -82,34 +82,34 @@
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur") /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140625_1_03.png" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140625_1_03.png" alt=""></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
 &lt;filter width="200" height="200" x="0" y="0" id="blur" filterUnits="userSpaceOnUse"&gt;
   &lt;feGaussianBlur stdDeviation="5" /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur") /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140625_1_02.png" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140625_1_02.png" alt=""></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
 &lt;filter width="200" height="200" x="0" y="0" id="blur" filterUnits="userSpaceOnUse"&gt;
   &lt;feGaussianBlur stdDeviation="10" /&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur") /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140625_1_04.png" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140625_1_04.png" alt=""></p>
 <p><code>feGaussianBlur</code>的<code>stdDeviation</code>還有一個鮮為人知且相當好用的設定，就是可以撰寫兩個數值在裏頭，分別代表水平與垂直方向的模糊程度。</p>
 <pre class="prettyprint"><code>&lt;filter width="200" height="200" x="0" y="0" id="blur1" filterUnits="userSpaceOnUse" &gt;
   &lt;feGaussianBlur stdDeviation="1 15"/&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#ff4500" filter=url("#blur1") /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140625_1_08.png" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140625_1_08.png" alt=""></p>
 <pre class="prettyprint"><code>&lt;filter width="200" height="200" x="0" y="0" id="blur1" filterUnits="userSpaceOnUse" &gt;
   &lt;feGaussianBlur stdDeviation="15 1"/&gt;
 &lt;/filter&gt;
 &lt;/defs&gt;
 &lt;rect x="30" y="30" width="70" height="70" fill="#ff4500" filter=url("#blur1") /&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140625_1_09.png" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140625_1_09.png" alt=""></p>
 <h2>效果變化</h2>
 <p>理解了<code>feGaussianBlur</code>的用法之後，我們就可以利用它來做一些與眾不同的變化，例如：  </p>
 <ul>
@@ -128,7 +128,7 @@
       &lt;rect x="30" y="30" width="70" height="70" fill="#a00" filter=url("#blur1") /&gt;
       &lt;circle cx="100" cy="100" r="50" fill="#09a" filter=url("#blur2") /&gt;
       &lt;rect x="100" y="100" width="70" height="70" fill="#fa0" filter=url("#blur3") /&gt;
-</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140625_1_05.png" alt=""></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140625_1_05.png" alt=""></p>
 </li>
 <li><p><strong>陰影</strong>  </p>
 <p>  陰影其實說好做很好做，就做一個黑色的色塊讓它模糊即可，不過這裡用了一個比較有趣的方法，就是讓濾鏡套用在物件的 Aplha 色版 ( in="SourceAlpha" )，如此一來也可以做出陰影。</p>
@@ -139,7 +139,7 @@
     &lt;/defs&gt;
       &lt;rect x="30" y="35" width="70" height="70" fill="#f00" filter=url("#blur1") /&gt;
       &lt;rect x="30" y="30" width="70" height="70" fill="#6f9"/&gt;
-</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140625_1_06.png" alt=""></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140625_1_06.png" alt=""></p>
 </li>
 <li><p><strong>不同形狀的陰影</strong></p>
 <pre class="prettyprint"><code>&lt;defs&gt;
@@ -149,7 +149,7 @@
 &lt;/defs&gt;
   &lt;path d="M30 30 L100 30 Q90 65 100 100 L30 100 Q40 65 30 30" fill="#000" filter=url("#blur1") /&gt;
   &lt;rect x="30" y="30" width="70" height="70" fill="#6f9"/&gt;
-</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201406/20140625_1_07.png" alt=""></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140625_1_07.png" alt=""></p>
 </li>
 </ul>
 <h2>小結</h2>

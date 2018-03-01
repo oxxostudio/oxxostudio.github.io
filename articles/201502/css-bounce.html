@@ -99,7 +99,7 @@
   background:#eaeaea;
   border-radius:100%;
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201502/20150209_1_02.jpg" alt="有趣的 CSS 彈跳動畫"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201502/20150209_1_02.jpg" alt="有趣的 CSS 彈跳動畫"></p>
 <h2>CSS 動畫</h2>
 <p>畫出正方形與陰影之後，再來就是要做動畫了，為了避免太過複雜，這裡我們先不要旋轉，先單純讓正方形上下跳動，然後陰影會放大縮小，下面的範例的動畫，有新增了 20% 與 80% 的 keyframe，目的是為了讓接觸的時候角落才會變圓，不然就會變成剛開始移動時尖角就變圓，就會很怪異了。(範例：<a href="/demo/201502/css-bounce-demo1.html" target="_blank">css-bounce-demo1.html</a>)</p>
 <pre class="prettyprint"><code>.box:before{
@@ -159,7 +159,7 @@
     background:#eee;
   }
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201502/20150209_1_03.gif" alt="有趣的 CSS 彈跳動畫"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201502/20150209_1_03.gif" alt="有趣的 CSS 彈跳動畫"></p>
 <h2>加入旋轉效果</h2>
 <p>了解原理之後，我們只要再加上旋轉的屬性，就可以達到彈跳起來的時候有旋轉的效果，不過這裡又有用到一個小技巧，就是落下的時候是 90 度轉到 45 度，彈上去的時候從 45 旋轉到 0 度，然後在這一瞬間從 0 度變成 90 度 ( 100% 到 0% )，如此一來我們就會產生錯覺，感覺好像一直在旋轉了。(範例：<a href="/demo/201502/css-bounce-demo2.html" target="_blank">css-bounce-demo2.html</a>)</p>
 <pre class="prettyprint"><code>@-webkit-keyframes box{
@@ -183,11 +183,11 @@
     transform: rotate(0deg);
   }
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201502/20150209_1_04.gif" alt="有趣的 CSS 彈跳動畫"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201502/20150209_1_04.gif" alt="有趣的 CSS 彈跳動畫"></p>
 <p>舉一反三，我們也可以把角度反轉，就會往另外一邊彈跳。(範例：<a href="/demo/201502/css-bounce-demo3.html" target="_blank">css-bounce-demo3.html</a>)</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201502/20150209_1_05.gif" alt="有趣的 CSS 彈跳動畫"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201502/20150209_1_05.gif" alt="有趣的 CSS 彈跳動畫"></p>
 <p>如果我們把動畫裡頭添加 linear，就會變成線性的連續方式喔。(範例：<a href="/demo/201502/css-bounce-demo4.html" target="_blank">css-bounce-demo4.html</a>)</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201502/20150209_1_06.gif" alt="有趣的 CSS 彈跳動畫"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201502/20150209_1_06.gif" alt="有趣的 CSS 彈跳動畫"></p>
 
 
       <div class="social-icon">

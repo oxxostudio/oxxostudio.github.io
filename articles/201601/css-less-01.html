@@ -70,7 +70,7 @@
 
 <h1>用 LESS 寫 CSS ( 入門、Import、變數 )</h1>
 <p>猶記部落格創立之初，是用 SASS 這個基於 Ruby on rails 的 CSS 預處理器來撰寫 CSS ( 不過個人寫程式喜好還是傾向 SCSS )，當初還寫了一些跟 SASS 有關的文章，不過後來覺得實在太麻煩，要用 SASS 還必須要先裝 Ruby 還有一堆哩哩摳摳的環境問題，加上部落格已經完全改用 NodeJS 為基底的 gulp 來實作，貌似再安裝 SASS 又有點多此一舉了，所以就直接轉戰 LESS 這套以 JavaScript 為基底的預處理器 ( BootStrap 也是用 LESS )，除了可以用 gulp-less 來作轉換，更不需要安裝任何東西 ( 當然 NodeJS 還是得裝 )，就算你都不安裝，載一個 less.js 放在網頁裡面就可以直接撰寫 less 在網頁裡面跑，相當的方便好用，就這樣一寫就寫了半年以上，也算是有點心得，可以來寫幾篇 LESS 教學，順便記錄一下。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201601/20160104_1_02.jpg" alt="就是要玩 LESS (1)"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201601/20160104_1_02.jpg" alt="就是要玩 LESS (1)"></p>
 <p>這篇並不是要描述 SASS 和 LESS 哪個好哪個壞，畢竟 CSS 就是 CSS，不管你用哪種預處理器來寫，最終都還是會變成 CSS，因此最重要的是 CSS 的撰寫觀念，所有的預處理器都只是輔助而已，CSS 寫得好，預處理器就是扮演如虎添翼的角色，以下就來認識一下 LESS 吧！</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝 LESS</h2>
 <p>要用 LESS 有幾個方法，第一個最簡單，就是去 LESS 的官方網站下載 less.js，放在你的網頁裡面，就可以直接撰寫副檔名為 .less 的檔案，less.js 會自動在網頁載入的時候將其編譯為 CSS ( 就像下面的例子就可以直接編譯 )，不過 less.js 就算是 min 的版本也要一百多 KB，我看還是乖乖轉換成 CSS 比較實在。( LESS 官網：<a href="http://lesscss.org/" target="_blank">http://lesscss.org/</a> )</p>

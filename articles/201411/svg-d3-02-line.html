@@ -106,9 +106,9 @@
       'fill': 'none'
     });
 </code></pre><p>結果就會像下圖這樣：</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_02.png" alt="SVG D3 - 繪製線段"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_02.png" alt="SVG D3 - 繪製線段"></p>
 <p>打開開發者工具就可以看到每個點的座標都照 data 畫出來了  ( 範例：<a href="/demo/201411/svg-d3-02-line-demo1.html" target="_blank">svg-d3-02-line-demo1.html</a> )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_03.png" alt="SVG D3 - 繪製線段"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_03.png" alt="SVG D3 - 繪製線段"></p>
 <h2>.interpolate() 的模式</h2>
 <p>從上面的例子，雖然還看不出有多強大，但如果有一百個點要畫，就可以靠 D3 幫我們省下不少寫座標的功夫，但 line() 特別的地方還不在此，有個很神奇的<code>.interpolate()</code>，可以幫我們算出各種線段的樣式，再來就看一下這個神奇的<code>.interpolate()</code>，<code>.interpolate()</code>總共有 13 個模式可以設定，這是十三個模式分別是：</p>
 <blockquote>
@@ -139,28 +139,28 @@
                   return d.y;
                 })
                 .interpolate('linear-closed');
-</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_04.png" alt="SVG D3 - 繪製線段"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_04.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>step</strong> ( 圖中紅色的點為 data 的座標提示，程式碼與上面相同，差別只在於 interpolate 的模式名稱 )：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_05.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_05.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>step-before</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_06.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_06.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>step-after</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_07.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_07.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>basis</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_08.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_08.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>basis-open</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_09.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_09.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>basis-closed</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_10.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_10.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>bundle</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_11.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_11.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>bundle + tension</strong>：</p>
 <pre class="prettyprint"><code>  var line2 = d3.svg.line()
@@ -172,19 +172,19 @@
                 })
                 .interpolate('linear-closed')
                 .tension(2);
-</code></pre><p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_12.png" alt="SVG D3 - 繪製線段"></p>
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_12.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>cardinal：</strong></p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_13.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_13.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>cardinal-open</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_14.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_14.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>cardinal-closed</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_15.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_15.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 <li><p><strong>monotone</strong>：</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201411/20141103_1_16.png" alt="SVG D3 - 繪製線段"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_16.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 </ul>
 <h2>小結</h2>

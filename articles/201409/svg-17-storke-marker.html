@@ -88,24 +88,24 @@
   &lt;/defs&gt;
   &lt;polyline points="50,20 150,20" fill="none" stroke="black" stroke-width="1" marker-end="url(#a1)" marker-start="url(#a2)"&gt;&lt;/polyline&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140908_1_02.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_02.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <h2>marker 的 viewbox</h2>
 <p>上述 marker ，必須由某些屬性來進行基本的調控，<code>id</code>的目的在於讓線段可以獲取這個 marker，<code>viewbox</code>是 SVG 裏頭特有的屬性，是一個檢視的區域界限，後方跟隨四個數值，分別是左上起點座標以及長寬：<code>viewbox="x,y,width,height"</code>，以 id="a1" 而言，愛心的大小約為 77x77，若<code>viewbox</code>改為於 0,0,37,77，則愛心會發生被裁切的現象  </p>
 <pre class="prettyprint"><code>&lt;marker id="a1" viewBox="0 0 37 77" refX="20" refY="39" markerWidth="30" markerHeight="30" orient="auto" &gt;
   &lt;path fill="#f00"  d="M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6 C-1.594,77.1-8.594,49.8,12.707,38.6z"&gt;&lt;/path&gt;
 &lt;/marker&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140908_1_03.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_03.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <p>了解了<code>viewbox</code>之後，<code>refX</code>與<code>refY</code>就是<strong>相對</strong>於 X 軸與 y 軸的座標，例如我們設定 refX="20"，就表示我們以 20,0 作為起始點，所以整張圖就會往左邊移，設定 refY="39"，整張圖就會往上面移;至於<code>markerWidth</code>與<code>markerHeight</code>，就是 marker 的長與寬，設定的越大就越大。  </p>
 <pre class="prettyprint"><code>&lt;marker id="a1" viewBox="0 0 77 77" refX="20" refY="39" markerWidth="80" markerHeight="80" orient="auto" &gt;
   &lt;path fill="#f00"  d="M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6 C-1.594,77.1-8.594,49.8,12.707,38.6z"&gt;&lt;/path&gt;
 &lt;/marker&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140908_1_04.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_04.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <h2>orient 屬性</h2>
 <p>最後一個屬性是<code>orient</code>，這個屬性很特別，是 marker 圖形跟隨線段的方向，單位是<strong>角度</strong>，預設值是 <strong>auto</strong> ，也就是線段怎麼跑，都會自動隨著線段旋轉角度，不過要注意的是，auto 的話，<strong>一律以水平方向作為起始方向</strong>，不是垂直！</p>
 <pre class="prettyprint"><code>orient="auto"  
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140908_1_05.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_05.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <pre class="prettyprint"><code>orient="-45"  
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140908_1_06.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_06.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <h2>小結</h2>
 <p>了解了所有 marker 的屬性之後，要做出帶有圖案的折線圖就非常的方便了，下圖我將起點設定為紅色球，中間的折點設定為綠色球，終點設定為藍色球。  </p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="400"&gt;
@@ -122,7 +122,7 @@
   &lt;/defs&gt;
   &lt;polyline points="20,100 50,100 80,20 110,80 140,30 170,100 200,100" fill="none" stroke="black" stroke-width="1" marker-end="url(#b)" marker-start="url(#r)" marker-mid="url(#g)"&gt;&lt;/polyline&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140908_1_07.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_07.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <p>藉由更改 marker 的形狀，就可以做出更多的變化。  </p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="400"&gt;
   &lt;defs&gt;
@@ -138,7 +138,7 @@
   &lt;/defs&gt;
   &lt;polyline points="20,100 50,100 80,20 110,80 140,30 170,100 200,100" fill="none" stroke="black" stroke-width="1" marker-end="url(#b)" marker-start="url(#r)" marker-mid="url(#g)"&gt;&lt;/polyline&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201409/20140908_1_08.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_08.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <p>以上就是運用 marker 可以做到的許多特殊效果，對於繪製折線圖來說相當的方便好用喔！</p>
 
 

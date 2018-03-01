@@ -93,7 +93,7 @@ span::before{
   counter-increment:num; 
   content:counter(num) '. ';
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-2-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-01.jpg" alt=""></p>
 <p>透過指定一開始 counter-reset 的起始數值，還有 counter-increment 累加的間隔數值，就可以做出從某個數值開始或只顯示偶數、奇數的效果。</p>
 <pre class="prettyprint"><code>div{
   counter-reset:num 3;
@@ -105,7 +105,7 @@ span::before{
   counter-increment:num 2; 
   content:counter(num) '. ';
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-2-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-02.jpg" alt=""></p>
 <p>如果要更換數字的樣式，也可以<em>透過計數器的第二個設定值 list-style-type 來更改</em>，下面的例子就是將樣式更改為 georgian。</p>
 <pre class="prettyprint"><code>div{
   counter-reset:num;
@@ -117,7 +117,7 @@ span::before{
   counter-increment:num; 
   content:counter(num, georgian) '. ';
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-2-03.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-03.jpg" alt=""></p>
 <h2>counter 進階用法</h2>
 <p>除了指定單一個變數外，counter 也可以同時指定多個變數，例如下面這段 HTML，有三個類別在裡面，我分別用 span、i 和 b 來分類。</p>
 <pre class="prettyprint"><code>&lt;div&gt;
@@ -150,7 +150,7 @@ b::before{
   counter-increment:numb 5; 
   content:counter(numb) '. ';
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-2-04.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-04.jpg" alt=""></p>
 <p>如果遇到了巢狀結構，需要一層層的展開 ( 例如：1 &gt; 1.1 &gt; 1.1.1 )，採用上述的作法可能就會複雜許多，好險 counter 還提供了另外一個 counters 的功能，目的就是來解決巢狀結構的麻煩事，在開始前可以先看看透過 ul 和 li 組合的清單長相：</p>
 <pre class="prettyprint"><code>&lt;ul&gt;
   &lt;li&gt;第一層
@@ -176,7 +176,7 @@ b::before{
 <pre class="prettyprint"><code>li{
   list-style:decimal;
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-2-05.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-05.jpg" alt=""></p>
 <p>透過 content 和 counters 的搭配，我們就可以告別預設值的困擾，甚至可以在不使用清單 ul 和 li 的狀況下，實現和清單一模一樣的效果，舉例來說，我們純粹透過 div 模擬一個清單的長相 ( 狀態仍然必須是有父元素和子元素的概念 )，裡面的樣式 b 就等於是 ul，樣式 a 就等於是 li：</p>
 <pre class="prettyprint"><code>&lt;div class="a"&gt;第一層
   &lt;div class="b"&gt; 
@@ -211,7 +211,7 @@ b::before{
 div{
   margin-left:10px;
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-2-06.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-06.jpg" alt=""></p>
 <p>了解原理之後，透過 ::before 和 ::after 的交互應用，就可以做出頗具特色的清單效果。</p>
 <pre class="prettyprint"><code>body, .b{
   counter-reset:c;
@@ -251,7 +251,7 @@ div{
   text-align:center;
   margin-right:5px;
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201706/pseudo-element-2-07.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-07.jpg" alt=""></p>
 <h2>小結</h2>
 <p>原本網頁裡面使用的清單，如果要進行樣式的修改、或是一些編號的設置，往往都要透過 JavaScript 來實現，如果熟練了 counter 的用法，搞不好純粹使用 CSS 就能取代掉大部分 JavaScript 也說不定呢~</p>
 <p>說到 JavaScript，下一篇將會介紹透過 JavaScript 來操控偽元素的用法。</p>

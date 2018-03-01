@@ -104,7 +104,7 @@ s.selectAll('rect')
     return (d.x-1) * 35;
   }
  });
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150919_1_02.jpg" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150919_1_02.jpg" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
 <p>不過只有長條圖好像是不太夠，我們再把文字加進去，畢竟這樣才知道數值究竟為何，SVG 加入數值的方式就是用 text 的標籤，和製作 rect 是差不多的，加進去之後同樣要根據數據來設定位置。( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo02.html" target="_blank">svg-d3-19-bar-chart-demo02.html</a> )</p>
 <pre class="prettyprint"><code>s.selectAll('text')
  .data(data)
@@ -122,7 +122,7 @@ s.selectAll('rect')
     return d.x * 35 - 12;
   }
  });
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150919_1_03.jpg" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150919_1_03.jpg" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
 <p>如果今天要在長條圖加上動畫也是很容易的，這裏我們要用到 transition 來讓長條圖可以用動畫的方式變長，而數字的增加可以搭配 tween 來做增加的效果，如果不會的可以參考我之前寫的這兩篇文章：<a href="http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html" target="_blank">SVG D3.js - transition 基本篇</a> 和     <a href="http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html" target="_blank">SVG D3.js - transition ( tween、interpolate )</a>，不過因為要進行漸變的動畫，所以一開始我都先把寬度和數值都設為 0，漸變的時間用 duration 設為 1500 毫秒。( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo03.html" target="_blank">svg-d3-19-bar-chart-demo03.html</a> )</p>
 <pre class="prettyprint"><code>s.selectAll('rect')
  .data(data)
@@ -172,7 +172,7 @@ s.selectAll('text')
       this.textContent = i(t);
     };
  });
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150919_1_04.gif" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150919_1_04.gif" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
 <p>既然可以讓一開始有動畫效果，其實也可以做一個按鈕，每次點按鈕的時候，就會自動生成一組數據，並讓長條圖自動切換顯示，實作的方式我先在外面建了一陣列型別的變數，預設為 0，目的在紀錄每次動畫做完之後的數值，這樣下次點擊按鈕，就會用這組數值作為基準去變化，除了這個按鈕，我又多做了一個歸零的按鈕，點選後就會歸零。</p>
 <pre class="prettyprint"><code>var newNumber = [0,0,0,0,0];
 
@@ -227,7 +227,7 @@ newNumber[d.x-1] = d.w;
   });
 
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150919_1_05.gif" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150919_1_05.gif" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
 <p>當然直條圖的變化還有很多，下一篇會直接用一些現成的數據，來做一點實際的應用。</p>
 
 

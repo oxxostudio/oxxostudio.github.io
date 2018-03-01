@@ -77,7 +77,7 @@
 <p>首先要來寫一個 range 出來，min 是最小值，max 是最大值，step 是每隔間距，value 是預設數值：</p>
 <pre class="prettyprint"><code> &lt;input type="range" min="0" max="100" step="1" value="50"&gt;
 </code></pre><p>如果沒有意外，看到的長相就會是下面這個樣子非常的....嗯...你懂的...</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201503/20150324_1_02.jpg" alt="改變 HTML5 range 樣式的兩種方法"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_1_02.jpg" alt="改變 HTML5 range 樣式的兩種方法"></p>
 <h2>純粹使用 CSS 修改 range 樣式</h2>
 <p>第一種方法是純 CSS 的做法，由於 range 是 input 的一種類型，我們無法用傳統的 CSS 編輯方法來修改樣式，這裡必須要使用到<code>-webkit-appearance</code>這個特殊屬性，這是 webkit 特有的屬性，代表使用系統預設的外觀，可惜 W3C 到寫這篇文章的時候，都還沒有納入規範 ( 不然 webkit 簡直是神呀 )，只要我們將這個屬性設為<code>none</code>，那麼原本 range 的樣式就不會呈現了，這時我們只要加入自己的背景、陰影...等樣式，就可以看到樣式被換過來了。</p>
 <pre class="prettyprint"><code>input[type="range"]{
@@ -99,7 +99,7 @@
   transition:.2s;        /* 點選放大時候的漸變時間 */
 }
 </code></pre><p>寫完上面這兩段，應該就可以看到 range slider 變成下面這個樣子只有一個紅點，然後這個紅點可以左右拉動。( 範例：<a href="/demo/201503/html5-input-range-style-demo1.html" target="_blank">html5-input-range-style-demo1.html</a>)</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201503/20150324_1_03.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_1_03.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
 <p>再來要進行的步驟就是要來加上一些顏色和效果，主要讓圓點左邊的區域是紅色，右邊的區域是淺紅色，這樣看起來才像是不同的 range，為了達到這個目的，我們要使用「偽元素裡面的偽元素」，也就是在 webkit 的<code>::-webkit-slider-thumb</code>偽元素的前後，各再安插<code>:before</code>和<code>:after</code>的偽元素，並讓這兩個偽元素顏色不同，就可以做出前後顏色差異的效果。</p>
 <pre class="prettyprint"><code>input[type="range"]::-webkit-slider-thumb:before,
 input[type="range"]::-webkit-slider-thumb:after
@@ -122,7 +122,7 @@ input[type="range"]::-webkit-slider-thumb:after {
   background: #edc;
 }
 </code></pre><p>這樣寫完之後，應該就已經可以看到前後不同顏色的 range slider 效果。( 範例：<a href="/demo/201503/html5-input-range-style-demo2.html" target="_blank">html5-input-range-style-demo2.html</a>)</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201503/20150324_1_04.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_1_04.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
 <p>不過光是這樣還不夠，接著我們要來讓點擊的時候圓圈會變大，本來想做滑鼠移上去就會變大，但兩層偽元素雖然會變大，但位置卻無法控制，所以就只好用 active 來代替。</p>
 <pre class="prettyprint"><code>input[type="range"]:active::-webkit-slider-thumb:before,
 input[type="range"]:active::-webkit-slider-thumb:after
@@ -139,7 +139,7 @@ input[type="range"]:active::-webkit-slider-thumb:after {
   left: 16px;
 }
 </code></pre><p>完成之後的長相就會像下圖這樣。( 範例：<a href="/demo/201503/html5-input-range-style-demo3.html" target="_blank">html5-input-range-style-demo3.html</a>)</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201503/20150324_1_05.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_1_05.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
 <p>不過如果是 Firefox，就必須要做一些修改，因為 Firefox 是認不得 webkit 的，要在 Firefox 跑的 CSS 就要寫成下面這樣，相較於 webkit，Firefox 就顯得比較直覺，因為他裡面具有一個<code>::-moz-range-progress</code>的偽元素，利用這個偽元素，我們就不用在前後加個區塊，他直接就可以呈現 range 的色彩囉！</p>
 <pre class="prettyprint"><code>input[type="range"]{
   width:200px;
@@ -222,7 +222,7 @@ input[type="range"]::-webkit-slider-thumb:active{
       });
   }
 });
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201503/20150324_1_06.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_1_06.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
 <h2>小結</h2>
 <p>以上就是用 CSS 和 jQuery 去修改 range  slider 樣式的基本方法，分享給大家，活用這個方法，就可以做出許多非常有特色的 range slider 囉。</p>
 <h2>參考文章：</h2>

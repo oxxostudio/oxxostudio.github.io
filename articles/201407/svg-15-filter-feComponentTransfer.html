@@ -74,7 +74,7 @@
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>feComponentTransfer 元素與 type</h2>
 <p>feComponentTransfer 包含四個元素，分別是：feFuncR、feFuncG、feFuncB、feFuncA，也就是可以針對紅綠藍與 alpha 色版進行獨立調整，調整的 type 分為五種，分別是：identity、table、discrete、linear、gamma，五種調整 type 的對照公式可以參考 <a href="http://www.w3.org/TR/SVG/filters.html#feComponentTransferElement" target="_blank">W3C 的詳細說明</a>，也可以參考 <a href="http://docs.webplatform.org/wiki/svg/elements/feComponentTransfer" target="_blank">這篇文章</a>，介紹的更是詳細。</p>
 <p>首先看到 table，table 屬性主要是將我們所輸入的區塊，重新填入原本對照的色彩梯度區塊當中 ( 如下圖 )，就可以產生不同色彩梯度的效果。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_02.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_02.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
 <p>我們也可以利用 table 屬性來讓一張圖片有不同風格的變化 ： </p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="500"&gt;
   &lt;defs&gt;
@@ -89,9 +89,9 @@
   &lt;image x="0" y="0" width="300" height="200" xlink:href="圖片網址" /&gt;
   &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#table)"  /&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_03.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_03.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
 <p>再來看到 discrete，從字面翻譯就是「離散」，也就是當我們列出一個數字的陣列，就會採用這個陣列的數字直接填入該色彩梯度內，造成沒有漸層的情形，如下圖：</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_04.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_04.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
 <p>也因為少了很多顏色，所產生的圖片效果也頗特殊的： </p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="500"&gt;
   &lt;defs&gt;
@@ -106,7 +106,7 @@
   &lt;image x="0" y="0" width="300" height="200" xlink:href="圖片網址" /&gt;
   &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#discrete)"  /&gt;
 &lt;/svg&gt; 
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_05.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_05.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
 <p>至於 linear 和 gamma 就簡單多了，linear 就是調整直線的斜率，和 linear 有關的參數有兩個，一個是 slope，也就斜率，預設值為 1，另外一個是 intercept，預設值為 0 ( linear 的公式為：C' = slope * C + intercept ) 了解了之後，我們就可以很輕鬆的對漸層當中的顏色作調整</p>
 <pre class="prettyprint"><code>&lt;svg width="8cm" height="100%" viewBox="0 0 800 800"&gt;
     &lt;linearGradient id="MyGradient" gradientUnits="userSpaceOnUse"
@@ -128,7 +128,7 @@
     &lt;rect x="100" y="420" width="600" height="60" fill="url(#MyGradient)" /&gt;
     &lt;rect x="100" y="490" width="600" height="60" fill="url(#MyGradient)" filter="url(#Linear)" /&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_07.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_07.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="500"&gt;
   &lt;defs&gt;
     &lt;filter id="Linear" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%"&gt;
@@ -142,7 +142,7 @@
   &lt;image x="0" y="0" width="300" height="200" xlink:href="圖片網址" /&gt;
   &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#Linear)"  /&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_08.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_08.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
 <p>最後是 gamma ，gamma 就是調整指數曲線的數值，與 photoshop 裏頭調整圖片曲線有異曲同工之妙，當然還是必須得手動輸入一些數值就是了,gamma 的公式為：C' = amplitude * pow(C, exponent) + offset，因此就具有三個參數：amplitude、exponent、offset。</p>
 <pre class="prettyprint"><code>&lt;svg width="8cm" height="100%" viewBox="0 0 800 800"&gt;
     &lt;linearGradient id="MyGradient" gradientUnits="userSpaceOnUse"
@@ -164,8 +164,8 @@
     &lt;rect x="100" y="420" width="600" height="60" fill="url(#MyGradient)" /&gt;
     &lt;rect x="100" y="490" width="600" height="60" fill="url(#MyGradient)" filter="url(#Gamma)" /&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_06.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_10.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_06.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_10.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="500"&gt;
   &lt;defs&gt;
     &lt;filter id="Gamma" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%"&gt;
@@ -179,7 +179,7 @@
   &lt;image x="0" y="0" width="300" height="200" xlink:href="圖片網址" /&gt;
   &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#Gamma)"  /&gt;
 &lt;/svg&gt;
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140728_1_09.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_09.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
 <h2>小結</h2>
 <p>了解了 feComponentTransfer 的基本原理之後，其實就已經可以簡單地針對圖片做顏色上的調整囉！雖然我還是覺得直接用影像處理軟體調整比較實在，不過若要製作一個線上調整圖片顏色的工具，也不失為一個好方式。</p>
 

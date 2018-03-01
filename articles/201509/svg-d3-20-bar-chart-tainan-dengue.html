@@ -99,7 +99,7 @@
   }
 
   console.log(dayById);
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150920_1_02.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150920_1_02.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
 <p>有了數據之後，我們要來用 SVG 畫圖，首先我們在 body 裡用 d3.js 放入一個 svg，內容放上三個 g ( 群組 )，分別用變數 rect、num 和 date 表示，rect 是要放置矩形，也就是我們的長條圖，date 標示日期，num 表示該日期的病例數，svg 的高度我是用每個矩形的高度加總，上下 padding 10 來計算。</p>
 <pre class="prettyprint"><code>var s = d3.select('body').append('svg')
           .attr({
@@ -189,7 +189,7 @@ var date = s.append('g')
   });
 </code></pre><p><br></p>
 <p>做到這個步驟，基本上已經可以看到一個台南到 2015/9/17 為止的登革熱狀況，希望疫情趕快趨緩呀！！( 範例：<a href="/demo/201509/svg-d3-20-bar-chart-tainan-dengue-demo02.html" target="_blank">svg-d3-20-bar-chart-tainan-dengue-demo02.html</a> )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150920_1_03.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150920_1_03.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
 <p>同樣的做法，我們其實也可以篩出台南哪個區，幾月幾號有多少確診數，大概就可以知道該地區疫情有沒有控制下來，如果要這麼做，我們就要把剛剛用 d3.nest 篩選的 key 換成「區別」，有了「區別」之後，我們就有各個區各自的數據，接下來就只要把上面的做法用一個 draw 的 function 包起來，點選按鈕的時候執行即可，然後一開始先把所有 svg 清空作重繪的動作。</p>
 <p>為什麼這裡要用「重繪」而不用上一篇的動畫呢？因為資料格式其實沒有很完整，如果以「區別」來說，並不是一連連續的日期，當然要用前端的方式處理讓日期連續也是可以，但必須花費不少的力氣才能完成，因為這純粹是展示直條圖的效果，就不在這邊做了。( 範例：<a href="/demo/201509/svg-d3-20-bar-chart-tainan-dengue-demo03.html" target="_blank">svg-d3-20-bar-chart-tainan-dengue-demo03.html</a> )</p>
 <pre class="prettyprint"><code>d3.csv("tainan-dengue.csv", function(data) {
@@ -230,9 +230,9 @@ var date = s.append('g')
 
    }
 });
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150920_1_04.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150920_1_04.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
 <p>以上就是利用政府的開放資料所做的長條圖實例，開放資料的格式百百款，如何善用 d3.js 的數據處理能力，把資料變成我們要的格式，就可以輕輕鬆鬆地畫出圖形囉！最後我將上面的程式改良，變成下拉選單的方式，可以選擇行政區和里，分享給大家。( 範例：<a href="/demo/201509/svg-d3-20-bar-chart-tainan-dengue-demo04.html" target="_blank">svg-d3-20-bar-chart-tainan-dengue-demo04.html</a> )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150920_1_05.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150920_1_05.jpg" alt="SVG D3.js - 直條圖 ( 以登革熱數據為例 )"></p>
 
 
       <div class="social-icon">

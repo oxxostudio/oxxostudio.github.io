@@ -83,7 +83,7 @@
 <li>allpass：全通</li>
 </ul>
 </blockquote>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201510/20151006_1_02.jpg" alt="聲音濾波器 ( BiquadFilterNode )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201510/20151006_1_02.jpg" alt="聲音濾波器 ( BiquadFilterNode )"></p>
 <p>光只有 type 仍然不夠，我們還需要有幾個屬性來做進一步的設定，這些屬性是：</p>
 <blockquote>
 <ul>
@@ -93,7 +93,7 @@
 </ul>
 </blockquote>
 <p>frequency 與 gain 都還滿好理解，frequency 就是我們要指定一個頻率，由這個頻率和剛剛的過濾類型搭配過濾，gain 只適用 lowshelf、highshelf、peaking 這三個類型，因為這三個類型仍然會有波跑過去，而跑過去的波的音量，就由 gain 來指定，比較困擾的是這個「Q」，如果不是理工類科，大概很難理解，幸好我以前是物理系出身，又有一些好同學可以詢問，總算搞明白 Q 就是品質參數 ( Quality Factor )，舉例來說，如果今天我們要做一個頻率 1000 赫茲的帶通濾波，在不設定 Q 的情況下，帶通濾波濾出來的可能是 800 到 1200 的頻率，當 Q 變大，濾出來就會變成 990 到 1010，換句話說，Q 越大就會越精準，品質就會越好，這也就是品質參數的原理。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201510/20151006_1_03.jpg" alt="聲音濾波器 ( BiquadFilterNode )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201510/20151006_1_03.jpg" alt="聲音濾波器 ( BiquadFilterNode )"></p>
 <p>了解原理之後就要來看範例，這裏我實作了一個可以調整濾波器的 type、frequency、Q 和 gain 的拉霸，由於 BiquadFilterNode 也是節點模組，因此我們要用<code>createBiquadFilter</code>的方式來創建。</p>
 <pre class="prettyprint"><code>var _filter = function(t,f,d,type,ff,q,g){
   oscillator.type = t;
@@ -117,7 +117,7 @@ function _sound(){
 }
 </code></pre><p><br></p>
 <p>主要的程式就是上面這一段，至於拉霸與按鈕的程式，都與之前的做法類似，就不在這篇做太多說明了，總而言之，了解濾波器的原理，往後當我們匯入了一首真正的曲目，就可以透過濾波器來做一些有趣的聲音變化了。( 範例：<a href="/demo/201510/web-audio-api-biquadfilternode-demo01.html" target="_blank">web-audio-api-biquadfilternode-demo01.html</a> )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201510/20151006_1_04.jpg" alt="聲音濾波器 ( BiquadFilterNode )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201510/20151006_1_04.jpg" alt="聲音濾波器 ( BiquadFilterNode )"></p>
 
 
       <div class="social-icon">

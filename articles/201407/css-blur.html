@@ -81,7 +81,7 @@
   color:rgba(0,0,0,0);
   text-shadow:0 0 0 rgba(255,0,0,1);
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140726_1_02.png" alt="CSS 模糊效果 "></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_02.png" alt="CSS 模糊效果 "></p>
 <p>了解了這個原理之後，我們只要調整模糊的程度，就能夠做出不同模糊效果的文字。( 而且還可以跨平台 )</p>
 <p>html:</p>
 <pre class="prettyprint"><code>&lt;div class="blur1"&gt;BLUR 1&lt;/div&gt;
@@ -109,7 +109,7 @@
 .blur5{
   text-shadow:0 0 8px rgba(255,0,0,1);
 }  
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140726_1_03.png" alt="CSS 模糊效果 "></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_03.png" alt="CSS 模糊效果 "></p>
 <h2>形狀模糊</h2>
 <p>學會了文字的效果之後，接下來我們來嘗試形狀的模糊，和文字模糊效果的做法相同，文字使用 text-shadow，形狀則使用 box-shadow，只是對於形狀的模糊，單純使用 CSS 有著先天上的限制，因為我們是使用陰影來偽裝成模糊，所以會導致視覺上形狀越模糊，尺寸也會越大，若要讓形狀不要越來越大，就必須使用 -webkit-transform:scale 來使其變小 ( 或 transform ),至於要變得多小，就自己看當時的情況去去拿捏囉！  </p>
 <p>HTML:</p>
@@ -141,7 +141,7 @@
 .boxblur5{
   box-shadow:0 0 5px 3px rgba(0,150,200,1);
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140726_1_04.png" alt="CSS 模糊效果 "></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_04.png" alt="CSS 模糊效果 "></p>
 <p>這裡有個比較需要注意的地方，就是我們必須使用 box-shadow 比 text-shadow 所多出來的第五個屬性：陰影擴展，如果沒有進行陰影擴展的調整，就會發生像下圖這樣的現象，真正變成 "陰影" 了：  </p>
 <pre class="prettyprint"><code>.boxblur20{
   width:100px;
@@ -150,7 +150,7 @@
   color:#fff;
   box-shadow:0 0 20px rgba(0,150,200,1);
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140726_1_05.png" alt="CSS 模糊效果 "></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_05.png" alt="CSS 模糊效果 "></p>
 <p>如果我們使用了陰影擴展，才能夠讓陰影與邊緣接合，讓整體看起來像是模糊了一般，但也因為擴展的緣故，會導致整個大小變大，這時候就必須藉由 -webkit-transform:scale 或 transform:scale 來讓整體恢復我們所需要的大小 ( 缺點就是內容也會跟著變 )。  </p>
 <pre class="prettyprint"><code>.boxblur20{
   width:100px;
@@ -161,7 +161,7 @@
   -webkit-transform:scale(.85);
   transform:scale(.85);
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140726_1_06.png" alt="CSS 模糊效果 "></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_06.png" alt="CSS 模糊效果 "></p>
 <h2>形狀外框模糊</h2>
 <p>了解了形狀和文字的模糊後，其實我們可以綜合兩者，就能做出 "形狀外框" 模糊的效果 ( 如下圖 )，原理其實就是讓形狀沒有被景色，單靠外陰影與內陰影產生邊框，不過由於只有一組內外陰影所產生的邊框較透明，因此必須使用兩組內外陰影來達成，或使用陰影擴展的屬性來產生邊框。 </p>
 <pre class="prettyprint"><code>.boxblur{
@@ -171,7 +171,7 @@
   color:#fff;
   box-shadow:0 0 0 0 rgba(0,150,200,1),inset 0 0 0 1px rgba(0,150,200,1);
 } 
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140726_1_07.png" alt="CSS 模糊效果 "></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_07.png" alt="CSS 模糊效果 "></p>
 <pre class="prettyprint"><code>.boxblur{
   width:100px;
   height:50px;
@@ -180,10 +180,10 @@
   color:#fff;
   box-shadow:0 0 15px 0 rgba(0,200,150,.5),inset 0 0 15px 0 rgba(0,200,150,.5);
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140726_1_08.png" alt="CSS 模糊效果 "></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_08.png" alt="CSS 模糊效果 "></p>
 <h2>小結</h2>
 <p>以上就是使用陰影來實現模糊效果的原理，若能搭配上 CSS3 的 transition 或 animation，就能做出更多有趣的變化和應用，下面的例子就是我利用 text-shadow 和 box-shadow 所做出來的範例，是不是很炫呢！如果大家對於使用 CSS 產生模糊有更高的興致，也可以參考我的這篇文章：<a href="http://www.oxxostudio.tw/articles/201407/css-webkit-filter.html" target="_blank">CSS webkit filter</a>，裏頭有提到 blur 的濾鏡，能夠更輕鬆地辦到模糊的效果，但很可惜的是，從 2012 年我就已經寫過有這個濾鏡的文章，但 firefox 、IE 一直不支援，只有 chrome 和 firefox 可以運行呀！  </p>
-<p><a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=5681894561677312" target="_blank"><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201407/20140726_1_08.gif" alt="CSS 模糊效果 "></a></p>
+<p><a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=5681894561677312" target="_blank"><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_08.gif" alt="CSS 模糊效果 "></a></p>
 
 
       <div class="social-icon">

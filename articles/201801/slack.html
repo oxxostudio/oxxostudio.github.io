@@ -74,32 +74,32 @@
 <p>Slack 內建了可以串接各個服務與推播的能力，換句話說像是日曆、專案管理軟體、甚至是程式代碼都可以和它串接，做到無縫接軌的推播功能，這篇將會介紹如何透過 Slack，實現自動訊息通知的效果。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>開始使用 Slack</h2>
 <p>進入 Slack 的官網 ( <a href="https://slack.com/" target="_blank">https://slack.com/</a> ) 或下載它的軟體安裝，有別於一般的通訊軟體，Slack 的概念是要建立一個 WorkSpace 或加入已經存在的 WorkSpace，所以如果沒有 WorkSpace，是沒有辦法使用的，如果你已經有註冊，可以點選 sign in 來找自己的 WorkSpace。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-01.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-01.jpg" alt=""></p>
 <p>進入自己的 WorkSpace 之後，可以看到有很多的 Channel 可以使用，這裡就先使用 general 這個 Channel，來作為待會訊息通知的頻道。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-02.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-02.jpg" alt=""></p>
 <h2>安裝 Incoming WebHooks</h2>
 <p>點選 WorkSpace 右上方的小齒輪 icon，點選「Add an app」，增加一些應用程式到 WorkSpace 裡。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-03.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-03.jpg" alt=""></p>
 <p>打開後點選上方選單的 Manage。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-04.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-04.jpg" alt=""></p>
 <p>打開後再搜尋的地方，搜尋「Incoming WebHooks」</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-05.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-05.jpg" alt=""></p>
 <p>搜尋到 Incoming WebHooks 之後，點擊「Add configuration」將其增加到 WorkSpace 的配置當中。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-06.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-06.jpg" alt=""></p>
 <p>接著就可以在 Manage 的 Custom Integrations 裡，看到 Incoming WebHooks，到這一步就算是安裝完成了。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-07.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-07.jpg" alt=""></p>
 <h2>設定 Incoming WebHooks</h2>
 <p>點擊 Incoming WebHooks 後方的筆型 icon，就可以開始進行相關設定。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-08.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-08.jpg" alt=""></p>
 <p>說設定其實也不算設定，就只是要取得這串 Webhook URL 網址，有了這串網址，我們就可以可以透過 HTTP ，發送訊息到這個 WorkSpace 裡指定的 Channel。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-09.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-09.jpg" alt=""></p>
 <h2>發出第一則訊息</h2>
 <p>發訊息可以直接透過 CURL 命令來完成，輸入下列這些指令，就會有個名為「機器人」的通知機器人，發送出「大家好」的訊息，同時會顯示一隻「蟲」的圖案 ( empji )，按下 enter 發送成功之後就會顯示 ok，這時候在 Channel 裏頭，就會看到訊息通知了。。</p>
 <pre class="prettyprint"><code>curl -X POST \
 --data-urlencode 'payload={"channel": "#general", "username": "機器人", "text": "大家好", "icon_emoji": ":bug:"}' \
 https://hooks.slack.com/services/XXXX/XXXX/XXXXXXXXXXX
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-10.jpg" alt=""></p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-11.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-10.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-11.jpg" alt=""></p>
 <h2>透過網頁發送訊息到 Slack</h2>
 <p>透過 JQuery 的 AJAX，就能夠很輕鬆地透過網頁，把訊息發送到 Slack 上，舉例來說，做個簡單的網頁，在裡頭放個輸入欄位和按鈕，搭配 JQuery 的寫法，就完成一個讓使用者可以發訊息給自己的簡單功能。</p>
 <p>HTML </p>
@@ -129,7 +129,7 @@ function slack(t) {
     url: url
   });
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-12.gif" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-12.gif" alt=""></p>
 <h2>透過 Node.js 發送訊息到 Slack</h2>
 <p>既然會在網頁前端發訊息，理所當然的可以在 Node.js 裡發訊息給 Slack，透過 request，在執行 Node.js 程式的當下，就會發送訊息到 general 頻道囉！</p>
 <pre class="prettyprint"><code>var request = require("request");
@@ -177,7 +177,7 @@ request.post(options, function(error, response, body){
   };
    UrlFetchApp.fetch(POST_URL, options);
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201801/slack-13.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/slack-13.jpg" alt=""></p>
 <h2>小結</h2>
 <p>以上大概就是透過幾種不同的方式，傳送訊息到 Slack 裡指定的 Channel，這個方法在公司裡其實很好用，例如我自己公司裡頭幾個厲害的工程師，寫了許多的通知程式，會在伺服器發生狀況的時候及時通知，也會提醒大家要記得訂便當，而我自己則是用它來寫寫爬蟲與寄送電子報的通知，例如爬完資料就通知一下，電子報全部寄出之後就會發送通知，很好玩也很方便呦~</p>
 

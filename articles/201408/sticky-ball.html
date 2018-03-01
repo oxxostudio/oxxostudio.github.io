@@ -74,14 +74,14 @@
 <p>完整範例程式碼：<a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=5128921674678272" target="_blank">http://jqmdesigner.appspot.com/designer.html#&amp;ref=5128921674678272</a></p>
 </blockquote>
 <p>一開始我們來玩 Photoshop，會比直接寫 CSS 來得容易理解 ( 沒有 Photoshop 的人也沒關係，看完說明也就懂了ㄎㄎ )，首先我們新增兩個圖層，一個裡頭放上紅色的小球，另外一個裡頭放上黑色的大球。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201408/20140829_1_02.png" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201408/20140829_1_02.png" alt=""></p>
 <p>接著我們使用高斯模糊的濾鏡，分別把小紅球和大黑球模糊。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201408/20140829_1_03.png" alt=""></p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201408/20140829_1_04.png" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201408/20140829_1_03.png" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201408/20140829_1_04.png" alt=""></p>
 <p>再來我們新增一個「亮度與對比」的調整圖層，勾選使用舊版，然後把對比數值往上拉，你就會看到神奇的現象。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201408/20140829_1_05.png" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201408/20140829_1_05.png" alt=""></p>
 <p>拉到邊緣不再模糊之後，你就可以用滑鼠嘗試著把紅球移動，就會發現紅球與黑球交界的地方變成黏黏的很噁心，這就是我們要做的效果！( 笑 )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201408/20140829_1_06.gif" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201408/20140829_1_06.gif" alt=""></p>
 <p>就這樣，你已經知道如何用 Photoshop 來製作，同理，CSS 也是用同樣的方法，只是把圖層換成了 div 而已，就這麼簡單。</p>
 <p>首先我在 HTML 裡頭，放上一個 class 為 redball 的 div 當作紅球，class 為 blackball 的是黑球，這就是剛剛在 PhotoShop 裡頭的兩個圖層，接著在最外圍放上一個 class 為 effect 的 div，這就是我們的調整圖層，完成後 HTML 程式碼的長相應該是這樣：</p>
 <pre class="prettyprint"><code>&lt;div class="effect"&gt;
@@ -89,7 +89,7 @@
   &lt;div class="redball"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </code></pre><p>只要對 blackball 和 redball 加入模糊的濾鏡，對 effect 加入對比的濾鏡，就能夠達到 Photoshop 裡面的特效，而模糊的濾鏡必須使用<code>-webkit-filter:blur(數值)</code>，對比則使用<code>-webkit-filter:contrast(數值)</code>，這個只能夠運行在 Chrome 和 Safari 這兩個使用 webkit 核心的瀏覽器，所以 firefox 和 IE 就抱歉啦！</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201408/20140829_1_07.gif" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201408/20140829_1_07.gif" alt=""></p>
 <p>CSS 的長相會長這樣：</p>
 <pre class="prettyprint"><code>.effect{
   width:100%;
@@ -156,7 +156,7 @@
 }
 </code></pre><p>這裡落落長的 keyframe 寫了很多，因為要讓紅球進入黑球時，水平方向會被壓縮一下，然後再離開黑球的時候，水平方向會被拉長，如此一來才會更像有黏性的感覺，為了測試這個效果，可真是煞費我的苦心呀！( 不過這裡有個要注意的地方，由於位置上會自動去計算，所以要測試的話，最外層的 effect 寬度記得設為 320px  )</p>
 <p>完成紅球之後，要讓兩顆藍色球合在一起再分開，也是同樣的原理，下方列出兩顆藍色球的 CSS，比較需要注意的地方是我讓藍色球合體之後會變大一些，分開的時候也會拉長，在這個距離和時間上倒是花了不少時間調整呀！</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201408/20140829_1_08.gif" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201408/20140829_1_08.gif" alt=""></p>
 <pre class="prettyprint"><code>.blueball1{
   width:80px;
   height:80px;

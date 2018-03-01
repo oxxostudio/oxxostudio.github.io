@@ -84,15 +84,15 @@
 <ul>
 <li><p><strong>aplha</strong>：</p>
 <p>  行動裝置水平放置時，繞 Z 軸旋轉的角度，數值為 0 度到 360 度。</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_03.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_03.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 </li>
 <li><p><strong>beta</strong>：</p>
 <p>  行動裝置水平放置時，繞 X 軸旋轉的角度，數值為 -180 度到 180 度。</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_04.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_04.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 </li>
 <li><p><strong>gamma</strong>：</p>
 <p>  行動裝置水平放置時，繞 Z 軸旋轉的角度，數值為 -90 度到 90 度。</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_02.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_02.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 </li>
 </ul>
 <h2>實際測試</h2>
@@ -120,8 +120,8 @@ gamma:&lt;span id="gamma"&gt;&lt;/span&gt;&lt;br/&gt;
     document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
 }
 </code></pre><p>完成後，用手機打開旋轉一下，應該就可以看到數值的變化了。( 範例：<a href="/demo/201506/html5-device-orientation-demo01.html" target="_blank">html5-device-orientation-demo01.html</a>，也可以掃描下方的 qrcode )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_05.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_06.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_05.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_06.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <h2>CSS 3D 的應用</h2>
 <p>既然有了這麼好玩又好用的 Web API，就一定要拿之前玩的 CSS 3D 來試試看，這裡我們用最簡單的正立方體來測試 ( 正立方體的製作請參考：<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html" target="_blank">玩轉 CSS 3D - 正四面體與正六面體</a> )，基本上就是把上面 alpha、beta 和 gamma 的數值，提供給正立方體的 space。</p>
 <p>HTML 的部分就放上 camera、space 和 box。</p>
@@ -153,8 +153,8 @@ if(window.DeviceOrientationEvent) {
   document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
 }
 </code></pre><p>完成後，用手機打開旋轉一下，應該就可以看到一個正立方體在旋轉囉。( 範例：<a href="/demo/201506/html5-device-orientation-demo02.html" target="_blank">html5-device-orientation-demo02.html</a>，也可以掃描下方的 qrcode )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_07.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_08.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_07.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_08.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <h2>手機網頁指南針的應用</h2>
 <p>經由上面兩個例子，應該就可以比較了解相關的原理，接著要來實作指南針了，不過由於 iOS 和 Android 兩家系統對於手機硬體提供 alpha 數值不盡相同，所以這裡必須使用一個叫做<code>webkitCompassHeading</code>的屬性來判斷是 iOS 還是 Android，如果再 iOS 上頭才會有<code>webkitCompassHeading</code>，<code>webkitCompassHeading</code>表示「<strong>手機與地球正北方的夾角</strong>」，而 Android 則直接用 alpha 即可。( 不過如果不是 chrome 又不盡相同，反正如果不同，就是在進行角度的加減即可 )</p>
 <p>一開始仍然要先寫 HTML，這裡我只放上一個名為 compass 的 div，背景圖用指南針的背景圖。</p>
@@ -201,8 +201,8 @@ if(window.DeviceOrientationEvent) {
   document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
 }
 </code></pre><p>完成後，用手機打開旋轉一下，一個網頁指南針就順利誕生囉！( 範例：<a href="/demo/201506/html5-device-orientation-demo03.html" target="_blank">html5-device-orientation-demo03.html</a>，也可以掃描下方的 qrcode )</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_09.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201506/20150630_1_10.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_09.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_10.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <h2>結合實物的應用 ( Webduino )</h2>
 <p>為什麼會寫這篇文章呢？最主要是 Webduino 的教學範例裏頭有用到，下面這個影片，就是利用手機的陀螺儀，讓伺服馬達可以左右擺動，輕鬆完成網頁與實物的結合。( 對於 Webduino 有興趣的可以參考：<a href="https://webduino.io" target="_blank">https://webduino.io</a> )</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/P1xOpSO10qw" frameborder="0" allowfullscreen=""></iframe>

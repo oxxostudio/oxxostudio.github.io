@@ -74,17 +74,17 @@
 <p>一般來說要單純「寫程式碼」畫出圖形，除非你是萬中無一的武功高手才有辦法 ( 基本上是不可能 )，剛好自己很熟 Illustrator，所以我就直接透過 Illustrator 來繪製向量圖形作為符號使用，要使用 Illustrator 繪製有幾個小地方要注意。</p>
 <ul>
 <li><p><strong>座標系統</strong>：畫布的左上角為 (0,0)，往上 y 為 -，往左 x 為 -，Google 地圖裡也是以這個座標作為符號的座標依據，如果畫在別的地方，最後呈現的位置也就會怪怪的。</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-01.jpg" alt=""></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-01.jpg" alt=""></p>
 </li>
 <li><p><strong>複合路徑</strong>：由於繪製時封閉路徑會自動變成 polygon，正方形會自動變成 rect...等狀況，所以當我們畫完圖案之後，記得在圖案上按滑鼠右鍵，選擇「製作複合路徑」，轉換出來的形狀就會使用 path 呈現。</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-02.jpg" alt=""></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-02.jpg" alt=""></p>
 </li>
 <li><p><strong>輸入 SVG</strong>：Illustrator 轉換 SVG 挺方便的，只要存檔時選擇 SVG 就可以，在儲存之前也有些設定可以選擇，如果不希望樣式獨立變成 style 呈現，打開「更多選項」，下拉選單選擇「樣式屬性」即可，如果只是單純想看 SVG 的程式碼，點選「SVG 程式碼」就可以查看最終的程式碼長相。</p>
-<p>  <img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-03.jpg" alt=""></p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-03.jpg" alt=""></p>
 </li>
 </ul>
 <p>熟悉這些小細節之後，接下來應該就是考驗繪製圖形的功力了，這裡我就「簡單」畫個三角形，放在畫布的左上角，並將三角形的中心點對齊 (0,0) 的位置，最後輸出為 SVG，就可以準備進行下一步驟了。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-04.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-04.jpg" alt=""></p>
 <h2>帶有箭頭的折線</h2>
 <p>回想一下在 <a href="http://www.oxxostudio.tw/articles/201801/google-maps-6-marker-image.html" target="_blank">Google Maps (6) - 設計地圖標記圖案</a> 有提到更換標記的方法，在折線上也是如法炮製，這裡先使用 Google 官方提供的 symbols 來測試，在折線上顯示符號，需要先設定 PolylineOptions 的 icons 屬性，icons 屬性有三個：</p>
 <ul>
@@ -133,7 +133,7 @@ function initMap() {
   });
 
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-05.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-05.jpg" alt=""></p>
 <p>如果要使用自己設計的符號更好 ( 坦白說覺得官方的五種 symbols 都有點醜 )，透過 Illustrator 我簡單畫了一個三角形，輸出為 SVG 之後的路徑為<code>M-44.6,22.3L0-22.3l44.6,44.6H-44.6z</code>，這時只要把剛剛的 iconPath 改成下列這段程式碼，執行後就會看到自己畫的三角形出現在折線的終點。( 需要注意的是，圖案的 fillOpacity 預設為 0，如果要呈現色彩則必須設定該屬性 )</p>
 <blockquote>
 <p>範例：<a href="/demo/201802/google-maps-10-polyline-symbols-demo-01.html" target="_blank">帶有箭頭的折線 - 自己繪製的符號</a></p>
@@ -145,7 +145,7 @@ function initMap() {
   strokeOpacity: 0,
   scale:1
 };
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-06.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-06.jpg" alt=""></p>
 <h2>在折線裡使用不同的符號</h2>
 <p>如果要在一條折線裡使用不同的符號，只需要定義各個符號的形狀和樣式，然後依序添加到 icons 的陣列裡就可以，例如下面的程式碼，就會在折線裡添加三個不同形狀的符號。</p>
 <blockquote>
@@ -192,7 +192,7 @@ var polylinePath = new google.maps.Polyline({
   }],
   map:map
 });
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-07.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-07.jpg" alt=""></p>
 <h2>沿著線段跑的符號動畫</h2>
 <p>如果會使用<code>setInterval</code>，甚至可以做到讓符號沿著折線移動的動畫，簡單來說只需要透過 setOptions 來改變 offset，就能辦到動畫效果。</p>
 <blockquote>
@@ -210,10 +210,10 @@ var polylinePath = new google.maps.Polyline({
     }]
   })
 },20);
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-08.gif" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-08.gif" alt=""></p>
 <h2>在 Google 地圖上畫虛線</h2>
 <p>Google 地圖裡的線段是沒有虛線選項的，但既然符號裡有個 repeat 的屬性，就可以透過重複的符號，來實現虛線的線段，首先繪製一個帶有圓角的矩形，就很像是一個長長的膠囊形狀，然後將其轉為複合路徑的 SVG ( 目的在於取得 path )。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-09.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-09.jpg" alt=""></p>
 <p>為了不讓原本的實心折線影響，先把 strokeOpacity 設為 0，接著調整 scale 和 repeat，就能夠做出漂亮的虛線了，如果覺得折線轉彎處不好看，亦可調整 offset 的數值修正。</p>
 <blockquote>
 <p>範例：<a href="/demo/201802/google-maps-10-polyline-symbols-demo-05.html" target="_blank">在 Google 地圖上畫虛線</a></p>
@@ -238,7 +238,7 @@ var polylinePath = new google.maps.Polyline({
   }],
   map:map
 }); 
-</code></pre><p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201802/google-maps-10-polyline-symbols-10.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-10-polyline-symbols-10.jpg" alt=""></p>
 <h2>小結</h2>
 <p>以上大概就是透過「符號 + 折線」所做出來的一些應用，光是這些應用，應該就能夠讓原本的地圖，增添許多不同的創意囉！</p>
 

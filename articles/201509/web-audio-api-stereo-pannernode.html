@@ -143,7 +143,7 @@ oscillator.start();
 <p><br></p>
 <p>前面兩個<code>panningModel</code>和<code>distanceModel</code>基本上就是聲音在 3D 空間和衰減的演算法，如果對於數學有興趣的可以參考<a href="http://webaudio.github.io/web-audio-api/#idl-def-PanningModelType" target="_blank">這篇</a>和<a href="http://webaudio.github.io/web-audio-api/#idl-def-DistanceModelType" target="_blank">這篇</a>，在這邊就不多作解釋，<code>maxDistance</code>也很好理解，就是聲音最多可以傳送到哪邊，而<code>rolloffFactor</code>就是在傳送過程中衰減的速度，數值愈大衰減的越快 ( 雖然還是會傳遞到我們設定的最大距離，但一開始衰減太快的話，其實就會很快就聽不到了 )。</p>
 <p>比較有趣的是後面三個屬性<code>coneInnerAngle</code>、<code>coneOuterAngle</code>和<code>coneOuterGain</code>，要理解這三個屬性必須由下面這張示意圖著手，圖片來源：<a href="http://curtaincall.weblike.jp/portfolio-web-sounder/" target="_blank">http://curtaincall.weblike.jp/portfolio-web-sounder/</a></p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150930_1_02.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150930_1_02.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
 <p>因為聲音在我們日常生活中，可以看成一個「點」在發聲，例如一個爆炸聲響，一定朝四面八方擴散出去
 ，除非有某個地方擋住，然而這三個屬性顧名思義 cone 就是「圓錐」的意思，可以想像成聲音透過一個大聲公發出，就會類似圓錐一樣，inner 是指主要圓錐展出的角度，而 outer 可以想像成圓錐外延伸出去的聲音 ( 有點像是手電筒發光，主要光束的周圍還是會有飄出去的光 )，當我們直接面對聲音，圓錐越窄可以聽到聲音的範圍就越小。</p>
 <p>除了上面描述的這些屬性外，PannerNode 還有以下三個方法：</p>
@@ -167,11 +167,11 @@ panNodes.coneOuterAngle = ot;
 oscillator.connect(panNodes);
 </code></pre><p><br></p>
 <p>如果開了範例之後調整拉霸還是不太明白，其實只要換個角度思考，在沒有設定<code>coneInnerAngle</code>和<code>coneOuterAngle</code>的情形下，聲音會朝四面八方擴散，聲音所在的位置 (0,0,0) 剛好也是我們人所在的位置 (0,0,0)，所以我們調整 x 的時候，就會發現突然是只有右邊有聲音或突然只有左邊有聲音 ( 想像有隻蚊子跨過頭頂，從左耳飛到右耳 )，又因為是「笛卡兒座標系統」，所以 y 軸往上為正。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150930_1_03.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150930_1_03.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
 <p>如果今天我們稍微調整一下 Z 軸 (pz)，讓蚊子飛行的時候不要從頭頂，而是往前一點或往後一點，我們就會開始兩隻耳朵都聽到聲音了。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150930_1_04.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150930_1_04.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
 <p>但這個時候你會注意到調整 ox、oy、oz ( setOrientation ) 都沒作用，因為我們聲音是朝四面八方擴散，「指向性」自然會失去作用，同樣的，如果只設定<code>coneInnerAngle</code>和<code>coneOuterAngle</code>，沒有設定指向性也是沒有用的，就像用了大聲公，一定得朝一個方向喊話才是，所以我們可以先把<code>coneInnerAngle</code>和<code>coneOuterAngle</code>都設為 30，這時候調整 ox、oy、oz，就會有不同的變化了。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150930_1_05.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150930_1_05.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
 <p>除了上述的 PannerNode 和 StereoPannerNode，其實還有另外一個 AudioListener，代表我們聽到聲音的人，它具有以下幾個屬性：</p>
 <blockquote>
 <ul>
@@ -184,7 +184,7 @@ oscillator.connect(panNodes);
 </blockquote>
 <p><br>
 <code>dopplerFactor</code>代表都卜勒效應，如果不了解都卜勒效應，可以參考<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94" target="_blank">維基百科</a>，舉例來說，今天有輛鳴笛的警車朝我們駛過來，聽到的鳴笛聲會比較尖銳，當警車遠離我們時，鳴笛聲會比較低沈，這就是因為鳴笛的音速和車速的關聯，導致我們聽到的聲音頻率不同，這通常也是我們要在 Web 裏頭模擬真實的聲音會用到的。</p>
-<p><img class="lazy" src="/img/layout/loading.png" data-src="/img/articles/201509/20150930_1_03.gif" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150930_1_03.gif" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
 <p>此外雖然說用法類似，但 AudioListener 並不是 AudioNode，udioListener 是創立一個「聽者」，如果沒有創建，預設就以 (0,0,0) 為主，創建的話就可以設定由創建的聽者為主，也因此不會有 connect 的事件在它身上發生，創建的方法很簡單，一行程式就建立了，然後就可以使用上面的屬性和方法，在範例當中可以調整最後的 ax、ay 和 az，看看效果。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo03.html" target="_blank">web-audio-api-stereo-pannernode-demo03.html</a> )</p>
 <pre class="prettyprint"><code>var listener = context.listener;
 </code></pre><p><br></p>
