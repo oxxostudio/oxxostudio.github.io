@@ -97,13 +97,13 @@ function initMap() {
     }
   });
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-6-marker-image-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-6-marker-image-01.jpg" alt=""></p>
 <h2>Symbol</h2>
 <p>Symbol 有別於 Icon，在地圖裡它是以向量的方式存在，Symbol 的用法和 SVG 頗類似，只是在 Google 地圖裡對於 Symbol 只有預設五種 path ( 參考 <a href="https://developers.google.com/maps/documentation/javascript/symbols?hl=zh-tw" target="_blank">符號</a> )，所以要使用 Symbol 的話就必須按照制式的寫法，不然就要繼續往下看 SVG 的用法。</p>
 <p>Symbol 有以下幾種屬性：</p>
 <ul>
 <li><p><strong>path</strong>：Symbol 的外型，有五種可以選擇，分別是 <em>BACKWARD_CLOSED_ARROW</em>、<em>BACKWARD_OPEN_ARROW</em>、<em>CIRCLE</em>、<em>FORWARD_CLOSED_ARROW</em> 和 <em>FORWARD_OPEN_ARROW</em>，只要套用在地圖上就會出現對應的形狀。</p>
-<p>  <img src="/img/articles/201801/google-maps-6-marker-image-02.jpg" alt=""></p>
+<p>  <img class="lazy" data-src="/img/articles/201801/google-maps-6-marker-image-02.jpg" alt=""></p>
 </li>
 <li><p><strong>anchor</strong>：錨點，使用<code>new google.maps.Point( x , y)</code>來表現，( x, y ) 是相對原本 Symbol 的座標 ( 0 , 0 )，x 越大越往左，y 越大越往上。</p>
 </li>
@@ -163,7 +163,7 @@ function initMap() {
   }
 
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-6-marker-image-03.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-6-marker-image-03.gif" alt=""></p>
 <h2>SVG</h2>
 <p>因為通常地圖標記不會太複雜，所以使用 SVG 形狀當作是標記圖案是相當好的做法，因為除了放大縮小不會有解析度問題之外，又保有可以程式修改的彈性，使用 SVG 有兩種做法，如果是用 icon 的方式，就一樣在標記的 icon 屬性，填入 SVG 的網址 ( 其實還有查到可以直接寫在程式碼內的方法，不過技術上比較複雜，再找篇幅好好記錄 )，如果是用 symbol 則會有些限制，因為 symbol 只支援單一 path ，所以如果是比較複雜的形狀，也就必須要用單一 path 包起來才能用 symbol。</p>
 <p>下面這段程式，就是先用 Illustrator 繪製了 SVG 的圖案，接著把圖案的 path 提供給標記的 path 使用，最後就會在地圖上呈現客製化的標記囉！</p>
@@ -198,7 +198,7 @@ function initMap() {
   });
 
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-6-marker-image-04.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-6-marker-image-04.jpg" alt=""></p>
 
 
       <div class="social-icon">
@@ -261,7 +261,7 @@ function initMap() {
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

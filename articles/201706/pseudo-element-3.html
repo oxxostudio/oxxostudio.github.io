@@ -89,7 +89,7 @@ var s = document.getElementById('s');
 var b = window.getComputedStyle(d,'::before');
 s.innerHTML = b.content +'&lt;br/&gt;'+b.color;
 </code></pre><p>最後呈現的結果，第一段就是原本的 div 加上紅色的偽元素文字，下方第一段是 content 的內容，緊接著是偽元素的顏色屬性。</p>
-<p><img src="/img/articles/201706/pseudo-element-3-01.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/pseudo-element-3-01.jpg" alt=""></p>
 <h2>修改偽元素屬性</h2>
 <p>可以讀取屬性值也就一定要嘗試修改，不過修改偽元素的屬性其實比想像的不容易，必須透過<code>insertRule</code>這個方法在指定的 style 裡插入「預設的規則」，讓這個規則去影響偽元素的屬性表現。</p>
 <blockquote>
@@ -115,7 +115,7 @@ s.innerHTML = b.content +'&lt;br/&gt;'+b.color;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre><p>在完全沒有撰寫 JavaScript 的狀態，應該會呈現如下圖的樣子：</p>
-<p><img src="/img/articles/201706/pseudo-element-3-02.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/pseudo-element-3-02.jpg" alt=""></p>
 <p>JavaScript 開始先用一個變數 css，透過 id 抓取 style，然後使用在指定一個變數給<code>css.sheet</code>，就可以透過<code>insertRule</code>的方法修改了。這邊比較需要注意的是，由於<em>規則加入時會放在整串 style 的開頭 ( 第二個值預設 0 )，所以純粹使用一個<code>#d</code>是無法覆蓋原本的屬性 ( CSS 權重問題 )</em>，所以這邊使用<code>#d#d</code>兩次，就可以在權重上壓過原本的屬性。( 當然如果要用<code>!important</code>也是可以 )</p>
 <pre class="prettyprint"><code>var css = document.getElementById('css');
 var d = document.getElementById('d');
@@ -123,7 +123,7 @@ var c = css.sheet;
 c.insertRule("#d#d::before{content:'我是修改的 content ';}", 0);
 c.insertRule("#d#d::before{color:blue;}", 0);
 </code></pre><p>如此一來，呈現出來的樣貌就會是透過 JavaScript 修改的。</p>
-<p><img src="/img/articles/201706/pseudo-element-3-03.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/pseudo-element-3-03.jpg" alt=""></p>
 <h2>修改偽元素 content</h2>
 <p>我們知道 ::before 和 ::after 的 content 可以透過 attr 抓取父元素的舉屬性，因此透過改變這個屬性，就能連帶改變 content 的內容，舉例來說有個 div，我們指定它的<code>data-text="我是預設文字"</code>，然後放兩個按鈕，期望點選不同的按鈕，會更換 content 不同的內容。</p>
 <pre class="prettyprint"><code>&lt;button id="b1"&gt;顯示 ABC&lt;/button&gt;
@@ -151,7 +151,7 @@ b1.addEventListener('click',function(){
 b2.addEventListener('click',function(){
   d.setAttribute('data-text','123');
 });
-</code></pre><p><img src="/img/articles/201706/pseudo-element-3-01.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-3-01.gif" alt=""></p>
 <h2>小結</h2>
 <p>雖然說我們可以透過 JavaScript 來操控偽元素，但偽元素終究不是真正的網頁元素，也因此操作起來也不如基本操作網頁元素 DOM 來的簡便，所以如果可以，還是盡量用正常的操控模式吧。</p>
 
@@ -216,7 +216,7 @@ b2.addEventListener('click',function(){
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

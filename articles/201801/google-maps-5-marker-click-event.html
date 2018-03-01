@@ -103,7 +103,7 @@ function initMap() {
     }
   });
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-5-marker-click-event-01.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-5-marker-click-event-01.gif" alt=""></p>
 <h2>點擊後更換地圖標記圖片</h2>
 <p>除了動畫之外，也可以透過<code>setIcon</code>的方法，更換地圖標記的顯示圖片，這裏設定當滑鼠事件發生 click 的時候，圖片就會改變。</p>
 <blockquote>
@@ -139,7 +139,7 @@ function initMap() {
     }
   });
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-5-marker-click-event-02.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-5-marker-click-event-02.gif" alt=""></p>
 <h2>點擊後開啟資訊視窗</h2>
 <p>在 Google 地圖裡，「資訊視窗 InfoWindow」常常會出現和地圖標記搭配，資訊視窗會在之後再找篇幅介紹，這裏先實作當我們點擊地圖標記時，就會把資訊視窗打開，然後再點一下，就可以把資訊視窗關閉的效果。</p>
 <blockquote>
@@ -178,7 +178,7 @@ function initMap() {
     }
   });
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-5-marker-click-event-03.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-5-marker-click-event-03.gif" alt=""></p>
 <p>不過如果單純是上面的寫法，沒有判斷資訊視窗自帶的「x」關閉按鈕，所以要再加入下面這段代碼，監聽資訊視窗關閉按鈕的點擊事件，就會比較正常。</p>
 <pre class="prettyprint"><code>google.maps.event.addListener(infowindow, 'closeclick', function(){
   a = a * -1;
@@ -247,7 +247,7 @@ function initMap() {
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

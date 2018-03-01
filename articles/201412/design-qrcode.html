@@ -74,9 +74,9 @@
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>QRCode 是什麼？</h2>
 <p>在設計之前，要先來了解一下什麼是 QR Code，為什麼要先了解呢？因為只有從根本去了解原理，才能做出真正能夠掃描的 QR Code，不然做的漂漂亮亮卻不能掃描，就杯具了；根據 <a href="http://zh.wikipedia.org/wiki/QR%E7%A2%BC" target="_blank">維基百科</a> 的描述，QR Code（全稱為快速響應矩陣碼，Quick Response Code）是二維條碼的一種，1994 年由日本 Denso-Wave 公司發明，二維條碼的長度、寬度均記載著資料 ( 一維條碼的寬度記載著資料，而其長度沒有記載資料 ) ，二維條碼有一維條碼沒有的「定位點」和「容錯機制」，容錯機制在即使沒有辨識到全部的條碼、或是說條碼有汙損時，也可以正確地還原條碼上的資訊。</p>
 <p>看一下 QR Code 在維基百科裏頭的原理構造，一個 QR Code 裏頭包含了一些必要的資訊 ( 看下圖 ) ，這些資訊也是我們在設計的時候，不能遮住或是錯誤的地方，<strong>特別是三個大的「回」字形定位標記與小的回字形校正圖塊，更是絕對重要，只要少了其中一個，QR Code 就無法正確掃描</strong>,雖然 QR Code 最多可以有 30% 的容錯率，但這 30% 不包含把這些定位與校正標記給破壞。( 破壞了，要怎麼校正和修正錯誤呢？對吧~ )</p>
-<p><img src="/img/articles/201412/20141207_1_02.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_02.jpg" alt="設計個性化 QR Code"></p>
 <p>其次，就是 QR Code 一定是黑白，就算我們設計得色彩繽紛，也是針對「人」所設計的，對於行動裝置掃描而言，仍然是以黑白來判定，這也是在設計的時候，必須要讓設計的 QR Code 轉成黑白仍然有 QR Code 的樣子才行。</p>
-<p><img src="/img/articles/201412/20141207_1_03.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_03.jpg" alt="設計個性化 QR Code"></p>
 <p>以上大概是設計 QR Code 的幾個注意重點，理解之後，就要來實際設計個性化的 QR Code，開始之前，先推薦一個我自己非常喜歡的 QR Code 產生器 <a href="http://qr.calm9.com/tw/" target="_blank">http://qr.calm9.com/tw/</a>，不僅可以設定大小，也可以自訂容錯率，以下這裡介紹的四種設計方式，也都會用這個網站產生 QR Code。好了，前言廢話都講完了，開始來看四種設計方法：</p>
 <blockquote>
 <ul>
@@ -88,42 +88,42 @@
 </blockquote>
 <h2>加入 logo 或圖案</h2>
 <p>這是所有設計個性化 QR Code 的方法裏頭最簡單的，不外乎就是單純利用 QR Code 的容錯率，放入一張小於 QR Code 內容 30% 的圖案就完成。實作起來很容易，首先到剛剛講的 <a href="http://qr.calm9.com/tw/" target="_blank">http://qr.calm9.com/tw/</a> 來產生一段 QR Code，這裡我使用 yahoo 的 logo 與網址來示範，把 <a href="http://tw.yahoo.com" target="_blank">http://tw.yahoo.com</a> 貼上網址列，選擇尺寸，選擇 30% 容錯率，點選產生條碼，就可以產生一個 QR Code。( 當然網址越長，QR Code 就越複雜也越大 )</p>
-<p><img src="/img/articles/201412/20141207_1_04.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_04.jpg" alt="設計個性化 QR Code"></p>
 <p>完成之後，把 QR Code 的圖片存起來，用 photoshop 打開，在裏頭加入一個 yahoo 的 logo 就完成了。( 不論你用哪套軟體，都可以這樣做，用 word 或 powerpoint 也都可以 )</p>
-<p><img src="/img/articles/201412/20141207_1_05.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_05.jpg" alt="設計個性化 QR Code"></p>
 <h2>曲線化</h2>
 <p>第二種方法就真的要用 photoshop 來玩玩了，在我以前有一篇 CSS 的教學文 <a href="http://www.oxxostudio.tw/articles/201408/sticky-ball.html" target="_blank">噁心黏黏球 ( 純 CSS )</a> 裏頭，有提到一種把生硬邊緣曲線化的影像處理方法，這裡同樣是使用這種方法來做曲線化的 QR Code。</p>
 <p>讓我們把剛剛產生的原始 yahoo qrcode 拿來用 photoshop 打開，把這個 QR Code 進行高斯模糊。 ( 不要太模糊，避免到時候超過容錯率 )</p>
-<p><img src="/img/articles/201412/20141207_1_06.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_06.jpg" alt="設計個性化 QR Code"></p>
 <p>高斯模糊後，新增一個色階調整圖層，調整讓模糊消失，就會變成具有曲線外觀的 QR Code 了。</p>
-<p><img src="/img/articles/201412/20141207_1_07.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_07.jpg" alt="設計個性化 QR Code"></p>
 <p>完成後，也可以將 QR Code 上色，就會是具有顏色的 QR Code 了，雖然說先進行上色比較容易，因為原始的 QR Code 是正方形，但因為會經過色階調整，先上色的顏色可能會因為色階而產生問題，至於要如何才能在完成之後上色呢？這裡我利用了色相與飽和度的調整圖層來進行。</p>
-<p><img src="/img/articles/201412/20141207_1_08.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_08.jpg" alt="設計個性化 QR Code"></p>
 <p>搭配遮色片的運用，就可以做出多種顏色的上色效果。</p>
-<p><img src="/img/articles/201412/20141207_1_09.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_09.jpg" alt="設計個性化 QR Code"></p>
 <p>用這種方式，搭配中間放上 logo 之類的做法，整個 logo 一下子就變得個性許多了。</p>
-<p><img src="/img/articles/201412/20141207_1_10.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_10.jpg" alt="設計個性化 QR Code"></p>
 <h2>點狀化</h2>
 <p>點狀化的 QR Code 可以參考下圖可口可樂的廣告，這大概可以算是 QR Code 相當經典的一個例子，有別於前面正方形或曲線都是連在一起，點狀化的 QR Code 就是以點代替黑色的格子，同樣也能達到辨識的效果，當然，定位點以及校正點絕對不能被遮住或改掉，不然 QR Code 就會失效了。( 聰明如你，有沒有看出下圖的 QR Code 呢？ )</p>
-<p><img src="/img/articles/201412/20141207_1_11.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_11.jpg" alt="設計個性化 QR Code"></p>
 <p>至於點狀化的 QR Code 要怎麼製作呢？這裡我是將 QR Code 的本體當作是「遮色片」來使用，在圖層內放入「點」，接著加入 QR Code 的遮色片就完成了。</p>
-<p><img src="/img/articles/201412/20141207_1_12.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_12.jpg" alt="設計個性化 QR Code"></p>
 <p>不過比較需要注意的，點狀化的 QR Code 通常是以背景色作為原本 QR Code 的黑色區域，因為在定位點與校正點的區域，利用小點來產生往往會有錯誤。</p>
-<p><img src="/img/articles/201412/20141207_1_13.gif" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_13.gif" alt="設計個性化 QR Code"></p>
 <h2>加入背景圖</h2>
 <p>最後這個技巧真的是比較高難度了，算是剛剛點狀化的進階應用，就是像下圖這樣，具有背景圖的 QR Code。</p>
-<p><img src="/img/articles/201412/20141207_1_14.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_14.jpg" alt="設計個性化 QR Code"></p>
 <p>至於該怎麼做呢？首先在 logo 上方新增兩個圖層，像剛剛一樣，填滿「點」，不過這裡是填滿正方形，一層是白色正方形，一層是黑色正方形，然後利用 QR Code 做遮色片，讓白色與黑色正方形，分別佔據原本 QR Code 白色與黑色的位置。</p>
-<p><img src="/img/articles/201412/20141207_1_15.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_15.jpg" alt="設計個性化 QR Code"></p>
 <p>光是這樣還不夠，要在正方形的點和 logo 之間再貼上剛剛的 QR Code，同時加上透明度。</p>
-<p><img src="/img/articles/201412/20141207_1_16.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_16.jpg" alt="設計個性化 QR Code"></p>
 <p>如果你現在掃描基本上一定失敗，是因為定位點和校正點不明顯，所以要額外新增，新增之後，掃描應該幾乎都會成功了</p>
-<p><img src="/img/articles/201412/20141207_1_17.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_17.jpg" alt="設計個性化 QR Code"></p>
 <p>最後再把遮住 logo 的幾個點移除，同時稍微改變一下定位點與校正點的顏色，就大功告成了。( 範例下載：<a href="/img/articles/201412/design_qrcode_demo.psd" target="_blank">design_qrcode_demo.psd</a> )</p>
-<p><img src="/img/articles/201412/20141207_1_18.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_18.jpg" alt="設計個性化 QR Code"></p>
 <h2>小結</h2>
 <p>以上四種方法靈活運用，我們就可以很輕鬆地設計出與眾不同的 QR Code，我公司產品 EZoApp 的 QR Code，也混合了這些方法進行設計的喔！大家趕快試試看吧！^_^</p>
-<p><img src="/img/articles/201412/20141207_1_19.jpg" alt="設計個性化 QR Code"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141207_1_19.jpg" alt="設計個性化 QR Code"></p>
 
 
       <div class="social-icon">
@@ -186,7 +186,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

@@ -134,7 +134,7 @@ function initMap() {
   });   
 
 }
-</code></pre><p><img src="/img/articles/201802/google-maps-11-Polygon-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201802/google-maps-11-Polygon-01.jpg" alt=""></p>
 <p>會畫愛心之後，回頭看一下剛剛提到 path 和 paths 的差異，如果使用 paths，表示我們可以使用多個多邊形，而多邊形外框的方向，決定了多邊形是否會做「交集」，如果順時針的多邊形在外，逆時針的多邊形在內，就可以繪製出「甜甜圈」外觀的造型，下面的例子，是使用三組多邊形來做交集，可以看到框住 101 的愛心中間多了個正方形的洞，然後還有另外一個三角形貫穿其中。</p>
 <blockquote>
 <p>範例：<a href="/demo/201802/google-maps-11-Polygon-demo-02.html" target="_blank">在 Google 地圖繪製愛心多邊形，中間還有個洞</a></p>
@@ -189,7 +189,7 @@ function initMap() {
   });   
 
 }
-</code></pre><p><img src="/img/articles/201802/google-maps-11-Polygon-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201802/google-maps-11-Polygon-02.jpg" alt=""></p>
 <h2>多邊形方法 Polygon Methods</h2>
 <p>Polygon 除了有以上的設定外，也有下列這些方法可以使用：</p>
 <ul>
@@ -249,7 +249,7 @@ polygonPath.addListener('mouseup',function(){
     fillColor:'#0a0'
   });
 }); 
-</code></pre><p><img src="/img/articles/201802/google-maps-11-Polygon-03.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201802/google-maps-11-Polygon-03.gif" alt=""></p>
 
 
       <div class="social-icon">
@@ -312,7 +312,7 @@ polygonPath.addListener('mouseup',function(){
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

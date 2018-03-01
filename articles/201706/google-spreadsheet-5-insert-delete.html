@@ -74,7 +74,7 @@
 <p>參考：<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet" target="_blank">Class Spreadsheet Methods</a></p>
 </blockquote>
 <p>為了待會測試的時候比較明顯，在試算表裡面先放入一些資料，當插入或刪除的時候，這些資料就會位移或消失。</p>
-<p><img src="/img/articles/201706/google-spreadsheet-5-insert-delete-01.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-01.jpg" alt=""></p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>插入欄位 Insert Column</h2>
 <ul>
 <li><p><em>insertColumns(columnIndex, numColumns)</em></p>
@@ -82,26 +82,26 @@
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertColumns(2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-02.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-02.jpg" alt=""></p>
 <p>  如果第二個參數填入 2，就會在 B 之前插入兩欄，B 就會跑到 D。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertColumns(2,2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-03.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-03.jpg" alt=""></p>
 </li>
 <li><p><em>insertColumnBefore(beforePosition)</em></p>
 <p>  這個方法等同於 insertColumns 只填入第一個參數，會在指定的欄位「之前」新增一個欄位。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertColumnBefore(2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-02.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-02.jpg" alt=""></p>
 </li>
 <li><p><em>insertColumnsBefore(beforePosition, howMany)</em></p>
 <p>  這個方法等同於 insertColumns 填入兩個參數，注意在 insertColumnsBefore 的 Columns 是有 s 的，表示可以在指定欄位「之前」加入多個欄位。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertColumnsBefore(2,2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-03.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-03.jpg" alt=""></p>
 </li>
 </ul>
 <ul>
@@ -110,14 +110,14 @@ SheetName.insertColumnsBefore(2,2);
 <pre class="prettyprint"><code>  var SpreadSheet = SpreadsheetApp.openByUrl(url);
   var SheetName = SpreadSheet.getSheetByName(name);
   SheetName.insertColumnAfter(2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-04.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-04.jpg" alt=""></p>
 </li>
 <li><p><em>insertColumnsAfter(afterPosition, howMany)</em></p>
 <p>  這個方法和 insertColumnsBefore 相反，是在指定的欄位「之後」加入多個欄位，因為 insertColumnsAfter 的 Columns 有 s，表示可以加入多個欄位。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertColumnsAfter(2,2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-05.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-05.jpg" alt=""></p>
 </li>
 </ul>
 <h2>刪除欄位 Delete Column</h2>
@@ -127,7 +127,7 @@ SheetName.insertColumnsAfter(2,2);
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.deleteColumn(2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-06.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-06.jpg" alt=""></p>
 </li>
 </ul>
 <ul>
@@ -136,7 +136,7 @@ SheetName.deleteColumn(2);
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.deleteColumns(2,2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-07.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-07.jpg" alt=""></p>
 </li>
 </ul>
 <h2>插入列 Insert Row</h2>
@@ -146,33 +146,33 @@ SheetName.deleteColumns(2,2);
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertRows(3);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-08.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-08.jpg" alt=""></p>
 <p>  如果第二個參數填入 2，就會在第 3 列之前插入兩列，第 3 列就會跑到 5。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertRows(3,2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-09.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-09.jpg" alt=""></p>
 </li>
 <li><p><em>insertRowBefore(beforePosition)</em></p>
 <p>  這個方法等同於 insertRows 只填入第一個參數，會在指定的列「上方」新增一列。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertRowAfter(3);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-08.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-08.jpg" alt=""></p>
 </li>
 <li><p><em>insertRowsBefore(beforePosition, howMany)</em></p>
 <p>  這個方法等同於 insertRows 填入兩個參數，注意在 insertRowsBefore 的 Rows 是有 s 的，表示可以在指定的列「上方」加入多個列。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertRowsBefore(3,2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-09.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-09.jpg" alt=""></p>
 </li>
 <li><p><em>insertRowAfter(afterPosition)</em></p>
 <p>  這個方法可以在指定的列「下方」加入列，因為 insertRowAfter 的 Row 沒有 s，所以只能插入一列。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertRowAfter(2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-10.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-10.jpg" alt=""></p>
 </li>
 </ul>
 <ul>
@@ -181,7 +181,7 @@ SheetName.insertRowAfter(2);
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.insertRowsAfter(2,2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-11.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-11.jpg" alt=""></p>
 </li>
 </ul>
 <h2>刪除列 Delete Row</h2>
@@ -191,14 +191,14 @@ SheetName.insertRowsAfter(2,2);
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.deleteRow(3);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-12.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-12.jpg" alt=""></p>
 </li>
 <li><p><em>deleteRows(rowPosition, howMany)</em></p>
 <p>  刪除多個列，第一個參數是起始的列的編號，後方則是要刪除的列的數量，把指定的列刪除後，下方的列就會自動遞補到上面，注意 Rows 有加 s。</p>
 <pre class="prettyprint"><code>var SpreadSheet = SpreadsheetApp.openByUrl(url);
 var SheetName = SpreadSheet.getSheetByName(name);
 SheetName.deleteRows(3,2);
-</code></pre><p>  <img src="/img/articles/201706/google-spreadsheet-5-insert-delete-13.jpg" alt=""></p>
+</code></pre><p>  <img class="lazy" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-13.jpg" alt=""></p>
 </li>
 </ul>
 <h2>小結</h2>
@@ -265,7 +265,7 @@ SheetName.deleteRows(3,2);
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

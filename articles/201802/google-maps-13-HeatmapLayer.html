@@ -142,7 +142,7 @@ function initMap() {
 
   });
 }
-</code></pre><p><img src="/img/articles/201802/google-maps-13-HeatmapLayer-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201802/google-maps-13-HeatmapLayer-01.jpg" alt=""></p>
 <p>另外一個例子，可以透過 WeightedLocation 指定不同地點的權重，然後也透過 gradient 來修改熱度圖的顏色，最終呈現的風貌就會很不一樣，注意，漸層 gradient 的色彩是由「整份地圖外往內」作漸層，所以位在陣列的第一筆資料是最外圍，也因為會覆蓋地圖，通常會把第一筆資料的透明度設為 0，依序往內，最後一筆資料則是密度最高的的顏色。</p>
 <pre class="prettyprint"><code>var map;
 
@@ -190,7 +190,7 @@ function initMap() {
 </code></pre><blockquote>
 <p>範例：<a href="/demo/201802/google-maps-13-HeatmapLayer-demo-02.html" target="_blank">改變 Google 地圖熱度圖的權重與顏色</a></p>
 </blockquote>
-<p><img src="/img/articles/201802/google-maps-13-HeatmapLayer-02.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201802/google-maps-13-HeatmapLayer-02.jpg" alt=""></p>
 <h2>參考資料：</h2>
 <ul>
 <li><a href="https://developers.google.com/maps/documentation/javascript/heatmaplayer?hl=zh-tw" target="_blank">Google Maps API 熱度圖圖層</a></li>
@@ -258,7 +258,7 @@ function initMap() {
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

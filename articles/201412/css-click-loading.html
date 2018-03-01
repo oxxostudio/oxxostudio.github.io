@@ -72,7 +72,7 @@
 <p>由於自己公司產品裏頭，有個按鈕在點擊之後，會有一兩秒的等待時間 ( 寄認證信 )，因此為了避免點擊後一兩秒的載入時間空窗，就做個 loading 動畫來強化使用者體驗，原本想說直接用張 gif 來解決，但又想藉著這個機會練功，就使用了 CSS 的漸層效果來達成，沒想到效果還滿好的，而且不需要額外增加 div 之類的元素，單純修改 CSS 和加上點擊事件就完成了。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>效果演示</h2>
 <p>先來看一下完成的效果。( 範例：<a href="/demo/201412/css-click-loading-demo.html" target="_blank">css-click-loading-demo.html</a> )</p>
-<p><img src="/img/articles/201412/20141202_1_06.gif" alt="點擊後的 CSS 載入效果"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141202_1_06.gif" alt="點擊後的 CSS 載入效果"></p>
 <h2>效果實作</h2>
 <p>這個效果其實很容易，先來看一下原本的按鈕長相，就只是個 div 套用 CSS 而已。</p>
 <p>HTML：</p>
@@ -90,7 +90,7 @@
   cursor:pointer;
 }
 </code></pre><p>長相就會是這樣 ( 就只是很簡單的 CSS ) ：</p>
-<p><img src="/img/articles/201412/20141202_1_02.jpg" alt="點擊後的 CSS 載入效果"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141202_1_02.jpg" alt="點擊後的 CSS 載入效果"></p>
 <p>那麼要怎麼在上面蓋上動畫呢？這時候就要利用 CSS 的偽元素 ( 參考 <a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">電子時鐘效果 ( CSS 偽元素的應用 )</a> )，在上方蓋上一個<code>before</code>偽元素，把動畫放在這個偽元素內即可。</p>
 <p>CSS：</p>
 <pre class="prettyprint"><code>.btn::before{
@@ -109,13 +109,13 @@
   background:#c00;
 }
 </code></pre><p>套上 before 之後，就會發現原本的被覆蓋了。</p>
-<p><img src="/img/articles/201412/20141202_1_03.jpg" alt="點擊後的 CSS 載入效果"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141202_1_03.jpg" alt="點擊後的 CSS 載入效果"></p>
 <p>了解原理後，再來就是把 before 的背景改成動畫，這裡用到兩個 CSS3 的技巧，第一個是漸層色的背景，第二個是動畫，第一個漸層色比較複雜些，主要就是讓漸層以 45 度的方式填充，內容是兩種顏色互相搭配，但必須配合<code>background-size</code>，讓漸層能夠順利地接在一起，這邊通常是要調整最久的地方。</p>
 <pre class="prettyprint"><code>  background:-webkit-linear-gradient(45deg,#fc0 0%,#fc0 20%,#fa0 20%, #fa0 45%,#fc0 45%,#fc0 70%,#fa0 70%, #fa0 95%,#fc0 95%,#fc0 100%);
   background-size:30px 30px;
   background-position:0 0;
 </code></pre><p>從下圖可以看到，如果沒有一步步調整，出來的長相可能就會沒接好，調整完成的就會接得很順暢。</p>
-<p><img src="/img/articles/201412/20141202_1_04.jpg" alt="點擊後的 CSS 載入效果"></p>
+<p><img class="lazy" data-src="/img/articles/201412/20141202_1_04.jpg" alt="點擊後的 CSS 載入效果"></p>
 <p>完成之後就是要套用 CSS3 的動畫效果，讓<code>background-position</code>改變，背景就會自動變化了。</p>
 <pre class="prettyprint"><code>-webkit-animation:click 1s infinite linear;    
 
@@ -127,7 +127,7 @@
     background-position:30px 0;
   }
 }
-</code></pre><p><img src="/img/articles/201412/20141202_1_05.gif" alt="點擊後的 CSS 載入效果"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141202_1_05.gif" alt="點擊後的 CSS 載入效果"></p>
 <p>到這邊其實完成了百分之八十了，最後一步就是要加上點擊的事件，這裡我的作法是先把剛剛的偽元素用<code>display:none</code>隱藏起來，接著新增一個 class 名為 click，當點擊按鈕的時候，按鈕就會套用 click 的 class，偽元素就會出現了，以下是完整的程式碼，不過有做了些簡化，以及讓點擊 2 秒之後，按鈕會恢復原樣。( 範例：<a href="/demo/201412/css-click-loading-demo.html" target="_blank">css-click-loading-demo.html</a> )</p>
 <p>CSS：</p>
 <pre class="prettyprint"><code>.btn,.btn::before{
@@ -179,7 +179,7 @@
     },2000);
   });
 });
-</code></pre><p><img src="/img/articles/201412/20141202_1_06.gif" alt="點擊後的 CSS 載入效果"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141202_1_06.gif" alt="點擊後的 CSS 載入效果"></p>
 <h2>小結</h2>
 <p>CSS 的偽元素其實超好用的，除了之前分享過的 <a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">電子時鐘效果 ( CSS 偽元素的應用 )</a>，這篇的效果也是一個利用偽元素達成的效果，不需要改變 HTML 結構，輕鬆完成的啦喔哈！</p>
 
@@ -244,7 +244,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

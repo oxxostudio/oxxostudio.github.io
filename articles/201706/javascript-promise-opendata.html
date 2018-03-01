@@ -108,7 +108,7 @@ $.getJSON(url,function(e){
 });
 </code></pre><h2>同步處理 Opendata</h2>
 <p>因為載入 Opendata 需要時間 ( 看檔案大小與網路速度 )，加上 XMLHttpRequest 非同步的特性，如果你在程式碼最下面放個<code>console(123);</code>，就會看到 123 先顯示，然後才出現 Opendata 的資料 ( 如果你以為「放在最下面就會最後才出現」就錯了 )。</p>
-<p><img src="/img/articles/201706/javascript-promise-opendata-01.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/javascript-promise-opendata-01.jpg" alt=""></p>
 <p>這時候最簡單的做法就是將 console 放到 getJSON 程式內，就可以看到 Opendata 先出現，接著才出現 123。</p>
 <blockquote>
 <p>範例展示：<a href="/demo/201706/javascript-promise-opendata-demo-02.html" target="_blank">demo-02.html</a></p>
@@ -119,7 +119,7 @@ $.getJSON(url,function(e){
   console.log(e);
   console.log(123); // 把 123 放在這邊
 });
-</code></pre><p><img src="/img/articles/201706/javascript-promise-opendata-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/javascript-promise-opendata-02.jpg" alt=""></p>
 <p>如果在只有一組 Opendata 的時候是很方便的，但誠如之前說過的，若是今天需要呼叫很多個檔案，相對來說得要使用一堆的 callback 來解決，這時候就可以把 Promise 派上用場，我們將<code>$.getJSON</code>變成一個 Promise 物件，這樣就可以透過<code>.then</code>不斷連結下去，也就可以在程式碼很乾淨的情況下，做到先載入完成一組 Opendata，再載入另外一組的流程。( 範例把兩個網址載入先後順序互換，就更能清楚看出來哪個先載入 )</p>
 <blockquote>
 <p>範例展示：<a href="/demo/201706/javascript-promise-opendata-demo-03.html" target="_blank">demo-03.html</a></p>
@@ -144,7 +144,7 @@ p(data2).then(function(v) {
   console.log(v[1]);  // 顯示 opendata 網址
   console.log(v[0]);  // 顯示資料內容
 });
-</code></pre><p><img src="/img/articles/201706/javascript-promise-opendata-03.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/javascript-promise-opendata-03.jpg" alt=""></p>
 <h2>小結</h2>
 <p>Opendata 其實有很多好玩的資料等著我們去應用，學會 Promise 的用法之後更是如虎添翼，當然純前端串接 Opendata 一定會遇到一些安全性或是瀏覽器先天的問題，但相信透過現成技術的輔助和陸續支援，應該會有越來越多的發揮與想像空間。</p>
 
@@ -209,7 +209,7 @@ p(data2).then(function(v) {
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

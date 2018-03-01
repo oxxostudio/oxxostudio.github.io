@@ -72,13 +72,13 @@
 <p>隨著時代的演進，這一兩年來我都已經是用 SCSS 在編寫 CSS，不過 SCSS/SASS 是建構在 Ruby 的環境之下，通常我們要使用，則必須先安裝 Ruby 以及 compass，或也可以購買安裝 Fire.app 代勞，那麼要如何才能用 gulp ，來建立一個自動執行轉換 SCSS 的環境呢？</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2>
 <p>與 SCSS/SASS 的安裝同樣的前置步驟，我們必須先安裝 Ruby 以及 compass，Ruby 可以直接到 Ruby 的官方網站下載安裝： <a href="http://rubyinstaller.org/downloads/" target="_blank">rubyinstaller</a> 。 </p>
-<p><img src="/img/articles/201503/20150308_1_02.jpg" alt="Gulp 學習 4 - 建立 SCSS/SASS 編輯環境"></p>
+<p><img class="lazy" data-src="/img/articles/201503/20150308_1_02.jpg" alt="Gulp 學習 4 - 建立 SCSS/SASS 編輯環境"></p>
 <p>安裝 Ruby 之後就是要繼續安裝 compass，開啟命令提示字元 ( CMD )，輸入以下程式碼，就可以安裝 compass。</p>
 <pre class="prettyprint"><code>gem install compass
 </code></pre><p>安裝 Ruby 與 compass 的前置作業完成之後，接著就要來回歸 Gulp ，這裡我們要用到的套件只有一個：gulp-compass。( Mac 可能要加 sudo )</p>
 <pre class="prettyprint"><code>npm install gulp gulp-compass -save-dev
 </code></pre><p>安裝之後先來規劃一下我們的目錄結構，首先建立一個名為 style 的資料夾，內部分別建立兩個名為 SCSS、CSS 的資料夾，我們的目標是要在 SCSS 資料夾內編寫 SCSS，然後自動轉換成 CSS 檔案放在 CSS 的資料夾內。</p>
-<p><img src="/img/articles/201503/20150308_1_03.jpg" alt="Gulp 學習 4 - 建立 SCSS/SASS 編輯環境"></p>
+<p><img class="lazy" data-src="/img/articles/201503/20150308_1_03.jpg" alt="Gulp 學習 4 - 建立 SCSS/SASS 編輯環境"></p>
 <h2>撰寫 gulpfile.js</h2>
 <p>資料夾用好之後，來寫一下 gulpfile.js 了，第一步就是先引入套件。(參考：<a href="https://www.npmjs.com/package/gulp-compass" target="_blank">gulp-compass</a>)</p>
 <pre class="prettyprint"><code>var gulp = require('gulp'),
@@ -197,7 +197,7 @@ gulp.task('default',['compass','watch']);
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

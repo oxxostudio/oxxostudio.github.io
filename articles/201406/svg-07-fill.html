@@ -75,7 +75,7 @@
 <pre class="prettyprint"><code>&lt;rect x="50" y="50" width="100" height="100" stroke="#000" stroke-width="10" fill="#f40"&gt;&lt;/rect&gt;
 &lt;rect x="170" y="50" width="100" height="100" stroke="#000" stroke-width="10" fill="#0f5"&gt;&lt;/rect&gt;
 &lt;rect x="290" y="50" width="100" height="100" stroke="#000" stroke-width="10" fill="#09f"&gt;&lt;/rect&gt;
-</code></pre><p><img src="/img/articles/201406/20140614_1_02.png" alt="SVG-fill"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140614_1_02.png" alt="SVG-fill"></p>
 <h2>漸層</h2>
 <p>SVG 裏頭的漸層做法比較特殊，首先要先建立一個漸層的定義檔，接著讓需要漸層的元件，指向這個定義檔，就可以讓元件具有漸層，除了漸層是這麼做的，SVG 文字的變化也有一部分是使用定義檔來表現，會之後的篇幅提到。至於定義檔的寫法，會在外層統一用一個<code>&lt;defs&gt;&lt;/defs&gt;</code>( definitions ) 的標籤包著，這樣也方便識別當中的標籤是定義檔 ( 我測試過不包也是可以，不過基於 W3C 的定義規則，還是包起來吧 )，接著在<code>&lt;defs&gt;&lt;/defs&gt;</code>裏頭加入<code>&lt;linearGradient&gt;&lt;/linearGradient&gt;</code>的標籤，這就完成了<strong>線性漸層</strong>漸層定義檔的架構 ( 放射狀漸層使用<code>&lt;radialGradient&gt;&lt;/radialGradient&gt;</code> ) ，不過別急，還沒結束，<code>&lt;linearGradient&gt;&lt;/linearGradient&gt;</code>裏頭還有漸層顏色的設定，就是使用<code>&lt;stop&gt;</code>的標籤來設定，可以看看下面的設定：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
@@ -88,7 +88,7 @@
 <pre class="prettyprint"><code>&lt;rect x="50" y="250" width="100" height="100" stroke="#000" stroke-width="5" fill="url(#a1)"&gt;&lt;/rect&gt;
 &lt;circle cx="220" cy="300" r="50" stroke="#000" stroke-width="5" fill="url(#a1)"&gt;&lt;/circle&gt;
 &lt;rect x="290" y="250" width="100" height="100" stroke="url(#a1)" stroke-width="5" fill="none"&gt;&lt;/rect&gt;
-</code></pre><p><img src="/img/articles/201406/20140614_1_03.png" alt="SVG-fill"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140614_1_03.png" alt="SVG-fill"></p>
 <p>我們也可以設定剛剛提過了<code>&lt;radialGradient&gt;&lt;/radialGradient&gt;</code>的<strong>放射狀</strong>漸層。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
    &lt;radialGradient id="a1"&gt;
@@ -96,7 +96,7 @@
      &lt;stop offset="95%" stop-color="#f00" /&gt;
    &lt;/radialGradient&gt;
 &lt;/defs&gt;
-</code></pre><p><img src="/img/articles/201406/20140614_1_04.png" alt="SVG-fill"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140614_1_04.png" alt="SVG-fill"></p>
 <p>如果看到這邊你認為結束了，那就太小看 SVG 漸層了，<code>linearGradient</code>與<code>radialGradient</code>標籤裏頭其實還有很多的屬性可以設定，可以設定線性漸層的方向，以及放射狀漸層的圓心。( 別忘了也都是用百分比設定 )</p>
 <p>換成垂直的漸層：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
@@ -105,7 +105,7 @@
      &lt;stop offset="95%" stop-color="#ff0" /&gt;
    &lt;/linearGradient&gt;
 &lt;/defs&gt;
-</code></pre><p><img src="/img/articles/201406/20140614_1_05.png" alt="SVG-fill"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140614_1_05.png" alt="SVG-fill"></p>
 <p>換成傾斜的漸層</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
    &lt;linearGradient id="a1" x1="0%" y1="0%" x2="100%" y2="100%"&gt;
@@ -113,7 +113,7 @@
      &lt;stop offset="95%" stop-color="#ff0" /&gt;
    &lt;/linearGradient&gt;
 &lt;/defs&gt;
-</code></pre><p><img src="/img/articles/201406/20140614_1_06.png" alt="SVG-fill"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140614_1_06.png" alt="SVG-fill"></p>
 <p>改變中心點的漸層</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
    &lt;radialGradient id="a1" cx="20%" cy="40%"&gt;
@@ -121,7 +121,7 @@
      &lt;stop offset="95%" stop-color="#f00" /&gt;
    &lt;/radialGradient&gt;
 &lt;/defs&gt;
-</code></pre><p><img src="/img/articles/201406/20140614_1_07.png" alt="SVG-fill"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140614_1_07.png" alt="SVG-fill"></p>
 <h2>圖案</h2>
 <p>看完了漸層，最後一個就是利用圖案來表現 fill ，要利用圖案來填色，第一步仍然是和漸層使用相同的做法，就是先建立一個定義檔，接著在<code>defs</code>裡加入<code>&lt;pattern&gt;&lt;/pattern&gt;</code>的標籤，<code>pattern</code>表示的是一個圖案的區域，會用這個區域進行重複排列圖案的動作，因此我們要重複的圖案，必須要比<code>pattern</code>小，不然就會被裁切掉了。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
@@ -131,7 +131,7 @@
 &lt;/defs&gt;
 </code></pre><p>接著在我們要填色的區域和定義檔連結就可以完成圖案的填色</p>
 <pre class="prettyprint"><code>&lt;circle cx="220" cy="300" r="50" stroke="#000" stroke-width="5" fill="url(#a2)"&gt;&lt;/circle&gt;
-</code></pre><p><img src="/img/articles/201406/20140614_1_08.png" alt="SVG-fill"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140614_1_08.png" alt="SVG-fill"></p>
 <h2>小結</h2>
 <p>其實填色是千變萬化的，這裡只是將填色的方式做了一個最基本的介紹，至於如何能填出漂亮的顏色，就真的要看個人的經驗和練習囉！( 更詳細的設定可以參考 <a href="http://www.w3.org/TR/SVG/pservers.html" target="_blank">W3C 的介紹</a> )</p>
 
@@ -196,7 +196,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

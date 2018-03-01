@@ -72,7 +72,7 @@
 <p><img src="/img/articles/201409/pointer-events.jpg" class="preview-img" alt=""></p>
 <p>pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。除了 auto 和 none，這是完整的屬性列表：<code>pointer-events: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit</code>，除了 auto 與 none，其他都是控制 SVG 的屬性，若採用預設值，則 SVG 就是以 visiblePainted 來表現。</p>
 <p>首先看到 <code>pointer-events: auto</code>，就是我們一般常見的，一個 div 被另外一個 div 遮住，就無法進行點擊或 hover 的動作，如下圖：  </p>
-<p><img src="/img/articles/201409/20140902_1_02.gif" alt="穿透的 div ( pointer-events )"></p>
+<p><img class="lazy" data-src="/img/articles/201409/20140902_1_02.gif" alt="穿透的 div ( pointer-events )"></p>
 <p>HTML：</p>
 <pre class="prettyprint"><code>&lt;div class="ybox"&gt;&lt;/div&gt;
 &lt;div class="gbox"&gt;&lt;/div&gt;
@@ -91,7 +91,7 @@
   background: rgba(255, 50, 50, .8);
 }
 </code></pre><p>這時候如果我們把 ybox 增加 <code>pointer-events: none;</code>，就會發現底下的 gbox 可以 hover 了！</p>
-<p><img src="/img/articles/201409/20140902_1_03.gif" alt="穿透的 div ( pointer-events )"></p>
+<p><img class="lazy" data-src="/img/articles/201409/20140902_1_03.gif" alt="穿透的 div ( pointer-events )"></p>
 <p>至於其他的屬性，在這邊稍微做一些介紹，根據 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/pointer-events" target="_blank">這篇</a>的解釋，可以知道其他屬性是這樣解釋：</p>
 <ul>
 <li><p>visiblePainted：<br>  只適用於 SVG。元素只有在以下情況才會成為鼠標事件的目標：visibility 屬性值為 visible，且鼠標指針在元素內部，且 fill 屬性指定了 none 之外的值、visibility 屬性值為 visible，鼠標指針在元素邊界上，且 stroke 屬性指定了none 之外的值。</p>
@@ -114,7 +114,7 @@
 </li>
 </ul>
 <p>例如我們畫面中有一個 SVG 所繪製的矩形，就可以控制讓滑鼠移到邊框變色，或是移到填滿區域才變色，這是設為 fill 的結果：</p>
-<p><img src="/img/articles/201409/20140902_1_04.gif" alt="穿透的 div ( pointer-events )"></p>
+<p><img class="lazy" data-src="/img/articles/201409/20140902_1_04.gif" alt="穿透的 div ( pointer-events )"></p>
 <p>HTML：</p>
 <pre class="prettyprint"><code>&lt;svg width="200" height="140"&gt;
   &lt;rect width="100" height="100" fill="#f00" stroke="#000" stroke-width="10" x="20" y="20" id="test"&gt;&lt;/rect&gt;
@@ -127,7 +127,7 @@
   fill: #09f;
 }
 </code></pre><p>如果改設為 stroke 就會變成這樣：</p>
-<p><img src="/img/articles/201409/20140902_1_05.gif" alt="穿透的 div ( pointer-events )"></p>
+<p><img class="lazy" data-src="/img/articles/201409/20140902_1_05.gif" alt="穿透的 div ( pointer-events )"></p>
 <p>這就是 pointer-events 的用法，其實搞懂之後，因為可以點擊到被覆蓋的 div 下方的東西，就可以做出許多應用喔！真是迫不及待想要用用看啦！</p>
 
 
@@ -191,7 +191,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

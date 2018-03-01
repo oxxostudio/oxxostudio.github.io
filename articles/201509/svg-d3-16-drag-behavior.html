@@ -100,7 +100,7 @@
             .on('dragend', function() { 
               console.log(d3.event);
             });
-</code></pre><p><img src="/img/articles/201509/20150914_1_02.jpg" alt="SVG D3.js - 拖拉行為 ( Drag Behavior )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201509/20150914_1_02.jpg" alt="SVG D3.js - 拖拉行為 ( Drag Behavior )"></p>
 <p>有了滑鼠事件之後，就可以實作拖拉的行為了，<code>dragstart</code>和<code>dragend</code>只需要負責改變顏色，<code>drag</code>就讓方塊的中心點可以跟著滑鼠座標移動，移動的時候還會變成綠色。( 範例：<a href="/demo/201509/svg-d3-16-drag-behavior-demo2.html" target="_blank">svg-d3-16-drag-behavior-demo2.html</a> )</p>
 <pre class="prettyprint"><code>var drag = d3.behavior.drag()  
             .on('dragstart', function() { 
@@ -120,7 +120,7 @@
 var rect = d3.select('#r')
             .style({'left':'50px','top':'50px'})
             .call(drag);
-</code></pre><p><img src="/img/articles/201509/20150914_1_03.gif" alt="SVG D3.js - 拖拉行為 ( Drag Behavior )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201509/20150914_1_03.gif" alt="SVG D3.js - 拖拉行為 ( Drag Behavior )"></p>
 <p>不過，今天如果只有單純拖拉的行為好像不足以表現 d3.js 的長處，所以我們把 drag 換成 svg，根據 data 來產生一些圓形，並讓這些圓形都可以拖拉，一開始我們先設定 data ( 或是引入 data 也可以 )，然後設定 drag 行為，在 body 裡面放入 svg，有了 svg 之後就根據 data，利用<code>.data(data).enter()</code>產生圓形，呼叫 drag 行為，就完成囉！( 範例：<a href="/demo/201509/svg-d3-16-drag-behavior-demo3.html" target="_blank">svg-d3-16-drag-behavior-demo3.html</a> )</p>
 <pre class="prettyprint"><code>var data = [
   {'cx':210, 'cy':210, 'r':50, 'fill':'#ff0000'},
@@ -165,7 +165,7 @@ svg.selectAll('circle')
             'fill': function(d){return d.fill;}
           })
           .call(drag);
-</code></pre><p><img src="/img/articles/201509/svg-d3-16-drag-behavior.gif" alt="SVG D3.js - 拖拉行為 ( Drag Behavior )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201509/svg-d3-16-drag-behavior.gif" alt="SVG D3.js - 拖拉行為 ( Drag Behavior )"></p>
 
 
       <div class="social-icon">
@@ -228,7 +228,7 @@ svg.selectAll('circle')
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

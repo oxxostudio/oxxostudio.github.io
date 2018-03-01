@@ -72,12 +72,12 @@
 <p>一開始使用地圖，總會用經緯度來標記位置，但經緯度往往不夠直覺，而且要知道某個地點的經緯度也是個問題，所以這時就必須使用 Google Maps API 的地理編碼服務來實現「地址定位」，只要輸入對應的地址，就可以在地圖上標記。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用 Google Maps Geocoding API</h2>
 <p>要使用地理編碼服務，首先要前往 <a href="https://console.developers.google.com/project/_/apiui/apis/enabled?hl=zh-tw" target="_blank">Google API Console</a>，進入之後，建立新的專案或是選擇現有的專案 ( 不知道怎麼做可以參考 <a href="http://www.oxxostudio.tw/articles/201707/google-maps-1.html" target="_blank">Google Maps (1) - 網頁載入地圖 ( 起手式 )</a> )，接著點選上方「<em>啟用 API 和服務</em>」。</p>
-<p><img src="/img/articles/201802/google-maps-7-geocoding-01.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201802/google-maps-7-geocoding-01.jpg" alt=""></p>
 <p>在搜尋欄位搜尋「<em>Google Maps Geocoding API</em>」，找到後點選並且啟用。</p>
-<p><img src="/img/articles/201802/google-maps-7-geocoding-02.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201802/google-maps-7-geocoding-02.jpg" alt=""></p>
 <p>啟用後，在資訊主頁最下方的 API 就會看到 Google Maps Geocoding API 的訊息，
 依據 Google API 標準方案，免費版本一天可以呼叫這個 API 2500 次，每秒可以 50 次，對於自己要練習或是簡單的程式，應該都相當夠用。</p>
-<p><img src="/img/articles/201802/google-maps-7-geocoding-03.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201802/google-maps-7-geocoding-03.jpg" alt=""></p>
 <h2>使用地址定位</h2>
 <p>要使用地址定位，第一步要先透過<code>google.maps.Geocoder</code>物件存取程式碼內的 Google Maps API 地理編碼服務，而<code>Geocoder.geocode()</code>方法會初始化對地理編碼服務的要求。</p>
 <pre class="prettyprint"><code>geocoder = new google.maps.Geocoder();
@@ -127,7 +127,7 @@ function initMap() {
     }
   });
 }
-</code></pre><p><img src="/img/articles/201802/google-maps-7-geocoding-04.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201802/google-maps-7-geocoding-04.jpg" alt=""></p>
 <h2>簡單的查詢地址功能</h2>
 <p>如果已經會使用地址定位，就可以來透過 HTML 的 input 和 button 做點變化，下面的例子在網頁中放入一個輸入欄位，輸入地址之後按下定位，就可以將自己指定的地址在地圖上置中，並放上標記。</p>
 <blockquote>
@@ -149,7 +149,7 @@ function initMap() {
     }
   });
 });
-</code></pre><p><img src="/img/articles/201802/google-maps-7-geocoding-05.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201802/google-maps-7-geocoding-05.jpg" alt=""></p>
 <h2>參考資料</h2>
 <p>地理編碼服務是參考 Google 官方文件 <a href="https://developers.google.com/maps/documentation/javascript/geocoding?hl=zh-tw" target="_blank">地理編碼服務</a>，如果想要了解 results 回傳的參數細節用法就可以前往閱讀，文件的後半段也提到一些地址反查的功能，不過目前還沒想到該怎麼用，就等有用到的時候再寫篇文章記錄一下好了。</p>
 
@@ -214,7 +214,7 @@ function initMap() {
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

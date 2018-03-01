@@ -72,7 +72,7 @@
 <p>地圖標記是地圖裡最常見的元素，透過地圖標記，可以標明指定的地點和資訊，也能透過對應的 Google Maps API，設計相對應的標記來展示地點資訊，這篇將會由基礎的地圖標記著手，逐步實做一些有趣的範例。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>放置地圖標記</h2>
 <p>放置地圖標記的第一步要先取得「經緯度」，取得特定地點的經緯度很簡單，只要打開 Google Map，搜尋地點之後，在網址列就可以看到經緯度，第一個數字是緯度 ( latitude )，第二個數字是經度 ( Longitude )。</p>
-<p><img src="/img/articles/201801/google-maps-3-marker-01.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201801/google-maps-3-marker-01.jpg" alt=""></p>
 <p>有了經緯度之後，    透過<code>new google.maps.Marker</code>就可以產生一個 maker 物件在地圖上，以下面的例子來說，就可以放置一個標記在台北 101 大樓。</p>
 <blockquote>
 <p>範例：<a href="/demo/201801/google-maps-3-marker-demo-01.html" target="_blank">放置地圖標記</a></p>
@@ -93,7 +93,7 @@ function initMap() {
     map: map
   });
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-3-marker-02.jpg" alt=""></p>
 <h2>地圖標記動畫 ( Marker Animations )</h2>
 <p>地圖標記的動畫效果，可以設定當點擊標記或標記載入時呈現相對應動畫，用法是在 maker 的 option 增加<code>animation</code>的屬性，內容是掉落 ( DROP ) 與彈跳 ( BOUNCE ) 兩種選項。</p>
 <blockquote>
@@ -112,7 +112,7 @@ function initMap() {
   map: map,
   animation: google.maps.Animation.BOUNCE
 });
-</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-03.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-3-marker-03.gif" alt=""></p>
 <h2>地圖標記標籤 ( Marker Labels )</h2>
 <p>如果地圖上有很多個標記，可能也就需要在每個標記上標註標籤，標註的方法就是修改<code>label</code>的屬性，不過因為標記名稱需考量標記的「大小」，所以基本上就單一個中文字、英文字母或數字比較恰當 ( 也可以透過地圖標記圖案來修改 icon 大小，才不會造成文字「爆表」的情形 )。</p>
 <blockquote>
@@ -123,7 +123,7 @@ function initMap() {
   map: map,
   label: '喔'
 });
-</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-04.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-3-marker-04.jpg" alt=""></p>
 <h2>地圖標記圖案 ( Marker Icons )</h2>
 <p>如果要修改預設的地圖標記，就需要編輯<code>icon</code>的屬性，只要指定對應的圖片網址，就會看到這張圖片，變成在地圖裡的地圖標記了，但使用上要注意圖片的大小，呈現出來才會美觀也不會遮住地圖資訊，舉例來說，可以把台北 101 的圖案換成皮卡丘的圖片。( 地圖標記圖案可以玩的東西還很多，之後會找時間寫一篇來介紹 )</p>
 <blockquote>
@@ -134,7 +134,7 @@ function initMap() {
   map: map,
   icon:'http://www.oxxostudio.tw/img/articles/201801/google-maps-3-marker-icon.png'
 });
-</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-05.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-3-marker-05.jpg" alt=""></p>
 <h2>可拖曳地圖標記 ( draggable )</h2>
 <p>通常地圖上的標記都是不能用滑鼠移動的，但其實可以透過<code>draggable</code>的屬性，讓我們可以移動地圖上的標記。</p>
 <blockquote>
@@ -145,7 +145,7 @@ function initMap() {
   map: map,
   draggable: true
 });
-</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-06.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-3-marker-06.gif" alt=""></p>
 <h2>地圖標記階層 ( zIndex )</h2>
 <p>如果地圖上有多個標記，可能會發生一個疊一個狀況，這時候就可以透過<code>zIndex</code>的屬性，就像 CSS 裡的<code>z-index</code>一樣，數字越大的在越上層，就能控制不同地圖標記的階層了。( zIndex 預設 1 )</p>
 <blockquote>
@@ -157,7 +157,7 @@ function initMap() {
   icon:'http://www.oxxostudio.tw/img/articles/201801/google-maps-3-marker-icon.png',
   zIndex:1
 });
-</code></pre><p><img src="/img/articles/201801/google-maps-3-marker-07.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-3-marker-07.jpg" alt=""></p>
 <h2>其他的地圖標記屬性</h2>
 <p>地圖標記的屬性還有很多，這篇只是先把我覺得滿常用的屬性列出，如果有興趣可以繼續參考：<a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference?hl=zh-tw#MarkerOptions" target="_blank">MarkerOptions object specification</a> 囉！</p>
 
@@ -222,7 +222,7 @@ function initMap() {
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

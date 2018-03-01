@@ -122,19 +122,19 @@ y.style({
 b.style({
     'background':blue
   });
-</code></pre><p><img src="/img/articles/201412/20141225_1_02.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141225_1_02.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
 <h2>d3.rgb(color)</h2>
 <p>除了用十進位撰寫顏色之外，其實 d3.js 也可以直接讓我們填寫顏色的名稱或十六進位色碼，不過要注意的是，記得要用引號包起來，才識字串的形式。( 範例：<a href="/demo/201412/svg-d3-09-colors-1-demo2.html" target="_blank">svg-d3-09-colors-1-demo2.html</a> )</p>
 <pre class="prettyprint"><code>var red = d3.rgb('red');
 var green = d3.rgb('green');
 var yellow = d3.rgb('yellow');
 var blue = d3.rgb('blue');
-</code></pre><p><img src="/img/articles/201412/20141225_1_03.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141225_1_03.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
 <pre class="prettyprint"><code>var red = d3.rgb('#f00');
 var green = d3.rgb('#0f0');
 var yellow = d3.rgb('#ff0');
 var blue = d3.rgb('#00f');
-</code></pre><p><img src="/img/articles/201412/20141225_1_04.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141225_1_04.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
 <h2>rgb.brighter([k])</h2>
 <p>加亮顏色的 API，數值從 0 開始往上加，最主要是在原本的顏色數字乘上 0.7^-k ，數字越大越亮，不過最終的數值範圍是 30-255，超過範圍的就會以最大值或最小值表現，範例有改了一下上面的 HTML，可以點開看完整原始檔。( 範例：<a href="/demo/201412/svg-d3-09-colors-1-demo3.html" target="_blank">svg-d3-09-colors-1-demo3.html</a> )</p>
 <pre class="prettyprint"><code>var red = d3.rgb(50,0,0);
@@ -154,7 +154,7 @@ r3.style({
 r4.style({
     'background':red.brighter(4)
   });
-</code></pre><p><img src="/img/articles/201412/20141225_1_05.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141225_1_05.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
 <p>對於想要了解背後真正運算式的，可以利用 console 看出背後的運作原理，但實際上我們也不太需要真正了解，因為 我們使用 d3.js ，就是為了幫我們解決這些運算呀！</p>
 <pre class="prettyprint"><code>brighter: function (n){n=Math.pow(.7,arguments.length?n:1);var t=this.r,e=this.g,r=this.b,u=30;return t||e||r?(t&amp;&amp;u&gt;t&amp;&amp;(t=u),e&amp;&amp;u&gt;e&amp;&amp;(e=u),r&amp;&amp;u&gt;r&amp;&amp;(r=u),new dt(Math.min(255,t/n),Math.min(255,e/n),Math.min(255,r/n))):new dt(u,u,u)}
 </code></pre><h2>rgb.darker([k])</h2>
@@ -176,12 +176,12 @@ r3.style({
 r4.style({
     'background':red.darker(4)
   });
-</code></pre><p><img src="/img/articles/201412/20141225_1_06.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141225_1_06.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
 <h2>rgb.hsl()</h2>
 <p>返回 HSL 的色彩，可以直接從 console 看出來。( 範例：<a href="/demo/201412/svg-d3-09-colors-1-demo5.html" target="_blank">svg-d3-09-colors-1-demo5.html</a> )</p>
 <pre class="prettyprint"><code>var red = d3.rgb(255,0,0);    
 console.log(red.hsl());
-</code></pre><p><img src="/img/articles/201412/20141225_1_07.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141225_1_07.jpg" alt="SVG D3.js - 定義色彩 - 基本篇 ( colors )"></p>
 <h2>rgb.toString()</h2>
 <p>輸出色彩為十六進位字串。( 範例：<a href="/demo/201412/svg-d3-09-colors-1-demo6.html" target="_blank">svg-d3-09-colors-1-demo6.html</a> )</p>
 <pre class="prettyprint"><code>var red = d3.rgb(255,0,0);
@@ -250,7 +250,7 @@ console.log(red.toString());
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

@@ -122,7 +122,7 @@ div7.style({background:color(7)});
 div8.style({background:color(8)});
 div9.style({background:color(9)});
 div10.style({background:color(10)});
-</code></pre><p><img src="/img/articles/201412/20141226_1_02.jpg" alt="SVG D3.js - 定義色彩 - 應用篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141226_1_02.jpg" alt="SVG D3.js - 定義色彩 - 應用篇 ( colors )"></p>
 <h2>category</h2>
 <p>用這種方法，我們就可以定義出一個範圍內的顏色變化，也更能將死板板的數據，對應到各自代表的顏色，例如汙染越高的地方越黑、音量越大越紅、溫度越冷越藍、雨量越多越紫...等之類的圖表，然而除了 scale.linear 這種方法之外，也可以使用之前介紹過的 <a href="http://www.oxxostudio.tw/articles/201412/svg-d3-08-ordinal.html" target="_blank">ordinal</a>，定義出類似陣列概念的顏色陣列，而且其實我們不用自己定義，d3.js 已經幫我們定義好了幾種，分別是以下幾種：</p>
 <blockquote>
@@ -321,7 +321,7 @@ div4.style({
 div5.style({
   background:color(5)
 });
-</code></pre><p><img src="/img/articles/201412/20141226_1_03.jpg" alt="SVG D3.js - 定義色彩 - 應用篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141226_1_03.jpg" alt="SVG D3.js - 定義色彩 - 應用篇 ( colors )"></p>
 <pre class="prettyprint"><code>var color = d3.scale.category20c();
 
 div1.style({
@@ -339,7 +339,7 @@ div4.style({
 div5.style({
   background:color(5)
 });
-</code></pre><p><img src="/img/articles/201412/20141226_1_04.jpg" alt="SVG D3.js - 定義色彩 - 應用篇 ( colors )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141226_1_04.jpg" alt="SVG D3.js - 定義色彩 - 應用篇 ( colors )"></p>
 <h2>小結</h2>
 <p>以上，就是在 d3.js 裏頭色彩的另外一種應用作法，相信理解了之後，看待一大串的數字，可能都會不由自主地把這些數據給上顏色囉！如果對於色碼與顏色名稱有興趣的，也可以參考：<a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords" target="_blank">Recognized color keyword names</a></p>
 
@@ -404,7 +404,7 @@ div5.style({
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

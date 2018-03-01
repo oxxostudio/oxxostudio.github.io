@@ -74,43 +74,43 @@
 <p>使用 translate 可以讓圖形在 x 軸或 y 軸進行位移 ( 中括號為不是必須的值 )，所謂的位移是指原本的坐標加上多少。</p>
 <pre class="prettyprint"><code>&lt;rect fill="#c00" width="60" height="60" x="0" y="0" /&gt;
 &lt;rect fill="#09c" width="60" height="60" x="0" y="0" transform="translate(100,50)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_02.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_02.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <h2>scale(sx,[sy])</h2>
 <p>scale 可以讓圖形放大或是縮小，若只有設定一個值，則會等比例放大縮小，若設定兩個值，則分別為水平放大或垂直放大，比較需要注意的是，scale 的放大縮小除了寬度和高度，連同坐標也會一併放大縮小，所以一開始使用的時候，會被位置跑掉給嚇到 ( 原因是因為矩陣 Matrix 運算的緣故，會在下一篇解釋 )。</p>
 <pre class="prettyprint"><code>&lt;rect fill="#c00" width="60" height="60" x="0" y="0" /&gt;
 &lt;rect fill="#09c" width="60" height="60" x="70" y="0" transform="scale(1.2)" /&gt;
 &lt;rect fill="#0c0" width="60" height="60" x="0" y="70" transform="scale(2.5,1.3)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_03.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_03.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;rect fill="none" width="60" height="60" x="20" y="20" stroke="#000" stroke-width="2" /&gt;
 &lt;rect fill="#c00" width="60" height="60" x="20" y="20" transform="scale(2)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_04.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_04.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <p>講到這邊其實我們也可以利用 scale 和 translate 搭配，做出鏡射的效果，因為如果我們把 scale 的數值設為負值，圖形會超出 SVG 畫布跑到對應 x 軸或對應 y 軸的位置去 ( 如下圖 )</p>
 <pre class="prettyprint"><code>&lt;rect fill="none" width="60" height="60" x="70" y="50" stroke="#000" stroke-width="2" /&gt;
 &lt;rect fill="#c00" width="60" height="60" x="70" y="50" transform="scale(-1,1)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_05.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_05.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <p>所以我們就必須再使用 translate 把圖形拉回來，就可以做到反轉鏡射了，而這邊也有個小細節要注意，就是如果我們把 translate 與 scale 的順序互換，就會發現 translate 的數值也會由正變負，因為這牽扯到是先形變在位移，還是先位移再形變囉！</p>
 <pre class="prettyprint"><code>&lt;rect fill="none" width="60" height="60" x="70" y="50" stroke="#000" stroke-width="2" /&gt;
 &lt;rect fill="#c00" width="60" height="60" x="70" y="50" transform=" translate(135) scale(-1,1)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_06.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_06.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;rect fill="none" width="60" height="60" x="70" y="50" stroke="#000" stroke-width="2" /&gt;
 &lt;rect fill="#c00" width="60" height="60" x="70" y="50" transform="scale(-1,1) translate(-135)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_06.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_06.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <h2>rotate(angle,[cx,cy])</h2>
 <p>rotate 可以控制圖形的旋轉角度，順時針為正，逆時針為負，旋轉圓心的預設值為 SVG 整張畫布的左上角(0,0)，當然我們也可以自訂圓心的座標值。</p>
 <pre class="prettyprint"><code>&lt;rect fill="none" width="60" height="60" x="50" y="50" stroke="#000" stroke-width="2" /&gt;
 &lt;rect fill="#c00" width="60" height="60" x="50" y="50" transform="rotate(-20)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_07.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_07.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;rect fill="none" width="60" height="60" x="50" y="50" stroke="#000" stroke-width="2" /&gt;
 &lt;rect fill="#c00" width="60" height="60" x="50" y="50" transform="rotate(-20,50,50)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_08.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_08.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <h2>skewX(angle)、skewY(angle)</h2>
 <p>最後一個基本的方法是 skew 傾斜，分別是要設定 X 與 Y 方向的傾斜角度，不過與 scale 有點相同的地方，使用 skew 之後，也必須使用 translate 把位置調整回來才可以 ( 同樣是因為 Matrix 矩陣運算，在水平或垂直方向上會加上一個 tan(角度) 的數值，也因此位移了 )</p>
 <pre class="prettyprint"><code>&lt;rect fill="none" width="60" height="50" x="10" y="50" stroke="#000" stroke-width="2" /&gt;
 &lt;rect fill="#c00" width="60" height="50" x="10" y="50" transform="skewX(50)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_09.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_09.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;rect fill="none" width="60" height="50" x="10" y="50" stroke="#000" stroke-width="2" /&gt;
 &lt;rect fill="#c00" width="60" height="50" x="10" y="50" transform="skewX(30) skewY(30)" /&gt;
-</code></pre><p><img src="/img/articles/201409/20140920_1_10.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201409/20140920_1_10.png" alt="SVG 研究之路 (19) - transform 基礎篇"></p>
 <h2>小結</h2>
 <p>以上就是基本的 SVG transform，<a href="http://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html" target="_blank">下一篇</a>將仔細介紹 Matrix 的方法。</p>
 
@@ -175,7 +175,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

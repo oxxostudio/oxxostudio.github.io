@@ -73,13 +73,13 @@
 <p>這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。</p>
 <p>首先介紹一下色彩的解析度，這其實在大學一年級必修的計算機概論中，都會多少提到這觀念，如同 2^8 ( 2 的 8 次方 ) = 256 色的色彩資訊，也就是八位元的色彩資訊，而我們所知的螢幕解析度「高彩」，則是 2^16 = 65536 種顏色，16位元的色彩資訊，全彩則是 2^24 = 16777216，24 位元的色彩資訊。</p>
 <p>看完上面這段，或許你會有個疑問，這與 photoshop 中的位元色版有什麼不同，或是看到 photoshop 中 8 位元，16 位元與32 位元你已經混亂了，這裡面不同的可大了！那什麼是 photoshop 中的 8 位元 16 位元與 32 位元呢？</p>
-<p><img src="/img/articles/201406/20140621_2_02.png" alt="color channel"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140621_2_02.png" alt="color channel"></p>
 <p>若以 8 位元的 RGB 色版為例，則是 R 色版具有 2^8 = 256 種紅色 ( 0~255 )，G 色版與 B 色版也各具有 256 種綠色與藍色 ( 0~255 )，也因此為什麼在 16 進位的色碼中會表示為 00~FF 的原因，所以 8 位元的 RGB 色版，就是包含 256 種紅色，256 種綠色，256 種藍色的色版，其實也就是 24 位元的全彩顏色 ( 256 x 256 x 256 = 2^8 x 2^8 x 2^8 = 2^24 )，這也幾乎包含了我們眼睛所能見到的全部顏色了，此外，或許還有人聽過 32 位元的色彩，那就是包含了 256 種不同的 alpha 色彩。</p>
 <p>而單純灰階的色版，我們也可稱為 8 位元的色版，但他卻是只有 8 位元的顏色，也就是 256 種從黑到白之間的灰色，同理，16 位元的色版，則是 R 色版具有 2^16 = 65536 種紅色，G 色版具有 65536 種綠色，B 色版具有 65536 種藍色，總共則是2^16 x 2^16 x 2^16 = 2^48 種顏色，等於是 48 位元的色彩資訊，當然這幾乎已經是天文數字了，也遠遠超過眼睛所能感受的色彩了。</p>
 <p>接著介紹 32 位元的色版，跟剛剛一樣，RGB 三色版分別都具有 2^32 種紅色綠色藍色，但為什麼現在大家往往朗朗上口的卻是32 位元浮點數色版呢？因為在 8 位元色版與 16 位元色版中，色彩的資訊均以整數表示，類似 255 的紅，或是 65530 的藍( 當然不會是這麼直接的講法 )，而在 32 位元色版中，則是將這 32 個位元，區分為 1 個正負號，8 個整數，23 個小數點後的浮點數，當然這其中牽扯到了許多複雜的傅立葉運算，也因此在32位元色版的色彩選擇中，可以發現許多的小數點與正負號跑出來。</p>
 <p>而誠如 photoshop 說明文件所述，在 CS2 之後的版本於影像調整增加了 "曝光度" 的選項，這個選項的是專門針對 32 位元色版所設計，以及由 32 位元色版轉換為 8 位元或 16 位元色版中的轉換選單，也因為 32 位元色版多出了那一大堆的浮點數
 就更能記錄更多的色彩資訊，所以高動態範圍的影像也都是採用這種位元色版模式記錄資訊囉！</p>
-<p><img src="/img/articles/201406/20140621_2_03.png" alt="color channel"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140621_2_03.png" alt="color channel"></p>
 
 
       <div class="social-icon">
@@ -142,7 +142,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

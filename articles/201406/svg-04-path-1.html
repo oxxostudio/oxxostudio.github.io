@@ -135,51 +135,51 @@
 <ul>
 <li><p><strong>M / m</strong>  </p>
 <p>M 也就是起始點，因此所有的 Path 一定從 M 開始，M 也只有兩個參數，x 和 y ，下列程式表示 (0,0) 為起始點，但因為是起始點，所以看不到東西是正常的 ( 可以自己使用 Illustrator 的鋼筆工具點一個點，是看不到東西的 )。 </p>
-<p><img src="/img/articles/201406/20140611_1_02.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_02.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0" stroke="black"/&gt;
 </code></pre></li>
 <li><p><strong>H / h</strong>  </p>
 <p>H 可以從目前的點畫水平線到某個 x 座標，只有一個參數，x 數字越大越往左，數字越小越往右。( 小寫則可視為長度 ) 下列程式為畫一條水平線到 (50,0)。 </p>
-<p><img src="/img/articles/201406/20140611_1_03.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_03.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 H50" stroke="black"/&gt;
 </code></pre></li>
 </ul>
 <ul>
 <li><p><strong>V / v</strong>  </p>
 <p>V 可以從目前的點畫垂直線到某個 y 座標，只有一個參數，y 數字越大越往下，數字越小越往上。( 小寫則可視為長度 ) 下列程式為畫一條垂直線到 (0,50)。  </p>
-<p><img src="/img/articles/201406/20140611_1_04.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_04.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 V50" stroke="black"/&gt;
 </code></pre></li>
 <li><p><strong>L / l</strong>  </p>
 <p>L 可以從目前的點畫垂直線到某個座標，有兩個參數個參數 x、y，也就是要移動到的座標點，下列程式為畫一條線到 (50,50)。 </p>
-<p><img src="/img/articles/201406/20140611_1_05.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_05.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 L50 50" stroke="black"/&gt;
 </code></pre></li>
 </ul>
 <ul>
 <li><p><strong>C / c</strong>  </p>
 <p>C 表示可以畫一個如下圖所示的三次貝茲曲線 ( 對於數學式想了解的可以參考 <a href="http://en.wikipedia.org/wiki/B%C3%A9zier_curve" target="_blank">這篇</a> )，因此總共會有六個控制點，分別是 x1,y1,x2,y2,x,y，當中 x1,y2 表示第一個貝茲曲線的控制點，x2,y2 表示第二個貝茲曲線的控制點，x,y 則是線段的結束點，這裡 C 和 c 的大小寫一定要搞清楚，如果是使用 Illustrator 畫出來的，c 是小寫喔！下面的程式就會畫出一個波浪型的線段。</p>
-<p><img src="/img/articles/201406/20140611_1_06.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_06.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 C40 40,60 40,100,0" stroke="black" fill="none"/&gt;
 </code></pre></li>
 <li><p><strong>S / s</strong>  </p>
 <p>S 可以在原本的點後方建立一個帶有貝茲曲線控制點的點，然後原本的點會以同樣的斜率鏡射一個貝茲控制點，講得很像繞口令，可以可以看下圖就明白了。</p>
-<p><img src="/img/articles/201406/20140611_1_07.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_07.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 C40 40,60 40,100,0 S150 -40, 200 0" stroke="black" fill="none"/&gt;
 </code></pre></li>
 <li><p><strong>Q / q</strong></p>
 <p>Q 就簡單多了，就是起點和終點的貝茲曲線共用同一個控制點，只需要有貝茲控制點的座標和終點座標即可。</p>
-<p><img src="/img/articles/201406/20140611_1_08.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_08.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 Q50 50, 100 0" stroke="black" fill="none"/&gt;
 </code></pre></li>
 <li><p><strong>T / t</strong></p>
 <p>T 只有一組參數 x,y ，表示終點的座標，所以 T 的前方要接上 Q 才能畫出對應的座標線。</p>
-<p><img src="/img/articles/201406/20140611_1_09.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_09.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 Q50 50, 100 0 T200 0" stroke="black" fill="none"/&gt;
 </code></pre></li>
 <li><p><strong>Z / z</strong></p>
 <p>Z 沒有參數，也是放在最後的，有加上 Z 的話，會從終點用一條線連回起點。</p>
-<p><img src="/img/articles/201406/20140611_1_10.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
+<p><img class="lazy" data-src="/img/articles/201406/20140611_1_10.png" alt="SVG 研究之路 (4) - Path 基礎篇"></p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 Q50 50, 100 0 T200 0 Z" stroke="black" fill="none"/&gt;
 </code></pre></li>
 </ul>
@@ -247,7 +247,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

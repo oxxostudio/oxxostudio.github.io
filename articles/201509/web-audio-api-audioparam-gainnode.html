@@ -106,7 +106,7 @@ gainNode.gain.setValueAtTime(10, context.currentTime+5);
 oscillator.start(context.currentTime+0);
 oscillator.stop(context.currentTime+6);
 </code></pre><p>示意圖：</p>
-<p><img src="/img/articles/201509/20150929_1_02.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150929_1_02.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p>把剛剛的範例換成<code>linearRampToValueAtTime</code>，就不會是跳耀的聲音，而會是有漸大漸小的線性變化，會聽到先大聲，再小聲，接著更大聲然後聲音慢慢變小停止，過程共八秒。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo02.html" target="_blank">web-audio-api-audioparam-gainnode-demo02.html</a> )</p>
 <pre class="prettyprint"><code>gainNode.gain.linearRampToValueAtTime(0, context.currentTime+0); 
 gainNode.gain.linearRampToValueAtTime(3, context.currentTime+2); 
@@ -117,7 +117,7 @@ gainNode.gain.linearRampToValueAtTime(0, context.currentTime+8);
 oscillator.start(context.currentTime+0);
 oscillator.stop(context.currentTime+8);
 </code></pre><p>示意圖：</p>
-<p><img src="/img/articles/201509/20150929_1_03.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150929_1_03.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p>同樣的，換成<code>exponentialRampToValueAtTime</code>就會採用指數函數的變化，不過由於是指數函數，所以傳入的數值「不可以等於零或小於零」，不然就會發生錯誤 ( 數學運算的緣故 )。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo03.html" target="_blank">web-audio-api-audioparam-gainnode-demo03.html</a> )</p>
 <pre class="prettyprint"><code>gainNode.gain.exponentialRampToValueAtTime(1, context.currentTime+0); 
 gainNode.gain.exponentialRampToValueAtTime(5, context.currentTime+3); 
@@ -126,7 +126,7 @@ gainNode.gain.exponentialRampToValueAtTime(1, context.currentTime+6);
 oscillator.start(context.currentTime+0);
 oscillator.stop(context.currentTime+6);
 </code></pre><p>示意圖：</p>
-<p><img src="/img/articles/201509/20150929_1_04.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150929_1_04.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p>這個<code>setTargetAtTime</code>表示接近該數值的時候，用指數的方式前往該數值，有三個參數，第三個參數越大，表示漸變的斜率越緩和，越小則斜率越陡，數值變化的也越快，換句話說，也就是在幾秒內要變化到那個程度。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo04.html" target="_blank">web-audio-api-audioparam-gainnode-demo04.html</a> )</p>
 <pre class="prettyprint"><code>gainNode.gain.setValueAtTime(0, context.currentTime+1);
 gainNode.gain.setTargetAtTime(3, context.currentTime+1, 0.1);  
@@ -135,7 +135,7 @@ gainNode.gain.setTargetAtTime(5, context.currentTime+4, 2);
 oscillator.start(context.currentTime+0);
 oscillator.stop(context.currentTime+6);
 </code></pre><p>示意圖：</p>
-<p><img src="/img/articles/201509/20150929_1_05.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150929_1_05.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p><code>setValueCurveAtTime</code>表示自定曲線，由我們自訂的曲線變換至指定的數值，也有三個參數，範例是按照 W3C 所提供的範例做成。( 範例：<a href="/demo/201509/web-audio-api-audioparam-gainnode-demo05.html" target="_blank">web-audio-api-audioparam-gainnode-demo05.html</a> )</p>
 <pre class="prettyprint"><code>var curveLength = 44100;
 var curve = new Float32Array(curveLength);
@@ -147,7 +147,7 @@ gainNode.gain.setValueCurveAtTime(curve, context.currentTime+0, 6);
 oscillator.start(context.currentTime+0);
 oscillator.stop(context.currentTime+6);
 </code></pre><p>示意圖：</p>
-<p><img src="/img/articles/201509/20150929_1_06.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150929_1_06.jpg" alt="聲音參數與音量節點 ( AudioParam,GainNode )"></p>
 <p>以上就是利用 GainNode 來示範 AudioParam 的效果，有了這些淡入淡出控制數值的做法，之後在處理聲音上應該也就會更得心應手了。</p>
 
 
@@ -211,7 +211,7 @@ oscillator.stop(context.currentTime+6);
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

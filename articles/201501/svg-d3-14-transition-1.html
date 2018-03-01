@@ -107,7 +107,7 @@ d3.select('.box3')
     .style({
         'top':'100px'
     });
-</code></pre><p><img src="/img/articles/201501/20150124_1_02.gif" alt="SVG D3.js - transition 基本篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201501/20150124_1_02.gif" alt="SVG D3.js - transition 基本篇"></p>
 <h2>.style()、.attr()</h2>
 <p>在上面的範例，其實還用到了<code>.style</code>這個方法，這個方法就是單純的針對具有樣式的樣式屬性去做變換，如果換成像 SVG 裡頭使用 attr 控制的元素，就必須要改用<code>.attr</code>的方式來控制，例如下面這個範例。( 範例：<a href="/demo/201501/svg-d3-14-transition-1-demo2.html" target="_blank">svg-d3-14-transition-1-demo2.html</a> )</p>
 <pre class="prettyprint"><code>d3.selectAll('rect')
@@ -132,7 +132,7 @@ d3.select('#r3')
     .attr({
         'y':'100'
     });
-</code></pre><p><img src="/img/articles/201501/20150124_1_03.gif" alt="SVG D3.js - transition 基本篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201501/20150124_1_03.gif" alt="SVG D3.js - transition 基本篇"></p>
 <h2>.ease()</h2>
 <p>看完上面兩個範例，我想應該已經大致上了解 transition 的運作原理，接著再來就看看<code>.ease</code>這個方法，在剛剛的兩個範例裏頭，並沒有設定<code>.ease</code>，呈現出來就是死板板的等速運動，換句話說，就是用<code>.ease(‘linear’)</code>的這個預設的動作類型，為了讓動畫看起來更漂亮，我們就會使用加速、減速或反彈...等動作類型，這些類型，在 d3.js 裏頭其實已經預設了不少囉！以下就是<code>.ease</code>具備的動作類型：</p>
 <ul>
@@ -162,7 +162,7 @@ d3.select('.box2')
     .style({
         'top': '200px'
     });
-</code></pre><p><img src="/img/articles/201501/20150124_1_04.gif" alt="SVG D3.js - transition 基本篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201501/20150124_1_04.gif" alt="SVG D3.js - transition 基本篇"></p>
 <p>除此之外，還有另外四種類型。( 範例：<a href="/demo/201501/svg-d3-14-transition-1-demo4.html" target="_blank">svg-d3-14-transition-1-demo4.html</a> )</p>
 <ul>
 <li>cubic-in：加速</li>
@@ -178,7 +178,7 @@ d3.select('.box2')
 });
 </code></pre></li>
 </ul>
-<p><img src="/img/articles/201501/20150124_1_05.gif" alt="SVG D3.js - transition 基本篇"></p>
+<p><img class="lazy" data-src="/img/articles/201501/20150124_1_05.gif" alt="SVG D3.js - transition 基本篇"></p>
 <h2>.each()</h2>
 <p>看完<code>.ease</code>，接下來就是<code>.each</code>這個方法，按照官網的說明，這是一個在補間動畫運作時的「監聽器」 ( listener )，具有三種類型，分別是「start」、「end」與「interrupt」，「start」代表在補間動畫開始的時候，同時執行，但根據官方說法，會有 17ms 的延遲，所以也不是完全同時，「end」表示在補間動畫結束後，要執行甚麼，而「interrupt」則表示當補間動畫中斷時，會執行些甚麼，下面的範例，第一個正方形在開始的時候就會有邊框，第二個則是在結束的時候會有邊框，第三個按鈕則是在我們按下 interrupt 按鈕的時候會出現邊框。( 範例：<a href="/demo/201501/svg-d3-14-transition-1-demo5.html" target="_blank">svg-d3-14-transition-1-demo5.html</a> )</p>
 <pre class="prettyprint"><code>d3.select('.box1')
@@ -217,7 +217,7 @@ d3.select('.box3')
                 'border':'10px solid #000'
             });
     });
-</code></pre><p><img src="/img/articles/201501/20150124_1_06.gif" alt="SVG D3.js - transition 基本篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201501/20150124_1_06.gif" alt="SVG D3.js - transition 基本篇"></p>
 <h2>.call()</h2>
 <p>最後就是<code>.call</code>這個方法，其實這就類似我們在寫 JS 的時候，會把多個地方用到的函式獨立出來一樣，在下面的範例，由於三個正方形都會移動到同樣的位置，所以我們就將位置獨立出來，再使用<code>.call</code>來呼叫即可。( 範例：<a href="/demo/201501/svg-d3-14-transition-1-demo6.html" target="_blank">svg-d3-14-transition-1-demo6.html</a> )</p>
 <pre class="prettyprint"><code>function d3Transition(){
@@ -243,7 +243,7 @@ function foo(t){
             'top':'100px'
         });
 }
-</code></pre><p><img src="/img/articles/201501/20150124_1_03.gif" alt="SVG D3.js - transition 基本篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201501/20150124_1_03.gif" alt="SVG D3.js - transition 基本篇"></p>
 <p>補充一點，我們也可以將 transition 組合起來成為一連串的動畫效果。( 範例：<a href="/demo/201501/svg-d3-14-transition-1-demo7.html" target="_blank">svg-d3-14-transition-1-demo7.html</a> )</p>
 <pre class="prettyprint"><code>d3.select('.box1')
     .transition()
@@ -258,7 +258,7 @@ function foo(t){
     .transition()
     .duration(1000)
     .style('left','10px');
-</code></pre><p><img src="/img/articles/201501/20150124_1_07.gif" alt="SVG D3.js - transition 基本篇"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201501/20150124_1_07.gif" alt="SVG D3.js - transition 基本篇"></p>
 <h2>小結</h2>
 <p>以上就是 d3.js 裏頭 transition 的基本用法，不過 transition 真是滿博大精深的，之後將會再用其他篇幅，介紹比較深入的用法囉！</p>
 <p>( 第一張圖片來源：<a href="http://iallenkelhet.no/2013/04/02/animation-a-little-goes-a-long-way/" target="_blank">http://iallenkelhet.no/2013/04/02/animation-a-little-goes-a-long-way/</a> )</p>
@@ -324,7 +324,7 @@ function foo(t){
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

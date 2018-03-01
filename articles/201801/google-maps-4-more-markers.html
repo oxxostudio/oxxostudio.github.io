@@ -110,7 +110,7 @@ function addMarker(e) {
     label: position[e].label
   });
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-4-more-markers-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-4-more-markers-01.jpg" alt=""></p>
 <h2>點擊按鈕，依序放入地圖標記</h2>
 <p>已經知道如何放入多個標記後，接著就來試著做個按鈕，搭配地圖標記的 DROP 動畫效果，就能在點擊按鈕的當下，讓地圖標記依序落下並且載入。</p>
 <p>首先在 html 裡放入一個 button，撰寫一點 CSS 讓這個按鈕可以置中並且浮在地圖上方，同時用滑鼠按下去的時候，也可以透過<code>active</code>來設定壓下去的感覺，此外在 HTML 的按鈕標籤裡，增加一個<code>onclick</code>的事件，讓點擊按鈕的時候，執行<code>go()</code>這個 function。</p>
@@ -134,7 +134,7 @@ function addMarker(e) {
 #btn:active{
   box-shadow:rgba(0,0,0,.5) 0 3px 5px;
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-4-more-markers-02.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-4-more-markers-02.gif" alt=""></p>
 <p>再來看到初始化地圖的程式，其實跟剛剛的程式一模一樣，差別只在於不要在一開始的時候不要先把地圖標記放進去。</p>
 <pre class="prettyprint"><code>var map;
 var markers = [];
@@ -193,7 +193,7 @@ function clearMarkers() {
 <blockquote>
 <p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-02.html" target="_blank">連點會有問題的地圖標記</a></p>
 </blockquote>
-<p><img src="/img/articles/201801/google-maps-4-more-markers-03.gif" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201801/google-maps-4-more-markers-03.gif" alt=""></p>
 <p>所以如果要解決這個狀況，就變成要把 marker 的部分改成用<code>push</code>的，就可以一勞永逸地解決這問題。</p>
 <blockquote>
 <p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-03.html" target="_blank">點擊按鈕，依序放入地圖標記</a></p>
@@ -211,7 +211,7 @@ function clearMarkers() {
       }));
   }, e * 150);
 }
-</code></pre><p><img src="/img/articles/201801/google-maps-4-more-markers-04.gif" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201801/google-maps-4-more-markers-04.gif" alt=""></p>
 
 
       <div class="social-icon">
@@ -274,7 +274,7 @@ function clearMarkers() {
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

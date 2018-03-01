@@ -213,12 +213,12 @@ svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
-</code></pre><p><img src="/img/articles/201412/20141229_1_02.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141229_1_02.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
 <p>當我們把時間間隔縮減，就會發現時間軸的格式自動變化了。( 範例：<a href="/demo/201412/svg-d3-11-time-demo5.html" target="_blank">svg-d3-11-time-demo5.html</a> )</p>
 <pre class="prettyprint"><code>var x = d3.time.scale()
 .domain([new Date(2012, 0, 1), new Date(2012, 3, 1)])
 .range([0, width]);
-</code></pre><p><img src="/img/articles/201412/20141229_1_03.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201412/20141229_1_03.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
 <h2>d3.time.format.utc(specifier)</h2>
 <p>utc 是標準定位時間格式 ( UTC time )，以台灣來說，就是 UTC+8:00，utc 對於跨時區或涉及多個國家地區的時候，設定為 utc 的時間會比較方便，UTC 傳回參數日期的 GMT ( 由 1970年1月1日零時零分計起，以微秒為單位 )</p>
 <h2>d3.time.format.iso</h2>
@@ -297,7 +297,7 @@ console.log(i);    //2014-12-29T15:15:05.665Z
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

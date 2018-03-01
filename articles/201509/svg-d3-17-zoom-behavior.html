@@ -157,7 +157,7 @@ container.append("g").selectAll('circle')
   });
 </code></pre><p><br></p>
 <p>如果沒有意外，完成後的長相應該會像下圖這樣，不過還不能縮放，因為我們還沒有寫 zoom 的程式進去。( 範例：<a href="/demo/201509/svg-d3-17-zoom-behavior-demo01.html" target="_blank">svg-d3-17-zoom-behavior-demo01.html</a> )</p>
-<p><img src="/img/articles/201509/20150915_1_02.jpg" alt="SVG D3.js - 縮放行為 ( Zoom Behavior )"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150915_1_02.jpg" alt="SVG D3.js - 縮放行為 ( Zoom Behavior )"></p>
 <p>再來就是要針對 SVG 加入 zoom 的行為，我們先新增三個全域變數 x、y、s，作為紀錄縮放改變大小的位置偏移量以及縮放尺寸，如此一來我們「要縮回去原本大小的時候，就有一個參考的準則」，接著設置一個 zoom 的行為，一開始的 translate 設為 0,0，也就是會對齊左上角，scaleExtent 設為 [1,10]，最大值鎖定在 10 倍大，預設的 scale 設為 1，然後寫一下在 zoom 發生時要執行的 function，重點在利用<code>d3.event.translate</code>獲取當下的偏移量，用<code>d3.event.scale</code>獲得當下的縮放比例，最後設置新的偏移量以及尺寸。( 在這裡不用煩惱滑鼠與座標的轉換，因為在 d3.event 裏頭已經幫我們算好了 )</p>
 <p>然後最重要的，在剛剛的 svg 後方加入 call，呼叫 zoom 的行為，到這個步驟，打開範例我們已經可以用滑鼠的滾輪，或是手勢來進行縮放了。
 ( 範例：<a href="/demo/201509/svg-d3-17-zoom-behavior-demo02.html" target="_blank">svg-d3-17-zoom-behavior-demo02.html</a> )</p>
@@ -214,7 +214,7 @@ var svg = d3.select('body')
   });
 });
 </code></pre><p>最後最後，我們加上一段<code>svg.call(zoom.event);</code>，這樣一開始才會按照我們設定 zoom 的屬性安排畫面，到這邊，我們已經完成了一個可以縮放，點選也會放大，又可以回歸原本大小的畫面囉！zoom 其實相當的好用，之後會再繼續介紹更多好玩的！ ( 最終完成範例：<a href="/demo/201509/svg-d3-17-zoom-behavior-demo03.html" target="_blank">svg-d3-17-zoom-behavior-demo03.html</a> )</p>
-<p><img src="/img/articles/201509/20150915_1_03.gif" alt="SVG D3.js - 縮放行為 ( Zoom Behavior )"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150915_1_03.gif" alt="SVG D3.js - 縮放行為 ( Zoom Behavior )"></p>
 
 
       <div class="social-icon">
@@ -277,7 +277,7 @@ var svg = d3.select('body')
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

@@ -85,7 +85,7 @@
     }
   );
 }
-</code></pre><p><img src="/img/articles/201706/google-spreadsheet-3-show-data-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-3-show-data-01.jpg" alt=""></p>
 <p>因為把網址和儲存格都改成變數了，程式碼.gs 理所當然也要做點修改，除了把網址、名稱和儲存格設為變數外，也把結束的儲存格設成變數，同時用個三元運算子判斷，如果我們提供的 parameter 沒有這個屬性，就自動將其設為 1，最後又因為我們要在外面的網頁去接資料，所以必須要利用<code>ContentService.createTextOutput</code>把資料拋出。</p>
 <blockquote>
 <p>參考：<a href="https://developers.google.com/apps-script/reference/content/content-service" target="_blank">Class ContentService</a></p>
@@ -104,19 +104,19 @@
   Logger.log(data);
   return ContentService.createTextOutput(data); // 將資料透過 ContentService 拋出
 }
-</code></pre><p><img src="/img/articles/201706/google-spreadsheet-3-show-data-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-3-show-data-02.jpg" alt=""></p>
 <p>正式開始前，先回到 debug.gs，點選上方三角形的執行，如果沒有問題，應該就可以在紀錄裡面看到取得 A1 儲存格的數值 123。</p>
-<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-03.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-3-show-data-03.jpg" alt=""></p>
 <h2>部署 Google App Script</h2>
 <p>要在外部的網頁透過 Google App Script 讀取資料，就得先把程式部署到網路上，第一個步驟是點選上方的「<em>發佈 &gt; 部署為網路應用程式</em>」。</p>
 <blockquote>
 <p>注意，如果要透過外部網頁操控，Google App Script 有規範<strong>名稱一定要是 doGet(e) 或 doPost(e)</strong>，如果名稱不是這兩個請返回修改。參考：<a href="https://developers.google.com/apps-script/guides/web#url_parameters" target="_blank">URL parameters</a></p>
 </blockquote>
-<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-04.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-3-show-data-04.jpg" alt=""></p>
 <p>開啟部署畫面後，將具有應用程式存取權的使用者，設定為「<strong>任何人，甚至是匿名使用者</strong>」。</p>
-<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-05.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-3-show-data-05.jpg" alt=""></p>
 <p>點選「部署」後，就完成部署的手續，這段應用程式的網址，就可以用來進行用網頁讀取試算表資料了。</p>
-<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-06.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-3-show-data-06.jpg" alt=""></p>
 <h2>網頁顯示試算表的資料</h2>
 <p>要使用網頁讀取，一開始先把 parameter 像剛剛 debug.gs 一樣，設定為物件，裡面屬性有試算表的網址、工作表名稱、startRow 和 startColumn，然後透過 jQuery 的<code>$.get</code>來把資料傳入並讀取，第一個參數放上剛剛 Google App Script 的部屬網址，第二個參數是要傳入的 parameter，第三個則是傳入之後，Google App Script 會拋回來數值，透過 console 印出。</p>
 <blockquote>
@@ -132,7 +132,7 @@ $.get('Google App Script 網址', parameter, function(data) {
   console.log(data);
 });
 </code></pre><p>網頁執行之後，應該就可以看到 console 的地方顯示 A1 儲存格的資料 123 了。</p>
-<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-07.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-3-show-data-07.jpg" alt=""></p>
 <p>我們可以把彈性做得再大一點，在網頁 html 的部分放入一些欄位，這樣就可以用填入的方式填入網址、欄位...等資訊，而不是直接寫死在程式碼內，然後按下按鈕的時候，可以把資訊顯示在 h2 的標籤內。</p>
 <pre class="prettyprint"><code>Google App Script：&lt;input id="appUrl"&gt;&lt;br/&gt; 
 試算表網址：&lt;input id="sheetsUrl"&gt;&lt;br/&gt; 
@@ -170,7 +170,7 @@ sendBtn.on('click',function() {
 <blockquote>
 <p>範例：<a href="/demo/201706/google-spreadsheet-3-show-data-demo-01.html" target="_blank">demo-01.html</a></p>
 </blockquote>
-<p><img src="/img/articles/201706/google-spreadsheet-3-show-data-08.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/google-spreadsheet-3-show-data-08.jpg" alt=""></p>
 <h2>小結</h2>
 <p>可以用網頁查詢試算表資料是很方便的，因為在不會資料庫的情況下，我們也可以把 Google 試算表當作是簡單的資料庫使用，甚至透過網頁做出更多不同的變化。</p>
 
@@ -235,7 +235,7 @@ sendBtn.on('click',function() {
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

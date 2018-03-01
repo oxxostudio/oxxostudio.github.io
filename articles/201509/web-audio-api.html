@@ -122,7 +122,7 @@ oscillator3.start();
 oscillator3.stop(2);
 </code></pre><h2>控制發出的聲音</h2>
 <p>瞭解怎麼利用 Web Audio Api 發聲之後，接著就是要來控制我們所發出來的聲音，但是在我們要控制聲音之前，必須要先了解「節點 AudioNode」這個概念，在 AudioContext 裡，主要就是音樂節點的處理和控制，換個角度思考，AudioContext 就像是一張畫布，在上頭繪製的圖形，就是我們的音符，把音符串在一起，就變成了一首曲子，整個流程圖如下：</p>
-<p><img src="/img/articles/201509/20150928_1_02.jpg" alt="初探 Web Audio API"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150928_1_02.jpg" alt="初探 Web Audio API"></p>
 <p>簡單來說，source 是我們的音訊來源，不論是用剛剛講的 oscillator 來做，或直接播放音訊，總之音訊來源就都必須轉換為 AudioNode，才能夠做進一步的控制，也就是進入「Processing Nodes」的階段，在這個階段我們就有許多的特殊節點模組 ( Nodes Modules ) 可以進行運算，最後就利用「destination」做輸出的動作，中間的每個步驟，我們都會使用「connect」來做連結，這也是為什麼在使用 Web Audio Api 的程式碼裡頭，都會出現許多 connect，同時也是上面的範例最後用了<code>oscillator3.connect(context.destination);</code>的原因。</p>
 <p>詳細的 Nodes Modules 會在之後的篇幅介紹，這裏我先用到一個最簡單也是最容易理解的 Nodes Modules：「GainNode 音量節點」，顧名思義這就是拿來控制音量使用的，因為我們已經進入 AudioNode 的階段，所以寫法上就要做點小更動，剛剛我們是直接用 oscillator 去連結 context.destination，這裏因為 oscillator 先連結了 gainNode，所以再來我們是要用 gainNode 去連結 context.destination，下面的範例打開以後，就會先聽到兩秒的標準音量，再來又會聽到兩秒變成原本音量 0.3 倍的聲音。( 範例：<a href="/demo/201509/web-audio-api-demo02.html" target="_blank">web-audio-api-demo02.html</a> )</p>
 <pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
@@ -238,7 +238,7 @@ volumeRange.oninput = function(){
 <pre class="prettyprint"><code>oscillator.start();
 </code></pre><h2>小結</h2>
 <p>到這邊為止，我們已經完成了一個很簡單的聲音產生器，這也是 Web Audio Api 最基本的起手勢，不嫌棄的話就玩玩看吧！( 範例：<a href="/demo/201509/web-audio-api-demo03.html" target="_blank">web-audio-api-demo03.html</a> )</p>
-<p><img src="/img/articles/201509/20150928_1_03.jpg" alt="初探 Web Audio API"></p>
+<p><img class="lazy" data-src="/img/articles/201509/20150928_1_03.jpg" alt="初探 Web Audio API"></p>
 
 
       <div class="social-icon">
@@ -301,7 +301,7 @@ volumeRange.oninput = function(){
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

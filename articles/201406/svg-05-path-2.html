@@ -85,13 +85,13 @@
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本用法</h2>
 <p>首先來看一個利用 A 指令畫出來的弧形：扁長型，x,y 軸半徑比例為 5:1，小角度弧線，<strong>逆時針</strong>方向  </p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 A100 20,0 0 0 50 100" stroke="#000" fill="none"/&gt;
-</code></pre><p><img src="/img/articles/201406/20140612_1_02.png" alt="SVG-Path">  </p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140612_1_02.png" alt="SVG-Path">  </p>
 <p>扁長型，x,y 軸半徑比例為 5:1，小角度弧線，<strong>順時針</strong>方向  </p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 A100 20,0 0 1 50 100" stroke="#000" fill="none"/&gt;
-</code></pre><p><img src="/img/articles/201406/20140612_1_03.png" alt="SVG-Path">  </p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140612_1_03.png" alt="SVG-Path">  </p>
 <p>扁長型，x,y 軸半徑比例為 5:1，<strong>大角度</strong>弧線，順時針方向 ( 因為只有兩個點，所以大小角度結果相同，返回原來的點了 ) </p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 A100 20,0 1 1 50 100" stroke="#000" fill="none"/&gt;
-</code></pre><p><img src="/img/articles/201406/20140612_1_03.png" alt="SVG-Path"> </p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140612_1_03.png" alt="SVG-Path"> </p>
 <h2>大小角度差異</h2>
 <p>看到上圖可能很多人會混淆，為什麼大小角度是相同的結果，只因為 Path 裏頭我們只提供了兩個點，兩個點只有一條線，不會有角度的問題，因此為了實際測試，我們多增加一個點，就可以看出大小角度的差異。  </p>
 <pre class="prettyprint"><code>大角度 ( 黑色線 )
@@ -99,7 +99,7 @@
 
 小角度 ( 紅色線 )
 &lt;path d="M0 0 L50 50 A50 50,0 0 0 100 0" stroke="#f00" fill="none"/&gt;
-</code></pre><p><img src="/img/articles/201406/20140612_1_04.png" alt="SVG-Path"> </p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140612_1_04.png" alt="SVG-Path"> </p>
 <p>不過這裡要注意，如果弧形的 x,y 軸的長度相加，小於弧線兩點之間的距離，那麼就會一律以大角度弧線顯示，以上面的公式來說，弧線兩點之間的長度為：50的平方加50的平方然後開根號，大約是 70.7 左右，因此如果小於弧線的兩個軸的長度相加小於 70.71 ，就會一律用大角度弧線表示。</p>
 <p>小於 70.71 ( 加起來 60，兩條弧線重疊 )  </p>
 <pre class="prettyprint"><code>大角度 ( 黑色線 )
@@ -107,18 +107,18 @@
 
 小角度 ( 紅色線 )
 &lt;path d="M0 0 L50 50 A50 10,0 0 0 100 0" stroke="#f00" fill="none"/&gt;
-</code></pre><p><img src="/img/articles/201406/20140612_1_05.png" alt="SVG-Path"> </p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140612_1_05.png" alt="SVG-Path"> </p>
 <p>大於 70.71 ( 加起來 80，兩條弧線分開 )  </p>
 <pre class="prettyprint"><code>大角度 ( 黑色線 )
 &lt;path d="M0 0 L50 50 A50 30,0 1 0 100 0" stroke="#000" fill="none"/&gt;
 
 小角度 ( 紅色線 )
 &lt;path d="M0 0 L50 50 A50 30,0 0 0 100 0" stroke="#f00" fill="none"/&gt;
-</code></pre><p><img src="/img/articles/201406/20140612_1_06.png" alt="SVG-Path"> </p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201406/20140612_1_06.png" alt="SVG-Path"> </p>
 <p>為什麼會這樣呢？主要因為小角度的弧線，是指三角形的三個內角合小於 180 度，但不代表弧線和直線的合可以變成負值，因為如果變成負值，計算起來也會變成大角度的弧線，這也是要非常注意的地方！下面這張圖是很好的說明範例：  </p>
-<p><img src="/img/articles/201406/20140612_1_07.png" alt="SVG-Path"> </p>
+<p><img class="lazy" data-src="/img/articles/201406/20140612_1_07.png" alt="SVG-Path"> </p>
 <p>關於 A 的指令，最難的就是上述的大角度小角度弧線，而最後一個參數，就是指弧線跟的 x 軸和畫面 x 軸的夾角，我們看以下的範例：  </p>
-<p><img src="/img/articles/201406/20140612_1_08.png" alt="SVG-Path"> </p>
+<p><img class="lazy" data-src="/img/articles/201406/20140612_1_08.png" alt="SVG-Path"> </p>
 <pre class="prettyprint"><code>夾角 0 度 ( 黑色線 )
 &lt;path d="M0 0 A50 100,0 0 0 100 0" stroke="#000" fill="none"/&gt;
 
@@ -190,7 +190,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

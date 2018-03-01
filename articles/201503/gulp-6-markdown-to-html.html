@@ -166,7 +166,7 @@ gulp.task('webserver', ['extend'],function() {
 
 gulp.task('default',['watch','webserver']);
 </code></pre><p>任務都用好之後，就可以執行 gulp 看看，如此一來，其實我們已經建立了一個簡易的 markdown 自動轉 html 的環境，當然還有很多地方要設定，之後會再慢慢分享，上圖執行之後的資料夾顯示圖就像下面這樣：</p>
-<p><img src="/img/articles/201503/20150313_1_02.jpg" alt="Gulp 學習 6 - 架設 Markdown 轉 HTML 環境"></p>
+<p><img class="lazy" data-src="/img/articles/201503/20150313_1_02.jpg" alt="Gulp 學習 6 - 架設 Markdown 轉 HTML 環境"></p>
 <p>完整的 gulpfile.js：</p>
 <pre class="prettyprint"><code>var gulp      = require('gulp'),
       md        = require('gulp-markdown'),
@@ -272,7 +272,7 @@ gulp.task('default',['watch','webserver']);
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

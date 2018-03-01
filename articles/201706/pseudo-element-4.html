@@ -77,7 +77,7 @@
 <pre class="prettyprint"><code>p::first-line{
   color:green;
 }
-</code></pre><p><img src="/img/articles/201706/pseudo-element-4-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-4-01.jpg" alt=""></p>
 <h2>::first-letter</h2>
 <p>::first-line 顧名思義就是「第一個字」，透過這個偽元素，可以做出許多文章第一個字放大或變色的效果，我們這裡就用剛剛上面那段文字為例，把第一個字用下列的 CSS 來做變化，就可以看到第一個字放大且變色了。</p>
 <pre class="prettyprint"><code>p::first-letter{
@@ -85,7 +85,7 @@
   font-size:38px;
   color:red;
 }
-</code></pre><p><img src="/img/articles/201706/pseudo-element-4-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-4-02.jpg" alt=""></p>
 <p>雖然把第一個字放大了，但排列上仍然有點亂，所以可以加入<code>line-height</code>、<code>float</code>或<code>padding</code>來進行修正，如此一來就會真的很像報章雜誌會出現的效果了。</p>
 <pre class="prettyprint"><code>p::first-letter{
   font-weight:bold;
@@ -95,21 +95,21 @@
   float:left;
   padding:10px 5px 0 0;
 }
-</code></pre><p><img src="/img/articles/201706/pseudo-element-4-03.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-4-03.jpg" alt=""></p>
 <p>不過很有趣的是，在實作的過程裡，發現「有一些符號」是無法套用 ::first-letter 的，例如「『 {} [] 都不行，但如果後方加上其他文字或符號，又會跟著一起放大...( 到底是怎樣？ )</p>
-<p><img src="/img/articles/201706/pseudo-element-4-05.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/pseudo-element-4-05.jpg" alt=""></p>
 <p>經過查詢 W3C 的資訊，發現了下面這段話，意思大概就是說網頁裡面有定義一些所謂「<em>包覆式、點綴式的標點符號</em>」，如果是這些包覆式的標點符號，基本上就無法放大，反而需要搭配其它字元使用，也因如此，在使用第一個字元變化的時候，就要注意有這種特殊狀況會發生。</p>
 <blockquote>
 <p>參考：<a href="https://www.w3.org/TR/CSS21/selector.html#first-letter" target="_blank">https://www.w3.org/TR/CSS21/selector.html#first-letter</a></p>
 </blockquote>
-<p><img src="/img/articles/201706/pseudo-element-4-04.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/pseudo-element-4-04.jpg" alt=""></p>
 <h2>::selection</h2>
 <p>::selection 是個十分常見的偽元素，它就是負責一段選取文字的效果，以下面這段 CSS 來說，選取後的文字，就會是深色背景，黃色文字。</p>
 <pre class="prettyprint"><code>p::selection{
   color:yellow;
   background:#543;
 }
-</code></pre><p><img src="/img/articles/201706/pseudo-element-4-06.jpg" alt=""></p>
+</code></pre><p><img class="lazy" data-src="/img/articles/201706/pseudo-element-4-06.jpg" alt=""></p>
 <h2>小結</h2>
 <p>連續四篇深入的介紹了偽元素的用法，雖然說大部分的時候用不太到，但某些時候也不失為強化網頁效果、或是優化網頁程式碼的好方法。</p>
 <blockquote>
@@ -182,7 +182,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

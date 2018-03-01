@@ -73,7 +73,7 @@
 <blockquote>
 <p>參考：<a href="http://wcc723.gitbooks.io/google_design_translate/content/" target="_blank">Google Material Design 正體中文版</a> </p>
 </blockquote>
-<p><img src="/img/articles/201503/20150325_1_02.jpg" alt="純 CSS Material Design 風格按鈕"></p>
+<p><img class="lazy" data-src="/img/articles/201503/20150325_1_02.jpg" alt="純 CSS Material Design 風格按鈕"></p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>應用重點與原理</h2>
 <p>在這篇我純粹利用 CSS ，就做出了 Material Design 風格的按鈕，其實沒有很難，比較需要知道的重點如下：</p>
 <ul>
@@ -82,7 +82,7 @@
 </li>
 <li><p><strong>div 的自身寬度與邊框</strong></p>
 <p>  由於我們要進行三角形與矩形之間的形變，雖然三角形可由邊框產生，但卻無法做出漂亮的形變效果 ( 用背景色的話就會有淡入淡出的現象 )，所以必須要用邊框寬度和矩形大小去搭配，當邊框變細的時候，矩形變大，如此一來就可以做出三角形與矩形互相變換的效果囉，下圖的紅色是純粹用顏色變換，藍色則是用邊框寬度與 div 寬度變換，效果應該很明顯吧！( <a href="/demo/201503/css-material-design-icon-demo2.html" target="_blank">css-material-design-icon-demo2.html</a> )</p>
-<p>  <img src="/img/articles/201503/20150325_1_03.gif" alt="純 CSS Material Design 風格按鈕"></p>
+<p>  <img class="lazy" data-src="/img/articles/201503/20150325_1_03.gif" alt="純 CSS Material Design 風格按鈕"></p>
 </li>
 <li><p><strong>transform 的應用</strong></p>
 <p>  CSS 裡所有的形變都是藉由 transform 來完成 ( 必要時請加各個瀏覽器的前墜字 )，範例裏頭會用到 scale 與 rotate 這兩個變形屬性。</p>
@@ -164,7 +164,7 @@
   background:#0a9;
 }
 </code></pre><p>完成的效果就是長這樣。( <a href="/demo/201503/css-material-design-icon-demo2.html" target="_blank">css-material-design-icon-demo2.html</a> )</p>
-<p><img src="/img/articles/201503/20150325_1_04.gif" alt="純 CSS Material Design 風格按鈕"></p>
+<p><img class="lazy" data-src="/img/articles/201503/20150325_1_04.gif" alt="純 CSS Material Design 風格按鈕"></p>
 <p>接著是另外一個，原理基本上大同小異，然而不需要做形狀變換反而簡單許多，只需要調整角度和長寬就好囉！</p>
 <pre class="prettyprint"><code>.b{
   position:absolute;
@@ -233,7 +233,7 @@
   background:#f70;
 }
 </code></pre><p>完成的效果長這樣。( <a href="/demo/201503/css-material-design-icon-demo3.html" target="_blank">css-material-design-icon-demo3.html</a> )</p>
-<p><img src="/img/articles/201503/20150325_1_05.gif" alt="純 CSS Material Design 風格按鈕"></p>
+<p><img class="lazy" data-src="/img/articles/201503/20150325_1_05.gif" alt="純 CSS Material Design 風格按鈕"></p>
 <p>以上就是純粹利用 CSS 做出來的 Material Design 風格按鈕，相信熟練之後就可以做出更多不錯的應用囉！</p>
 
 
@@ -297,7 +297,7 @@
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}

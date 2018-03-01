@@ -76,7 +76,7 @@
 <blockquote>
 <p>延伸閱讀：<a href="https://goo.gl/l8mN6W" target="_blank">非同步(Asynchronous)與同步(Synchronous)的差異</a></p>
 </blockquote>
-<p><img src="/img/articles/201706/javascript-promise-settimeout-1.jpg" alt=""></p>
+<p><img class="lazy" data-src="/img/articles/201706/javascript-promise-settimeout-1.jpg" alt=""></p>
 <p>如果 JavaScript 撰寫成下面這樣，結果並不會如果們預期的「等待一秒後出現 A，出現 A 後等待一秒再出現 B」，反而是等待一秒後 A、B 同時出現，所以變成傳統在實作的時候，就要寫很多的 callback 來滿足同步的情況。</p>
 <pre class="prettyprint"><code>setTimeout(function(){
     console.log('A');
@@ -243,7 +243,7 @@ delay('a',0).then(function(v){
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20180220"></script>
-  <script src="/js/articles.js?20180220"></script>
+  <script src="/js/articles.js?20180301"></script>
   <!-- highlight -->
   <style>
   .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
