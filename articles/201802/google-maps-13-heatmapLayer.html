@@ -109,7 +109,7 @@
 </code></pre><h2>在 Google 地圖上使用熱度圖</h2>
 <p>搭配上面所介紹的熱度圖設定與方法，可以很簡單的在地圖上畫出一個熱度圖 ( 還沒有使用 weight )，例如下面的例子，假設知道每台車子的座標，基本上就可以用熱度圖，標示出哪個路口車子很多或是正在塞車。</p>
 <blockquote>
-<p>範例：<a href="/demo/201802/google-maps-13-HeatmapLayer-demo-01.html" target="_blank">Google 地圖熱度圖</a></p>
+<p>範例：<a href="/demo/201802/google-maps-13-heatmapLayer-demo-01.html" target="_blank">Google 地圖熱度圖</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 
@@ -142,7 +142,7 @@ function initMap() {
 
   });
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-13-HeatmapLayer-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-13-heatmapLayer-01.jpg" alt=""></p>
 <p>另外一個例子，可以透過 WeightedLocation 指定不同地點的權重，然後也透過 gradient 來修改熱度圖的顏色，最終呈現的風貌就會很不一樣，注意，漸層 gradient 的色彩是由「整份地圖外往內」作漸層，所以位在陣列的第一筆資料是最外圍，也因為會覆蓋地圖，通常會把第一筆資料的透明度設為 0，依序往內，最後一筆資料則是密度最高的的顏色。</p>
 <pre class="prettyprint"><code>var map;
 
@@ -188,9 +188,9 @@ function initMap() {
   });
 }
 </code></pre><blockquote>
-<p>範例：<a href="/demo/201802/google-maps-13-HeatmapLayer-demo-02.html" target="_blank">改變 Google 地圖熱度圖的權重與顏色</a></p>
+<p>範例：<a href="/demo/201802/google-maps-13-heatmapLayer-demo-02.html" target="_blank">改變 Google 地圖熱度圖的權重與顏色</a></p>
 </blockquote>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-13-HeatmapLayer-02.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-13-heatmapLayer-02.jpg" alt=""></p>
 <h2>參考資料：</h2>
 <ul>
 <li><a href="https://developers.google.com/maps/documentation/javascript/heatmaplayer?hl=zh-tw" target="_blank">Google Maps API 熱度圖圖層</a></li>
