@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>Google Maps (12) - 形狀 ( 圓形、矩形 ) demo 01 - OXXO.STUDIO</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+  var map;
+
+  var position = [{
+    lat: 25.0336962,
+    lng: 121.5643673
+  }, {
+    lat: 25.036518,
+    lng: 121.562546
+  }, {
+    lat: 25.033164,
+    lng: 121.557472
+  }];
+
+  var num = [10, 20, 30];
+  var circle = [];
+  var marker = [];
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: position[1]
+    });
+
+    position.forEach(function(e, i) {
+      circle[i] = new google.maps.Circle({
+        center: e,
+        radius: num[i] * 10,
+        strokeOpacity: 0,
+        fillColor: '#f00',
+        fillOpacity: 0.35,
+        map: map
+      });
+      marker[i] = new google.maps.Marker({
+        position: e,
+        map: map,
+        label: num[i].toString()
+      });
+    });
+
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+  <style>
+  #info {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    left: 0px;
+    background: #222;
+    padding: 20px 30px;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #info a {
+    color: #0bf;
+    transition: .2s;
+  }
+  
+  #info a:hover {
+    color: #6df;
+  }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+  var href = location.href;
+  var page = href.split("demo/");
+  var name = page[1].split("-demo")[0];
+  var title = document.querySelector('title').innerHTML;
+  document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+  document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>
