@@ -5,27 +5,27 @@
   "date": "MAR 1, 2018"
 },{
   "tag": "tag-web",
-  "title": "Google Maps (13) - 熱度圖",
+  "title": "Google Maps (13) - 熱度圖 ( Heatmap )",
   "site": "/articles/201802/google-maps-13-HeatmapLayer.html",
   "date": "FEB 28, 2018"
 },{
   "tag": "tag-web",
-  "title": "Google Maps (12) - 形狀 ( 圓形與矩形 )",
+  "title": "Google Maps (12) - 形狀 ( 圓形 Circle、矩形 Rectangle )",
   "site": "/articles/201802/google-maps-12-rect-circle.html",
   "date": "FEB 27, 2018"
 },{
   "tag": "tag-web",
-  "title": "Google Maps (11) - 形狀 ( 多邊形 )",
+  "title": "Google Maps (11) - 形狀 ( 多邊形 Polygon )",
   "site": "/articles/201802/google-maps-11-Polygon.html",
   "date": "FEB 25, 2018"
 },{
   "tag": "tag-web",
-  "title": "Google Maps (10) - 在折線裡加入符號",
+  "title": "Google Maps (10) - 在折線裡加入符號 ( Symbols )",
   "site": "/articles/201802/google-maps-10-polyline-symbols.html",
   "date": "FEB 22, 2018"
 },{
   "tag": "tag-web",
-  "title": "Google Maps (9) - 繪製折線",
+  "title": "Google Maps (9) - 繪製折線 ( Polyline )",
   "site": "/articles/201802/google-maps-9-polyline.html",
   "date": "FEB 20, 2018"
 },{
@@ -35,7 +35,7 @@
   "date": "FEB 8, 2018"
 },{
   "tag": "tag-web",
-  "title": "Google Maps (8) - 資訊視窗",
+  "title": "Google Maps (8) - 資訊視窗 ( Infowindow )",
   "site": "/articles/201802/google-maps-8-infowindow.html",
   "date": "FEB 6, 2018"
 },{
@@ -70,7 +70,7 @@
   "date": "JAN 10, 2018"
 },{
   "tag": "tag-web",
-  "title": "Google Maps (3) - 地圖標記",
+  "title": "Google Maps (3) - 地圖標記 ( Marker )",
   "site": "/articles/201801/google-maps-3-marker.html",
   "date": "JAN 7, 2018"
 },{

@@ -6,13 +6,13 @@
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
 
-  <title>Google Maps (12) - 形狀 ( 圓形與矩形 ) - OXXO.STUDIO</title>
+  <title>Google Maps (12) - 形狀 ( 圓形 Circle、矩形 Rectangle ) - OXXO.STUDIO</title>
 
   <meta name="description" content="圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。">
   <meta itemprop="description" content="圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。">
   <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-12-rect-circle.jpg">
   <meta property="og:description" content="圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。">
-  <meta property="og:title" content="Google Maps (12) - 形狀 ( 圓形與矩形 )">
+  <meta property="og:title" content="Google Maps (12) - 形狀 ( 圓形 Circle、矩形 Rectangle )">
   <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-12-rect-circle.html">
   <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-12-rect-circle.jpg">
   <link href="/css/article.css?20180228" rel="stylesheet">
@@ -68,7 +68,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps (12) - 形狀 ( 圓形與矩形 )</h1>
+<h1>Google Maps (12) - 形狀 ( 圓形 Circle、矩形 Rectangle )</h1>
 <p>圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>起手式</h2>
 <p><strong>圓形</strong>：的建構函式為 Circle，使用一組 LatLng 座標來指定圓心，半徑則是以公尺為單位表現，下列 CircleOptions 的部分是相關屬性設定。</p>
