@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (13) - 熱度圖 ( Heatmap ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="前幾篇寫完了一系列的折線圖、多邊形、圓形和矩形，感覺應該可以在地圖上做點和資料密度相關的例子，Google Maps API 除了形狀，也提供了「熱度圖」的圖層方法，這篇就來實作如何在 Google 地圖上顯示熱度圖。">
+  <meta itemprop="description" content="前幾篇寫完了一系列的折線圖、多邊形、圓形和矩形，感覺應該可以在地圖上做點和資料密度相關的例子，Google Maps API 除了形狀，也提供了「熱度圖」的圖層方法，這篇就來實作如何在 Google 地圖上顯示熱度圖。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-13-heatmapLayer.jpg">
+  <meta property="og:description" content="前幾篇寫完了一系列的折線圖、多邊形、圓形和矩形，感覺應該可以在地圖上做點和資料密度相關的例子，Google Maps API 除了形狀，也提供了「熱度圖」的圖層方法，這篇就來實作如何在 Google 地圖上顯示熱度圖。">
+  <meta property="og:title" content="Google Maps (13) - 熱度圖 ( Heatmap )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-13-heatmapLayer.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-13-heatmapLayer.jpg">
+  <link href="/css/article.css?20180228" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (13) - 熱度圖 ( Heatmap )</h1>
+<p>前幾篇寫完了一系列的折線圖、多邊形、圓形和矩形，感覺應該可以在地圖上做點和資料密度相關的例子，Google Maps API 除了形狀，也提供了「熱度圖」的圖層方法，這篇就來實作如何在 Google 地圖上顯示熱度圖。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>如何使用熱度圖</h2>
+<p>熱度圖是一種視覺效果，在地圖上用來描繪某個地理位置的資料強度，啟用 Google 的熱度圖圖層之後，地圖的最上層便會出現一個熱度圖的疊加層，疊加層預設強度較高的區域會顯示紅色，強度較低的區域則會顯示成綠色。</p>
+<p>使用熱度圖之前，要先載入視覺程式庫 google.maps.visualization，這個程式庫預設不會載入，所以需要在引用 Google Maps API 的後方加上對應的 libraries 參數來啟用，</p>
+<pre class="prettyprint"><code>&lt;script src="https://maps.googleapis.com/maps/api/js?key=你的_API_Key&amp;callback=initMap&amp;libraries=visualization" async defer&gt;&lt;/script&gt;
+</code></pre><p>啟用之後，要使用熱度圖的方式如下，HeatmapLayerOptions 的部分是相關屬性設定。</p>
+<pre class="prettyprint"><code>var heatmap = new google.maps.visualization.HeatmapLayer(HeatmapLayerOptions);
+</code></pre><h2>熱度圖設定 HeatmapLayer Options</h2>
+<ul>
+<li><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把熱度圖放到地圖裡。</li>
+<li><p><strong>data</strong>：指定熱度圖的座標點，使用方法如下。</p>
+<pre class="prettyprint"><code>  data: [
+    new google.maps.LatLng(經緯度),
+    new google.maps.LatLng(經緯度)
+  ]
+</code></pre></li>
+<li><strong>dissipating</strong>：指定熱度圖是否在縮放時消散，預設為 false。</li>
+<li><strong>gradient</strong>：漸層顏色，使用陣列放入色彩的代碼。</li>
+<li><strong>maxIntensity</strong>：熱度圖的最大強度，若有指定，則熱度圖色彩會根據地圖上的最大強度來動態調整，如果資料內有少量特別大或特別小的這種極端數值，指定最大強度就能發揮功能將其排除。</li>
+<li><strong>opacity</strong>：熱度圖的不透明度，數值為 0~1，0 表示透明，1 表示不透明。</li>
+<li><strong>radius</strong>：個別資料點的影響半徑，以像素為單位。</li>
+</ul>
+<h2>熱度圖方法 HeatmapLayer Methods</h2>
+<ul>
+<li><strong>setData(data)</strong>：設定熱度圖的資料。</li>
+<li><strong>setMap(map)</strong>：設定地圖，將熱度圖放到指定的地圖上。</li>
+<li><strong>setOptions(HeatmapLayerOptions)</strong>：重新設定熱度圖。</li>
+<li><strong>getMap()</strong>：獲取熱度圖所在地圖。</li>
+<li><strong>getData()</strong>：獲取熱度圖資料點。</li>
+</ul>
+<h2>WeightedLocation</h2>
+<p>熱度圖的 data 有兩種，第一種是使用「<em>點的密度 ( LatLng )</em>」，第二種則是「<em>指定資料的權重 ( WeightedLocation )」</em>，在 Google 地圖熱度圖上的每個點 ( LatLng ) 預設的單位權重都是 1，但可以透過 weight 來更改，使其成為 WeightedLocation 物件，兩種 data 可以混用，純粹看使用的情境來決定，混用的方法如下。</p>
+<pre class="prettyprint"><code>var heatMapData = [
+  {location: new google.maps.LatLng(經緯度), weight: 0.5},
+  new google.maps.LatLng(經緯度),
+  {location: new google.maps.LatLng(經緯度), weight: 2}
+];
+</code></pre><h2>在 Google 地圖上使用熱度圖</h2>
+<p>搭配上面所介紹的熱度圖設定與方法，可以很簡單的在地圖上畫出一個熱度圖 ( 還沒有使用 weight )，例如下面的例子，假設知道每台車子的座標，基本上就可以用熱度圖，標示出哪個路口車子很多或是正在塞車。</p>
+<blockquote>
+<p>範例：<a href="/demo/201802/google-maps-13-HeatmapLayer-demo-01.html" target="_blank">Google 地圖熱度圖</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 16,
+    center: {
+      lat: 25.033090,
+      lng: 121.563438
+    }
+  });
+
+  var heatmap = new google.maps.visualization.HeatmapLayer({
+    map: map,
+    data: [
+      new google.maps.LatLng(25.033090, 121.563438),
+      new google.maps.LatLng(25.033261, 121.563540),
+      new google.maps.LatLng(25.033025, 121.563331),
+      new google.maps.LatLng(25.033065, 121.563696),
+      new google.maps.LatLng(25.033364, 121.563419),
+      new google.maps.LatLng(25.032099, 121.561341),
+      new google.maps.LatLng(25.032021, 121.562895),
+      new google.maps.LatLng(25.031958, 121.558931),
+      new google.maps.LatLng(25.031248, 121.558455),
+      new google.maps.LatLng(25.032119, 121.560154),
+      new google.maps.LatLng(25.035347, 121.559460),
+      new google.maps.LatLng(25.035095, 121.557516)
+    ],
+    radius:65
+
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-13-HeatmapLayer-01.jpg" alt=""></p>
+<p>另外一個例子，可以透過 WeightedLocation 指定不同地點的權重，然後也透過 gradient 來修改熱度圖的顏色，最終呈現的風貌就會很不一樣，注意，漸層 gradient 的色彩是由「整份地圖外往內」作漸層，所以位在陣列的第一筆資料是最外圍，也因為會覆蓋地圖，通常會把第一筆資料的透明度設為 0，依序往內，最後一筆資料則是密度最高的的顏色。</p>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 16,
+    center: {
+      lat: 25.033090,
+      lng: 121.563438
+    }
+  });
+
+  var gradient = [
+    'rgba(0, 0, 255, 0)',
+    'rgba(0, 150, 255, 1)',
+    'rgba(50, 120, 205, 1)',
+    'rgba(100, 90, 155, 1)',
+    'rgba(150, 60, 105, 1)',
+    'rgba(200, 30, 55, 1)',
+    'rgba(255, 0, 0, 1)'
+  ];
+
+  var heatmap = new google.maps.visualization.HeatmapLayer({
+    map: map,
+    data: [
+      new google.maps.LatLng(25.033090, 121.563438),
+      new google.maps.LatLng(25.033261, 121.563540),
+      new google.maps.LatLng(25.033025, 121.563331),
+      {location: new google.maps.LatLng(25.033065, 121.563696), weight: 6},
+      new google.maps.LatLng(25.033364, 121.563419),
+      {location: new google.maps.LatLng(25.032099, 121.561341), weight: 5},
+      new google.maps.LatLng(25.032021, 121.562895),
+      {location: new google.maps.LatLng(25.031958, 121.558931), weight: 8},
+      new google.maps.LatLng(25.031248, 121.558455),
+      new google.maps.LatLng(25.032119, 121.560154),
+      {location: new google.maps.LatLng(25.035347, 121.559460), weight: 5},
+      new google.maps.LatLng(25.035095, 121.557516)
+    ],
+    radius: 65,
+    opacity:0.8,
+    gradient:gradient
+
+  });
+}
+</code></pre><blockquote>
+<p>範例：<a href="/demo/201802/google-maps-13-HeatmapLayer-demo-02.html" target="_blank">改變 Google 地圖熱度圖的權重與顏色</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-13-HeatmapLayer-02.jpg" alt=""></p>
+<h2>參考資料：</h2>
+<ul>
+<li><a href="https://developers.google.com/maps/documentation/javascript/heatmaplayer?hl=zh-tw" target="_blank">Google Maps API 熱度圖圖層</a></li>
+<li><a href="https://developers.google.com/maps/documentation/javascript/reference?hl=zh-tw#HeatmapLayer" target="_blank">HeatmapLayer</a></li>
+</ul>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180220"></script>
+  <script src="/js/articles.js?20180302"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
