@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (15) - 顯示台灣縣市 ( GeoJSON ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="前一篇練習了用 Google Maps API 讀取 GeoJSON 資料並在地圖顯示圖案，這篇就更近一步，透過  map.data 讀取台灣縣市的 GeoJSON 並顯示在地圖上，同時讓滑鼠移到各個縣市形狀的時候呈現不同的顏色。">
+  <meta itemprop="description" content="前一篇練習了用 Google Maps API 讀取 GeoJSON 資料並在地圖顯示圖案，這篇就更近一步，透過  map.data 讀取台灣縣市的 GeoJSON 並顯示在地圖上，同時讓滑鼠移到各個縣市形狀的時候呈現不同的顏色。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-15-geojson-taiwan.jpg">
+  <meta property="og:description" content="前一篇練習了用 Google Maps API 讀取 GeoJSON 資料並在地圖顯示圖案，這篇就更近一步，透過  map.data 讀取台灣縣市的 GeoJSON 並顯示在地圖上，同時讓滑鼠移到各個縣市形狀的時候呈現不同的顏色。">
+  <meta property="og:title" content="Google Maps (15) - 顯示台灣縣市 ( GeoJSON )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-15-geojson-taiwan.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-15-geojson-taiwan.jpg">
+  <link href="/css/article.css?20180228" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (15) - 顯示台灣縣市 ( GeoJSON )</h1>
+<p>前一篇練習了用 Google Maps API 讀取 GeoJSON 資料並在地圖顯示圖案，這篇就更近一步，透過  map.data 讀取台灣縣市的 GeoJSON 並顯示在地圖上，同時讓滑鼠移到各個縣市形狀的時候呈現不同的顏色。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>台灣縣市行政區域 GeoJSON</h2>
+<p>要顯示台灣縣市行政區域，首先要有行政區域的資料，感謝國內熱血的大大們，已經幫大家整理好了相關圖資，讓我們可以透過這些圖資來進行繪製，或是做許多視覺化的應用。</p>
+<blockquote>
+<ul>
+<li><a href="https://sheethub.com/" target="_blank">sheethub</a></li>
+<li><a href="https://github.com/g0v/twgeojson" target="_blank">g0v/twgeojson</a></li>
+</ul>
+</blockquote>
+<p>如果單純要取得縣市行政界線，可以用 sheethub 所提供的 <a href="https://sheethub.com/ronnywang/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E7%B8%A3%E5%B8%82" target="_blank">中華民國縣市</a>，打開後選擇下載「GeoJSON」，就可以相關資料，完整的縣市行政界線資料點比較多，整份下載大約有 9~10 MB。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-01.jpg" alt=""></p>
+<p>如果覺得資料太大，可以使用 g0v 的 <a href="https://github.com/g0v/twgeojson/tree/master/json" target="_blank">twCounty2010merge.topo.json</a>，雖然精細度不如完整的資料，不過大致上仍看得出完整的縣市分界，因為資料大小只有 450 KB 左右，所以待會的範例會先用這份資料來呈現。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-02.jpg" alt=""></p>
+<p>因為下載的是 TopoJSON 格式，所以我再透過一個線上服務 <a href="http://jeffpaine.github.io/geojson-topojson/" target="_blank">GeoJSON-TopoJSON</a> 幫忙把 TopoJSON 轉換為 GeoJSON。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-03.jpg" alt=""></p>
+<h2>在 Google 地圖上繪製台灣縣市行政區域</h2>
+<p>有了資料後，接著就要來繪製了 ( 不清楚如何透過 Google Maps API 讀取 GeoJSON 可以參考<a href="/articles/201803/google-maps-14-geojson.html" target="_blank">Google Maps (14) - 顯示 GeoJSON 資料</a> )，首先我把地圖中心點定位在日月潭 <code>{lat: 23.858987, lng:120.917631}</code>，接著簡單指定載入資料後繪製的線條與填滿顏色。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-15-geojson-taiwan-demo-01.html" target="_blank">在 Google 地圖上繪製台灣縣市行政區域</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 7,
+    center: {lat: 23.858987, lng:120.917631}
+  });
+
+  map.data.loadGeoJson('taiwanCities.geojson.json');
+
+  map.data.setStyle({
+    strokeWeight: 1,
+    strokeOpacity: .5,
+    strokeColor: '#000',
+    fillColor: '#f00',
+    fillOpacity: .3
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-04.jpg" alt=""></p>
+<h2>動態改變外觀</h2>
+<p>我們可以透過<code>addListener</code>來監聽資料圖層事件，資料圖層事件有以下幾種：</p>
+<ul>
+<li><strong>addfeature</strong>：當資料特徵值增加時。</li>
+<li><strong>click</strong>：滑鼠點擊</li>
+<li><strong>dblclick</strong>：滑鼠連點兩下</li>
+<li><strong>mousedown</strong>：按下滑鼠</li>
+<li><strong>mouseup</strong>：放開滑鼠</li>
+<li><strong>mouseover</strong>：滑鼠移到資料圖層上</li>
+<li><strong>mouseout</strong>：滑鼠移出資料圖層</li>
+<li><strong>removefeature</strong>：資料特徵值移除</li>
+<li><strong>removeproperty</strong>：資料屬性移除</li>
+<li><strong>rightclick</strong>：點擊滑鼠右鍵</li>
+<li><strong>setgeometry</strong>：取得 geometry 資料</li>
+<li><strong>setproperty</strong>：取得 property 資料</li>
+</ul>
+<p>透過這些資料圖層事件，搭配<code>setStyle</code>與<code>revertStyle</code>的方法，就能夠做到當滑鼠移到不同的縣市，該縣市的區域顏色就會變化的效果。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-15-geojson-taiwan-demo-02.html" target="_blank">滑鼠移到縣市的區塊上，該區塊會變色</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 7,
+    center: {lat: 23.858987, lng:120.917631}
+  });
+
+  map.data.loadGeoJson('taiwanCities.geojson.json');
+
+  map.data.setStyle({
+    strokeWeight: 1,
+    strokeOpacity: .5,
+    strokeColor: '#000',
+    fillColor: '#f00',
+    fillOpacity: .3
+  });
+
+  map.data.addListener('mouseover', function(event) {
+    map.data.revertStyle();
+    map.data.overrideStyle(event.feature, {fillColor: '#000'});
+  });
+
+  map.data.addListener('mouseout', function(event) {
+    map.data.revertStyle();
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-05.gif" alt=""></p>
+<h2>小結</h2>
+<p>實作台灣地圖後，感覺 Google 的資料圖層很有趣，但過程裡也遇到了一些同步非同步的問題，我想這部分會稍微複雜點，就留待之後的篇幅繼續介紹。</p>
+<h2>參考</h2>
+<ul>
+<li><a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference?hl=zh-tw#Data" target="_blank">Google Mpas API Data class</a></li>
+<li><a href="https://developers.google.com/maps/documentation/javascript/datalayer?hl=zh-tw" target="_blank">Google Mpas API 資料圖層</a></li>
+</ul>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180220"></script>
+  <script src="/js/articles.js?20180302"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
