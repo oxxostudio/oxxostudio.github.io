@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (16) - 點擊區域，出現資訊視窗 - OXXO.STUDIO</title>
+
+  <meta name="description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
+  <meta itemprop="description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-16-taiwan-infowindow.jpg">
+  <meta property="og:description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
+  <meta property="og:title" content="Google Maps (16) - 點擊區域，出現資訊視窗">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-16-taiwan-infowindow.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-16-taiwan-infowindow.jpg">
+  <link href="/css/article.css?20180228" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (16) - 點擊區域，出現資訊視窗</h1>
+<p>透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>初始化地圖並載入 GeoJSON</h2>
+<p>網頁載入後先宣告地圖，然後在地圖裡放入資訊視窗，接著使用 jQuery 的<code>getJSON</code>來載入 GeoJSON 檔案，不過因為並非使用 Google 地圖的 data 載入，在資料的處理就得自己動手來做，所以這裡就先用一個變數 features 來裝載特徵值的陣列。</p>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 7,
+    center: {
+      lat: 23.858987,
+      lng: 120.917631
+    }
+  });
+
+    // 在地圖上放入資訊視窗
+  var infowindow = new google.maps.InfoWindow();
+
+  $.getJSON('taiwanCities.geojson.json', function(e) {
+    var features = e.features; 
+
+    // 載入資料後要做的事情.....
+
+  });
+}
+</code></pre><h2>載入後要做的事：繪製行政區域圖</h2>
+<p>一開始先新增三個陣列，<em>taiwan</em> 陣列會裝載待會的行政區域多邊形的特徵值，<em>name</em> 會裝載各個行政區域的名稱，<em>polygonPath</em> 則是代表在地圖上繪製出的多邊形陣列。</p>
+<pre class="prettyprint"><code>var taiwan = [];      // 行政區域多邊形特徵值的陣列
+var name = [];        // 行政區域名稱的陣列
+var polygonPath = []; // 繪製後的多邊形陣列
+</code></pre><p>再來就是透過<code>forEach</code>依序把 GeoJSON 中的特徵值一一取出，如果仔細觀察資料結構，可以看到資料中有以下 <strong>三種</strong> 形狀：</p>
+<ul>
+<li><em>第一種：單獨一塊</em>：一組陣列，例如南投縣、高雄市、台南市...等。</li>
+<li><em>第二種：兩塊以上</em>：一組陣列中有兩組以上的子陣列，例如台東縣、金門縣...等。</li>
+<li><em>第三種：三塊以上</em>：一組陣列中有另外一個子陣列，同時子陣列中又包含一個以上的孫陣列，例如嘉義縣包著嘉義市 ( 嘉義市屬於第一種 )、新北市包著台北市...等。</li>
+</ul>
+<p>面對這三種資料，就得分別用邏輯判斷將其獨立出來，<em>特別是第三種</em>，回想在 <a href="/articles/201802/google-maps-11-polygon.html" target="_blank">Google Maps (11) - 形狀 ( 多邊形 Polygon )</a> 這篇文章有介紹，多邊形如果是有 A 包著 B 的狀況，會由其座標點繪製的順時針或逆時針方向，取決其交集或聯集的呈現結果，幸好 GeoJSON 原始資料已經有處理，只要正常載入就不會有問題 ( 像是嘉義縣，如果只載入外框，那麼最後產生的形狀，就會和嘉義市互相重疊 )，完成後就可以透過<code>new google.maps.Polygon</code>依序在地圖上畫出行政區域形狀。</p>
+<pre class="prettyprint"><code>features.forEach(function(i, index) {
+  name.push(i.properties.name); // 將各個行政區的名字記錄到 name 陣列中
+  if (i.geometry.coordinates.length == 1) {
+      // 如果行政區域只有一塊，例如南投縣
+    var arr = [];
+    i.geometry.coordinates[0].forEach(function(j) {
+      arr.push({
+        lat: j[1],
+        lng: j[0]
+      });
+    });
+    taiwan.push(arr);
+  } else {
+      // 如果行政區域不只一塊，例如台東縣包含綠島和蘭嶼，就是個多邊形集合
+    var arr = [];
+    for (var k = 0; k &lt; i.geometry.coordinates.length; k++) {
+      var arrContent = [];
+      if (i.geometry.coordinates[k].length == 1) {
+          //如果行政區域沒有包含其他的行政區域，例如台東縣
+        i.geometry.coordinates[k][0].forEach(function(j) {
+          arrContent.push({
+            lat: j[1],
+            lng: j[0]
+          });
+        });
+      } else {
+          //如果行政區域包含了其他的行政區域，例如嘉義縣包覆著嘉義市
+        i.geometry.coordinates[k].forEach(function(j) {
+          arrContent.push({
+            lat: j[1],
+            lng: j[0]
+          });
+        });
+      }
+      arr.push(arrContent);
+    }
+    taiwan.push(arr);
+  }
+
+  // 依序在地圖上畫出對應的多邊形
+  polygonPath[index] = new google.maps.Polygon({
+    paths: arr,
+    strokeColor: '#000',
+    strokeOpacity: .7,
+    strokeWeight: 1,
+    strokePosition: google.maps.StrokePosition.CENTER,
+    fillColor: '#f00',
+    fillOpacity: 0.35,
+    map: map
+  });
+
+  //畫完行政區域後要做的事情.....
+
+});
+</code></pre><h2>畫完行政區域要做的事：加入滑鼠事件、打開資訊視窗</h2>
+<p>畫完行政區後要做的事情就簡單了，就是為每個行政區的多邊形，加入滑鼠 <em>click</em> 事件，在點擊行政區時會抓取滑鼠的經緯度座標，接著把這個座標丟給資訊視窗，讓資訊視窗在這個座標開啟，同時顯示對應的行政區域名稱，此外也可以使用 <em>mouseover</em> 和 <em>mouseout</em> 事件，在滑鼠移到行政區上方會改變顏色，移出行政區又會恢復顏色。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-16-taiwan-infowindow-demo-01.html" target="_blank">點擊台灣行政區域，出現資訊視窗</a></p>
+</blockquote>
+<pre class="prettyprint"><code>// 為每個多邊形加上滑鼠點擊事件
+polygonPath[index].addListener('click', function(e) {
+    // 點擊時獲取滑鼠的經緯度座標
+  var coordinate = {lat: e.latLng.lat(), lng: e.latLng.lng()};
+  // 將資訊視窗的位置，設定為滑鼠的座標
+  infowindow.setPosition(coordinate);
+  // 設定資訊視窗的內容為行政區名稱
+  infowindow.setContent('&lt;h2&gt;'+name[index]+'&lt;/h2&gt;');
+  // 將資訊視窗打開在地圖上
+  infowindow.open(map);
+});
+
+// 設定滑鼠移到多邊形上，多邊形會變成半透明黑色
+polygonPath[index].addListener('mouseover', function(e) {
+  this.setOptions({
+    fillColor: '#000'
+  })
+});
+
+// 設定滑鼠移出多邊形，多邊形會恢復半透明紅色
+polygonPath[index].addListener('mouseout', function(e) {
+  this.setOptions({
+    fillColor: '#f00'
+  })
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-16-taiwan-infowindow-01.gif" alt=""></p>
+<h2>小結</h2>
+<p>如果已經熟悉多邊形 Polygon 和資訊視窗 infowindow 的用法，其實只要了解資料格式，就能夠很簡單的在地圖上做出想要的效果，之後應該還會再找篇幅，應用更多不同的資料在地圖上呈現。。</p>
+<h2>參考</h2>
+<ul>
+<li><a href="/articles/201802/google-maps-8-infowindow.html" target="_blank">Google Maps (8) - 資訊視窗 ( Infowindow )
+</a></li>
+<li><a href="/articles/201802/google-maps-11-polygon.html" target="_blank">Google Maps (11) - 形狀 ( 多邊形 Polygon )</a></li>
+</ul>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180220"></script>
+  <script src="/js/articles.js?20180302"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
