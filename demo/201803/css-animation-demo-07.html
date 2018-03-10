@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>完整解析 CSS 動畫 ( CSS Animation ) demo 07 - OXXO.STUDIO</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #hourse {
+    width:186px;
+    height:141px; 
+    background-image:url("hourse.jpg");
+    animation-name: oxxo;
+    animation-duration:1s;
+    background-position:-15px -13px;
+    animation-iteration-count:infinite;
+    animation-timing-function:step-start;
+    animation-play-state:paused;
+  }
+
+  #hourse:hover{
+    animation-play-state:running;
+  }
+
+@keyframes oxxo{
+    0%{
+      background-position:-15px -13px;
+    }
+    6.25%{
+      background-position:-210px -13px;
+    }
+    12.5%{
+      background-position:-403px -13px;
+    }
+    18.75%{
+      background-position:-592px -13px;
+    }
+    25%{
+      background-position:-15px -165px;
+    }
+    31.25%{
+      background-position:-210px -165px;
+    }
+    37.5%{
+      background-position:-403px -165px;
+    }
+    43.75%{
+      background-position:-592px -165px;
+    }
+    50%{
+      background-position:-15px -320px;
+    }
+    56.25%{
+      background-position:-210px -320px;
+    }
+    62.5%{
+      background-position:-403px -320px;
+    }
+    68.75%{
+      background-position:-592px -320px;
+    }
+    75%{
+      background-position:-15px -470px;
+    }
+    81.25%{
+      background-position:-210px -470px;
+    }
+    87.5%{
+      background-position:-403px -470px;
+    }
+    93.75%{
+      background-position:-592px -470px;
+    }
+    100%{
+      background-position:-592px -470px;
+    }
+}
+
+  </style>
+</head>
+
+<body>
+  <div id="hourse"></div>
+
+
+
+
+<!-- 以下為參考資訊 -->
+  <style>
+  #info {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    left: 0px;
+    background: #222;
+    padding: 20px 30px;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #info a {
+    color: #0bf;
+    transition: .2s;
+  }
+  
+  #info a:hover {
+    color: #6df;
+  }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+  var href = location.href;
+  var page = href.split("demo/");
+  var name = page[1].split("-demo")[0];
+  var title = document.querySelector('title').innerHTML;
+  document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+  document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>

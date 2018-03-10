@@ -87,27 +87,14 @@ anumation:影格名稱 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 -moz-animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 -o-animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
-</code></pre><p><br>
-Cubic Bezier 的原理很簡單，總共有四個參數，分別是第一個貝茲曲線控制點的 x1 和 座標 y1，第二個貝茲曲線控制點的 x2 和 y2 座標，可以參考下面這張 W3C 對於 cubic-bezier 參數設置的圖片，往上為 1，往下為 0。( 參考 <a href="http://www.w3.org/TR/css3-transitions/#transition-timing-function-property" target="_blank">W3C 文章</a> )</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140628_1_04.png" alt="CSS Cubic Bezier">
-<br></p>
+</code></pre><p>Cubic Bezier 的原理很簡單，總共有四個參數，分別是第一個貝茲曲線控制點的 x1 和 座標 y1，第二個貝茲曲線控制點的 x2 和 y2 座標，可以參考下面這張 W3C 對於 cubic-bezier 參數設置的圖片，往上為 1，往下為 0。( 參考 <a href="http://www.w3.org/TR/css3-transitions/#transition-timing-function-property" target="_blank">W3C 文章</a> )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140628_1_04.png" alt="CSS Cubic Bezier"></p>
 <p>藉由控制 Cubic Bezier，我們便可以很容易地做出加減速的效果， ( 可以參考 <a href="http://cubic-bezier.com/" target="_blank">cubic-bezier.com</a> )</p>
-<div style="position:relative; height:170px;">
-<div id="test1"></div>
-</div>
-
 <pre class="prettyprint"><code>  -webkit-animation:testkeyframes 2s infinite cubic-bezier(.89,-0.93,.2,1.58);
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140628_1_05.png" alt="CSS Cubic Bezier"></p>
-<p><br></p>
 <p>此外，若我們把貝茲曲線上下超過了 0 和 1，就會產生很有意思的一個特效，就是有點皮球反彈的效果。</p>
-<div style="position:relative; margin-top:40px; height:200px;">
-<div id="test2"></div>
-</div>
-
-
 <pre class="prettyprint"><code>  -webkit-animation:testkeyframes 2s infinite cubic-bezier(.89,-1.3,.2,1.3);
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140628_1_03.png" alt="CSS Cubic Bezier">
-<br></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140628_1_03.png" alt="CSS Cubic Bezier"></p>
 <p>以上就是 Cubic Bezier 的介紹，因為這是一個三次函數曲線，所以會發生垂直或水平的地方有兩個點交會的情形喔！也因為有了 Cubic Bezier，我們的 CSS3 動畫也就更別具特色了！</p>
 
       <div class="social-icon">

@@ -1,0 +1,628 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>完整解析 CSS 動畫 ( CSS Animation ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="隨著 CSS3 的普及，過去許多看似酷炫的效果，逐漸也都能透過 CSS 來實作，這篇文章將會針對 CSS 動畫進行完整的使用探討，從基礎的使用，一直到 JavaScript 的操作方法都會介紹，希望能讓大家 ( 其實是自己 ) 在使用上更加得心應手。">
+  <meta itemprop="description" content="隨著 CSS3 的普及，過去許多看似酷炫的效果，逐漸也都能透過 CSS 來實作，這篇文章將會針對 CSS 動畫進行完整的使用探討，從基礎的使用，一直到 JavaScript 的操作方法都會介紹，希望能讓大家 ( 其實是自己 ) 在使用上更加得心應手。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/css-animation.jpg">
+  <meta property="og:description" content="隨著 CSS3 的普及，過去許多看似酷炫的效果，逐漸也都能透過 CSS 來實作，這篇文章將會針對 CSS 動畫進行完整的使用探討，從基礎的使用，一直到 JavaScript 的操作方法都會介紹，希望能讓大家 ( 其實是自己 ) 在使用上更加得心應手。">
+  <meta property="og:title" content="完整解析 CSS 動畫 ( CSS Animation )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/css-animation.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/css-animation.jpg">
+  <link href="/css/article.css?20180306" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/rss.xml" title="RSS" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>完整解析 CSS 動畫 ( CSS Animation )</h1>
+<p>隨著 CSS3 的普及，過去許多看似酷炫的效果，逐漸也都能透過 CSS 來實作，這篇文章將會針對 CSS 動畫進行完整的使用探討，從基礎的使用，一直到 JavaScript 的操作方法都會介紹，希望能讓大家 ( 其實是自己 ) 在使用上更加得心應手。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>CSS 動畫起手式</h2>
+<p>不論是使用什麼軟體，只要是製作動畫，一定少不了「關鍵影格 keyframe」，透過許多關鍵影格的組合，加上瀏覽器自動運算當中的漸變過程，就成為我們熟知的 CSS 動畫。假設有個 div 要加入 CSS 動畫效果，只需要按照下面的寫法，就能套用名為 oxxo 的動畫 ( <em>以下將統稱 @keyframes 為「動畫」</em> )，執行後就會花兩秒的時間，往右移動到 100px 的位置，動畫結束後會再跳回 0px 停止不動。</p>
+<pre class="prettyprint"><code>div{
+    position:absolute;
+    left:0;
+    width:50px;
+    height:50px;
+    background:#f00;
+    animation-name:oxxo;
+    animation-duration:2s;
+}
+@keyframes oxxo{
+    from{
+        left:0;
+    }
+    to{
+        left:100px;
+    }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-01.gif" alt=""></p>
+<p>從上面的例子可以看到，使用了 from 和 to，在 CSS 動畫裡，<em>from 表示起始，也可以用 0% 表示，to 表示結束，也可以用 100% 表示</em>，因為數值範圍是 0%~100%，所以超過這個範圍的都是錯誤的。此外，比較需要注意的有以下三點：</p>
+<ul>
+<li><p><strong>若沒有開頭結尾，會自動演算出來</strong></p>
+<p>  基本上一段動畫一動會有開頭與結尾，如果我們只寫了 0%~50% 或 50%~100%，那麼開頭與結尾將會由程式自動演算出來，當然結果是不是如果們所想的就不盡然，最好還是加上開頭結尾。</p>
+</li>
+<li><p><strong>不可單獨使用數字，一定要加入 %</strong></p>
+<p>  舉例來說，我們習慣設定寬度 0px 的時候直接寫 0，但對於動畫來說一定要加上 % 為單位，例如 0%、50%、100%。</p>
+</li>
+<li><p><strong>如果同樣的百分比，則相同屬性會後蓋前</strong></p>
+<p>  動畫的百分比表示關鍵影格的位置，0% 表示第一格，50% 表示中間，100% 表示最後一格，因此如果同樣有兩個 50%，內容的屬性也相同，則後方的 50% 會蓋掉前方的 50%，如果兩個屬性不同，則會在 50% 時同時執行。</p>
+<p>  這個例子會在動畫從 0% 到 50% 時，背景從白色變黑色。( 紅色被後面蓋掉了 )</p>
+<pre class="prettyprint"><code>  0%{
+      background:#fff;
+  }
+  50%{
+      background:#f00;
+  }
+  50%{
+      background:#000;
+  }
+</code></pre><p>  這個例子會在動畫從 0% 到 50% 時，背景從白色變紅色，文字從白色變成黑色。( 文字屬性與背景屬性同時在 50% 呈現 )</p>
+<pre class="prettyprint"><code>  0%{
+      background:#fff;
+      color:$fff;
+  }
+  50%{
+      background:#f00;
+  }
+  50%{
+      color:#000;
+  }
+</code></pre></li>
+</ul>
+<h2>CSS 動畫屬性總覽 ( CSS Animation Properties )</h2>
+<p>了解如何使用之後，就要來看看有哪些屬性可以設定，CSS 動畫共有八種屬性和一個八種屬性集合的簡短屬性縮寫，這邊先把屬性一次列出，下面會繼續詳細介紹用法。</p>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>animation-name</strong></td>
+<td>動畫名稱</td>
+</tr>
+<tr>
+<td><strong>animation-duration</strong></td>
+<td>動畫持續時間，<em>預設 0</em>，單位 s 或 ms。</td>
+</tr>
+<tr>
+<td><strong>animation-delay</strong></td>
+<td>動畫延遲播放時間，<em>預設 0</em>，單位 s 或 ms。</td>
+</tr>
+<tr>
+<td><strong>animation-iteration-count</strong></td>
+<td>動畫播放次數，<em>預設 1</em>。<br>其他還有 infinite。</td>
+</tr>
+<tr>
+<td><strong>animation-timing-function</strong></td>
+<td>動畫加速度函式，<em>預設 ease</em>。<br>其他還有： linear、ease-in、ease-out、ease-in-out<br>step-start、step-end、steps(int,start/end)、cubic-bezier(n,n,n,n)。</td>
+</tr>
+<tr>
+<td><strong>animation-direction</strong></td>
+<td>動畫播放方向，<em>預設 normal</em>。<br>其他還有 reverse、alternate、alternate-reverse。</td>
+</tr>
+<tr>
+<td><strong>animation-fill-mode</strong></td>
+<td>動畫播放前後模式，<em>預設 none</em>。<br>其他還有 forwards、forwards、both。</td>
+</tr>
+<tr>
+<td><strong>animation-play-state</strong></td>
+<td>動畫播放或暫停狀態，<em>預設 running</em>。<br>其他還有 paused。</td>
+</tr>
+</tbody>
+</table>
+<p>這八種屬性，亦可透過 animation 的屬性，做簡短的縮寫，用法如下：</p>
+<pre class="prettyprint"><code>animation:name duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;
+</code></pre><h2>(屬性) animation-name 動畫名稱</h2>
+<p>animation-name 表示動畫名稱，既然要做動畫就得先對這個動畫命名，由於 CSS 骨子裡也是程式語言，仍保有著程式碼的邏輯思維，所以命名上須遵照以下幾點原則，使用上也比較不會發生問題，幾個命名原則如下：</p>
+<ul>
+<li><p><strong>名稱可以加引號、亦可不加引號</strong></p>
+<p>  如同下面這段程式碼所表示，兩種寫法都可以代表動畫名稱。</p>
+<pre class="prettyprint"><code>  @keyframes oxxo { ... }
+  @keyframes "oxxo" { ... }
+</code></pre></li>
+<li><p><strong>如果同名，以後面的名稱為主</strong>：</p>
+<p>  CSS 的權重設計邏輯為「後蓋前」，如果以上面的例子，後面有加引號的 "oxxo"， 將會取代掉前面沒加引號的 oxxo 的動畫。</p>
+<pre class="prettyprint"><code>  @keyframes oxxo { ... }
+  @keyframes "oxxo" { ... } /* 顯示時會採用這個 */
+</code></pre></li>
+<li><p><strong>名稱大小寫有區別</strong></p>
+<p>  大小寫在程式碼內是截然不同的，然而 CSS 動畫也是一樣，如果大寫小不同，會視為不同的動畫。( <em>其實 oxxo 跟 ooxx 也是截然不同的 XD</em> )</p>
+<pre class="prettyprint"><code>  @keyframes oxxo { ... }
+  @keyframes OXXO { ... }
+</code></pre></li>
+<li><p><strong>特殊字元不能使用，但是用引號框起來就可以</strong></p>
+<p>  CSS 動畫有兩個保留字：initial 和 None，因此我們在命名上不能用這兩個字作為動畫的名稱，如果真的要用，只要引號將關鍵字框起來即可。</p>
+<pre class="prettyprint"><code>  @keyframes initial { ... }   /* 不可使用 */
+  @keyframes None { ... }      /* 不可使用 */
+  @keyframes "initial" { ... } /* 可以用 */
+  @keyframes "None" { ... }    /* 可以用 */
+</code></pre></li>
+</ul>
+<h2>(屬性) animation-duration 動畫持續時間</h2>
+<p>animation-duration 指的是「播放一次」動畫需要的時間，單位為 秒 ( s ) 或毫秒 ( ms )，預設值 0s，如果沒有設定或將其設為 0s，就不會播放動畫，基本上和 animation-name 動畫名稱都是屬於<em>一定要有</em>的屬性。</p>
+<pre class="prettyprint"><code>animation-duration:5s;
+</code></pre><h2>(屬性) animation-iteration-count 動畫播放次數</h2>
+<p>animation-iteration-count 表示動畫播放的次數，預設值為 1 次，如果設定為 infinite 動畫就會無止盡的播放下去。</p>
+<pre class="prettyprint"><code>animation-iteration-count:infinite;
+</code></pre><h2>(屬性) animation-delay 動畫延遲播放時間</h2>
+<p>animation-delay 代表的是動畫要延後多久才開始播放，單位為 秒 ( s ) 或毫秒 ( ms )，預設值 0s，如果沒有設定或將其設為 0s，動畫就會直接播放不會延遲，但比較特別的是，如果將延遲播放時間設定為「<em>負值</em>」，例如 -1s、-2s，得到的結果就「<em>不會延遲，而是快轉</em>」，假設一段動畫要 5 秒，animation-delay 設定為 -2s，那麼動畫將會直接從第二秒的位置開始播放，播放三秒後停止 ( 類似 5-2=3 的概念 )。</p>
+<p>以下面的例子來說，三種顏色的方塊都是 5 秒動畫，而藍色的 animation-delay 設為 2s，紅色的
+animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會得到這個結果：<em>藍色：慢兩秒移動，紅色：直接跳到已經移動兩秒的地方開始移動，綠色：一開始就移動</em>。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-01.html" target="_blank">animation-delay 動畫延遲播放時間</a></p>
+</blockquote>
+<pre class="prettyprint"><code>div {
+  width:50px;
+  height:50px; 
+  position:absolute;
+  animation-name: oxxo;
+  animation-duration:5s;
+}
+
+#red{
+  background:#f00;
+  top:0;
+  animation-delay:-2s;
+}
+#green{
+  background:#0a0;
+  top:60px;
+}
+#blue{
+  background:#00c;
+  top:120px;
+  animation-delay:2s;
+}
+
+@keyframes oxxo {
+  from {
+    margin-left: 0px;
+  }
+  to {
+    margin-left: 200px;
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-02.gif" alt=""></p>
+<h2>(屬性) animation-timing-function 動畫加速度函式</h2>
+<p>如果你對我的這篇文章 <a href="/articles/201406/css-cubic-bezier.html" target="_blank">CSS3 Cubic Bezier</a> 有印象，裡頭就有提到 CSS 動畫加速度函式裡的 Cubic Bezier，不過 animation-timing-function 不只有 Cubic Bezier，還有其他幾個設定選項：</p>
+<ul>
+<li><p><strong>linear</strong></p>
+<p>  線性，沒有任何加速減速，在 Cubic Bezier 的圖形表現為斜率 1 的直線。</p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-03.jpg" alt=""></p>
+</li>
+<li><p><strong>ease、ease-in、ease-out、ease-in-out</strong></p>
+<p>  具有加速減速的動畫，透過 ease 的加減速表現，能讓動畫更為流暢，比較不會像 linear 一樣硬梆梆，下圖是在 Cubic Bezier 的圖形表現。( ease 為預設值 )</p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-04.jpg" alt=""></p>
+</li>
+<li><p><strong>step-start、step-end</strong>：</p>
+<p>  step 系列算是比較少用的設定，顧名思義它就是「一步一步」，如果設定 step-start，則會按照關鍵影格的順序一格格進行，不會有中間的演算動畫，而 step-start 和 step-end 的差異在於 step-start 會把第一格關鍵影格的 output progression ( y 軸 ) 數值直接拉到 1，從 (1, 0) 開始，接著到 (1, 1) 結束，所以「<em>看不到第一格</em>」，然而 step-end 則是從 (0, 0) 開始一直到 (0, 1) 的最後一格才突然變成 (1, 1)，所以也導致「<em>看不到最後一格</em>」。</p>
+<p>  如果覺得有點繞口，可以看一下 W3C 所定義的圖片說明：</p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-05.jpg" alt=""></p>
+<p>  舉例來說，下面這個動畫，第一格是紅色，最後一格是黑色，如果我們設定 step-start，看到形狀的會是略過第一格，從綠色開始往左移動四次，每次 50px，若設定為 step-end，則形狀會往左移動四次，每次 50px，但不會有最後一格黑色。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-02.html" target="_blank">step-start、step-end</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  @keyframes oxxo{
+      0%{
+          left:0;
+          background:#f00;
+      }
+      25%{
+          left:50px;
+          background:#0f0;
+      }
+      50%{
+          left:100px;
+          background:#00f;
+      }
+      75%{
+          left:150px;
+          background:#ff0;
+      }
+      100%{
+          left:200px;
+          background:#000;
+      }
+  }
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-06.gif" alt=""></p>
+</li>
+<li><p><strong>steps(int,start|end)</strong></p>
+<p>  steps(int,start|end) 算是剛剛 step-start 和 step-end 的進化型，換句話說 step-start 等同於 <em>steps(1,start)</em>，而 step-end 等同於 <em>steps(1,end)</em>，因為都只走了「<em>一步</em>」，如果我們把 int 步數增加，就會看到每個關鍵影格之間多了一些演算出來的影格，當然如果步數設定越多，看到的動畫也會越流暢 ( 但如果要這麼做，只要不用 step 就好了 )</p>
+<p>  舉例來說，如果把上面的 step-start 改為 <code>steps(3,start)</code>，step-end 改為 <code>steps(3,end)</code>，就會得到下圖的結果。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-03.html" target="_blank">steps(int,start|end)</a></p>
+</blockquote>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-07.gif" alt=""></p>
+<p>  如果熟練 steps 的用法，就能夠很簡單的使用 sprite 圖片來做動畫，什麼是 sprite 圖片 呢？就是將許多圖案集合成一張圖，接著透過 CSS 的語法使這些圖案分別呈現在網頁裡，這樣就能大幅減少多張圖片載入的 request 數量。</p>
+<p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-09.jpg" alt=""></p>
+<p>  上圖是一張經典的 sprite 圖片 ( Leland Stanford 所拍攝 )，只要透過 CSS 動畫的 steps，我們也能很簡單的讓圖片中的馬兒跑起來。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-05.html" target="_blank">steps(int,start|end) 製作跑馬動畫</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  #hourse {
+    width:186px;
+    height:141px; 
+    position:absolute;
+    background-image:url("hourse.jpg");
+    animation-name: oxxo;
+    animation-duration:1s;
+    animation-iteration-count:infinite;
+    animation-timing-function:step-start;
+  }
+
+  @keyframes oxxo{
+      0%{
+        background-position:-15px -13px;
+      }
+      6.25%{
+        background-position:-210px -13px;
+      }
+      /* 12.5% ~ 93.75% 請看範例原始碼 */
+      100%{
+        background-position:-592px -470px;
+      }
+  }
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-10.gif" alt=""></p>
+</li>
+<li><p><strong>cubic-bezier(n,n,n,n)</strong>：</p>
+<p>  cubic-bezier 表示動畫開始與結束速度的貝茲曲線，詳細可以參考我的這篇 <a href="/articles/201406/css-cubic-bezier.html" target="_blank">CSS3 Cubic Bezier</a> 教學，或是直接到「<a href="http://cubic-bezier.com/" target="_blank">cubic-bezier</a>」這個網站實際操作看看，不過 CSS 動畫說穿了，單純靠 CSS 仍然無法製作很複雜的動畫效果，雖然 cubic-bezier 很強大，但真的拿來實戰的機會卻沒有很高，只要知道用法，需要用到的時候可以用就相當足夠囉！</p>
+</li>
+</ul>
+<h2>(屬性) animation-direction 動畫播放方向</h2>
+<ul>
+<li><strong>normal</strong>：正常播放，從 0% 到 100% ( 預設值 )。</li>
+<li><strong>reverse</strong>：反轉播放，從 100% 到 0%。</li>
+<li><strong>alternate</strong>：正反轉輪流播放，奇數次為 0% 到 100%，偶數次為 100% 到 0%，若動畫播放次數只有一次就只會正常播放。</li>
+<li><strong>alternate-reverse</strong>：alternate 的相反，奇數次為 100% 到 0%，偶數次為 0% 到 100%，若動畫播放次數只有一次就只會反轉播放。</li>
+</ul>
+<p>下面這段程式碼所產生的效果：正方形從左邊跑到右邊，然後再從右邊跑到左邊，無限次數的一直動作。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-04.html" target="_blank">animation-direction</a></p>
+</blockquote>
+<pre class="prettyprint"><code>div {
+  width:50px;
+  height:50px; 
+  position:absolute;
+  animation-name: oxxo;
+  animation-duration:2s;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-08.gif" alt=""></p>
+<h2>(屬性) animation-fill-mode 動畫播放前後模式</h2>
+<ul>
+<li><strong>none</strong>：預設值，不論動畫播放次數，結束後一律返回<em>原始狀態</em>。</li>
+<li><strong>forwards</strong>：動畫結束後，保持在最後一個影格狀態。</li>
+<li><strong>backwards</strong>：動畫結束後，保持在第一個影格狀態 ( 但實際測試和 none 效果一樣 )。</li>
+<li><strong>both</strong>：依據動畫的次數或播放方向，保持在第一個影格或最後一個影格狀態，相當實用。</li>
+</ul>
+<p>下面這段程式碼所產生的效果：正方形會一起往左移，動畫停止後紅色正方形留在後方、藍色正方形跳回前方。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-06.html" target="_blank">animation-fill-mode</a></p>
+</blockquote>
+<pre class="prettyprint"><code>.test {
+  width:50px;
+  height:50px; 
+  position:absolute;
+  animation-name: oxxo;
+  animation-duration:2s;
+}
+#red{
+  background:#f00;
+  animation-fill-mode:forwards;
+}
+#blue{
+  top:60px;
+  background:#06f;
+}
+
+@keyframes oxxo{
+  0%{
+      left:0;
+  }
+  100%{
+      left:200px;
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-11.gif" alt=""></p>
+<h2>(屬性) animation-play-state 動畫播放或暫停狀態</h2>
+<ul>
+<li><strong>running</strong>：預設值，表示動畫運行。</li>
+<li><strong>paused</strong>：表示動畫暫停。</li>
+</ul>
+<p>以剛剛提到的「跑馬動畫」為例，透過動畫播放或暫停的屬性，搭配滑鼠 hover 的效果，就能很輕鬆地實現「滑鼠移到區塊上才出現動畫」的效果。( 範例使用剛剛的跑馬動畫修改 )</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-07.html" target="_blank">animation-fill-mode</a></p>
+</blockquote>
+<pre class="prettyprint"><code>#hourse {
+  width:186px;
+  height:141px; 
+  background-image:url("hourse.jpg");
+  animation-name: oxxo;
+  animation-duration:1s;
+background-position:-15px -13px;
+  animation-iteration-count:infinite;
+  animation-timing-function:step-start;
+  animation-play-state:paused;
+}
+
+#hourse:hover{
+  animation-play-state:running;
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-12.gif" alt=""></p>
+<h2>Animation Events</h2>
+<p>Animation Events CSS 動畫行為是玩 CSS 動畫比較容易忽略的部分，但其實如果熟悉他的行為指令，許多動態效果，在 JavaScript 的部份就可以寫得更為簡潔，也更容易玩一些網頁的動畫特效，Animation Events 有以下四種：</p>
+<ul>
+<li><strong>animationstart</strong>：當動畫開始。</li>
+<li><strong>animationend</strong>：當動畫結束。</li>
+<li><strong>animationiteration</strong>：當動畫重複。</li>
+<li><strong>animationcancel</strong>：當動畫中止 ( 目前還不支援 )。</li>
+</ul>
+<p>單就字面上其實還滿容易理解的，下面的例子會讓動畫播放兩次後停止，並會在動畫下面放上一個字串，用 JavaScript 偵測並顯示現在動畫的狀態。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-08.html" target="_blank">偵測並顯示 Animation Events</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var hourse = document.getElementById('hourse');
+var text = document.getElementById('text');
+hourse.addEventListener('animationstart',function(){
+  text.innerHTML = '動畫開始';
+});
+hourse.addEventListener('animationend',function(){
+  text.innerHTML = '動畫結束';
+});
+hourse.addEventListener('animationiteration',function(){
+  text.innerHTML = '動畫重複';
+});
+hourse.addEventListener('animationcancel',function(){
+  text.innerHTML = '動畫暫停';
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-13.gif" alt=""></p>
+<h2>CSSKeyframesRule</h2>
+<p>在網頁的 document 裡有個屬性叫做 styleSheets，這個屬性會將一個網頁裡所有用到的樣式列出，舉例來說如果你正在瀏覽我的這個網頁 ( 就是正在閱讀的這頁 )，你可以把網頁開發者工具打開，在 console 輸入<code>document.styleSheets</code>，就會看到網站所有使用到的 CSS 依序列出。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-14.jpg" alt=""></p>
+<p>如果你覺得上面的例子 CSS 太複雜，可以打開下面這個範例頁面，一樣在 console 輸入<code>document.styleSheets</code>，把呈現出來的結果打開，會看到在 rules 裡包含兩個規則，分別是 id 是 test 的 div，以及名為 oxxo 的動畫規則：<em>CSSKeyframesRules</em>。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-09.html" target="_blank">顯示 CSSKeyframesRules</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-15.jpg" alt=""></p>
+<p>再把 CSSKeyframesRule 展開，就能夠看到 cssRules 裡有三個 CSSKeyframesRule，為什麼要看這個呢？因為如果我們想用 JavaScript 操控 CSS 動畫，通常都是直接更換動畫名稱，不然就是修改、添加或刪除 class 來實現，然而如果知道 CSSKeyframesRule，就能夠直接修改動畫內容。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-16.jpg" alt=""></p>
+<p>說到要修改動畫內容，就需要用到下列幾種方法：</p>
+<ul>
+<li><strong>findRule()</strong>：找出對應規則。</li>
+<li><strong>appendRule()</strong>：添加規則。</li>
+<li><strong>deleteRule()</strong>：刪除規則。</li>
+</ul>
+<p>舉例來說，下面這段程式碼，會在網頁打開的時候，在 console 裡呈現動畫的規則，接著點選按鈕後會出現原本 50% 的 keyframe 規則，同時會移除這個 keyframe 並添加新的 50% keyframe，最後呈現的結果，就可以在「動畫不中斷」的情況下，修改動畫樣式。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/css-animation-demo-10.html" target="_blank">在動畫不中斷的情形下更換動畫樣式</a></p>
+</blockquote>
+<p>HTML</p>
+<pre class="prettyprint"><code>&lt;div id="test"&gt;&lt;/div&gt;
+&lt;button id="btn"&gt;更換動畫內容&lt;/button&gt;
+</code></pre><p>CSS</p>
+<pre class="prettyprint"><code>#test {
+  width:50px;
+  height:50px; 
+  position:absolute;
+  top:40px;
+  background:#f00;
+  animation-name: oxxo;
+  animation-duration:2s;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+}
+
+@keyframes oxxo{
+    0%{
+      left:0;
+      background:#f00;
+    }
+    50%{
+      left:100px;
+      background:#0a0;
+    }
+    100%{
+      left:200px;
+      background:#06f;
+    }
+}
+</code></pre><p>JavaScript</p>
+<pre class="prettyprint"><code>var btn = document.getElementById('btn');
+var keyframes = document.styleSheets[0].cssRules[1];
+console.log(keyframes);
+btn.addEventListener('click',function(){
+  console.log(keyframes.findRule('50%'));
+  keyframes.deleteRule('50%');
+  console.log(keyframes);
+  keyframes.appendRule('50% {left:100px; background:#000;}');
+  console.log(keyframes);
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-17.gif" alt=""></p>
+<h2>小結</h2>
+<p>當熟練了 CSS 動畫之後，其實不少原本覺得有點複雜的效果都能迎刃而解，甚至也可以因為 CSS 動畫的輔助，大幅減少 JavaScript 程式碼，也能更快速的提高網頁效能，原本自己只是想寫個紀錄的文章，結果反而把 CSS 動畫給徹底研究了一下，也有不少網頁設計改善的想法迸出，CSS 動畫真是太神奇啦！</p>
+<h2>參考</h2>
+<p>只需要看這篇就夠囉：<a href="https://www.w3.org/TR/css-animations-1/" target="_blank">CSS Animations Level 1</a></p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180220"></script>
+  <script src="/js/articles.js?20180302"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
