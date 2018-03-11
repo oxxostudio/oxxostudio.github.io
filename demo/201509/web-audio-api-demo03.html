@@ -30,8 +30,8 @@
 
     window.addEventListener('load',function(){
 
-      var AudioContext = AudioContext || webkitAudioContext;
-      var context      = new AudioContext;
+      var AudioContext = window.AudioContext || window.webkitAudioContext;
+      var context      = new window.AudioContext;
       var oscillator   = context.createOscillator();
       var sound,
           type = 'sine',

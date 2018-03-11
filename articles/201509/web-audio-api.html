@@ -77,8 +77,8 @@
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Web Audio API 起手式</h2>
 <p>要使用 Web Audio API，第一步就是要創建一個 AudioContext，AudioContext 是一個聲音的容器，在 AudioContext 裡，我們可以針對聲音做各種的處理，在裡頭，AudioSourceNode 表示音訊來源，而聲音是以節點的方式 ( AudioNode ) 存在，每個節點都有輸入和輸出，只有來源節點沒有輸入，聲音除了可以用外部的輸入 ( wav、mp3、ogg...等 )，也可以使用振盪器 ( Oscillators ) 來產生，原理就有點像我們彈奏弦樂器，也是利用樂器內的弦震盪來發聲。</p>
 <p>既然是初探 Web Audio API，就用一個簡單的例子入手，由於我們在範例裡要用的是 Web Audio API，就一定會用到 AudioContext，所以我們要先來看看瀏覽器有沒有支援 ( 行動裝置目前還不支援 )，一開始先這樣寫，套用有支援的 AudioContext。</p>
-<pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
-var context = new AudioContext;
+<pre class="prettyprint"><code>var AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new window.AudioContext;
 </code></pre><h2>振盪器的屬性</h2>
 <p>有了裝載聲音的容器之後，接著就用振盪器來發點聲音，先用<code>createOscillator()</code>來產生振盪器，振盪器有四種屬性：</p>
 <ul>
@@ -125,8 +125,8 @@ oscillator3.stop(2);
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150928_1_02.jpg" alt="初探 Web Audio API"></p>
 <p>簡單來說，source 是我們的音訊來源，不論是用剛剛講的 oscillator 來做，或直接播放音訊，總之音訊來源就都必須轉換為 AudioNode，才能夠做進一步的控制，也就是進入「Processing Nodes」的階段，在這個階段我們就有許多的特殊節點模組 ( Nodes Modules ) 可以進行運算，最後就利用「destination」做輸出的動作，中間的每個步驟，我們都會使用「connect」來做連結，這也是為什麼在使用 Web Audio Api 的程式碼裡頭，都會出現許多 connect，同時也是上面的範例最後用了<code>oscillator3.connect(context.destination);</code>的原因。</p>
 <p>詳細的 Nodes Modules 會在之後的篇幅介紹，這裏我先用到一個最簡單也是最容易理解的 Nodes Modules：「GainNode 音量節點」，顧名思義這就是拿來控制音量使用的，因為我們已經進入 AudioNode 的階段，所以寫法上就要做點小更動，剛剛我們是直接用 oscillator 去連結 context.destination，這裏因為 oscillator 先連結了 gainNode，所以再來我們是要用 gainNode 去連結 context.destination，下面的範例打開以後，就會先聽到兩秒的標準音量，再來又會聽到兩秒變成原本音量 0.3 倍的聲音。( 範例：<a href="/demo/201509/web-audio-api-demo02.html" target="_blank">web-audio-api-demo02.html</a> )</p>
-<pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
-var context = new AudioContext;
+<pre class="prettyprint"><code>var AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new window.AudioContext;
 
 var oscillator1 = context.createOscillator();
 oscillator1.type = "square";
@@ -149,8 +149,8 @@ oscillator2.stop(AudioContext.currentTime+4);
 </code></pre><p>上面的例子用到了一個新的東西叫做<code>currentTime</code>，<code>currentTime</code>是從 AudioContext 建立的當下就會產生的時間，時間會不斷的進行直到我們將 AudioContext 移除，因此我們利用<code>currentTime</code>就可以確保聲音播放的時間，一定會在兩秒後或四秒後停止或播放。</p>
 <p>做到這邊，其實我們已經可以做一個很簡單的聲音產生器，並且在聲音播放的過程中還可以去調整聲音，下面這個範例，我做了「播放」與「停止」的按鈕，點選播放就會開始發出聲音，停止就會沒有聲音，一開始以為用 start 和 stop 就可以解決，後來發現一個坑，就是「當 OscillatorNode 開始之後，只會執行一次 start 和 stop」，那該如何讓聲音靜止呢？回想一下剛剛我們用了<code>connect</code>連結<code>context.destination</code>來播放，要靜止就只要<code>disconnect</code>即可，類似把喇叭的音源線拔掉就可以，至於其他的程式，大多都是負責按鈕的點擊事件，以及 range 的拖拉事件，在點擊或拖拉的時候，即時改變 type、frequency、detun 和 volume。</p>
 <p>第一部份的程式碼為創建 AudioContext 以及宣告一開始的聲音數值，這裏為什麼要先 disconnect 再 connect 呢。如果沒有這樣做，就會發現每做一個動作，聲音就會不斷的累加上去，就會越來越大聲越來越大聲，因此在這邊每做一個動作就要 disconnect，又為了避免還沒有 connect 的時候就 disconnect 會產生錯誤，因此用了一個 p 來做判斷。</p>
-<pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
-var context      = new AudioContext;
+<pre class="prettyprint"><code>var AudioContext = window.AudioContext || window.webkitAudioContext;
+var context      = new window.AudioContext;
 var oscillator   = context.createOscillator();
 var sound,
     type = 'sine',

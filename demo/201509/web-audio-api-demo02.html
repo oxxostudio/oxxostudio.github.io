@@ -7,8 +7,8 @@
   <meta name="copyright" content="oxxo.studio">
   <title>初探 Web Audio API demo02 - OXXO.STUDIO</title>
   <script>
-    var AudioContext = AudioContext || webkitAudioContext;
-    var context = new AudioContext;
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var context = new window.AudioContext;
 
     var oscillator1 = context.createOscillator();
     oscillator1.type = "square";
