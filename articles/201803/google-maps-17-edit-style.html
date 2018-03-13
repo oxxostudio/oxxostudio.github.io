@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (17) - 自訂地圖樣式風格 - OXXO.STUDIO</title>
+
+  <meta name="description" content="你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。">
+  <meta itemprop="description" content="你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-17-edit-style.jpg">
+  <meta property="og:description" content="你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。">
+  <meta property="og:title" content="Google Maps (17) - 自訂地圖樣式風格">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-17-edit-style.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-17-edit-style.jpg">
+  <link href="/css/article.css?20180312" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (17) - 自訂地圖樣式風格</h1>
+<p>你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>如何修改地圖樣式風格</h2>
+<p>回顧一下 <a href="/articles/201707/google-maps-2-map-class.html" target="_blank">Google Maps (2) - 使用地圖與基本設定</a> 這篇文章的內容，後半段有提及 <em>MapOptions</em> 的「其他屬性」，當中有個屬性叫做「<em>styles</em>」，要改變地圖的樣式風格，就需要使用這個 styles，寫法大概會向下方的程式碼這樣，除了宣告 zoom 和 center，可以看到多了一個 styles 的屬性，它的內容是一個 json 物件的樣式宣告。</p>
+<pre class="prettyprint"><code>function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    },
+    styles: [{
+        featureType: '',
+        elementType: '',
+        stylers: [
+          {color: ''},
+          {visibility: ''}
+            ]
+          }]
+  });
+}
+</code></pre><h2>JSON 樣式參考資料</h2>
+<p>物件樣式主要包含三個元素，要指定樣式，必須<em>三個元素為一組，結合成一個樣式陣列</em>，不過根據 Google 的說法，一次可套用的樣式數量是有限的，如果樣式陣列超過字元數目上限，就不會套用任何樣式。</p>
+<ul>
+<li><strong>featureType</strong>：可不填，這個元素主要是地圖的地理特性，包括道路、公園、水域等等。如果您未指定特徵，則會選取全部特徵。</li>
+<li><strong>elementType</strong>：可不填，這個元素主要是特徵的子部分，包括標籤和幾何形狀。如果不指定元素，則會選取該特徵的全部元素。</li>
+<li><strong>stylers</strong>：必填，要套用到所選特徵與元素的規則。樣式工具指的是特徵的色彩、能見度和粗細。</li>
+</ul>
+<p>由於 Google 官方的資料：<a href="https://developers.google.com/maps/documentation/javascript/style-reference?hl=zh-tw" target="_blank">樣式參考資料</a> 已經很詳細，在這裡就不列出內容的特徵，直接寫個範例來試試看，下方的程式碼，會把地圖裡所有的道路 road 變成紅色的。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-01.html" target="_blank">修改地圖樣式風格，把道路都變成紅色</a></p>
+</blockquote>
+<pre class="prettyprint"><code>function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    },
+    styles: [{
+        featureType:'road',
+        elementType:'',
+        stylers: [{
+          color: '#ff0000'
+        }]
+      }]
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-01.jpg" alt=""></p>
+<p>如果上面的例子，多添加一組 transit.station 的 style，就可以把所有大眾運輸車站 ( 機場、火車站、捷運站...等 ) 全部變成黑色。( 不過要注意的是，color 一定要填入六碼的色碼，例如紅色要填 #ff0000 不能只填 #f00。 )</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-02.html" target="_blank">把道路都變成紅色，車站變成黑色</a></p>
+</blockquote>
+<pre class="prettyprint"><code>function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    },
+    styles: [{
+        featureType:'road.local',
+        elementType:'geometry.fill',
+        stylers: [{
+          color: '#ff0000'
+        }]
+      },{
+        featureType:'transit.station',
+        elementType:'',
+        stylers: [{
+          color: '#000000'
+        }]
+      }]
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-02.jpg" alt=""></p>
+<h2>線上建立 Google Maps API 的自訂樣式</h2>
+<p>雖然我們透過 Google Maps API 已經可以修改地圖樣式風格，但每次都要手動改程式碼，甚至要明白地圖上每個元件的配色實在很不容易，所以這時就得透過 Google 官方推薦的「Google 線上地圖樣式編輯器」，直接在線上建立樣式風格。</p>
+<blockquote>
+<p>線上地圖樣式編輯器：<a href="https://mapstyle.withgoogle.com/" target="_blank">Google Maps APIs Styling Wizard</a></p>
+</blockquote>
+<p>打開編輯器後，可以先點選左側預設的樣式，就可以馬上看到右側的地圖變成不同的風格，舉例來說這是夜晚 Night 的風格，也比剛剛自己手動畫的漂亮多了。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-03.jpg" alt=""></p>
+<p>如果想要手動修改，也可以點選下方的 <em>MORE OPTIONS</em>，就會把打開完整的設定內容，並且可以用視覺化的方式進行設定。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-04.jpg" alt=""></p>
+<p>設定完成後，按下左側選單最下方的 <em>FINISH</em>，就可以把對應的 JSON 樣式參考資料匯出。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-05.jpg" alt=""></p>
+<p>複製 json，貼到剛剛的 Styles 裏頭，執行後就會看到我們自己的地圖，已經變成了漂亮的樣式。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-03.html" target="_blank">線上建立 Google Maps API 的自訂樣式</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-06.jpg" alt=""></p>
+<h2>Snazzy Maps</h2>
+<p>如果覺得預設的地圖樣式不夠，也可以 Google 搜尋地圖樣式，這時候通常出現在第一筆的，會是一個叫做「Snazzy Maps」的網站。( <a href="https://snazzymaps.com" target="_blank">https://snazzymaps.com</a> )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-07.jpg" alt=""></p>
+<p>點選上方的 Explore styles，就可以看到全世界上神人們所設計的地圖樣式，上頭除了有瀏覽數量，也有評價的星星數，可以盡情挑選自己中意的樣式，如果想要挑選最多人使用的。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-08.jpg" alt=""></p>
+<p>挑選完成後，同樣會產生 JSON 樣式參考資料，複製並貼到自己的地圖程式碼，就會看到自己的地圖變成特別的樣式囉！下面的例子我是挑選最多人喜歡的樣式，感覺還真是挺特別的...一片慘白 XD</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-04.html" target="_blank">線上建立 Google Maps API 的自訂樣式</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-09.jpg" alt=""></p>
+<h2>小結</h2>
+<p>以上大概就是修改地圖樣式風格的方法，感覺程式不難，難在如何設計風格與配色，相信透過線上工具的輔助，大家都能做出漂漂亮亮的地圖囉！</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180311"></script>
+  <script src="/js/articles.js?20180311"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
