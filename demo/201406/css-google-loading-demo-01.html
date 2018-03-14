@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>CSS3動畫 - Google Loading Animation demo 01 - OXXO.STUDIO</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #google_loading>div {
+    top: 50px;
+    left: 150px;
+    width: 50px;
+    height: 100px;
+    border-radius: 0 50px 50px 0;
+    position: absolute;
+    z-index: 10;
+    perspective: 200px;
+    transform: rotateY(0deg);
+    animation: bgColor1 4s step-end infinite both, rotate 4s step-start infinite both;
+    transform-origin: 0 50%;
+  }
+  
+  #google_loading>div:after {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: -50px;
+    width: 50px;
+    height: 100px;
+    border-radius: 50px 0 0 50px;
+    background: #ccc;
+    animation: bgColor2 4s step-end infinite both;
+  }
+  
+  #google_loading>div:before {
+    content: '';
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    left: 0px;
+    width: 50px;
+    height: 100px;
+    border-radius: 0 50px 50px 0;
+    transform-origin: 0 50%;
+    transform: rotateY(0deg) rotateZ(0deg);
+    animation: flipColor 4s linear infinite both, flip 4s linear infinite both;
+  }
+  
+  @keyframes bgColor1 {
+    0% {
+      background: #ffd539;
+    }
+    50% {
+      background: #3a71f8;
+    }
+    100% {
+      background: #3a71f8;
+    }
+  }
+  
+  @keyframes bgColor2 {
+    0% {
+      background: #f52d27;
+    }
+    25% {
+      background: #00b262;
+    }
+    75% {
+      background: #f52d27;
+    }
+    100% {
+      background: #f52d27;
+    }
+  }
+  
+  @keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    25% {
+      -webkit-transform: rotate(90deg);
+    }
+    50% {
+      -webkit-transform: rotate(180deg);
+    }
+    75% {
+      -webkit-transform: rotate(270deg);
+    }
+    100% {
+      -webkit-transform: rotate(0deg);
+    }
+  }
+  
+  @keyframes flip {
+    0% {
+      -webkit-transform: rotateY(0deg);
+    }
+    12.5% {
+      -webkit-transform: rotateY(90deg);
+    }
+    25% {
+      -webkit-transform: rotateY(180deg);
+    }
+    37.5% {
+      -webkit-transform: rotateY(90deg);
+    }
+    50% {
+      -webkit-transform: rotateY(0deg);
+    }
+    62.5% {
+      -webkit-transform: rotateY(90deg);
+    }
+    75% {
+      -webkit-transform: rotateY(180deg);
+    }
+    87.5% {
+      -webkit-transform: rotateY(90deg);
+    }
+    100% {
+      -webkit-transform: rotateY(0deg);
+    }
+  }
+  
+  @keyframes flipColor {
+    0% {
+      background: #f52d27;
+    }
+    12.5% {
+      background: #7d0906;
+    }
+    25% {
+      background: #ffd539;
+    }
+    37.5% {
+      background: #9f7d00;
+    }
+    50% {
+      background: #00b262;
+    }
+    62.5% {
+      background: #00190e;
+    }
+    75% {
+      background: #3a71f8;
+    }
+    87.5% {
+      background: #052e94;
+    }
+    100% {
+      background: #f52d27;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div id="google_loading">
+    <div></div>
+  </div>
+  <style>
+  #info {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    left: 0px;
+    background: #222;
+    padding: 20px 30px;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #info a {
+    color: #0bf;
+    transition: .2s;
+  }
+  
+  #info a:hover {
+    color: #6df;
+  }
+  </style>
+  <div id="info">相關參考：
+    <a id="infoLink" href="#" target="_blank"></a>
+  </div>
+  <script>
+  var href = location.href;
+  var page = href.split("demo/");
+  var name = page[1].split("-demo")[0];
+  var title = document.querySelector('title').innerHTML;
+  document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+  document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>

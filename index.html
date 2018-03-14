@@ -18,7 +18,7 @@
   <meta property="og:image" content="http://www.oxxostudio.tw/img/layout/social.png">
   <meta property="og:description" content="OXXO.STUDIO  包含了視覺創作、網頁前端程式、UI & UX 三個主要面向，希望能藉由這個小小平台，能夠展示自己的作品與創意，同時也是我自己練習的平台，記錄自己的成長足跡！">
   <title>OXXO.STUDIO</title> 
-  <link rel="stylesheet" href="/css/index.css?20180311v2">
+  <link rel="stylesheet" href="/css/index.css?20180314">
 </head>
 
 <body>
@@ -68,6 +68,12 @@
   </div>
 
   <main>
+    <div id="google_loading">
+      <div></div>
+    </div>
+    <style>
+    #google_loading>div:after,#google_loading>div:before{content:'';position:absolute;top:0;height:40px}#google_loading{width:100%;display:inline-block;text-align:center;padding:50px 0 50px 50px}#google_loading>div{display:inline-block;width:20px;height:40px;border-radius:0 20px 20px 0;z-index:10;perspective:200px;transform:rotateY(0);animation:bgColor1 3s step-end infinite both,rotate 3s step-start infinite both;transform-origin:0 50%}#google_loading>div:after{z-index:10;left:-20px;width:20px;border-radius:20px 0 0 20px;background:#ccc;animation:bgColor2 3s step-end infinite both}#google_loading>div:before{z-index:11;left:0;width:20px;border-radius:0 20px 20px 0;transform-origin:0 50%;transform:rotateY(0) rotateZ(0);animation:flipColor 3s linear infinite both,flip 3s linear infinite both}@keyframes bgColor1{0%{background:#ffd539}100%,50%{background:#3a71f8}}@keyframes bgColor2{0%,100%,75%{background:#f52d27}25%{background:#00b262}}@keyframes rotate{0%,100%{-webkit-transform:rotate(0)}25%{-webkit-transform:rotate(90deg)}50%{-webkit-transform:rotate(180deg)}75%{-webkit-transform:rotate(270deg)}}@keyframes flip{0%{-webkit-transform:rotateY(0)}12.5%{-webkit-transform:rotateY(90deg)}25%{-webkit-transform:rotateY(180deg)}37.5%{-webkit-transform:rotateY(90deg)}50%{-webkit-transform:rotateY(0)}62.5%{-webkit-transform:rotateY(90deg)}75%{-webkit-transform:rotateY(180deg)}87.5%{-webkit-transform:rotateY(90deg)}100%{-webkit-transform:rotateY(0)}}@keyframes flipColor{0%{background:#f52d27}12.5%{background:#7d0906}25%{background:#ffd539}37.5%{background:#9f7d00}50%{background:#00b262}62.5%{background:#00190e}75%{background:#3a71f8}87.5%{background:#052e94}100%{background:#f52d27}}
+    </style>
     <div id="content-grid">
       <ul>
       </ul>
@@ -91,8 +97,8 @@
   </div>
 
   <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/layout.js?20180311"></script>
-  <script src="/js/index.js?20180311"></script>
+  <script src="/js/layout.js?20180314"></script>
+  <script src="/js/index.js?20180314"></script>
   <script src="https://www.google.com/jsapi"></script>
   <script>
   (function(i, s, o, g, r, a, m) {
