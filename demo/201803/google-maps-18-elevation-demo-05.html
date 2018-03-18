@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>Google Maps (18) - 海拔高度服務 demo 05 - OXXO.STUDIO</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  
+  #draw-chart {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    background: #fff;
+    width:400px;
+    height:200px;
+  }
+  </style>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="draw-chart"></div>
+  <script>
+  var map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: {
+        lat: 25.0336962,
+        lng: 121.5643673
+      },
+      mapTypeId: 'terrain'
+    });
+
+    var elevator = new google.maps.ElevationService;
+    var polylinePathPoints = [{
+      lat: 25.037113,
+      lng: 121.499916
+    }, {
+      lat: 24.979854,
+      lng: 121.587109
+    }];
+
+    var polylinePath = new google.maps.Polyline({
+      map: map,
+      path: polylinePathPoints,
+      strokeColor: '#ff0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 10
+    });
+
+    displayPathElevation(polylinePathPoints, elevator);
+
+    function displayPathElevation(path, elevator) {
+      elevator.getElevationAlongPath({
+        'path': path,
+        'samples': 100
+      }, function(results, status) {
+        // 將 results 轉換為 Google 折線圖的資料格式
+        var arr = [];
+        arr.push(['number','elevation']);
+        for (let i = 0; i < results.length; i++) {
+          arr.push([i, results[i].elevation]);
+        }
+        // Google Chart 繪製折線圖函式
+        google.charts.load('current', {
+          'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(function() {
+          var data = google.visualization.arrayToDataTable(arr);
+          var chart = new google.visualization.LineChart(document.getElementById('draw-chart'));
+          var options = {
+            legend: {
+              position: 'bottom'
+            }
+          };
+
+          chart.draw(data, options);
+        });
+      });
+    }
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap" async defer></script>
+  <!-- 下方為非範例  -->
+  <style>
+  #info {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    left: 0px;
+    background: #222;
+    padding: 20px 30px;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #info a {
+    color: #0bf;
+    transition: .2s;
+  }
+  
+  #info a:hover {
+    color: #6df;
+  }
+  </style>
+  <div id="info">相關參考：
+    <a id="infoLink" href="#" target="_blank"></a>
+  </div>
+  <script>
+  var href = location.href;
+  var page = href.split("demo/");
+  var name = page[1].split("-demo")[0];
+  var title = document.querySelector('title').innerHTML;
+  document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+  document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>

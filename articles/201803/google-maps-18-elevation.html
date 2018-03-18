@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>Google Maps (18) - 顯示海拔高度 - OXXO.STUDIO</title>
+
+  <meta name="description" content="除了基本的地圖使用，Google Maps API 也有提供海拔高度的服務，雖然在地形圖的檢視模式下，可以看到山脈的高低起伏，但海拔高度服務卻能查詢某個位置的高度資料，這個服務目前常見於一些導航或運動類的應用程式 ( 現在其實不少偵測高度的裝置是使用氣壓計來量測 )。">
+  <meta itemprop="description" content="除了基本的地圖使用，Google Maps API 也有提供海拔高度的服務，雖然在地形圖的檢視模式下，可以看到山脈的高低起伏，但海拔高度服務卻能查詢某個位置的高度資料，這個服務目前常見於一些導航或運動類的應用程式 ( 現在其實不少偵測高度的裝置是使用氣壓計來量測 )。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-18-elevation.jpg">
+  <meta property="og:description" content="除了基本的地圖使用，Google Maps API 也有提供海拔高度的服務，雖然在地形圖的檢視模式下，可以看到山脈的高低起伏，但海拔高度服務卻能查詢某個位置的高度資料，這個服務目前常見於一些導航或運動類的應用程式 ( 現在其實不少偵測高度的裝置是使用氣壓計來量測 )。">
+  <meta property="og:title" content="Google Maps (18) - 顯示海拔高度">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-18-elevation.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-18-elevation.jpg">
+  <link href="/css/article.css?20180315" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Google Maps (18) - 顯示海拔高度</h1>
+<p>除了基本的地圖使用，Google Maps API 也有提供海拔高度的服務，雖然在地形圖的檢視模式下，可以看到山脈的高低起伏，但海拔高度服務卻能查詢某個位置的高度資料，這個服務目前常見於一些導航或運動類的應用程式 ( 現在其實不少偵測高度的裝置是使用氣壓計來量測 )。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用 Google Maps Elevation API</h2>
+<p>要使用海拔高度服務，首先要啟用 <em>Google Maps Elevation API</em>，前往 <a href="https://console.developers.google.com/" target="_blank">Google Console</a>，選擇和自己的 Google Maps JavaScript API 同樣的專案，進入專案後點選「<em>啟用 API 和服務</em>」。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-01.jpg" alt=""></p>
+<p>進入後搜尋 Google Maps Elevation API，搜尋到了之後就將其啟用。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-02.jpg" alt=""></p>
+<p>依據 Google 的限制規範，Google Maps Elevation API 的標準方案 ( 免費版 ) 每天可以有 2500 個免費 request，每個秒可以有 50 個 request，而每個 request 可以有 512 個位置，此外若使用 ElevationService，Google 也有限制不得用於 Google 地圖以外的地方，如果是開發應用程式服務，也必須標註相關使用條款與隱私權政策。</p>
+<h2>顯示地形圖</h2>
+<p>回顧 <a href="/articles/201707/google-maps-2-map-class.html" target="_blank">Google Maps (2) - 使用地圖與基本設定</a> ，只要將地圖的 mapTypeId 屬性修改為 terrain，就能在地圖上同時顯示街道與地形，接下的範例就會先把地圖變更為地形圖模式。( 其實也不見得要用地形圖，只是覺得如果偵測海拔高度，用地形圖比較應景 )</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-18-elevation-demo-01.html" target="_blank">Google 地圖顯示地形</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    },
+    mapTypeId:'terrain' //設定為'terrain'
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-03.jpg" alt=""></p>
+<h2>如何使用</h2>
+<p>使用海拔高度前，要先宣告 ElevationService，宣告的方法很簡單，一行程式碼就搞定。</p>
+<pre class="prettyprint"><code>var elevator = new google.maps.ElevationService;
+</code></pre><p>宣告後，就能使用 callback 的方法，這裡有兩種方法可以使用：</p>
+<blockquote>
+<ul>
+<li><em>getElevationForLocations()</em>：位置高度要求，指定一個或多個位置然後回傳對應高度。</li>
+<li><em>getElevationAlongPath()</em>：路徑高度要求，指定一段路徑上的樣本數，回傳對應高度。</li>
+</ul>
+</blockquote>
+<p>再來就看看回傳的內容，包含一組 <em>ElevationStatus</em> 物件和 <em>ElevationResult</em> 物件，ElevationStatus 表示呼叫高度服務後的狀態，總共有五種代碼狀態，基本上只要是 OK 就表示呼叫成功。</p>
+<blockquote>
+<ul>
+<li><em>OK</em>：指出服務要求成功</li>
+<li><em>INVALID_REQUEST</em>：指出服務要求的格式錯誤</li>
+<li><em>OVER_QUERY_LIMIT</em>：指出要求者已超過配額</li>
+<li><em>REQUEST_DENIED</em>：指出服務沒有完成要求，原因可能是因為參數無效</li>
+<li><em>UNKNOWN_ERROR</em>：指出不明錯誤</li>
+</ul>
+</blockquote>
+<p>呼叫成功後，callback 內的函式變數 results 就包含 ElevationResult 物件，ElevationResult 有三個元素，這也是到時候結果要顯示的內容。</p>
+<blockquote>
+<ul>
+<li><em>location</em>：正在計算高度資料的地點，回傳經緯度。</li>
+<li><em>elevation</em>：該位置的海拔高度 ( 以公尺為單位 )。</li>
+<li><em>resolution</em>：以內插計算高度的兩個資料點之間的最大距離 ( 以公尺為單位，如果解析度為未知，則不會有此屬性 )。</li>
+</ul>
+</blockquote>
+<h2>顯示位置上的海拔高度 ( getElevationForLocations() )</h2>
+<p>getElevationForLocations() 的用法：</p>
+<pre class="prettyprint"><code>getElevationForLocations({
+  locations[]: LatLng
+},callback(results, status));
+</code></pre><p>下面這段程式碼，首先使用<code>addListener</code>監聽 map 的滑鼠點擊事件，在點擊的當下，取得滑鼠的經緯度，接著把經緯度拋給 ElevationService，透過 getElevationForLocations() 獲得該經緯度的海拔高度，並顯示在瀏覽器的 console 裏頭，以下方的例子，當我點擊「松山文創園區」，就能看到它的海拔高度約為 11.186 公尺。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-18-elevation-demo-02.html" target="_blank">Google 地圖顯示某個位置的海拔高度</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    },
+    mapTypeId: 'terrain'
+  });
+
+  var elevator = new google.maps.ElevationService;
+
+  map.addListener('click', function(event) {
+    displayLocationElevation(event.latLng, elevator);
+  });
+
+  function displayLocationElevation(location, elevator) {
+    elevator.getElevationForLocations({
+      'locations': [location]
+    }, function(results, status) {
+      console.log(results, status);
+    });
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-04.jpg" alt=""></p>
+<p>如果不想用瀏覽器的 console 顯示，也可以使用 Google 地圖的資訊視窗 infowindow 來顯示滑鼠點擊地點的海拔高度，下面的例子在地圖上先宣告一個 infowindow，然後在滑鼠點擊的當下，由<code>results[0].location</code>取的經緯度，由<code>results[0].elevation</code>取得海拔高度，並轉換為小數點兩位的數字，最後透過 infowindow 呈現。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-18-elevation-demo-03.html" target="_blank">Google 地圖資訊視窗某個位置的海拔高度</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    },
+    mapTypeId: 'terrain'
+  });
+
+  var elevator = new google.maps.ElevationService;
+  var infowindow = new google.maps.InfoWindow();
+
+  map.addListener('click', function(event) {
+    displayLocationElevation(event.latLng, elevator);
+  });
+
+  function displayLocationElevation(location, elevator) {
+    elevator.getElevationForLocations({
+      'locations': [location]
+    }, function(results, status) {
+      var coordinate = {
+        lat: results[0].location.lat(),
+        lng: results[0].location.lng()
+      };
+      var elevation = Math.round(results[0].elevation * 100) / 100;
+      infowindow.setPosition(coordinate);
+      infowindow.setContent('&lt;h2&gt;海拔：' + elevation + ' 公尺&lt;/h2&gt;');
+      infowindow.open(map);
+    });
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-05.jpg" alt=""></p>
+<h2>顯示路徑上的海拔高度 ( getElevationAlongPath() )</h2>
+<p>getElevationAlongPath() 的用法：</p>
+<pre class="prettyprint"><code>getElevationAlongPath({
+  path[]: LatLng,
+  samples: Number
+},callback(results, status));
+</code></pre><p>getElevationAlongPath() 顧名思義就是沿著一個形狀的海拔高度，所以要先在地圖上繪製一段折線 ( 參考 <a href="/articles/201802/google-maps-9-polyline.html" target="_blank">Google Maps (9) - 繪製折線 ( Polyline )</a> )，並定義取樣的數量，應該就可以在瀏覽器的 console 裡看到折線中每個取樣點的海拔高度，以下面的例子來說，我在龍山寺到指南宮之間繪製一條直線，中間取樣 100 個點，透過 console 就能看到中間的高度變化。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-18-elevation-demo-04.html" target="_blank">顯示路徑上每個點的海拔高度</a></p>
+</blockquote>
+<pre class="prettyprint"><code>var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: {
+      lat: 25.0336962,
+      lng: 121.5643673
+    },
+    mapTypeId: 'terrain'
+  });
+
+  var elevator = new google.maps.ElevationService;
+  var polylinePathPoints = [{
+    lat: 25.037113,
+    lng: 121.499916
+  }, {
+    lat: 24.979854,
+    lng: 121.587109
+  }];
+
+  var polylinePath = new google.maps.Polyline({
+    map: map,
+    path: polylinePathPoints,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 10
+  });
+
+  displayPathElevation(polylinePathPoints,elevator);
+
+  function displayPathElevation(path, elevator) {
+    elevator.getElevationAlongPath({
+      'path': path,
+      'samples': 100
+    }, function(results, status){
+      console.log(results, status)
+    });
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-06.jpg" alt=""></p>
+<p>如果你會使用像是 Google Charts 之類的工具來繪製折線圖，你就可以把這些數值傳出來畫圖，看來彷彿就是這條線上的地形頗面圖，操作方式也很容易，只需要改寫剛剛執行的流程，把繪製折線圖的函式加進去即可。</p>
+<blockquote>
+<p>範例：<a href="/demo/201803/google-maps-18-elevation-demo-05.html" target="_blank">繪製路徑海拔折線圖</a></p>
+</blockquote>
+<pre class="prettyprint"><code>function displayPathElevation(path, elevator) {
+  elevator.getElevationAlongPath({
+    'path': path,
+    'samples': 100
+  }, function(results, status) {
+    // 將 results 轉換為 Google 折線圖的資料格式
+    var arr = [];
+    arr.push(['number','elevation']);
+    for (let i = 0; i &lt; results.length; i++) {
+      arr.push([i, results[i].elevation]);
+    }
+    // Google Chart 繪製折線圖函式
+    google.charts.load('current', {
+      'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(function() {
+      var data = google.visualization.arrayToDataTable(arr);
+      var chart = new google.visualization.LineChart(document.getElementById('draw-chart'));
+      var options = {
+        legend: {
+          position: 'bottom'
+        }
+      };
+
+      chart.draw(data, options);
+    });
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-07.jpg" alt=""></p>
+<h2>參考</h2>
+<ul>
+<li><a href="https://developers.google.com/maps/documentation/javascript/elevation?hl=zh-tw" target="_blank">Google Maps JavaScript API 高度服務</a></li>
+</ul>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180314"></script>
+  <script src="/js/articles.js?20180311"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
