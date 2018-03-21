@@ -70,6 +70,9 @@
 
 <h1>CSS3動畫 - Google Loading Animation</h1>
 <p>自從使用了智慧型手機之後，就常常在觀察手機 UI 的設計細節，隨著扁平化設計風格的興起，Google 的載入進度動畫也就變得相當的扁平風且具有設計感，後來發現不只手機的載入進度是用扁平化的風格，連 Google plus、Gmail...等 Google 產品都是使用類似的載入進度動畫，一時興起，使用 CSS3 做了一組 Google 的載入動畫。</p>
+<blockquote>
+<p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
+</blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>概念架構</h2>
 <p>在製作載入動畫之前，我們必須要先有 CSS3 的動畫概念以及立體的概念，不過因為這篇不是介紹 CSS3 動畫與立體，因此這邊就不太過著墨，直接來看成品的程式碼來一步步說明。</p>
 <p>首先看到動畫的架構，主要分為了三個層，一個是<strong>定位層</strong> ( #googleloading )，一個是<strong>底層</strong> ( div、::after )，最後一個是<strong>葉片層</strong> ( ::before )，定位層目的在於讓整個 loading 可以做定位，位置不會影響到內容，底層包含了一個 div 和一個偽元素 ::after，主要是區分兩個顏色，葉片層則是直接使用 ::before 代替。或許有人會問說兩種顏色直接用漸層色代替就好啦，沒錯，我一開始就是使用這個方式，但後來發現<strong>漸層色的動畫在 firefox 是出不來的</strong>，所以必須使用 ::after 來代替。( ::before 和 ::after 是偽元素，可以當作連著主體前後的 div 使用 )</p>

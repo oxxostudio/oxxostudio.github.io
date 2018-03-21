@@ -71,6 +71,9 @@
 <h1>純 CSS 繪製圓餅圖</h1>
 <p><img src="/img/articles/201503/css-pie-chart.gif" class="preview-img" alt=""></p>
 <p>當初我玩 SVG 的初衷，一部分就是因為當時的瀏覽器無法支援 CSS3 的動畫效果，當年為了一個圓餅圖 ( pie chart )，做不出來簡直快抓狂啦，但是近年來瀏覽器的效能大幅躍進，基本上使用純粹的 CSS 也可以做到圓餅圖的效果 ( 甚至是動畫 )，所以就用一篇文章來記錄一下純 CSS 繪製圓餅圖的過程吧！</p>
+<blockquote>
+<p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
+</blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>原理介紹</h2>
 <p>利用 CSS 做圓餅圖不如 SVG 來的直覺，畢竟在 CSS 裡頭要做成圓形，只能利用<code>border-radius</code>的方法進行，因此純粹的 CSS 圓餅圖，勢必得用一個以上的 div 來組合產生，那麼，啾竟需要多少個 div 才有辦法做出一個漂亮的圓餅圖呢？目前我的做法「只需要用一個 div 搭配自身兩個偽元素」即可，換句話說，就是用 div 本身作為遮罩，內容的兩個偽元素互相旋轉搭配，就可以做出逼真的圓餅圖。</p>
 <p>看完上面的文字，我相信一定還是搞不太懂，所以先來看一下步驟拆解圖，兩個偽元素拆解出來，就是兩個一模一樣的半圓形，利用半圓形的旋轉，就可以做出從 180 度開始往上算的扇形。</p>

@@ -74,6 +74,7 @@
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201408/css-vertical-align.html" target="_blank">CSS 垂直置中的三個方法</a></p>
 </blockquote>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>七種垂直置中的方法</h2>
 <p>因此，糾竟是哪七種 CSS 垂直置中的方法呢？就是以下這七種的啦！</p>
 <blockquote>
 <ul>
@@ -87,7 +88,7 @@
 </ul>
 </blockquote>
 <p>因為「設定行高」、「添加偽元素」以及「calc 動態計算」，在 <a href="http://www.oxxostudio.tw/articles/201408/css-vertical-align.html" target="_blank">CSS 垂直置中的三個方法</a> 裏頭都介紹過，所以就不在這篇文章詳述，這篇文章主要介紹其他的四種垂直置中的方法。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用表格或假裝表格</h2>
+<h2>使用表格或假裝表格</h2>
 <p>或許有些人會發現，在表格這個 HTML 裡面常用的 DOM 裏頭，要實現垂直置中是相當容易的，只需要下一行<code>vertical-align:middle</code>就可以，為什麼呢？最主要的原因就在於 table 的 display 是 table，而 td 的 display 是 table-cell，所以我們除了直接使用表格之外，也可以將要垂直置中元素的父元素的 display 改為 table-cell，就可以輕鬆達成，不過修改 display 有時候也會造成其他樣式屬性的連動影響，需要比較小心使用。( 範例：<a href="/demo/201502/css-vertical-align-7methods-demo1.html" target="_blank">css-vertical-align-7methods-demo1.html</a> )</p>
 <p>HTML：</p>
 <pre class="prettyprint"><code>&lt;table&gt;

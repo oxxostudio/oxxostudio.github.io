@@ -70,6 +70,9 @@
 
 <h1>有趣的 CSS 彈跳動畫</h1>
 <p>這是只用了一個 div 來做的小動畫，純粹利用 CSS3 的 animation 來完成，就像是一個正方形在地上彈跳，碰到地面的時候尖角還會壓縮變圓，陰影的部分也會隨著正方形升高而縮小，至於到底該怎麼完成呢？讓我們繼續看下去。</p>
+<blockquote>
+<p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
+</blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>利用偽元素</h2>
 <p>由於只使用了一個 div，要同時達到正方形旋轉與陰影縮放的效果，這裡必須使用兩個偽元素 ( before 與 after ) 來完成，嚴格來說，雖然只有一個 div，但是卻是把這個 div 當作外框，讓偽元素 before 作為旋轉的正方形，讓偽元素 after 作為陰影，如果對於偽元素不太了解的，可以參考我之前寫的這篇：<a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" target="_blank">電子時鐘效果 ( CSS 偽元素的應用 )</a></p>
 <pre class="prettyprint"><code>.box{
