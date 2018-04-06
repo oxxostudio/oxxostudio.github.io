@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>實作 LINE 聊天機器人 ( Google Apps Script ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="在 2017 年初寫的 LINE BOT 實戰，是使用 Node.js 搭配 heroku 的服務完成，但在部署上總是遭遇到一些困難，後來發現原來 Google Apps Script 也能做到同樣的事情，不如就直接用它來打造 LINE 機器人，而且現在的設定介面又有點不同，就再寫篇文章記錄一下。 ">
+  <meta itemprop="description" content="在 2017 年初寫的 LINE BOT 實戰，是使用 Node.js 搭配 heroku 的服務完成，但在部署上總是遭遇到一些困難，後來發現原來 Google Apps Script 也能做到同樣的事情，不如就直接用它來打造 LINE 機器人，而且現在的設定介面又有點不同，就再寫篇文章記錄一下。 ">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201804/line-bot-">
+  <meta property="og:description" content="在 2017 年初寫的 LINE BOT 實戰，是使用 Node.js 搭配 heroku 的服務完成，但在部署上總是遭遇到一些困難，後來發現原來 Google Apps Script 也能做到同樣的事情，不如就直接用它來打造 LINE 機器人，而且現在的設定介面又有點不同，就再寫篇文章記錄一下。 ">
+  <meta property="og:title" content="實作 LINE 聊天機器人 ( Google Apps Script )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201804/line-bot-">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201804/line-bot-">
+  <link href="/css/article.css?20180315" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>實作 LINE 聊天機器人 ( Google Apps Script )</h1>
+<p>在 2017 年初寫的 LINE BOT 實戰，是使用 Node.js 搭配 heroku 的服務完成，但在部署上總是遭遇到一些困難，後來發現原來 Google Apps Script 也能做到同樣的事情，不如就直接用它來打造 LINE 機器人，而且現在的設定介面又有點不同，就再寫篇文章記錄一下。 </p>
+<blockquote>
+<ul>
+<li><p>其他文章參考：<a href="/articles/201701/line-bot.html">LINE BOT 實戰 ( 原理篇 )</a>、<a href="/articles/201701/line-bot-2.html">LINE BOT 實戰 ( 聊天篇 )</a></p>
+</li>
+<li><p>如果不太會寫程式，可以參考我這篇 <a href="/articles/201803/ifttt-line.html">IFTTT 發送 LINE 訊息通知</a>，只需要簡單地設定加上幾行程式，就能在觸發某些事件時，自動發送 LINE 訊息通知。</p>
+</li>
+</ul>
+</blockquote>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立 LINE Messaging API</h2>
+<p>前往 LINE developers 網站，點選右上方的 login，使用自己的 LINE 帳號登入，登入後點選「    <em>Start using Messaging API</em>」，就會開始進行建立 Messaging API 的步驟。</p>
+<blockquote>
+<p>LINE developers：<a href="https://developers.line.me/" target="_blank">https://developers.line.me/</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-01.jpg" alt=""></p>
+<p>第一個步驟是選擇 provider 的名稱，沒意外的話應該就是 LINE 的帳號，選擇完成繼續下個步驟。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-02.jpg" alt=""></p>
+<p>第二個步驟的一開始要設定 API 的圖像、名稱和描述，這也是之後再 LINE 聊天室裡會呈現的。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-03.jpg" alt=""></p>
+<p>往下繼續選擇分類 catagory、子分類 subcatagory 和 email，就可以點選 <em>Confirm</em>。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-04.jpg" alt=""></p>
+<p>點選 Confirm 後就要勾選相關的規範，勾選完成後就能按下 <em>Create</em> 建立 Messaging API。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-05.jpg" alt=""></p>
+<h2>設定 LINE Messaging API</h2>
+<p>回到個人 console 的 <a href="https://developers.line.me/console/" target="_blank">頁面</a>，應該就能看到剛剛建立的 API 出現在畫面中，點擊圖示進入設定頁面。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-06.jpg" alt=""></p>
+<p>設定畫面往下拉，重點放在 Messaging setting 的部分，這裡有幾個重點需要設定：</p>
+<ul>
+<li><em>Channel access token</em>：聊天室的金鑰，點選後方的 Issue 就會產生一組。</li>
+<li><em>Use webhooks</em>：使用 webhooks，勾選啟用 enabled。</li>
+<li><em>Webhook URL</em>：webhook 的網址，待會透過 Google Apps Script 產生後就再來貼上。</li>
+<li><em>Allow bot to join group chats</em>：是否允許這個機器人加入群聊，這裡勾選不啟用 disable。</li>
+</ul>
+<p>至於 LINE@ features 的設定，如果不想讓 LINE@ 自動回話，就兩個選項都設定為 disable。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-07.jpg" alt=""></p>
+<p>到這個步驟之後，LINE Messaging API 的設定差不多就完成，這時候再前往 LINE@ 並登入，就會看到剛剛建立的機器人出現了，點選就能進入它的 LINE@ 設定。</p>
+<blockquote>
+<p>LINE@：<a href="https://at.line.me/" target="_blank">https://at.line.me/</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-10.jpg" alt=""></p>
+<p>點選「帳號設定 &gt; 基本設定」，可以看到該機器人的 QRCode，<em>使用手機掃描添加為好友</em>，才能開始測試聊天機器人的功能。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-11.jpg" alt=""></p>
+<h2>Google Apps Script 接收 LINE 訊息</h2>
+<p>Google Apps Script 是一個基於 JavaScript 的程式語言，主要用來開發或串接 Google 的各種服務與應用，然而透過將程式部署到網路上，就等同產生一組 webhook 網址，透過這個網址就能讓訊息與 LINE 機器人互相溝通，點選下方的連結，用 Google 帳號登入，點選右上方的「<em>+ 新增指令碼</em>」就可以開始撰寫 Google Apps Script。</p>
+<blockquote>
+<p>Google Apps Script Dashboard：<a href="https://script.google.com/" target="_blank">https://script.google.com/</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-08.jpg" alt=""></p>
+<p>新增指令碼會產生一個無標題專案，可以點選標題進行修改，我這裡將標題修改為「linebot」，<em>程式碼.gs</em> 是待會要編輯的程式碼檔案。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-09.jpg" alt=""></p>
+<p>Google Apps Script 有限定名稱格式為 doGet 或 doPost，因為我們的程式會向 LINE 發送 HTTP POST request，所以這裡要將 myFunctions 名稱改為 doPost，後方接著一個 e 的參數。因為<code>e.parameters</code>需包含指定的 key 與 value，所以這裡使用<code>e.postData.contents</code>來獲取完成傳送的內容，但因為獲取的訊息內容為「字串」，所以再用<code>JSON.parse</code>來轉換資料格式。</p>
+<p>下面的例子使用<code>console.log</code>來印出收到的訊息，CHANNEL_ACCESS_TOKEN 是剛剛我們產生的那組金鑰。</p>
+<pre class="prettyprint"><code>function doPost(e) {
+    var CHANNEL_ACCESS_TOKEN = '你的 Channel access token';
+  var msg= JSON.parse(e.postData.contents);
+  console.log(msg);
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-12.jpg" alt=""></p>
+<p>存檔後點選上方「發佈」，選擇「部署為網路應用程式」。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-13.jpg" alt=""></p>
+<p>部署時有幾個設定需要注意，如果有更動程式內容，<em>專案版本一律選擇「新增」</em>，而具有應用程式存取權的使用者，選擇「<em>任何人，甚至匿名使用者</em>」，完成部署後就會產生一段網址，這段網址就是要提交給 LINE 的 webhook 網址。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-14.jpg" alt=""></p>
+<p>複製網址，回到 <a href="https://developers.line.me/console/" target="_blank">LINE developer</a> 剛剛建立的機器人設定頁面，看到 Messaging setting 的部分，點選 webhook URL 後方的筆型 icon，將網址貼上。( 注意前方的 https:// 需要手動刪除 )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-15.jpg" alt=""></p>
+<p>完成後打開 LINE，點選和機器人的聊天室，發送一則訊息給機器人。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-16.jpg" alt=""></p>
+<p>發送訊息後，因為剛剛有寫了 console.log 來顯示訊息，所以需要前往 Google Cloud Platform 的 Stackdriver 查看訊息記錄，上方選擇我們建立的 linebot 程式，在記錄區就能夠看到剛剛的訊息「測試訊息是否收到」以及一些對應的內容。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-17.jpg" alt=""></p>
+<h2>Google Apps Script 發送 LINE 訊息</h2>
+<p>已經能夠順利接收 LINE 訊息後，接著就是要來發送 LINE 訊息，首先看到 LINE Messaging API 的 reference，裏頭 Send Reply Message 有針對回傳的訊息格式做了定義，因此我們也必須遵照定義回傳。</p>
+<blockquote>
+<p>參考：<a href="https://developers.line.me/en/docs/messaging-api/reference/#send-reply-message" target="_blank">Send reply message</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-18.jpg" alt=""></p>
+<p>接著我們要改寫剛剛的 Apps Script，使用<code>UrlFetchApp.fetch</code>的方法回傳訊息，UrlFetchApp.fetch 第一個參數放入 LINE 指定回傳的 URL，第二個參數是個物件，方法 method 使用 post，header 和 payload 則遵照定義來撰寫，比較需要注意的是 payload 使用<code>JSON.stringify</code>將內容轉換成字串回傳。</p>
+<p>回傳的訊息就直接原封不動的把發送的訊息回傳，為了做點區隔，我在後方加入一串「( google )」的文字，證明真的有收到並且回傳，完成後重新發佈 ( 記得一定要用「新增」 )，發佈成功後用 LINE 傳送訊息，就可以看到機器人會回應一模一樣的訊息。</p>
+<pre class="prettyprint"><code>function doPost(e) {
+
+  var CHANNEL_ACCESS_TOKEN = '你的 Channel access token';
+  var msg = JSON.parse(e.postData.contents);
+  console.log(msg);
+
+  // 取出 replayToken 和發送的訊息文字
+  var replyToken = msg.events[0].replyToken;
+  var userMessage = msg.events[0].message.text;
+
+  if (typeof replyToken === 'undefined') {
+    return;
+  }
+
+  var url = 'https://api.line.me/v2/bot/message/reply';
+  UrlFetchApp.fetch(url, {
+      'headers': {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ' + CHANNEL_ACCESS_TOKEN,
+    },
+    'method': 'post',
+    'payload': JSON.stringify({
+      'replyToken': replyToken,
+      'messages': [{
+        'type': 'text',
+        'text': userMessage+' ( google )',
+      }],
+    }),
+  });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201804/line-bot-apps-script-19.jpg" alt=""></p>
+<h2>小結</h2>
+<p>基本上如果已經能講什麼就回應什麼，一個 LINE 聊天機器人的基本功能就已經完成，接下來就是看如何用些邏輯判斷或自動化的學習，讓機器人更聰明，之後會再找時間寫點透過 LINE 機器人搭配 Google 服務的應用文章。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180314"></script>
+  <script src="/js/articles.js?20180311"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
