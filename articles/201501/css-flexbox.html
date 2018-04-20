@@ -167,10 +167,10 @@
 <li><p><strong>align-items</strong></p>
 <p>  align-items 剛好和 justify-content 相反，align-items 決定了內容元素與整個 Flexbox 的「<strong>垂直對齊</strong>」位置，再回想一下最上面講的 Flexbox 盒子模型，具有 cross start 與 cross end 左右兩個端點，align-items 與 align-self 就是按照這個方式做設定，設定值總共有下列五個。( 範例：<a href="/demo/201501/css-flexbox-demo4.html" target="_blank">css-flexbox-demo4.html</a>、<a href="http://www.w3.org/TR/css3-flexbox/#align-items-property" target="_blank">W3C 說明</a> )</p>
 <ul>
-<li><em>flex-start</em>：預設值，對齊最上面的 cross start</li>
+<li><em>flex-start</em>：對齊最上面的 cross start</li>
 <li><em>flex-end</em>：對齊最下面的 cross end</li>
 <li><em>center</em>：垂直置中</li>
-<li><em>stretch</em>：將內容元素全部撐開至 Flexbox 的高度</li>
+<li><em>stretch</em>：預設值，將內容元素全部撐開至 Flexbox 的高度</li>
 <li><em>baseline</em>：以所有內容元素的基線作為對齊標準</li>
 </ul>
 <p>CSS：  </p>
@@ -226,12 +226,12 @@
 <li><p><strong>align-content</strong></p>
 <p>  剛剛談到的 align-items 是針對內容為單行的元素進行處理，如果遇到多行的元素，就要使用 align-content 這個屬性，這個屬性總共有六個設定值。( 範例：<a href="/demo/201501/css-flexbox-demo6.html" target="_blank">css-flexbox-demo6.html</a>、<a href="http://www.w3.org/TR/css3-flexbox/#align-content-property" target="_blank">W3C 說明</a> )</p>
 <ul>
-<li><em>flex-start</em>：預設值，對齊最上面的 cross start</li>
+<li><em>flex-start</em>：對齊最上面的 cross start</li>
 <li><em>flex-end</em>：對齊最下面的 cross end</li>
 <li><em>center</em>：垂直置中</li>
 <li><em>space-between</em>：將第一行與最後一行分別對齊最上方與最下方    </li>
 <li><em>space-around</em>：每行平均分配間距</li>
-<li><em>stretch</em>：內容元素全部撐開</li>
+<li><em>stretch</em>：預設值，內容元素全部撐開</li>
 </ul>
 <p>CSS：</p>
 <pre class="prettyprint"><code>.flex-start,
@@ -361,7 +361,7 @@
 <li><p><strong>flex</strong></p>
 <p>  好酒沉甕底，有耐心看到下面的才會看到重點喔哈哈！flex 應該是 Flexbox 裏頭最重要的屬性了，而 flex 其實是由三個屬性組合而成，依照先後順序分別是「<strong>flex-grow</strong>」、「<strong>flex-shrink</strong>」和「<strong>flex-basis</strong>」，如果 flex 只填了一個數值 ( 無單位 )，那麼預設就是以 flex-grow 的方式呈現，至於三個屬性的解釋如下：</p>
 <ul>
-<li><em>flex-grow</em>：數字，無單位，當子元素的 flex-basis 長度「<strong>小</strong>」於它自己在父元素分配到的長度，按照數字做相對應的「伸展」比例分配，預設值為 1，設為 0 的話不會進行彈性變化，不可為負值。</li>
+<li><em>flex-grow</em>：數字，無單位，當子元素的 flex-basis 長度「<strong>小</strong>」於它自己在父元素分配到的長度，按照數字做相對應的「伸展」比例分配，預設值為 0，不會進行彈性變化，不可為負值，設為 1 則會進行彈性變化。</li>
 <li><em>flex-shrink</em>：數字，無單位，當子元素的 flex-basis 長度「<strong>大</strong>」於它自己在父元素分配到的長度，按照數字做相對應的「壓縮」比例分配，預設值為 1，設為 0 的話不會進行彈性變化，不可為負值。</li>
 <li><p><em>flex-basis</em>：子元素的基本大小，作為父元素的大小比較基準，預設值為 0，也因為預設值為 0，所以沒有設定此屬性的時候，會以直接採用 flex-grow 屬性，flex-basis 也可以設為 auto，如果設為 auto，就表示子元素以自己的基本大小為單位。。</p>
 <p>三個屬性可以分開設定，也可以合在一起用一個 flex 統一設定，下面的例子展現出同一個 Flexbox，在不同的寬度，子元素會有不同大小的呈現。( 範例：<a href="/demo/201501/css-flexbox-demo9.html" target="_blank">css-flexbox-demo9.html</a>)</p>
