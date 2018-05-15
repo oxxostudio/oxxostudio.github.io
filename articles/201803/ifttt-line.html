@@ -115,7 +115,9 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-15.jpg" alt=""></p>
 <p>打開後點選右上方的 Setting，就可以看到一串很長的網址，這串網址後方的亂碼就是金鑰，這串金鑰很重要，如果外流的話就表示任何人都可以透過你的 LINE Notify 發訊息給你。( 如果有疑慮，其實只要刪除這個 webhooks 服務，重新跑一次建立流程，就能產生新的金鑰 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-16.jpg" alt=""></p>
-<p>使用網頁編輯器，輸入下方的範例程式碼，在金鑰的地方填入剛剛的金鑰，執行網頁後，就會從 LINE 收到一個 Hello World 的訊息。</p>
+<p>使用網頁編輯器，輸入下方的範例程式碼，在金鑰的地方填入剛剛的金鑰，執行網頁後，就會從 LINE 收到一個 Hello World 的訊息，主要的程式碼如下，在「你的 Webhook 名稱」裡填入剛剛設定的名稱 line，金鑰的部分填入金鑰即可。</p>
+<pre class="prettyprint"><code>https://maker.ifttt.com/trigger/你的 Webhook 名稱/with/key/你的金鑰
+</code></pre><p>完整程式碼：</p>
 <pre class="prettyprint"><code>&lt;html&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
