@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>簡易後端實作 ( Google Apps Script ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="因為我屬於前端工程師 ( 前端設計師？ )，「後端」往往是我開發的罩門所在，有時候想要做些什麼應用，往往都卡在後端部署或要申請個虛擬機器就不了了之，自從接觸了 Google Apps Script 之後，有些簡單的後端功能也就能輕鬆實現了，這篇將會介紹如何使用 Google Apps Script，實現 GET 與 POST 相關的後端功能。">
+  <meta itemprop="description" content="因為我屬於前端工程師 ( 前端設計師？ )，「後端」往往是我開發的罩門所在，有時候想要做些什麼應用，往往都卡在後端部署或要申請個虛擬機器就不了了之，自從接觸了 Google Apps Script 之後，有些簡單的後端功能也就能輕鬆實現了，這篇將會介紹如何使用 Google Apps Script，實現 GET 與 POST 相關的後端功能。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201805/backend-apps-script.jpg">
+  <meta property="og:description" content="因為我屬於前端工程師 ( 前端設計師？ )，「後端」往往是我開發的罩門所在，有時候想要做些什麼應用，往往都卡在後端部署或要申請個虛擬機器就不了了之，自從接觸了 Google Apps Script 之後，有些簡單的後端功能也就能輕鬆實現了，這篇將會介紹如何使用 Google Apps Script，實現 GET 與 POST 相關的後端功能。">
+  <meta property="og:title" content="簡易後端實作 ( Google Apps Script )">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201805/backend-apps-script.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201805/backend-apps-script.jpg">
+  <link href="/css/article.css?20180315" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>簡易後端實作 ( Google Apps Script )</h1>
+<p>因為我屬於前端工程師 ( 前端設計師？ )，「後端」往往是我開發的罩門所在，有時候想要做些什麼應用，往往都卡在後端部署或要申請個虛擬機器就不了了之，自從接觸了 Google Apps Script 之後，有些簡單的後端功能也就能輕鬆實現了，這篇將會介紹如何使用 Google Apps Script，實現 GET 與 POST 相關的後端功能。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立 Apps Script 專案</h2>
+<p>登入 Google 後，打開 Google 雲端硬碟，從左側選單中可以新增 Google Apps Script。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-01.jpg" alt=""></p>
+<p>如果沒有看見相關選項，請點選「連結更多應用程式」，搜尋 Google Apps Script 後添加進去，回到主畫面就可以在選單內看到選項。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-02.jpg" alt=""></p>
+<h2>doGet</h2>
+<p>建立專案後，先把專案名稱命名為「test http request」。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-03.jpg" alt=""></p>
+<p>先來測試最簡單的 htpp request 例子：「<em>打開一行網址，Server 端就會回應一則訊息</em>」，首先把程式改寫成下面這段代碼，這段代碼等同於接收到客戶端 request 請求之後，伺服器回應 純文字 123 的 response。</p>
+<blockquote>
+<p>需注意的是，如果要使用 GET 方法，一定得用 doGet 的 function 名稱。</p>
+</blockquote>
+<pre class="prettyprint"><code>function doGet() {
+
+  return ContentService.createTextOutput('123');
+
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-04.jpg" alt=""></p>
+<p>一個簡單的 request 和 response 程式就完成了，就是這麼簡單！接下來只要進行「部署」，就能夠真正啟用相對應功能，點選上方選單「<em>發佈 &gt; 部署為網路應用程式</em>」，就能開始進行部署作業。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-05.jpg" alt=""></p>
+<p>點選後會出現部署畫面，專案版本選擇「<em>新增</em>」，將應用程式執行為「<em>我</em>」，具有應用程式存取權的人設定為「<em>任何人，甚至匿名使用者</em>」。</p>
+<blockquote>
+<p>這裡有兩個需注意的地方：第一、每次部署專案一定要用新增，不然就沒反應，第二、存取權限的意思是這個應用程式是由「我」的帳號執行，而任何人只要知道這個應用程式，都能用「我」的權限來操控。</p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-06.jpg" alt=""></p>
+<p>部署完成後，就會看到一串很長的網址，複製這行網址。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-07.jpg" alt=""></p>
+<p>打開瀏覽器，在網址列貼上這行網址，執行後就會看到網頁畫面出現伺服器回應 123 的文字，一個簡單的 request 和 response 功能已經完成囉！</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-08.jpg" alt=""></p>
+<p>接下來我們要加入「<em>參數</em>」，這裡我加入 name 和 age 兩個參數，依據 Apps Script doGet 的傳值規則，傳進來的值會放在 <em>e.parameter</em> 的物件內，依據規則將 name 和 age 取出，轉換成回應的文字再顯示出來。</p>
+<pre class="prettyprint"><code>function doGet(e) {
+
+  var param = e.parameter;
+  var name = param.name;
+  var age = param.age;
+
+  var replyMsg = '你的名字是：' + name + '，年紀：' + age + '歲。';
+
+  return ContentService.createTextOutput(replyMsg);
+
+}
+</code></pre><p>編輯完成點選部署，部署後打開瀏覽器，輸入下列的網址，執行結果就會是「你的名字是：oxxo，年紀：18歲。」</p>
+<pre class="prettyprint"><code>你部署的網址?name=oxxo&amp;age=18
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-09.jpg" alt=""></p>
+<p>如果使用 jQuery，就用<code>$.get</code>的方法來實現</p>
+<pre class="prettyprint"><code>$.get('你部署的網址?name=oxxo&amp;age=18',function(e){
+    console.log(e);
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-10.jpg" alt=""></p>
+<p>如果使用 Node.js，就用 request 的方法來實現</p>
+<pre class="prettyprint"><code>var request = require("request");
+
+var options = {
+    url:'你部署的網址?name=oxxo&amp;age=18',
+    method: 'GET'
+}
+
+request(options,function(err, res, body){
+    console.log(body);
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-11.jpg" alt=""></p>
+<h2>doPost</h2>
+<p>看完了 doGet 的用法，接著就來看看使用 POST 的方式的 doPost，使用方式很簡單，只需要把 doGet 改成 doPost 即可，內容完全不用更動，改完記得再部署一次。</p>
+<pre class="prettyprint"><code>function doPost(e) {
+
+  var param = e.parameter;
+  var name = param.name;
+  var age = param.age;
+
+  var replyMsg = '你的名字是：' + name + '，年紀：' + age + '歲。';
+
+  return ContentService.createTextOutput(replyMsg);
+
+}
+</code></pre><p>由於傳值的方法由 GET 改為 POST，所以在網頁端就不能單純透過網址傳值，如果是使用 jQuery，就用<code>$.post</code>的方法來實現。</p>
+<pre class="prettyprint"><code>$.post('你部署的網址',{
+    name:'oxxo',
+    age:18
+},function(e){
+    console.log(e);
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-10.jpg" alt=""></p>
+<p>如果使用 Node.js，一樣就用 request 的方法來實現，只是 method 要改為 POST，且必須加入 <strong>followAllRedirects: true</strong> 這段參數來解決 api server 執行 301/302 redirect 的動作。</p>
+<pre class="prettyprint"><code>var request = require("request");
+
+var options = {
+    url:'你部署的網址',
+    method: 'POST',
+    followAllRedirects: true,
+    form:{
+        name:'oxxo',
+        age:18
+    }
+}
+request(options,function(err, res, body){
+    console.log(body);
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-11.jpg" alt=""></p>
+<h2>回傳參數</h2>
+<p>回傳的參數有以下三種，可以依據不同的需求回傳。</p>
+<ul>
+<li><p><em>字串</em>：</p>
+<pre class="prettyprint"><code>return ContentService.createTextOutput(字串);
+</code></pre></li>
+<li><p><em>HTML</em>：</p>
+<pre class="prettyprint"><code>  return HtmlService.createHtmlOutput(HTML);
+</code></pre></li>
+<li><p><em>JSON</em>：</p>
+<pre class="prettyprint"><code>  var JSONString = JSON.stringify(result);
+  return ContentService.createTextOutput(JSONString)
+      .setMimeType(ContentService.MimeType.JSON);
+</code></pre></li>
+</ul>
+<h2>小結</h2>
+<p>透過 Google Apps Script 所建立的簡易後端，讓我這個後端白痴也可以輕鬆實現 http request 的功能，也更能串接更多前端不容易串接的網路服務，像是 LINE BOT 我也是用 Apps Script 來做串接，十分方便好用的啦！</p>
+<blockquote>
+<p>參考：<a href="/articles/201804/line-bot-apps-script.html">實作 LINE 聊天機器人 ( Google Apps Script )</a></p>
+</blockquote>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180314"></script>
+  <script src="/js/articles.js?20180311"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
