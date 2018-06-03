@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+
+  <title>自建 LINE Notify 訊息通知 - OXXO.STUDIO</title>
+
+  <meta name="description" content="之前我們有用過 IFTTT 來實現讓 LINE 發送通知的功能，這篇將要透過 Google Apps Script 搭配 LINE Notify，實作出一個類似 IFTTT 的訊息通知服務，最後甚至還可以透過 LINE Notify 發送圖片或貼圖表情。">
+  <meta itemprop="description" content="之前我們有用過 IFTTT 來實現讓 LINE 發送通知的功能，這篇將要透過 Google Apps Script 搭配 LINE Notify，實作出一個類似 IFTTT 的訊息通知服務，最後甚至還可以透過 LINE Notify 發送圖片或貼圖表情。">
+  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201806/line-notify.jpg">
+  <meta property="og:description" content="之前我們有用過 IFTTT 來實現讓 LINE 發送通知的功能，這篇將要透過 Google Apps Script 搭配 LINE Notify，實作出一個類似 IFTTT 的訊息通知服務，最後甚至還可以透過 LINE Notify 發送圖片或貼圖表情。">
+  <meta property="og:title" content="自建 LINE Notify 訊息通知">
+  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201806/line-notify.html">
+  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201806/line-notify.jpg">
+  <link href="/css/article.css?20180315" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>自建 LINE Notify 訊息通知</h1>
+<p>之前我們有用過 IFTTT 來實現讓 LINE 發送通知的功能，這篇將要透過 Google Apps Script 搭配 LINE Notify，實作出一個類似 IFTTT 的訊息通知服務，最後甚至還可以透過 LINE Notify 發送圖片或貼圖表情。</p>
+<blockquote>
+<p>延伸閱讀：<a href="/articles/201803/ifttt-line.html">IFTTT 發送 LINE 訊息通知</a></p>
+</blockquote>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>申請 LINE Notify 權杖</h2>
+<p>打開 LINE Notify 的網站 ( <a href="https://notify-bot.line.me/zh_TW/" target="_blank">https://notify-bot.line.me/zh_TW/</a> )，使用自己的 LINE 帳號登入。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-01.jpg" alt=""></p>
+<p>登入後滑鼠移至上方個人帳號，選擇「個人頁面」。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-02.jpg" alt=""></p>
+<p>在個人頁面可以發行「權杖」，權杖的作用在於讓「連動的服務」可以透過 LINE Notify 發送訊息通知，而發行後的權杖與其名稱，就會出現在上方的清單中，如果你之前有申請過像是 IFTTT 的連動通知，就會發現上方出現 IFTTT 的服務。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-03.jpg" alt=""></p>
+<p>點選「發行權杖」，指定權杖名稱 ( 傳送通知訊息時所顯示的名稱 )，以及選擇是要一對一接收，或是讓群組也可以接收通知。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-04.jpg" alt=""></p>
+<p>點選「發行」，會出現一段權杖代碼，這段代碼「<strong>只會出現一次</strong>」，複製這段代碼，先找個地方貼上並儲存這段代碼，就可以點選下方按鈕「關閉」。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-05.jpg" alt=""></p>
+<p>完成後就會發現連動的服務裡，出現了我們自訂的服務。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-06.jpg" alt=""></p>
+<p>同時，LINE 訊息裡也會收到 LINE Notify 發出「已發行個人存取權杖」的訊息，到這一步 LINE Notify 已經設定完成，再來看看如何發送訊息。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-09.jpg" alt=""></p>
+<h2>使用 Google Apps Script 傳送通知</h2>
+<p>由於 LINE Notify 無法直接透過「純」網頁前端的方式來發送訊息，所以必須在借重 Google Apps Script 簡易後端的能力來傳送通知，進入 Google 雲端硬碟，新增一個 Google Apps Script。</p>
+<blockquote>
+<p>延伸閱讀：<a href="/articles/201805/backend-apps-script.html">簡易後端實作 ( Google Apps Script )</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-07.jpg" alt=""></p>
+<p>重新命名 Apps Script 專案名稱，並將 myFunction 函式名稱改為 doPost 或 doGet ( 名稱一定要是 doPost 或 doGet，如此一來才能透過外部 POST 或 GET 的方法傳值給 Apps Script )。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-08.jpg" alt=""></p>
+<p>將程式碼修改為下面這段，<code>你的權杖</code>的位置填入剛剛產生的權杖，在<code>payload</code>裡放入一個物件，<code>message</code>的屬性就是我們要發出的訊息。( 注意，Bearer 後方帶有一個空格別刪除 )</p>
+<pre class="prettyprint"><code>function doPost() {
+    UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
+        'headers': {
+           'Authorization': 'Bearer ' + '你的權杖',
+        },
+        'method': 'post',
+        'payload': {
+            'message':'測試一下！'
+        }
+    });
+}
+</code></pre><p>點選上方三角形的執行鈕，因為我們的 Apps Script 會連到外部服務，所以一開始會跳出存取權限的視窗，換句話說也就是同意外部服務使用你 Google 的帳號執行這個 Apps Script，這裡點選允許就行了。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-10.jpg" alt=""></p>
+<p>允許後，再點選一次上方三角形的執行鈕，應該就會收到 LINE Notify 發出的訊息囉。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-11.jpg" alt=""></p>
+<p>LINE Notify 也可以發送表情貼圖，語法只要將<code>payload</code>內容稍做修改，寫入「貼圖包類別號碼 stickerPackageId」和「貼圖號碼 stickerId」就能發送貼圖，不過有別於 LINE Bot 可以單獨發送貼圖，<em>LINE Notify 必須具備 message，所以不能把 message 拿掉</em>。</p>
+<blockquote>
+<p>貼圖類別參考：<a href="https://devdocs.line.me/files/sticker_list.pdf" target="_blank">LINE Notify 預設貼圖清單</a></p>
+</blockquote>
+<pre class="prettyprint"><code>function doPost() {
+    UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
+        'headers': {
+            'Authorization': 'Bearer ' + '你的權杖',
+        },
+        'method': 'post',
+        'payload': {
+            'message':'測試一下！',
+            'stickerPackageId':'1',
+            'stickerId':'2'
+        }
+    });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-12.jpg" alt=""></p>
+<p>如果要傳送圖片也很簡單，寫入「圖片預覽縮圖網址」以及「圖片網址」就能發送圖片，但圖片大小有限制，預覽縮圖 240x240，圖片則是 1024x1024，格式須為 jpg。</p>
+<pre class="prettyprint"><code>function doPost() {
+    UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
+        'headers': {
+            'Authorization': 'Bearer ' + '你的權杖',
+        },
+        'method': 'post',
+        'payload': {
+            'message':'測試一下！',
+            'imageThumbnail':'預覽縮圖網址',
+            'imageFullsize':'圖片網址'
+        }
+    });
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-13.jpg" alt=""></p>
+<p>做到這個步驟，應該都已經能夠輕鬆傳送訊息、貼圖和圖片了，接著要來看看如何透過「網頁」傳送訊息。</p>
+<h2>網頁傳送 LINE Notify 訊息</h2>
+<p>如果要透過網頁傳送訊息，基本原理其實是網頁發送 http request 給 Google Apps Script，然後再由 Apps Script 執行發送 LINE Notify 訊息的指令，因此我們要稍微改寫 Apps Script，一開始增加一個 e 的參數，裡頭包含要傳送出去的 msg 訊息。</p>
+<pre class="prettyprint"><code>function doPost(e) {
+
+    var param = e.parameter;
+    var msg = param.msg;
+
+    UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
+        'headers': {
+            'Authorization': 'Bearer ' + '你的權杖',
+        },
+        'method': 'post',
+        'payload': {
+            'message':msg
+        }
+    });
+}
+</code></pre><p>修改程式之後，點選上方選單「發佈」，將 Apps Script 部署為網路應用程式。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-14.jpg" alt=""></p>
+<p>每次有修改的部署都選擇「新增」，將應用程式執行為「我」，具有應用程式存取權的使用者選擇「任何人」。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-15.jpg" alt=""></p>
+<p>部署後就會得到這個應用程式的網址，這個網址待會會用到。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-16.jpg" alt=""></p>
+<p>好了，到這一步終於要來寫網頁了，打開網頁編輯器，先載入 jQuery，就能使用<code>.post</code>來發訊息</p>
+<pre class="prettyprint"><code>$.post('你部署的應用程式網址',
+    {msg:'網頁發訊息'},
+    function(e){
+        console.log(e);
+});
+</code></pre><p>完成後執行網頁，就能看到 LINE 收到網頁發過來的訊息囉！</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-17.jpg" alt=""></p>
+<h2>小結</h2>
+<p>LINE Notify 其實是相當方便的一個服務，可以串接在很多前端或後端的應用裡，甚至也可以搭配物聯網的服務，做到類似陌生人開門就開通知、太亮了就發通知...等的應用，對於 LINE 的重度使用者來說應該不失為一個好管道，不過如果單純只是要通知，也滿推薦 Slack 的服務，畢竟 LINE 還是比較偏向個人用戶，Slack 則是針對公司團體。</p>
+<blockquote>
+<p>延伸閱讀：<a href="/articles/201801/slack.html">Slack 自動訊息通知</a></p>
+<p>相關參考：<a href="https://notify-bot.line.me/doc/en/" target="_blank">LINE Notify API Document</a></p>
+</blockquote>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180314"></script>
+  <script src="/js/articles.js?20180311"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
