@@ -95,7 +95,7 @@
 &lt;textarea id="foo"&gt;123&lt;/textarea&gt;
 </code></pre><p><br></p>
 <p>寫完 HTML 就要來看程式，結果 JavaScript 的部份異常簡單，一段 code 就搞定，只要有這行，new 了一個 Clipboard 的物件之後，就可以點選複製或點選剪下了。</p>
-<pre class="prettyprint"><code>var clipboard = new Clipboard('btn');
+<pre class="prettyprint"><code>var clipboard = new ClipboardJS('#btn');
 </code></pre><p><br></p>
 <p>不過作者當然不只有提供這些功能，他還提供了成功與失敗的事件，而取消選取的方法，就可以寫在「成功」的事件裡頭，複製完就會自動取消選取。( 想當初還花了很大的功夫寫了一篇 <a href="http://www.oxxostudio.tw/articles/201508/select-text.html" target="_blank">自動選取某個區域的文字</a> )</p>
 <pre class="prettyprint"><code>clipboard.on('success', function(e) {
@@ -112,13 +112,13 @@ clipboard.on('error', function(e) {
 });
 </code></pre><p><br></p>
 <p>而這次自己實作遇到的小坑，是因為自己沒有看清楚作者的進階範例，進階用法裡，可以選擇複製下一個<code>trigger.nextElementSibling</code>，或複製指定屬性<code>trigger.getAttribute('aria-label')</code>，一開始沒看清楚，還以為是什麼 bug 導致都複製到下一個呢...</p>
-<pre class="prettyprint"><code>new Clipboard('.btn', {
+<pre class="prettyprint"><code>new ClipboardJS('.btn', {
     target: function(trigger) {
         return trigger.nextElementSibling;
     }
 });
 
-new Clipboard('.btn', {
+new ClipboardJS('.btn', {
 text: function(trigger) {
     return trigger.getAttribute('aria-label');
 }
@@ -144,6 +144,27 @@ text: function(trigger) {
 
     </article>
   </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul>
+          <li>
+              <a href="/articles/201806/line-push-message.html?utm_source=recommend" title="自建 LINE Notify 訊息通知">自建 LINE Notify 訊息通知</a>
+          </li>
+          <li>
+              <a href="/articles/201806/line-notify.html?utm_source=recommend" title="INE BOT Push Message 主動通知">LINE BOT Push Message 主動通知</a>
+          </li>
+          <li>
+              <a href="/articles/201805/backend-google-cloud-functions.html?utm_source=recommend" title="簡易後端實作 ( Google Cloud Functions )">簡易後端實作 ( Google Cloud Functions )</a>
+          </li>
+      </ul>
+      <div class="ad">
+          <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script> -->
+      </div>
+  </div>
   <div id="other-articles">
     <div class="previous-next previous-article">
       前一篇文章：
