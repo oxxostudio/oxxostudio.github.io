@@ -65,11 +65,16 @@
         .ad {
             width: 300px;
             height: auto;
-            background: #fff;
             margin: 30px 30px 0 0;
             display: inline-block;
             float: right;
+            background: #f00;
             overflow: hidden;
+        }
+
+        .ad .second {
+            margin-top: 20px;
+            display: block;
         }
 
         @media (max-width:1024px) {
@@ -83,12 +88,15 @@
                 height: 100px;
                 margin: 0 0 30px;
             }
+            .ad .second{
+                display:none;
+            }
         }
 
         @media (max-width:640px) {
             .content {
                 padding: 0;
-                text-align:center;
+                text-align: center;
             }
         }
 
