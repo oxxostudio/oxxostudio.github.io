@@ -251,7 +251,7 @@
         $.post(uri, { image: imgPath }, function (e) {
             imgUrl = e;
             $('.default').addClass('selected');
-            $d.html('<img id="googlePhoto" src="' + imgUrl + '=w2400"/><div class="copy" uri="'+imgUrl+'w=2400">複製圖片網址</div>').addClass('show');
+            $d.html('<img id="googlePhoto" src="' + imgUrl + '=w2400"/><div class="copy" uri="'+imgUrl+'=w2400">複製圖片網址</div>').addClass('show');
         });
 
         new ClipboardJS('.copy', {
