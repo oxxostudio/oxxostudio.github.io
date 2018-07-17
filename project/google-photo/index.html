@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="oxxo.studio">
+    <meta name="copyright" content="oxxo.studio">
+    <title>Google 相簿之圖片連結轉換工具 - OXXO.STUDIO</title>
+    <meta name="description" content="一般人要有個免費的圖片網頁空間不容易，透過圖片連結轉換工具，就能將 Google 相簿當作圖片空間，使用圖片連結網址。">
+    <meta itemprop="name" content="Google 相簿之圖片連結轉換工具 - OXXO.STUDIO">
+    <meta itemprop="image" content="http://www.oxxostudio.tw/project/google-photo/image.jpg">
+    <meta itemprop="description" content="【一般人要有個免費的圖片網頁空間不容易，透過圖片連結轉換工具，就能將 Google 相簿當作圖片空間，使用圖片連結網址。">
+    <meta property="og:title" content="Google 相簿之圖片連結轉換工具 - OXXO.STUDIO">
+    <meta property="og:url" content="http://www.oxxostudio.tw/project/google-photo/">
+    <meta property="og:image" content="http://www.oxxostudio.tw/project/google-photo/image.jpg">
+    <meta property="og:description" content="一般人要有個免費的圖片網頁空間不容易，透過圖片連結轉換工具，就能將 Google 相簿當作圖片空間，使用圖片連結網址。">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+        }
+
+        div {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 20px 20px 0;
+            max-width: 100%;
+        }
+
+        header {
+            width: 100%;
+            height: 60px;
+            background: #344;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 18px;
+            margin: 0;
+            padding: 15px;
+            font-weight: normal;
+            box-sizing: border-box;
+            display:block;
+            float:left;
+        }
+
+        header a{
+            display:block;
+            float:right;
+            width:20px;
+            height:20px;
+            color:#fff;
+            text-decoration: none;
+            border:2px solid #fff;
+            text-align: center;
+            line-height: 20px;
+            opacity:.3;
+            margin:15px;
+            border-radius:5px;
+            transition:.2s;
+        }
+        header a:hover{
+            opacity:1;
+            border-radius:10px;
+        }
+
+        div {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+        }
+
+        .main {
+            min-height: 400px;
+            text-align: center;
+            padding: 50px 0 20px;
+            background: #77919a;
+            color: #fff;
+        }
+
+        .main h2 {
+            width: 100%;
+            text-align: center;
+            font-weight: normal;
+            font-size: 36px;
+            padding: 0;
+            margin: 70px 0 30px;
+        }
+
+        .main input {
+            font-size: 20px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            padding: 10px;
+            margin: 0;
+            height: 50px;
+            vertical-align: middle;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            transition: .3s;
+        }
+
+        .main input:focus {
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+
+        #send {
+            font-size: 18px;
+            background: #455;
+            width: auto;
+            height: 51px;
+            line-height: 50px;
+            padding: 0 30px;
+            margin: 0;
+            vertical-align: middle;
+            display: inline-block;
+            cursor: pointer;
+            transition:.2s;
+        }
+
+        #send:hover{
+            background:#000;
+        }
+
+        .note {
+            text-align: center;
+            padding: 10px 0 30px;
+        }
+
+        section {
+            display: inline-block;
+            width: calc(33% - 60px);
+            box-sizing: border-box;
+            padding: 30px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        h4 {
+            font-size: 20px;
+            margin: 10px 0;
+            font-weight: normal;
+        }
+
+        section span {
+            display: inline-block;
+            font-size: 16px;
+            line-height: 25px;
+            color: #777;
+            text-align: left;
+        }
+
+        section span strong{
+            color:#000;
+        }
+
+        section img {
+            margin-top:15px;
+            width: 80%;
+            max-width: 300px;
+        }
+        #show{
+            display:none;
+            max-width:800px;
+            padding:30px;
+            background:#fff;
+            border-radius: 5px;
+            box-shadow:rgba(0,0,0,.2) 6px 6px 0;
+        }
+        #show.show{
+            display:table;
+            margin: 40px auto ;
+        }
+        #show img {
+            max-width: 100%;
+        }
+
+        #show .copy{
+            width:100%;
+            max-width:300px;
+            padding:10px 20px;
+            color:#000;
+            background:#eee;
+            cursor:pointer;
+            font-size:17px;
+            margin:10px auto 0;
+            transition:.3s;
+            border-radius: 5px;
+        }
+        #show .copy:hover{
+            background:#ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Google 相簿之圖片連結轉換工具</h1>
+        <a href="http://www.oxxostudio.tw/index.html?utm_source=googlephoto&utm_medium=click" target="_blank">!</a>
+    </header>
+    <div class="main">
+        <h2>一起使用 Google 相簿作為圖片空間吧！</h2>
+        <input id="shareUrl" placeholder="輸入已共享的圖片網址">
+        <div id="send">轉換</div>
+        <div id="show"></div>
+    </div>
+    <div class="note">
+        <section>
+            <h4>步驟 1、上傳圖片</h4>
+            <span>一般人要有個免費的圖片網頁空間不容易，但只要有 Google 帳號，就能夠將圖片上傳到 Google 相簿。</span>
+            <img src="section-img1.jpg">
+        </section>
+        <section>
+            <h4>步驟 2、分享圖片</h4>
+            <span>Google 相簿的圖片都可以共享，上傳圖片後，打開這張圖片，點選右上角<strong>「共享按鈕」</strong>就會出現共享選項。</span>
+            <img src="section-img2.jpg">
+        </section>
+        <section>
+            <h4>步驟 3、轉換圖片</h4>
+            <span>點選<strong>「取得連結」</strong>，取得圖片的共享連結，將連結複製並貼到上方欄位，按下轉換，即可變成原始圖片的網址。</span>
+            <img src="section-img3.jpg">
+        </section>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="clipboard.min.js"></script>
+
+<script>
+    var $shareUrl = $('#shareUrl');
+    var $sizeBtn = $('.sizeBtn');
+    var $send = $('#send');
+    var $d = $('#show');
+    if (localStorage.googleImgPath) {
+        $shareUrl.val(localStorage.googleImgPath);
+    }
+    var uri = 'https://script.google.com/macros/s/AKfycbxDAJN26VIKr9jLmeeTc0CwkOPINEnRf8J3Bu0ima_Ir5LYvBfB/exec';
+    $send.on('click', function () {
+        let imgPath = $('#shareUrl').val();
+        let imgUrl;
+        localStorage.googleImgPath = imgPath;
+        $.post(uri, { image: imgPath }, function (e) {
+            imgUrl = e;
+            $('.default').addClass('selected');
+            $d.html('<img id="googlePhoto" src="' + imgUrl + '=w2400"/><div class="copy" uri="'+imgUrl+'w=2400">複製圖片網址</div>').addClass('show');
+        });
+
+        new ClipboardJS('.copy', {
+            text: function (trigger) {
+                $('.copy').text('已複製');
+                setTimeout(()=>{$('.copy').text('複製圖片網址');},2000);
+                return trigger.getAttribute('uri');
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-2708968-8', 'auto');
+ga('send', 'pageview');
+</script>
+</html>
