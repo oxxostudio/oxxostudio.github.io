@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (12) - pie chart 圓餅圖實作 - OXXO.STUDIO</title>
 
   <meta name="description" content="在之前我所撰寫的 SVG path 的文章當中，詳細介紹了關於 path 的 A 參數用法，回想一下，A 參數是拿來繪製弧形，因此這篇就藉由 A 參數的精妙之處，來繪製圓餅圖；什麼是圓餅圖呢？圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
   <meta itemprop="description" content="在之前我所撰寫的 SVG path 的文章當中，詳細介紹了關於 path 的 A 參數用法，回想一下，A 參數是拿來繪製弧形，因此這篇就藉由 A 參數的精妙之處，來繪製圓餅圖；什麼是圓餅圖呢？圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-12-pie-chart.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/svg-12-pie-chart.jpg">
   <meta property="og:description" content="在之前我所撰寫的 SVG path 的文章當中，詳細介紹了關於 path 的 A 參數用法，回想一下，A 參數是拿來繪製弧形，因此這篇就藉由 A 參數的精妙之處，來繪製圓餅圖；什麼是圓餅圖呢？圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。">
   <meta property="og:title" content="SVG 研究之路 (12) - pie chart 圓餅圖實作">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-12-pie-chart.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/svg-12-pie-chart.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

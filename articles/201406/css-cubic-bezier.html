@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS3 Cubic Bezier - OXXO.STUDIO</title>
 
   <meta name="description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 &quot;C&quot; 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
   <meta itemprop="description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 &quot;C&quot; 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/css-cubic-bezier.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/css-cubic-bezier.jpg">
   <meta property="og:description" content="Cubic Bezier 就是一個具有兩個端點與兩個貝茲控制點的曲線，( SVG 裏頭 Path 的 &quot;C&quot; 參數 )，其實這個利用貝茲曲線的控制方式在大多數的 CSS 中都不常見，主因這是 CSS3 裏頭動畫的速度控制選項，通常我們在設定動畫的速度，大多直接使用 ease in 或 ease out 來取代，但藉由 Cubic Bezier，我們更可以創造出各種不同速度控制的動畫效果。">
   <meta property="og:title" content="CSS3 Cubic Bezier">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-cubic-bezier.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/css-cubic-bezier.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/css-cubic-bezier.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/css-cubic-bezier.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

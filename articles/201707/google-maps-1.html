@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (1) - 網頁載入地圖 ( 起手式 ) - OXXO.STUDIO</title>
 
   <meta name="description" content="Google Maps API 是我一直以來都很想研究的主題，在手機、行車記錄器與網路、GPS 發達的年代，每個人應該都有用過 Google Map，接下來想花些時間，好好的把 Google Maps API 學習學習，搞不好之後會很常用到也說不定。">
   <meta itemprop="description" content="Google Maps API 是我一直以來都很想研究的主題，在手機、行車記錄器與網路、GPS 發達的年代，每個人應該都有用過 Google Map，接下來想花些時間，好好的把 Google Maps API 學習學習，搞不好之後會很常用到也說不定。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201707/google-maps-1.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201707/google-maps-1.jpg">
   <meta property="og:description" content="Google Maps API 是我一直以來都很想研究的主題，在手機、行車記錄器與網路、GPS 發達的年代，每個人應該都有用過 Google Map，接下來想花些時間，好好的把 Google Maps API 學習學習，搞不好之後會很常用到也說不定。">
   <meta property="og:title" content="Google Maps (1) - 網頁載入地圖 ( 起手式 )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201707/google-maps-1.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201707/google-maps-1.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201707/google-maps-1.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201707/google-maps-1.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>自建 LINE Notify 訊息通知 - OXXO.STUDIO</title>
 
   <meta name="description" content="之前我們有用過 IFTTT 來實現讓 LINE 發送通知的功能，這篇將要透過 Google Apps Script 搭配 LINE Notify，實作出一個類似 IFTTT 的訊息通知服務，最後甚至還可以透過 LINE Notify 發送圖片或貼圖表情。">
   <meta itemprop="description" content="之前我們有用過 IFTTT 來實現讓 LINE 發送通知的功能，這篇將要透過 Google Apps Script 搭配 LINE Notify，實作出一個類似 IFTTT 的訊息通知服務，最後甚至還可以透過 LINE Notify 發送圖片或貼圖表情。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201806/line-notify.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201806/line-notify.jpg">
   <meta property="og:description" content="之前我們有用過 IFTTT 來實現讓 LINE 發送通知的功能，這篇將要透過 Google Apps Script 搭配 LINE Notify，實作出一個類似 IFTTT 的訊息通知服務，最後甚至還可以透過 LINE Notify 發送圖片或貼圖表情。">
   <meta property="og:title" content="自建 LINE Notify 訊息通知">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201806/line-notify.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201806/line-notify.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201806/line-notify.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201806/line-notify.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

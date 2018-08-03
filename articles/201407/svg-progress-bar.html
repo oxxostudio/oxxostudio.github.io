@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Material Design - Progress and Activity - OXXO.STUDIO</title>
 
   <meta name="description" content="這是一個利用 CSS 與 SVG 所做出來的進度條，仿照 Google Material Design 的設計風格設計，雖然 Google 有提供一系列的扁平風格樣式，但是由於技術尚未完全成熟，沒有相關的程式可以參考和套用，就自己寫了一個類似的，雖然還沒有模擬到百分之百，但已經是百分之八十接近了，分享一下。">
   <meta itemprop="description" content="這是一個利用 CSS 與 SVG 所做出來的進度條，仿照 Google Material Design 的設計風格設計，雖然 Google 有提供一系列的扁平風格樣式，但是由於技術尚未完全成熟，沒有相關的程式可以參考和套用，就自己寫了一個類似的，雖然還沒有模擬到百分之百，但已經是百分之八十接近了，分享一下。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/svg-progress-bar.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201407/svg-progress-bar.jpg">
   <meta property="og:description" content="這是一個利用 CSS 與 SVG 所做出來的進度條，仿照 Google Material Design 的設計風格設計，雖然 Google 有提供一系列的扁平風格樣式，但是由於技術尚未完全成熟，沒有相關的程式可以參考和套用，就自己寫了一個類似的，雖然還沒有模擬到百分之百，但已經是百分之八十接近了，分享一下。">
   <meta property="og:title" content="Material Design - Progress and Activity">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/svg-progress-bar.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/svg-progress-bar.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201407/svg-progress-bar.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201407/svg-progress-bar.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

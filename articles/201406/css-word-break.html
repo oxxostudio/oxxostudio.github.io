@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS 文字的換行 - OXXO.STUDIO</title>
 
   <meta name="description" content="由於響應式網頁技術的興起，間接造成排版上不小的挑戰和創新，其中的一小部分就是文字的排版，這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來pre的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
   <meta itemprop="description" content="由於響應式網頁技術的興起，間接造成排版上不小的挑戰和創新，其中的一小部分就是文字的排版，這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來pre的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/css-word-break.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/css-word-break.jpg">
   <meta property="og:description" content="由於響應式網頁技術的興起，間接造成排版上不小的挑戰和創新，其中的一小部分就是文字的排版，這篇就來介紹一下在 CSS 裏頭文字的斷行，為什麼要特別寫這一篇呢？因為在做這個 blog 的時候，我竟然也遇到了斷行的問題，解決了文字的斷行，又冒出來pre的斷行問題，不過最後總算是都解決了，就寫下這一篇作為紀錄。">
   <meta property="og:title" content="CSS 文字的換行">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-word-break.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/css-word-break.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/css-word-break.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/css-word-break.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

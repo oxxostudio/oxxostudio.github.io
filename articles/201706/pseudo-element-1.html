@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS 偽元素 ( before 與 after ) - OXXO.STUDIO</title>
 
   <meta name="description" content="最近因為一些網頁的需要，比較深入的使用了 CSS 的「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
   <meta itemprop="description" content="最近因為一些網頁的需要，比較深入的使用了 CSS 的「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-1.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201706/pseudo-element-1.jpg">
   <meta property="og:description" content="最近因為一些網頁的需要，比較深入的使用了 CSS 的「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。">
   <meta property="og:title" content="CSS 偽元素 ( before 與 after )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/pseudo-element-1.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-1.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201706/pseudo-element-1.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201706/pseudo-element-1.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

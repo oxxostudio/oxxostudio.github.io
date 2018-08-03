@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Web Font 的使用 - OXXO.STUDIO</title>
 
   <meta name="description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，「Google Fonts」是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現，通常 web font 的格式不外乎就是 woff 這種格式 ( Web Open Font Format )，檔案大小會比一般的 TTF 來得小，但隨著瀏覽器的進步，也越來越多的字體使用 svg 的圖形格式，也可以做出 icon font，至於如何製作，會在另外的篇幅介紹。">
   <meta itemprop="description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，「Google Fonts」是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現，通常 web font 的格式不外乎就是 woff 這種格式 ( Web Open Font Format )，檔案大小會比一般的 TTF 來得小，但隨著瀏覽器的進步，也越來越多的字體使用 svg 的圖形格式，也可以做出 icon font，至於如何製作，會在另外的篇幅介紹。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/css-web-font.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/css-web-font.jpg">
   <meta property="og:description" content="隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，「Google Fonts」是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現，通常 web font 的格式不外乎就是 woff 這種格式 ( Web Open Font Format )，檔案大小會比一般的 TTF 來得小，但隨著瀏覽器的進步，也越來越多的字體使用 svg 的圖形格式，也可以做出 icon font，至於如何製作，會在另外的篇幅介紹。">
   <meta property="og:title" content="Web Font 的使用">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-web-font.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/css-web-font.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/css-web-font.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/css-web-font.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (14) - 顯示 GeoJSON 資料 - OXXO.STUDIO</title>
 
   <meta name="description" content="透過 Google Maps API 在地圖上繪製圖形不困難，但「取得地圖上的資料」卻令人頭痛，幸好隨著科技的進步，我們可以透過 GeoJSON 這種專門處理地理資訊結構的格式，更方便的在地圖上顯示各種資訊，這篇就來簡單介紹一下 GeoJSON，並在 Google 地圖上顯示對應的樣貌。">
   <meta itemprop="description" content="透過 Google Maps API 在地圖上繪製圖形不困難，但「取得地圖上的資料」卻令人頭痛，幸好隨著科技的進步，我們可以透過 GeoJSON 這種專門處理地理資訊結構的格式，更方便的在地圖上顯示各種資訊，這篇就來簡單介紹一下 GeoJSON，並在 Google 地圖上顯示對應的樣貌。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-14-geojson.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-14-geojson.jpg">
   <meta property="og:description" content="透過 Google Maps API 在地圖上繪製圖形不困難，但「取得地圖上的資料」卻令人頭痛，幸好隨著科技的進步，我們可以透過 GeoJSON 這種專門處理地理資訊結構的格式，更方便的在地圖上顯示各種資訊，這篇就來簡單介紹一下 GeoJSON，並在 Google 地圖上顯示對應的樣貌。">
   <meta property="og:title" content="Google Maps (14) - 顯示 GeoJSON 資料">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-14-geojson.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-14-geojson.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201803/google-maps-14-geojson.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-14-geojson.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境 - OXXO.STUDIO</title>
 
   <meta name="description" content="要談到 Markdown 轉 HTML，其實有一大堆的 Markdown 編輯器都做得到，我個人最愛用的不外乎就是 Markdown Pad ( 只有 windows )、Mou ( Mac ) 和 lightPaper ( Mac )，然而不管是怎樣的編輯器，基本上都會具備將 markdown 轉為 HTML 的功能，所以一直以來我都不覺得在編輯器撰寫之後在轉檔有什麼不方便的，我的 blog 文章也一直都是用 markdown 寫的，不過自從用 gitbook 寫書之後，赫然發現 gitbook 的 markdown 自動轉換 html 功能真是太優了，用自己慣用的編輯器，存檔之後，Gitbook 就自動將 markdown 轉換為 HTML，而且還套上 layout 和樣式，真是太讚啦！">
   <meta itemprop="description" content="要談到 Markdown 轉 HTML，其實有一大堆的 Markdown 編輯器都做得到，我個人最愛用的不外乎就是 Markdown Pad ( 只有 windows )、Mou ( Mac ) 和 lightPaper ( Mac )，然而不管是怎樣的編輯器，基本上都會具備將 markdown 轉為 HTML 的功能，所以一直以來我都不覺得在編輯器撰寫之後在轉檔有什麼不方便的，我的 blog 文章也一直都是用 markdown 寫的，不過自從用 gitbook 寫書之後，赫然發現 gitbook 的 markdown 自動轉換 html 功能真是太優了，用自己慣用的編輯器，存檔之後，Gitbook 就自動將 markdown 轉換為 HTML，而且還套上 layout 和樣式，真是太讚啦！">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/gulp-6-markdown-to-html.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201503/gulp-6-markdown-to-html.jpg">
   <meta property="og:description" content="要談到 Markdown 轉 HTML，其實有一大堆的 Markdown 編輯器都做得到，我個人最愛用的不外乎就是 Markdown Pad ( 只有 windows )、Mou ( Mac ) 和 lightPaper ( Mac )，然而不管是怎樣的編輯器，基本上都會具備將 markdown 轉為 HTML 的功能，所以一直以來我都不覺得在編輯器撰寫之後在轉檔有什麼不方便的，我的 blog 文章也一直都是用 markdown 寫的，不過自從用 gitbook 寫書之後，赫然發現 gitbook 的 markdown 自動轉換 html 功能真是太優了，用自己慣用的編輯器，存檔之後，Gitbook 就自動將 markdown 轉換為 HTML，而且還套上 layout 和樣式，真是太讚啦！">
   <meta property="og:title" content="Gulp 學習 6 - 架設 Markdown 轉 HTML 環境">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/gulp-6-markdown-to-html.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/gulp-6-markdown-to-html.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201503/gulp-6-markdown-to-html.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201503/gulp-6-markdown-to-html.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

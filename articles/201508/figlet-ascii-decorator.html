@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>FIGlet - ASCII Decorator - OXXO.STUDIO</title>
 
   <meta name="description" content="早在十幾年前玩 BBS 的時候 ( 暴露年紀了 )，就已經開始玩許多利用文字與線條組成的圖形，當時甚也用 ASCII 色碼來表現顏色，真是令人不勝懷念，然而到了今時今日，因為 SublimeText 的緣故，竟然又接觸到了類似的技術，因此找了一些相關的資訊，用這篇文章做個紀錄的分享。">
   <meta itemprop="description" content="早在十幾年前玩 BBS 的時候 ( 暴露年紀了 )，就已經開始玩許多利用文字與線條組成的圖形，當時甚也用 ASCII 色碼來表現顏色，真是令人不勝懷念，然而到了今時今日，因為 SublimeText 的緣故，竟然又接觸到了類似的技術，因此找了一些相關的資訊，用這篇文章做個紀錄的分享。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201508/figlet-ascii-decorator.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201508/figlet-ascii-decorator.jpg">
   <meta property="og:description" content="早在十幾年前玩 BBS 的時候 ( 暴露年紀了 )，就已經開始玩許多利用文字與線條組成的圖形，當時甚也用 ASCII 色碼來表現顏色，真是令人不勝懷念，然而到了今時今日，因為 SublimeText 的緣故，竟然又接觸到了類似的技術，因此找了一些相關的資訊，用這篇文章做個紀錄的分享。">
   <meta property="og:title" content="FIGlet - ASCII Decorator">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201508/figlet-ascii-decorator.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201508/figlet-ascii-decorator.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201508/figlet-ascii-decorator.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

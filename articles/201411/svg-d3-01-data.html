@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - 淺談 D3.js 的資料處理 - OXXO.STUDIO</title>
 
   <meta name="description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，有別於一般我們要塞資料進 HTML，或要利用資料自動長出元素，不外乎都要用到 for 迴圈或是 each 的方式來進行，但對於 D3 來說，這些基本的功能已經全部包辦，甚至連同亂數和排序都內建在裏頭，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。">
   <meta itemprop="description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，有別於一般我們要塞資料進 HTML，或要利用資料自動長出元素，不外乎都要用到 for 迴圈或是 each 的方式來進行，但對於 D3 來說，這些基本的功能已經全部包辦，甚至連同亂數和排序都內建在裏頭，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-01-data.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201411/svg-d3-01-data.jpg">
   <meta property="og:description" content="D3.js 畢竟是把數據做視覺化呈現的 library，所以最強的就在於它的資料處理能力，有別於一般我們要塞資料進 HTML，或要利用資料自動長出元素，不外乎都要用到 for 迴圈或是 each 的方式來進行，但對於 D3 來說，這些基本的功能已經全部包辦，甚至連同亂數和排序都內建在裏頭，因此，再進行利用 D3 畫圖之前，一定要先搞懂處理數據的方式，所以這篇就來嘗試一下 D3 資料處理的基本功能，也作為學習 D3 的一個紀錄。">
   <meta property="og:title" content="SVG D3.js - 淺談 D3.js 的資料處理">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-01-data.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201411/svg-d3-01-data.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

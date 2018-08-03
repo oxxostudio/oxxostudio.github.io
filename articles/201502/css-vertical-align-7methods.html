@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS 垂直置中的七個方法 - OXXO.STUDIO</title>
 
   <meta name="description" content="之前我有寫過一篇文章：「CSS 垂直置中的三個方法」，介紹了三種常用的垂直置中的小技巧，這篇將延續該篇文章，繼續介紹另外四種垂直置中的方法，如此一來總共就有七種垂直置中的方式可以搭配使用囉！( 雖然現在瀏覽器的支援度都差不多支援了，但仍然建議安全起見都要測試一下，特別是 IE )">
   <meta itemprop="description" content="之前我有寫過一篇文章：「CSS 垂直置中的三個方法」，介紹了三種常用的垂直置中的小技巧，這篇將延續該篇文章，繼續介紹另外四種垂直置中的方法，如此一來總共就有七種垂直置中的方式可以搭配使用囉！( 雖然現在瀏覽器的支援度都差不多支援了，但仍然建議安全起見都要測試一下，特別是 IE )">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201502/css-vertical-align-7methods.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201502/css-vertical-align-7methods.jpg">
   <meta property="og:description" content="之前我有寫過一篇文章：「CSS 垂直置中的三個方法」，介紹了三種常用的垂直置中的小技巧，這篇將延續該篇文章，繼續介紹另外四種垂直置中的方法，如此一來總共就有七種垂直置中的方式可以搭配使用囉！( 雖然現在瀏覽器的支援度都差不多支援了，但仍然建議安全起見都要測試一下，特別是 IE )">
   <meta property="og:title" content="CSS 垂直置中的七個方法">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201502/css-vertical-align-7methods.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201502/css-vertical-align-7methods.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

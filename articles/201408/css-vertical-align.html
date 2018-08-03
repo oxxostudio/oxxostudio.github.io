@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS 垂直置中的三個方法 - OXXO.STUDIO</title>
 
   <meta name="description" content="我們在編輯一個版面，通常都會用到水平置中和垂直置中來設計，而水平置中很好處理，不外乎就是設定margin:0 auto;或是text-align:center;,就可以輕鬆解決掉水平置中的問題，但一直以來最麻煩對齊問題，都是「垂直置中」這個討人厭的設定，以下將介紹三種單純利用 CSS 垂直置中的方式：「設定行高」、「添加偽元素」、「calc 動態計算」，其實一點也不難 ( 當然跟水平置中比起來難了一點 )，只需要觀念正確就可以解決。">
   <meta itemprop="description" content="我們在編輯一個版面，通常都會用到水平置中和垂直置中來設計，而水平置中很好處理，不外乎就是設定margin:0 auto;或是text-align:center;,就可以輕鬆解決掉水平置中的問題，但一直以來最麻煩對齊問題，都是「垂直置中」這個討人厭的設定，以下將介紹三種單純利用 CSS 垂直置中的方式：「設定行高」、「添加偽元素」、「calc 動態計算」，其實一點也不難 ( 當然跟水平置中比起來難了一點 )，只需要觀念正確就可以解決。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201408/css-vertical-align.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201408/css-vertical-align.jpg">
   <meta property="og:description" content="我們在編輯一個版面，通常都會用到水平置中和垂直置中來設計，而水平置中很好處理，不外乎就是設定margin:0 auto;或是text-align:center;,就可以輕鬆解決掉水平置中的問題，但一直以來最麻煩對齊問題，都是「垂直置中」這個討人厭的設定，以下將介紹三種單純利用 CSS 垂直置中的方式：「設定行高」、「添加偽元素」、「calc 動態計算」，其實一點也不難 ( 當然跟水平置中比起來難了一點 )，只需要觀念正確就可以解決。">
   <meta property="og:title" content="CSS 垂直置中的三個方法">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201408/css-vertical-align.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201408/css-vertical-align.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201408/css-vertical-align.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201408/css-vertical-align.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (23) - 理解 viewport 與 viewbox - OXXO.STUDIO</title>
 
   <meta name="description" content="記得我初次接觸 SVG 的時候，常常為了定位和大小感到相當的疑惑，有時候明明設定了這樣的大小，莫名其妙的又變成了另外的大小，也不知道該如何去設定，直到看了「W3C 的定義」之後，總算才明白了箇中原理，雖然我們都知道 SVG 該如何去使用，但往往一開始卻忽略了 SVG 的許多設定，所以這篇文章我們回頭仔細看看相關的設定，對於之後的圖形操作，也才能夠真正的融會貫通，也不需要一查再查了。">
   <meta itemprop="description" content="記得我初次接觸 SVG 的時候，常常為了定位和大小感到相當的疑惑，有時候明明設定了這樣的大小，莫名其妙的又變成了另外的大小，也不知道該如何去設定，直到看了「W3C 的定義」之後，總算才明白了箇中原理，雖然我們都知道 SVG 該如何去使用，但往往一開始卻忽略了 SVG 的許多設定，所以這篇文章我們回頭仔細看看相關的設定，對於之後的圖形操作，也才能夠真正的融會貫通，也不需要一查再查了。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/svg-23-viewpoint-viewBox.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201409/svg-23-viewpoint-viewBox.jpg">
   <meta property="og:description" content="記得我初次接觸 SVG 的時候，常常為了定位和大小感到相當的疑惑，有時候明明設定了這樣的大小，莫名其妙的又變成了另外的大小，也不知道該如何去設定，直到看了「W3C 的定義」之後，總算才明白了箇中原理，雖然我們都知道 SVG 該如何去使用，但往往一開始卻忽略了 SVG 的許多設定，所以這篇文章我們回頭仔細看看相關的設定，對於之後的圖形操作，也才能夠真正的融會貫通，也不需要一查再查了。">
   <meta property="og:title" content="SVG 研究之路 (23) - 理解 viewport 與 viewbox">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/svg-23-viewpoint-viewBox.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201409/svg-23-viewpoint-viewBox.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

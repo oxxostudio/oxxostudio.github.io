@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (4) - Path 基礎篇 - OXXO.STUDIO</title>
 
   <meta name="description" content="接下來要談談 SVG 裡頭最為重要的元素：Path，因為SVG 是向量圖，所有的物件和元素都是由 Path ( 路徑 ) 所組成，所以 Path 就具有相當多的指令讓使用者設定， 換句話說，搞懂了 Path 就等於搞定了SVG ( 或是搞定 80% 的 SVG，不管啦 )。">
   <meta itemprop="description" content="接下來要談談 SVG 裡頭最為重要的元素：Path，因為SVG 是向量圖，所有的物件和元素都是由 Path ( 路徑 ) 所組成，所以 Path 就具有相當多的指令讓使用者設定， 換句話說，搞懂了 Path 就等於搞定了SVG ( 或是搞定 80% 的 SVG，不管啦 )。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-04-path-1.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/svg-04-path-1.jpg">
   <meta property="og:description" content="接下來要談談 SVG 裡頭最為重要的元素：Path，因為SVG 是向量圖，所有的物件和元素都是由 Path ( 路徑 ) 所組成，所以 Path 就具有相當多的指令讓使用者設定， 換句話說，搞懂了 Path 就等於搞定了SVG ( 或是搞定 80% 的 SVG，不管啦 )。">
   <meta property="og:title" content="SVG 研究之路 (4) - Path 基礎篇">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-04-path-1.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/svg-04-path-1.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/svg-04-path-1.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

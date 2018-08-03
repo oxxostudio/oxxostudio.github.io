@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - CSV 數據處理 - OXXO.STUDIO</title>
 
   <meta name="description" content="在數據的類型裡，CSV 是一種相當普及且方便的數據文件格式，從我們每個人手邊的 excel 就可以輕鬆地將數據轉換成 CSV 的數據格式，而對於 d3.js 而言，除了可以很輕鬆的處理 JSON 數據之外，也可以很便利的處理 CSV 的數據，搭配前幾篇所介紹的數據處理方法，就可以做出多樣的變化。">
   <meta itemprop="description" content="在數據的類型裡，CSV 是一種相當普及且方便的數據文件格式，從我們每個人手邊的 excel 就可以輕鬆地將數據轉換成 CSV 的數據格式，而對於 d3.js 而言，除了可以很輕鬆的處理 JSON 數據之外，也可以很便利的處理 CSV 的數據，搭配前幾篇所介紹的數據處理方法，就可以做出多樣的變化。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/svg-d3-13-csv.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201501/svg-d3-13-csv.jpg">
   <meta property="og:description" content="在數據的類型裡，CSV 是一種相當普及且方便的數據文件格式，從我們每個人手邊的 excel 就可以輕鬆地將數據轉換成 CSV 的數據格式，而對於 d3.js 而言，除了可以很輕鬆的處理 JSON 數據之外，也可以很便利的處理 CSV 的數據，搭配前幾篇所介紹的數據處理方法，就可以做出多樣的變化。">
   <meta property="og:title" content="SVG D3.js - CSV 數據處理">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/svg-d3-13-csv.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201501/svg-d3-13-csv.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

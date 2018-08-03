@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - 直條圖 ( 以登革熱數據為例 ) - OXXO.STUDIO</title>
 
   <meta name="description" content="上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。">
   <meta itemprop="description" content="上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-20-bar-chart-tainan-dengue.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201509/svg-d3-20-bar-chart-tainan-dengue.jpg">
   <meta property="og:description" content="上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。">
   <meta property="og:title" content="SVG D3.js - 直條圖 ( 以登革熱數據為例 )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-20-bar-chart-tainan-dengue.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201509/svg-d3-20-bar-chart-tainan-dengue.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201509/svg-d3-20-bar-chart-tainan-dengue.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>聲音濾波器 ( BiquadFilterNode ) - OXXO.STUDIO</title>
 
   <meta name="description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
   <meta itemprop="description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201510/web-audio-api-biquadfilternode.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201510/web-audio-api-biquadfilternode.jpg">
   <meta property="og:description" content="這篇要來探討 Web Audio API 裏頭的濾波器：BiquadFilterNode，濾波器顧名思義，就是只讓固定頻率的波通過，在一般常見的聲音播放軟體的「等化器」，當中就用到許多濾波的功能，透過濾波器，我們可以加強或過濾低音或高音，直接影響聽覺的感受，甚至可以利用過濾器濾掉高頻的雜訊或低頻的雜訊，得到更高的音質。">
   <meta property="og:title" content="聲音濾波器 ( BiquadFilterNode )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201510/web-audio-api-biquadfilternode.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201510/web-audio-api-biquadfilternode.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201510/web-audio-api-biquadfilternode.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201510/web-audio-api-biquadfilternode.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

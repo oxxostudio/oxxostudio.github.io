@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>LINE BOT 實戰 ( 原理篇 ) - OXXO.STUDIO</title>
 
   <meta name="description" content="最近剛撰寫完 IT 鐵人賽的「實戰智慧插座」系列文章，原本最後兩篇想用個 LINE BOT 來完美收尾，但天不從人願 ( 自己後端的能力太弱 ），沒辦法順利完成，但趁著這個週末，總算是搞定了 LINE BOT ( LINE 聊天機器人 )。">
   <meta itemprop="description" content="最近剛撰寫完 IT 鐵人賽的「實戰智慧插座」系列文章，原本最後兩篇想用個 LINE BOT 來完美收尾，但天不從人願 ( 自己後端的能力太弱 ），沒辦法順利完成，但趁著這個週末，總算是搞定了 LINE BOT ( LINE 聊天機器人 )。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201701/line-bot.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201701/line-bot.jpg">
   <meta property="og:description" content="最近剛撰寫完 IT 鐵人賽的「實戰智慧插座」系列文章，原本最後兩篇想用個 LINE BOT 來完美收尾，但天不從人願 ( 自己後端的能力太弱 ），沒辦法順利完成，但趁著這個週末，總算是搞定了 LINE BOT ( LINE 聊天機器人 )。">
   <meta property="og:title" content="LINE BOT 實戰 ( 原理篇 )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201701/line-bot.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201701/line-bot.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201701/line-bot.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201701/line-bot.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

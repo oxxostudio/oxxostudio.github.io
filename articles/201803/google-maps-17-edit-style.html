@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (17) - 自訂地圖樣式風格 - OXXO.STUDIO</title>
 
   <meta name="description" content="你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。">
   <meta itemprop="description" content="你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-17-edit-style.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-17-edit-style.jpg">
   <meta property="og:description" content="你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。">
   <meta property="og:title" content="Google Maps (17) - 自訂地圖樣式風格">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-17-edit-style.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-17-edit-style.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201803/google-maps-17-edit-style.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-17-edit-style.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

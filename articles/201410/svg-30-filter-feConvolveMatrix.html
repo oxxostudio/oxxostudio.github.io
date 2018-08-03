@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (30) - filter - feConvolveMatrix - OXXO.STUDIO</title>
 
   <meta name="description" content="之前有介紹過模糊的濾鏡「SVG 研究之路 (13) - filter - feGaussianBlur」，既然有模糊濾鏡，為什麼沒有銳利化的濾鏡呢？其實是有的，在 SVG 如果說要進行銳利化，便要使用 feConvolveMatrix 這個濾鏡來實現，而且 feConvolveMatrix 不僅能進行銳利化，同時它也可以進行模糊的動作，不過因為是針對每個像素與四周像素進行矩陣運算，來計算出模糊或銳利，所以要寫的數字和程式相較於單純的 feGaussianBlur 濾鏡會複雜不少，因此如果有模糊的需求，還是直接使用 feGaussianBlur 吧！以下就來介紹一下 feConvolveMatrix 這個神奇的濾鏡。">
   <meta itemprop="description" content="之前有介紹過模糊的濾鏡「SVG 研究之路 (13) - filter - feGaussianBlur」，既然有模糊濾鏡，為什麼沒有銳利化的濾鏡呢？其實是有的，在 SVG 如果說要進行銳利化，便要使用 feConvolveMatrix 這個濾鏡來實現，而且 feConvolveMatrix 不僅能進行銳利化，同時它也可以進行模糊的動作，不過因為是針對每個像素與四周像素進行矩陣運算，來計算出模糊或銳利，所以要寫的數字和程式相較於單純的 feGaussianBlur 濾鏡會複雜不少，因此如果有模糊的需求，還是直接使用 feGaussianBlur 吧！以下就來介紹一下 feConvolveMatrix 這個神奇的濾鏡。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/svg-30-filter-feConvolveMatrix.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201410/svg-30-filter-feConvolveMatrix.jpg">
   <meta property="og:description" content="之前有介紹過模糊的濾鏡「SVG 研究之路 (13) - filter - feGaussianBlur」，既然有模糊濾鏡，為什麼沒有銳利化的濾鏡呢？其實是有的，在 SVG 如果說要進行銳利化，便要使用 feConvolveMatrix 這個濾鏡來實現，而且 feConvolveMatrix 不僅能進行銳利化，同時它也可以進行模糊的動作，不過因為是針對每個像素與四周像素進行矩陣運算，來計算出模糊或銳利，所以要寫的數字和程式相較於單純的 feGaussianBlur 濾鏡會複雜不少，因此如果有模糊的需求，還是直接使用 feGaussianBlur 吧！以下就來介紹一下 feConvolveMatrix 這個神奇的濾鏡。">
   <meta property="og:title" content="SVG 研究之路 (30) - filter - feConvolveMatrix">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/svg-30-filter-feConvolveMatrix.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201410/svg-30-filter-feConvolveMatrix.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201410/svg-30-filter-feConvolveMatrix.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

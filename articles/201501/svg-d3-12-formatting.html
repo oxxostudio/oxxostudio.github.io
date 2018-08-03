@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - 數字格式 ( Formatting ) - OXXO.STUDIO</title>
 
   <meta name="description" content="在「SVG D3.js - 時間格式 ( Time Formatting )」這篇文章裡看完了時間的格式，接著就要來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。其實講到數據的格式化，讓我想到一個強迫症藝術家 Ursus Wehrli 的一系列作品 ( Tidying Up Art )，從一堆雜亂無章的數據當中把這些數據分門別類並且格式化，意境上非常的雷同呀喔哈！( 所以這篇文章的圖片就用這系列藝術作品來表現吧！ )">
   <meta itemprop="description" content="在「SVG D3.js - 時間格式 ( Time Formatting )」這篇文章裡看完了時間的格式，接著就要來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。其實講到數據的格式化，讓我想到一個強迫症藝術家 Ursus Wehrli 的一系列作品 ( Tidying Up Art )，從一堆雜亂無章的數據當中把這些數據分門別類並且格式化，意境上非常的雷同呀喔哈！( 所以這篇文章的圖片就用這系列藝術作品來表現吧！ )">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/svg-d3-12-formatting.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201501/svg-d3-12-formatting.jpg">
   <meta property="og:description" content="在「SVG D3.js - 時間格式 ( Time Formatting )」這篇文章裡看完了時間的格式，接著就要來看看 d3.js 對於數字格式是如何處理的，因為 d3.js 主要就是針對數據去進行視覺化，所以大幅簡化了過去我們往往要寫很多判斷式來讓數字格式化的方法，只需要運用簡單的 API，就能夠輕鬆地讓數據格式化。其實講到數據的格式化，讓我想到一個強迫症藝術家 Ursus Wehrli 的一系列作品 ( Tidying Up Art )，從一堆雜亂無章的數據當中把這些數據分門別類並且格式化，意境上非常的雷同呀喔哈！( 所以這篇文章的圖片就用這系列藝術作品來表現吧！ )">
   <meta property="og:title" content="SVG D3.js - 數字格式 ( Formatting )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/svg-d3-12-formatting.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201501/svg-d3-12-formatting.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201501/svg-d3-12-formatting.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

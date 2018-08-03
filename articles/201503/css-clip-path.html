@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>運用 clip-path 的純 CSS 形狀變換 - OXXO.STUDIO</title>
 
@@ -12,12 +18,12 @@
 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
   <meta itemprop="description" content="在「單一 div 的正多邊形變換 ( 純 CSS )」這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/css-clip-path.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201503/css-clip-path.jpg">
   <meta property="og:description" content="在「單一 div 的正多邊形變換 ( 純 CSS )」這篇所提到繪製正多邊形的方法，算是純粹利用偽元素來完成，不過坦白說還有另外一種方法，可以將單一 div 做更多形狀的變換，這種方法就是 CSS3 的「clip-path」，這個「clip-path
 」看起來有點眼熟，因為它原本就存在於 SVG 裡頭，利用遮罩 ( 剪裁 ) 的方法，連接座標繪製遮罩區域，就可以做出許多不同的形狀，讓底色或底圖顯現，隨著瀏覽器對於 CSS3 的支援度大幅提升，自然而然的就可以用它來做些與眾不同的變化。">
   <meta property="og:title" content="運用 clip-path 的純 CSS 形狀變換">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/css-clip-path.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/css-clip-path.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201503/css-clip-path.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201503/css-clip-path.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

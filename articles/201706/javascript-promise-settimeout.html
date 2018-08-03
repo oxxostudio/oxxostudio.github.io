@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>JavaScript 同步延遲 ( Promise + setTimeout ) - OXXO.STUDIO</title>
 
   <meta name="description" content="過去在寫 JavaScript 使用的同步延遲，都是用非同步的 setTimeout 加上 callback 來實現，但如果有很多個任務或流程要執行，就得用上一大堆的 callback，然而 JavaScript 裡的 Promise ，剛好就可以用來解決同步與非同步的問題，讓整個延遲的過程可以很漂亮且同步的「串」在一起。">
   <meta itemprop="description" content="過去在寫 JavaScript 使用的同步延遲，都是用非同步的 setTimeout 加上 callback 來實現，但如果有很多個任務或流程要執行，就得用上一大堆的 callback，然而 JavaScript 裡的 Promise ，剛好就可以用來解決同步與非同步的問題，讓整個延遲的過程可以很漂亮且同步的「串」在一起。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/javascript-promise-settimeout.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201706/javascript-promise-settimeout.jpg">
   <meta property="og:description" content="過去在寫 JavaScript 使用的同步延遲，都是用非同步的 setTimeout 加上 callback 來實現，但如果有很多個任務或流程要執行，就得用上一大堆的 callback，然而 JavaScript 裡的 Promise ，剛好就可以用來解決同步與非同步的問題，讓整個延遲的過程可以很漂亮且同步的「串」在一起。">
   <meta property="og:title" content="JavaScript 同步延遲 ( Promise + setTimeout )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/javascript-promise-settimeout.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/javascript-promise-settimeout.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201706/javascript-promise-settimeout.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201706/javascript-promise-settimeout.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

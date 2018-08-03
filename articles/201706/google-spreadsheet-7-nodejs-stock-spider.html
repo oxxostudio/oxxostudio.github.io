@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google 試算表 (7) - 簡單的股票爬蟲 ( Node.js ) - OXXO.STUDIO</title>
 
   <meta name="description" content="當我們已經熟練了寫入資料到試算表，接著就可以用 Node.js 玩點好玩的東西，過去有寫過網路爬蟲的文章，但並沒有一個妥善的資料儲存空間，現在有了 Google 試算表後，理所當然的可以用它來記錄爬到的資料，這裡就用 Node.js 抓取當天的股票收盤資料，並及時存到 Google 試算表裡頭。">
   <meta itemprop="description" content="當我們已經熟練了寫入資料到試算表，接著就可以用 Node.js 玩點好玩的東西，過去有寫過網路爬蟲的文章，但並沒有一個妥善的資料儲存空間，現在有了 Google 試算表後，理所當然的可以用它來記錄爬到的資料，這裡就用 Node.js 抓取當天的股票收盤資料，並及時存到 Google 試算表裡頭。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider.jpg">
   <meta property="og:description" content="當我們已經熟練了寫入資料到試算表，接著就可以用 Node.js 玩點好玩的東西，過去有寫過網路爬蟲的文章，但並沒有一個妥善的資料儲存空間，現在有了 Google 試算表後，理所當然的可以用它來記錄爬到的資料，這裡就用 Node.js 抓取當天的股票收盤資料，並及時存到 Google 試算表裡頭。">
   <meta property="og:title" content="Google 試算表 (7) - 簡單的股票爬蟲 ( Node.js )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/google-spreadsheet-7-nodejs-stock-spider.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201706/google-spreadsheet-7-nodejs-stock-spider.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

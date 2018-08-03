@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (9) - Clipping and Masking - OXXO.STUDIO</title>
 
   <meta name="description" content="使用過 Illustrator 的朋友應該都會知道，裏頭有一個重要的繪圖功能，就是剪裁和遮色片，這也是在圖形處理上頗為重要的兩個功能，而在 SVG 裏頭這兩個功能也沒有缺席，和之前製作文字跟隨路徑以及漸層填色相同的做法，在製作剪裁或遮色片的時候，我們也必須先建立定義檔defs，就可以輕鬆做出 Clipping ( 剪裁 ) 和 Masking ( 遮色片 ) 的效果囉！">
   <meta itemprop="description" content="使用過 Illustrator 的朋友應該都會知道，裏頭有一個重要的繪圖功能，就是剪裁和遮色片，這也是在圖形處理上頗為重要的兩個功能，而在 SVG 裏頭這兩個功能也沒有缺席，和之前製作文字跟隨路徑以及漸層填色相同的做法，在製作剪裁或遮色片的時候，我們也必須先建立定義檔defs，就可以輕鬆做出 Clipping ( 剪裁 ) 和 Masking ( 遮色片 ) 的效果囉！">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-09-clipping-masking.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/svg-09-clipping-masking.jpg">
   <meta property="og:description" content="使用過 Illustrator 的朋友應該都會知道，裏頭有一個重要的繪圖功能，就是剪裁和遮色片，這也是在圖形處理上頗為重要的兩個功能，而在 SVG 裏頭這兩個功能也沒有缺席，和之前製作文字跟隨路徑以及漸層填色相同的做法，在製作剪裁或遮色片的時候，我們也必須先建立定義檔defs，就可以輕鬆做出 Clipping ( 剪裁 ) 和 Masking ( 遮色片 ) 的效果囉！">
   <meta property="og:title" content="SVG 研究之路 (9) - Clipping and Masking">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-09-clipping-masking.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/svg-09-clipping-masking.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

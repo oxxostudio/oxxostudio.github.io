@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (16) - 點擊區域，出現資訊視窗 - OXXO.STUDIO</title>
 
   <meta name="description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
   <meta itemprop="description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-16-taiwan-infowindow.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-16-taiwan-infowindow.jpg">
   <meta property="og:description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
   <meta property="og:title" content="Google Maps (16) - 點擊區域，出現資訊視窗">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-16-taiwan-infowindow.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-16-taiwan-infowindow.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201803/google-maps-16-taiwan-infowindow.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-16-taiwan-infowindow.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

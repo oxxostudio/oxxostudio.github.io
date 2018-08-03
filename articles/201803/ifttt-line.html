@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>IFTTT 發送 LINE 訊息通知 - OXXO.STUDIO</title>
 
   <meta name="description" content="去年我寫過兩篇文章介紹如何自己打造 LINE 機器人，不過如果只是要發送訊息通知，實在也沒必要花這麼大功夫去打造聊天機器人，所以這篇將會透過 IFTTT 與 LINE Notify，在不用寫什麼程式的情況下，實現「觸發某件事，就自動發送 LINE 訊息」的功能。">
   <meta itemprop="description" content="去年我寫過兩篇文章介紹如何自己打造 LINE 機器人，不過如果只是要發送訊息通知，實在也沒必要花這麼大功夫去打造聊天機器人，所以這篇將會透過 IFTTT 與 LINE Notify，在不用寫什麼程式的情況下，實現「觸發某件事，就自動發送 LINE 訊息」的功能。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/ifttt-line.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201803/ifttt-line.jpg">
   <meta property="og:description" content="去年我寫過兩篇文章介紹如何自己打造 LINE 機器人，不過如果只是要發送訊息通知，實在也沒必要花這麼大功夫去打造聊天機器人，所以這篇將會透過 IFTTT 與 LINE Notify，在不用寫什麼程式的情況下，實現「觸發某件事，就自動發送 LINE 訊息」的功能。">
   <meta property="og:title" content="IFTTT 發送 LINE 訊息通知">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/ifttt-line.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/ifttt-line.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201803/ifttt-line.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201803/ifttt-line.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

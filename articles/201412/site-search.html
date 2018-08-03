@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>簡單打造站內搜尋、標題搜尋 - OXXO.STUDIO</title>
 
   <meta name="description" content="自己個 blog 從五月正式上線至今，一直都缺了一個「站內搜尋」的功能，總算在這陣子找了空檔，把這個功能補上，同時在 list 頁面新增了 filter 以及標題搜尋的功能，每一篇文章的最下方也新增的上一頁下一頁的功能，最後順便把一些長期累積的小 bug 給修掉，在底層動的工程頗精彩呀。">
   <meta itemprop="description" content="自己個 blog 從五月正式上線至今，一直都缺了一個「站內搜尋」的功能，總算在這陣子找了空檔，把這個功能補上，同時在 list 頁面新增了 filter 以及標題搜尋的功能，每一篇文章的最下方也新增的上一頁下一頁的功能，最後順便把一些長期累積的小 bug 給修掉，在底層動的工程頗精彩呀。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/site-search.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201412/site-search.jpg">
   <meta property="og:description" content="自己個 blog 從五月正式上線至今，一直都缺了一個「站內搜尋」的功能，總算在這陣子找了空檔，把這個功能補上，同時在 list 頁面新增了 filter 以及標題搜尋的功能，每一篇文章的最下方也新增的上一頁下一頁的功能，最後順便把一些長期累積的小 bug 給修掉，在底層動的工程頗精彩呀。">
   <meta property="og:title" content="簡單打造站內搜尋、標題搜尋">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/site-search.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/site-search.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201412/site-search.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201412/site-search.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

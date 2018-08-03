@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>簡易後端實作 ( Google Cloud Functions ) - OXXO.STUDIO</title>
 
   <meta name="description" content="前一篇文章提到可以使用 Apps Script 來實現簡易後端，這篇則是要透過 Google Cloud Fuctions 來完成一模一樣的功能，如此一來，在後端實作上也多了另一個好用的選擇。">
   <meta itemprop="description" content="前一篇文章提到可以使用 Apps Script 來實現簡易後端，這篇則是要透過 Google Cloud Fuctions 來完成一模一樣的功能，如此一來，在後端實作上也多了另一個好用的選擇。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201805/backend-google-cloud-functions.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201805/backend-google-cloud-functions.jpg">
   <meta property="og:description" content="前一篇文章提到可以使用 Apps Script 來實現簡易後端，這篇則是要透過 Google Cloud Fuctions 來完成一模一樣的功能，如此一來，在後端實作上也多了另一個好用的選擇。">
   <meta property="og:title" content="簡易後端實作 ( Google Cloud Functions )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201805/backend-google-cloud-functions.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201805/backend-google-cloud-functions.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201805/backend-google-cloud-functions.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201805/backend-google-cloud-functions.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

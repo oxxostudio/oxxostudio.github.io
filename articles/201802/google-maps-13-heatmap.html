@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (13) - 熱度圖 ( Heatmap ) - OXXO.STUDIO</title>
 
   <meta name="description" content="前幾篇寫完了一系列的折線圖、多邊形、圓形和矩形，感覺應該可以在地圖上做點和資料密度相關的例子，Google Maps API 除了形狀，也提供了「熱度圖」的圖層方法，這篇就來實作如何在 Google 地圖上顯示熱度圖。">
   <meta itemprop="description" content="前幾篇寫完了一系列的折線圖、多邊形、圓形和矩形，感覺應該可以在地圖上做點和資料密度相關的例子，Google Maps API 除了形狀，也提供了「熱度圖」的圖層方法，這篇就來實作如何在 Google 地圖上顯示熱度圖。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-13-heatmap.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201802/google-maps-13-heatmap.jpg">
   <meta property="og:description" content="前幾篇寫完了一系列的折線圖、多邊形、圓形和矩形，感覺應該可以在地圖上做點和資料密度相關的例子，Google Maps API 除了形狀，也提供了「熱度圖」的圖層方法，這篇就來實作如何在 Google 地圖上顯示熱度圖。">
   <meta property="og:title" content="Google Maps (13) - 熱度圖 ( Heatmap )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-13-heatmap.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-13-heatmap.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201802/google-maps-13-heatmap.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201802/google-maps-13-heatmap.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

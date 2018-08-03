@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>LINE BOT 實戰 ( 聊天篇 ) - OXXO.STUDIO</title>
 
   <meta name="description" content="上一篇我們已經知道 LINE BOT 相關的原理以及如何部署，這篇就真的來完成一個會和你聊天的機器人，希望可以時實作一個你問他現在 PM2.5 數值他就會回答你，甚至你問他日幣匯率他也會回答你。">
   <meta itemprop="description" content="上一篇我們已經知道 LINE BOT 相關的原理以及如何部署，這篇就真的來完成一個會和你聊天的機器人，希望可以時實作一個你問他現在 PM2.5 數值他就會回答你，甚至你問他日幣匯率他也會回答你。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201701/line-bot-2.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201701/line-bot-2.jpg">
   <meta property="og:description" content="上一篇我們已經知道 LINE BOT 相關的原理以及如何部署，這篇就真的來完成一個會和你聊天的機器人，希望可以時實作一個你問他現在 PM2.5 數值他就會回答你，甚至你問他日幣匯率他也會回答你。">
   <meta property="og:title" content="LINE BOT 實戰 ( 聊天篇 )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201701/line-bot-2.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201701/line-bot-2.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201701/line-bot-2.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201701/line-bot-2.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

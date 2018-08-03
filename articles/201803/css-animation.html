@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>完整解析 CSS 動畫 ( CSS Animation ) - OXXO.STUDIO</title>
 
   <meta name="description" content="隨著 CSS3 的普及，過去許多看似酷炫的效果，逐漸也都能透過 CSS 來實作，這篇文章將會針對 CSS 動畫進行完整的使用探討，從基礎的使用，一直到 JavaScript 的操作方法都會介紹，希望能讓大家 ( 其實是自己 ) 在使用上更加得心應手。">
   <meta itemprop="description" content="隨著 CSS3 的普及，過去許多看似酷炫的效果，逐漸也都能透過 CSS 來實作，這篇文章將會針對 CSS 動畫進行完整的使用探討，從基礎的使用，一直到 JavaScript 的操作方法都會介紹，希望能讓大家 ( 其實是自己 ) 在使用上更加得心應手。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/css-animation.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201803/css-animation.jpg">
   <meta property="og:description" content="隨著 CSS3 的普及，過去許多看似酷炫的效果，逐漸也都能透過 CSS 來實作，這篇文章將會針對 CSS 動畫進行完整的使用探討，從基礎的使用，一直到 JavaScript 的操作方法都會介紹，希望能讓大家 ( 其實是自己 ) 在使用上更加得心應手。">
   <meta property="og:title" content="完整解析 CSS 動畫 ( CSS Animation )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/css-animation.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/css-animation.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201803/css-animation.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201803/css-animation.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

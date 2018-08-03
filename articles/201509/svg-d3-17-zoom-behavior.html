@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - 縮放行為 ( Zoom Behavior ) - OXXO.STUDIO</title>
 
   <meta name="description" content="上一篇我們提到了「拖拉行為 Drag Behavior」，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的，畢竟縮放的效果在 web 領域是比較少見也比較不容易實做，而 d3.js 與 svg 的結合，讓這個效果可以輕鬆愜意的展現。">
   <meta itemprop="description" content="上一篇我們提到了「拖拉行為 Drag Behavior」，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的，畢竟縮放的效果在 web 領域是比較少見也比較不容易實做，而 d3.js 與 svg 的結合，讓這個效果可以輕鬆愜意的展現。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-17-zoom-behavior.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201509/svg-d3-17-zoom-behavior.jpg">
   <meta property="og:description" content="上一篇我們提到了「拖拉行為 Drag Behavior」，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的，畢竟縮放的效果在 web 領域是比較少見也比較不容易實做，而 d3.js 與 svg 的結合，讓這個效果可以輕鬆愜意的展現。">
   <meta property="og:title" content="SVG D3.js - 縮放行為 ( Zoom Behavior )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-17-zoom-behavior.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-17-zoom-behavior.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201509/svg-d3-17-zoom-behavior.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201509/svg-d3-17-zoom-behavior.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

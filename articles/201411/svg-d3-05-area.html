@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - 區域 ( area ) - OXXO.STUDIO</title>
 
   <meta name="description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
   <meta itemprop="description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-05-area.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201411/svg-d3-05-area.jpg">
   <meta property="og:description" content="理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。">
   <meta property="og:title" content="SVG D3.js - 區域 ( area )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-05-area.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201411/svg-d3-05-area.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

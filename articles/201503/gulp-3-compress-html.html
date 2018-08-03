@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Gulp 學習 3 - 打包壓縮 HTML - OXXO.STUDIO</title>
 
   <meta name="description" content="上一篇我們看完了打包與壓縮 CSS 和 JS，為什麼打包壓縮 HTML 不要一起講呢？是因為打包壓縮 HTML 還會用到額外的套件和方法，避免混淆，所以就分成兩篇來紀錄。">
   <meta itemprop="description" content="上一篇我們看完了打包與壓縮 CSS 和 JS，為什麼打包壓縮 HTML 不要一起講呢？是因為打包壓縮 HTML 還會用到額外的套件和方法，避免混淆，所以就分成兩篇來紀錄。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/gulp-3-compress-html.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201503/gulp-3-compress-html.jpg">
   <meta property="og:description" content="上一篇我們看完了打包與壓縮 CSS 和 JS，為什麼打包壓縮 HTML 不要一起講呢？是因為打包壓縮 HTML 還會用到額外的套件和方法，避免混淆，所以就分成兩篇來紀錄。">
   <meta property="og:title" content="Gulp 學習 3 - 打包壓縮 HTML">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/gulp-3-compress-html.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201503/gulp-3-compress-html.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201503/gulp-3-compress-html.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

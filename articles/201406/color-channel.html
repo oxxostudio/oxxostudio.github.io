@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>淺談位元色版 color channel - OXXO.STUDIO</title>
 
   <meta name="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
   <meta itemprop="description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/color-channel.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/color-channel.jpg">
   <meta property="og:description" content="這篇我們來探討一下基本的位元色版的原理，為什麼要寫這一篇，主要因應現在當紅的 HDR 與 EXR 的檔案格式，必須要介紹一下基本概念，而這些概念間接也會影響到像 SVG 、HTML...等繪製向量圖形的計算，不然屆時搞不清楚，就無法做出完美的效果呈現。">
   <meta property="og:title" content="淺談位元色版 color channel">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/color-channel.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/color-channel.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/color-channel.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/color-channel.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

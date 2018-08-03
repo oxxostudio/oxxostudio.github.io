@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>用 GitBook 來寫本書吧！ - OXXO.STUDIO</title>
 
   <meta name="description" content="自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「政策白皮書」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！ ">
   <meta itemprop="description" content="自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「政策白皮書」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！ ">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201502/gitbook.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201502/gitbook.jpg">
   <meta property="og:description" content="自從 2014 年底的台北市市長選舉，柯 P 用了 GitBook 發表了「政策白皮書」之後，GitBook 這個以 GitHub 為基底的電子書瞬間爆紅，也因為政策白皮書瞬間流量爆炸，讓 GitBook 這個外國團隊還發公開信給柯 P 呀！ ">
   <meta property="og:title" content="用 GitBook 來寫本書吧！">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201502/gitbook.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201502/gitbook.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201502/gitbook.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201502/gitbook.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

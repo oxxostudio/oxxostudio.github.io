@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (28) - filter - feDisplacementMap - OXXO.STUDIO</title>
 
   <meta name="description" content="在玩 photoshop 的時候，我時常會使用一個名為「移置」的特效，這個特效說難不難，我在 2008 年使用 photoshop 做過國旗飄揚皺折的特效，在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。">
   <meta itemprop="description" content="在玩 photoshop 的時候，我時常會使用一個名為「移置」的特效，這個特效說難不難，我在 2008 年使用 photoshop 做過國旗飄揚皺折的特效，在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/svg-28-filter-feDisplacementMap.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201410/svg-28-filter-feDisplacementMap.jpg">
   <meta property="og:description" content="在玩 photoshop 的時候，我時常會使用一個名為「移置」的特效，這個特效說難不難，我在 2008 年使用 photoshop 做過國旗飄揚皺折的特效，在 Photoshop 裏頭這個特效的基本原理，就在於利用 Alpha 色版的深度，讓圖片的像素產生不同的位移情形，在許多的 AfterEffect 特效或 3D 效果裏頭，也都會使用類似的作法，來讓貼圖更吻合表面。">
   <meta property="og:title" content="SVG 研究之路 (28) - filter - feDisplacementMap">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-28-filter-feDisplacementMap.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/svg-28-filter-feDisplacementMap.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201410/svg-28-filter-feDisplacementMap.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201410/svg-28-filter-feDisplacementMap.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

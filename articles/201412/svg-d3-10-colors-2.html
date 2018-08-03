@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - 定義色彩 - 應用篇 ( colors ) - OXXO.STUDIO</title>
 
   <meta name="description" content="上一篇我們探討了 d3.js 裏頭色彩的定義與 API 操作方式，其實對於色彩，d3.js 還有不少應用的方法，也因此在官網所介紹的範例，才會如此的色彩豐富生動多姿，因此，這篇將繼續介紹色彩的應用，主要是利用之前介紹過的 scale 來變化色彩，很神奇吧！scale 要怎麼定義色彩？就讓我們繼續看下去吧~">
   <meta itemprop="description" content="上一篇我們探討了 d3.js 裏頭色彩的定義與 API 操作方式，其實對於色彩，d3.js 還有不少應用的方法，也因此在官網所介紹的範例，才會如此的色彩豐富生動多姿，因此，這篇將繼續介紹色彩的應用，主要是利用之前介紹過的 scale 來變化色彩，很神奇吧！scale 要怎麼定義色彩？就讓我們繼續看下去吧~">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201412/svg-d3-10-colors-2.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201412/svg-d3-10-colors-2.jpg">
   <meta property="og:description" content="上一篇我們探討了 d3.js 裏頭色彩的定義與 API 操作方式，其實對於色彩，d3.js 還有不少應用的方法，也因此在官網所介紹的範例，才會如此的色彩豐富生動多姿，因此，這篇將繼續介紹色彩的應用，主要是利用之前介紹過的 scale 來變化色彩，很神奇吧！scale 要怎麼定義色彩？就讓我們繼續看下去吧~">
   <meta property="og:title" content="SVG D3.js - 定義色彩 - 應用篇 ( colors )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201412/svg-d3-10-colors-2.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201412/svg-d3-10-colors-2.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201412/svg-d3-10-colors-2.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201412/svg-d3-10-colors-2.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

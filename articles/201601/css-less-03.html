@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>用 LESS 寫 CSS ( 判斷式、迴圈、Function ) - OXXO.STUDIO</title>
 
   <meta name="description" content="經過前兩篇的洗禮，應該可以直接用 LESS 來撰寫整個網站的 CSS 了，不過如果要針對大型的專案，在樣式的規劃上可能就要用到更進階的設定，第三篇的 LESS 文章將會介紹一些進階的功能，總而言之，其實 LESS 和 SASS 的功能都大同小異，我自己也是寫過 SASS 又轉戰 LESS，不過 LESS 真是滿簡便好用的，提供給大家參考。">
   <meta itemprop="description" content="經過前兩篇的洗禮，應該可以直接用 LESS 來撰寫整個網站的 CSS 了，不過如果要針對大型的專案，在樣式的規劃上可能就要用到更進階的設定，第三篇的 LESS 文章將會介紹一些進階的功能，總而言之，其實 LESS 和 SASS 的功能都大同小異，我自己也是寫過 SASS 又轉戰 LESS，不過 LESS 真是滿簡便好用的，提供給大家參考。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201601/css-less-03.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201601/css-less-03.jpg">
   <meta property="og:description" content="經過前兩篇的洗禮，應該可以直接用 LESS 來撰寫整個網站的 CSS 了，不過如果要針對大型的專案，在樣式的規劃上可能就要用到更進階的設定，第三篇的 LESS 文章將會介紹一些進階的功能，總而言之，其實 LESS 和 SASS 的功能都大同小異，我自己也是寫過 SASS 又轉戰 LESS，不過 LESS 真是滿簡便好用的，提供給大家參考。">
   <meta property="og:title" content="用 LESS 寫 CSS ( 判斷式、迴圈、Function )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201601/css-less-03.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201601/css-less-03.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201601/css-less-03.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201601/css-less-03.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

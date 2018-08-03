@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (6) - stroke 邊框 - OXXO.STUDIO</title>
 
   <meta name="description" content="前面的章節都在介紹繪製形狀，而我都是使用單純的線條來描繪形狀的邊框，因此這篇就來聊聊 stroke ( 邊框 ) 的設定，其實在 SVG 裏頭邊框的設定很簡單，如果手邊有 Illustrator 的，邊框的設定就像裏頭筆畫的線條設定一樣，只是一個由視覺化的面板控制，一個由程式碼撰寫，有興趣的話，可以直接繪製線段存成 SVG，就可以很清楚了解邊框的設定。">
   <meta itemprop="description" content="前面的章節都在介紹繪製形狀，而我都是使用單純的線條來描繪形狀的邊框，因此這篇就來聊聊 stroke ( 邊框 ) 的設定，其實在 SVG 裏頭邊框的設定很簡單，如果手邊有 Illustrator 的，邊框的設定就像裏頭筆畫的線條設定一樣，只是一個由視覺化的面板控制，一個由程式碼撰寫，有興趣的話，可以直接繪製線段存成 SVG，就可以很清楚了解邊框的設定。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-06-stroke.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/svg-06-stroke.jpg">
   <meta property="og:description" content="前面的章節都在介紹繪製形狀，而我都是使用單純的線條來描繪形狀的邊框，因此這篇就來聊聊 stroke ( 邊框 ) 的設定，其實在 SVG 裏頭邊框的設定很簡單，如果手邊有 Illustrator 的，邊框的設定就像裏頭筆畫的線條設定一樣，只是一個由視覺化的面板控制，一個由程式碼撰寫，有興趣的話，可以直接繪製線段存成 SVG，就可以很清楚了解邊框的設定。">
   <meta property="og:title" content="SVG 研究之路 (6) - stroke 邊框">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-06-stroke.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/svg-06-stroke.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/svg-06-stroke.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

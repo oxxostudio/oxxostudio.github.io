@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖 - OXXO.STUDIO</title>
 
   <meta name="description" content="之前我們提過了「SVG 研究之路 (12) - pie chart 圓餅圖實作」和「SVG 研究之路 (14) - 控制 SVG 的注意事項」，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選下面的連結回去再次閱讀一下吧！ )">
   <meta itemprop="description" content="之前我們提過了「SVG 研究之路 (12) - pie chart 圓餅圖實作」和「SVG 研究之路 (14) - 控制 SVG 的注意事項」，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選下面的連結回去再次閱讀一下吧！ )">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/svg-24-jquery-pie-chart.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201409/svg-24-jquery-pie-chart.jpg">
   <meta property="og:description" content="之前我們提過了「SVG 研究之路 (12) - pie chart 圓餅圖實作」和「SVG 研究之路 (14) - 控制 SVG 的注意事項」，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選下面的連結回去再次閱讀一下吧！ )">
   <meta property="og:title" content="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-24-jquery-pie-chart.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/svg-24-jquery-pie-chart.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201409/svg-24-jquery-pie-chart.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201409/svg-24-jquery-pie-chart.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

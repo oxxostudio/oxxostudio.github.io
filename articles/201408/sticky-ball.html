@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>噁心黏黏球 ( 純 CSS ) - OXXO.STUDIO</title>
 
   <meta name="description" content="這是一個純粹利用 CSS 所做出來的效果，這個效果說穿了就是一個影像處理的原理，做法跟 Photoshop 裡頭的幾乎一模一樣，只是一個用圖層和色版來製作，一個則是用 CSS ( 把 div 當成圖層思考就好了 )。">
   <meta itemprop="description" content="這是一個純粹利用 CSS 所做出來的效果，這個效果說穿了就是一個影像處理的原理，做法跟 Photoshop 裡頭的幾乎一模一樣，只是一個用圖層和色版來製作，一個則是用 CSS ( 把 div 當成圖層思考就好了 )。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201408/sticky-ball.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201408/sticky-ball.jpg">
   <meta property="og:description" content="這是一個純粹利用 CSS 所做出來的效果，這個效果說穿了就是一個影像處理的原理，做法跟 Photoshop 裡頭的幾乎一模一樣，只是一個用圖層和色版來製作，一個則是用 CSS ( 把 div 當成圖層思考就好了 )。">
   <meta property="og:title" content="噁心黏黏球 ( 純 CSS )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201408/sticky-ball.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201408/sticky-ball.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201408/sticky-ball.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201408/sticky-ball.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

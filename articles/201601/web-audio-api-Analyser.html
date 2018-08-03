@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>建立音樂頻譜 2 ( analyser )  &lt;span class="article-date" tag="web"&gt;JAN 3, 2016&lt;/span&gt; - OXXO.STUDIO</title>
 
   <meta name="description" content="之前寫了一篇了用 createScriptProcessor 來製作音樂頻譜的功能，這裏要來介紹另外一個製作方式，就是使用 analyser 節點，analyser 節點可以針對經過它的音頻做分析 ( 顧名思義咩 )，所以相較 createScriptProcessor 會建立緩衝區來保留音頻訊號，處理速度會較快，但缺點是會失去一些高頻的訊號，不過如果只是要單純顯示音樂頻譜，倒是一個不錯的選擇。( 圖片來源：https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode ) ">
   <meta itemprop="description" content="之前寫了一篇了用 createScriptProcessor 來製作音樂頻譜的功能，這裏要來介紹另外一個製作方式，就是使用 analyser 節點，analyser 節點可以針對經過它的音頻做分析 ( 顧名思義咩 )，所以相較 createScriptProcessor 會建立緩衝區來保留音頻訊號，處理速度會較快，但缺點是會失去一些高頻的訊號，不過如果只是要單純顯示音樂頻譜，倒是一個不錯的選擇。( 圖片來源：https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode ) ">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201601/web-audio-api-Analyser.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201601/web-audio-api-Analyser.jpg">
   <meta property="og:description" content="之前寫了一篇了用 createScriptProcessor 來製作音樂頻譜的功能，這裏要來介紹另外一個製作方式，就是使用 analyser 節點，analyser 節點可以針對經過它的音頻做分析 ( 顧名思義咩 )，所以相較 createScriptProcessor 會建立緩衝區來保留音頻訊號，處理速度會較快，但缺點是會失去一些高頻的訊號，不過如果只是要單純顯示音樂頻譜，倒是一個不錯的選擇。( 圖片來源：https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode ) ">
   <meta property="og:title" content="建立音樂頻譜 2 ( analyser )  <span class=&quot;article-date&quot; tag=&quot;web&quot;>JAN 3, 2016</span>">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201601/web-audio-api-Analyser.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201601/web-audio-api-Analyser.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201601/web-audio-api-Analyser.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201601/web-audio-api-Analyser.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

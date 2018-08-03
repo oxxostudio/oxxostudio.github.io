@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>改變 HTML5 range 樣式的兩種方法 - OXXO.STUDIO</title>
 
   <meta name="description" content="今天來探討一下 HTML5 的 range 這個新的 input 類型，不過重點不是在 range 要如何使用，而是在如何去改變 range 的樣式，做出一個漂漂亮亮的滑動桿。">
   <meta itemprop="description" content="今天來探討一下 HTML5 的 range 這個新的 input 類型，不過重點不是在 range 要如何使用，而是在如何去改變 range 的樣式，做出一個漂漂亮亮的滑動桿。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/html5-input-range-style.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201503/html5-input-range-style.jpg">
   <meta property="og:description" content="今天來探討一下 HTML5 的 range 這個新的 input 類型，不過重點不是在 range 要如何使用，而是在如何去改變 range 的樣式，做出一個漂漂亮亮的滑動桿。">
   <meta property="og:title" content="改變 HTML5 range 樣式的兩種方法">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/html5-input-range-style.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201503/html5-input-range-style.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201503/html5-input-range-style.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

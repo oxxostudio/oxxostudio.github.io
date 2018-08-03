@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (27) - filter - feImage - OXXO.STUDIO</title>
 
   <meta name="description" content="feImage 是 SVG filter 裏頭最簡單的濾鏡，不過為什麼要用一篇文章專門介紹它呢？就是因為 feImage 可以幫助我們更實際的了解 filter 的原理，除此之外，這篇文章也會搭配另外一個最簡單的濾鏡 feTile ( 到底有幾個最簡單呀 ) 藉由實際的範例來深入了解 SVG filter 的博大精深吧！">
   <meta itemprop="description" content="feImage 是 SVG filter 裏頭最簡單的濾鏡，不過為什麼要用一篇文章專門介紹它呢？就是因為 feImage 可以幫助我們更實際的了解 filter 的原理，除此之外，這篇文章也會搭配另外一個最簡單的濾鏡 feTile ( 到底有幾個最簡單呀 ) 藉由實際的範例來深入了解 SVG filter 的博大精深吧！">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/svg-27-filter-feImage.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201410/svg-27-filter-feImage.jpg">
   <meta property="og:description" content="feImage 是 SVG filter 裏頭最簡單的濾鏡，不過為什麼要用一篇文章專門介紹它呢？就是因為 feImage 可以幫助我們更實際的了解 filter 的原理，除此之外，這篇文章也會搭配另外一個最簡單的濾鏡 feTile ( 到底有幾個最簡單呀 ) 藉由實際的範例來深入了解 SVG filter 的博大精深吧！">
   <meta property="og:title" content="SVG 研究之路 (27) - filter - feImage">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-27-filter-feImage.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/svg-27-filter-feImage.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201410/svg-27-filter-feImage.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201410/svg-27-filter-feImage.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

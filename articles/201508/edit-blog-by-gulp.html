@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>用 Gulp 展開新的 blog 編輯旅程 - OXXO.STUDIO</title>
 
   <meta name="description" content="oxxostudio 開張一年多以來，我都是用 Fire.app 在撰寫我的 blog，撰寫的方式不外乎就是利用樣板語法，達成每一頁都會有固定的 layout，然後還可以根據不同頁面套用不同的 CSS 與 Javascript，雖然當初用幾百塊錢買的 Fire.app 還滿方便的，但坦白說它的速度真是慢到有點受不了，或許是背後要用到 Java 的緣故 ( 且在 Java 7 和 Java 8 之間還造成不少問題 )，加上工作上同事都是 node.js 的高手，所以就毅然決然的告別 Fire.app，投入了 Gulp 的懷抱。">
   <meta itemprop="description" content="oxxostudio 開張一年多以來，我都是用 Fire.app 在撰寫我的 blog，撰寫的方式不外乎就是利用樣板語法，達成每一頁都會有固定的 layout，然後還可以根據不同頁面套用不同的 CSS 與 Javascript，雖然當初用幾百塊錢買的 Fire.app 還滿方便的，但坦白說它的速度真是慢到有點受不了，或許是背後要用到 Java 的緣故 ( 且在 Java 7 和 Java 8 之間還造成不少問題 )，加上工作上同事都是 node.js 的高手，所以就毅然決然的告別 Fire.app，投入了 Gulp 的懷抱。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201508/edit-blog-by-gulp.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201508/edit-blog-by-gulp.jpg">
   <meta property="og:description" content="oxxostudio 開張一年多以來，我都是用 Fire.app 在撰寫我的 blog，撰寫的方式不外乎就是利用樣板語法，達成每一頁都會有固定的 layout，然後還可以根據不同頁面套用不同的 CSS 與 Javascript，雖然當初用幾百塊錢買的 Fire.app 還滿方便的，但坦白說它的速度真是慢到有點受不了，或許是背後要用到 Java 的緣故 ( 且在 Java 7 和 Java 8 之間還造成不少問題 )，加上工作上同事都是 node.js 的高手，所以就毅然決然的告別 Fire.app，投入了 Gulp 的懷抱。">
   <meta property="og:title" content="用 Gulp 展開新的 blog 編輯旅程">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201508/edit-blog-by-gulp.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201508/edit-blog-by-gulp.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201508/edit-blog-by-gulp.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201508/edit-blog-by-gulp.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

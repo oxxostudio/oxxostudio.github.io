@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (15) - filter - feComponentTransfer - OXXO.STUDIO</title>
 
   <meta name="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
   <meta itemprop="description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/svg-15-filter-feComponentTransfer.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201407/svg-15-filter-feComponentTransfer.jpg">
   <meta property="og:description" content="feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。">
   <meta property="og:title" content="SVG 研究之路 (15) - filter - feComponentTransfer">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/svg-15-filter-feComponentTransfer.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/svg-15-filter-feComponentTransfer.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201407/svg-15-filter-feComponentTransfer.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201407/svg-15-filter-feComponentTransfer.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

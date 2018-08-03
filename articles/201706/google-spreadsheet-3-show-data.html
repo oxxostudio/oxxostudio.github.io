@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google 試算表 (3) - 網頁顯示儲存格數值 - OXXO.STUDIO</title>
 
   <meta name="description" content="只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。">
   <meta itemprop="description" content="只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-3-show-data.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-3-show-data.jpg">
   <meta property="og:description" content="只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。">
   <meta property="og:title" content="Google 試算表 (3) - 網頁顯示儲存格數值">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/google-spreadsheet-3-show-data.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-3-show-data.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201706/google-spreadsheet-3-show-data.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-3-show-data.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

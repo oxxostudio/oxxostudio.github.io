@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>聲音參數與音量節點 ( AudioParam,GainNode ) - OXXO.STUDIO</title>
 
   <meta name="description" content="上一篇有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
   <meta itemprop="description" content="上一篇有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api-audioparam-gainnode.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201509/web-audio-api-audioparam-gainnode.jpg">
   <meta property="og:description" content="上一篇有介紹到 GainNode 這個控制聲音大小的節點模組，但並沒有深入介紹相關的用法，這篇就要來談談 GainNode 的操作處理，由於 GainNode 實在簡單，因為它只有一個屬性叫做「gain」，所以一定要先介紹「AudioParam」這個 Audio 的參數。">
   <meta property="og:title" content="聲音參數與音量節點 ( AudioParam,GainNode )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api-audioparam-gainnode.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api-audioparam-gainnode.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201509/web-audio-api-audioparam-gainnode.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201509/web-audio-api-audioparam-gainnode.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

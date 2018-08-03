@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>獲取錄音資訊 (getUserMedia) - OXXO.STUDIO</title>
 
   <meta name="description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。( 不過錄音需要用到 https，畢竟如果隨隨便便就可以錄，還真是滿危險的...XD )">
   <meta itemprop="description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。( 不過錄音需要用到 https，畢竟如果隨隨便便就可以錄，還真是滿危險的...XD )">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201601/web-audio-recorder.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201601/web-audio-recorder.jpg">
   <meta property="og:description" content="當我們會使用音訊播放並且會製成頻譜圖之後，接著就要來玩玩錄音了，原理大概就是透過電腦的麥克風，獲取外部聲音，然後經由 Web Audio 聲音處理節點把聲音數位化，更進一步地把聲音儲存下來。( 不過錄音需要用到 https，畢竟如果隨隨便便就可以錄，還真是滿危險的...XD )">
   <meta property="og:title" content="獲取錄音資訊 (getUserMedia)">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201601/web-audio-recorder.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201601/web-audio-recorder.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201601/web-audio-recorder.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201601/web-audio-recorder.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

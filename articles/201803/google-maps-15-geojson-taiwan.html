@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (15) - 顯示台灣縣市 ( GeoJSON ) - OXXO.STUDIO</title>
 
   <meta name="description" content="前一篇練習了用 Google Maps API 讀取 GeoJSON 資料並在地圖顯示圖案，這篇就更近一步，透過  map.data 讀取台灣縣市的 GeoJSON 並顯示在地圖上，同時讓滑鼠移到各個縣市形狀的時候呈現不同的顏色。">
   <meta itemprop="description" content="前一篇練習了用 Google Maps API 讀取 GeoJSON 資料並在地圖顯示圖案，這篇就更近一步，透過  map.data 讀取台灣縣市的 GeoJSON 並顯示在地圖上，同時讓滑鼠移到各個縣市形狀的時候呈現不同的顏色。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-15-geojson-taiwan.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-15-geojson-taiwan.jpg">
   <meta property="og:description" content="前一篇練習了用 Google Maps API 讀取 GeoJSON 資料並在地圖顯示圖案，這篇就更近一步，透過  map.data 讀取台灣縣市的 GeoJSON 並顯示在地圖上，同時讓滑鼠移到各個縣市形狀的時候呈現不同的顏色。">
   <meta property="og:title" content="Google Maps (15) - 顯示台灣縣市 ( GeoJSON )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201803/google-maps-15-geojson-taiwan.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201803/google-maps-15-geojson-taiwan.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201803/google-maps-15-geojson-taiwan.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-15-geojson-taiwan.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

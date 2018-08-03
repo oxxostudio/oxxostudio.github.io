@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Dreamsmile 網頁設計 - OXXO.STUDIO</title>
 
   <meta name="description" content="這是之前替公司所設計的產品網頁，介紹 dreamsmile 這套目標紀錄的 app，版面的配置採用現在比較流行的單頁式網頁設計，搭配卷軸滾動的小特效 ( 卷軸捲到哪邊就會出現一些效果 ) ，只是比較可惜的那時候對於 RWD 的技術還不熟練，加上時間比較緊迫，就快速地做出了這個版本，也因為沒有響應式，手機版本也是用 javascript 硬刻出來的。">
   <meta itemprop="description" content="這是之前替公司所設計的產品網頁，介紹 dreamsmile 這套目標紀錄的 app，版面的配置採用現在比較流行的單頁式網頁設計，搭配卷軸滾動的小特效 ( 卷軸捲到哪邊就會出現一些效果 ) ，只是比較可惜的那時候對於 RWD 的技術還不熟練，加上時間比較緊迫，就快速地做出了這個版本，也因為沒有響應式，手機版本也是用 javascript 硬刻出來的。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/dreamsmile-web.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/dreamsmile-web.jpg">
   <meta property="og:description" content="這是之前替公司所設計的產品網頁，介紹 dreamsmile 這套目標紀錄的 app，版面的配置採用現在比較流行的單頁式網頁設計，搭配卷軸滾動的小特效 ( 卷軸捲到哪邊就會出現一些效果 ) ，只是比較可惜的那時候對於 RWD 的技術還不熟練，加上時間比較緊迫，就快速地做出了這個版本，也因為沒有響應式，手機版本也是用 javascript 硬刻出來的。">
   <meta property="og:title" content="Dreamsmile 網頁設計">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/dreamsmile-web.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/dreamsmile-web.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/dreamsmile-web.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/dreamsmile-web.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

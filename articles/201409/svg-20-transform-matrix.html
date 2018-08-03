@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (20) - transform Matrix - OXXO.STUDIO</title>
 
   <meta name="description" content="前一篇介紹了 SVG tansform 的前四個基本方法：translate、scale、rotate 和 skew，其實這四個方法都是建構在 Matrix 這個最重要的變形方法之上，只是因為 Matrix 真的要寫起來實在太過複雜，因此在許多效果上都直接省略了，不過如果可以了解 Matrix 的原理，面對更複雜的變形問題，也可以迎刃而解，就讓我們來進入 Matrix 的世界吧！">
   <meta itemprop="description" content="前一篇介紹了 SVG tansform 的前四個基本方法：translate、scale、rotate 和 skew，其實這四個方法都是建構在 Matrix 這個最重要的變形方法之上，只是因為 Matrix 真的要寫起來實在太過複雜，因此在許多效果上都直接省略了，不過如果可以了解 Matrix 的原理，面對更複雜的變形問題，也可以迎刃而解，就讓我們來進入 Matrix 的世界吧！">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/svg-20-transform-matrix.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201409/svg-20-transform-matrix.jpg">
   <meta property="og:description" content="前一篇介紹了 SVG tansform 的前四個基本方法：translate、scale、rotate 和 skew，其實這四個方法都是建構在 Matrix 這個最重要的變形方法之上，只是因為 Matrix 真的要寫起來實在太過複雜，因此在許多效果上都直接省略了，不過如果可以了解 Matrix 的原理，面對更複雜的變形問題，也可以迎刃而解，就讓我們來進入 Matrix 的世界吧！">
   <meta property="og:title" content="SVG 研究之路 (20) - transform Matrix">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/svg-20-transform-matrix.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201409/svg-20-transform-matrix.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

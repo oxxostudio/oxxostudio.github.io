@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (7) - fill 填色 - OXXO.STUDIO</title>
 
   <meta name="description" content="介紹過了 stroke 邊框之後，接下來就要介紹 fill 填色，填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩，以下將分別介紹三種填色的方式：">
   <meta itemprop="description" content="介紹過了 stroke 邊框之後，接下來就要介紹 fill 填色，填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩，以下將分別介紹三種填色的方式：">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-07-fill.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/svg-07-fill.jpg">
   <meta property="og:description" content="介紹過了 stroke 邊框之後，接下來就要介紹 fill 填色，填色分成三種，一種是純色的填色，一種是漸層的填色，最後一種是利用圖案的填色，一張圖片的好看與否，很重要的一部分往往取決於色彩的呈現，因此掌握填色的技巧，對於圖片的表現也更能引人入勝，而 SVG 的好處，填色也是向量化，更可以用程式去控制色彩，以下將分別介紹三種填色的方式：">
   <meta property="og:title" content="SVG 研究之路 (7) - fill 填色">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-07-fill.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/svg-07-fill.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/svg-07-fill.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

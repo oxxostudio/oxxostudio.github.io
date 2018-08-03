@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (14) - 控制 SVG 的注意事項 - OXXO.STUDIO</title>
 
   <meta name="description" content="學會如何繪製 SVG 不稀奇，厲害的是學會如何利用 JS 和 CSS 去控制 SVG,以下將介紹兩個要注意的小地方，這也是我自己在學習的過程中所遇到的問題，搞懂這兩個小眉角，對於控制 SVG 一定就會更得心應手。( 當然後續還會有不同的小技巧，不過就等我寫到了再一起分享吧！ )">
   <meta itemprop="description" content="學會如何繪製 SVG 不稀奇，厲害的是學會如何利用 JS 和 CSS 去控制 SVG,以下將介紹兩個要注意的小地方，這也是我自己在學習的過程中所遇到的問題，搞懂這兩個小眉角，對於控制 SVG 一定就會更得心應手。( 當然後續還會有不同的小技巧，不過就等我寫到了再一起分享吧！ )">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-14-control-SVG.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/svg-14-control-SVG.jpg">
   <meta property="og:description" content="學會如何繪製 SVG 不稀奇，厲害的是學會如何利用 JS 和 CSS 去控制 SVG,以下將介紹兩個要注意的小地方，這也是我自己在學習的過程中所遇到的問題，搞懂這兩個小眉角，對於控制 SVG 一定就會更得心應手。( 當然後續還會有不同的小技巧，不過就等我寫到了再一起分享吧！ )">
   <meta property="og:title" content="SVG 研究之路 (14) - 控制 SVG 的注意事項">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-14-control-SVG.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/svg-14-control-SVG.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

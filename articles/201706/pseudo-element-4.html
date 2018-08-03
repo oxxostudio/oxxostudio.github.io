@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS 偽元素 ( first-line、first-letter、selection) - OXXO.STUDIO</title>
 
   <meta name="description" content="除了 ::before 和 ::after，CSS 的偽元素還有 ::first-line、::first-letter 和 ::selection 這三個，這三個相對來說就簡單得多，用法也較為單純。">
   <meta itemprop="description" content="除了 ::before 和 ::after，CSS 的偽元素還有 ::first-line、::first-letter 和 ::selection 這三個，這三個相對來說就簡單得多，用法也較為單純。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-4.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201706/pseudo-element-4.jpg">
   <meta property="og:description" content="除了 ::before 和 ::after，CSS 的偽元素還有 ::first-line、::first-letter 和 ::selection 這三個，這三個相對來說就簡單得多，用法也較為單純。">
   <meta property="og:title" content="CSS 偽元素 ( first-line、first-letter、selection)">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/pseudo-element-4.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-4.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201706/pseudo-element-4.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201706/pseudo-element-4.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

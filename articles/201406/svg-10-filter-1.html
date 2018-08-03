@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (10) - 初探 filter - OXXO.STUDIO</title>
 
   <meta name="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。">
   <meta itemprop="description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-10-filter-1.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/svg-10-filter-1.jpg">
   <meta property="og:description" content="這篇主要探討 SVG 的濾鏡：filter，是 SVG 裏頭比較少人著墨的地方，但卻也是可以讓圖形變化最大的地方，濾鏡不外乎像高斯模糊、混合、色彩變換...等，在我們使用繪圖軟體的時候，濾鏡是最常用到的功能之一，隨著瀏覽器的進步，幾乎所有的瀏覽起都支援 SVG 的濾鏡了，但是濾鏡牽涉到太多演算法，例如什麼純量乘積、阿達馬乘積...等，我實在也還沒搞懂，所以這篇先將濾鏡表列出來，之後再來慢慢研究。">
   <meta property="og:title" content="SVG 研究之路 (10) - 初探 filter">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-10-filter-1.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-10-filter-1.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/svg-10-filter-1.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/svg-10-filter-1.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

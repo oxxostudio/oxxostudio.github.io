@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - 定義比例 ( scale.linear() ) - OXXO.STUDIO</title>
 
   <meta name="description" content="這篇原本要延續上一篇立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
   <meta itemprop="description" content="這篇原本要延續上一篇立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-03-scale-linear.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201411/svg-d3-03-scale-linear.jpg">
   <meta property="og:description" content="這篇原本要延續上一篇立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。">
   <meta property="og:title" content="SVG D3.js - 定義比例 ( scale.linear() )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201411/svg-d3-03-scale-linear.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201411/svg-d3-03-scale-linear.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

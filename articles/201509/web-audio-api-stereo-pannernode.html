@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>立體聲 ( PannerNode,StereoPannerNode ) - OXXO.STUDIO</title>
 
   <meta name="description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。">
   <meta itemprop="description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api-stereo-pannernode.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201509/web-audio-api-stereo-pannernode.jpg">
   <meta property="og:description" content="通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。">
   <meta property="og:title" content="立體聲 ( PannerNode,StereoPannerNode )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/web-audio-api-stereo-pannernode.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/web-audio-api-stereo-pannernode.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201509/web-audio-api-stereo-pannernode.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201509/web-audio-api-stereo-pannernode.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

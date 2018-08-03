@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Promise 與 Opendata - OXXO.STUDIO</title>
 
   <meta name="description" content="Opendata 是個很好用的練習資料，之前都是透過 jQuery 內建的 getJSON 或 AJAX 來完成資料串接取得，這篇將會透過XMLHttpRequest()來實作，並且搭配 Promise 的用法，載入一組資料之後再載另外一組資料，避免同時載入的情況發生。">
   <meta itemprop="description" content="Opendata 是個很好用的練習資料，之前都是透過 jQuery 內建的 getJSON 或 AJAX 來完成資料串接取得，這篇將會透過XMLHttpRequest()來實作，並且搭配 Promise 的用法，載入一組資料之後再載另外一組資料，避免同時載入的情況發生。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/javascript-promise-opendata.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201706/javascript-promise-opendata.jpg">
   <meta property="og:description" content="Opendata 是個很好用的練習資料，之前都是透過 jQuery 內建的 getJSON 或 AJAX 來完成資料串接取得，這篇將會透過XMLHttpRequest()來實作，並且搭配 Promise 的用法，載入一組資料之後再載另外一組資料，避免同時載入的情況發生。">
   <meta property="og:title" content="Promise 與 Opendata">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/javascript-promise-opendata.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/javascript-promise-opendata.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201706/javascript-promise-opendata.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201706/javascript-promise-opendata.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

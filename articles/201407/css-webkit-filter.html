@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS webkit filter - OXXO.STUDIO</title>
 
   <meta name="description" content="由於我自己是多媒體專長的背景，「filter」 ( 濾鏡 ) 這個詞基本上是陪伴我成長的一個重要技術 ( 或工具 )，不管是在影像處理還是向量繪圖，甚至是影片剪輯、聲音處理都會需要使用到濾鏡，但很可惜的在網站設計裡，卻沒有如同 photoshop 一般的濾鏡可以輕鬆使用，一張圖如果需要一些特效 ( 例如模糊、黑白、高對比...等 )，往往必須直接再重製一張圖來使用，雖然對我自己來說重做一張圖應該不用花到一分鐘，但對於許多不會影像處理的人而言，簡直就是另外一門學問了。">
   <meta itemprop="description" content="由於我自己是多媒體專長的背景，「filter」 ( 濾鏡 ) 這個詞基本上是陪伴我成長的一個重要技術 ( 或工具 )，不管是在影像處理還是向量繪圖，甚至是影片剪輯、聲音處理都會需要使用到濾鏡，但很可惜的在網站設計裡，卻沒有如同 photoshop 一般的濾鏡可以輕鬆使用，一張圖如果需要一些特效 ( 例如模糊、黑白、高對比...等 )，往往必須直接再重製一張圖來使用，雖然對我自己來說重做一張圖應該不用花到一分鐘，但對於許多不會影像處理的人而言，簡直就是另外一門學問了。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/css-webkit-filter.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201407/css-webkit-filter.jpg">
   <meta property="og:description" content="由於我自己是多媒體專長的背景，「filter」 ( 濾鏡 ) 這個詞基本上是陪伴我成長的一個重要技術 ( 或工具 )，不管是在影像處理還是向量繪圖，甚至是影片剪輯、聲音處理都會需要使用到濾鏡，但很可惜的在網站設計裡，卻沒有如同 photoshop 一般的濾鏡可以輕鬆使用，一張圖如果需要一些特效 ( 例如模糊、黑白、高對比...等 )，往往必須直接再重製一張圖來使用，雖然對我自己來說重做一張圖應該不用花到一分鐘，但對於許多不會影像處理的人而言，簡直就是另外一門學問了。">
   <meta property="og:title" content="CSS webkit filter">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-webkit-filter.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/css-webkit-filter.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201407/css-webkit-filter.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201407/css-webkit-filter.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

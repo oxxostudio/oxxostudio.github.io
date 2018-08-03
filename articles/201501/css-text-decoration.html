@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS 搞怪的 text-decoration - OXXO.STUDIO</title>
 
   <meta name="description" content="自己從出社會工作開始，CSS 一定會出現在每個大大小小不同的專案裏頭，真可以說是吃飯的工具無誤，但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？就讓我們繼續看下去~">
   <meta itemprop="description" content="自己從出社會工作開始，CSS 一定會出現在每個大大小小不同的專案裏頭，真可以說是吃飯的工具無誤，但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？就讓我們繼續看下去~">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201501/css-text-decoration.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201501/css-text-decoration.jpg">
   <meta property="og:description" content="自己從出社會工作開始，CSS 一定會出現在每個大大小小不同的專案裏頭，真可以說是吃飯的工具無誤，但今天在改一個專案的時候卻遇到了一個莫名其妙的屬性：text-decoration，這個屬性，其實就只是用來把一段文字加上上橫線、刪除線或底線的屬性罷了，通常會用在移除超連結的底線、或一些特殊強調的效果裏頭，但是這麼容易的屬性，為什麼會莫名其妙呢？就讓我們繼續看下去~">
   <meta property="og:title" content="CSS 搞怪的 text-decoration">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201501/css-text-decoration.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201501/css-text-decoration.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201501/css-text-decoration.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201501/css-text-decoration.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

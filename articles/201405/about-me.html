@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>About ME - OXXO.STUDIO</title>
 
   <meta name="description" content="大家好，我叫 oxxo ，是一個熱愛學習和創作的即將邁入中年的年輕人~XD  ">
   <meta itemprop="description" content="大家好，我叫 oxxo ，是一個熱愛學習和創作的即將邁入中年的年輕人~XD  ">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201405/about-me.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201405/about-me.jpg">
   <meta property="og:description" content="大家好，我叫 oxxo ，是一個熱愛學習和創作的即將邁入中年的年輕人~XD  ">
   <meta property="og:title" content="About ME">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201405/about-me.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201405/about-me.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201405/about-me.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201405/about-me.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

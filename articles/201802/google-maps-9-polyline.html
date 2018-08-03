@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (9) - 繪製折線 ( Polyline ) - OXXO.STUDIO</title>
 
   <meta name="description" content="「折線」是 Google 地圖裡最基本的一種「形狀」，折線顧名思義就是可以幫助我們在地圖上繪製直線，繪製的方法需使用 Google Maps API 的 Polyline 建構函式，只要在裡頭設定對應的座標陣列和一些設定，就能輕輕鬆鬆在地圖上繪製。">
   <meta itemprop="description" content="「折線」是 Google 地圖裡最基本的一種「形狀」，折線顧名思義就是可以幫助我們在地圖上繪製直線，繪製的方法需使用 Google Maps API 的 Polyline 建構函式，只要在裡頭設定對應的座標陣列和一些設定，就能輕輕鬆鬆在地圖上繪製。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-9-polyline.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201802/google-maps-9-polyline.jpg">
   <meta property="og:description" content="「折線」是 Google 地圖裡最基本的一種「形狀」，折線顧名思義就是可以幫助我們在地圖上繪製直線，繪製的方法需使用 Google Maps API 的 Polyline 建構函式，只要在裡頭設定對應的座標陣列和一些設定，就能輕輕鬆鬆在地圖上繪製。">
   <meta property="og:title" content="Google Maps (9) - 繪製折線 ( Polyline )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201802/google-maps-9-polyline.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201802/google-maps-9-polyline.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201802/google-maps-9-polyline.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201802/google-maps-9-polyline.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

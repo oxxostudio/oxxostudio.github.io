@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS Water Wave (水波效果) - OXXO.STUDIO</title>
 
   <meta name="description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
   <meta itemprop="description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201407/css-water-wave.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201407/css-water-wave.jpg">
   <meta property="og:description" content="以前玩 flash 的時候，總是會利用 flash 的遮色片做些特效，「水波」這個效果就是這樣子發想而來的，這個效果坦白說應該很多人見過也做過，但使用 CSS 來製作的人就很少了，因此這篇特別介紹如何使用 CSS，來完成這個水波的效果。">
   <meta property="og:title" content="CSS Water Wave (水波效果)">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201407/css-water-wave.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201407/css-water-wave.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201407/css-water-wave.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201407/css-water-wave.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

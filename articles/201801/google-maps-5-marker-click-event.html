@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (5) - 地圖標記點擊事件 - OXXO.STUDIO</title>
 
   <meta name="description" content="懂的如何放置地圖標記後，再來就用 Google Maps API 來玩玩點擊的事件，例如點下去可以讓標記彈跳，或是點擊標記後換圖，甚至也可以在點擊時打開資訊視窗，當然這些事件都只是初級階段，等之後玩到在地圖上繪製圖案，想必就會有更好玩的應用了。">
   <meta itemprop="description" content="懂的如何放置地圖標記後，再來就用 Google Maps API 來玩玩點擊的事件，例如點下去可以讓標記彈跳，或是點擊標記後換圖，甚至也可以在點擊時打開資訊視窗，當然這些事件都只是初級階段，等之後玩到在地圖上繪製圖案，想必就會有更好玩的應用了。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-5-marker-click-event.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201801/google-maps-5-marker-click-event.jpg">
   <meta property="og:description" content="懂的如何放置地圖標記後，再來就用 Google Maps API 來玩玩點擊的事件，例如點下去可以讓標記彈跳，或是點擊標記後換圖，甚至也可以在點擊時打開資訊視窗，當然這些事件都只是初級階段，等之後玩到在地圖上繪製圖案，想必就會有更好玩的應用了。">
   <meta property="og:title" content="Google Maps (5) - 地圖標記點擊事件">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201801/google-maps-5-marker-click-event.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-5-marker-click-event.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201801/google-maps-5-marker-click-event.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201801/google-maps-5-marker-click-event.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

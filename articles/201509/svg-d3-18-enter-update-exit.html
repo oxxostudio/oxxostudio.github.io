@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - Enter、Update 和 Exit - OXXO.STUDIO</title>
 
   <meta name="description" content="在我之前的文章有談過「D3.js 的資料處理」，這篇要來在介紹一下資料處理當中很重要的三個元素：enter、update 和 exit ( 不知道為什麼當初寫那篇文章沒有寫到哈哈 )，為什麼說很重要呢？因為這三個元素可以處理當畫面元素 ( Elements ) 和資料數量 ( data ) 不相等的情形。">
   <meta itemprop="description" content="在我之前的文章有談過「D3.js 的資料處理」，這篇要來在介紹一下資料處理當中很重要的三個元素：enter、update 和 exit ( 不知道為什麼當初寫那篇文章沒有寫到哈哈 )，為什麼說很重要呢？因為這三個元素可以處理當畫面元素 ( Elements ) 和資料數量 ( data ) 不相等的情形。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-18-enter-update-exit.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201509/svg-d3-18-enter-update-exit.jpg">
   <meta property="og:description" content="在我之前的文章有談過「D3.js 的資料處理」，這篇要來在介紹一下資料處理當中很重要的三個元素：enter、update 和 exit ( 不知道為什麼當初寫那篇文章沒有寫到哈哈 )，為什麼說很重要呢？因為這三個元素可以處理當畫面元素 ( Elements ) 和資料數量 ( data ) 不相等的情形。">
   <meta property="og:title" content="SVG D3.js - Enter、Update 和 Exit">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-18-enter-update-exit.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-18-enter-update-exit.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201509/svg-d3-18-enter-update-exit.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201509/svg-d3-18-enter-update-exit.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

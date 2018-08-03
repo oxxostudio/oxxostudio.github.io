@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (19) - transform 基礎篇 - OXXO.STUDIO</title>
 
   <meta name="description" content="在 CSS3 裏頭，我們常常使用到 transform 這個變形的效果，同樣的，對於 SVG 來說，transform 也是重要的變形屬性，與 CSS 一模一樣，SVG 的 transform 不外乎就是這五個方法：translate、scale、rotate、skew、matrix，這篇將介紹基本的前四個方法，下一篇會繼續介紹 matrix 這個比較複雜的方法。">
   <meta itemprop="description" content="在 CSS3 裏頭，我們常常使用到 transform 這個變形的效果，同樣的，對於 SVG 來說，transform 也是重要的變形屬性，與 CSS 一模一樣，SVG 的 transform 不外乎就是這五個方法：translate、scale、rotate、skew、matrix，這篇將介紹基本的前四個方法，下一篇會繼續介紹 matrix 這個比較複雜的方法。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201409/svg-19-transform.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201409/svg-19-transform.jpg">
   <meta property="og:description" content="在 CSS3 裏頭，我們常常使用到 transform 這個變形的效果，同樣的，對於 SVG 來說，transform 也是重要的變形屬性，與 CSS 一模一樣，SVG 的 transform 不外乎就是這五個方法：translate、scale、rotate、skew、matrix，這篇將介紹基本的前四個方法，下一篇會繼續介紹 matrix 這個比較複雜的方法。">
   <meta property="og:title" content="SVG 研究之路 (19) - transform 基礎篇">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201409/svg-19-transform.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201409/svg-19-transform.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201409/svg-19-transform.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201409/svg-19-transform.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

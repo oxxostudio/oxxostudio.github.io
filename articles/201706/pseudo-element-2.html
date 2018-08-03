@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>CSS 偽元素 ( content 與 counter ) - OXXO.STUDIO</title>
 
   <meta name="description" content="前面介紹過 CSS 裡的 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
   <meta itemprop="description" content="前面介紹過 CSS 裡的 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-2.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201706/pseudo-element-2.jpg">
   <meta property="og:description" content="前面介紹過 CSS 裡的 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。">
   <meta property="og:title" content="CSS 偽元素 ( content 與 counter )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/pseudo-element-2.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/pseudo-element-2.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201706/pseudo-element-2.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201706/pseudo-element-2.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

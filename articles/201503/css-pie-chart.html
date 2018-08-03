@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>純 CSS 繪製圓餅圖 - OXXO.STUDIO</title>
 
   <meta name="description" content="當初我玩 SVG 的初衷，一部分就是因為當時的瀏覽器無法支援 CSS3 的動畫效果，當年為了一個圓餅圖 ( pie chart )，做不出來簡直快抓狂啦，但是近年來瀏覽器的效能大幅躍進，基本上使用純粹的 CSS 也可以做到圓餅圖的效果 ( 甚至是動畫 )，所以就用一篇文章來記錄一下純 CSS 繪製圓餅圖的過程吧！">
   <meta itemprop="description" content="當初我玩 SVG 的初衷，一部分就是因為當時的瀏覽器無法支援 CSS3 的動畫效果，當年為了一個圓餅圖 ( pie chart )，做不出來簡直快抓狂啦，但是近年來瀏覽器的效能大幅躍進，基本上使用純粹的 CSS 也可以做到圓餅圖的效果 ( 甚至是動畫 )，所以就用一篇文章來記錄一下純 CSS 繪製圓餅圖的過程吧！">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201503/css-pie-chart.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201503/css-pie-chart.jpg">
   <meta property="og:description" content="當初我玩 SVG 的初衷，一部分就是因為當時的瀏覽器無法支援 CSS3 的動畫效果，當年為了一個圓餅圖 ( pie chart )，做不出來簡直快抓狂啦，但是近年來瀏覽器的效能大幅躍進，基本上使用純粹的 CSS 也可以做到圓餅圖的效果 ( 甚至是動畫 )，所以就用一篇文章來記錄一下純 CSS 繪製圓餅圖的過程吧！">
   <meta property="og:title" content="純 CSS 繪製圓餅圖">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201503/css-pie-chart.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201503/css-pie-chart.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201503/css-pie-chart.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201503/css-pie-chart.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Icon Font 的使用方式 - OXXO.STUDIO</title>
 
   <meta name="description" content="之前介紹過「Web Font 的使用方式」，這篇則是介紹 Icon Font 的使用，Icon Font 顧名思義就是使用小圖示 ( icon ) 當作字體，只需要打入對應的代碼，或是加上固定名稱的樣式，就能夠產生一個小圖示。這種方式的好處其實不少，因為使用 Icon Font 除了可以減少圖片的使用率，也可以讓 icon 的大小、顏色都能夠像文字一樣隨心所欲的調整，但相對的也是有些壞處，例如一定得使用外部載入字體、icon 只能夠使用單色 ( 因為文字只能單色 )...等。">
   <meta itemprop="description" content="之前介紹過「Web Font 的使用方式」，這篇則是介紹 Icon Font 的使用，Icon Font 顧名思義就是使用小圖示 ( icon ) 當作字體，只需要打入對應的代碼，或是加上固定名稱的樣式，就能夠產生一個小圖示。這種方式的好處其實不少，因為使用 Icon Font 除了可以減少圖片的使用率，也可以讓 icon 的大小、顏色都能夠像文字一樣隨心所欲的調整，但相對的也是有些壞處，例如一定得使用外部載入字體、icon 只能夠使用單色 ( 因為文字只能單色 )...等。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/css-icon-font.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/css-icon-font.jpg">
   <meta property="og:description" content="之前介紹過「Web Font 的使用方式」，這篇則是介紹 Icon Font 的使用，Icon Font 顧名思義就是使用小圖示 ( icon ) 當作字體，只需要打入對應的代碼，或是加上固定名稱的樣式，就能夠產生一個小圖示。這種方式的好處其實不少，因為使用 Icon Font 除了可以減少圖片的使用率，也可以讓 icon 的大小、顏色都能夠像文字一樣隨心所欲的調整，但相對的也是有些壞處，例如一定得使用外部載入字體、icon 只能夠使用單色 ( 因為文字只能單色 )...等。">
   <meta property="og:title" content="Icon Font 的使用方式">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/css-icon-font.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/css-icon-font.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/css-icon-font.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/css-icon-font.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

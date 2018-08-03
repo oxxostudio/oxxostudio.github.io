@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (4) - 多個地圖標記 - OXXO.STUDIO</title>
 
   <meta name="description" content="前一篇介紹了如何在地圖裡放入地圖標記 ( Marker )，這篇將透過 Google Maps API，做出地圖標記、標籤與動畫，甚至實現在地圖上放入多個標記，並且透過簡單的動畫依序載入這些標記。">
   <meta itemprop="description" content="前一篇介紹了如何在地圖裡放入地圖標記 ( Marker )，這篇將透過 Google Maps API，做出地圖標記、標籤與動畫，甚至實現在地圖上放入多個標記，並且透過簡單的動畫依序載入這些標記。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-4-more-markers.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201801/google-maps-4-more-markers.jpg">
   <meta property="og:description" content="前一篇介紹了如何在地圖裡放入地圖標記 ( Marker )，這篇將透過 Google Maps API，做出地圖標記、標籤與動畫，甚至實現在地圖上放入多個標記，並且透過簡單的動畫依序載入這些標記。">
   <meta property="og:title" content="Google Maps (4) - 多個地圖標記">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201801/google-maps-4-more-markers.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-4-more-markers.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201801/google-maps-4-more-markers.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201801/google-maps-4-more-markers.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

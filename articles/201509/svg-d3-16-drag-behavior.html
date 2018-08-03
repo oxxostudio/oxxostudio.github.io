@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG D3.js - 拖拉行為 ( Drag Behavior ) - OXXO.STUDIO</title>
 
   <meta name="description" content="這篇要來談一下 d3.js 裏頭的「拖拉行為」( Drag Behavior )，其實 drag 這個行為在 web 的世界裡頭早就存在已久，HTML5 出來之後更變成了一些基本的網頁行為，不過這個行為在 d3.js 該如何實現呢？其實 d3.js 早就已經幫我們做好了，不僅適用在 svg 裡頭，更可以應用在一般的網頁元素上頭。">
   <meta itemprop="description" content="這篇要來談一下 d3.js 裏頭的「拖拉行為」( Drag Behavior )，其實 drag 這個行為在 web 的世界裡頭早就存在已久，HTML5 出來之後更變成了一些基本的網頁行為，不過這個行為在 d3.js 該如何實現呢？其實 d3.js 早就已經幫我們做好了，不僅適用在 svg 裡頭，更可以應用在一般的網頁元素上頭。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-16-drag-behavior.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201509/svg-d3-16-drag-behavior.jpg">
   <meta property="og:description" content="這篇要來談一下 d3.js 裏頭的「拖拉行為」( Drag Behavior )，其實 drag 這個行為在 web 的世界裡頭早就存在已久，HTML5 出來之後更變成了一些基本的網頁行為，不過這個行為在 d3.js 該如何實現呢？其實 d3.js 早就已經幫我們做好了，不僅適用在 svg 裡頭，更可以應用在一般的網頁元素上頭。">
   <meta property="og:title" content="SVG D3.js - 拖拉行為 ( Drag Behavior )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201509/svg-d3-16-drag-behavior.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201509/svg-d3-16-drag-behavior.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

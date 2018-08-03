@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google Maps (6) - 設計地圖標記圖案 - OXXO.STUDIO</title>
 
   <meta name="description" content="通常在自定義的 Google 地圖裡，常常會使用不同的地圖標記圖案，來表示不同地點的屬性，這篇將會介紹幾種常見的更換地圖標記圖案的 Google Maps API，讓地圖增添一些不同的趣味。">
   <meta itemprop="description" content="通常在自定義的 Google 地圖裡，常常會使用不同的地圖標記圖案，來表示不同地點的屬性，這篇將會介紹幾種常見的更換地圖標記圖案的 Google Maps API，讓地圖增添一些不同的趣味。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-6-marker-image.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201801/google-maps-6-marker-image.jpg">
   <meta property="og:description" content="通常在自定義的 Google 地圖裡，常常會使用不同的地圖標記圖案，來表示不同地點的屬性，這篇將會介紹幾種常見的更換地圖標記圖案的 Google Maps API，讓地圖增添一些不同的趣味。">
   <meta property="og:title" content="Google Maps (6) - 設計地圖標記圖案">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201801/google-maps-6-marker-image.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201801/google-maps-6-marker-image.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201801/google-maps-6-marker-image.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201801/google-maps-6-marker-image.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

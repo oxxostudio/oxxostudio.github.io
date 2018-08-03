@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>Google 試算表 (5) - 欄和列的插入與刪除 - OXXO.STUDIO</title>
 
   <meta name="description" content="除了可以寫入資料到儲存格外，使用 Google 試算表一定會用到的功能就是「插入列或欄」以及「刪除列或欄」，除了可以指定在第一列或第一欄，也可以在中間的區域進行插入或刪除，透過 Google App Script 的輔助，讓試算表的功能更加彈性與方便。">
   <meta itemprop="description" content="除了可以寫入資料到儲存格外，使用 Google 試算表一定會用到的功能就是「插入列或欄」以及「刪除列或欄」，除了可以指定在第一列或第一欄，也可以在中間的區域進行插入或刪除，透過 Google App Script 的輔助，讓試算表的功能更加彈性與方便。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-5-insert-delete.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-5-insert-delete.jpg">
   <meta property="og:description" content="除了可以寫入資料到儲存格外，使用 Google 試算表一定會用到的功能就是「插入列或欄」以及「刪除列或欄」，除了可以指定在第一列或第一欄，也可以在中間的區域進行插入或刪除，透過 Google App Script 的輔助，讓試算表的功能更加彈性與方便。">
   <meta property="og:title" content="Google 試算表 (5) - 欄和列的插入與刪除">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201706/google-spreadsheet-5-insert-delete.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-5-insert-delete.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201706/google-spreadsheet-5-insert-delete.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201706/google-spreadsheet-5-insert-delete.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

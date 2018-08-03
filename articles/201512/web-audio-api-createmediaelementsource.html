@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>建立音樂頻譜 ( createMediaElementSource ) - OXXO.STUDIO</title>
 
   <meta name="description" content="最近好忙，一陣子沒寫這系列的文章，還回頭複習了一陣子，前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )">
   <meta itemprop="description" content="最近好忙，一陣子沒寫這系列的文章，還回頭複習了一陣子，前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201512/web-audio-api-createmediaelementsource.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201512/web-audio-api-createmediaelementsource.jpg">
   <meta property="og:description" content="最近好忙，一陣子沒寫這系列的文章，還回頭複習了一陣子，前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )">
   <meta property="og:title" content="建立音樂頻譜 ( createMediaElementSource )">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201512/web-audio-api-createmediaelementsource.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201512/web-audio-api-createmediaelementsource.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201512/web-audio-api-createmediaelementsource.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201512/web-audio-api-createmediaelementsource.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

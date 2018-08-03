@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (2) - Layer - OXXO.STUDIO</title>
 
   <meta name="description" content="許多的設計師談到向量繪圖，總是相當的興奮，但只要一提到向量繪圖裡的程式碼，馬上就暈頭轉向不知所云，由於自己是設計專長，談到向量圖直覺就想到 Illustrator，所以這篇將會以 Illustrator 做為輔助工具出發，帶領大家能夠更了解 SVG 的架構。">
   <meta itemprop="description" content="許多的設計師談到向量繪圖，總是相當的興奮，但只要一提到向量繪圖裡的程式碼，馬上就暈頭轉向不知所云，由於自己是設計專長，談到向量圖直覺就想到 Illustrator，所以這篇將會以 Illustrator 做為輔助工具出發，帶領大家能夠更了解 SVG 的架構。">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201406/svg-02-layer.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201406/svg-02-layer.jpg">
   <meta property="og:description" content="許多的設計師談到向量繪圖，總是相當的興奮，但只要一提到向量繪圖裡的程式碼，馬上就暈頭轉向不知所云，由於自己是設計專長，談到向量圖直覺就想到 Illustrator，所以這篇將會以 Illustrator 做為輔助工具出發，帶領大家能夠更了解 SVG 的架構。">
   <meta property="og:title" content="SVG 研究之路 (2) - Layer">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201406/svg-02-layer.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201406/svg-02-layer.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201406/svg-02-layer.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201406/svg-02-layer.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 

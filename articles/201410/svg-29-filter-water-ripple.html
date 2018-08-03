@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
 
   <title>SVG 研究之路 (29) - filter - 水波效果 - OXXO.STUDIO</title>
 
   <meta name="description" content="在上一篇我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
   <meta itemprop="description" content="在上一篇我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
-  <meta itemprop="image" content="http://www.oxxostudio.tw/img/articles/201410/svg-29-filter-water-ripple.jpg">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201410/svg-29-filter-water-ripple.jpg">
   <meta property="og:description" content="在上一篇我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！">
   <meta property="og:title" content="SVG 研究之路 (29) - filter - 水波效果">
-  <meta property="og:url" content="http://www.oxxostudio.tw/articles/201410/svg-29-filter-water-ripple.html">
-  <meta property="og:image" content="http://www.oxxostudio.tw/img/articles/201410/svg-29-filter-water-ripple.jpg">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201410/svg-29-filter-water-ripple.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201410/svg-29-filter-water-ripple.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
 </head>
 
