@@ -245,23 +245,22 @@
     </div>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="jquery-3.0.0.js"></script>
 <script src="clipboard.min.js"></script>
 
 <script>
-    var $shareUrl = $('#shareUrl');
-    var $sizeBtn = $('.sizeBtn');
-    var $send = $('#send');
-    var $d = $('#show');
+    const $shareUrl = $('#shareUrl');
+    const $send = $('#send');
+    const $d = $('#show');
     if (localStorage.googleImgPath) {
         $shareUrl.val(localStorage.googleImgPath);
     }
-    var uri = 'https://script.google.com/macros/s/AKfycbxDAJN26VIKr9jLmeeTc0CwkOPINEnRf8J3Bu0ima_Ir5LYvBfB/exec';
+    const appuri = 'https://script.google.com/macros/s/AKfycbxDAJN26VIKr9jLmeeTc0CwkOPINEnRf8J3Bu0ima_Ir5LYvBfB/exec';
     $send.on('click', function () {
-        let imgPath = $('#shareUrl').val();
+        let imgPath = $shareUrl.val();
         let imgUrl;
         localStorage.googleImgPath = imgPath;
-        $.post(uri, { image: imgPath }, function (e) {
+        $.post(appuri, { image: imgPath }, function (e) {
             imgUrl = e;
             $('.default').addClass('selected');
             $d.html('<img id="googlePhoto" src="' + imgUrl + '=w2400"/><div class="copy" uri="' + imgUrl + '=w2400">複製圖片網址</div>').addClass('show');
