@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="oxxo.studio">
+    <meta name="copyright" content="oxxo.studio">
+    <script>
+        let uri = window.location.href;
+        if (uri.indexOf('https') < 0 && uri.indexOf('localhost') < 0) {
+            window.location.replace(uri.replace('http', 'https'));
+        }
+    </script>
+    <title>伊藤潤二 - 富江萬用圖產生器 - OXXO.STUDIO</title>
+    <meta name="keywords" content="伊藤潤二,富江,產生器" />
+    <meta name="description" content="「伊藤潤二 - 富江萬用圖產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
+    <meta itemprop="name" content="伊藤潤二 - 富江萬用圖產生器 - OXXO.STUDIO">
+    <meta itemprop="image" content="https://www.oxxostudio.tw/project/funny/junji/image.jpg">
+    <meta itemprop="description" content="「伊藤潤二 - 富江萬用圖產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
+    <meta property="og:title" content="伊藤潤二 - 富江萬用圖產生器 - OXXO.STUDIO">
+    <meta property="og:url" content="https://www.oxxostudio.tw/project/funny/junji">
+    <meta property="og:image" content="https://www.oxxostudio.tw/project/funny/junji/image.jpg">
+    <meta property="og:description" content="「伊藤潤二 - 富江萬用圖產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        header {
+            width: 100%;
+            height: 120px;
+            background: #345;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            clear: both;
+            width: 100%;
+            height: 50px;
+            background: #345;
+            line-height: 50px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 24px;
+            text-align: center;
+            padding: 28px 0 8px;
+        }
+
+        h2 {
+            width: 100%;
+            font-size: 17px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        @media (max-width:1000px) {
+            header {
+                height: 90px;
+            }
+            h1 {
+                font-size: 20px;
+                padding: 20px 0 2px;
+            }
+            h2 {
+                font-size: 14px;
+            }
+        }
+
+        .ad1 {
+            width: 300px;
+            height: auto;
+            display: inline-block;
+            margin: 0 0 0 30px;
+        }
+
+        .ad2 {
+            width: 300px;
+            height: auto;
+            max-height: 300px;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        @media (max-width:1100px) {
+            .ad1 {
+                width: calc(100% - 50px);
+                margin: 0 25px 20px;
+            }
+        }
+
+        #download {
+            display: block;
+            padding: 15px;
+            margin: 5px;
+            width: 100%;
+            background: #588;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        #download:hover {
+            background: #699;
+        }
+
+        #input {
+            float: left;
+            width: 300px;
+        }
+
+        @media (max-width:1100px) {
+            #input {
+                width: calc(100% - 550px);
+            }
+        }
+
+
+        @media (max-width:800px) {
+            #input {
+                float: none;
+                margin: 0 auto;
+                padding: 0 50px 0 45px;
+                width: 100%;
+            }
+        }
+
+        #input input {
+            display: block;
+            padding: 8px;
+            margin: 5px 5px 8px;
+            font-size: 16px;
+            border: 1px solid #999;
+            box-shadow: rgba(0, 0, 0, 0) 0 0 0 2px;
+            outline: none;
+            box-shadow: none;
+            width: 100%;
+            border-radius: 3px;
+            transition: .2s;
+        }
+
+        #input input::placeholder {
+            color: #ccc;
+        }
+
+        #input input:focus::placeholder {
+            color: #eee;
+        }
+
+        #input input:focus {
+            border: 1px solid #588;
+            box-shadow: #588 0 0 0 2px;
+        }
+
+        #preview {
+            float: left;
+            max-width: 500px;
+            width: 100%;
+            padding-right: 25px;
+            padding-bottom: 20px;
+        }
+
+        #preview img {
+            width: 100%;
+        }
+
+        #content {
+            position: fixed;
+            top: -10000px;
+            left: 0;
+            width: 500px;
+            height: 700px;
+            background: url(kuso.jpg);
+            background-size: cover;
+        }
+
+        #content b {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            font-family: 'DFKai-sb';
+            font-weight: bold;
+        }
+
+        .t1 {
+            width: 50px;
+            height: 120px;
+            top: 185px;
+            right: 30px;
+            font-size: 18px;
+            line-height: 18px;
+            text-align: top;
+            writing-mode: vertical-rl;
+            transform: rotate(3deg);
+        }
+
+        .t1.s1,
+        .t1.s2,
+        .t1.s3,
+        .t1.s4,
+        .t1.s5,
+        .t1.s6 {
+            right: 38px;
+        }
+
+        .t1.s1 {
+            top: 200px;
+            font-size: 45px;
+        }
+
+        .t1.s2 {
+            top: 200px;
+            font-size: 38px;
+        }
+
+        .t1.s3 {
+            top: 190px;
+            font-size: 32px;
+        }
+
+        .t1.s4 {
+            top: 180px;
+            font-size: 28px;
+        }
+
+        .t1.s5 {
+            top: 180px;
+            font-size: 24px;
+        }
+
+        .t1.s6 {
+            top: 180px;
+            font-size: 20px;
+        }
+
+        .t6 {
+            width: 50px;
+            height: 64px;
+            top: 364px;
+            right: 38px;
+            font-size: 20px;
+            line-height: 20px;
+            text-align: top;
+            writing-mode: vertical-rl;
+        }
+
+        .t6.s1,
+        .t6.s2,
+        .t6.s3 {
+            right: 47px;
+        }
+
+        .t6.s1 {
+            top: 370px;
+            font-size: 45px;
+        }
+
+        .t6.s2 {
+            top: 362px;
+            height: 80px;
+            font-size: 30px;
+        }
+
+        .t6.s3 {
+            top: 358px;
+            height: 80px;
+            font-size: 24px;
+        }
+
+        .t7 {
+            width: 50px;
+            height: 80px;
+            top: 480px;
+            right: 203px;
+            font-size: 17px;
+            line-height: 16px;
+            text-align: top;
+            writing-mode: vertical-rl;
+            transform: rotate(5deg);
+        }
+
+        .t7.s1 {
+            top: 490px;
+            right: 210px;
+            font-size: 40px;
+        }
+
+        .t7.s2 {
+            top: 478px;
+            right: 210px;
+            font-size: 32px;
+        }
+
+        .t7.s3 {
+            top: 475px;
+            right: 210px;
+            font-size: 25px;
+        }
+
+        .t7.s4 {
+            top: 472px;
+            right: 210px;
+            font-size: 20px;
+        }
+
+        .t8 {
+            width: 50px;
+            height: 100px;
+            top: 605px;
+            right: 202px;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: top;
+            writing-mode: vertical-rl;
+            transform: rotate(-3deg);
+        }
+
+        .t8.s1 {
+            top: 620px;
+            right: 200px;
+            font-size: 34px;
+        }
+
+        .t8.s2 {
+            top: 610px;
+            right: 200px;
+            font-size: 28px;
+        }
+
+        .t8.s3 {
+            top: 607px;
+            right: 201px;
+            font-size: 22px;
+        }
+
+        .t8.s4 {
+            top: 605px;
+            font-size: 19px;
+        }
+
+        .t2 {
+            width: 50px;
+            height: 90px;
+            top: 27px;
+            right: 82px;
+            font-size: 18px;
+            line-height: 20px;
+            text-align: top;
+            writing-mode: vertical-rl;
+        }
+
+        .t2.s1 {
+            top: 50px;
+            right: 92px;
+            font-size: 45px;
+        }
+
+        .t2.s2 {
+            top: 34px;
+            right: 92px;
+            font-size: 38px;
+        }
+
+        .t2.s3 {
+            top: 28px;
+            right: 92px;
+            font-size: 30px;
+        }
+
+        .t2.s4 {
+            top: 26px;
+            right: 92px;
+            height: 100px;
+            font-size: 24px;
+        }
+
+        .t2.s5,
+        .t2.s6,
+        .t2.s7,
+        .t2.s8 {
+            top: 28px;
+            right: 82px;
+            height: 100px;
+            line-height: 22px;
+            font-size: 22px;
+        }
+
+        .t3 {
+            width: 50px;
+            height: 90px;
+            top: 27px;
+            right: 329px;
+            font-size: 16px;
+            line-height: 18px;
+            text-align: top;
+            writing-mode: vertical-rl;
+        }
+
+        .t3.s1 {
+            top: 45px;
+            right: 345px;
+            font-size: 45px;
+        }
+
+        .t3.s2 {
+            top: 28px;
+            right: 345px;
+            font-size: 40px;
+        }
+
+        .t3.s3 {
+            top: 24px;
+            right: 345px;
+            height: 100px;
+            font-size: 30px;
+        }
+
+        .t3.s4 {
+            top: 22px;
+            right: 345px;
+            height: 100px;
+            font-size: 24px;
+        }
+
+        .t3.s5 {
+            top: 22px;
+            right: 345px;
+            height: 100px;
+            font-size: 20px;
+        }
+
+        .t3.s6,
+        .t3.s7,
+        .t3.s8,
+        .t3.s9,
+        .t3.s10 {
+            top: 22px;
+            right: 335px;
+            height: 100px;
+            line-height: 22px;
+            font-size: 19px;
+        }
+
+        .t4 {
+            width: 50px;
+            height: 90px;
+            top: 46px;
+            left: 10px;
+            font-size: 17px;
+            line-height: 18px;
+            text-align: top;
+            writing-mode: vertical-rl;
+            transform: rotate(5deg);
+        }
+
+        .t4.s1 {
+            top: 60px;
+            font-size: 40px;
+        }
+
+        .t4.s2 {
+            top: 52px;
+            font-size: 30px;
+        }
+
+        .t4.s3 {
+            top: 52px;
+            font-size: 24px;
+        }
+
+        .t4.s4 {
+            top: 48px;
+            font-size: 20px;
+        }
+
+        .t5 {
+            width: 80px;
+            height: 90px;
+            top: 295px;
+            left: 36px;
+            font-size: 17px;
+            line-height: 18px;
+            text-align: left;
+            transform: rotate(5deg);
+        }
+
+        .t5.s1 {
+            top: 302px;
+            left: 42px;
+            font-size: 45px;
+        }
+
+        .t5.s2 {
+            top: 302px;
+            left: 36px;
+            font-size: 32px;
+        }
+
+        .t5.s3 {
+            top: 302px;
+            left: 34px;
+            font-size: 24px;
+        }
+
+        .t5.s4 {
+            top: 300px;
+            left: 31px;
+            font-size: 20px;
+        }
+
+        .t9 {
+            width: 50px;
+            height: 100px;
+            top: 370px;
+            left: 200px;
+            font-size: 17px;
+            line-height: 18px;
+            text-align: top;
+            writing-mode: vertical-rl;
+        }
+
+        .t9.s1 {
+            top: 385px;
+            left: 192px;
+            font-size: 40px;
+        }
+
+        .t9.s2 {
+            top: 372px;
+            left: 192px;
+            font-size: 34px;
+        }
+
+        .t9.s3 {
+            top: 372px;
+            left: 195px;
+            font-size: 26px;
+        }
+
+        .t9.s4 {
+            top: 365px;
+            left: 195px;
+            font-size: 22px;
+        }
+
+        .t9.s5 {
+            top: 365px;
+            left: 195px;
+            font-size: 19px;
+        }
+
+        .t10 {
+            width: 50px;
+            height: 60px;
+            top: 490px;
+            left: 23px;
+            font-size: 17px;
+            line-height: 19px;
+            text-align: top;
+            writing-mode: vertical-rl;
+        }
+
+        .t10.s1 {
+            top: 495px;
+            left: 13px;
+            height: 80px;
+            font-size: 36px;
+        }
+
+        .t10.s2 {
+            top: 490px;
+            left: 15px;
+            height: 80px;
+            font-size: 26px;
+        }
+
+        .t10.s3 {
+            top: 486px;
+            left: 15px;
+            height: 80px;
+            font-size: 21px;
+        }
+
+        .t11 {
+            width: 50px;
+            height: 100px;
+            bottom: 15px;
+            left: 40px;
+            font-size: 17px;
+            line-height: 19px;
+            text-align: top;
+            writing-mode: vertical-rl;
+        }
+
+        .t11.s1 {
+            bottom: 0;
+            left: 20px;
+            font-size: 45px;
+        }
+
+        .t11.s2 {
+            bottom: 10px;
+            left: 20px;
+            font-size: 36px;
+        }
+
+        .t11.s3 {
+            bottom: 18px;
+            left: 20px;
+            font-size: 30px;
+        }
+
+        .t11.s4 {
+            bottom: 18px;
+            left: 20px;
+            font-size: 24px;
+        }
+
+        .t11.s5 {
+            bottom: 20px;
+            left: 20px;
+            font-size: 20px;
+        }
+
+        .t11.s6,
+        .t11.s7,
+        .t11.s8,
+        .t11.s9,
+        .t11.s10 {
+            left: 28px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>伊藤潤二 - 富江萬用圖產生器</h1>
+        <h2>輸入對話內容，產生有趣的伊藤潤二富江搞笑圖</h2>
+        <a href="http://www.oxxostudio.tw/index.html?utm_source=googlephoto&utm_medium=click" target="_blank">!</a>
+    </header>
+    <div class="ad1">
+        <ins class="adsbygoogle" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <div id="preview"></div>
+    <div id="content">
+        <b class="t1"></b>
+        <b class="t2"></b>
+        <b class="t3"></b>
+        <b class="t4"></b>
+        <b class="t5"></b>
+        <b class="t6"></b>
+        <b class="t7"></b>
+        <b class="t8"></b>
+        <b class="t9"></b>
+        <b class="t10"></b>
+        <b class="t11"></b>
+    </div>
+    <div id="input">
+        <input type="text" placeholder="第一格" class="i1">
+        <input type="text" placeholder="第二格" class="i2">
+        <input type="text" placeholder="第三格" class="i3">
+        <input type="text" placeholder="第四格" class="i4">
+        <input type="text" placeholder="第五格" class="i5">
+        <input type="text" placeholder="第六格" class="i6">
+        <input type="text" placeholder="第七格" class="i7">
+        <input type="text" placeholder="第八格" class="i8">
+        <input type="text" placeholder="第九格" class="i9">
+        <input type="text" placeholder="第十格" class="i10">
+        <input type="text" placeholder="第十一格" class="i11">
+        <a id="download" download="富江萬用圖">下載圖片</a>
+        <div class="ad2">
+            <ins class="adsbygoogle" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    <footer>
+        <a href="http://www.oxxostudio.tw/index.html?utm_source=junji&utm_medium=click" target="_blank">OXXO.STUDIO</a>
+    </footer>
+</body>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<script>
+    $(function(){
+        const $c = $('#content');
+        const $b = $('b');
+        const $i = $('#input input');
+        const $d = $('#download');
+        const $p = $('#preview');
+
+        $i.each(function (e) {
+            let num = e + 1;
+            $('.t' + num).text($(this).attr('placeholder'));
+            $(this).on('keyup', function () {
+                if (!$(this).val()) {
+                    $('.t' + num).text($(this).attr('placeholder'));
+                } else {
+                    $('.t' + num).text($(this).val());
+                }
+                textChange();
+            });
+        });
+        textChange();
+
+        $i.on('change', () => {
+            textChange();
+        });
+
+        function textChange() {
+            $b.each(function (e) {
+                let num = e + 1;
+                let $tt = $('.t' + num);
+                $tt.removeClass();
+                $tt.addClass('t' + num).addClass('s' + $tt.text().length);
+            });
+            convert($c[0]);
+        }
+        function convert(e) {
+            ga("send", "event", "input", "change");
+            html2canvas(e, {
+                scale: 1
+            }).then(function (canvas) {
+                //let img = canvas.toDataURL("image/jpeg");
+                let img = canvas.toDataURL("image/png");
+                $p.html('<img src="' + img + '">');
+                $d.attr('href', img);
+            });
+        }
+    });
+</script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-9', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</html>
