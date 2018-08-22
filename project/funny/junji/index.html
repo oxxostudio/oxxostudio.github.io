@@ -96,16 +96,19 @@
         .ad1 {
             width: 300px;
             height: auto;
+            min-height: 300px;
             display: inline-block;
             margin: 0 0 0 30px;
+            background: #fff;
         }
 
         .ad2 {
             width: 300px;
-            height: auto;
-            max-height: 300px;
+            height: 200px;
             display: inline-block;
             margin: 5px;
+            background: #fff;
+            overflow:hidden;
         }
 
         @media (max-width:1100px) {
@@ -671,7 +674,8 @@
         <h2>輸入對話內容，產生有趣的伊藤潤二富江搞笑圖</h2>
     </header>
     <div class="ad1">
-        <ins class="adsbygoogle" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
@@ -704,7 +708,8 @@
         <input type="text" placeholder="第十一格" class="i11">
         <a id="download" download="富江萬用圖">下載圖片</a>
         <div class="ad2">
-            <ins class="adsbygoogle" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
@@ -717,7 +722,11 @@
 <script src="js/jquery-1.12.4.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
 <script>
-    $(function(){
+    if (!window.chrome || !window.chrome.webstore) {
+        alert('請使用 chrome 瀏覽器才能有最佳體驗呦~');
+    }
+    $(function () {
+        console.log($('.ad1').width());
         const $c = $('#content');
         const $b = $('b');
         const $i = $('#input input');
