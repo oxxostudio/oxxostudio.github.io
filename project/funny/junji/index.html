@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="oxxo.studio">
     <meta name="copyright" content="oxxo.studio">
@@ -13,16 +13,16 @@
             window.location.replace(uri.replace('http', 'https'));
         }
     </script>
-    <title>伊藤潤二 - 富江萬用圖產生器 - OXXO.STUDIO</title>
+    <title>伊藤潤二 - 富江漫畫產生器 - OXXO.STUDIO</title>
     <meta name="keywords" content="伊藤潤二,富江,產生器" />
-    <meta name="description" content="「伊藤潤二 - 富江萬用圖產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
-    <meta itemprop="name" content="伊藤潤二 - 富江萬用圖產生器 - OXXO.STUDIO">
+    <meta name="description" content="「伊藤潤二 - 富江漫畫產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
+    <meta itemprop="name" content="伊藤潤二 - 富江漫畫產生器 - OXXO.STUDIO">
     <meta itemprop="image" content="https://www.oxxostudio.tw/project/funny/junji/image.jpg">
-    <meta itemprop="description" content="「伊藤潤二 - 富江萬用圖產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
-    <meta property="og:title" content="伊藤潤二 - 富江萬用圖產生器 - OXXO.STUDIO">
+    <meta itemprop="description" content="「伊藤潤二 - 富江漫畫產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
+    <meta property="og:title" content="伊藤潤二 - 富江漫畫產生器 - OXXO.STUDIO">
     <meta property="og:url" content="https://www.oxxostudio.tw/project/funny/junji">
     <meta property="og:image" content="https://www.oxxostudio.tw/project/funny/junji/image.jpg">
-    <meta property="og:description" content="「伊藤潤二 - 富江萬用圖產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
+    <meta property="og:description" content="「伊藤潤二 - 富江漫畫產生器」，只要輸入對話內容，產生有趣的伊藤潤二富江搞笑圖。">
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <style>
         html,
@@ -36,6 +36,7 @@
             padding: 0;
             box-sizing: border-box;
             position: relative;
+            font-family: 'Heiti TC', 'Microsoft JhengHei';
         }
 
         header {
@@ -108,24 +109,28 @@
             display: inline-block;
             margin: 5px;
             background: #fff;
-            overflow:hidden;
+            overflow: hidden;
         }
 
         @media (max-width:1100px) {
-            .ad1 {
+            .ad1,
+            .ad2 {
                 width: calc(100% - 50px);
                 margin: 0 25px 20px;
+                height: 80px;
+                min-height: 0;
+                overflow: hidden;
             }
         }
 
         #download {
             display: block;
-            padding: 15px;
+            padding: 10px;
             margin: 5px;
             width: 100%;
             background: #588;
             color: #fff;
-            font-size: 24px;
+            font-size: 20px;
             text-align: center;
             border-radius: 3px;
             cursor: pointer;
@@ -185,7 +190,7 @@
             box-shadow: #588 0 0 0 2px;
         }
 
-        #preview {
+        /* #preview {
             float: left;
             max-width: 500px;
             width: 100%;
@@ -195,16 +200,20 @@
 
         #preview img {
             width: 100%;
-        }
+        } */
 
         #content {
-            position: fixed;
+            /* position: fixed;
             top: -10000px;
-            left: 0;
+            left: 0; */
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
             width: 500px;
             height: 700px;
             background: url(kuso.jpg);
             background-size: cover;
+            pointer-events: none;
         }
 
         #content b {
@@ -670,7 +679,7 @@
 
 <body>
     <header>
-        <h1>伊藤潤二 - 富江萬用圖產生器</h1>
+        <h1>伊藤潤二 - 富江漫畫產生器</h1>
         <h2>輸入對話內容，產生有趣的伊藤潤二富江搞笑圖</h2>
     </header>
     <div class="ad1">
@@ -680,7 +689,7 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </div>
-    <div id="preview"></div>
+    <!-- <div id="preview"></div> -->
     <div id="content">
         <b class="t1"></b>
         <b class="t2"></b>
@@ -706,7 +715,7 @@
         <input type="text" placeholder="第九格" class="i9">
         <input type="text" placeholder="第十格" class="i10">
         <input type="text" placeholder="第十一格" class="i11">
-        <a id="download" download="富江萬用圖">下載圖片</a>
+        <a id="download" download="富江漫畫">下載圖片</a>
         <div class="ad2">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
@@ -726,13 +735,12 @@
         alert('請使用 chrome 瀏覽器才能有最佳體驗呦~');
     }
     $(function () {
-        console.log($('.ad1').width());
         const $c = $('#content');
         const $b = $('b');
         const $i = $('#input input');
         const $d = $('#download');
         const $p = $('#preview');
-
+        const arr = [];
         $i.each(function (e) {
             let num = e + 1;
             $('.t' + num).text($(this).attr('placeholder'));
@@ -750,27 +758,33 @@
         $i.on('change', () => {
             textChange();
         });
-
         function textChange() {
             $b.each(function (e) {
+                let $this = $(this);
                 let num = e + 1;
                 let $tt = $('.t' + num);
                 $tt.removeClass();
                 $tt.addClass('t' + num).addClass('s' + $tt.text().length);
+                arr[e] = $this.text();
             });
-            convert($c[0]);
         }
-        function convert(e) {
-            ga("send", "event", "input", "change");
+        function convert(e, q) {
             html2canvas(e, {
                 scale: 1
             }).then(function (canvas) {
                 //let img = canvas.toDataURL("image/jpeg");
                 let img = canvas.toDataURL("image/png");
-                $p.html('<img src="' + img + '">');
-                $d.attr('href', img);
+                //$p.html('<img src="' + img + '">');
+                q.attr('href', img);
+                q[0].click();
+                q.remove();
+                ga("send", "event", "伊藤潤二", "convert", arr.join());
             });
         }
+        $d.on('click', () => {
+            $('body').append('<a class="tempLink" download="伊藤潤二富江萬用圖"></a>');
+            convert($c[0], $('.tempLink'));
+        });
     });
 </script>
 <script>
