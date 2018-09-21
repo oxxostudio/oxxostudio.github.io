@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轉換吧！Markdown！- 轉換 Markdown 為 HTML</title>
+    <link href="css/style.css?20180920" rel="stylesheet" />
+    <link href="css/style-shopline.css" rel="stylesheet" />
+    <link href="css/style-kktix.css" rel="stylesheet" />
+    <link href="css/fonts.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <h1>轉換吧！MARKDOWN！</h1>
+        <div class="menu">
+            <a class="new" href="index.html" target="_blank"><i class="icon-document-add"></i><span><i>開新檔案</i></span></a>
+            <a class="save"><i class="icon-link-outline"></i><span><i>連結儲存</i></span></a>
+            <a class="copy" data-clipboard-target=".clipboard"><i class="icon-tabs-outline"></i><span><i>複製 HTML</i></span></a>
+            <a class="change"><i class="icon-brush"></i>
+                <span><i>切換樣式</i></span>
+                <div>
+                    <div>
+                        <b attr-css="style-shopline">預設</b>
+                        <b attr-css="style-kktix">kktix</b>
+                        <b attr-css="none">無樣式</b>
+                    </div>
+                </div>
+            </a>
+            <a class="new" href="https://www.oxxostudio.tw" target="_blank"><i class="icon-info-large-outline"></i><span><i>關於</i></span></a>
+        </div>
+    </header>
+    <div class="edit">
+        <h2>在這裡寫 Markdown</h2>
+        <textarea class="md"></textarea>
+    </div>
+    <div class="show">
+        <h2>在這裡預覽畫面</h2>
+        <div class="preview"></div>
+    </div>
+    <div class="clipboard"></div>
+</body>
+<script src="js/showdown.js "></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/clipboard.min.js "></script>
+<script src="js/firebase.js"></script>
+<script>
+    $(function () {
+        const $body = $('body');
+        const pageUrl = location.href;
+        const origin = pageUrl.split('#')[0];
+        const param = pageUrl.split('#')[1];
+        const $md = $('.md');
+        const $new = $('.new');
+        const $save = $('.save');
+        const $copy = $('.copy');
+        const $change = $('.change b');
+        const $clipboard = $('.clipboard')
+        const clipboard = new ClipboardJS('.copy');
+        const $preview = $('.preview');
+        const converter = new showdown.Converter();
+        converter.setOption('openLinksInNewWindow', 'true');
+        converter.setOption('tables', 'true');
+
+        const config = {
+            databaseURL: "https://markdown-preview-f2020.firebaseio.com/"
+        };
+        firebase.initializeApp(config);
+        const database = firebase.database();
+
+        let cssNum = 0;
+        let cssList = ['style-shopline', 'style-kktix'];
+        let nowCss = cssList[0];
+        let cssTemp = {};
+        cssList.forEach((e) => {
+            $.ajax({
+                url: 'css/' + e + '.css',
+                dataType: "text",
+                success: (css) => {
+                    cssTemp[e] = css;
+                    cssNum = cssNum + 1;
+                    if (cssNum == cssList.length) {
+                        main();
+                    }
+                }
+            });
+        });
+
+        function changeStyle(style) {
+            $('.md-content').removeClass(nowCss);
+            $('.change b').removeClass();
+            nowCss = style;
+            if (nowCss == 'none') {
+                convert(false, $md.val(), 'none');
+            } else {
+                $('.md-content').addClass(nowCss);
+                convert(cssTemp[nowCss], $md.val(), nowCss);
+            }
+            $('.change b[attr-css="' + nowCss + '"]').addClass('selected');
+        }
+
+        function main() {
+            if (param) {
+                database.ref(param).on('value', function (snapshot) {
+                    let text = snapshot.val().md;
+                    nowCss = snapshot.val().css || cssList[0];
+                    $md.val(text);
+                    if (nowCss == 'none') {
+                        convert(false, $md.val(), 'none');
+                    } else {
+                        $('.md-content').addClass(nowCss);
+                        convert(cssTemp[nowCss], $md.val(), nowCss);
+                    }
+                    $('.change b[attr-css="' + nowCss + '"]').addClass('selected');
+                });
+            } else {
+                if (localStorage.md2htmlNew) {
+                    localStorage.removeItem('md2htmlNew');
+                } else {
+                    if (localStorage.md2html) {
+                        let content = localStorage.md2html;
+                        let contentCss = localStorage.md2htmlCss;
+                        $md.val(content);
+                        nowCss = contentCss || cssList[0];
+                        if (nowCss == 'none') {
+                            convert(false, $md.val(), 'none');
+                        } else {
+                            $('.md-content').addClass(nowCss);
+                            convert(cssTemp[nowCss], $md.val(), nowCss);
+                        }
+                        $('.change b[attr-css="' + nowCss + '"]').addClass('selected');
+                    } else {
+                        $('.change b[attr-css="' + nowCss + '"]').addClass('selected');
+                    }
+                }
+            }
+
+            $new.on('click', function () {
+                localStorage.md2htmlNew = true;
+            });
+
+            $save.on('click', function () {
+                let text = $md.val();
+                let d = new Date();
+                let t1 = d.getTime();
+                let t2 = d.toString();
+                let write = database.ref('/').push({
+                    time: t1,
+                    date: t2,
+                    md: text,
+                    css: nowCss
+                });
+                window.history.pushState({}, 0, origin + '#' + write.key);
+                $('.save>i').removeClass().addClass('icon-tick-outline').css({ 'color': '#0f0' });
+                $('.save>span i').text('已儲存');
+                setTimeout(() => {
+                    $('.save>i').removeClass().addClass('icon-link-outline').css({ 'color': '' });
+                    $('.save>span i').text('儲存連結');
+                }, 1000);
+            });
+
+            $copy.on('click', function () {
+                $('.copy>i').removeClass().addClass('icon-tick-outline').css({ 'color': '#0f0' });
+                $('.copy>span i').text('已複製');
+                setTimeout(() => {
+                    $('.copy>i').removeClass().addClass('icon-tabs-outline').css({ 'color': '' });
+                    $('.copy>span i').text('複製 HTML');
+                }, 1000);
+            });
+
+            $md.on('keyup', function () {
+                let text = $md.val();
+                convert(cssTemp[nowCss], text, nowCss);
+                localStorage.md2html = text;
+                localStorage.md2htmlCss = nowCss;
+                window.history.pushState({}, 0, origin);
+            });
+
+            $change.on('click', function () {
+                let cssName = $(this).attr('attr-css');
+                changeStyle(cssName);
+                localStorage.md2htmlCss = cssName;
+                window.history.pushState({}, 0, origin);
+            });
+        }
+
+        function convert(css, e, name) {
+            let html = converter.makeHtml(e);
+            let output = '<div class="md-content ' + name + '">\n' + html + '\n</div>';
+            $preview.html(output);
+            if (css) {
+                $clipboard.text('<style>\n' + css + '\n</style>\n' + output);
+            } else {
+                $clipboard.text(html);
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,112 @@
+.md-content.style-shopline {
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.md-content.style-shopline * {
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 17px;
+    color: #000;
+    line-height: 30px;
+    font-family: "Lato";
+    letter-spacing: 0;
+}
+
+.md-content.style-shopline h1 {
+    margin: 20px 0 15px;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.md-content.style-shopline h2 {
+    margin: 40px 0 10px;
+    padding: 30px 0 0;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: none;
+    border-top: 1px dashed #ddd;
+}
+
+.md-content.style-shopline h3 {
+    margin: 30px 0 5px;
+    font-size: 20px;
+}
+
+.md-content.style-shopline hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px dashed #ddd;
+}
+
+.md-content.style-shopline p {
+    margin: 0 0 10px;
+}
+
+.md-content.style-shopline a {
+    color: #39c;
+}
+
+.md-content.style-shopline a:hover {
+    color: #5bf;
+}
+
+.md-content.style-shopline img {
+    width: auto;
+    max-width: 100%;
+    margin: 10px 0 20px;
+}
+
+.md-content.style-shopline em {
+    color: #f60;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.md-content.style-shopline ul {
+    padding: 10px 24px;
+}
+
+.md-content.style-shopline ul li {
+    margin: 0 0 2px;
+}
+
+.md-content.style-shopline blockquote {
+    padding: 10px;
+    background: #eee;
+    border-left: 5px solid #bbb;
+}
+
+.md-content.style-shopline code {
+    display: inline-block;
+    width: auto;
+    padding: 0 4px;
+    margin: 0 2px;
+    color: #a00;
+    background: #fee;
+}
+
+.md-content.style-shopline table {
+    margin: 20px 0 30px;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.md-content.style-shopline table td,
+.md-content.style-shopline table th {
+    width: auto;
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.md-content.style-shopline table th {
+    background: #eee;
+}

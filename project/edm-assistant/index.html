@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="oxxo.studio">
+    <meta name="copyright" content="oxxo.studio">
+    <title>EDM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="link" href="http://oxxo.studio" target="_blank">!</a>
+    <div class="logo">
+        <header>來發電子報</header>
+        <img src="logo.jpg">
+        <div class="note">
+            <h3>使用說明</h3>
+            <div>「來發電子報」可以自動寄發電子信，同時具備追蹤開信、點閱連結的功能。</div>
+            <div>
+                <b>自動寄信：</b>收件者清單填入試算表網址，在 A 列寫入寄件清單，點選開始寄信就會自動寄發。</div>
+            <div>
+                <b>連結追蹤：</b>在欲追蹤的連結後方加上
+                <i>{{tracking}}</i> 的標記。</div>
+            <div>
+                <b>開信追蹤：</b>每封信都會自動追蹤，可額外指定活動名稱與來源。</div>
+        </div>
+    </div>
+    <div class="container">
+        <header></header>
+        <div class="info">
+            <h3>資訊設定</h3>
+            <div>
+                <b>寄件人名稱</b>
+                <input id="name" type="text" value="Webduino">
+            </div>
+            <div>
+                <b>標題</b>
+                <input id="title" type="text">
+            </div>
+            <div>
+                <b>活動名稱</b>
+                <input id="cn" type="text" class="campaign">
+            </div>
+            <div>
+                <b>活動媒介</b>
+                <input id="utmMedium" type="text" class="campaign">
+            </div>
+            <div>
+                <b>收件者清單</b>
+                <input id="sheetUrl" type="text">
+            </div>
+            <div>
+                <b>工作表名稱</b>
+                <input id="sheetName" type="text">
+            </div>
+            <h3>安全性設定</h3>
+            <div>
+                <b>帳號</b>
+                <input id="uid" type="text" class="user">
+            </div>
+            <div>
+                <b>密碼</b>
+                <input id="pwd" type="password" class="user">
+            </div>
+            <button class="send top">寄信</button>
+        </div>
+        <div class="content">
+            <h3>信件 HTML 內容</h3>
+            <textarea id="content" type="text"></textarea>
+        </div>
+        <button class="send bottom">寄信</button>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script>
+    var $uid = $('#uid');
+    var $pwd = $('#pwd');
+    var $name = $('#name');
+    var $title = $('#title');
+    var $content = $('#content');
+    var $cn = $('#cn');
+    var $utmMedium = $('#utmMedium');
+    var $sheetUrl = $('#sheetUrl');
+    var $sheetName = $('#sheetName');
+    var $send = $('.send');
+
+    if (localStorage.name) { $name.val(localStorage.name); }
+    if (localStorage.title) { $title.val(localStorage.title); }
+    if (localStorage.content) { $content.val(localStorage.content); }
+    if (localStorage.cn) { $cn.val(localStorage.cn); }
+    if (localStorage.utmMedium) { $utmMedium.val(localStorage.utmMedium); }
+    if (localStorage.sheetUrl) { $sheetUrl.val(localStorage.sheetUrl); }
+    if (localStorage.sheetName) { $sheetName.val(localStorage.sheetName); }
+
+    $('input, textarea').change(function () {
+        localStorage.name = $name.val();
+        localStorage.title = $title.val();
+        localStorage.content = $content.val();
+        localStorage.cn = $cn.val();
+        localStorage.utmMedium = $utmMedium.val();
+        localStorage.sheetUrl = $sheetUrl.val();
+        localStorage.sheetName = $sheetName.val();
+    });
+
+    $send.on('click', function () {
+        var data = {
+            uid: $uid.val(),
+            pwd: $pwd.val(),
+            name: $name.val(),
+            title: $title.val(),
+            content: $content.val(),
+            cn: $cn.val(),
+            utmMedium: $utmMedium.val(),
+            sheetUrl: $sheetUrl.val(),
+            sheetName: $sheetName.val()
+        };
+        var check = confirm("確定沒問題了嗎？\n要寄信囉～");
+        if (check == true) {
+            $uid.val('');
+            $pwd.val('');
+            $send.attr('disabled', true);
+            $send.text('寄信中...');
+            $send.css({ 'opacity': '0.5', 'pointer-events': 'none', 'cursor': 'not-allowed' });
+            $.ajax({
+                url: 'https://script.google.com/macros/s/AKfycbwjIpGZAqyTHyFDrq7yOWd0z47tAnyVY3DScSN9huNDDsk5p0e_/exec',
+                type: "POST",
+                dataType: "html",
+                data: data,
+                success: function (e) {
+                    console.log(e);
+                    $send.attr('disabled', false);
+                    $send.text('寄信');
+                    $send.css({ 'opacity': '1', 'pointer-events': 'auto', 'cursor': 'pointer' });
+                    alert(e);
+                },
+                error: function () {
+                    $send.attr('disabled', false);
+                    $send.text('寄信');
+                    $send.css({ 'opacity': '1', 'pointer-events': 'auto', 'cursor': 'pointer' });
+                    alert('發生錯誤啦！！！！！');
+                }
+            });
+        }
+    });
+
+</script>
+
+</html>

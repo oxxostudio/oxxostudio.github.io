@@ -1,0 +1,273 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #000;
+    transition: .3s;
+}
+
+header {
+    height: 60px;
+    background: #000;
+    z-index: 99;
+}
+
+header h1 {
+    float: left;
+    height: 100%;
+    width: 300px;
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+    line-height: 60px;
+    font-style: italic;
+    background: #fc0;
+}
+
+.menu {
+    float: right;
+    margin: 7px 12px 0;
+    height: 40px;
+}
+
+.menu>a {
+    float: left;
+    display: block;
+    padding: 6px 0;
+    height: 34px;
+    width: 28px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.menu>a:hover {
+    padding: 0 0 12px;
+}
+
+.menu>a>i {
+    color: #fff;
+    font-style: normal;
+    font-size: 28px;
+}
+
+.menu>a:hover>i {
+    color: #fc0;
+}
+
+.menu>a span {
+    position: absolute;
+    display: block;
+    width: 200px;
+    left: -86px;
+    text-align: center;
+    pointer-events: none;
+    bottom: -22px;
+    height: 0;
+    overflow: hidden;
+}
+
+.menu>a:hover span {
+    color: #fff;
+    height: 22px;
+}
+
+.menu>a span i {
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    padding: 2px 8px 0;
+    background: #fff;
+    overflow: hidden;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.change>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    padding: 50px 0 0;
+    border-radius: 5px;
+    border-top: 2px solid #000;
+}
+
+.change:hover>div {
+    display: block;
+}
+
+.change>div div {
+    opacity: 0;
+    border: 1px dashed #999;
+    transition: .3s;
+    width: 100px;
+    margin-left: -36px;
+    border-radius: 5px;
+}
+
+.change>div:hover div {
+    margin-top: 10px;
+    opacity: 1;
+    padding: 5px 0;
+}
+
+.change>div div b {
+    display: block;
+    opacity: .3;
+    height: 30px;
+    line-height: 30px;
+}
+
+.change>div b.selected {
+    opacity: 1;
+    color: #000;
+    pointer-events: none;
+}
+
+.change>div b:hover {
+    opacity: 1;
+    color: #000;
+}
+
+body>div {
+    float: left;
+    width: 60%;
+    height: calc(100% - 60px);
+    vertical-align: top;
+}
+
+body>div * {
+    width: 100%;
+}
+
+.edit {
+    width: 40%;
+    border-right: 1px dashed #aaa;
+}
+
+body>div>h2 {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto 10px;
+    border-bottom: 3px solid #fc0;
+    padding-bottom: 5px;
+}
+
+.edit h2 {
+    border-color: #000;
+}
+
+textarea {
+    height: calc(100% - 70px);
+    resize: none;
+    padding: 20px 30px;
+    border: none;
+    line-height: 24px;
+    font-size: 15px;
+}
+
+textarea:focus {
+    outline: none;
+    background: #fff;
+}
+
+.preview {
+    height: calc(100% - 70px);
+    padding: 0 30px 20px;
+    overflow-y: auto;
+}
+
+textarea::-webkit-scrollbar,
+.preview::-webkit-scrollbar {
+    width: 5px;
+    background-color: #f1f1f1;
+}
+
+textarea::-webkit-scrollbar-thumb,
+.preview::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+}
+
+.clipboard {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: fixed;
+    top: -1000px;
+    white-space: pre-wrap;
+}
+
+.none h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.none h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.none h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.none p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.none ul{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.none li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.none a{
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}

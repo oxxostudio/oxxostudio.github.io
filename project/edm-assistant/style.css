@@ -1,0 +1,236 @@
+html,body{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+}
+
+div, input, textarea, header{
+    position:relative;
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+.logo{
+    float:left;
+    width:300px;
+    text-align: center;
+    height:100%;
+}
+.logo header{
+    width:100%;
+    padding:10px;
+    background:#f55;
+    color:#fff;
+    font-size:20px;
+    text-align: center;
+    height:50px;
+}
+.logo img{
+    width:150px;
+    border-radius:50%;
+    margin-top:30px;
+    margin-bottom:10px;
+}
+.logo .note{
+    width:100%;
+    text-align: left;
+    padding:0 20px 30px;
+    line-height: 24px;
+    font-size:15px;
+}
+.logo .note h3{
+    text-align: center;
+    font-size:20px;
+    border-top:3px solid #ddd;
+    padding-top:30px;
+}
+.logo .note div{
+    margin-top:10px;
+}
+.logo .note i{
+    background:#fee;
+    font-style: normal;
+    padding:2px 5px;
+    color:#900;
+}
+
+.container{
+    float:right;
+    width:calc(100% - 300px);
+    height:100%;
+}
+.container header{
+    width:100%;
+    padding:10px;
+    background:#333;
+    height:50px;
+}
+.container .info{
+    width:40%;
+    float:left;
+    padding:0 0 30px 30px;
+    height:calc(100% - 50px);
+    border-left:2px solid #eee;
+}
+.container .content{
+    width:60%;
+    float:right;
+    height:calc(100% - 100px);
+    padding:0 30px 30px;
+}
+
+.container h3{
+    font-size:20px;
+    width:100%;
+    padding:20px 0 15px;
+    margin:0;
+}
+.container .info div{
+    margin-bottom:15px;
+}
+.container b{
+    display:inline-block;
+    width:100px;
+    font-weight: normal;
+    color:#666;
+    font-size:15px;
+}
+.container input{
+    margin-left:8px;
+    padding:8px;
+    font-size:15px;
+    width:calc(100% - 120px);
+    border:1px solid #bbb;
+    border-radius:3px;
+    vertical-align: middle;
+    transition:.2s;
+}
+.container input:focus{
+    box-shadow:none;
+    outline: none;
+    border:1px solid #9cf;
+    box-shadow:#9cf 0 0 0 3px;
+}
+.container textarea{
+    padding:5px;
+    font-size:14px;
+    width:100%;
+    height:calc(100% - 10px);
+    border:1px solid #bbb;
+    border-radius:3px;
+    transition:.2s;
+    resize: vertical;
+}
+.container textarea:focus{
+    outline: none;
+    border:1px solid #9cf;
+    box-shadow:#9cf 0 0 0 3px;
+}
+.container button{
+    outline: none;
+    box-shadow:none;
+    border:none;
+    cursor:pointer;
+    width:100%;
+    height:50px;
+    border-radius:5px;
+    background:#f55;
+    color:#fff;
+    font-size:20px;
+    margin-top:30px;
+    transition:.3s;
+}
+button:hover{
+    background:#d00;
+}
+.container button.bottom{
+    display:none;
+}
+
+.link{
+    position:fixed;
+    top:12px;
+    right:12px;
+    color:#fff;
+    z-index:99;
+    font-size:16px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    border:2px solid #fff;
+    text-align: center;
+    display:block;
+    line-height: 20px;
+    font-weight: bold;
+    cursor:pointer;
+    transition:.2s;
+    text-decoration: none;
+    opacity:.5;
+}
+.link:hover{
+    border-radius:20%;
+    opacity:1;
+}
+
+@media (max-width: 1024px){
+    .container .info, .container .content{
+        float:none;
+        width:100%;
+        padding:0 30px;
+    }
+    .container .content{
+        padding:0 30px 80px;
+    }
+    .container .info{
+        height:auto;
+    }
+    .container .content{
+        border-left:2px solid #eee;
+    }
+    .container button.top{
+        display:none;
+    }
+    .container button.bottom{
+        display:block;
+        height:auto;
+        padding:15px 0;
+        width:calc(100% - 60px);
+        border-radius:5px;
+        margin: 0 30px 20px;
+    }
+}
+
+@media (max-width: 800px){
+    .logo, .container{
+        float:none;
+        width:100%;
+    }
+    .logo{
+        height:auto;
+    }
+    .logo img{
+        display:none;
+    }
+    .logo .note h3{
+        text-align: center;
+        font-size:20px;
+        border-top:none;
+        padding-top:10px;
+    }
+    .container header{
+        height:5px;
+        padding:0;
+    }
+    .container .info, .container .content{
+        padding: 0 20px;
+    }
+    .container .content{
+        padding: 0 20px 80px;
+    }
+    .container button.bottom{
+        width:calc(100% - 40px);
+        margin: 0 20px 20px;
+    }
+}
