@@ -1,0 +1,36 @@
+.md-content.style-email h1 {
+    font-size: 22px;
+    margin: 30px 0 10px;
+    padding: 0;
+}
+
+.md-content.style-email h2 {
+    font-size: 18px;
+    margin: 30px 0 10px;
+    padding: 0;
+}
+
+.md-content.style-email p {
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.md-content.style-email em {
+    font-style:normal;
+    font-weight:bold;
+}
+.md-content.style-email strong {
+    color: #f60;
+    font-weight:bold;
+}
+.md-content.style-email strong em {
+    font-style:normal;
+    color: #09c;
+}
+
+/* 以下在寄 Email 時可忽略 */
+.md-content.style-email a{
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}

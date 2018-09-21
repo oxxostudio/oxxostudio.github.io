@@ -9,6 +9,7 @@
     <link href="css/style.css?20180920" rel="stylesheet" />
     <link href="css/style-shopline.css" rel="stylesheet" />
     <link href="css/style-kktix.css" rel="stylesheet" />
+    <link href="css/style-email.css" rel="stylesheet" />
     <link href="css/fonts.css" rel="stylesheet" />
 </head>
 
@@ -25,6 +26,7 @@
                     <div>
                         <b attr-css="style-shopline">預設</b>
                         <b attr-css="style-kktix">kktix</b>
+                        <b attr-css="style-email">Email</b>
                         <b attr-css="none">無樣式</b>
                     </div>
                 </div>
@@ -71,7 +73,7 @@
         const database = firebase.database();
 
         let cssNum = 0;
-        let cssList = ['style-shopline', 'style-kktix'];
+        let cssList = ['style-shopline', 'style-kktix', 'style-email'];
         let nowCss = cssList[0];
         let cssTemp = {};
         cssList.forEach((e) => {
