@@ -12,13 +12,13 @@
       }
   </script>
 
-  <title>Google Maps (16) - 點擊區域，出現資訊視窗 - OXXO.STUDIO</title>
+  <title>Google Maps API - 點擊區域，出現資訊視窗 - OXXO.STUDIO</title>
 
   <meta name="description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
   <meta itemprop="description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
   <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-16-taiwan-infowindow.jpg">
   <meta property="og:description" content="透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。">
-  <meta property="og:title" content="Google Maps (16) - 點擊區域，出現資訊視窗">
+  <meta property="og:title" content="Google Maps API - 點擊區域，出現資訊視窗">
   <meta property="og:url" content="https://www.oxxostudio.tw/articles/201803/google-maps-16-taiwan-infowindow.html">
   <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201803/google-maps-16-taiwan-infowindow.jpg">
   <link href="/css/article.css?2018061708" rel="stylesheet">
@@ -74,7 +74,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps (16) - 點擊區域，出現資訊視窗</h1>
+<h1>Google Maps API - 點擊區域，出現資訊視窗</h1>
 <p>透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>初始化地圖並載入 GeoJSON</h2>
 <p>網頁載入後先宣告地圖，然後在地圖裡放入資訊視窗，接著使用 jQuery 的<code>getJSON</code>來載入 GeoJSON 檔案，不過因為並非使用 Google 地圖的 data 載入，在資料的處理就得自己動手來做，所以這裡就先用一個變數 features 來裝載特徵值的陣列。</p>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>一次搞懂 CSS 字體單位：px、em、rem 和 % demo 01 - OXXO.STUDIO</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    html{
+      font-size:16px;
+    }
+
+    html * {
+      font-size: 1rem;
+    }
+
+    #demo div {
+      border: 1px solid #000;
+      padding: 5px 10px;
+      margin: 3px 0 10px;
+      width: 100%;
+      max-width: 240px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    #demo>div {
+      margin: 10px;
+      float:left;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="demo">
+    <div style="font-size:16px;">16px
+      <div style="font-size:20px;">20px
+        <div style="font-size:24px;">24px
+          <div style="font-size:16px;">16px
+            <div style="font-size:32px;">32px</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:1.2em;">1.2em
+      <div style="font-size:1.2em;">1.2em
+        <div style="font-size:1.2em;">1.2em
+          <div style="font-size:1.2em;">1.2em
+            <div style="font-size:1.2em;">1.2em</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:1.2rem;">1.2rem
+      <div style="font-size:1.2rem;">1.2rem
+        <div style="font-size:1.2rem;">1.2rem
+          <div style="font-size:1.2rem;">1.2rem
+            <div style="font-size:1.2rem;">1.2rem</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:120%;">120%
+      <div style="font-size:120%;">120%
+        <div style="font-size:120%;">120%
+          <div style="font-size:120%;">120%
+            <div style="font-size:120%;">120%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #info {
+      position: fixed;
+      z-index: 999;
+      bottom: 20px;
+      left: 0px;
+      background: #222;
+      padding: 20px 30px;
+      color: #fff;
+      box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    #info a {
+      color: #0bf;
+      transition: .2s;
+    }
+
+    #info a:hover {
+      color: #6df;
+    }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+    var href = location.href;
+    var page = href.split("demo/");
+    var name = page[1].split("-demo")[0];
+    var title = document.querySelector('title').innerHTML;
+    document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+    document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>
