@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>Google Maps API - 路線規劃 demo 02 - OXXO.STUDIO</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      height: 100%;
+      width: 100%;
+      background: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    var map;
+    function initMap() {
+      // 載入路線服務與路線顯示圖層
+      var directionsService = new google.maps.DirectionsService();
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+
+      // 初始化地圖
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: { lat: 25.034010, lng: 121.562428 }
+      });
+
+      // 放置路線圖層
+      directionsDisplay.setMap(map);
+
+      // 路線相關設定
+      var request = {
+        origin: { lat: 25.034010, lng: 121.562428 },
+        destination: { lat: 25.037906, lng: 121.549781 },
+        travelMode: 'DRIVING'
+      };
+
+      var markers = [];
+      var infowindows = [];
+      // 繪製路線
+      directionsService.route(request, function (result, status) {
+        if (status == 'OK') {
+          // 回傳路線上每個步驟的細節
+          var steps = result.routes[0].legs[0].steps;
+          steps.forEach((e, i) => {
+            console.log(steps);
+            // 加入地圖標記
+            markers[i] = new google.maps.Marker({
+              position: { lat: e.start_location.lat(), lng: e.start_location.lng() },
+              map: map,
+              label: { text: i + '', color: "#fff" }
+            });
+            // 加入資訊視窗
+            infowindows[i] = new google.maps.InfoWindow({
+              content: e.instructions
+            });
+            // 加入地圖標記點擊事件
+            markers[i].addListener('click', function () {
+              if(infowindows[i].anchor){
+                infowindows[i].close();
+              }else{
+                infowindows[i].open(map, markers[i]);
+              }
+            });
+          });
+          directionsDisplay.setDirections(result);
+        } else {
+          console.log(status);
+        }
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYBMYS-eSUwFL3Z1cn5P2bNWrVIr27Cgc&callback=initMap"
+    async defer></script>
+  <style>
+    #info {
+      position: fixed;
+      z-index: 999;
+      bottom: 20px;
+      left: 0px;
+      background: #222;
+      padding: 20px 30px;
+      color: #fff;
+      box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    #info a {
+      color: #0bf;
+      transition: .2s;
+    }
+
+    #info a:hover {
+      color: #6df;
+    }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+    var href = location.href;
+    var page = href.split("demo/");
+    var name = page[1].split("-demo")[0];
+    var title = document.querySelector('title').innerHTML;
+    document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+    document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>
