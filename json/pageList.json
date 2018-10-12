@@ -1,8 +1,13 @@
 [{
   "tag": "tag-web",
+  "title": "Google Maps API - 取得目前經緯度並標記",
+  "site": "/articles/201810/google-maps-20-get-current-position.html",
+  "date": "OCT 11, 2018"
+},{
+  "tag": "tag-web",
   "title": "Google Maps API - 路線規劃",
   "site": "/articles/201810/google-maps-19-directions.html",
-  "date": "OCT 30, 2018"
+  "date": "OCT 08, 2018"
 },{
   "tag": "tag-css",
   "title": "一次搞懂 CSS 字體單位：px、em、rem 和 %",
