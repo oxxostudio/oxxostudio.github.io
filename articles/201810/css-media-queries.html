@@ -1,0 +1,460 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>CSS Media Queries 詳細介紹 - OXXO.STUDIO</title>
+
+  <meta name="description" content="在製作 RWD 響應式網頁時，一定會用到的 CSS 語法就是 media，代表的就是針對指定的「媒體」設定樣式，這篇將會對 CSS 的 Media Queries 做個詳細介紹，也幫助自己未來撰寫時，更有個方向與參考。">
+  <meta itemprop="description" content="在製作 RWD 響應式網頁時，一定會用到的 CSS 語法就是 media，代表的就是針對指定的「媒體」設定樣式，這篇將會對 CSS 的 Media Queries 做個詳細介紹，也幫助自己未來撰寫時，更有個方向與參考。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201810/css-media-queries.jpg">
+  <meta property="og:description" content="在製作 RWD 響應式網頁時，一定會用到的 CSS 語法就是 media，代表的就是針對指定的「媒體」設定樣式，這篇將會對 CSS 的 Media Queries 做個詳細介紹，也幫助自己未來撰寫時，更有個方向與參考。">
+  <meta property="og:title" content="CSS Media Queries 詳細介紹">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201810/css-media-queries.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201810/css-media-queries.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201810/css-media-queries.html">
+  <link href="/css/article.css?2018061708" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>CSS Media Queries 詳細介紹</h1>
+<p>在製作 RWD 響應式網頁時，一定會用到的 CSS 語法就是 media，代表的就是針對指定的「媒體」設定樣式，這篇將會對 CSS 的 Media Queries 做個詳細介紹，也幫助自己未來撰寫時，更有個方向與參考。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>CSS Media Queries 是什麼？</h2>
+<p>Media Queries 代表網頁會先「詢問 query」「媒體 media」的屬性，再針對這些屬性定義樣式，通常在 CSS 裡並沒有大多都是權重大小「覆蓋」的方式，但 media 本身卻帶有些「邏輯」的概念，透過邏輯的寫法，如果媒體條件符合為 true，就會套用樣式，反之為 false 就不會套用樣式。</p>
+<p>如果要使用 media queries，共有下列三種使用方式：</p>
+<ul>
+<li><p><strong>在 HTML 內使用</strong></p>
+<p>如果在 html 裡加入下面的程式碼，在視窗 screen 時會使用 style.css，列印時則使用 print.css。</p>
+<pre class="prettyprint"><code>&lt;link rel="stylesheet" type="text/css" media="screen" href="style.css"&gt;
+&lt;link rel="stylesheet" type="text/css" media="print" href="print.css"&gt;
+</code></pre></li>
+<li><p><strong>在 CSS 內使用</strong></p>
+<p>如果直接寫在 CSS 裡，下列的寫法也是一樣的概念。</p>
+<pre class="prettyprint"><code>＠media screen{
+  樣式...
+}
+@media print{
+  樣式...
+}
+</code></pre></li>
+<li><p><strong>使用<code>@import</code></strong></p>
+<p>如果你喜歡使用<code>@import</code>，也可以根據不同的 media 特性，import 不同的 css。</p>
+<pre class="prettyprint"><code>@import "style.css";
+@import "print.css" print;
+</code></pre></li>
+</ul>
+<h2>Media 的類型 ( Media Types )</h2>
+<p>在 CSS Level 4 普及後 ( 沒錯，寫這篇文章時，Level 4 即將是主流了 )，主要的 Media 類型有以下四種。( tty、tv、projection、handheld、braille、embossed 和 aural 因為在 Level 4 已經描述未來不支援，就不再多做介紹。)</p>
+<table>
+<thead>
+<tr>
+<th>類型</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>all</strong></td>
+<td>所有裝置。</td>
+</tr>
+<tr>
+<td><strong>print</strong></td>
+<td>印刷裝置，包含使用列印預覽產生的所有畫面 ( 例如列印為 pdf )。</td>
+</tr>
+<tr>
+<td><strong>screen</strong></td>
+<td>螢幕裝置，不屬於 print 和 speech 的設備。</td>
+</tr>
+<tr>
+<td><strong>speech</strong></td>
+<td>朗讀裝置，針對可以「讀出」頁面的設備。</td>
+</tr>
+</tbody>
+</table>
+<h2>Media 的特徵 ( Media Fratures )</h2>
+<p>Media 類型是大方向，那麼特徵 Feature 就是小分類，可以做到更細微的判斷與設定，跟類型不同的是，<em>Feature 必須要使用括號<code>( )</code>包覆</em>，甚至可以和邏輯關鍵字結合，此外，如果具備 Range 性質的 Feature，也可在開頭加上<code>min-</code>或<code>max-</code>的標示，以下將特徵作為幾個大分類。( device-width、device-height、device-aspect-ratio、handheld、braille、embossed 和 aural 因為在 Level 4 已經描述未來不支援，就不再多做介紹。)</p>
+<h3>視窗或頁面尺寸 ( Viewport/Page Dimensions )</h3>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>width</strong></td>
+<td>螢幕寬度，支援 <em>max-width</em> 和 <em>min-width</em>。</td>
+</tr>
+<tr>
+<td><strong>height</strong></td>
+<td>螢幕高度，支援 <em>max-height</em> 和 <em>min-height</em>。</td>
+</tr>
+<tr>
+<td><strong>aspect-ratio</strong></td>
+<td>螢幕長寬比例，支援 <em>max-aspect-ratio</em> 和 <em>min-aspect-ratio</em>。( 長寬比的寫法格式為 1/1、1680/720...等 )</td>
+</tr>
+<tr>
+<td><strong>orientation</strong></td>
+<td>螢幕旋轉方向，有兩個選項：<em>portrait</em> 和 <em>landscape</em>。 ( portrait 為直向，landscape 為橫向 )</td>
+</tr>
+</tbody>
+</table>
+<h3>顯示品質 ( Display Quality )</h3>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>resolution</strong></td>
+<td>解析度 ( dpi、ppx...等 )，支援 <em>max-resolution</em> 和 <em>min-resolution</em></td>
+</tr>
+<tr>
+<td><strong>scan</strong></td>
+<td>電視掃描方式，有兩個選項：<em>interlace</em> 和 <em>progressive</em>。 ( interlace 為交錯式掃描，奇數偶數掃描線交錯，progressive 為漸進式掃描，是現在大多數電視採用的方式 )</td>
+</tr>
+<tr>
+<td><strong>update</strong></td>
+<td>更新媒體，有三個選項：<em>none</em>、<em>slow</em> 和 <em>fast</em>。( none 表示不會更新的顯示裝置，例如印出來的文件，slow 表示更新速度慢的顯示裝置，fast 表示更新速度快的裝置，例如電腦螢幕 )</td>
+</tr>
+<tr>
+<td><strong>overflow-block</strong></td>
+<td>當內容包含 block 特性並超過邊界範圍，有四個選項：<em>none</em>、<em>scroll</em>、<em>optional-paged</em> 和 <em>paged</em>。( none 表示任何超過範圍都不顯示，例如看板，scroll 表示可滾動查看超出範圍，例如電腦螢幕，optional-paged 表示可手動查看超出的內容，例如簡報，paged 表示超出的內容會以分頁顯示，例如印表機 )</td>
+</tr>
+<tr>
+<td><strong>overflow-inline</strong></td>
+<td>當內容包含 inline 特性並超過邊界範圍，有兩個選項：<em>none</em> 和 <em>scroll</em>。</td>
+</tr>
+<tr>
+<td><strong>grid</strong></td>
+<td>網格媒體，兩個選項：<em>0</em> 和 <em>1</em>。</td>
+</tr>
+</tbody>
+</table>
+<h3>顏色 ( Color )</h3>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>color</strong></td>
+<td>輸出裝置的色彩位元數，若數值為 0 則代表黑白裝置，支援 <em>max-color</em> 和 <em>min-color</em>。</td>
+</tr>
+<tr>
+<td><strong>color-index</strong></td>
+<td>輸出裝置的色彩索引位元數，支援 <em>max-color-index</em> 和 <em>min-color-index</em>。</td>
+</tr>
+<tr>
+<td><strong>monochrome</strong></td>
+<td>單色媒體功能，若數值為 0 表示「不是」單色設備。</td>
+</tr>
+<tr>
+<td><strong>color-gamut</strong></td>
+<td>輸出裝置色域，有三個選項：<em>srgb</em>、<em>p3</em> 和 <em>rec2020</em>。( 絕大多數的顯示器都支援 srgb，而 p3 的色域比 srgb 更廣且包含 srgb，rec2020 比 p3 更大且包含 p3 )</td>
+</tr>
+</tbody>
+</table>
+<h3>互動 ( Interaction )</h3>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pointer</strong>、<strong>any-pointer</strong></td>
+<td>指標裝置 ( 例如滑鼠 ) 的準確性，有三個選項：<em>none</em>、<em>coarse</em> 和 <em>fine</em>。( none 表示沒有指標裝置，coarse 表示精度較差的指標裝置，像是觸控螢幕，fine 表示精度比較高的裝置，像是滑鼠或手寫筆 )</td>
+</tr>
+<tr>
+<td><strong>hover</strong>、<strong>any-hover</strong></td>
+<td>裝置具備 hover 的能力，有兩個選項：<em>none</em> 和 <em>hover</em>。</td>
+</tr>
+</tbody>
+</table>
+<h2>CSS Media Queries 應用實例</h2>
+<p>Queries 有四種使用方式，分別是 <em>or</em>、<em>and</em>、<em>not</em> 和 <em>only</em>，除了 or 使用逗號「,」表現，其他的就直接寫出英文字，下列應用實例分別使用這四種方式來表現。</p>
+<ul>
+<li><p><strong>OR</strong></p>
+<p>  OR「或者」這個概念很容易理解，例如：螢幕尺存小於等於 400px 「或」印刷時，字體會變成紅色 100px，反之就是黑色 30px。( 打開範例頁面，點擊滑鼠右鍵按印刷，就能看到效果 )</p>
+<blockquote>
+<p><a href="/demo/201810/css-media-queries-demo-01.html" target="_blank">CSS Media Queries 應用實例 1：OR</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  h1{
+      font-size:30px;
+  }
+  @media (max-width:400px), print{
+      h1{
+          font-size:100px;
+          color:red;
+      }
+  }
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/css-media-queries-01.jpg" alt=""></p>
+<p>  另外一個例子，透過 orientation 判斷裝置是直立或橫放，如果裝置是直立「或」寬度小於 200px，就讓文字變成紅色 50px。</p>
+<blockquote>
+<p><a href="/demo/201810/css-media-queries-demo-02.html" target="_blank">CSS Media Queries 應用實例 2：OR</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  h1{
+      font-size:30px;
+  }
+  @media (orientation: portrait), (max-width:200px){
+      h1{
+          font-size:50px;
+          color:red;
+      }
+  }
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/css-media-queries-02.jpg" alt=""></p>
+</li>
+<li><p><strong>AND</strong></p>
+<p>  使用 AND 必須要所有條件皆滿足，下面的例子在「螢幕」大小介於「200px~300px」之間時，字體會是紅色 50px。( 從這個例子可以很明顯觀察到，type 不用加上括號，而 features 要用括號包覆 )</p>
+<blockquote>
+<p><a href="/demo/201810/css-media-queries-demo-03.html" target="_blank">CSS Media Queries 應用實例 3：AND</a></p>
+</blockquote>
+<pre class="prettyprint"><code>  h1{
+      font-size:30px;
+  }
+  @media screen and (min-width:200px) and (max-width:300px){
+      h1{
+          font-size:50px;
+          color:red;
+      }
+  }
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/css-media-queries-03.jpg" alt=""></p>
+<p>  AND 和 OR 也可以互相搭配使用，已下面的例子來說，除了「螢幕」大小介於「200px~300px」之間時，字體會是紅色 50px，橫向印刷也會是紅色 50px 的字體。( 可列印網頁，選擇橫向列印看結果 )</p>
+<pre class="prettyprint"><code>  h1{
+      font-size:30px;
+  }
+  @media screen and (min-width:200px) and (max-width:300px), print and (orientation: landscape){
+      h1{
+          font-size:50px;
+          color:red;
+      }
+  }
+</code></pre></li>
+<li><p><strong>ONLY</strong></p>
+<p>  ONLY 可以指定「只有」某種裝置媒體才能套用某些樣式，會寫在 media query 的字首，目前這種撰寫方式越來越少見，最主要是因為使用舊版裝置媒體的人越來越少，因此直接採用 AND 或 OR 的寫法就能夠符合絕大多數的需求。在 CSS Level 4 的眾多範例裡，也只出現了下方這個短短一行代碼範例，可見有多不常用，下面這行代表只有在「彩色螢幕」才會套用 example.css。</p>
+<pre class="prettyprint"><code>  &lt;link rel="stylesheet" media="only screen and (color)" href="example.css" /&gt;
+</code></pre><p>  其實上面這行也可寫成這樣，也是一樣的結果。</p>
+<pre class="prettyprint"><code>  &lt;link rel="stylesheet" media="screen and (color)" href="example.css" /&gt;
+</code></pre></li>
+<li><p><strong>NOT</strong></p>
+<p>  NOT 的目的在於排除一些裝置媒體，會寫在 media query 的字首，下方的例子就是除了彩色螢幕之外的裝置，都套用 example.css，這裡要注意一下，<em>NOT 和 ONLY 後方都必須先接 media type ( 像是 screen 或 print )，不然會沒有作用</em>。</p>
+<pre class="prettyprint"><code>  &lt;link rel="stylesheet" media="not screen and (color)" href="example.css" /&gt;
+</code></pre><p>  NOT 可以使用逗號分隔，就能做出不同的判斷，下方的例子，除了螢幕寬度小於等於 300px，或印刷時為橫向，才會出現紅色 50px 的字體。</p>
+<pre class="prettyprint"><code>  h1{
+      font-size:30px;
+  }
+  @media not screen and (max-width:300px), print and (orientation: landscape){
+      h1{
+          font-size:50px;
+          color:red;
+      }
+  }
+</code></pre></li>
+</ul>
+<h2>小結</h2>
+<p>其實 CSS Media Queries 並沒有很複雜，尤其在現在電腦或手機螢幕發達的時代，大多情況只需要注意 max-width、min-width 就能解決，其他充其量就是注意印刷的樣式、注意單色的螢幕...等特殊情況而已，總而言之，善用 Media Queries 對於撰寫一個 RWD 網頁，是絕對必要的技能呦！</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+      <div class="ad">
+          <ins class="adsbygoogle" style="display:inline-block; width:100%; height:100%;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+      </div>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <br>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180831"></script>
+  <script src="/js/articles.js?20180831"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-3', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script>
+  (function() {
+    var cx = '018175492205832613185:g5mvl2qoy5a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+  </script>
+
+  <script>
+    var disqus_shortname = 'oxxostudio';
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+</body></html>
