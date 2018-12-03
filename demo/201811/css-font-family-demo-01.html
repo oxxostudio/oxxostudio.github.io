@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>CSS font-family 詳細介紹 demo 02 - OXXO.STUDIO</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 0 auto 50px;
+    }
+
+    tr {
+      font-size: 20px;
+    }
+
+    td {
+      border: 1px solid #aaa;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .Arial {
+      font-family: Arial;
+    }
+
+    .ArialBlack {
+      font-family: "Arial Black";
+    }
+
+    .ArialNarrow {
+      font-family: "Arial Narrow";
+    }
+
+    .Impact {
+      font-family: Impact;
+    }
+
+    .TrebuchetMS {
+      font-family: "Trebuchet MS";
+    }
+
+    .Verdana {
+      font-family: Verdana;
+    }
+
+    .Charcoal {
+      font-family: Charcoal;
+    }
+
+    .Geneva {
+      font-family: Geneva;
+    }
+
+    .Tahoma {
+      font-family: Tahoma;
+    }
+
+    .Georgia {
+      font-family: Georgia;
+    }
+
+    .Palatino {
+      font-family: Palatino;
+    }
+
+    .TimesNewRoman {
+      font-family: "Times New Roman";
+    }
+
+    .Times {
+      font-family: Times;
+    }
+
+    .ComicSansMS {
+      font-family: "Comic Sans MS";
+    }
+
+    .CourierNew {
+      font-family: "Courier New";
+    }
+
+    .Copperplate {
+      font-family: Copperplate;
+    }
+
+    .Papyrus {
+      font-family: Papyrus;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Mac 和 Windows 都通用的英文字體</h1>
+  <h2>無襯線字體 sans-serif</h2>
+  <table>
+    <tr class="Arial">
+      <td>Arial</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="ArialBlack">
+      <td>Arial Black</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="ArialNarrow">
+      <td>Arial Narrow</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="Charcoal">
+      <td>Charcoal</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="Impact">
+      <td>Impact</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="Tahoma">
+      <td>Tahoma</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="TrebuchetMS">
+      <td>Trebuchet MS</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="Verdana">
+      <td>Verdana</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+  </table>
+  <h2>無襯線字體 serif</h2>
+  <table>
+    <tr class="Georgia">
+      <td>Georgia</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="Palatino">
+      <td>Palatino</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="TimesNewRoman">
+      <td>Times New Roman</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="Times">
+      <td>Times</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+  </table>
+  <h2>手寫字體 cursive</h2>
+  <table>
+    <tr class="ComicSansMS">
+      <td>Comic Sans MS</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+  </table>
+  <h2>等寬字體 monospace</h2>
+  <table>
+    <tr class="CourierNew">
+      <td>Courier New</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+  </table>
+  <h2>幻想字體 Fantasy</h2>
+  <table>
+    <tr class="Copperplate">
+      <td>Copperplate</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+    <tr class="Papyrus">
+      <td>Papyrus</td>
+      <td>ABCWLI abcwli 012345 &#@%${}~</td>
+    </tr>
+  </table>
+  <style>
+    body {
+      padding-bottom: 100px;
+    }
+
+    #info {
+      position: fixed;
+      z-index: 999;
+      bottom: 20px;
+      left: 0px;
+      background: #222;
+      padding: 20px 30px;
+      color: #fff;
+      box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    #info a {
+      color: #0bf;
+      transition: .2s;
+    }
+
+    #info a:hover {
+      color: #6df;
+    }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+    var href = location.href;
+    var page = href.split("demo/");
+    var name = page[1].split("-demo")[0];
+    var title = document.querySelector('title').innerHTML;
+    document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+    document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>

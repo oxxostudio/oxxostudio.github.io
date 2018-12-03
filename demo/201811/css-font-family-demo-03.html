@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>CSS font-family 詳細介紹 demo 03 - OXXO.STUDIO</title>
+  <style>
+    @font-face {
+      font-family: oxxo;
+      src: url(HONYA-JI.ttf);
+    }
+
+    h1 {
+      font-family: oxxo,arial, cursive;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Hello 大家好，我叫張小彥每說絕產內狀查步歷鄉黃溫晚夠值腳嫑錄滙淚愣偷啟飇朵 </h1>
+  <h1>ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄛㄜㄚㄞㄟㄠㄢㄤ</h1>
+  <h1>！？，：「」</h1>
+  <style>
+    body {
+      padding-bottom: 100px;
+    }
+
+    #info {
+      position: fixed;
+      z-index: 999;
+      bottom: 20px;
+      left: 0px;
+      background: #222;
+      padding: 20px 30px;
+      color: #fff;
+      box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    #info a {
+      color: #0bf;
+      transition: .2s;
+    }
+
+    #info a:hover {
+      color: #6df;
+    }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+    var href = location.href;
+    var page = href.split("demo/");
+    var name = page[1].split("-demo")[0];
+    var title = document.querySelector('title').innerHTML;
+    document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+    document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>

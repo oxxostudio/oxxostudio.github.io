@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>CSS font-family 詳細介紹 demo 02 - OXXO.STUDIO</title>
+  <style>
+    h1 {
+      font-size: 60px;
+      margin: 5px;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-size: 50px;
+      margin: 5px;
+      line-height: 1.3;
+    }
+
+    h3 {
+      padding: 0;
+      margin: 5px;
+      line-height: 1.3;
+      font-weight: normal;
+      font-size: 45px;
+    }
+
+    h3 span {
+      font-size: 15px;
+      margin-left: 10px;
+    }
+
+    .f1 {
+      font-family: 微軟正黑體, "Microsoft JhengHei";
+    }
+
+    .f2 {
+      font-family: 新細明體, "PMingLiU";
+    }
+
+    .f3 {
+      font-family: 標楷體, "DFKai-SB";
+    }
+
+    .f4 {
+      font-family: 蘋方-繁, "PingFang TC", "DFKai-SB";
+    }
+
+    .f5 {
+      font-family: 黑體-繁, "Heiti TC", "DFKai-SB";
+    }
+
+    .f6 {
+      font-family: 楷體-繁, "STKaiti TC", "DFKai-SB";
+    }
+
+    .f7 {
+      font-family: 儷黑 Pro, "LiHei Pro", "DFKai-SB";
+    }
+
+    .f8 {
+      font-family: 儷宋 Pro, "LiSong Pro", "DFKai-SB";
+    }
+  </style>
+</head>
+
+<body>
+  <h1>常用的中文字體</h1>
+  <h2>Windows</h2>
+  <h3 class="f1">歡迎光臨<span>微軟正黑體</span></h3>
+  <h3 class="f2">歡迎光臨<span>新細明體</span></h3>
+  <h3 class="f3">歡迎光臨<span>標楷體</span></h3>
+  <h2>Mac</h2>
+  <h3 class="f4">歡迎光臨<span>蘋方-繁</span></h3>
+  <h3 class="f5">歡迎光臨<span>黑體-繁</span></h3>
+  <h3 class="f6">歡迎光臨<span>楷體-繁</span></h3>
+  <h3 class="f7">歡迎光臨<span>儷黑 Pro</span></h3>
+  <h3 class="f8">歡迎光臨<span>儷宋 Pro</span></h3>
+  <style>
+    body {
+      padding-bottom: 100px;
+    }
+
+    #info {
+      position: fixed;
+      z-index: 999;
+      bottom: 20px;
+      left: 0px;
+      background: #222;
+      padding: 20px 30px;
+      color: #fff;
+      box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    #info a {
+      color: #0bf;
+      transition: .2s;
+    }
+
+    #info a:hover {
+      color: #6df;
+    }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+    var href = location.href;
+    var page = href.split("demo/");
+    var name = page[1].split("-demo")[0];
+    var title = document.querySelector('title').innerHTML;
+    document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+    document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>
