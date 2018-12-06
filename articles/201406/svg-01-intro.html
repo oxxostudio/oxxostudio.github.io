@@ -259,7 +259,6 @@ c0,8.39,6.797,15.188,15.188,15.188c8.378,0,15.176-6.798,15.186-15.178v-0.01v-15.
   </script>
   <script>
     window.onload = function () {
-      console.log(1);
       let element = document.createElement("script");
       element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
       document.body.appendChild(element);
@@ -267,17 +266,22 @@ c0,8.39,6.797,15.188,15.188,15.188c8.378,0,15.176-6.798,15.186-15.178v-0.01v-15.
         google_ad_client: "ca-pub-8629612872829139",
         enable_page_level_ads: true
       });
-
-      (function () {
-        var cx = '018175492205832613185:g5mvl2qoy5a';
-        var gcse = document.createElement('script');
-        gcse.type = 'text/javascript';
-        gcse.async = true;
-        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(gcse, s);
-      })();
     };
+    let s = 0;
+    $('.search').on('click', function () {
+      s = s + 1;
+      if (s == 1) {
+        (function () {
+          var cx = '018175492205832613185:g5mvl2qoy5a';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      }
+    });
   </script>
   <script>
     let a = 0;
