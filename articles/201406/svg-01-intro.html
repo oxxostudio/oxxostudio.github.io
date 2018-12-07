@@ -258,19 +258,23 @@ c0,8.39,6.797,15.188,15.188,15.188c8.378,0,15.176-6.798,15.186-15.178v-0.01v-15.
     ga('send', 'pageview');
   </script>
   <script>
-    window.onload = function () {
-      let element = document.createElement("script");
-      element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-      document.body.appendChild(element);
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-8629612872829139",
-        enable_page_level_ads: true
-      });
-    };
+    let g = 0;
+    $(window).scroll(function () {
+      if(g == 0){
+        g = g + 1;
+        let element = document.createElement("script");
+        element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+        document.body.appendChild(element);
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8629612872829139",
+          enable_page_level_ads: true
+        });
+      }
+    });
     let s = 0;
     $('.search').on('click', function () {
-      s = s + 1;
-      if (s == 1) {
+      if (s == 0) {
+        s = s + 1;
         (function () {
           var cx = '018175492205832613185:g5mvl2qoy5a';
           var gcse = document.createElement('script');
