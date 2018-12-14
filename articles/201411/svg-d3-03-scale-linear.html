@@ -79,7 +79,7 @@
 <p>這篇原本要延續上一篇立馬做一個折線圖出來，不過在製作過程中發現有兩個重點必須要先闡述，第一個就是比例 Scale，第二個就是座標 Axis，深入研究之後，發現這兩個方法在 D3.js 裏頭學問還頗大的，所以就先獨立出來分別描述，完成後再來繼續折線圖的製作。</p>
 <p>什麼是比例 Scale 呢？最常見到比例尺的地方應該就是在地圖上，例如台灣面積大約 36,188 平方公里，要把台灣塞進一張 A4 大小的地圖根本就是天方夜譚，這時候就必須要用到比例了。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141112_1_02.png" alt="SVG D3 - 定義比例 ( scale.linear() )"></p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>定義比例</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>定義比例</h2>
 <p>除了地圖，應用比例的原理，在日常生活中也是很常見，例如最近發現全世界最大的恐龍，大約是非洲大象的 14 倍大，或是今天走在路上看到一個「九頭身」的美女，亦或是拍照的時候旁邊放個十元硬幣，都是很簡單的比例應用。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141112_1_03.png" alt="SVG D3 - 定義比例 ( scale.linear() )"></p>
 <p>有點離題了，因此，同樣的當我們面對一個折線圖或長條圖的長寬，超過電腦視窗的畫面大小，就必須用比例的方式讓圖表等比例縮小來適合寬度，在 D3.js 裏頭，就要使用 scale 這個方法來達成 ( 舖梗舖好長~ XD )，首先來看一下 scale 要怎麼來使用，Scale 有分成兩大類，第一類是「Quantitative」，主要以數字或日期為比例縮放的依據，第二類是「Ordinal」，則是以自訂的名稱或標籤為縮放依據，這篇會先介紹第一類「Quantitative」，接著再搭配座標軸「Axis」介紹第二類「Ordinal」。</p>
@@ -432,12 +432,7 @@ console.log(
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="google-adsense">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <br>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="2" data-matched-content-columns-num="3" data-ad-format="autorelaxed"></ins>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>

@@ -78,7 +78,7 @@
 <h1>Gulp 學習 5 - 建立 HTML 模板</h1>
 <p><img src="/img/articles/201503/gulp-5-html-extend.jpg" class="preview-img" alt=""></p>
 <p>這個部落格經營了快一年，都是利用 fire.app 替我建置「純靜態」的 blog，換句話說，其實我只是撰寫內容，然後藉由 fire.app 幫我把內容和 layout 合併在一起，如果有興趣的人可以直接購買 <a href="http://fireapp.kkbox.com/doc/tw/index.html" target="_blank">fire.app</a> 下來使用即可。不過這一篇並不是要介紹 fire.app，而是要利用 gulp，建立 HTML 的模板，同樣也是將 layout 和 content 分開，然後在預覽與上線的時候再合併。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2>
 <p>這裡我們要用到的是 gulp-html-extend 這個套件 ( 參考 <a href="https://www.npmjs.com/package/gulp-html-extend" target="_blank">gulp-html-extend</a> )，和之前介紹過的 gulp-html-replace 類似，gulp-html-extend 會把某些特定註解內的內容置換為我們想要的內容，但與 gulp-html-replace 不同的地方，在於 gulp-html-replace 要置換的內容寫在 gulpfile.js 裏頭，而 gulp-html-extend 則是將外部的 HTML 內容嵌入註解的區域。</p>
 <p>以下面的例子來說，首先我們建立一個 layout.html 的樣版，裡頭是要共用的內容，在裡面可以看到有兩個註解，分別是<code>&lt;!-- @ @ placeholder= title --&gt;</code>和<code>&lt;!-- @ @ placeholder= content --&gt;</code>，這就是我們要合併的部分。( 因為兩個 @ 會被 markdown 用消失，所以這邊中間有空格 )</p>
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
@@ -213,12 +213,7 @@ gulp.task('default',['extend']);
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="google-adsense">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <br>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="2" data-matched-content-columns-num="3" data-ad-format="autorelaxed"></ins>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>

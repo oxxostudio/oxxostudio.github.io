@@ -84,7 +84,7 @@
 <p>今天遇到的問題是出在我用了一個半透明的 border，但卻無法順利地透過並顯示背景的圖案或顏色，後來發現原來 box 預設的 border ，其實是在這個 box 之內的，雖然 border 在 box 的內部，但其實與剛剛的 box model 並沒有相違背，因為 border 包住的空間，仍然是 padding 與 content，只是如果把 border 變成半透明，就會把原本 box 的底色給呈現出來。( 如下圖 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141210_1_03.jpg" alt="box-sizing 與 background-clip"></p>
 <p>為了讓 border 可以順利的在外面顯示背景的圖案或顏色，就需要用到<code>box-sizing</code>與<code>background-clip</code>這兩個 CSS3 的屬性來設定，就讓我們來分別看看這兩個屬性該如何使用：</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>box-sizing</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>box-sizing</h2>
 <p><code>box-sizing</code>有兩個值可以設定，分別是：<code>content-box</code>(預設值) 與<code>border-box</code>，如果在<code>content-box</code>的情形下，我們設定了 box 的 padding 或 border，box 就會被撐開，因為 padding 和 border 是長在 box 內的，不過如果我們將<code>box-sizing</code>設定為<code>border-box</code>，那麼就會一直維持原始的大小，但相對的也就會壓縮內部的空間，我自己在設計網頁的習慣，都會預先把所有的 div 設為<code>border-box</code>，如此一來才能更方便去計算大小，也能避免內容的東西加了 padding 就把外框變大了，然後再根據當下的情況，去決定是否要改為<code>content-box</code>。</p>
 <p>下面的範例是用三個範例來對照參考，半透明的藍色方塊是原始的大小，第一張圖設定了<code>padding:20px;</code>，第二張圖除了 <code>padding:20px</code>之外，還有設定了<code>border:10px dotted rgba(255,0,0,.5);</code>，第三張圖則是與第二張圖同樣的設定，但<code>box-sizing</code>設為<code>border-box</code>，經由對照，就可以很明顯的發現彼此的差異。</p>
 <p>HTML：</p>
@@ -192,12 +192,7 @@ div&gt;div{
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="google-adsense">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <br>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="2" data-matched-content-columns-num="3" data-ad-format="autorelaxed"></ins>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>

@@ -77,7 +77,7 @@
 
 <h1>做個簡單的爬蟲 ( 幣值、空污 PM2.5 )</h1>
 <p>幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>資料從哪裡找？</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>資料從哪裡找？</h2>
 <p>爬空污數據除了直接爬網頁資料外，也可以從「<a href="http://data.gov.tw/node/6074" target="_blank">空氣品質即時污染指標</a>」這個政府開放資料平台來撈，這裏有提供 CSV、JSON 和 XML 的格式，不過因為這篇在爬蟲，所以我要爬的網站是這個：「<a href="http://taqm.epa.gov.tw/taqm/tw/Pm25Index.aspx" target="_blank">即時細懸浮微粒指標</a>」，加上這個網站更新的速度比開放資料的速度快 ( 雖然都是一小時更新一次，不過還是快樂十幾分鐘左右 )，所以就直接爬數據囉！</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201512/20151223_1_02.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
 <p>既然要爬，就要先來看看他的網頁原始碼，才知道要從何爬起，看了原始碼才發現他不是用什麼 json 資料的載入，而是把數據直接寫在原始碼內，意思就是只要爬出來 class 為 jTip 的 area，就可以獲得資料。</p>
@@ -203,12 +203,7 @@ boardReady('35PQ', function(board) {
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="google-adsense">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <br>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="2" data-matched-content-columns-num="3" data-ad-format="autorelaxed"></ins>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>

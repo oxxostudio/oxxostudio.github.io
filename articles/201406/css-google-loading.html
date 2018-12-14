@@ -80,7 +80,7 @@
 <blockquote>
 <p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>概念架構</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>概念架構</h2>
 <p>在製作載入動畫之前，我們必須要先有 CSS3 的動畫概念以及立體的概念，不過因為這篇不是介紹 CSS3 動畫與立體，因此這邊就不太過著墨，直接來看成品的程式碼來一步步說明。</p>
 <p>首先看到動畫的架構，主要分為了三個層，一個是<strong>定位層</strong> ( #googleloading )，一個是<strong>底層</strong> ( div、::after )，最後一個是<strong>葉片層</strong> ( ::before )，定位層目的在於讓整個 loading 可以做定位，位置不會影響到內容，底層包含了一個 div 和一個偽元素 ::after，主要是區分兩個顏色，葉片層則是直接使用 ::before 代替。或許有人會問說兩種顏色直接用漸層色代替就好啦，沒錯，我一開始就是使用這個方式，但後來發現<strong>漸層色的動畫在 firefox 是出不來的</strong>，所以必須使用 ::after 來代替。( ::before 和 ::after 是偽元素，可以當作連著主體前後的 div 使用 )</p>
 <pre class="prettyprint"><code>&lt;div id="google_loading"&gt;
@@ -232,12 +232,7 @@
     <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
   </div>
   <div id="google-adsense">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <br>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="2" data-matched-content-columns-num="3" data-ad-format="autorelaxed"></ins>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
