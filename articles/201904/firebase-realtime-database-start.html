@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>Firebase 教學 - RealTime Database 安裝與使用 - OXXO.STUDIO</title>
+
+  <meta name="description" content="Firebase RealTime Database 是 Google 的雲端資料庫，透過 JSON 格式儲存資料並即時同步到所連線的用戶端，藉由 RealTime Database 我們可以很輕鬆的實現許多創意與應用，這篇將會介紹一開始的安裝與使用方式，後續會接著介紹進一步的用法。">
+  <meta itemprop="description" content="Firebase RealTime Database 是 Google 的雲端資料庫，透過 JSON 格式儲存資料並即時同步到所連線的用戶端，藉由 RealTime Database 我們可以很輕鬆的實現許多創意與應用，這篇將會介紹一開始的安裝與使用方式，後續會接著介紹進一步的用法。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201904/firebase-realtime-database-start.jpg">
+  <meta property="og:description" content="Firebase RealTime Database 是 Google 的雲端資料庫，透過 JSON 格式儲存資料並即時同步到所連線的用戶端，藉由 RealTime Database 我們可以很輕鬆的實現許多創意與應用，這篇將會介紹一開始的安裝與使用方式，後續會接著介紹進一步的用法。">
+  <meta property="og:title" content="Firebase 教學 - RealTime Database 安裝與使用">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201904/firebase-realtime-database-start.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201904/firebase-realtime-database-start.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201904/firebase-realtime-database-start.html">
+  <link href="/css/article.css?2018061708" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Firebase 教學 - RealTime Database 安裝與使用</h1>
+<p>Firebase RealTime Database 是 Google 的雲端資料庫，透過 JSON 格式儲存資料並即時同步到所連線的用戶端，藉由 RealTime Database 我們可以很輕鬆的實現許多創意與應用，這篇將會介紹一開始的安裝與使用方式，後續會接著介紹進一步的用法。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立資料庫</h2>
+<p>首先我們先用 Google 帳號登入 ( <a href="https://firebase.google.com/" target="_blank">https://firebase.google.com/</a> )，接著進入 firebase 的控制台，點選「<em>新增專案</em>」，新增的設定除了給予命名，也可以選擇伺服器所在的位置，這裡我選擇台灣，把相關條款打勾之後就可以新增專案。( 如果名稱和別人重複，就會看到自訂名稱後方多出一串亂碼 )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-01.jpg" alt=""></p>
+<p>專案建立後，會自動進入專案的管理畫面，點選左側選單的「＊Database＊」，下拉內容看到「＊Realtime database＊」，點選建立資料庫，就能建立 Realtime 的資料庫了。( Firestore 會另外用專文介紹 )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-02.jpg" alt=""></p>
+<p>一開始建立我們先使用「<em>以測試模式啟動</em>」，方便我們起手式寫入或讀取資料，後續篇幅會介紹安全性規則。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-03.jpg" alt=""></p>
+<p>點選「<em>建立</em>」後，看到如下方圖片的畫面，就表示資料庫建立完成，準備可以開始寫程式操作了。( 這時你可能會看到警告訊息，不用太在意，因為剛剛選擇了「測試模式」，在沒有安全性規則的保護下，可以任意讀寫資料，所以才會出現警告訊息 )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-04.jpg" alt=""></p>
+<h2>初始化</h2>
+<p>要使用 RealTime Database 需要載入對應的 js，在這裡我直接使用 google 提供的連結。</p>
+<p><code>&lt;script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"&gt;&lt;/script&gt;</code></p>
+<p>接著在 JavaScript 中撰寫下面這段初始化的程式碼，宣告變數 database 為 firebase 的 realtime database，database 初始化完成後，得透過 <code>ref</code> 指定相對路徑，就能針對相對路徑就可以使用寫入或讀取對應的 api。</p>
+<pre class="prettyprint"><code>firebase.initializeApp({
+  databaseURL: "https://XXXXX.firebaseio.com/"
+});
+
+const database = firebase.database();
+</code></pre><h2>寫入資料</h2>
+<p>寫入資料的方式分成三種：設定 ( <code>set</code> )、更新 ( <code>update</code> ) 與添加 ( <code>push</code> )，主要都是以 JSON 格式儲存資料，三種方式也都支援 Promise，可以串接上 then 就能監聽是否完成。</p>
+<h3><em>1. 設定 set</em></h3>
+<p>延續上方的初始化，使用下面這段程式碼，網頁執行後就會在「根目錄」寫入資料，要注意的是，使用 set 會把指定目錄下的內容完全覆蓋。( 如果要刪除資料只需 <code>set('')</code> 即可 )</p>
+<pre class="prettyprint"><code>database.ref('/').set({a:123});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-05.jpg" alt=""></p>
+<p>如果是使用下面這段程式碼，網頁執行後就會在目錄 r1 裡寫入資料，因為我的範例是接續上面寫入資料到根目錄，會看見資料庫裡頭出現根目錄的資料和目錄 r1 的資料。</p>
+<blockquote>
+<p>注意，如果你把寫入根目錄的程式碼放在最後面，執行後因為根目錄使用了 set，會把內容完全覆蓋，就會造成資料庫被清空，只能下根目錄的資料。</p>
+</blockquote>
+<pre class="prettyprint"><code>database.ref('/r1').set({a:123});
+// 上面這段等同於下面這段
+// database.ref('/').child('r1').set({a:123});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-06.jpg" alt=""></p>
+<h3><em>2. 更新 update</em></h3>
+<p>update 和 set 不同，update <em>並不會清空整個目錄下的內容，而是針對指定的目錄做更新</em>，以剛剛做好的資料庫來說，下面這段程式碼可以將 a 更新為 789。( 如果沒有指定目錄，update 將沒有作用 )</p>
+<pre class="prettyprint"><code>_root.update({a:789});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-07.jpg" alt=""></p>
+<h3><em>3. 添加 push</em></h3>
+<p>push 的方法可以在一個目錄下不斷地添加資料，添加資料時 firebase 會自動產生一個鍵值，下面這段程式碼，會先把根目錄的資料清空，接著連續寫入三筆資料，網頁執行後進入資料庫可以看到，隨機出現的三個鍵值分別紀錄了我們寫入的資料。</p>
+<pre class="prettyprint"><code>database.ref('/').set('');
+database.ref('/').push(123);
+database.ref('/').push(456);
+database.ref('/').push(789);
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-08.jpg" alt=""></p>
+<p>下面這段程式碼很有意思，第一眼看到會以為目錄 a 裡頭會有 1 和 4、7，目錄 b 會有 2 和 5、8，目錄 c 會有 3 和 6、9，但網頁執行後結果卻不是如此，因為 a、b、c 的 set 並沒有指定目錄名稱 ( 鍵值 Key )，所以在 push 時就不會保留原本的 123。</p>
+<pre class="prettyprint"><code>database.ref('/').set('');
+database.ref('/a').set(1);
+database.ref('/b').set(2);
+database.ref('/c').set(3);
+database.ref('/a').push(4);
+database.ref('/b').push(5);
+database.ref('/c').push(6);
+database.ref('/a').push(7);
+database.ref('/b').push(8);
+database.ref('/c').push(9);
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-09.jpg" alt=""></p>
+<p>如果都要保留，只要手動新增目錄 ( 鍵值 Key ) 即可，為什麼會這樣呢？因為我們存入的資料都是 JSON 格式，也因此必須滿足 JSON 格式的相關條件。</p>
+<pre class="prettyprint"><code>database.ref('/').set('');
+database.ref('/a').set({num:1});
+database.ref('/b').set({num:2});
+database.ref('/c').set({num:3});
+database.ref('/a').push(4);
+database.ref('/b').push(5);
+database.ref('/c').push(6);
+database.ref('/a').push(7);
+database.ref('/b').push(8);
+database.ref('/c').push(9);
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-10.jpg" alt=""></p>
+<h2>讀取資料</h2>
+<p>讀取資料的方式有兩種，分別是：只讀取一次 ( <code>once</code> ) 和即時讀取 ( <code>on</code> )。</p>
+<h3><em>1.讀取一次 once</em></h3>
+<p>有些情形我們不希望不斷的讀取資料，只希望資料僅在一開始初始化後就載入一次，這時就可以使用這個方法，下面這段程式碼將會在網頁執行時，讀取資料庫的值。</p>
+<pre class="prettyprint"><code>database.ref('/').once('value',e=&gt;{
+    console.log(e.val());
+});
+</code></pre><p>once 支援 Promise，所以寫法亦可換成 Promise 的方式。</p>
+<pre class="prettyprint"><code>database.ref('/').once('value').then(result=&gt;{
+    console.log(result.val());
+});
+</code></pre><p>最後得到的結果：</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-11.jpg" alt=""></p>
+<h3><em>2. 即時讀取 on</em></h3>
+<p>Realtime database 資料庫最大的特色就是「即時」，可以<em>在資料庫有變動的情況下，即時將變化發送到所有正在偵測的網頁或應用</em>，使用了 on 之後，除非手動停止，不然執行網頁後就會一直監聽資料庫狀態，並透過 callback 的 function 來執行對應動作，以下方的例子來說，只要資料庫有變動，就會即時在 console 裡看到資料庫的值。</p>
+<pre class="prettyprint"><code>database.ref('/').on('value',e =&gt; {
+    console.log(e.val());
+});
+</code></pre><h2>小結</h2>
+<p>Firebase 的 realtime database 真的是前端工程師的一大福音，因為不需要懂太多資料庫的原理或操作技巧，就能輕鬆將簡單的資料庫應用套用到自己的網站裡頭，後續篇幅會繼續介紹 realtime database 的規則和應用。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+      <div class="ad">
+          <ins class="adsbygoogle" style="display:inline-block; width:100%; height:100%;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+      </div>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180831"></script>
+  <script src="/js/articles.js?20180831"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script> -->
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    let g = 0;
+    $(window).scroll(function () {
+      if(g == 0){
+        g = g + 1;
+        let element = document.createElement("script");
+        element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+        document.body.appendChild(element);
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8629612872829139",
+          enable_page_level_ads: true
+        });
+      }
+    });
+    let s = 0;
+    $('.search').on('click', function () {
+      if (s == 0) {
+        s = s + 1;
+        (function () {
+          var cx = '018175492205832613185:g5mvl2qoy5a';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      }
+    });
+  </script>
+  <script>
+    let a = 0;
+    $(window).scroll(function(){
+      if(a == 0){
+        a = a + 1;
+        var disqus_shortname = 'oxxostudio';
+        (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      }
+    });
+  </script>
+
+
+
+</body></html>
