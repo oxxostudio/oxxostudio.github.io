@@ -1,0 +1,505 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>Firebase 教學 - RealTime Database Rules ( 規則 ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="透過 Rules ( 規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
+  <meta itemprop="description" content="透過 Rules ( 規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201904/firebase-realtime-database-rules.jpg">
+  <meta property="og:description" content="透過 Rules ( 規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
+  <meta property="og:title" content="Firebase 教學 - RealTime Database Rules ( 規則 )">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201904/firebase-realtime-database-rules.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201904/firebase-realtime-database-rules.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201904/firebase-realtime-database-rules.html">
+  <link href="/css/article.css?2018061708" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Firebase 教學 - RealTime Database Rules ( 規則 )</h1>
+<p>透過 Rules ( 規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本寫法</h2>
+<p>RealTime Database Rules 使用類似 JSON 格式的寫法，根據定義 <code>.read</code>、<code>.write</code> 和 <code>.validate</code>( <code>.indexOn</code> 也是屬性之一，但主要用途作為排序，在資料量不大時發揮不了作用，就不在此處介紹 )</p>
+<table>
+<thead>
+<tr>
+<th>類型</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>.read</em></td>
+<td>是否允許讀取資料，布林值判斷為 ture 可以讀取，false 不可讀取。</td>
+</tr>
+<tr>
+<td><em>.write</em></td>
+<td>是否允許寫入資料，布林值判斷為 ture 可以寫入，false 不可寫入。</td>
+</tr>
+<tr>
+<td><em>.validate</em></td>
+<td>判斷值、屬性、子屬性...等的正確格式。</td>
+</tr>
+</tbody>
+</table>
+<p>舉例來說，在「<a href="firebase-realtime-database-start.html" target="_blank">Firebase 教學 - RealTime Database 安裝與使用</a> 」一文裡建立的專案，使用的是最基本「沒有保護」的寫法，最外層是 rules 屬性，表示整份資料庫的規則，內容就會包含讀寫或資料夾相關的規則，因為<code>.read</code>和<code>.write</code>都是 true，所以不論任何人都可以寫入或讀取資料。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+</code></pre><p>同理，下面的寫法，只會讓「有註冊」的用戶 ( 具備 uid ) 才能夠讀取、寫入或刪除資料。( 後續會介紹如何依據使用者作保護 )</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read": "auth.uid != null",
+    ".write": "auth.uid != null"
+  }
+}
+</code></pre><h2>定義規則順序</h2>
+<p>Firebase 的規則採用「<strong>淺層判斷至深層</strong>」的做法，只要是存取資料，規則的 true 與 false 一律由淺層 ( root 根節點 ) 開始判斷起，舉例來說，下列規則的寫法，你以為在 a 節點的層級寫了 false 擋住了寫入，但實際上在 root 節點卻允許寫入，這也會造成 a 節點仍然可以寫入資料的情形。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read": true,
+    ".write":true,
+    "a": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}
+</code></pre><p>如果使用 firebase 內建的模擬工具來看，可以看到當 root 節點已經允許，就算後方有設定規則 ( 不論規則為何 )，仍然可以寫入。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-01.jpg" alt=""></p>
+<p>如果不希望淺層的規則影響到淺層，可以<em>將相關規則設定留空</em>，不要指定 true 或 false，如此一來就會自動採用深層的設定，舉例來說，下方的規則指定了 a 節點不可讀取和寫入，b 節點則可以讀取和寫入，如果<strong>不寫讀寫的規則，會變成預設值 false，false 不會影響深層</strong>，下方的例子除了 b 節點之外，其他節點一率無法讀去和寫入。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    "a": {
+      ".read": false,
+      ".write": false
+    },
+    "b":{
+      ".read": true,
+      ".write": true
+    }
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-02.jpg" alt=""></p>
+<p>延續上面的例子，若將 root 節點與 a 節點的判斷對調，就會發現一開始先判斷 false，但遇到 a 層 true 又可以寫入的狀況。</p>
+<blockquote>
+<p><em>初次接觸會不容易理解，其實可以換個角度想，<strong>遇到 false 得到 0，遇到 true 就加 1，如果最後結果大於 0 就表示可以寫入或讀取</strong>，例如上面的例子，一開始如果是 true，最後不論哪層寫了 false，得到的值都一定大於 0，也就表示一定可以寫入或讀取，反之如果是下方的例子，一開始是 0，緊接著遇到 true 加 1，在 a 節點就可以寫入或讀取，而其他節點因為沒有加 1 所以仍保持 0，也就不能讀取或寫入了。</em></p>
+</blockquote>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read":false,
+    ".write":false,
+    "a": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-04.jpg" alt=""></p>
+<p>上述淺層判斷至深層的做法只適用於<code>.read</code>和<code>.write</code>，如果是<code>.validate</code>，則不受這個規則的限制，只會影響自己的層級，例如下方的規則，在 root 節點會「驗證新資料一定要包含 a 節點」，所以如果儲存的資料包含 a 節點，就可以通過驗證，但在 a 的層級卻會被「驗證新資料一定要是數字格式」所阻擋，導致資料一定得是 a 節點下的數字資料才能儲存的狀況。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read":true,
+    ".write":true,
+    ".validate": "newData.hasChildren(['a'])",
+    "a": {
+      ".read": false,
+      ".write": false,
+      ".validate": "newData.isNumber()"
+    }
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-03.jpg" alt=""></p>
+<h2>預設變數 predefined variables</h2>
+<p>在安全規則裡頭，除了單純的撰寫節點名稱外，還有以下幾種預設的變數，每個變數都有其特定用法，因此在「節點」的命名上，都應該要避開這些名稱。</p>
+<table>
+<thead>
+<tr>
+<th>變數</th>
+<th>說明</th>
+<th>.read</th>
+<th>.write</th>
+<th>.validate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>now</em></td>
+<td>建立節點的時間</td>
+<td>-</td>
+<td>-</td>
+<td>O</td>
+</tr>
+<tr>
+<td><em>root</em></td>
+<td>讀取或寫入資料之前，存在資料庫的根節點</td>
+<td>O</td>
+<td>O</td>
+<td>-</td>
+</tr>
+<tr>
+<td><em>newData</em></td>
+<td>寫入資料之後會存在的資料，包含新的資料和原本的資料</td>
+<td>-</td>
+<td>O</td>
+<td>O</td>
+</tr>
+<tr>
+<td><em>data</em></td>
+<td>讀取或寫入資料之前，存在資料庫的資料</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+</tr>
+<tr>
+<td><em>$變數</em></td>
+<td>通用變數符號，表示在某個節點內的所有節點</td>
+<td>O</td>
+<td>O</td>
+<td>O</td>
+</tr>
+<tr>
+<td><em>auth</em></td>
+<td>身份驗證使用的變數</td>
+<td>O</td>
+<td>O</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><em>now</em></p>
+<p><code>now</code>表示 firebase 資料庫寫入的時間，單位採用毫秒計算 ( 也就是從 1970 年 1 月 1 日到現在的毫秒數 )，從下列的規則，可以指定使用者寫入的資料，需要有一個 time 的節點放置當前的毫秒數，且這個毫秒數一定要在 now 之後。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read":false,
+    ".write":true,
+    ".validate":"newData.child('time').val()&lt;now"
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-06.jpg" alt=""></p>
+</li>
+<li><p><em>root</em></p>
+<p><code>root</code>表示根節點，通常會搭配像是<code>.child</code>的指令來輔助判斷，以下面的例子來說，如果資料庫內有 a 節點，且 a 節點內的 aa 節點的值為 ok，才能夠讀取資料，如此一來我們也可以透過外部寫入資料改變 aa 節點，來讓整份資料庫是可讀或不可讀。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read":"root.child('a').child('aa').val() == 'ok'",
+    ".write":true
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-07.jpg" alt=""></p>
+</li>
+<li><p><em>newData</em></p>
+<p><code>newData</code>表示新資料，新資料的判斷只會用於<code>.write</code>和<code>.vaildate</code>，下方的規則，會限制新的資料一定得包含 a 和 b 節點才能寫入。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read":true,
+    ".write":"newData.hasChildren(['a','b'])"
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-08.jpg" alt=""></p>
+</li>
+<li><p><em>data</em></p>
+<p><code>data</code>表示已經存在的資料，可以用在<code>.read</code>、<code>.write</code>和<code>.vaildate</code>，下方的規則，會判斷目前資料庫中 a 節點是否存在 lock 為 true 的資料，如果有，則無法寫入，如果沒有就可以寫入。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read":true,
+      "a":{
+        ".write":"data.child('lock').val() != true"
+      }
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-09.jpg" alt=""></p>
+</li>
+<li><p><em>$變數</em></p>
+<p><code>$變數</code>的意思是<em>通用變數符號</em>，也就是不論該層節點如何命名，使用<code>$變數</code>就代表該層所有的節點名稱，舉例來說，下方的規則雖然是<code>$a</code>，但表示得並不是 a 節點，而是在 root 下一層的「所有節點」都能寫入或讀取資料。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read": false,
+    ".write": false,
+      "$a": {
+        ".read": true,
+        ".write": true
+      }
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-05.jpg" alt=""></p>
+</li>
+<li><p><em>auth</em></p>
+<p><code>auth</code>用於搭配 firebase 專案的註冊帳號功能，透過判斷註冊的帳號、uid...等相關資訊，決定是否可以讀取或寫入資料，下方的規則，會判斷帳號的 uid 是否等於節點的名稱或者 uid 是否存在，如果不等於則不會寫入，如果 uid 相等則會寫入，如果 uid 不存在則會新建一個名稱為 uid 的節點。</p>
+<blockquote>
+<p>因為第一層是<code>.write</code>，若判斷為 true 則後方不論<code>.write</code>規則為何都可以寫入，所以第二層使用<code>.validate</code>就能避免「<strong>淺層判斷至深層</strong>」。( 請參考本篇文章上面的說明 )</p>
+</blockquote>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".write":"auth.uid != null",
+    "$user": {
+      ".read": true,
+      ".validate":"$user === auth.uid"
+    }
+  }
+}
+</code></pre><p>如果沒有 uid ，在第一層就會被排除。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-12.jpg" alt=""></p>
+<p>如果某個 uid 的節點名稱不等於使用者的 uid 時，這個節點不能寫入資料。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-13.jpg" alt=""></p>
+<p>如果資料庫中已經有 uid 的節點，當節點名稱等於使用者的 uid 時，這個節點就可以寫入資料。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-14.jpg" alt=""></p>
+</li>
+</ul>
+<h2>保護已存在的資料</h2>
+<p>透過使用者 auth 的規則，可以定義較為妥善的資料保護方法，但針對「匿名」的使用者，是否能讓「彈性」和「保護」都能兼具呢？針對匿名的使用者，大致上可以定義以下的保護條件：</p>
+<blockquote>
+<ul>
+<li>不能讀取整個資料庫，只能讀取某個節點 ( 表示知道名稱才能讀取 )</li>
+<li>不能刪除資料，只能不斷添加資料</li>
+</ul>
+</blockquote>
+<p>根據這兩個條件，定義以下的規則，在 root 層禁止讀取和寫入，在之後的每個節點都可以讀取，不過如果該節點有資料，則無法寫入。</p>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "$data": {
+      ".read": true,
+      ".write": "!data.exists()",
+    }
+  }
+}
+</code></pre><p>假設資料庫中已經有了下方的這些資料：</p>
+<pre class="prettyprint"><code>test: {
+  a: 123
+  b: 456
+  c: 789
+}
+</code></pre><p>透過模擬可以發現，若要讀取整份 data 會被拒絕。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-15.jpg" alt=""></p>
+<p>單獨讀取 a 節點的資料是被允許的。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-16.jpg" alt=""></p>
+<p>若要寫入資料到 a 節點，因為 a 節點已經有資料，所以無法寫入。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-17.jpg" alt=""></p>
+<p>不過如果是全新的節點，就可以寫入資料 ( 等同於使用 push 的功能 )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-rules-18.jpg" alt=""></p>
+<h2>小結</h2>
+<p>Firebase RealTime Database 的規則其實相當簡單，只是要熟悉其邏輯和運作方式，透過規則就能保護資料庫，也就能做出更彈性的應用了。</p>
+<blockquote>
+<p>更多參考：<a href="https://firebase.google.com/docs/reference/security/database/" target="_blank">https://firebase.google.com/docs/reference/security/database/</a></p>
+</blockquote>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+      <div class="ad">
+          <ins class="adsbygoogle" style="display:inline-block; width:100%; height:100%;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+      </div>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180831"></script>
+  <script src="/js/articles.js?20180831"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script> -->
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    let g = 0;
+    $(window).scroll(function () {
+      if(g == 0){
+        g = g + 1;
+        let element = document.createElement("script");
+        element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+        document.body.appendChild(element);
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8629612872829139",
+          enable_page_level_ads: true
+        });
+      }
+    });
+    let s = 0;
+    $('.search').on('click', function () {
+      if (s == 0) {
+        s = s + 1;
+        (function () {
+          var cx = '018175492205832613185:g5mvl2qoy5a';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      }
+    });
+  </script>
+  <script>
+    let a = 0;
+    $(window).scroll(function(){
+      if(a == 0){
+        a = a + 1;
+        var disqus_shortname = 'oxxostudio';
+        (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      }
+    });
+  </script>
+
+
+
+</body></html>
