@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>Firebase 教學 - 簡單的使用者註冊功能 - OXXO.STUDIO</title>
+
+  <meta name="description" content="Firebase 提供了很強大又簡單的後端功能，其中一項就是「註冊使用者」，這篇文章將會使用 RealTime Database 實作一個簡單的使用者註冊畫面，註冊後會紀錄使用者所儲存的相關資訊。">
+  <meta itemprop="description" content="Firebase 提供了很強大又簡單的後端功能，其中一項就是「註冊使用者」，這篇文章將會使用 RealTime Database 實作一個簡單的使用者註冊畫面，註冊後會紀錄使用者所儲存的相關資訊。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201905/firebase-simple-signup.jpg">
+  <meta property="og:description" content="Firebase 提供了很強大又簡單的後端功能，其中一項就是「註冊使用者」，這篇文章將會使用 RealTime Database 實作一個簡單的使用者註冊畫面，註冊後會紀錄使用者所儲存的相關資訊。">
+  <meta property="og:title" content="Firebase 教學 - 簡單的使用者註冊功能">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201905/firebase-simple-signup.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201905/firebase-simple-signup.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201905/firebase-simple-signup.html">
+  <link href="/css/article.css?2018061708" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Firebase 教學 - 簡單的使用者註冊功能</h1>
+<p>Firebase 提供了很強大又簡單的後端功能，其中一項就是「註冊使用者」，這篇文章將會使用 RealTime Database 實作一個簡單的使用者註冊畫面，註冊後會紀錄使用者所儲存的相關資訊。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用使用者功能</h2>
+<p>延續「<a href="../201904/firebase-realtime-database-start.html" target="_blank">Firebase 教學 - RealTime Database 安裝與使用</a> 」裡建立的專案，進入管理畫面後，點選左側選單 Authentication 可以看到使用者認證相關選項，點選上方「登入方式」頁籤，這裡採用「電子郵件/密碼」作為登入的依據。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-01.jpg" alt=""></p>
+<p>點選後方的鉛筆圖示，啟用「使用者能夠透過電子郵件和密碼註冊」。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-02.jpg" alt=""></p>
+<p>啟用後，除了可以讓使用者自行創建帳號密碼外，也可以點選上方「使用者」頁籤，手動添加使用者，這裡我添加了一個帳號為<code>test@test.com</code>的使用者，添加後亦可看到使用者的 uid。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-03.jpg" alt=""></p>
+<h2>網頁初始化 auth 功能</h2>
+<p>要使用 RealTime Database auth 功能需要載入對應的 js，這裡直接使用 google 提供的連結。</p>
+<p><em><code>&lt;script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"&gt;&lt;/script&gt;</code></em></p>
+<p>接著在 JavaScript 中撰寫下面這段初始化的程式碼，並宣告變數 database 為 firebase 的 realtime database。</p>
+<pre class="prettyprint"><code>firebase.initializeApp({
+  apiKey: "apiKey",
+  authDomain: "XXXXX.firebaseapp.com",
+  databaseURL: "https://XXXXX.firebaseio.com/"
+});
+
+const database = firebase.database();
+</code></pre><p>在初始化裡的<code>apiKey</code>和<code>authDomain</code>兩個屬性，<code>authDomain</code>為專案的名稱，<code>apiKey</code>就是 Authentication 「一般」頁籤裡的「<em>網路 API 金鑰</em>」。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-04.jpg" alt=""></p>
+<p>萬一這組網路金鑰被別人知道了，可以進入 <a href="https://console.cloud.google.com" target="_blank">Google Cloud Platform</a>，選擇專案，展開左側選單後點選「API 和服務」進行修改。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-05.jpg" alt=""></p>
+<p>點選「API 和服務」後，左側點選「憑證」，再點選「憑證頁籤」，按下「建立憑證」，選擇「API」金鑰即可建立新的網路金鑰。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-06.jpg" alt=""></p>
+<h2>使用者註冊帳號</h2>
+<p>初始化完成後，就來透過 auth 實作一個簡單的註冊功能：「當使用者註冊時會透過 firebase 將 uid 當作節點，紀錄註冊的時間與 email」，首先設計一下註冊畫面的 HTML，裡頭只需要一個帳號和密碼的輸入欄位、一個送出的按鈕、和一個顯示訊息的文字區域。</p>
+<pre class="prettyprint"><code>&lt;h2&gt;註冊新帳號&lt;/h2&gt;
+帳號：&lt;input id="email"&gt;
+密碼：&lt;input id="pwd" type="password"&gt;
+&lt;button id="submit"&gt;註冊&lt;/button&gt;
+&lt;h3 id="message"&gt;&lt;/h3&gt;
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-07.jpg" alt=""></p>
+<p>接著撰寫 Javascript，使用<code>auth().createUserWithEmailAndPassword</code>建立使用者，建立完成後寫入第一筆資料到 Firebase Realtime database 裡，第一筆資料的節點為 uid，內容則是 email 與註冊當下的時間。( <code>auth()</code> 支援 ES6 Promise 的寫法 )</p>
+<blockquote>
+<p>透過<code>auth()</code>註冊使用者後會直接登入，如果有出現錯誤，可透過<code>.catch</code>來回報錯誤訊息。</p>
+</blockquote>
+<pre class="prettyprint"><code>// 初始化
+const config = {
+  apiKey: "apiKey",
+  authDomain: "XXXXX.firebaseapp.com",
+  databaseURL: "https://XXXXX.firebaseio.com/"
+};
+firebase.initializeApp(config);
+const database = firebase.database();
+
+// 綁定註冊按鈕的點擊事件
+submit.addEventListener('click', () =&gt; {
+  // 點擊註冊按鈕時，紀錄使用者輸入的帳號密碼
+  let user = {
+    email: email.value,
+    pwd: pwd.value
+  };
+
+  // 透過 auth().createUserWithEmailAndPassword 建立使用者
+  firebase.auth().createUserWithEmailAndPassword(user.email, user.pwd)
+    .then(u =&gt; {
+      // 取得註冊當下的時間
+      let date = new Date();
+      let now = date.getTime();
+
+      // 記錄相關資訊到 firebase realtime database
+      database.ref(u.uid).set({
+        signup: now,
+        email: user.email
+      }).then(() =&gt; {
+        // 儲存成功後顯示訊息
+        message.innerHTML = 'User created successfully';
+      });
+    }).catch(err =&gt; {
+      // 註冊失敗時顯示錯誤訊息
+      message.innerHTML = err.message;
+    });
+});
+</code></pre><p>進入 Firebase Realtime database 的專案，設定規則如下，這個規則會禁止整份資料的讀取，但如果知道節點名稱就可讀取，如果使用者是登入狀態 ( 具備 uid ) 就可以寫入。</p>
+<blockquote>
+<p>可參考 <a href="../201904/firebase-realtime-database-rules.html" target="_blank">Firebase 教學 - RealTime Database Rules ( 規則 )</a></p>
+</blockquote>
+<pre class="prettyprint"><code>{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "$data": {
+      ".read": true,
+      ".write": "!data.exists()",
+    }
+  }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-08.jpg" alt=""></p>
+<p>設定完成後執行網頁，輸入使用者帳號和密碼，按下註冊，就會看見 Firebase 資料庫裡多出一筆資料，網頁上也會顯示註冊成功的資訊。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-09.jpg" alt=""></p>
+<p>點選左側選單 Authentication，就會發現畫面中已經增加了一名使用者。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-10.jpg" alt=""></p>
+<h2>小結</h2>
+<p>透過 Firebase，要實現簡單的註冊機制是相當容易的，搭配 Firebase RealTiem Database 更是可以做到許多基本後端功能，就能繼續實現更多登入後的應用囉！</p>
+<blockquote>
+<p>更多參考：<a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0" target="_blank">firebase.auth.Auth</a></p>
+</blockquote>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+      <div class="ad">
+          <ins class="adsbygoogle" style="display:inline-block; width:100%; height:100%;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+      </div>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180831"></script>
+  <script src="/js/articles.js?20180831"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script> -->
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    let g = 0;
+    $(window).scroll(function () {
+      if(g == 0){
+        g = g + 1;
+        let element = document.createElement("script");
+        element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+        document.body.appendChild(element);
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8629612872829139",
+          enable_page_level_ads: true
+        });
+      }
+    });
+    let s = 0;
+    $('.search').on('click', function () {
+      if (s == 0) {
+        s = s + 1;
+        (function () {
+          var cx = '018175492205832613185:g5mvl2qoy5a';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      }
+    });
+  </script>
+  <script>
+    let a = 0;
+    $(window).scroll(function(){
+      if(a == 0){
+        a = a + 1;
+        var disqus_shortname = 'oxxostudio';
+        (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      }
+    });
+  </script>
+
+
+
+</body></html>

@@ -1,5 +1,10 @@
 [{
   "tag": "tag-web",
+  "title": "Firebase 教學 - 簡單的使用者註冊功能",
+  "site": "/articles/201905/firebase-simple-signup.html",
+  "date": "May 23, 2019"
+},{
+  "tag": "tag-web",
   "title": "Firebase 教學 - RealTime Database Rules 規則",
   "site": "/articles/201904/firebase-realtime-database-rules.html",
   "date": "APR 30, 2019"
