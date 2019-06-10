@@ -1,0 +1,414 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>Firebase 教學 - Firestore 安裝、寫入和讀取 - OXXO.STUDIO</title>
+
+  <meta name="description" content="Cloud Firestore 是 Google 所提供的新一代即時資料庫，延續 RealTime Database 的高效率以及低延遲性，可以即時監聽資料庫的變化，並同步有使用到資料庫的各個應用，此外，在安全性的定義上也更加彈性和直覺，對於「純前端」工程師來說，是相當好用的資料庫。">
+  <meta itemprop="description" content="Cloud Firestore 是 Google 所提供的新一代即時資料庫，延續 RealTime Database 的高效率以及低延遲性，可以即時監聽資料庫的變化，並同步有使用到資料庫的各個應用，此外，在安全性的定義上也更加彈性和直覺，對於「純前端」工程師來說，是相當好用的資料庫。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201905/firebase-firestore.jpg">
+  <meta property="og:description" content="Cloud Firestore 是 Google 所提供的新一代即時資料庫，延續 RealTime Database 的高效率以及低延遲性，可以即時監聽資料庫的變化，並同步有使用到資料庫的各個應用，此外，在安全性的定義上也更加彈性和直覺，對於「純前端」工程師來說，是相當好用的資料庫。">
+  <meta property="og:title" content="Firebase 教學 - Firestore 安裝、寫入和讀取">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201905/firebase-firestore.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201905/firebase-firestore.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201905/firebase-firestore.html">
+  <link href="/css/article.css?2018061708" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li class="tag-all"><i></i>ALL</li>
+        <li class="tag-creative"><i></i>Creative</li>
+        <li class="tag-ui"><i></i>UI &amp; UX</li>
+        <li class="tag-photo"><i></i>PHOTO</li>
+        <li class="tag-css"><i></i>CSS</li>
+        <li class="tag-web"><i></i>WEB TECH</li>
+        <li class="tag-share"><i></i>Share</li>
+        <li class="tag-others"><i></i>OTHERS</li>
+        <li class="tag-archive hide"><i></i>ARCHIVE</li>
+      </ul>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Firebase 教學 - Firestore 安裝、寫入和讀取</h1>
+<p>Cloud Firestore 是 Google 所提供的新一代即時資料庫，延續 RealTime Database 的高效率以及低延遲性，可以即時監聽資料庫的變化，並同步有使用到資料庫的各個應用，此外，在安全性的定義上也更加彈性和直覺，對於「純前端」工程師來說，是相當好用的資料庫。</p>
+<blockquote>
+<p>延伸閱讀：<a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore?hl=zh-cn" target="_blank">Firestore 和 Realtime Database 的差異對比</a></p>
+</blockquote>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立資料庫</h2>
+<p>首先我們先用 Google 帳號登入 ( <a href="https://firebase.google.com/" target="_blank">https://firebase.google.com/</a> )，接著進入 firebase 的控制台，點選「<em>新增專案</em>」，伺服器所在的位置選擇台灣，Cloud Firestore 選擇 asia-east2 ( 單純只是選擇距離台灣比較近的 )，相關條款打勾後即可新增專案。( 如果名稱和別人重複，自訂名稱後方多出一串亂碼 )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-01.jpg" alt=""></p>
+<p>專案建立後，會自動進入專案的管理畫面，點選左側選單的「<em>Database</em>」，點選右側 Cloud Firestore 建立資料庫。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-02.jpg" alt=""></p>
+<p>一開始建立先使用「<em>以測試模式啟動</em>」，方便一開始寫入或讀取資料，後續篇幅會再介紹安全性規則。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-03.jpg" alt=""></p>
+<p>完成後就會看見類似下圖的畫面，表示資料庫建立完成，可以開始使用囉！</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-04.jpg" alt=""></p>
+<h2>初始化</h2>
+<p>首先載入對應的 Javascript 函式庫 ( 我使用 Google 所提供的連結 )</p>
+<p><em><code>&lt;script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"&gt;&lt;/script&gt;</code></em></p>
+<p><em><code>&lt;script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"&gt;&lt;/script&gt;</code></em></p>
+<p>在 Javascript 寫入下面這些程式碼，Project ID 填入自己的 Project ID，並宣告 db 變數為 Firestore 資料庫，執行後就可完成 Firestore 初始化。</p>
+<pre class="prettyprint"><code>firebase.initializeApp({
+  projectId: '### CLOUD FIRESTORE PROJECT ID ###'
+});
+var db = firebase.firestore();
+</code></pre><p>雖然有別於 Realtime Database 是使用 json 節點的形式，Firestore 採用<em>集合 ( collection )</em> 與<em>文件 ( doc )</em> 的概念，集合內會包含文件，文件內也可以包含集合，資料只能存在文件內，整體來說，本質上仍然是 json 格式，但又更靈活有彈性。( 可以把集合想像成 A4 資料夾，文件就是 A4 紙張，資料是寫在 A4 紙上而不是寫在資料夾上 )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-05.jpg" alt=""></p>
+<h2>寫入資料</h2>
+<p>Firestore 寫入資料的方式有設定 ( <code>set</code> )、更新 ( <code>update</code> )、添加 ( <code>add</code> ) 和刪除 ( <code>delete</code> )，四種方式都支援 Promise，可以串接 then 監聽是否完成。</p>
+<h3><em>1. 設定 set</em></h3>
+<p>透過<code>set</code>的方法，可以設定某個資料夾的內容，下面的程式範例執行後，會在 fruit 水果的集合裡，添加 apple 蘋果的文件，並在文件內寫入資料。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit').doc('apple');
+
+ref.set({
+  total: 500,
+  good: 480,
+  sale: 330
+}).then(() =&gt; {
+  console.log('set data successful');
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-06.jpg" alt=""></p>
+<p>有別於 Realtime Database 的<code>set</code>，firestroe 更提供了<em><code>merge</code></em>的方法，幫助我們在寫入資料時不會完全覆蓋，而是進行合併整理，<code>merge</code>的用法只需在 set 的參數後方，新增<code>{merge:true}</code>即可，下方的程式碼，會將 bad 和 eat 的屬性，merge 到原本的文件內。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit').doc('apple');
+
+ref.set({
+  bad:15,
+  eat:5
+},{merge: true}).then(() =&gt; {
+  console.log('set data successful');
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-07.jpg" alt=""></p>
+<p>如果沒有指定文件 doc 的名稱，執行後會自動產生一個亂數代碼作為文件名稱。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit').doc(); // doc() 沒有指定名稱
+
+ref.set({
+  total:200,
+  good:200
+}).then(() =&gt; {
+  console.log('set data successful');
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-08.jpg" alt=""></p>
+<h3><em>2. 更新 update</em></h3>
+<p><code>update</code>方法可以指定文件內某個屬性進行更新，避免覆寫整個文件內容 ( 跟上述 merge 有異曲同工之妙 )，下方程式碼執行後，會針對 total 和 good 的屬性做更新。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit').doc('apple');
+
+ref.update({
+  total:450,
+  good:400
+}).then(() =&gt; {
+  console.log('update data successful');
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-09.jpg" alt=""></p>
+<h3><em>3. 添加 add</em></h3>
+<p><code>add</code>主要<em>針對「集合」而非「文件」</em>，使用後可以自動添加文件，文件名稱為系統自動產生的亂碼，下方的程式碼在每次執行時，都會自動在 fruit 的集合內添加文件。( 和上述 set 資料夾不指定名稱的用法有異曲同工之妙 )</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit'); // add() 是針對集合使用
+
+ref.add({
+  total:450,
+  good:400
+}).then(() =&gt; {
+  console.log('add data successful');
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-10.jpg" alt=""></p>
+<h3><em>4. 刪除 delete</em></h3>
+<p><code>delete</code>方法可以用於刪除集合或是文件，但<em>如果集合裡有文件，則無法刪除集合</em>，下面的程式碼執行後，會刪除 fruit 集合裡的 apple 文件。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit').doc('apple');
+
+ref.delete().then(() =&gt; {
+  console.log('delete data successful');
+});
+</code></pre><p>如果不是想要刪除整個文件，只是想刪除文件內的某個屬性，則<em>需要透過<code>update</code>的方式來實現</em>，下方程式碼執行後會刪除 apple 文件內的 eat 屬性。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit').doc('apple');
+
+ref.update({
+  eat:firebase.firestore.FieldValue.delete()
+}).then(() =&gt; {
+  console.log('set data successful');
+});
+</code></pre><h2>讀取資料</h2>
+<p>Firestore 讀取資料的方式有一次性讀取 ( <code>get</code> ) 和即時監聽變化 ( <code>onSnapshot</code> ) 兩種方法，兩種方法可以搭配篩選 ( <code>where</code> ) 和排序 ( <code>orderBy</code> ) 兩種進一步的篩選，進行更精準的資料取得和比對的前置動作。</p>
+<p>在讀取資料前，我先在 firestore 裡建立了一個名為 fruit 的集合，裡面放入 apple、mango、banana 和 orange 四個文件，每個文件都有 total 和 good 的屬性，有些則有 recommend 或 eat 的屬性，待會就會用這份資料來操作。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-11.jpg" alt=""></p>
+<h3><em>1. 一次性讀取 get</em></h3>
+<p><code>get</code>的方法可以取得某個集合裡，所有文件的資料 ( 子集合只能在後端讀取，無法在前端或 App 段實現 )，下面的程式碼，執行後可以取得 fruit 裡頭四種水果的名稱和屬性，如果<code>get</code>的<em>對象為集合 collection</em>，取得資料後可使用<code>forEach</code>個別取出文件內容，詳細 API 可以參考：<a href="https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot" target="_blank">firebase. firestore. QuerySnapshot</a></p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit');
+
+ref.get().then(querySnapshot =&gt; {
+  querySnapshot.forEach(doc =&gt; {
+    console.log(doc.id, doc.data());
+  });
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-12.jpg" alt=""></p>
+<p>如果直接指定文件的名稱，就可直接取得文件的內容。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit').doc('apple');
+
+ref.get().then(doc =&gt; {
+  console.log(doc.data());
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-13.jpg" alt=""></p>
+<h3><em>2. 即時監聽變化 onSnapshot</em></h3>
+<p><code>onSnapshot</code>方法可以即時監聽資料庫的變化，有別於<code>get</code>方法，<code>onSnapshot</code>處在隨時監聽的狀態，只要有變化就會立刻傳送指定的資料，下面的程式執行後，可以取得 fruit 裡頭四種水果的名稱和屬性，這時如果再新增一種水果 grape，就會看到即時出現變化。( 對象為<em>集合 collection</em>，取得資料後可使用<code>forEach</code>個別取出文件內容 )</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit');
+
+ref.onSnapshot(querySnapshot =&gt; {
+  querySnapshot.forEach(doc =&gt; {
+    console.log(doc.id, doc.data());
+  });
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-14.jpg" alt=""></p>
+<p>如果直接指定文件的名稱，就可直接取得文件的內容。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit').doc('apple');
+
+ref.onSnapshot(doc =&gt; {
+  console.log(doc.data());
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-13.jpg" alt=""></p>
+<h3><em>3. 篩選 where</em></h3>
+<p>讀取資料的下一步就是要處理資料，處理時不免會用到許多邏輯判斷，然而 firestore 提供的<code>where</code>方法，能幫助我們進行第一步的資料篩選，如此一來就能減少並較為精準的讀入的資料，後續處理起來也就更簡單。</p>
+<p><code>where</code>包含三個參數，<em>第一個是屬性，第二個是邏輯運算子 ( 大於、小於...等 )，第三個是參數</em>，會寫在<code>get</code>或<code>onSnapshot</code>的前方，下面的程式執行後，會篩選出 fruit 集合裡具有 recommend 為 true 的 doc 文件。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit');
+
+ref.where('recommend','==',true).get().then(querySnapshot =&gt; {
+  querySnapshot.forEach(doc =&gt; {
+    console.log(doc.id, doc.data());
+  });
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-15.jpg" alt=""></p>
+<p><code>where</code>可以一個串一個的進行複合式的邏輯篩選，<em>如果是<code>==</code>的形式，可以篩選不同的屬性，如果是<code>&gt;</code>、<code>&gt;=</code>、<code>&lt;=</code>、<code>&lt;</code>之類的邏輯範圍，則只能針對單一屬性</em>，下方的程式會篩選出屬性 total 介於 200 到 400 之間的 doc 文件。</p>
+<blockquote>
+<p>使用<code>where</code>做判斷要注意<em>型別</em>，如果資料庫中的數字為 string，則無法使用 number 的邏輯判斷。</p>
+</blockquote>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+  var ref = db.collection('fruit');
+  ref.where('total', '&gt;=', 200).where('total', '&lt;=', 400).get().then(querySnapshot =&gt; {
+    querySnapshot.forEach(doc =&gt; {
+      console.log(doc.id, doc.data());
+    });
+  });
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-16.jpg" alt=""></p>
+<h3><em>4. 排序 orderBy</em></h3>
+<p><code>orderBy</code>通常會和<code>limit</code>搭配，主要作為排序後篩選特定數量的資料，<code>orderBy</code>有兩個參數，第一個是要進行排序的屬性名稱，第二個是遞增 ( asc ) 或遞減 ( desc )，下方程式執行後會篩選出 total 屬性最高的前三名。</p>
+<pre class="prettyprint"><code>var db = firebase.firestore();
+var ref = db.collection('fruit');
+ref.orderBy('total','desc').limit(3).get().then(querySnapshot =&gt; {
+  querySnapshot.forEach(doc =&gt; {
+    console.log(doc.id, doc.data());
+  });
+});
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-17.jpg" alt=""></p>
+<h2>小結</h2>
+<p>其實 Cloud Firestore 使用上就跟 Realtime Database 一樣簡單，而且功能還更多，後續篇幅會再繼續介紹 Cloud Firestore 的安全性規則。</p>
+
+
+      <div class="social-icon">
+        <i class="icon-home"><i></i><span>Back Home</span></i>
+        <i class="icon-list"><i></i><span>Article List</span></i>
+        <i class="icon-facebook"><i></i><span>Share on Facebook</span></i>
+        <i class="icon-google"><i></i><span>Share on Google+</span></i>
+        <i class="icon-twitter"><i></i><span>Share on Twitter</span></i>
+        <i class="goto-top"><i></i><span>Back to Top</span></i>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+      <div class="ad">
+          <ins class="adsbygoogle" style="display:inline-block; width:100%; height:100%;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673" data-ad-format="auto"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+      </div>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      前一篇文章：
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      下一篇文章：
+      <br> 
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="footer-link">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/lib/jquery.min.js"></script>
+  <script src="/js/layout.js?20180831"></script>
+  <script src="/js/articles.js?20180831"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    $(function(){
+      $('pre code').each(function(i, block) {
+        $(block).attr('class');
+        hljs.highlightBlock(block);
+      });
+    })
+  </script>
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8629612872829139",
+    enable_page_level_ads: true
+  });
+  </script> -->
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    let g = 0;
+    $(window).scroll(function () {
+      if(g == 0){
+        g = g + 1;
+        let element = document.createElement("script");
+        element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+        document.body.appendChild(element);
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8629612872829139",
+          enable_page_level_ads: true
+        });
+      }
+    });
+    let s = 0;
+    $('.search').on('click', function () {
+      if (s == 0) {
+        s = s + 1;
+        (function () {
+          var cx = '018175492205832613185:g5mvl2qoy5a';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      }
+    });
+  </script>
+  <script>
+    let a = 0;
+    $(window).scroll(function(){
+      if(a == 0){
+        a = a + 1;
+        var disqus_shortname = 'oxxostudio';
+        (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      }
+    });
+  </script>
+
+
+
+</body></html>

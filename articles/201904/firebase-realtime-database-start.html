@@ -80,7 +80,7 @@
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立資料庫</h2>
 <p>首先我們先用 Google 帳號登入 ( <a href="https://firebase.google.com/" target="_blank">https://firebase.google.com/</a> )，接著進入 firebase 的控制台，點選「<em>新增專案</em>」，新增的設定除了給予命名，也可以選擇伺服器所在的位置，這裡我選擇台灣，把相關條款打勾之後就可以新增專案。( 如果名稱和別人重複，就會看到自訂名稱後方多出一串亂碼 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-01.jpg" alt=""></p>
-<p>專案建立後，會自動進入專案的管理畫面，點選左側選單的「＊Database＊」，下拉內容看到「＊Realtime database＊」，點選建立資料庫，就能建立 Realtime 的資料庫了。( Firestore 會另外用專文介紹 )</p>
+<p>專案建立後，會自動進入專案的管理畫面，點選左側選單的「<em>Database</em>」，下拉內容看到「<em>Realtime database</em>」，點選建立資料庫，就能建立 Realtime 的資料庫了。( Firestore 請參考：<a href="../201905/firebase-firestore.html" target="_blank">Firebase 教學 - Firestore 安裝與使用</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-02.jpg" alt=""></p>
 <p>一開始建立我們先使用「<em>以測試模式啟動</em>」，方便我們起手式寫入或讀取資料，後續篇幅會介紹安全性規則。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-03.jpg" alt=""></p>
@@ -96,7 +96,7 @@
 
 const database = firebase.database();
 </code></pre><h2>寫入資料</h2>
-<p>寫入資料的方式分成四種：設定 ( <code>set</code> )、更新 ( <code>update</code> ) 、添加 ( <code>push</code> ) 和移除 ( <code>remove</code> )，主要都是以 JSON 格式儲存資料，三種方式也都支援 Promise，可以串接上 then 就能監聽是否完成。</p>
+<p>寫入資料的方式分成四種：設定 ( <code>set</code> )、更新 ( <code>update</code> ) 、添加 ( <code>push</code> ) 和移除 ( <code>remove</code> )，主要都是以 JSON 格式儲存資料，四種方式也都支援 Promise，可以串接 then 監聽是否完成。</p>
 <h3><em>1. 設定 set</em></h3>
 <p>延續上方的初始化，使用下面這段程式碼，網頁執行後就會在「根節點」( 根目錄 ) 寫入資料，要注意的是，使用 set 會把指定節點下的內容完全覆蓋。( 如果要刪除資料只需 <code>set('')</code> 即可 )</p>
 <pre class="prettyprint"><code>database.ref('/').set({a:123});
@@ -166,7 +166,7 @@ database.ref('/c').push(9);
     console.log(e.val());
 });
 </code></pre><h2>小結</h2>
-<p>Firebase 的 realtime database 真的是前端工程師的一大福音，因為不需要懂太多資料庫的原理或操作技巧，就能輕鬆將簡單的資料庫應用套用到自己的網站裡頭，後續篇幅會繼續介紹 realtime database 的規則和應用。</p>
+<p>Firebase 的 realtime database 真的是前端工程師的一大福音，因為不需要懂太多資料庫的原理或操作技巧，就能輕鬆將簡單的資料庫應用套用到自己的網站裡頭，後續篇幅會繼續介紹 <a href="firebase-realtime-database-rules.html#_self" target="_blank">Realtime Database 的安全性規則</a>。</p>
 
 
       <div class="social-icon">
