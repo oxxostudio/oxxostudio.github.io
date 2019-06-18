@@ -12,17 +12,34 @@
       }
   </script>
 
-  <title>Firebase 教學 - RealTime Database Rules ( 規則 ) - OXXO.STUDIO</title>
+  <title>Firebase 教學 - RealTime Database Rules 安全規則 - OXXO.STUDIO</title>
 
-  <meta name="description" content="透過 Rules ( 規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
-  <meta itemprop="description" content="透過 Rules ( 規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
+  <meta name="description" content="透過 Rules ( 安全規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
+  <meta itemprop="description" content="透過 Rules ( 安全規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
   <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201904/firebase-realtime-database-rules.jpg">
-  <meta property="og:description" content="透過 Rules ( 規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
-  <meta property="og:title" content="Firebase 教學 - RealTime Database Rules ( 規則 )">
+  <meta property="og:description" content="透過 Rules ( 安全規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。">
+  <meta property="og:title" content="Firebase 教學 - RealTime Database Rules 安全規則">
   <meta property="og:url" content="https://www.oxxostudio.tw/articles/201904/firebase-realtime-database-rules.html">
   <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201904/firebase-realtime-database-rules.jpg">
   <link rel="canonical" href="https://www.oxxostudio.tw/articles/201904/firebase-realtime-database-rules.html">
-  <link href="/css/article.css?2018061708" rel="stylesheet">
+  <link href="/css/article.css?20190612" rel="stylesheet">
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
 </head>
 
 <body>
@@ -51,22 +68,18 @@
       </a>
     </div>
     <div id="main-menu">
-      <div class="mobile-menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="mobile-menu"><span></span><span></span><span></span></div>
+      <div class="menu">
+        <a href="/"><i></i>ALL</a>
+        <a href="/index.html?tag-creative"><i></i>Creative</a>
+        <a href="/index.html?tag-ui"><i></i>UI &amp; UX</a>
+        <a href="/index.html?tag-photo"><i></i>PHOTO</a>
+        <a href="/index.html?tag-css"><i></i>CSS</a>
+        <a href="/index.html?tag-web"><i></i>WEB TECH</a>
+        <a href="/index.html?tag-share"><i></i>Share</a>
+        <a href="/index.html?tag-others"><i></i>OTHERS</a>
+        <a href="/index.html?tag-archive"><i></i>ARCHIVE</a>
       </div>
-      <ul>
-        <li class="tag-all"><i></i>ALL</li>
-        <li class="tag-creative"><i></i>Creative</li>
-        <li class="tag-ui"><i></i>UI &amp; UX</li>
-        <li class="tag-photo"><i></i>PHOTO</li>
-        <li class="tag-css"><i></i>CSS</li>
-        <li class="tag-web"><i></i>WEB TECH</li>
-        <li class="tag-share"><i></i>Share</li>
-        <li class="tag-others"><i></i>OTHERS</li>
-        <li class="tag-archive hide"><i></i>ARCHIVE</li>
-      </ul>
     </div>
     <div class="body-line"></div>
   </div>
@@ -75,8 +88,8 @@
     <article>
       <i class="tag"></i>
 
-<h1>Firebase 教學 - RealTime Database Rules ( 規則 )</h1>
-<p>透過 Rules ( 規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。</p>
+<h1>Firebase 教學 - RealTime Database Rules 安全規則</h1>
+<p>透過 Rules ( 安全規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本寫法</h2>
 <p>RealTime Database Rules 使用類似 JSON 格式的寫法，根據定義 <code>.read</code>、<code>.write</code> 和 <code>.validate</code>( <code>.indexOn</code> 也是屬性之一，但主要用途作為排序，在資料量不大時發揮不了作用，就不在此處介紹 )</p>
 <table>
@@ -414,7 +427,7 @@
   </div>
 
   <script src="/js/lib/jquery.min.js"></script>
-  <script src="/js/layout.js?20180831"></script>
+  <script src="/js/layout.js?20190612"></script>
   <script src="/js/articles.js?20180831"></script>
   <!-- highlight -->
   <style>
@@ -429,34 +442,10 @@
       });
     })
   </script>
-  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-8629612872829139",
-    enable_page_level_ads: true
-  });
-  </script> -->
-  <script src="https://www.google.com/jsapi"></script>
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-2708968-3', 'auto');
-    ga('send', 'pageview');
-  </script>
   <script>
     let g = 0;
-    $(window).scroll(function () {
-      if(g == 0){
+    window.addEventListener('scroll', () => {
+      if (g == 0) {
         g = g + 1;
         let element = document.createElement("script");
         element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
@@ -468,7 +457,7 @@
       }
     });
     let s = 0;
-    $('.search').on('click', function () {
+    document.querySelector('.search').addEventListener('click', () => {
       if (s == 0) {
         s = s + 1;
         (function () {
