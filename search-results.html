@@ -80,7 +80,7 @@
         <a href="/index.html?tag-web"><i></i>WEB TECH</a>
         <a href="/index.html?tag-share"><i></i>Share</a>
         <a href="/index.html?tag-others"><i></i>OTHERS</a>
-        <a href="/index.html?tag-archive"><i></i>ARCHIVE</a>
+        <a href="/list.html"><i></i>ARCHIVE</a>
       </div>
     </div>
     <div class="body-line"></div>
@@ -117,40 +117,23 @@
         <li></li>
       </ul>
     </div>
-    <div class="license">Copyright 2017 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+    <div class="license">Copyright 2019 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
   </div>
 
   <script src="/js/lib/jquery.min.js"></script>
   <script src="/js/layout.js?20190612"></script>
   <script>
-    let g = 0;
-    window.addEventListener('scroll', () => {
-      if (g == 0) {
-        g = g + 1;
-        let element = document.createElement("script");
-        element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-        document.body.appendChild(element);
-        (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-8629612872829139",
-          enable_page_level_ads: true
-        });
-      }
-    });
-    let s = 0;
-    document.querySelector('.search').addEventListener('click', () => {
-      if (s == 0) {
-        s = s + 1;
-        (function () {
-          var cx = '018175492205832613185:g5mvl2qoy5a';
-          var gcse = document.createElement('script');
-          gcse.type = 'text/javascript';
-          gcse.async = true;
-          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(gcse, s);
-        })();
-      }
-    });
+    const showAD = () => {
+      let element = document.createElement("script");
+      element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      document.body.appendChild(element);
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8629612872829139",
+        enable_page_level_ads: true
+      });
+      window.removeEventListener('scroll', showAD);
+    }
+    window.addEventListener('scroll', showAD);
   </script>
 </body>
 
