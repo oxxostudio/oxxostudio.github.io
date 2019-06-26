@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>提升網站品質，擁抱 Javascript ES6 - OXXO.STUDIO</title>
+
+  <meta name="description" content="隨著網頁技術的演進，其實這一年來，我在工作上已經都使用 Javascript ES6，越來越少接觸 jQuery，因此最近就花了一些時間，將部落格的 js 重構改成 ES6 的寫法，也把網站速度分數提升到 滿分一百分 ( PageSpeed Insights )，用篇文章稍微紀錄一下，象徵正式告別 jQuery 的時代開始。">
+  <meta itemprop="description" content="隨著網頁技術的演進，其實這一年來，我在工作上已經都使用 Javascript ES6，越來越少接觸 jQuery，因此最近就花了一些時間，將部落格的 js 重構改成 ES6 的寫法，也把網站速度分數提升到 滿分一百分 ( PageSpeed Insights )，用篇文章稍微紀錄一下，象徵正式告別 jQuery 的時代開始。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201906/use-js-es6.jpg">
+  <meta property="og:description" content="隨著網頁技術的演進，其實這一年來，我在工作上已經都使用 Javascript ES6，越來越少接觸 jQuery，因此最近就花了一些時間，將部落格的 js 重構改成 ES6 的寫法，也把網站速度分數提升到 滿分一百分 ( PageSpeed Insights )，用篇文章稍微紀錄一下，象徵正式告別 jQuery 的時代開始。">
+  <meta property="og:title" content="提升網站品質，擁抱 Javascript ES6">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201906/use-js-es6.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201906/use-js-es6.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201906/use-js-es6.html">
+  <link href="/css/article.css?20190621" rel="stylesheet">
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu"><span></span><span></span><span></span></div>
+      <div class="menu">
+        <a href="/"><i></i>ALL</a>
+        <a href="/index.html?tag-creative"><i></i>Creative</a>
+        <a href="/index.html?tag-ui"><i></i>UI &amp; UX</a>
+        <a href="/index.html?tag-photo"><i></i>PHOTO</a>
+        <a href="/index.html?tag-css"><i></i>CSS</a>
+        <a href="/index.html?tag-web"><i></i>WEB TECH</a>
+        <a href="/index.html?tag-share"><i></i>Share</a>
+        <a href="/index.html?tag-others"><i></i>OTHERS</a>
+        <a href="/list.html"><i></i>ARCHIVE</a>
+      </div>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>提升網站品質，擁抱 Javascript ES6</h1>
+<p>隨著網頁技術的演進，其實這一年來，我在工作上已經都使用 Javascript ES6，越來越少接觸 jQuery，因此最近就花了一些時間，將部落格的 js 重構改成 ES6 的寫法，也把網站速度分數提升到 滿分一百分 ( PageSpeed Insights )，用篇文章稍微紀錄一下，象徵正式告別 jQuery 的時代開始。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201906/use-js-es6-01.jpg" alt=""></p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>有用到 ES6 的地方</h2>
+<p>坦白說我很感謝 jQuery，它開啟了我對 Javascript 熱情，不過或許這就是科技吧，當下熱門的技術通常不到幾年就會迭代更換，也因此反而激起了我回頭練習基礎語法的動力，當你的基礎夠扎實，就如同武林高手一般，內功越深練甚麼武功都快，下面幾個項目是我在這個 Blog 裡有用到 ES6 語法的地方，沒有很多但挺實用，分享給大家～</p>
+<h3>1. 改用 fetch</h3>
+<p>過去在讀取外部檔案，或發送 http request，如果是用 jQuery 還滿方便的，只要透過<code>$.getJSON</code>、<code>$.ajax</code>或<code>$.POST</code>都可以輕鬆完成，但相對要付出許多層層疊疊的 callback，但 ES6 提供了 fetch 這個 promise 的方法，透過 fetch 就能輕鬆實現從或外部取得資料或發送 http request 的功能。</p>
+<pre class="prettyprint"><code>fetch('XXXX.json')
+.then(response =&gt; {
+  return response.json();
+}).then(result =&gt; {
+  return result;
+});
+</code></pre><h3>2. 使用 async、 await</h3>
+<p>async 和 await 是 promise 的語法糖，在主流瀏覽器已經全部支援的狀況下，沒道理不採用這麼好用的新語法，由於上述 fetch 是 promise 物件，所以透過 async 和 await，就能再確認資料載入後，再進行後續的事情 ( 在畫面上產生 DOM、隨機取出文章...等 )。</p>
+<pre class="prettyprint"><code>!async function(){
+  const list = () =&gt; {
+    return fetch('XXXX.json')
+      .then(response =&gt; {
+        return response.json();
+      }).then(result =&gt; {
+        return result;
+      });
+  };
+  const data = await list();
+  // do something...
+}();
+</code></pre><h3>3. 使用 const、let 和箭頭函數</h3>
+<p>變數宣告 const、let 以及箭頭函式，都是 ES6 裡頭滿好用的新功能，重點除了可以大幅減少程式碼，更可以明確定義某個範圍內的變數，不過由於 jQuery 在某些狀況並不支援 const、let 和箭頭函式，也加深了要移除 jQuery 的決心。( 並非所有的函式都要換成箭頭函式，在某些情境下箭頭函式的確很好用 )</p>
+<pre class="prettyprint"><code>// 原本寫法
+var a =  function(){ ... }
+
+// 改成箭頭函式
+const a = () =&gt; { ... }
+</code></pre><h3>4. 使用 every 處理陣列</h3>
+<p>every 是 ES6 語法裡處理陣列的好方法，有別於 forEach 無法停止 ( 迴圈一定得跑完才會停 )，every 可以撰寫邏輯判斷，只要 return false 就會停止迴圈，加速，加快陣列的操作和運算。</p>
+<pre class="prettyprint"><code>const arr = [...];
+arr.every(e =&gt; {
+  if(...){
+    return false;
+  }else{
+    return true;
+  }
+});
+</code></pre><h3>5. 使用模板字符串 Template Literal</h3>
+<p>過去要透過 Javascript 在 HTML 顯示字串或是產生 HTML tag，都得使用一般的字串搭配 + 號來實現，在 ES6 裡可以直接使用模板字符串來完成，甚至是換行也不用像過去得添加<code>\n</code>才能夠換行，直接換行即可，相當的方便實用。</p>
+<pre class="prettyprint"><code>// 原本寫法
+var a = 'oxxo';
+var b = 'xoox';
+var c = a + '你是不是' + b + '呀？';
+
+// 改成模板字符串
+var a = 'oxxo';
+var b = 'xoox';
+var c = `${a}你是不是${b}呀？`;
+</code></pre><h2>小結</h2>
+<p>接觸 ES6 的語法之後，也讓我萌生許多不同的想法和創意，我想再來可能會陸陸續續把一些過去用 jQuery 寫得醜醜的程式碼改掉，敬請期待囉～</p>
+
+
+      <div class="social-icon">
+        <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
+        <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
+        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="goto-top"><i></i><span>Back to Top</span></a>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      <span>前一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      <span>下一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="license">Copyright 2019 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <script src="/js/layout.js?20190612"></script>
+  <script src="/js/articles.js?20190621"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    document.querySelectorAll('pre code').forEach(e => {
+      hljs.highlightBlock(e);
+    });
+  </script>
+  <script>
+    const showAD = () => {
+      let element = document.createElement("script");
+      element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      document.body.appendChild(element);
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8629612872829139",
+        enable_page_level_ads: true
+      });
+      window.removeEventListener('scroll', showAD);
+    }
+    window.addEventListener('scroll', showAD);
+  </script>
+  <script>
+    const showDisqus = () => {
+      let scrollTop = this.pageYOffset;
+      let bodyHeight = document.body.clientHeight;
+      if (scrollTop > bodyHeight / 2) {
+        let dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//oxxostudio.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        window.removeEventListener('scroll', showDisqus);
+      }
+    };
+    window.addEventListener('scroll', showDisqus);
+  </script>
+
+
+
+</body></html>
