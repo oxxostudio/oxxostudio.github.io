@@ -1,8 +1,13 @@
 [{
   "tag": "tag-web",
+  "title": "Firebase 教學 - Firestore Rules 安全規則",
+  "site": "/articles/201907/firebase-firestore-rules.html",
+  "date": "JUL 10, 2019"
+},{
+  "tag": "tag-web",
   "title": "提升網站品質，擁抱 Javascript ES6",
   "site": "/articles/201906/use-js-es6.html",
-  "date": "JUL 25, 2019"
+  "date": "JUN 25, 2019"
 },{
   "tag": "tag-web",
   "title": "Firebase 教學 - Firestore 安裝、寫入和讀取",
