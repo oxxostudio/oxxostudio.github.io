@@ -1,8 +1,18 @@
 [{
   "tag": "tag-web",
+  "title": "Firebase 教學 - Node.js 操作 Firestore",
+  "site": "/articles/201907/firebase-nodejs-firestore.html",
+  "date": "JUL 31 2019"
+},{
+  "tag": "tag-web",
+  "title": "Firebase 教學 - Node.js 操作 Realtime Database",
+  "site": "/articles/201907/firebase-nodejs-realtime-database.html",
+  "date": "JUL 30 2019"
+},{
+  "tag": "tag-web",
   "title": "Firebase 教學 - Firestore Rules 安全規則",
   "site": "/articles/201907/firebase-firestore-rules.html",
-  "date": "JUL 10, 2019"
+  "date": "JUL 5, 2019"
 },{
   "tag": "tag-web",
   "title": "提升網站品質，擁抱 Javascript ES6",

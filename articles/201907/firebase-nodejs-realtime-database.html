@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>Firebase 教學 - Node.js 操作 Realtime Database - OXXO.STUDIO</title>
+
+  <meta name="description" content="Firebase 除了可以讓網頁前端擁有基本資料庫的能力，也可以使用 Node.js 在後端運行，這篇文章將會描述如何透過 Node.js 操作 RealTime Database，最後還會把程式碼部署到 Google Cloud functions，一氣呵成的實現透過 http request 串接 Realtime Database 的實用範例。">
+  <meta itemprop="description" content="Firebase 除了可以讓網頁前端擁有基本資料庫的能力，也可以使用 Node.js 在後端運行，這篇文章將會描述如何透過 Node.js 操作 RealTime Database，最後還會把程式碼部署到 Google Cloud functions，一氣呵成的實現透過 http request 串接 Realtime Database 的實用範例。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201907/firebase-nodejs-realtime-database.jpg">
+  <meta property="og:description" content="Firebase 除了可以讓網頁前端擁有基本資料庫的能力，也可以使用 Node.js 在後端運行，這篇文章將會描述如何透過 Node.js 操作 RealTime Database，最後還會把程式碼部署到 Google Cloud functions，一氣呵成的實現透過 http request 串接 Realtime Database 的實用範例。">
+  <meta property="og:title" content="Firebase 教學 - Node.js 操作 Realtime Database">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201907/firebase-nodejs-realtime-database.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201907/firebase-nodejs-realtime-database.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201907/firebase-nodejs-realtime-database.html">
+  <style>body{display:none;}</style>
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu"><span></span><span></span><span></span></div>
+      <div class="menu">
+        <a href="/"><i></i>ALL</a>
+        <a href="/index.html?tag-creative"><i></i>Creative</a>
+        <a href="/index.html?tag-ui"><i></i>UI &amp; UX</a>
+        <a href="/index.html?tag-photo"><i></i>PHOTO</a>
+        <a href="/index.html?tag-css"><i></i>CSS</a>
+        <a href="/index.html?tag-web"><i></i>WEB TECH</a>
+        <a href="/index.html?tag-share"><i></i>Share</a>
+        <a href="/index.html?tag-others"><i></i>OTHERS</a>
+        <a href="/list.html"><i></i>ARCHIVE</a>
+      </div>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>Firebase 教學 - Node.js 操作 Realtime Database</h1>
+<p>Firebase 除了可以讓網頁前端擁有基本資料庫的能力，也可以使用 Node.js 在後端運行，這篇文章將會描述如何透過 Node.js 操作 RealTime Database，最後還會把程式碼部署到 Google Cloud functions，一氣呵成的實現透過 http request 串接 Realtime Database 的實用範例。</p>
+<blockquote>
+<p>延伸閱讀：<a href="firebase-nodejs-firestore.html">Firebase 教學 - Node.js 操作 Firestore</a></p>
+</blockquote>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝 Node.js 相關模組</h2>
+<p>使用 Node.js 操作 Firebase 就跟網頁前端一樣簡單，在網頁前端僅需載入對應的 JavaScript，而 Node.js 裏頭僅需引用對應的模組即可，安裝套件的指令如下，首先建立並初始化一個 Node.js 專案。</p>
+<pre class="prettyprint"><code>$ npm init
+</code></pre><p>接著安裝 firebase 模組</p>
+<pre class="prettyprint"><code>$ npm install --save firebase
+</code></pre><p>使用時 require firebase 模組，並宣告一個變數進行 firebase 初始化，初始化的內容和網頁前端幾乎相同，宣告資料庫的網址就能操作操作 Realtime database。</p>
+<pre class="prettyprint"><code>var firebase = require('firebase');
+var app = firebase.initializeApp({
+    databaseURL: 'https://XXXXX.firebaseio.com/'
+});
+</code></pre><h2>透過 http request 操作 RealTime Database</h2>
+<p>透過 Node.js 內建的<code>http 模組</code>，可以建立個接收 http request 的 server，搭配內建的<code>url 模組</code>，就能將收到的資料訊息轉換為物件格式，比較需要注意的地方有兩個：</p>
+<ul>
+<li>第一、<em>排除 favicon.ico</em>：實作的過程中發現接收 http request 會包含 favicon.ico，為了避免後續的問題，使用簡單的邏輯判斷排除。</li>
+<li>第二、<em>重設 firebase.initializeApp</em>：由於 firebase.initializeApp 預設名稱為 default，亦可透過第二個參數指定名稱，在同一組程式內名稱不能重複，如果需要重複初始化，除了產生新的名稱之外，就得使用<code>delete()</code>的方法移除初始化，這樣就能不斷接收 http request 不斷讀取或寫入資料庫了。( <em>如果不這麼做，重複發送 http request 會產生 <code>Firebase App named '[DEFAULT]' already exists</code> 的錯誤訊息</em> )</li>
+</ul>
+<p>下方的程式碼執行後，就會啟動一個本地端的 server，這時只要在網址列輸入<code>https://網址?databaseUrl=XXX&amp;type=push&amp;ref=XXX&amp;data=XXX</code>就能將資料寫入到資料庫裡，在網址列輸入<code>https://網址?databaseUrl=XXX&amp;type=read&amp;ref=XXX</code>就能讀取資料庫資料。</p>
+<pre class="prettyprint"><code>const http = require('http');
+const url = require('url');
+
+const firebase = require('firebase/app');
+require('firebase/database');
+
+const server = http.createServer((req, res) =&gt; {
+    if (req.url !== '/favicon.ico') {  // 因接收時會一併取得 undefined 的 facicon.ico，使用簡單的邏輯排除
+        const params = url.parse(req.url, true).query; //取得網址每個參數
+        const ref = params.ref || '/';
+        const type = params.type || 'set';
+        const data = params.data;
+        // 發送 https://網址?databaseUrl=XXX&amp;type=push&amp;ref=XXX&amp;data=XXX 就可寫入資料
+        // 發送 https://網址?databaseUrl=XXX&amp;type=read&amp;ref=XXX 就可讀取資料
+
+        const opt = { 
+            databaseURL: `https://${params.databaseUrl}/`
+        };
+        const app = firebase.initializeApp(opt); // firebase 初始化
+        const database = app.database();
+
+        switch (type) {  // 依據不同的參數寫入或讀取資料
+            case 'push':
+                database.ref(ref).push(data).then(() =&gt; {
+                    res.end(`push data to "${ref}" ok`);
+                    firebase.app().delete(); // 寫入完成後刪除 firebase 宣告
+                });
+                break;
+            case 'set':
+                database.ref(ref).set(data).then(() =&gt; {
+                    res.end(`set data to "${ref}" ok`);
+                    firebase.app().delete(); // 寫入完成後刪除 firebase 宣告
+                });
+                break;
+            case 'read':
+                database.ref(ref).once('value', e =&gt; {
+                    let dataObj = e.val();
+                    let html = '';
+                    for (let i in dataObj) {
+                        html = `${html}&lt;div&gt;${dataObj[i]}&lt;/div&gt;`;
+                    }
+                    console.log(e.val());
+                    res.end(html);
+                }).then(() =&gt; {
+                    firebase.app().delete(); // 讀取完成後刪除 firebase 宣告
+                });
+                break;
+        }
+    }
+});
+server.listen(5000);
+</code></pre><h2>部署到 Google Cloud Functions</h2>
+<p>已經能在本地端運行 Node.js 服務並操作 Realtime database 之後，下一步就是將這組程式部署到 Google Cloud Functions 裡，登入 Google 並進入 GCP ( Google Cloud Platform ) 後，在右方選單選擇 Cloud Functions。</p>
+<blockquote>
+<p>對於 Google Cloud Functions 不了解的可以參考我的這篇文章：<a href="https://www.oxxostudio.tw/articles/201805/backend-google-cloud-functions.html" target="_blank">簡易後端實作 ( Google Cloud Functions )</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-01.jpg" alt=""></p>
+<p>如果第一次使用會要求輸入信用卡資訊 ( 不用太擔心，像我們這種小咖用戶非常不容易超過免費的額度 )，輸入完成後就可以建立一個專案，專案建立後就新建一組函式，輸入函式名稱以及選擇 128 MB 記憶體。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-02.jpg" alt=""></p>
+<p>設定時選擇 Node.js 版本為 8，並開始編輯程式，在 index.js 的區域輸入下方程式碼，程式碼和上面介紹的大同小異，差別在於執行函示改成 helloWorld，並在一開始的時候使用<code>setHeader</code>做跨域設定。</p>
+<pre class="prettyprint"><code>const url = require('url');
+const firebase = require('firebase/app');
+require('firebase/database');
+
+exports.helloWorld = (req, res) =&gt; { 
+res.setHeader('Access-Control-Allow-Origin', '*');
+res.setHeader('Access-Control-Request-Method', '*');
+res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+res.setHeader('Access-Control-Allow-Headers', '*');
+
+if (req.url !== '/favicon.ico') {
+    const params = url.parse(req.url, true).query;
+    const databaseUrl = `https://${params.databaseUrl}/`;
+    const ref = params.ref || '/';
+    const type = params.type || 'set';
+    const app = firebase.initializeApp({ databaseURL: databaseUrl });
+    const database = app.database();
+    const data = params.data;
+    switch (type) {
+        case 'push':
+            database.ref(ref).push(data).then(() =&gt; {
+                res.status(200).send(`push data to "${ref}" ok`);
+                firebase.app().delete();
+            });
+            break;
+        case 'set':
+            database.ref(ref).set(data).then(() =&gt; {
+                res.status(200).send(`set data to "${ref}" ok`);
+                firebase.app().delete();
+            });
+            break;
+        case 'read':
+            database.ref(ref).once('value', e =&gt; {
+                let dataObj = e.val();
+                let html = '';
+                for (let i in dataObj) {
+                    html = `${html}&lt;div&gt;${dataObj[i]}&lt;/div&gt;`;
+                }
+                console.log(e.val());
+                res.end(html);
+            }).then(() =&gt; {
+                firebase.app().delete();
+            });
+            break;
+        }
+    }
+};
+</code></pre><p>修改 package.json 的內容，讓部屬時會自動安裝 firebase 模組。</p>
+<pre class="prettyprint"><code>{
+    "name": "sample-http",
+    "version": "0.0.1",
+    "dependencies": {
+        "firebase": "^6.3.0"
+    }
+}
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-03.jpg" alt=""></p>
+<p>完成後按下「建立」，就會開始部署程式，部署成功會看見函式前方出現綠色的勾勾圖示，在觸發條件的頁籤裡也會看見最終部署的網址。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-04.jpg" alt=""></p>
+<p>在瀏覽器輸入網址並後方加上參數，執行後就會寫入資料到資料庫，或是從資料庫讀取資料囉～</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-05.jpg" alt=""></p>
+<h2>小結</h2>
+<p>透過 Node.js 搭配 Google Cloud Functions，就能輕鬆實現透過 http request 存取 Firebase Realtime database 的功能，也就更加方便實用囉～</p>
+<blockquote>
+<p>參考：<a href="https://www.npmjs.com/package/firebase" target="_blank">Firebase - npm</a></p>
+</blockquote>
+
+
+      <div class="social-icon">
+        <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
+        <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
+        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="goto-top"><i></i><span>Back to Top</span></a>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      <span>前一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      <span>下一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="license">Copyright 2019 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <link href="/css/article.css?20190625" rel="stylesheet">
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="/js/layout.js?20190612"></script>
+  <script src="/js/articles.js?20190724"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    document.querySelectorAll('pre code').forEach(e => {
+      hljs.highlightBlock(e);
+    });
+  </script>
+  <script>
+    const showAD = () => {
+      let element = document.createElement("script");
+      element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      document.body.appendChild(element);
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8629612872829139",
+        enable_page_level_ads: true
+      });
+      window.removeEventListener('scroll', showAD);
+    }
+    window.addEventListener('scroll', showAD);
+  </script>
+  <script>
+    const showDisqus = () => {
+      let scrollTop = this.pageYOffset;
+      let bodyHeight = document.body.clientHeight;
+      if (scrollTop > bodyHeight / 2) {
+        let dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//oxxostudio.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        window.removeEventListener('scroll', showDisqus);
+      }
+    };
+    window.addEventListener('scroll', showDisqus);
+  </script>
+
+
+
+</body></html>
