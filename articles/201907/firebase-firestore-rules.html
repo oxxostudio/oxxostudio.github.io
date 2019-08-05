@@ -73,6 +73,13 @@
 
 <h1>Firebase 教學 - Firestore Rules 安全規則</h1>
 <p>Rules ( 安全規則 ) 可以讓 firestore 具有多一層的安全保護，firestore 的規則除了可以指定哪些資料可以讀取或寫入，也能更進一步的區分讀取與寫入的細部規則 ( 單一檔案、全部檔案、創建新檔案、更新檔案或刪除檔案...等 )，透過安全規則的設置，資料庫的使用也更靈活更安全。</p>
+<blockquote>
+<p>延伸閱讀：</p>
+<ul>
+<li><a href="/articles/201905/firebase-firestore.html">Firebase 教學 - Firestore 安裝、寫入和讀取</a></li>
+<li><a href="/articles/201907/firebase-nodejs-firestore.html">Firebase 教學 - Node.js 操作 Firestore</a></li>
+</ul>
+</blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本寫法</h2>
 <p>所有 Firestore 的安全規則都包含了<code>match</code>和<code>allow</code>的語法，<code>match</code>負責識別哪些文件與資料夾，<code>allow</code>則負責相對應的權限，又分為<code>read</code>( 讀取 ) 和<code>write</code>( 寫入 ) 兩種，<code>read</code>可再細分為<code>get</code>和<code>list</code>，<code>wrtie</code>也可再細分為<code>create</code>、<code>update</code> 和 <code>delete</code>，如果單純指定<code>read</code>或<code>wrtie</code>的權限，則細分的規則就會全部按照父層的定義進行，透過這些規則的交互搭配，就能提高資料庫的彈性與安全性。</p>
 <table>

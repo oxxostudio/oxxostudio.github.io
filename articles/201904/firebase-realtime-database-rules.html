@@ -73,6 +73,13 @@
 
 <h1>Firebase 教學 - RealTime Database Rules 安全規則</h1>
 <p>透過 Rules ( 安全規則 )，我們可以讓 firebase 即時資料庫具有多一層的安全保護，規則除了可以指定哪些資料可以讀取或寫入，也可以搭配 auth 根據使用者進行規範，這篇文章將會介紹 RealTime Database  Rules 的用法。</p>
+<blockquote>
+<p>延伸閱讀：</p>
+<ul>
+<li><a href="/articles/201904/firebase-realtime-database-start.html">Firebase 教學 - RealTime Database 安裝與使用</a></li>
+<li><a href="/articles/201907/firebase-nodejs-realtime-database.html">Firebase 教學 - Node.js 操作 Realtime Database</a></li>
+</ul>
+</blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本寫法</h2>
 <p>RealTime Database Rules 使用類似 JSON 格式的寫法，根據定義 <code>.read</code>、<code>.write</code> 和 <code>.validate</code>( <code>.indexOn</code> 也是屬性之一，但主要用途作為排序，在資料量不大時發揮不了作用，就不在此處介紹 )</p>
 <table>

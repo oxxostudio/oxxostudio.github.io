@@ -74,7 +74,12 @@
 <h1>Firebase 教學 - Firestore 安裝、寫入和讀取</h1>
 <p>Cloud Firestore 是 Google 所提供的新一代即時資料庫，延續 RealTime Database 的高效率以及低延遲性，可以即時監聽資料庫的變化，並同步有使用到資料庫的各個應用，此外，在安全性的定義上也更加彈性和直覺，對於「純前端」工程師來說，是相當好用的資料庫。</p>
 <blockquote>
-<p>延伸閱讀：<a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore?hl=zh-cn" target="_blank">Firestore 和 Realtime Database 的差異對比</a></p>
+<p>延伸閱讀：</p>
+<ul>
+<li><a href="/articles/201907/firebase-firestore-rules.html">Firebase 教學 - Firestore Rules 安全規則</a></li>
+<li><a href="/articles/201907/firebase-nodejs-firestore.html">Firebase 教學 - Node.js 操作 Firestore</a></li>
+<li><a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore?hl=zh-cn" target="_blank">Firestore 和 Realtime Database 的差異對比</a></li>
+</ul>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立資料庫</h2>
 <p>首先我們先用 Google 帳號登入 ( <a href="https://firebase.google.com/" target="_blank">https://firebase.google.com/</a> )，接著進入 firebase 的控制台，點選「<em>新增專案</em>」，伺服器所在的位置選擇台灣，Cloud Firestore 選擇 asia-east2 ( 單純只是選擇距離台灣比較近的 )，相關條款打勾後即可新增專案。( 如果名稱和別人重複，自訂名稱後方多出一串亂碼 )</p>

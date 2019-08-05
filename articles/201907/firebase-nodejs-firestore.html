@@ -74,7 +74,11 @@
 <h1>Firebase 教學 - Node.js 操作 Firestore</h1>
 <p>當我們可以透過 Node.js 在後端運行 Firebase 之後，就能完成許多好玩的應用，這篇文章將會描述如何透過 Node.js 操作 Firestore，最後還會把程式碼部署到 Google Cloud functions，實現透過 http request 串接 Firestore 的應用範例。</p>
 <blockquote>
-<p>延伸閱讀：<a href="firebase-nodejs-realtime-database.html">Firebase 教學 - Node.js 操作 Realtime Database</a></p>
+<p>延伸閱讀：</p>
+<ul>
+<li><a href="/articles/201905/firebase-firestore.html">Firebase 教學 - Firestore 安裝、寫入和讀取</a></li>
+<li><a href="/articles/201907/firebase-firestore-rules.html">Firebase 教學 - Firestore Rules 安全規則</a></li>
+</ul>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝 Node.js 相關模組</h2>
 <p>Firestore 在 Node.js 裡的用法跟網頁前端大同小異，在網頁前端僅需載入對應的 JavaScript，而 Node.js 裏頭僅需引用對應的模組即可，安裝套件的指令如下，首先建立並初始化一個 Node.js 專案。</p>
