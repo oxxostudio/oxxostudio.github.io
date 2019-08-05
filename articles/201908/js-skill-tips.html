@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>一些 Javascript 的小技巧筆記 - OXXO.STUDIO</title>
+
+  <meta name="description" content="這篇文章是一些我自己最近用到的小技巧，包含「產生隨機不重複 id」、「取出並置換一段文字中的某些值」、「字串與 xml 的轉換」和「快速取整數」，雖然都是基礎技術，不過在某些特殊時刻還滿有用的，用篇文章記錄一下。">
+  <meta itemprop="description" content="這篇文章是一些我自己最近用到的小技巧，包含「產生隨機不重複 id」、「取出並置換一段文字中的某些值」、「字串與 xml 的轉換」和「快速取整數」，雖然都是基礎技術，不過在某些特殊時刻還滿有用的，用篇文章記錄一下。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201908/js-skill-tips.jpg">
+  <meta property="og:description" content="這篇文章是一些我自己最近用到的小技巧，包含「產生隨機不重複 id」、「取出並置換一段文字中的某些值」、「字串與 xml 的轉換」和「快速取整數」，雖然都是基礎技術，不過在某些特殊時刻還滿有用的，用篇文章記錄一下。">
+  <meta property="og:title" content="一些 Javascript 的小技巧筆記">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201908/js-skill-tips.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201908/js-skill-tips.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201908/js-skill-tips.html">
+  <style>body{display:none;}</style>
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu"><span></span><span></span><span></span></div>
+      <div class="menu">
+        <a href="/"><i></i>ALL</a>
+        <a href="/index.html?tag-creative"><i></i>Creative</a>
+        <a href="/index.html?tag-ui"><i></i>UI &amp; UX</a>
+        <a href="/index.html?tag-photo"><i></i>PHOTO</a>
+        <a href="/index.html?tag-css"><i></i>CSS</a>
+        <a href="/index.html?tag-web"><i></i>WEB TECH</a>
+        <a href="/index.html?tag-share"><i></i>Share</a>
+        <a href="/index.html?tag-others"><i></i>OTHERS</a>
+        <a href="/list.html"><i></i>ARCHIVE</a>
+      </div>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>一些 Javascript 的小技巧筆記</h1>
+<p><img src="/img/articles/201908/js-skill-tips-s.jpg" class="preview-img" alt=""></p>
+<p>這篇文章是一些我自己最近用到的小技巧，包含「產生隨機不重複 id」、「取出並置換一段文字中的某些值」、「字串與 xml 的轉換」和「快速取整數」，雖然都是基礎技術，不過在某些特殊時刻還滿有用的，用篇文章記錄一下。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>產生隨機不重複的 id</h2>
+<p>有時候在沒有資料庫輔助的情況下，希望產生隨機且不重複的 id，這時我會使用「隨機數」搭配「時間戳」的方式，首先使用<code>Math.random()</code>產生 0～1 之間約 16～17 位數的隨機浮點數，再透過<code>toString(36)</code>的方法縮短其位數，並轉換為 36 進位 ( 0～9、a～z )，若嫌太長還可用<code>substr</code>擷取自己要的片段。</p>
+<pre class="prettyprint"><code>Math.random().toString(36).substr(2,n); // 移除開頭 0 和小數點，n 自訂
+</code></pre><p>第二步使用<code>Date.now()</code>取得目前的毫秒數，總共有 13 位數，一樣透過<code>toString(36)</code>的方法縮短其位數，並轉換為 36 進位，接著也可用<code>substr</code>擷取自己要的片段。</p>
+<pre class="prettyprint"><code>Date.now().toString(36).substr(4,n);// n 自訂
+</code></pre><p>將隨機數的片段和時間戳的片段組合，就能產生一個隨機不重複的 id 。( 應該說重複機率低到不可能重複 )</p>
+<pre class="prettyprint"><code>Math.random().toString(36).substr(2,n) +  Date.now().toString(36).substr(4,n);
+</code></pre><h2>取出並置換一段文字中的某些值</h2>
+<p>開發過程中有時會遇到要取出一段文字中的某些值，如果單純只是要「取代成別的值」，使用<code>replace()</code>的方法就能輕鬆實現，然而使用同樣的方法，也可以將這些值取出成為陣列，以下面這段文字來說，裡面有幾個利用<code>{{}}</code>包覆的值，這些值可以透過程式控制要顯示的內容。</p>
+<blockquote>
+<p>大家好，我叫做{{name}}，今年{{age}}歲，我是{{sex}}，很高興來到這裡</p>
+</blockquote>
+<p>如果想要把所有「{{}}」兩個大括號內的字置換成對應物件的值，可以透過以下的方式處理，比較重要的應該就是<code>replace()</code>方法裡的正規表達式<code>/{{(.*?)}}/g</code>，可以比對兩個大括號內的文字。</p>
+<pre class="prettyprint"><code>const text = '大家好，我叫做{{name}}，今年{{age}}歲，我是{{sex}}，很高興來到這裡';
+const obj = {
+  name: 'oxxo',
+  age: 18,
+  sex: '男生'
+};
+const result = text.replace(/{{(.*?)}}/g, e =&gt; {
+  return obj[e.replace(/{|}/g,'')];
+});
+</code></pre><p>得到的結果就會是：「大家好，我叫做oxxo，今年18歲，我是男生，很高興來到這裡」。</p>
+<h2>String 轉 XML、XML 轉 String</h2>
+<p>在 JavaScript 裡如果直接讀取 XML，得到的會是一些節點構成的物件，因此要使用像是<code>replace()</code>..等字串的操作就必須轉換成字串 String 才行，下方程式可以很簡單的將 XML 轉換成字串 String，處理之後再轉回 XML</p>
+<p><em>XML 轉字串 String</em></p>
+<pre class="prettyprint"><code>xmlToString = (new XMLSerializer()).serializeToString(xmlObject);
+</code></pre><p><em>字串 String 轉 XML</em></p>
+<pre class="prettyprint"><code>    stringToXML = (new DOMParser()).parseFromString(xmlString, "text/xml");
+</code></pre><h2>快速取整數</h2>
+<p>在 JavaScript 中取整數，最常見的不外乎就是<code>Math.round()</code>四捨五入、<code>Math.floor()</code>無條件捨去和<code>Math.ceil()</code>無條件進位三種，不過如果透過兩個「二進位進行反相運算符」<em><code>~~</code></em>( 兩個蚯蚓符號 )，也可以做到無條件捨去小數點的效果，這也是最快可以取整數的方法，下方的程式碼會先取得一個 0～100 的隨機數，然後取出整數的部分。</p>
+<pre class="prettyprint"><code>const num = Math.random() * 100;
+console.log(num);   // 呈現原本得到的隨機數
+console.log(~~num); // 取得整數的部分
+</code></pre>
+
+      <div class="social-icon">
+        <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
+        <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
+        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="goto-top"><i></i><span>Back to Top</span></a>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      <span>前一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      <span>下一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="license">Copyright 2019 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <link href="/css/article.css?20190625" rel="stylesheet">
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="/js/layout.js?20190612"></script>
+  <script src="/js/articles.js?20190724"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    document.querySelectorAll('pre code').forEach(e => {
+      hljs.highlightBlock(e);
+    });
+  </script>
+  <script>
+    const showAD = () => {
+      let element = document.createElement("script");
+      element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      document.body.appendChild(element);
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8629612872829139",
+        enable_page_level_ads: true
+      });
+      window.removeEventListener('scroll', showAD);
+    }
+    window.addEventListener('scroll', showAD);
+  </script>
+  <script>
+    const showDisqus = () => {
+      let scrollTop = this.pageYOffset;
+      let bodyHeight = document.body.clientHeight;
+      if (scrollTop > bodyHeight / 2) {
+        let dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//oxxostudio.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        window.removeEventListener('scroll', showDisqus);
+      }
+    };
+    window.addEventListener('scroll', showDisqus);
+  </script>
+
+
+
+</body></html>

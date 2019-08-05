@@ -1,5 +1,10 @@
 [{
   "tag": "tag-web",
+  "title": "一些 Javascript 的小技巧筆記",
+  "site": "/articles/201908/js-skill-tips.html",
+  "date": "AUG 6 2019"
+},{
+  "tag": "tag-web",
   "title": "Firebase 教學 - Node.js 操作 Firestore",
   "site": "/articles/201907/firebase-nodejs-firestore.html",
   "date": "JUL 31 2019"
