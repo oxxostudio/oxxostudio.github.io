@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>穿透的 div ( pointer-events )</h1>
+<h1>穿透的 div ( pointer-events )</h1> 
 <p><img src="/img/articles/201409/pointer-events.jpg" class="preview-img" alt=""></p>
 <p>pointer-events 是一個滿有趣的 CSS3 屬性，雖然主要是針對 SVG ，但其中幾個屬性應用在 div 上也是頗有意思。顧名思義，這是一個針對滑鼠事件的屬性，預設值為 auto，若值為 none，則可以穿越該元素，點擊到下方的元素。除了 auto 和 none，這是完整的屬性列表：<code>pointer-events: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit</code>，除了 auto 與 none，其他都是控制 SVG 的屬性，若採用預設值，則 SVG 就是以 visiblePainted 來表現。</p>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>首先看到 <code>pointer-events: auto</code>，就是我們一般常見的，一個 div 被另外一個 div 遮住，就無法進行點擊或 hover 的動作，如下圖：  </p>

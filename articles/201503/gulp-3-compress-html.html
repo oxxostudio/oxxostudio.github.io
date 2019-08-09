@@ -71,16 +71,16 @@
     <article>
       <i class="tag"></i>
 
-<h1>Gulp 學習 3 - 打包壓縮 HTML</h1>
+<h1>Gulp 學習 3 - 打包壓縮 HTML</h1> 
 <p><img src="/img/articles/201503/gulp-3-compress-html.jpg" class="preview-img" alt=""></p>
 <p>上一篇我們看完了打包與壓縮 CSS 和 JS，為什麼打包壓縮 HTML 不要一起講呢？是因為打包壓縮 HTML 還會用到額外的套件和方法，避免混淆，所以就分成兩篇來紀錄。</p>
 <p>壓縮 HTML 與 CSS 和 JS 不同的地方，在於 CSS 和 JS 利用合併之後再混淆或壓縮，而 HTML 除了壓縮，更多了去置換內容的方式，例如我們有一個網頁，裡頭載入了三個 CSS 與三個 JS，壓縮之後就會變成只有一個 min.css 和一個 min.js，如此一來原本要載入六個檔案，瞬間就變成了只需要載入兩個檔案而已，也由於由六個 request 降為兩個 request，整個網頁的流暢度也會提升。( 就像傳送一千個小檔案，速度遠不如把一千個小檔案壓縮成一個大檔案，直接傳送大檔案還來得快 )</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2> 
 <p>打包壓縮 HTML 我們會用到的套件有這些：gulp-html-replace、gulp-minify-html，gulp-html-replace 的作用，是把原本的三個 CSS 置換為一個 min.css，gulp-minify-html 就是純粹的壓縮 HTML，除此之外，我們也要把上一篇的壓縮 CSS 與 JS 所需要的套件一起拿來用，畢竟打包壓縮是要成為完整 ( 壓縮 HTML、CSS、JS )才是，所以首先就安裝吧！( mac 要加 sudo，相關套件參考：<a href="https://www.npmjs.com/package/gulp-html-replace" target="_blank">gulp-html-replace</a>、<a href="https://www.npmjs.com/package/gulp-minify-html" target="_blank">gulp-minify-html</a> )</p>
 <pre class="prettyprint"><code>npm install gulp gulp-html-replace gulp-minify-html gulp-minify-css gulp-uglify gulp-concat gulp-rename -save-dev
 </code></pre><p>目錄結構應該是長成這樣：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150307_1_02.jpg" alt="Gulp 學習 3 - 打包壓縮 HTML"></p>
-<h2>撰寫 gulpfile.js</h2>
+<h2>撰寫 gulpfile.js</h2> 
 <p>安裝好了之後就來寫 gulpfile.js，一開始當然是先引入這些套件，引入的套件就這樣越來越多了。</p>
 <pre class="prettyprint"><code>var gulp      = require('gulp'),
   concat      = require('gulp-concat'),

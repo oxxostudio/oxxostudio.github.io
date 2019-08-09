@@ -71,14 +71,14 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google 試算表 (5) - 欄和列的插入與刪除</h1>
+<h1>Google 試算表 (5) - 欄和列的插入與刪除</h1> 
 <p>除了可以寫入資料到儲存格外，使用 Google 試算表一定會用到的功能就是「插入列或欄」以及「刪除列或欄」，除了可以指定在第一列或第一欄，也可以在中間的區域進行插入或刪除，透過 Google App Script 的輔助，讓試算表的功能更加彈性與方便。</p>
 <blockquote>
 <p>參考：<a href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet" target="_blank">Class Spreadsheet Methods</a></p>
 </blockquote>
 <p>為了待會測試的時候比較明顯，在試算表裡面先放入一些資料，當插入或刪除的時候，這些資料就會位移或消失。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-01.jpg" alt=""></p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>插入欄位 Insert Column</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>插入欄位 Insert Column</h2> 
 <ul>
 <li><p><em>insertColumns(columnIndex, numColumns)</em></p>
 <p>  這個方法有兩個參數，第一個 columnIndex 表示要在這個指定的欄位「之前」插入欄位，第二個參數 numColumns 預設為 1，如果不填就是 1，表示插入一欄，下列的程式碼會在 B 前插入一欄，原本的 B 就會跑到 C。</p>
@@ -123,7 +123,7 @@ SheetName.insertColumnsAfter(2,2);
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-05.jpg" alt=""></p>
 </li>
 </ul>
-<h2>刪除欄位 Delete Column</h2>
+<h2>刪除欄位 Delete Column</h2> 
 <ul>
 <li><p><em>deleteColumn(columnPosition)</em></p>
 <p>  刪除一個欄位，當中只有一個參數表示要刪除的欄位次序，欄位刪除後，後方的欄位就會自動遞補到前面。</p>
@@ -142,7 +142,7 @@ SheetName.deleteColumns(2,2);
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-07.jpg" alt=""></p>
 </li>
 </ul>
-<h2>插入列 Insert Row</h2>
+<h2>插入列 Insert Row</h2> 
 <ul>
 <li><p><em>insertRows(rowIndex, numRows)</em></p>
 <p>  這個方法有兩個參數，第一個 rowIndex 表示要在這個指定的列「上方」插入列，第二個參數 numRowss 預設為 1，如果不填就是 1，表示插入一列，下列的程式碼會在第 3 列前插入一列，原本的 3 就會跑到 4。</p>
@@ -187,7 +187,7 @@ SheetName.insertRowsAfter(2,2);
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-11.jpg" alt=""></p>
 </li>
 </ul>
-<h2>刪除列 Delete Row</h2>
+<h2>刪除列 Delete Row</h2> 
 <ul>
 <li><p><em>deleteRow(rowPosition)</em></p>
 <p>  刪除一列，當中只有一個參數表示要刪除的列的次序，把指定的列刪除後，下方的列就會自動遞補到上面。</p>
@@ -204,7 +204,7 @@ SheetName.deleteRows(3,2);
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-5-insert-delete-13.jpg" alt=""></p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>認識了插入、刪除列與欄之後，下一篇將要透過網頁來執行寫入、插入、刪除...等動作，一起來發揮試算表超強的儲存能力吧！</p>
 
 

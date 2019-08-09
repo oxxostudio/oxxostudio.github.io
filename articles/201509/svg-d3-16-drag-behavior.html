@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG D3.js - 拖拉行為 ( Drag Behavior )</h1>
+<h1>SVG D3.js - 拖拉行為 ( Drag Behavior )</h1> 
 <p><img src="/img/articles/201509/svg-d3-16-drag-behavior.gif" class="preview-img" alt=""> </p>
 <p>這篇要來談一下 d3.js 裏頭的「拖拉行為」( Drag Behavior )，其實 drag 這個行為在 web 的世界裡頭早就存在已久，HTML5 出來之後更變成了一些基本的網頁行為，不過這個行為在 d3.js 該如何實現呢？其實 d3.js 早就已經幫我們做好了，不僅適用在 svg 裡頭，更可以應用在一般的網頁元素上頭。</p>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>要使用 d3.js 的 drag，一開始必須要先利用<code>d3.behavior.drag()</code>宣告這個行為，接著在裡面寫入<code>dragstart</code>、<code>drag</code>和<code>dragend</code>要做些什麼事，接著再讓我們的選擇的物件用<code>call</code>去呼叫，就可以讓我們選擇的物件具有 drag 的行為，用講的不是很好理解，用程式碼一步步分解來看。</p>

@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (5) - Path 進階篇</h1>
+<h1>SVG 研究之路 (5) - Path 進階篇</h1> 
 <p><img src="/img/articles/201406/svg-05-path-2.jpg" class="preview-img" alt=""></p>
 <p>上一篇看完了 Path 大部分的指令，這一篇就要介紹最困難的 A 指令，什麼是 A 呢？就是「弧形」 ( Arcs )，更簡單來說就是畫個橢圓圓弧 ( Elliptical Arc )，這裡可能會有人有疑問，為什麼是橢圓圓弧，而不是圓形圓弧呢？因為橢圓形可以做成圓形呀就是這麼簡單ㄎㄎ，因此， A 指令裏頭參數非常之多，竟然高達 7 個參數，以下就一一為大家解釋這些參數。</p>
 <blockquote>
@@ -85,7 +85,7 @@
 <li>y ： 終點 y 座標</li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本用法</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本用法</h2> 
 <p>首先來看一個利用 A 指令畫出來的弧形：扁長型，x,y 軸半徑比例為 5:1，小角度弧線，<strong>逆時針</strong>方向  </p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 A100 20,0 0 0 50 100" stroke="#000" fill="none"/&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140612_1_02.png" alt="SVG-Path">  </p>
@@ -95,7 +95,7 @@
 <p>扁長型，x,y 軸半徑比例為 5:1，<strong>大角度</strong>弧線，順時針方向 ( 因為只有兩個點，所以大小角度結果相同，返回原來的點了 ) </p>
 <pre class="prettyprint"><code>&lt;path d="M0 0 A100 20,0 1 1 50 100" stroke="#000" fill="none"/&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140612_1_03.png" alt="SVG-Path"> </p>
-<h2>大小角度差異</h2>
+<h2>大小角度差異</h2> 
 <p>看到上圖可能很多人會混淆，為什麼大小角度是相同的結果，只因為 Path 裏頭我們只提供了兩個點，兩個點只有一條線，不會有角度的問題，因此為了實際測試，我們多增加一個點，就可以看出大小角度的差異。  </p>
 <pre class="prettyprint"><code>大角度 ( 黑色線 )
 &lt;path d="M0 0 L50 50 A50 50,0 1 0 100 0" stroke="#000" fill="none"/&gt;

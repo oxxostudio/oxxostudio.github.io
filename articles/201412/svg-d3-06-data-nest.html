@@ -71,13 +71,13 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG D3.js - 巢狀數據結構 ( d3.nest )</h1>
+<h1>SVG D3.js - 巢狀數據結構 ( d3.nest )</h1> 
 <p><img src="/img/articles/201412/svg-d3-06-data-nest.jpg" class="preview-img" alt=""></p>
 <p>之前在「SVG D3.js - 淺談 D3.js 的資料處理」提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。</p>
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html" target="_blank">SVG D3.js - 淺談 D3.js 的資料處理</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>什麼是 nest</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>什麼是 nest</h2> 
 <p>nest 就是「巢」的意思 ( 不是潮喔~ 雖然 d3.js 好像有點潮 )，透過 d3.nest 的轉換，可以將原本的數據變成以 key 和 value 為主的巢狀結構，並且可以針對巢狀結構的每個節點進行排序，而所得到的巢狀結構數據，可以在程式裡重複使用而不會影響到原本的數據。</p>
 <p>光是看文字其實是搞不清楚的，直接用個簡單的範例來說明一下，下面是一個 json 的檔案格式，是四個班級學生的得分，分別有 name、score 和 type。</p>
 <pre class="prettyprint"><code>var data = [
@@ -107,7 +107,7 @@ console.log(a);
 
 console.log(a);
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_03.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
-<h2>其他的 API</h2>
+<h2>其他的 API</h2> 
 <p>上面的例子這就是 d3.nest 最基本的用法，用這個方法，就可以很輕鬆的把一堆資料分類，篩選出所需要的東西，但 d3.nest 還有其他的 API，這裡先列出 d3.nest 具有的 API，然後再來一個個看看它們功用：</p>
 <blockquote>
 <ul>
@@ -199,7 +199,7 @@ var b = d3.nest()
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_10.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 d3.nest 的用法介紹，基本上因為 d3.js 已經有相當豐富的圖表讓大家使用，因此如何利用巢狀結構，做出適合圖表的數據，就變成使用者要學習的了。</p>
 
 

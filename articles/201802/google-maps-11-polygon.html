@@ -71,12 +71,12 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 形狀 ( 多邊形 Polygon )</h1>
+<h1>Google Maps API - 形狀 ( 多邊形 Polygon )</h1> 
 <p>使用 Google Mpas API 在 地圖上繪製多邊形跟繪製折線一樣簡單，換句話說只要把折線填滿，就變成了多邊形，折線使用 Polyline 形狀是 Polygon，多邊形可以點擊的區域也比折線大得多，這篇就來探討一下如何在地圖上繪製多邊形吧！</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>繪製多邊形起手式</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>繪製多邊形起手式</h2> 
 <p>Polygon 建構函式使用一組指定多邊形 LatLng 座標的 Paths，以及一組調整折線視覺行為的樣式，下列 PolygonOptions 的部分是相關屬性設定。</p>
 <pre class="prettyprint"><code>var polygonPath = new google.maps.Polygon(PolygonOptions)
-</code></pre><h2>多邊形設定 Polygon Options</h2>
+</code></pre><h2>多邊形設定 Polygon Options</h2> 
 <p>上面起手式的 PolygonOptions 是多邊形的設定，這些設定有以下幾種：</p>
 <ul>
 <li><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把多邊形放到地圖裡。</li>
@@ -193,7 +193,7 @@ function initMap() {
 
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-11-polygon-02.jpg" alt=""></p>
-<h2>多邊形方法 Polygon Methods</h2>
+<h2>多邊形方法 Polygon Methods</h2> 
 <p>Polygon 除了有以上的設定外，也有下列這些方法可以使用：</p>
 <ul>
 <li><strong>setMap(Map)</strong>：設定地圖，將多邊形放到指定的地圖上，如果設定的值為 null，則會移除多邊形。</li>
@@ -210,7 +210,7 @@ function initMap() {
 <li><strong>getPaths()</strong>：獲取多邊形路徑。</li>
 <li><strong>getVisible()</strong>：獲取多邊形是否可見的狀態。</li>
 </ul>
-<h2>多邊形事件 Polygon Events</h2>
+<h2>多邊形事件 Polygon Events</h2> 
 <p>多邊形也可以使用 addListener 監聽事件，事件有以下幾種：</p>
 <ul>
 <li><strong>click</strong>：滑鼠點擊。</li>

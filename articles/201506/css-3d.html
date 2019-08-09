@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>玩轉 CSS 3D - 原理篇</h1>
+<h1>玩轉 CSS 3D - 原理篇</h1> 
 <p><img src="/img/articles/201506/css-3d.jpg" class="preview-img" alt=""></p>
 <p>這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 這個可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！</p>
 <p>雖然 CSS 3D 並非真的 3D，CSS 3D 坦白說就是純粹利用計算的方法，藉由瀏覽器的高效能，在 2D 的空間繪製一個 3D 的圖形，就像我們拿張紙，用鉛筆在上頭畫個正立方體之類的，也因為是藉用了瀏覽器來運算，自然而然非常地耗效能，往往只要有過多的形狀轉換為 3D 呈現，就會發現電腦的風扇開始狂轉，這也是使用 CSS 3D 必須要注意的地方，畢竟 CSS 原本就不是拿來做 3D 應用的技術，可以畫 3D，只是可以加強 CSS 呈現的美感和能力，但用在精細的 3D 動畫或轉場效果，還是交給專業的 3D 繪圖軟體來進行。</p>
@@ -79,7 +79,7 @@
 <blockquote>
 <p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>3D 起手式</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>3D 起手式</h2> 
 <p>我們這邊先來用 Google SketchUp 這個免費的 3D 建模軟體，看一下最普通的 3D 繪圖的介面，從裏頭最基本的會有三個元素，第一個：攝影鏡頭，第二個：立體空間，第三個：立體物件。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_02.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
 <p>攝影鏡頭主要定義了觀看者的角度，就如同我們在拍照，使用長焦距的望遠鏡頭，物體可以拉近且比較不會變形，使用短焦距的廣角鏡，拍攝的物體就容易變形，從下圖可以看出，鏡頭的焦距可以讓空間內的物體產生不同的變形，至於立體空間則是具備了 X、Y、Z 三個座標軸的空間，立體物件則是在這個空間裏頭的物件。</p>
@@ -90,7 +90,7 @@
         &lt;div class="box"&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><h2>設定 camera</h2>
+</code></pre><h2>設定 camera</h2> 
 <p>接著就要來把最外層的 div ( 以下通稱 camera ) 設定為攝影鏡頭，設定的方法為添加 perspective-origin 以及 perspective 這兩個屬性，這個屬性是什麼呢？簡單來說就是透視點以及鏡頭到透視點的距離，如果直接查詢 perspective，看到的八九不離十是下面這些圖案：( 圖片來源：mathworld.wolfram.com/Perspective.html )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_04.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
 <p>然而在 W3C 裏頭對於 perspective 的解釋則是下圖這樣，透視點同樣也是物體到攝影機的距離 ( d ) ，但又因為 CSS 的 3D 空間裏頭具有 Z 軸，所以 perspective 的距離會因為 Z 軸的關係而有所縮放 ( 不過千萬要注意，這裡的 Z 指的是物體的 Z 軸，也就是 translateZ，不是攝影機的 )。</p>
@@ -108,7 +108,7 @@
     -moz-perspective:500px;
     -webkit-perspective:500px;
 }
-</code></pre><h2>設定 space</h2>
+</code></pre><h2>設定 space</h2> 
 <p>攝影機完成後，就是要設定一個立體空間 space，這個空間設定的方式很簡單，只要設定一個屬性：transform-style，這個屬性預設為 flat，也就是只要是這個 div 內的子元素，一律都是以扁平 ( flat ) 的方式呈現，所屬的變換 transform 也一律都是用 flat 的方式變換，換句話說就是沒有 Z 軸的存在，為了讓內容元素都是立體元素，所以我們要將 transform-style 設為 3D，如此一來內容元素就全部都可以用 3D 進行變換，為了方便區隔，下面我將 space 外圍多一個 boder 做識別。( 範例：<a href="/demo/201506/css-3d-demo01.html" target="_blank">css-3d-demo01.html</a> )</p>
 <pre class="prettyprint"><code>.space{
     width:100%;
@@ -119,7 +119,7 @@
     -webkit-transform-style:3d;
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_07.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
-<h2>設定 box</h2>
+<h2>設定 box</h2> 
 <p>最後就是內容元素 box 了，我們可以添加一個 100px x 100px 的 box 進去，接著，用這個 box 來複習一下前面講的觀念，在<strong>沒有設定 box 的 traslateZ、rotate 的情形下，不論我們如何去修改 camera 的 perspective-origin 和 perspective，box 的大小和位置都不會有變化</strong>，為什麼呢？因為在沒有設定 box 的 translateZ 或 rotate，讓 Z 的深度有所變化，攝影機透過 perspective 看出去的位置都是相同的，也造成不論怎麼去看這個 box 都是一樣的大小。( 範例：<a href="/demo/201506/css-3d-demo02.html" target="_blank">css-3d-demo02.html</a> )</p>
 <pre class="prettyprint"><code>.box{
     width:100px;
@@ -222,7 +222,7 @@
     -webkit-transform:translateX(-50px) translateY(50px) rotateX(60deg) rotateY(60deg) translateX(100px);
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_14.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 CSS 3D 的原理解析，坦白說如果明白了 3D 的結構組成，CSS 的 3D 就沒有難度，總而言之，就是先建立好三個元素：攝影機、立體空間、立體物件，就可以開始玩轉 CSS 3D 囉！</p>
 
 

@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 點擊區域，出現資訊視窗</h1>
+<h1>Google Maps API - 點擊區域，出現資訊視窗</h1> 
 <p>透過 Google Maps API 我們已經可以順利載入 GeoJSON，不過說穿了格式其實就是 json，所以也可以使用 jQuery 來載入，這篇除了會在地圖上顯示台灣的縣市區域，更會嘗試用滑鼠點擊區域，並開啟資訊視窗 infowindow 顯示對應資訊。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>初始化地圖並載入 GeoJSON</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>初始化地圖並載入 GeoJSON</h2> 
 <p>網頁載入後先宣告地圖，然後在地圖裡放入資訊視窗，接著使用 jQuery 的<code>getJSON</code>來載入 GeoJSON 檔案，不過因為並非使用 Google 地圖的 data 載入，在資料的處理就得自己動手來做，所以這裡就先用一個變數 features 來裝載特徵值的陣列。</p>
 <pre class="prettyprint"><code>var map;
 
@@ -96,7 +96,7 @@ function initMap() {
 
   });
 }
-</code></pre><h2>載入後要做的事：繪製行政區域圖</h2>
+</code></pre><h2>載入後要做的事：繪製行政區域圖</h2> 
 <p>一開始先新增三個陣列，<em>taiwan</em> 陣列會裝載待會的行政區域多邊形的特徵值，<em>name</em> 會裝載各個行政區域的名稱，<em>polygonPath</em> 則是代表在地圖上繪製出的多邊形陣列。</p>
 <pre class="prettyprint"><code>var taiwan = [];      // 行政區域多邊形特徵值的陣列
 var name = [];        // 行政區域名稱的陣列
@@ -162,7 +162,7 @@ var polygonPath = []; // 繪製後的多邊形陣列
   //畫完行政區域後要做的事情.....
 
 });
-</code></pre><h2>畫完行政區域要做的事：加入滑鼠事件、打開資訊視窗</h2>
+</code></pre><h2>畫完行政區域要做的事：加入滑鼠事件、打開資訊視窗</h2> 
 <p>畫完行政區後要做的事情就簡單了，就是為每個行政區的多邊形，加入滑鼠 <em>click</em> 事件，在點擊行政區時會抓取滑鼠的經緯度座標，接著把這個座標丟給資訊視窗，讓資訊視窗在這個座標開啟，同時顯示對應的行政區域名稱，此外也可以使用 <em>mouseover</em> 和 <em>mouseout</em> 事件，在滑鼠移到行政區上方會改變顏色，移出行政區又會恢復顏色。</p>
 <blockquote>
 <p>範例：<a href="/demo/201803/google-maps-16-taiwan-infowindow-demo-01.html" target="_blank">點擊台灣行政區域，出現資訊視窗</a></p>
@@ -193,9 +193,9 @@ polygonPath[index].addListener('mouseout', function(e) {
   })
 });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-16-taiwan-infowindow-01.gif" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>如果已經熟悉多邊形 Polygon 和資訊視窗 infowindow 的用法，其實只要了解資料格式，就能夠很簡單的在地圖上做出想要的效果，之後應該還會再找篇幅，應用更多不同的資料在地圖上呈現。。</p>
-<h2>參考</h2>
+<h2>參考</h2> 
 <ul>
 <li><a href="/articles/201802/google-maps-8-infowindow.html" target="_blank">Google Maps (8) - 資訊視窗 ( Infowindow )
 </a></li>

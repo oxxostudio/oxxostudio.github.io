@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>JavaScript 同步延遲 ( Promise + setTimeout )</h1>
+<h1>JavaScript 同步延遲 ( Promise + setTimeout )</h1> 
 <p><img src="/img/articles/201706/javascript-promise-settimeout.jpg" class="preview-img" alt=""></p>
 <p>過去在寫 JavaScript 使用的同步延遲，都是用非同步的 setTimeout 加上 callback 來實現，但如果有很多個任務或流程要執行，就得用上一大堆的 callback，然而 JavaScript 裡的 Promise ，剛好就可以用來解決同步與非同步的問題，讓整個延遲的過程可以很漂亮且同步的「串」在一起。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>同步非同步</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>同步非同步</h2> 
 <p>一般來說 JavaScript 裡面有分成同步 sync 和非同步 async，在同步模式下，每個任務必須按照順序執行，後面的任務必須等待前面的任務執行完成，非同步模式則相反，後面的任務不用等前面的，各自執行各自的任務，例如<code>setTimeout</code>、<code>setInterval</code>都是這種模式。</p>
 <blockquote>
 <p>延伸閱讀：<a href="https://goo.gl/l8mN6W" target="_blank">非同步(Asynchronous)與同步(Synchronous)的差異</a></p>
@@ -88,7 +88,7 @@
 setTimeout(function(){
     console.log('B');
 },1000);
-</code></pre><h2>Promise</h2>
+</code></pre><h2>Promise</h2> 
 <p>為了解決同步非同步的問題，我開始學習 Promise，剛接觸 Promise 的時候實在是有點頭昏腦脹，因為網路上的資料很多，但總找不到一個合適的範例展示，導致一直沒辦法深入理解，後來找到了下面這兩篇相當完整且豐富的教學，也讓我終於踏入了 Promise 的世界，由於這兩篇文章已經相當完整，就不在這邊做描述，有興趣的可以點進去看看。</p>
 <blockquote>
 <ul>
@@ -108,7 +108,7 @@ setTimeout(function(){
     }
   });
 }
-</code></pre><h2>同步延遲</h2>
+</code></pre><h2>同步延遲</h2> 
 <p>大概知道用法之後，先來個簡單的例子，建立一個 delay 的流程，流程裡有個<code>setTimeout</code>，在延遲一秒後，將 resolve 成功的值透過<code>.then</code>傳下去。</p>
 <pre class="prettyprint"><code>function delay() {   
   return new Promise(function (resolve, reject) {
@@ -160,7 +160,7 @@ delay().then(function(){
 }).then(function(){
   console.log(3);     // 顯示 3
 });
-</code></pre><h2>resolve 回傳值</h2>
+</code></pre><h2>resolve 回傳值</h2> 
 <p>當 resolve 有合法值的時候，可將這個值傳遞下去使用，但 resolve 只能有一個回傳值 (<code>resolve(value)</code>)，所以如果有兩個以上，則必須透過陣列或是物件來傳遞，舉例來說 delay 有兩個變數，第一個變數是顯示的文字，第二個則是延遲的秒數，透過<code>resolve([r,s]);</code>就能不斷地將值傳遞下去，結果就會是先顯示「a 0」，延遲一秒後顯示「b 1000」，延遲兩秒後顯示「c 2000」。</p>
 <blockquote>
 <p>範例展示：<a href="/demo/201706/javascript-promise-settimeout-demo-02.html" target="_blank">demo-02.html</a></p>
@@ -182,7 +182,7 @@ delay('a',0).then(function(v){
 }).then(function(v){
   console.log(v[0],v[1]);   // 顯示 c 2000
 });
-</code></pre><h2>小結</h2>
+</code></pre><h2>小結</h2> 
 <p>以上就是透過 Promise + setTimeout 所實現的同步延遲，但在 ES7 開始其實有 async、await、delay 的用法 ( 聽說用過就會上癮了 )，就等瀏覽器全面支援後，應該就可以更方便的使用囉！</p>
 
 

@@ -71,12 +71,12 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 繪製折線 ( Polyline )</h1>
+<h1>Google Maps API - 繪製折線 ( Polyline )</h1> 
 <p>「折線」是 Google 地圖裡最基本的一種「形狀」，折線顧名思義就是可以幫助我們在地圖上繪製直線，繪製的方法需使用 Google Maps API 的 Polyline 建構函式，只要在裡頭設定對應的座標陣列和一些設定，就能輕輕鬆鬆在地圖上繪製。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>繪製折線起手式</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>繪製折線起手式</h2> 
 <p>Polyline 建構函式使用一組指定線條 LatLng 座標的 Path，以及一組調整折線視覺行為的樣式，下列 PolylineOptions 的部分是相關屬性設定。</p>
 <pre class="prettyprint"><code>var polylinePath = new google.maps.Polyline(PolylineOptions)
-</code></pre><h2>折線設定 Polyline Options</h2>
+</code></pre><h2>折線設定 Polyline Options</h2> 
 <p>從起手式中可以看到 PolylineOptions，這是折線的設定，這些設定有以下幾種：</p>
 <ul>
 <li><p><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把折線放到地圖裡。</p>
@@ -131,7 +131,7 @@ function initMap() {
 
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-9-polyline-01.jpg" alt=""></p>
-<h2>折線方法 Polyline Methods</h2>
+<h2>折線方法 Polyline Methods</h2> 
 <p>在上面的範例中，看到了一個<code>setMap()</code>的方法，其實折線還包含了以下其他的方法：</p>
 <ul>
 <li><strong>setMap(Map)</strong>：設定地圖，將折線放到指定的地圖上，如果設定的值為 null，則會移除折線。</li>
@@ -195,7 +195,7 @@ function initMap() {
 
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-9-polyline-02.gif" alt=""></p>
-<h2>折線事件 Polyline Events</h2>
+<h2>折線事件 Polyline Events</h2> 
 <p>在上面的範例裡的折線，有用到<code>addListener</code>監聽 drag 和 dragend 事件，除了這兩者，折線還包含了以下幾種事件：</p>
 <ul>
 <li><strong>click</strong>：滑鼠點擊。</li>
@@ -210,7 +210,7 @@ function initMap() {
 <li><strong>mouseover</strong>：滑鼠移到折線內。</li>
 <li><strong>rightclick</strong>：滑鼠右鍵點擊。</li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>折線在 Google 地圖裡也是疊加層的一種，這篇只是單純介紹折線的用法，未來如果熟悉了更多的用法，相信就能在地圖上做出各種有趣的變化了。</p>
 
 

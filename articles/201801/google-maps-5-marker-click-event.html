@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 地圖標記點擊事件</h1>
+<h1>Google Maps API - 地圖標記點擊事件</h1> 
 <p>懂的如何放置地圖標記後，再來就用 Google Maps API 來玩玩點擊的事件，例如點下去可以讓標記彈跳，或是點擊標記後換圖，甚至也可以在點擊時打開資訊視窗，當然這些事件都只是初級階段，等之後玩到在地圖上繪製圖案，想必就會有更好玩的應用了。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>點擊之後地圖標記會彈跳</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>點擊之後地圖標記會彈跳</h2> 
 <p>地圖標記的事件，可以透過<code>addListener</code>來完成，可監聽的事件有 click、dblclick、mouseup、mousedown、mouseover 和 mouseout，這裡我透過 click 和地圖標記的動作效果，做出點擊地圖標記時標記會彈跳，再點一下它就會停止的效果。</p>
 <p>要實現這個效果還要加上<code>getAnimation()</code>，來判斷現在地圖標記是否正在進行動畫效果，如果是 null 就是沒有進行動畫，最後使用<code>setAnimation</code>來將動畫效果設定到地圖標記上。</p>
 <blockquote>
@@ -107,7 +107,7 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/google-maps-5-marker-click-event-01.gif" alt=""></p>
-<h2>點擊後更換地圖標記圖片</h2>
+<h2>點擊後更換地圖標記圖片</h2> 
 <p>除了動畫之外，也可以透過<code>setIcon</code>的方法，更換地圖標記的顯示圖片，這裏設定當滑鼠事件發生 click 的時候，圖片就會改變。</p>
 <blockquote>
 <p>範例：<a href="/demo/201801/google-maps-5-marker-click-event-demo-02.html" target="_blank">點擊後更換地圖標記圖片</a></p>
@@ -143,7 +143,7 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/google-maps-5-marker-click-event-02.gif" alt=""></p>
-<h2>點擊後開啟資訊視窗</h2>
+<h2>點擊後開啟資訊視窗</h2> 
 <p>在 Google 地圖裡，「資訊視窗 InfoWindow」常常會出現和地圖標記搭配，資訊視窗會在之後再找篇幅介紹，這裏先實作當我們點擊地圖標記時，就會把資訊視窗打開，然後再點一下，就可以把資訊視窗關閉的效果。</p>
 <blockquote>
 <p>範例：<a href="/demo/201801/google-maps-5-marker-click-event-demo-03.html" target="_blank">點擊後開啟資訊視窗</a></p>
@@ -186,7 +186,7 @@ function initMap() {
 <pre class="prettyprint"><code>google.maps.event.addListener(infowindow, 'closeclick', function(){
   a = a * -1;
 });
-</code></pre><h2>小結</h2>
+</code></pre><h2>小結</h2> 
 <p>地圖標記得點擊事件的入門，彷彿沒有想像中的複雜 ( 當然我相信要複雜還是可以很複雜 )，熟悉這些基本用法之後，應該就能夠來做些基本的地圖標記了。</p>
 
 

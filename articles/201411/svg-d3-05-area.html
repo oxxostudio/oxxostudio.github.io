@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG D3.js - 區域 ( area )</h1>
+<h1>SVG D3.js - 區域 ( area )</h1> 
 <p>理解了 line、scale 和座標軸之後，再來要介紹與 area 這個方法，area 就像字面翻譯一樣，可以繪製一個區域，同時也可以像 line 一樣的設定 interpolate ，因此搭配 line 一起使用，就可以畫出具有區域顏色的折線圖，相當的有意思。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>area 的 API</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>area 的 API</h2> 
 <p>一如往常，先來看看 area 有哪些 API 可以使用：</p>
 <blockquote>
 <ul>
@@ -88,7 +88,7 @@
 <li>area.defined</li>
 </ul>
 </blockquote>
-<h2>x([x])、x0([x0])、x1([x1])、y([y])、y0([y0])、y1([y1])</h2>
+<h2>x([x])、x0([x0])、x1([x1])、y([y])、y0([y0])、y1([y1])</h2> 
 <p>一開始的 x、x0、x1、y、y0、y1 這六個 API 是要一併處理的，這幾個 API 是專門處理座標的 API，通常 <strong>x、y0、y1 互相搭配，y、x0、x1 互相搭配</strong>，舉例來說，若我們把 x 和 y1 帶入一串數據 ( 不是陣列，要用 data 的方式帶入 )，y0 固定，那麼就會畫出一個區域的圖形。( <a href="/demo/201411/svg-d3-05-area-demo1.html" target="_blank">svg-d3-05-area-demo1.html</a> )</p>
 <pre class="prettyprint"><code>  var data = [
   {x:0, y:18}, 
@@ -150,7 +150,7 @@
       .y0(function(d) { return d.y0; })
       .y1(function(d) { return d.y1; });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141116_1_04.png" alt="SVG D3 - 區域 ( area )"></p>
-<h2>area.interpolate([interpolate])、area.tension([tension])</h2>
+<h2>area.interpolate([interpolate])、area.tension([tension])</h2> 
 <p>這兩個 API 和 line() 的用法其實一模一樣，可以參考 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" target="_blank">SVG D3 - 繪製線段</a>，這兩者的目的在於根據我們的數據，描繪出有 B-spline 或 Cardinal spline  或 cubic interpolation 的邊緣線段，這裡我們拿剛剛範例 1 來做比較，實驗組套用了<code>.interpolate('bundle')</code>。( <a href="/demo/201411/svg-d3-05-area-demo4.html" target="_blank">svg-d3-05-area-demo4.html</a> )</p>
 <pre class="prettyprint"><code> //對照組
   var area1 = d3.svg.area()
@@ -180,7 +180,7 @@
         'transform':'translate(2,2)'
       });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141116_1_05.png" alt="SVG D3 - 區域 ( area )">    </p>
-<h2>area.defined([defined])</h2>
+<h2>area.defined([defined])</h2> 
 <p>defined 就式定義那些資料該出現或不該出現，舉例來說可以定義資料大於多少才出現，或資料是偶數才能出現...等之類,下面的範例讓區域只顯示 x 不是三的倍數的資料。 ( <a href="/demo/201411/svg-d3-05-area-demo5.html" target="_blank">svg-d3-05-area-demo5.html</a> )</p>
 <pre class="prettyprint"><code>  //對照組
   var area1 = d3.svg.area()
@@ -195,7 +195,7 @@
       .y1(function(d) { return d.y; })
       .defined(function(d) { return d.x%3 != 0; });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141116_1_06.png" alt="SVG D3 - 區域 ( area )">    </p>
-<h2>製作圖表</h2>
+<h2>製作圖表</h2> 
 <p>理解了 area 的用法之後，現在要來把之前的 line()、scale()、Axis() 和 area() 全部結合在一起，做一個票漂亮亮的圖表，第一步，直接參考上一篇的 <a href="http://www.oxxostudio.tw/demo/201411/svg-d3-04-axis-demo5.html" target="_blank">範例</a> 拿來用，然後我們直接多新增 area 進去，就可以做出具有區域的折線圖表，程式碼有點多，不過都是之前介紹過的，所以直接點開範例看看吧。( <a href="/demo/201411/svg-d3-05-area-demo6.html" target="_blank">svg-d3-05-area-demo6.html</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141116_1_07.png" alt="SVG D3 - 區域 ( area )">    </p>
 <p>只有一個折線圖不稀奇，可以放超過一個折線圖，看起來整個圖表的樣貌就更為完善囉！( <a href="/demo/201411/svg-d3-05-area-demo7.html" target="_blank">svg-d3-05-area-demo7.html</a> )</p>
@@ -269,7 +269,7 @@
     'transform':'translate(35,20)' 
   });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141116_1_08.png" alt="SVG D3 - 區域 ( area )">    </p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 D3.js area 的基本介紹，相信理解之後，就可以做出更多有趣的圖表囉！最後，這篇文章的起始圖片，取自三星的 S3 廣告，總共有兩部，都超讚的，我很喜歡，分享給大家。^_^</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141116_1_09.png" alt="SVG D3 - 區域 ( area )"><br><a href="http://youtu.be/zyMfpJh3h4A" target="_blank">http://youtu.be/zyMfpJh3h4A</a></p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141116_1_10.png" alt="SVG D3 - 區域 ( area )"><br><a href="http://youtu.be/kF0yk9q2hp0" target="_blank">http://youtu.be/kF0yk9q2hp0</a>    </p>

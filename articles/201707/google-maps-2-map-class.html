@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 使用地圖與基本設定</h1>
+<h1>Google Maps API - 使用地圖與基本設定</h1> 
 <p>有別於 Embed API，如果要開始使用 Google Map 的功能，就必須透過 JavaScript API 才能實現，這篇將會記錄相關的用法以及做些範例展示。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Google Maps JavaScript API</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Google Maps JavaScript API</h2> 
 <p>要使用 JavaScript API 得先到 <a href="https://console.developers.google.com/" target="_blank">Google API Console</a> 裡啟用。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201707/google-maps-2-map-class-01.jpg" alt=""></p>
 <p>雖然和 Embed API 類似，但 JavaScript API 不能免費無限次數使用，免費的版本一天有 25,000 次的使用限制，超過之後當天就無法使用，所以必須善用金鑰的保護限制，避免金鑰外流。</p>
@@ -81,7 +81,7 @@
 <p>收費規範參考：<a href="https://developers.google.com/maps/documentation/javascript/usage" target="_blank">Google Maps JavaScript API 使用限制</a>。</p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201707/google-maps-2-map-class-02.jpg" alt=""></p>
-<h2>載入地圖</h2>
+<h2>載入地圖</h2> 
 <p>載入地圖的方法一開始在 html 裡放入一個 div 作為地圖區域，並指定一個 id。</p>
 <pre class="prettyprint"><code>&lt;div id="map"&gt;&lt;/div&gt;
 </code></pre><p>設定這個 div 的寬高，以下方的例子來說，設定為滿版的地圖。</p>
@@ -111,7 +111,7 @@
 &lt;script src="https://maps.googleapis.com/maps/api/js?key=你的金鑰&amp;callback=initMap"
 async defer&gt;&lt;/script&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201707/google-maps-2-map-class-03.jpg" alt=""></p>
-<h2>MapOptions 必要屬性</h2>
+<h2>MapOptions 必要屬性</h2> 
 <p>在上面的 JavaScript 裡，使用了<code>new google.maps.Map</code>將地圖載入，這段可以直接看 Google 參考文件中的 Map class，當中包含兩個參數，第一個是指定的地圖 div 區塊，第二個則是地圖設定，使用時會 new 一個地圖物件，針對當中的 Map 屬性去做修改設定。</p>
 <blockquote>
 <p>參考：<a href="https://developers.google.com/maps/documentation/javascript/reference#Map" target="_blank">Map class</a></p>
@@ -136,7 +136,7 @@ async defer&gt;&lt;/script&gt;
 </tr>
 </tbody>
 </table>
-<h2>MapOptions 控制項</h2>
+<h2>MapOptions 控制項</h2> 
 <p>控制項屬性不是必要屬性，主要讓我們能在地圖的四周添加對應的控制元件 UI，例如放大縮小、旋轉、全螢幕、街景切換...等，控制項都是用 <em>true 和 false</em> 作切換，true 會顯示，false 則不會顯示控制項有下列這幾個：</p>
 <table>
 <thead>
@@ -231,7 +231,7 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201707/google-maps-2-map-class-04.jpg" alt=""></p>
-<h2>MapOptions 其他屬性</h2>
+<h2>MapOptions 其他屬性</h2> 
 <table>
 <thead>
 <tr>
@@ -311,7 +311,7 @@ function initMap() {
 <p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-03.html" target="_blank">demo03.html</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201707/google-maps-2-map-class-06.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>透過地圖本身的屬性設定，就已經可以做出一些和一般地圖不一樣的感覺，再來會慢慢修改地圖以及增加地圖上的元素，打造一個真正客製化的地圖喔~</p>
 
 

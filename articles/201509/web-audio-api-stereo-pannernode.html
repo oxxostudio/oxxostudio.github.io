@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>立體聲 ( PannerNode,StereoPannerNode )</h1>
+<h1>立體聲 ( PannerNode,StereoPannerNode )</h1> 
 <p><img src="/img/articles/201509/web-audio-api-stereo-pannernode.jpg" class="preview-img" alt=""> </p>
 <p>通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。</p>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>先看到比較簡單的 StereoPannerNode，這只是針對在 2D 平面上的左右移動，它也只有一個屬性叫做「pan」，數值為 -1 到 1，如果越接近 -1，左邊的聲音就會越大聲，右邊就越小聲，越接近 1 則反之，預設值為 0 也就是左右均等，在下面的範例我們利用<code>context.createStereoPanner()</code>產生 StereoPannerNode，賦予值，就可以控制左右聲道。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo01.html" target="_blank">web-audio-api-stereo-pannernode-demo01.html</a> )</p>

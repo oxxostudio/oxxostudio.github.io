@@ -71,12 +71,12 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (22) - 深入理解 SMIL Animation</h1>
+<h1>SVG 研究之路 (22) - 深入理解 SMIL Animation</h1> 
 <p>上一篇應該已經大概明白 SVG 的動畫是怎麼一回事，但仍然有很多屬性和設定沒有解釋清楚，然而這些屬性和設定，才是 SVG 動畫的最精華所在，讓我們繼續看下去~ XD</p>
 <blockquote>
 <p>參考：<a href="http://www.w3.org/TR/SVG/animate.html#TargetAttributes" target="_blank">Attributes to identify the target attribute or property for an animation</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>SVG 動畫屬性</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>SVG 動畫屬性</h2> 
 <p>SVG 的動畫具有以下幾個重要的也是共用的屬性，分別是：</p>
 <ul>
 <li><p><strong>xlink:href</strong></p>
@@ -102,7 +102,7 @@
 <p>  屬性的類別，預設值為 auto，如果明確知道該屬性是 CSS 還是 XML ，就可以直接在這邊下定義，不過其實使用自動就好，因為會自動先去 CSS 的屬性找，找不到再去 XML 的屬性找，原則上來說應該都不會有問題。</p>
 </li>
 </ul>
-<h2>動畫影格屬性</h2>
+<h2>動畫影格屬性</h2> 
 <ul>
 <li><p><strong>calcMode ( discrete | linear | paced | spline )</strong></p>
 <p>  指定動畫的進行速度模式，預設為 linear，也就是以同樣速度進行變化，如果遇到不支援的，則直接使用 discrete 的模式，直接跳到下一個狀態 ( from 直接跳到 to )，至於 paced ，則與 linear 相同，平均分配速度，不過就不能使用後面的 keyTimes 和 keySplines ，而 spline 就一定得用 keyTimes 和 keySplines 來配合運作。 ( 不清楚的話，繼續往下看，後面會有範例 )</p>
@@ -159,7 +159,7 @@
 <p>  動畫相對於起始的屬性數值</p>
 </li>
 </ul>
-<h2>動畫時間屬性</h2>
+<h2>動畫時間屬性</h2> 
 <ul>
 <li><p><strong>begin</strong></p>
 <p>  begin 可以說是動畫時間屬性裏頭最重要的了，上頭我們只提到了 begin 可以延遲時間，但其實 begin 裏頭卻有許多的學問：</p>
@@ -250,7 +250,7 @@
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140921_2_13.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 </ul>
-<h2>動畫添加與合併屬性</h2>
+<h2>動畫添加與合併屬性</h2> 
 <ul>
 <li><p><strong>additive ( replace | sum )</strong></p>
 <p>  這是可以把動畫效果進行置換 replace 或相加 sum 的屬性，例如在 animateTransform 裏頭，type 會有 rotate、traslate、scale 和 skew 等設定，如果我們使用 replace，後面的動畫就會置換掉前面的動畫，使用 sum 就會將兩個動畫效果加在一起。下面的範例把位移、放大和旋轉三個效果合而為一，因為放大會改變位置，所以使用 translate 把位置調整回來。</p>
@@ -272,7 +272,7 @@
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140921_2_15.gif" alt="SVG 研究之路 (22) - 深入理解 SMIL Animation"></p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 SVG SMIL Animation 的詳細用法，當然，還有更多的細節等待我們去挖掘，畢竟在 W3C 這篇文章內容可是我的幾百倍吧 ( 制定者，不意外呀哈哈 )，不過瞭解上述的用法，其實就可以做出許多別人辦不到的特效囉！</p>
 
 

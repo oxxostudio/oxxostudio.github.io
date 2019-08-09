@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>用 LESS 寫 CSS ( Mixin、Extend )</h1>
+<h1>用 LESS 寫 CSS ( Mixin、Extend )</h1> 
 <p>上一篇介紹了 LESS 的基本用法、import 和變數，這一篇要來玩一點比較進階的：mixin 和 extend，當我們可以熟練 mixin 和 extend 的用法，相信對於整個 CSS 可以有大幅加速的功能。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>mixin</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>mixin</h2> 
 <p>有別於 SASS 的寫法，LESS 的 mixin 長相跟 class 一模一樣，就是用一個「.」開頭，裡面放入變數重複使用，雖然跟 class 一樣，但如果是帶有小括號，轉出來的 CSS 是不會出現的。</p>
 <ul>
 <li><p>LESS</p>
@@ -126,7 +126,7 @@
   }
 </code></pre></li>
 </ul>
-<h2>mixin 的計算</h2>
+<h2>mixin 的計算</h2> 
 <p>我們可以針對要 mixin 的變數做加減乘除的計算，不過要記得「前後加空格」( 其實跟 calc 很像 )，不用在意單位的問題，你的變數如果帶的是 px 單位，轉出來就會是 px 為單位。</p>
 <ul>
 <li><p>LESS</p>
@@ -143,7 +143,7 @@
   }
 </code></pre></li>
 </ul>
-<h2>把 mixin 當作樣式 class 使用</h2>
+<h2>把 mixin 當作樣式 class 使用</h2> 
 <p>剛剛提到長相跟 class 很像，其實我們在某些情形下可以當作「整包」class 來使用，以下面的例子，在<code>#b-mixin .b-mixin-1</code>裡面我們直接寫入<code>#b .b-1</code>，轉出來的 CSS 就會把<code>#b .b-1</code>的內容整包帶入<code>#b-mixin .b-mixin-1</code>裡頭，因此如果有定義樣式表，或是有要定義重複性高的樣式，就可以用這種方法來實作。</p>
 <ul>
 <li><p>LESS</p>
@@ -189,7 +189,7 @@
   }
 </code></pre></li>
 </ul>
-<h2>帶有參數的 mixin</h2>
+<h2>帶有參數的 mixin</h2> 
 <p>我們可以在 mixin 裡面加入參數重複使用，而這些參數我們也可以定義預設值，當帶有預設值的參數遇到自訂的數值，就會以自訂的數值為主，不過如果自訂的數值沒有到參數的數量呢？這時候就可以使用「<strong>@arguments</strong>」這個特別的參數，「@arguments」就表示在沒有自定義數值的狀態下，自動採用我們的預設值。</p>
 <p>這邊其實非常好用，特別是針對許多 CSS3 帶有前綴字的屬性 ( 像是 -webkit- 、 -moz- 之類的 )，基本上只需要定義一次，後面重複使用即可。</p>
 <ul>
@@ -244,7 +244,7 @@
   }
 </code></pre></li>
 </ul>
-<h2>+ 與 +_</h2>
+<h2>+ 與 +_</h2> 
 <p><code>+</code>與<code>+_</code>也是負責合併使用，有使用<code>+</code>或<code>+_</code>的會和前一個使用的合併在一起，以下面的例子來說，陰影就會合併在同一個樣式裡，不會變成兩個，<code>+</code>轉換出來會有逗號，<code>+_</code>則是沒有逗號，用空白呈現。</p>
 <ul>
 <li><p>LESS</p>
@@ -272,7 +272,7 @@
   }
 </code></pre></li>
 </ul>
-<h2>extend</h2>
+<h2>extend</h2> 
 <p>extend 顧名思義就是「延伸、延展」，如果我們要重複引用的 class 裡面又有子元素該怎麼辦呢？這裏就可以使用<code>:extend</code>，它會把重複的樣式獨立出來，如果要進一步跟子元素有關聯，就可以使用<code>all</code>，就會聯同子元素的樣式一起轉換進去。</p>
 <ul>
 <li><p>LESS</p>

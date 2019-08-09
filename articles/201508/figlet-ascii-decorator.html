@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>FIGlet - ASCII Decorator</h1>
+<h1>FIGlet - ASCII Decorator</h1> 
 <p>早在十幾年前玩 BBS 的時候 ( 暴露年紀了 )，就已經開始玩許多利用文字與線條組成的圖形，當時甚也用 ASCII 色碼來表現顏色，真是令人不勝懷念，然而到了今時今日，因為 SublimeText 的緣故，竟然又接觸到了類似的技術，因此找了一些相關的資訊，用這篇文章做個紀錄的分享。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>字體由來</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>字體由來</h2> 
 <p>首先談到這種字體的由來，它其實有幾個固定名稱，幾種比較主要的稱呼分別是：「ASCII TEXT」、「ASCII TEXT Banner」、「ASCII Art」、「ASCII Decorator」和「FIGlet」，「FIGlet」這個詞應該是最標準的用法，因為這個詞可是在維基百科上頭有介紹的 ( <a href="https://en.wikipedia.org/wiki/FIGlet" target="_blank">https://en.wikipedia.org/wiki/FIGlet</a> )，而「FIGlet」源自於 Frank、Ian 和 Glen 的信，應該就是他們當初在寫信的時候加上去的一些字體藝術 ( 參考：<a href="http://www.figlet.org/faq.html" target="_blank">http://www.figlet.org/faq.html</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201508/20150808_1_04.jpg" alt=""></p>
 <p>除了字體，其實也有不少轉換圖片為 ASCII 的工具和軟體，有興趣的人可以參考：<a href="https://en.wikipedia.org/wiki/ASCII_art" target="_blank">ASCII Art</a>，或是用這個網站：<a href="http://picascii.com/" target="_blank">http://picascii.com/</a> 體驗一下，總之相關作法其實都類似，過去我們要花很多時間做這些文字與符號的編排，現在則是靠程式來幫我們完成。</p>
@@ -82,10 +82,10 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201508/20150808_1_02.jpg" alt=""></p>
 <p>而我一開始用的時候，我其實是找了這個網站：<a href="http://www.network-science.de/ascii/" target="_blank">http://www.network-science.de/ascii/</a> 來幫忙，只要輸入文字，按下「do it」，就會自動幫我轉換出來。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201508/20150808_1_06.jpg" alt=""></p>
-<h2>SublimeText 套件</h2>
+<h2>SublimeText 套件</h2> 
 <p>後來學聰明直接用套件來完成，因為在 SublimeText 裡頭有趣的套件，就叫做：<strong>ASCII-Decorator</strong>，有興趣的人可以直接安裝，或從 Github 上頭下載 ( <a href="https://github.com/viisual/ASCII-Decorator" target="_blank">https://github.com/viisual/ASCII-Decorator</a> ) ，安裝之後，只要選取需要變成 ASCII Decorator 字體的文字，按下<code>cammand (ctrl) + shift + k</code>就可以進行轉換，而我們也可以再套件的 user 設定裡，設定轉換的字體，個人推薦「Roman」字體，相當的清晰。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201508/20150808_1_03.jpg" alt=""></p>
-<h2>做個轉換網頁吧</h2>
+<h2>做個轉換網頁吧</h2> 
 <p>做的這邊貌似結束了，但是身為一個充滿創意和好奇心的前端工程師，一定要再追根究底看看能不能自己做出一個打字就自己產生圖形的網頁，所以就開始找看看有沒有現成的 js 可以使用，不找還好，一找發現其實還滿多人做的，不過大多都是在 node.js 的環境運行居多，此外也有滿多其他開發語言，於是我就選擇了在 npm 上頭更新頻率還滿高的這個：figlet ( <a href="https://www.npmjs.com/package/figlet#horizontallayout" target="_blank">https://www.npmjs.com/package/figlet#horizontallayout</a> )，不過因為我只是要純粹用在網頁上，我就只使用了它的<code>figlet.js</code>和<code>fonts</code>資料庫。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201508/20150808_1_07.jpg" alt=""></p>
 <p>用在網頁裡其實沒有太大的難度，照著步驟進行就可以，重點是因為他有用到 jQuery，所以 jQuery 變成一定要載入，程式碼如下，<code>inputText</code>是要放進去的文字，第二個屬性是字體，再來是要執行的 function。</p>
@@ -143,7 +143,7 @@
 </li>
 </ul>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201508/20150808_1_08.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>最後提供這次找的一些參考資訊，也是今天颱風天的一點小小練習，颱風天就是要寫程式呀，不然要幹麻~ XD </p>
 <ul>
 <li>FIGlet wiki：<a href="https://en.wikipedia.org/wiki/FIGlet#cite_note-4" target="_blank">https://en.wikipedia.org/wiki/FIGlet#cite_note-4</a></li>

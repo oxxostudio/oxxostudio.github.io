@@ -71,13 +71,13 @@
     <article>
       <i class="tag"></i>
 
-<h1>純 CSS Material Design 風格按鈕</h1>
+<h1>純 CSS Material Design 風格按鈕</h1> 
 <p>其實 Material Design 的扁平化、以及著重動畫強調的設計風格早在去年七八月的時候就開始大流行 ( 2014 年的 Google I/O 大會 )，當初一看到，其實就很想要嘗試做做看 Material Design 的 icon 按鈕，這類型的按鈕往往只利用幾何色塊的變化，就能抓住使用者的眼光，並且從幾何形狀中明白按鈕的含意，這也是 Material Design 非常強調的設計理念和精髓。</p>
 <blockquote>
 <p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150325_1_02.jpg" alt="純 CSS Material Design 風格按鈕"></p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>應用重點與原理</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>應用重點與原理</h2> 
 <p>在這篇我純粹利用 CSS ，就做出了 Material Design 風格的按鈕，其實沒有很難，比較需要知道的重點如下：</p>
 <ul>
 <li><p><strong>偽元素 before 和 after 的應用</strong></p>
@@ -91,7 +91,7 @@
 <p>  CSS 裡所有的形變都是藉由 transform 來完成 ( 必要時請加各個瀏覽器的前墜字 )，範例裏頭會用到 scale 與 rotate 這兩個變形屬性。</p>
 </li>
 </ul>
-<h2>實作 Material Design 風格按鈕</h2>
+<h2>實作 Material Design 風格按鈕</h2> 
 <p>了解原理之後，先來看一下 HTML 代碼，代碼裡面有兩個主要的 div 分別是 a 和 b，a 的話是利用偽元素來進行變換，b 的內容還有三個小 i 分別是 b1、b2 和 b3 ( 都會宣告為 block 屬性 )，因為大於兩個就無法純粹使用偽元素，所以直接用三個 block 元素來表示比較快。</p>
 <pre class="prettyprint"><code>&lt;div class="a"&gt;&lt;/div&gt;
 &lt;div class="b"&gt;

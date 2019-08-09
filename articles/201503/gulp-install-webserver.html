@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>Gulp 學習 1 - 安裝與執行</h1>
+<h1>Gulp 學習 1 - 安裝與執行</h1> 
 <p><img src="/img/articles/201503/gulp-install-webserver.jpg" class="preview-img" alt=""></p>
 <p>在二月的時候，我花了不少時間在學習 Gulp 這個任務自動化管理工具，最主要受到了 Gitbook 的啟發，還有洧杰與志誠的推薦，讓我毅然決然地投入了 Gulp 的世界，過去因為工作的需求，接觸過一點點的 Grunt，Gulp 和 Grunt 的初衷相同，都是要把過去需要人工處理的步驟給自動化，如此一來就可以省下不少寶貴的時間，不過我的 Gulp 仍不熟稔，因此從這篇開始的接下來幾篇，都是我學習 Gulp 的歷程，如果有寫錯或是不明白的地方，也請大家多多給予指教。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>參考資料</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>參考資料</h2> 
 <p>學習 Gulp 之初，我找了不少的參考資料，以下是我在初期入門所閱讀的資料，內容都滿詳細的描述了關於 Gulp 的基本觀念，特別是 <a href="https://987.tw/2014/07/09/gulpru-men-zhi-nan/" target="_blank">gulp 入門指南</a> 這篇，非常詳細且完整，看完之後應該就可以明白八九成囉。</p>
 <ul>
 <li><a href="http://gulpjs.com/" target="_blank">Gulp 官方網站</a></li>
@@ -87,10 +87,10 @@
 <li><a href="http://www.sitepoint.com/introduction-gulp-js/" target="_blank">An Introduction to Gulp.js</a></li>
 <li><a href="https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js" target="_blank">Automate Your Tasks Easily with Gulp.js</a></li>
 </ul>
-<h2>Gulp 簡介</h2>
+<h2>Gulp 簡介</h2> 
 <p>雖然上面幾篇都詳細的描述了 Gulp，不過由於這是我自己的學習筆記，第一篇仍然不免俗的要介紹一下 Gulp 與 Gulp 的安裝，揪竟 Gulp 是什麼呢？為什麼我要學 Gulp 呢？Gulp 是基於 Node.js 的任務自動化管理工具，和 Grunt 同樣都是用來簡化人工的步驟，但兩者卻又有著本質上的差異 ( 可以參考 appleboy 大大的 <a href="http://www.slideshare.net/appleboy/automating-your-workflow-with-gulp" target="_blank">Automating your workflow with Gulp.js</a> )，最主要就是 Gulp 使用了 streams ( 流 ) 的概念，一個任務一個任務的依序按照流程做完，相當的容易思考和理解，然而請教過一些常用 Grunt 的朋友，Grunt 相較於 Gulp，就顯得不那麼直覺 ( 設定比較容易跳來跳去 )。</p>
 <p>總而言之，我就捨棄了 Grunt ，轉而投入 Gulp 的懷抱，我目標很簡單，我想要做一個「<strong>可以純粹寫 Markdown 就轉成 HTML 的 blog，並且自動幫我壓縮圖片、HTML、CSS 和 JS，還會自動產出 sitemap 和 json 資料</strong>」，基本上就是有點類似 Gitbook 的做法啦 ( 畢竟我是受到 Gitbook 的啟發呀 )。</p>
-<h2>安裝 Gulp</h2>
+<h2>安裝 Gulp</h2> 
 <p>要使用 Gulp，第一步就是要安裝 Node.js，因為 Gulp 是基於 Node.js 開發而成，所以就先上 Node.js 的官網下載安裝 ( <a href="http://nodejs.org/download/" target="_blank">http://nodejs.org/download/</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150302_1_02.jpg" alt="Gulp 學習筆記 1 - 安裝與執行"></p>
 <p>安裝 node.js 也會順便把 npm 安裝進去，接著就是使用 windows 的 cmd 或 Mac 的 Termial 來安裝 Gulp，首先我們先輸入以下的指令，把 Gulp 安裝到全域的環境。( 在 Mac 要記得加 sudo 不然會裝不進去 )</p>

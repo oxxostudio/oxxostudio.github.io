@@ -71,14 +71,14 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 路線規劃</h1>
+<h1>Google Maps API - 路線規劃</h1> 
 <p>使用 Google 地圖時，「路線規劃」便是其中一個常用的情境，一個完整的路線規劃，不僅包含了如何抵達，更具備行走、腳踏車或大眾運輸...等指示功能，這篇文章將會透過 Directions API 實作具備 Google 地圖路線規劃的網頁。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用 Directions API</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用 Directions API</h2> 
 <p>前往 <a href="https://console.developers.google.com/project/_/apiui/apis/enabled?hl=zh-tw" target="_blank">Google Cloud Platform Console</a>，建立新的專案或是選擇現有的專案 ( 不知道怎麼做可以參考 <a href="http://www.oxxostudio.tw/articles/201707/google-maps-1.html" target="_blank">Google Maps API - 網頁載入地圖 ( 起手式 )</a> )，接著點選上方「<em>啟用 API 和服務</em>」。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-19-directions-04.jpg" alt=""></p>
 <p>在搜尋欄位搜尋「<em>Directions API</em>」，找到後點選並且啟用。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-19-directions-05.jpg" alt=""></p>
-<h2>Directions 的屬性</h2>
+<h2>Directions 的屬性</h2> 
 <table>
 <thead>
 <tr>
@@ -141,7 +141,7 @@
 </tr>
 </tbody>
 </table>
-<h2>起手式</h2>
+<h2>起手式</h2> 
 <p>要使用 Google Maps API 的路線規劃，開始先載入<code>DirectionsService()</code>和<code>DirectionsRenderer()</code>，因為在 Google Map 裡，所有額外添加上去的都是圖層，所以透過<code>directionsDisplay.setMap(map)</code>設定路線規劃的圖層，再透過<code>directionsService.route</code>繪製。</p>
 <blockquote>
 <p>範例：<a href="/demo/201810/google-maps-19-directions-demo-01.html" target="_blank">Google Maps API 的路線規劃起手式</a></p>
@@ -180,7 +180,7 @@ function initMap() {}
     });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-19-directions-01.jpg" alt=""></p>
-<h2>獲取路線指示內容</h2>
+<h2>獲取路線指示內容</h2> 
 <p>在上面程式碼的最後面，當繪製狀態回傳 OK 之後，我們也可使用 console 來看看每段路徑的內容細節，從裡頭能瞧見像是<code>instructions</code>表示路線的指示，還有路線上每個點的經緯度都看一目瞭然。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-19-directions-02.jpg" alt=""></p>
 <p>知道如何獲取指示之後，我們將上方的程式碼的後半段稍作改良，加入地圖標記、資訊視窗和地圖標記點擊事件，如此一來我們就能在路線的每個主要位置，加上對應的標記和指示。</p>
@@ -223,7 +223,7 @@ directionsService.route(request, function (result, status) {
     }
 });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-19-directions-03.jpg" alt=""></p>
-<h2>顯示大眾運輸路線</h2>
+<h2>顯示大眾運輸路線</h2> 
 <p>如果我們把<code>travelMode: 'DRIVING'</code>改成<code>TRANSIT</code>，就能夠即時顯示大眾運輸的路線，大眾運輸共有四種方式，分別是 BUS、RAIL、SUBWAY 和 TRAIN，在台灣 RAIL 和 SUBWAY 應該都是指捷運 ( 如果在高雄，RAIL 有可能會是輕軌 )，不過如果自己做測試，在沒有大眾運輸的時段裡，就不會有路線規劃顯示，使用方式如下，就是修改<code>travelMode</code>，並加入<code>travelOprions</code>的設定。( 比較需要注意的是 modes 內容為陣列 )</p>
 <blockquote>
 <p>範例：<a href="/demo/201810/google-maps-19-directions-demo-03.html" target="_blank">顯示大眾運輸路線</a></p>
@@ -237,7 +237,7 @@ directionsService.route(request, function (result, status) {
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-19-directions-06.jpg" alt=""></p>
 <p>如果改成 BUS 就會變成下圖這樣。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-19-directions-07.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>總而言之，Google Maps API 在路線規劃上非常的完整，但除非是要自己做應用，不然直接開啟 Google Maps 出來使用就可以囉！我自己出國玩，查路線和大眾運輸也都是借重這個超方便的功能！之後會再找時間，把路線規劃再拿來做點好玩的應用。</p>
 
 

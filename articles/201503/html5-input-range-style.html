@@ -71,17 +71,17 @@
     <article>
       <i class="tag"></i>
 
-<h1>改變 HTML5 range 樣式的兩種方法</h1>
+<h1>改變 HTML5 range 樣式的兩種方法</h1> 
 <p><img src="/img/articles/201503/html5-input-range-style.jpg" class="preview-img" alt=""></p>
 <p>今天來探討一下 HTML5 的 range 這個新的 input 類型，不過重點不是在 range 要如何使用，而是在如何去改變 range 的樣式，做出一個漂漂亮亮的滑動桿。</p>
 <p>過去我們要製作美美的滑動桿 ( range slider )，不外乎就是用個 span 或 div ，搭配判斷滑鼠座標 ( pageX、pageY ) 與點擊事件來製作，就算是 HTML5 具有了 range 的 input 類型，預設的樣式只能滿足基本的需求，對於有一些要求視覺設計的網站來說，根本就毫無用武之地，只好自己手動自幹一個 range slider 來用了。</p>
 <p>雖然這篇會介紹兩種修改 range 樣式的方法，但由於 HTML5 與 CSS3 在各個瀏覽器之間仍然沒有完全統一 ( 雖然去年十月好像就說標準制定完成了 )，所以要改變 range 的樣式，仍然必須使用到各家瀏覽器自己的特有寫法來調整，因此下列的範例，主要以 Chrome 為主，也會介紹 Firefox 的用法，至於 IE，能吃嗎？XD</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>range 原理</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>range 原理</h2> 
 <p>首先要來寫一個 range 出來，min 是最小值，max 是最大值，step 是每隔間距，value 是預設數值：</p>
 <pre class="prettyprint"><code> &lt;input type="range" min="0" max="100" step="1" value="50"&gt;
 </code></pre><p>如果沒有意外，看到的長相就會是下面這個樣子非常的....嗯...你懂的...</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_1_02.jpg" alt="改變 HTML5 range 樣式的兩種方法"></p>
-<h2>純粹使用 CSS 修改 range 樣式</h2>
+<h2>純粹使用 CSS 修改 range 樣式</h2> 
 <p>第一種方法是純 CSS 的做法，由於 range 是 input 的一種類型，我們無法用傳統的 CSS 編輯方法來修改樣式，這裡必須要使用到<code>-webkit-appearance</code>這個特殊屬性，這是 webkit 特有的屬性，代表使用系統預設的外觀，可惜 W3C 到寫這篇文章的時候，都還沒有納入規範 ( 不然 webkit 簡直是神呀 )，只要我們將這個屬性設為<code>none</code>，那麼原本 range 的樣式就不會呈現了，這時我們只要加入自己的背景、陰影...等樣式，就可以看到樣式被換過來了。</p>
 <pre class="prettyprint"><code>input[type="range"]{
   -webkit-appearance: none;
@@ -178,7 +178,7 @@ input[type="range"]::-moz-range-progress{
 input[type="range"]::-moz-focus-outer{
   border:none;    /* 去除 focus 時候的外框虛線 */
 }
-</code></pre><h2>使用 CSS + jQuery 修改 range 樣式</h2>
+</code></pre><h2>使用 CSS + jQuery 修改 range 樣式</h2> 
 <p>好了，介紹完了用純 CSS 做 range slider 的用法之後，接著介紹一下如何用 CSS +  jQuery 做出一樣的效果，同樣的，我們要先用<code>-webkit-appearance</code>把原始樣式隱藏，先看到<code>input[type="range"]</code>的樣式，這邊我利用背景顏色漸層的方式，來完成左右顏色不同的效果 ( 雖然方便，但相對的就不能用純 CSS 控制 )。</p>
 <pre class="prettyprint"><code>input[type="range"]{
   -webkit-appearance: none;
@@ -226,9 +226,9 @@ input[type="range"]::-webkit-slider-thumb:active{
   }
 });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_1_06.gif" alt="改變 HTML5 range 樣式的兩種方法"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是用 CSS 和 jQuery 去修改 range  slider 樣式的基本方法，分享給大家，活用這個方法，就可以做出許多非常有特色的 range slider 囉。</p>
-<h2>參考文章：</h2>
+<h2>參考文章：</h2> 
 <ul>
 <li><a href="https://gist.github.com/webtobesocial/aefd6e25064c08e0cc9a" target="_blank">Styling native elements</a></li>
 <li><a href="http://daker.me/2014/06/how-i-did-make-the-ubuntu-html5-range-slider.html" target="_blank">How I Did Make The Ubuntu HTML5 Range Slider</a></li>

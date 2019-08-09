@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 自訂地圖樣式風格</h1>
+<h1>Google Maps API - 自訂地圖樣式風格</h1> 
 <p>你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>如何修改地圖樣式風格</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>如何修改地圖樣式風格</h2> 
 <p>回顧一下 <a href="/articles/201707/google-maps-2-map-class.html" target="_blank">Google Maps (2) - 使用地圖與基本設定</a> 這篇文章的內容，後半段有提及 <em>MapOptions</em> 的「其他屬性」，當中有個屬性叫做「<em>styles</em>」，要改變地圖的樣式風格，就需要使用這個 styles，寫法大概會向下方的程式碼這樣，除了宣告 zoom 和 center，可以看到多了一個 styles 的屬性，它的內容是一個 json 物件的樣式宣告。</p>
 <pre class="prettyprint"><code>function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -92,7 +92,7 @@
           }]
   });
 }
-</code></pre><h2>JSON 樣式參考資料</h2>
+</code></pre><h2>JSON 樣式參考資料</h2> 
 <p>物件樣式主要包含三個元素，要指定樣式，必須<em>三個元素為一組，結合成一個樣式陣列</em>，不過根據 Google 的說法，一次可套用的樣式數量是有限的，如果樣式陣列超過字元數目上限，就不會套用任何樣式。</p>
 <ul>
 <li><strong>featureType</strong>：可不填，這個元素主要是地圖的地理特性，包括道路、公園、水域等等。如果您未指定特徵，則會選取全部特徵。</li>
@@ -147,7 +147,7 @@
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-02.jpg" alt=""></p>
-<h2>線上建立 Google Maps API 的自訂樣式</h2>
+<h2>線上建立 Google Maps API 的自訂樣式</h2> 
 <p>雖然我們透過 Google Maps API 已經可以修改地圖樣式風格，但每次都要手動改程式碼，甚至要明白地圖上每個元件的配色實在很不容易，所以這時就得透過 Google 官方推薦的「Google 線上地圖樣式編輯器」，直接在線上建立樣式風格。</p>
 <blockquote>
 <p>線上地圖樣式編輯器：<a href="https://mapstyle.withgoogle.com/" target="_blank">Google Maps APIs Styling Wizard</a></p>
@@ -163,7 +163,7 @@
 <p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-03.html" target="_blank">線上建立 Google Maps API 的自訂樣式</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-06.jpg" alt=""></p>
-<h2>Snazzy Maps</h2>
+<h2>Snazzy Maps</h2> 
 <p>如果覺得預設的地圖樣式不夠，也可以 Google 搜尋地圖樣式，這時候通常出現在第一筆的，會是一個叫做「Snazzy Maps」的網站。( <a href="https://snazzymaps.com" target="_blank">https://snazzymaps.com</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-07.jpg" alt=""></p>
 <p>點選上方的 Explore styles，就可以看到全世界上神人們所設計的地圖樣式，上頭除了有瀏覽數量，也有評價的星星數，可以盡情挑選自己中意的樣式，如果想要挑選最多人使用的。</p>
@@ -173,7 +173,7 @@
 <p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-04.html" target="_blank">線上建立 Google Maps API 的自訂樣式</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-09.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上大概就是修改地圖樣式風格的方法，感覺程式不難，難在如何設計風格與配色，相信透過線上工具的輔助，大家都能做出漂漂亮亮的地圖囉！</p>
 
 

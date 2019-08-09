@@ -71,13 +71,13 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (11) - filter:feColorMatrix</h1>
+<h1>SVG 研究之路 (11) - filter:feColorMatrix</h1> 
 <p><img src="/img/articles/201406/svg-11-filter-feColorMatrix.jpg" class="preview-img" alt=""></p>
 <p>feColorMatrix 顧名思義就是色彩矩陣的濾鏡，用一個矩陣的計算，將圖片的色彩重新計算後輸出，便可以達到各種不同的色彩變化效果，在此之前，要先介紹一下圖片顏色定義，因為如果不了解圖片的顏色組成原理，就會無法明白色彩該如何去計算。</p>
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201406/color-channel.html" target="_blank">淺談位元色版</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>色彩矩陣</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>色彩矩陣</h2> 
 <p>基本上在網路的圖片裡頭 ( jpg、png )，每一個像素的顏色，都是由 R ( 紅 ) 、G ( 綠 ) 、B ( 藍 ) 、A ( 透明 / Alpha ) 四個色版所組成 ( 使用過 Photoshop 應該很清楚，不清楚的請好好重學 Photoshop ) ，每一個色版具有 0~255 階 ( 2 的八次方 )，透過色彩矩陣的換算，我們可以輕易地改變圖片裡每一個像素的顏色，色彩矩陣的公式如下：  </p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140621_1_02.png" alt="SVG filter - feColorMatrix"></p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140621_1_03.png" alt="SVG filter - feColorMatrix">  </p>
@@ -113,7 +113,7 @@
                        0 0 1 0 0
                        0 0 0 .5 0" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140621_1_08.png" alt="SVG filter - feColorMatrix"> </p>
-<h2>色彩轉換</h2>
+<h2>色彩轉換</h2> 
 <p>看完了單純 RGBA 的圖片說明，對於色彩矩陣應該有了初步的認識，接下來就來點比較複雜的，直接用一張具有各種色彩的圖片來玩玩看！以下我選擇了我最喜歡的超現實主義大師 Rene Magritte 的代表作 The Son of Man 的截圖來向大師致敬！</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140621_1_09.png" alt="SVG filter - feColorMatrix"> </p>
 <p>假設我們今天要把圖片的飽和度提高，該怎麼做呢？首先當然是想想飽和度的成因，就是紅的越紅，藍的越藍，綠的越綠，由這個成因出發，我們的矩陣就可以寫成下面的樣子，看到矩陣當中出現了 3 和 -1，一定會很那悶這是怎麼來的，箇中原理其實很容易理解，讓我們假設某一個像素的 RGB 分別是 (200/255),(100/255),(50/255)，呈現的應該是有點暗沉的橘色，經過矩陣的換算，R 變成了 200/255x3-100/255-50/255= 1.76, G 變成 200/255x(-1)+100/255*3-50/255=0.2，B 變成 200x(-1)+100x(-1)+50x3=-0.59，因此 RGB 轉換後就是：200x1.76,100x0.2,50x-0.5。</p>
@@ -155,7 +155,7 @@
                        0 0 0 0 0
                        0 0 1 0 0" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140621_1_16.png" alt="SVG filter - feColorMatrix">  </p>
-<h2>濾鏡效果</h2>
+<h2>濾鏡效果</h2> 
 <p>我了解看到這邊，大家應該已經「灰起」了，總之這就是色彩矩陣的計算原理，不過其實也不用太擔心，SVG 裏頭其實已經幫我們設定好了幾組，只需要輸入 type 名稱以及數值，就可以輕鬆的產生濾鏡效果，也大幅度減少了自己動手運算的門檻，</p>
 <ul>
 <li><p><strong>type="matrix"</strong>：  </p>
@@ -189,7 +189,7 @@
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140621_1_22.png" alt="SVG filter - feColorMatrix">  </p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 SVG filter feColorMatrix 的介紹，相同的 colormatrix 原理同樣可以應用在 HTML5 的色彩運算上，說難不難，但是真的要深入去計算每個數值，讓產生的圖片變成最完美的效果，就是很難又很複雜的學問了！最後補充上一大堆的參考資料：</p>
 <ul>
 <li><a href="http://www.w3.org/TR/SVG/filters.html#feColorMatrixTypeAttribute" target="_blank">W3C Filter primitive feColorMatrix</a></li>

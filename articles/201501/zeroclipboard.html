@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>點選自動複製 ( ZeroClipboard )</h1>
+<h1>點選自動複製 ( ZeroClipboard )</h1> 
 <p>自從用了 Github 開始，一直都覺得它裏頭複製網址的方法做得很好，只需要點一個按鈕就可以複製 ( 也有可能因為文字欄位太短才用這種方式 )，仔細看了一下它怎麼寫的，發現上面用 div 疊了一層 flash 的 swf ，百般不思其解的狀態下找了一些資料，發現原來不能用純 javascript 的方法來做是因為瀏覽器的安全性限制，不能夠單純用前端存取剪貼簿的資料，所以才會用 flash 作為介接。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_02.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>ZeroClipboard 套件</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>ZeroClipboard 套件</h2> 
 <p>再仔細看看 Github 用了甚麼套件，發現它是使用一套名為「<strong>ZeroClipboard</strong>」的純 javascript 插件，主要是在需要點選自動複製的按鈕上方，覆蓋了一層 flash 的 swf，藉由點擊這個 flash 的事件，完成剪貼簿的複製和貼上，實際的運作原理我們就一一看下去。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_04.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <p>先列出 ZeroClipboard 的 <a href="http://zeroclipboard.org/" target="_blank">官方網站</a> 和 <a href="https://github.com/zeroclipboard/zeroclipboard" target="_blank">Github</a>，內容其實有不少的 API 可以供大家使用，這裡就不一一贅述，只把基本常用的功能列出，相信對於單純需要「自動複製貼上」的情境，應該就已經綽綽有餘。( 換句話說現在除了 Github，真的很少見到有人這樣用呀，畢竟手機上不支援 flash 是一大隱憂 )</p>
@@ -82,7 +82,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_05.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
 <p>有了 http 的伺服器環境之後，接著就是要去 ZeroClipboard 的 <a href="https://github.com/zeroclipboard/zeroclipboard" target="_blank">Github</a> 把整包給下載下來，裏頭有兩個檔案最為重要，一個是 ZeroClipboard.js，另一個就是 ZeroClipboard.swf，ZeroClipboard.js 是在一開始引入的 js，ZeroClipboard.swf 則是要和「<strong>和 ZeroClipboard.js 放在同一個目錄</strong>」的 swf 檔，當然也不一定要在同一個目錄下，只需要去修改 ZeroClipboard.js 裏頭的<code>swfPath</code>即可，這在後續會介紹。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150126_1_06.jpg" alt="點選自動複製 ( ZeroClipboard )"></p>
-<h2>如何使用</h2>
+<h2>如何使用</h2> 
 <p>再來就是介紹如何使用，當我們引入 jquery 和 ZeroClipboard.js 之後，要先宣告一個 ZeroClipboard 物件，如此一來才能使用它的 API。( 參考 <a href="https://github.com/zeroclipboard/zeroclipboard/blob/master/docs/instructions.md#a-more-complete-example" target="_blank">ZeroClipboard 說明文件</a> )</p>
 <p>HTML：</p>
 <pre class="prettyprint"><code>&lt;button class="clipboard" data-clipboard-text="12345"&gt;點我複製&lt;/button&gt;
@@ -177,7 +177,7 @@
     title: null,
     zIndex: 999999999
   };
-</code></pre><h2>小結</h2>
+</code></pre><h2>小結</h2> 
 <p>以上，就是自動點選複製按鈕的做法，雖然用到的機會不多，但多一個小步驟，可以讓使用者省掉全選複製的手續，也是個不錯的使用者體驗。( 不過到手機上就一定 GG 了哈哈！ )</p>
 
 

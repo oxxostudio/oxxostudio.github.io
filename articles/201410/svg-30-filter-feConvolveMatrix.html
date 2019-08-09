@@ -71,13 +71,13 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (30) - filter - feConvolveMatrix</h1>
+<h1>SVG 研究之路 (30) - filter - feConvolveMatrix</h1> 
 <p><img src="/img/articles/201410/svg-30-filter-feConvolveMatrix.jpg" class="preview-img" alt=""></p>
 <p>之前有介紹過模糊的濾鏡「SVG 研究之路 (13) - filter - feGaussianBlur」，既然有模糊濾鏡，為什麼沒有銳利化的濾鏡呢？其實是有的，在 SVG 如果說要進行銳利化，便要使用 feConvolveMatrix 這個濾鏡來實現，而且 feConvolveMatrix 不僅能進行銳利化，同時它也可以進行模糊的動作，不過因為是針對每個像素與四周像素進行矩陣運算，來計算出模糊或銳利，所以要寫的數字和程式相較於單純的 feGaussianBlur 濾鏡會複雜不少，因此如果有模糊的需求，還是直接使用 feGaussianBlur 吧！以下就來介紹一下 feConvolveMatrix 這個神奇的濾鏡。</p>
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html" target="_blank">SVG 研究之路 (13) - filter - feGaussianBlur</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>feConvolveMatrix 的原理</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>feConvolveMatrix 的原理</h2> 
 <p>首先要來看一下 feConvolveMatrix 的原理，feConvolveMatrix 要把字拆開看，也就是 Convolution Matrix，我們搜尋 feConvolveMatrix 其實找不太到資料，但如果搜尋 Convolution Matrix，就會發現在圖學裡頭有一拖拉庫的東西，還牽扯到許多的演算法之類的，超複雜的呀！而且，photoshop 和 premiere 裡面竟然也有 Convolution Matrix，真是令人太驚訝啦！( 看下圖 )</p>
 <p>Photoshop ( 濾鏡&gt;其他&gt;自訂 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201410/20141020_1_02.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
@@ -95,7 +95,7 @@
 <p>經過 Convolution Matrix (1 1 1 1 1 1 1 1 1) 換算後：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201410/20141020_1_08.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
 <p>整張圖就變得不一樣了，或是說變模糊了，這就是進行了 Convolution Matrix 的結果。</p>
-<h2>feConvolveMatrix 屬性</h2>
+<h2>feConvolveMatrix 屬性</h2> 
 <p>上面花了這麼大篇幅解釋的原理，其實就是 SVG 的 feConvolveMatrix 濾鏡原理，現在就來看看 feConvolveMatrix 有哪些屬性可以設定：</p>
 <ul>
 <li><p><strong>order</strong></p>
@@ -196,7 +196,7 @@
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201410/20141020_1_18.png" alt="SVG 研究之路 (30) - filter - feConvolveMatrix"></p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 feConvolveMatrix 的基本介紹，不過，除非真的有需要，不然這種影像處理的事情還是交給 photoshop 來解決就好了哈哈！畢竟人家才是專家咩~ 而且雖然我們可以自己手動計算，但實際上的演算法卻不是加減乘除這麼單純，而且每種利用矩陣來進行影像處理的方式，也會受到圖片本身的影響，所以這個方法學起來，雖然實際用到的情況不多，但真的有需要就會派上用處囉！</p>
 
 

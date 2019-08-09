@@ -71,11 +71,11 @@
     <article>
       <i class="tag"></i>
 
-<h1>一次搞懂 CSS 字體單位：px、em、rem 和 %</h1>
+<h1>一次搞懂 CSS 字體單位：px、em、rem 和 %</h1> 
 <p>對於繪圖和印刷而言，「單位」很相當重要的，然而在網頁排版裡，單位也是同樣具有重要性，在 CSS3 普及以來，更支援了一些方便好用的單位 ( px、em、rem...等 )，這篇文章將整理這些常用的 CSS 單位，也幫助自己未來在使用上能更加得心應手。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>「網頁」和「印刷」的單位</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>「網頁」和「印刷」的單位</h2> 
 <p>若要把單位做區隔，最簡單可以分為「網頁」和「印刷」兩大類，通常對於 CSS 來說只會應用到網頁的樣式，畢竟真正要做印刷，還是會傾向透過排版軟體來進行設計。</p>
-<h3>網頁 ( 單位 )</h3>
+<h3>網頁 ( 單位 )</h3> 
 <blockquote>
 <ul>
 <li><em>px</em>：絕對單位，代表螢幕中每個「點」( pixel )。</li>
@@ -84,7 +84,7 @@
 <li><em>%</em>：相對單位，每個<strong>子元素</strong>透過「百分比」乘以<strong>父元素</strong>的 px 值。</li>
 </ul>
 </blockquote>
-<h3>網頁 ( 屬性名稱 )</h3>
+<h3>網頁 ( 屬性名稱 )</h3> 
 <blockquote>
 <ul>
 <li><em>medium</em>：預設值，等於 16px ( h4 預設值 ) </li>
@@ -98,7 +98,7 @@
 <li><em>larger</em>：約為父層的 120%</li>
 </ul>
 </blockquote>
-<h3>印刷</h3>
+<h3>印刷</h3> 
 <blockquote>
 <ul>
 <li><em>pt</em>：印表機的每個「點」，定義為 1 pt ＝ 1/72 in，如果在 72 dpi 的系統上 1 px = 1 pt，但如果在 96 dpi 的系統上 1 px = 0.75 pt ( 72/96 = 0.75 )。</li>
@@ -107,7 +107,7 @@
 <li><em>mm</em>：公釐，在 96 dpi 的系統上 1 cm = 3.7795275593333 px。</li>
 </ul>
 </blockquote>
-<h2>範例展示</h2>
+<h2>範例展示</h2> 
 <p>以下將展示四種不同單位的範例，為公平起見，四個範例都套用預設的 div 格式，純粹改變<code>font-size</code>看看有何不同，由於子元素若沒有設定 font-size，會自動繼承父元素的 font-size，使用上就應該要預先初始化字體大小，下面這兩段 CSS 可以將所有的元素字體大小預設為 16px，爾後亦可個別進行調整。</p>
 <pre class="prettyprint"><code>html{
     font-size:16px;
@@ -120,7 +120,7 @@ html * {
 <p>範例展示 1：<a href="/demo/201809/css-font-size-demo-01.html" target="_blank">px、em、rem 和 %</a></p>
 <p>範例展示 2：<a href="/demo/201809/css-font-size-demo-02.html" target="_blank">large、small、medium...等</a></p>
 </blockquote>
-<h3>1. px</h3>
+<h3>1. px</h3> 
 <p>px 是絕對單位，因此只要設定多少 px，就會精確的呈現，對於一些講求精準位置的排版而言十分有用，如範例表示的，指定多大 px 字體就會多大。 </p>
 <pre class="prettyprint"><code>&lt;div style="font-size:16px;"&gt;16px
     &lt;div style="font-size:20px;"&gt;20px
@@ -132,7 +132,7 @@ html * {
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201809/css-font-size-01.jpg" alt=""></p>
-<h3>2. em</h3>
+<h3>2. em</h3> 
 <p>em 是相對單位，為每個<strong>子元素</strong>透過「倍數」乘以<strong>父元素</strong>的 px 值，如果我們每一層 div 都使用 1.2em，最內層就會是<code>16px x 1.2 x 1.2 x 1.2 x 1.2 x 1.2 = 39.8px</code>。( 瀏覽器預設字體大小為 16px，若無特別指定則會直接繼承父元素字體大小 )</p>
 <pre class="prettyprint"><code>&lt;div style="font-size:1.2em;"&gt;1.2em
     &lt;div style="font-size:1.2em;"&gt;1.2em
@@ -144,7 +144,7 @@ html * {
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201809/css-font-size-02.jpg" alt=""></p>
-<h3>3. rem</h3>
+<h3>3. rem</h3> 
 <p>rem 是相對單位，為每個<strong>元素</strong>透過「倍數」乘以<strong>根元素</strong>的 px 值，如果我們每一層 div 都使用 1.2rem，最內層就會是<code>16px x 1.2 = 19.2px</code>。( 根元素指的是 html 的 font-size，預設為 16px )。</p>
 <pre class="prettyprint"><code>&lt;div style="font-size:1.2rem;"&gt;1.2rem
     &lt;div style="font-size:1.2rem;"&gt;1.2rem
@@ -156,7 +156,7 @@ html * {
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201809/css-font-size-03.jpg" alt=""></p>
-<h3>4. %</h3>
+<h3>4. %</h3> 
 <p>% 百分比是相對單位，和 em 大同小異，簡單來說 em 就是百分比除以一百，如果我們每一層 div 都使用 120%，就等同於 1.2em，最內層就會是<code>16px x 1.2 x 1.2 x 1.2 x 1.2 x 1.2 = 39.8px</code>。</p>
 <pre class="prettyprint"><code>&lt;div style="font-size:120%;"&gt;120%
     &lt;div style="font-size:120%;"&gt;120%
@@ -168,7 +168,7 @@ html * {
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201809/css-font-size-04.jpg" alt=""></p>
-<h3>5. small、medium、large...等</h3>
+<h3>5. small、medium、large...等</h3> 
 <p>字體大小的屬性有七種，分別是 <em>xx-small、x-small、small、medium、large、x-large 和 xx-large</em>，除了 x-small，其餘六種分別對應 h6~h1 的標籤文字大小，根據 <a href="https://www.w3.org/TR/2018/REC-css-fonts-3-20180920/" target="_blank">W3C</a> 的規範，以 medium 預設 16px 為基礎 ( 若 html 字體預設大小改變，medium 也會跟著變 )，使用固定的百分比乘以 medium 的大小，例如 ss-small 預設為<code>16px x 0.6 = 9.6px</code> ( 瀏覽器顯示為 12px )。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201809/css-font-size-05.jpg" alt=""></p>
 <pre class="prettyprint"><code>&lt;div style="font-size:xx-small;"&gt;xx-small
@@ -185,7 +185,7 @@ html * {
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201809/css-font-size-06.jpg" alt=""></p>
-<h3>6. larger、smaller</h3>
+<h3>6. larger、smaller</h3> 
 <p>larger 和 smaller 就是固定百分比為單位，larger 為父層的 120%，smaller 為父層的 80%。</p>
 <pre class="prettyprint"><code>&lt;div style="font-size:medium;"&gt;medium
   &lt;div style="font-size:larger;"&gt;larger
@@ -201,7 +201,7 @@ html * {
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201809/css-font-size-07.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>熟悉了字體大小單位之後，就更能有系統的設計整個網站的 CSS 架構，不過 font-size 本身和 font-family 有著一些複雜的關係，不同的 font-family 有時也會影響 font-size 的設定，因此使用上還是得稍微注意一下囉！</p>
 <blockquote>
 <p>範例展示 1：<a href="/demo/201809/css-font-size-demo-01.html" target="_blank">px、em、rem 和 %</a></p>

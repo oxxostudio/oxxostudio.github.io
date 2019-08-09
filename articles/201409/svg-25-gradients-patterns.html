@@ -71,12 +71,12 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (25) - 再談漸層填色</h1>
+<h1>SVG 研究之路 (25) - 再談漸層填色</h1> 
 <p>先前有介紹過 SVG 的 fill 填色，文章後面介紹了基本的漸層填色，但並沒有深入的介紹進一步的設定，然而高深莫測的漸層填色 ( Gradient ) 在 SVG 的 fill 裡面學問還真是不少，所以專門用一篇文章來解釋漸層填色，如此使用 fill 也才能更正確更靈活。</p>
 <blockquote>
 <p><a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html" target="_blank">SVG 研究之路 (7) - fill 填色</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>漸層 Gradient</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>漸層 Gradient</h2> 
 <p>漸層有兩種，第一種是線性漸層 ( Linear gradients ) ，第二種是放射漸層 ( Radial gradients ) ，因為是漸層，所以要這樣子定義：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
    &lt;linearGradient id="L" x1="0%" y1="0%" x2="100%" y2="100%"&gt;
@@ -120,7 +120,7 @@
 </blockquote>
 </li>
 </ul>
-<h2>漸層屬性</h2>
+<h2>漸層屬性</h2> 
 <p>其實上述兩種漸層大同小異，差別只在於線性漸層是用<code>x1,y1,x2,y2</code>、圓形漸層是用<code>cx,cy,r,fx,fy</code>，因此我們先從相同的屬性來談起：</p>
 <ul>
 <li><p><strong>gradientUnits = "userSpaceOnUse | objectBoundingBox"</strong></p>
@@ -193,7 +193,7 @@
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140927_2_05.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 </ul>
-<h2>線性漸層 linearGradient</h2>
+<h2>線性漸層 linearGradient</h2> 
 <p>以上就是線性漸層和圓形漸層的共通屬性，接下來就要討論它們兩個個別的屬性了，剛剛的範例幾乎都是用線性漸層做的，就讓我們先來看看線性漸層 linearGradient 吧！</p>
 <ul>
 <li><p><strong>x1,y1,x2,y2</strong></p>
@@ -226,7 +226,7 @@
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140927_2_07.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 </ul>
-<h2>圓形漸層 radialGradient</h2>
+<h2>圓形漸層 radialGradient</h2> 
 <ul>
 <li><p><strong>cx,cy,r</strong></p>
 <p>  這是 radialGradient 最好理解的參數，顧名思義，從圓心出發一直到半徑結束的圓形漸層，請注意，單位仍然是小數點或是百分比，這邊最容易出錯的地方在<code>r</code>，因為如果你設為 1 或是 100%，半徑就是矩形的寬度喔！( 如果不設定，則預設值為 50%，如果不是圓形，則會按照長寬變成同等比例的橢圓半徑 )</p>
@@ -280,7 +280,7 @@
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140927_2_11.png" alt="SVG 研究之路 (25) - 再談漸層填色"></p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是詳細的漸層用法，如果熟練了 radialGradient，也可以輕鬆做出立體的球喔！</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;radialGradient id="r1" cx=".3" cy=".3" r=".7"&gt;

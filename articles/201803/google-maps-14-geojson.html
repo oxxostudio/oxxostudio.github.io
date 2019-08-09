@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 顯示 GeoJSON 資料</h1>
+<h1>Google Maps API - 顯示 GeoJSON 資料</h1> 
 <p>透過 Google Maps API 在地圖上繪製圖形不困難，但「取得地圖上的資料」卻令人頭痛，幸好隨著科技的進步，我們可以透過 GeoJSON 這種專門處理地理資訊結構的格式，更方便的在地圖上顯示各種資訊，這篇就來簡單介紹一下 GeoJSON，並在 Google 地圖上顯示對應的樣貌。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>GeoJSON 簡介</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>GeoJSON 簡介</h2> 
 <p>GeoJSON 是一種對地理資訊結構進行編碼的格式，基於 JavaScript 物件標記的地理空間資訊資料交換格式 ( 所以才會是 Geo + json )，GeoJSON 支援像是<strong>點、線、多邊形、多點、多線、多個多邊形</strong>的幾何形狀，當中也包含了特徵或特徵的集合資訊。</p>
 <p>舉例來說，一個 GeoJSON 最外層包含一個 type 為 <em>FeatureCollection</em> 的屬性，接著 <em>features</em> 的屬性包含了許多 type 為 <em>Feature</em> 的物件，這些 Feature 物件裡包含 <em>properties</em> 的屬性，可以設定區域的顏色、邊框...等樣式，也包含了 <em>geometry</em> 的屬性，定義地圖上形狀的面貌，以下面這段 GeoJSON 來說，就是在台北 101 旁的松壽路上，畫「<em>一段粗細 10px，透明度 0.5 的紅色直線</em>」。</p>
 <pre class="prettyprint"><code>{
@@ -147,7 +147,7 @@
   ]
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-02.jpg" alt=""></p>
-<h2>產生 GeoJSON</h2>
+<h2>產生 GeoJSON</h2> 
 <p>雖然說已經知道了 GeoJSON 的格式，但要產生 GeoJSON 最麻煩的仍然是那些小數點好多位數的「座標」，這時候就要透過 geojson.io 這個線上服務，來幫我們產生標準又漂亮的 GeoJSON。</p>
 <blockquote>
 <p>參考連結：<a href="http://geojson.io/" target="_blank">http://geojson.io/</a></p>
@@ -159,7 +159,7 @@
 <p>用滑鼠點擊畫好的多邊形，就可以修改多邊形的屬性，修改後在 GeoJSON 裡的 properties 也會自動產生，下圖就是把繪製的多邊形，改成黑色外框紅色填滿的屬性。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-05.jpg" alt=""></p>
 <p>透過 geojson.io 這個方便好用的網站，要產生 GeoJSON 已經不再那麼困難，接著就來實作如何用 Google 地圖顯示 GeoJSON 資料。</p>
-<h2>Google 地圖顯示 GeoJSON 資料</h2>
+<h2>Google 地圖顯示 GeoJSON 資料</h2> 
 <p>匯入 GeoJSON 資料其實很簡單，每個 Google 地圖都有一個 map.data 物件，做為任意地理空間資料（包括 GeoJSON）的資料圖層，只要呼叫 data 物件的<code>loadGeoJSON()</code>方法就可以，用法如下：</p>
 <pre class="prettyprint"><code>map.data.loadGeoJson('GeoJSON.json');
 </code></pre><p>舉例來說，下面這段程式碼，就會在地圖上載入上面我們所畫好的台北世貿中心。</p>
@@ -248,9 +248,9 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-09.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>基本上透過 Google 地圖來顯示 GeoJSON 資料沒有太大的難度，比較難的是讀取資料後要怎麼用視覺化呈現，讓使用者可以一目瞭然，接下來會再嘗試讀取資料後再做一些變化，敬請期待囉~ ^_^</p>
-<h2>參考</h2>
+<h2>參考</h2> 
 <ul>
 <li><a href="http://geojson.io/" target="_blank">http://geojson.io/</a></li>
 <li><a href="https://github.com/g0v/twgeojson/" target="_blank">g0v twgeojson</a></li>

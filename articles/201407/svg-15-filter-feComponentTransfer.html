@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (15) - filter - feComponentTransfer</h1>
+<h1>SVG 研究之路 (15) - filter - feComponentTransfer</h1> 
 <p><img src="/img/articles/201407/svg-15-filter-feComponentTransfer.jpg" class="preview-img" alt=""></p>
 <p>feComponentTransfer 是針對圖像中每一個像素，利用公式的計算，進行亮度、對比...等調整，其實就有點類似 Photoshop 裏頭的「曲線」調整模式，我們可以利用調整線條的斜率、或是曲線的公式，對圖片進行更細緻的調整，只是在 photoshop 裏頭已經幫我們做了視覺介面的處理，在 SVG 裏頭則是必須要自己手動輸入相關數值。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>feComponentTransfer 元素與 type</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>feComponentTransfer 元素與 type</h2> 
 <p>feComponentTransfer 包含四個元素，分別是：feFuncR、feFuncG、feFuncB、feFuncA，也就是可以針對紅綠藍與 alpha 色版進行獨立調整，調整的 type 分為五種，分別是：identity、table、discrete、linear、gamma，五種調整 type 的對照公式可以參考 <a href="http://www.w3.org/TR/SVG/filters.html#feComponentTransferElement" target="_blank">W3C 的詳細說明</a>，也可以參考 <a href="http://docs.webplatform.org/wiki/svg/elements/feComponentTransfer" target="_blank">這篇文章</a>，介紹的更是詳細。</p>
 <p>首先看到 table，table 屬性主要是將我們所輸入的區塊，重新填入原本對照的色彩梯度區塊當中 ( 如下圖 )，就可以產生不同色彩梯度的效果。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_02.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"> </p>
@@ -183,7 +183,7 @@
   &lt;image x="0" y="200" width="300" height="200" xlink:href="圖片網址" filter="url(#Gamma)"  /&gt;
 &lt;/svg&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140728_1_09.png" alt="SVG 研究之路 (15) - filter - feComponentTransfer"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>了解了 feComponentTransfer 的基本原理之後，其實就已經可以簡單地針對圖片做顏色上的調整囉！雖然我還是覺得直接用影像處理軟體調整比較實在，不過若要製作一個線上調整圖片顏色的工具，也不失為一個好方式。</p>
 
 

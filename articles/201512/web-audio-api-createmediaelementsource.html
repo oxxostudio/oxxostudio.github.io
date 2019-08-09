@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>建立音樂頻譜 ( createMediaElementSource )</h1>
+<h1>建立音樂頻譜 ( createMediaElementSource )</h1> 
 <p>最近好忙，一陣子沒寫這系列的文章，還回頭複習了一陣子，前幾篇認識了許多利用 Web Audio API 產生聲音或音效的方法，這篇則是要引入外部的音樂或聲音，並將聲音轉換為數值頻譜。( 因為轉換為數值，就可以拿這些數值來做應用了 )</p>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>在這系列的 <a href="http://www.oxxostudio.tw/articles/201509/web-audio-api.html" target="_blank">第一篇</a> 有介紹過<code>createOscillator()</code>這個振盪器產生單音的方法，這篇要來介紹<code>createMediaElementSource</code>這個把外部音軌作為 source 的方法，這個方法需要搭配 HTML5 的<code>audio</code>標籤來實施，因為它預設就是會以 HTML5 所載入的音頻為主，以下面的例子來說，我們要先在 HTML 裡放入聲音，<code>controls</code>表示會載入預設的播放器介面，<code>autoplay</code>預設為一開始就自動播放。( mp3 格式基本上已經被所有瀏覽器接受，如果不能播放也可以採用 ogg 格式 )</p>
 <pre class="prettyprint"><code>&lt;audio controls autoplay&gt;

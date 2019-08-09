@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (26) - 有趣的 Patterns</h1>
+<h1>SVG 研究之路 (26) - 有趣的 Patterns</h1> 
 <p>Patterns 是 SVG fill 裏頭的一個有趣元素，記得在 CSS 裏頭，我們可以自訂背景的圖案，達到許多很有特色的變化，然而在 SVG 也是如此，而 SVG 比 CSS 更加強大的地方，是你所有的圖案幾乎都可以在 SVG 裏頭畫出來 ( 當然強調細節的點陣圖案例外 )，以下將介紹 Patterns 的相關屬性與參數設定，並直接來看一些 Patterns 的範例。</p>
 <p>這是 SVG Patterns 的所具有的屬性：</p>
 <blockquote>
@@ -87,7 +87,7 @@
 <li><em>preserveAspectRatio = "[defer] <align> [<meetorslice>]"</meetorslice></align></em></li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>patternUnits = "userSpaceOnUse | objectBoundingBox"</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>patternUnits = "userSpaceOnUse | objectBoundingBox"</h2> 
 <p>patternUnits，這個屬性非常的奇怪，因為這個屬性有兩個參數可以選，而這兩個參數所對應後續的 width 和 height 是不同的，也因此非常容易混淆，如果將 patternUnits 設定為<code>userSpaceOnUse</code>，表示以使用者的座標為主，後面的 width 和 height 就是實際的寬和高，例如下面的範例，SVG 的寬高是 240x160，我們將 pattern 的寬高都設為 60，表示我們將在 240x160 的範圍內重複填滿 60x60 的 pattern ( 也就是圖中的藍色框框內的 )，同時我們也可以發現，不管我們的圖形放在哪，圖案都會以 SVG 的左上角 0,0 為基準點 ( 因為內容 pattern 的 rect 設為 0,0 )，可以看到綠色框的圓形，填滿的圖形和底下的圖形位置一模一樣。</p>
 <pre class="prettyprint"><code>&lt;svg width="240" height="160"&gt;
   &lt;defs&gt;
@@ -146,7 +146,7 @@
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p)" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140928_1_07.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
 <p>所以啦，<strong>設定為<code>userSpaceOnUse</code>代表是實際的寬度或高度數值 ( SVG 的 )，而設定為<code>objectBoundingBox</code>的則是比例，實際數值要乘上套用的圖案長寬</strong>，要非常非常之注意喔！</p>
-<h2>patternContentUnits = "userSpaceOnUse | objectBoundingBox"</h2>
+<h2>patternContentUnits = "userSpaceOnUse | objectBoundingBox"</h2> 
 <p>patternContentUnits 跟剛剛提到的 patternUnits 幾乎是異曲同工，只是這個屬性是用來定義 pattern 內容畫出來的圖形單位，同樣的，設定為<code>userSpaceOnUse</code>代表是實際的寬度或高度數值，設定為<code>objectBoundingBox</code>的則是比例，但是！又是非常重要的但是！但是<strong>它的預設值為<code>userSpaceOnUse</code></strong>，整個擺明整人呀！</p>
 <p>下面的範例左邊是設定為<code>userSpaceOnUse</code>，右邊設定為<code>objectBoundingBox</code>，可以看到幾乎沒甚麼差別，因為左邊長寬直接指令了 20，而右邊的長寬則是 100x0.2=20，結果就變成一樣了。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
@@ -161,7 +161,7 @@
 &lt;rect width="100" height="100" x="120" y="30" stroke="#000" stroke-width="2" fill="url(#p1)" /&gt;
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p2)" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140928_1_08.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
-<h2>patternTransform</h2>
+<h2>patternTransform</h2> 
 <p>讓我們可以直接對 pattern 下達 transform，範例中我們讓圖形旋轉 45 度，搭配剛剛提到的 patternUnits 和 patternContentUnits，就可以做出斜線的填滿。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;pattern id="p1" patternUnits="objectBoundingBox" width=".2" height=".4" patternTransform="rotate(45)"&gt;
@@ -172,9 +172,9 @@
 
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p1)" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140928_1_09.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
-<h2>x,y,width,height</h2>
+<h2>x,y,width,height</h2> 
 <p>這四個屬性跟 patternUnits 設定為<code>userSpaceOnUse</code>或<code>objectBoundingBox</code>息息相關，反正只要記住，<strong>設定為<code>userSpaceOnUse</code>就是標準長寬數值，而設定為<code>objectBoundingBox</code>就是比例</strong>，千萬別忘記！</p>
-<h2>xlink:href</h2>
+<h2>xlink:href</h2> 
 <p>讓圖案可以引用其它元素的設定，也就是說我們可以先把 pattern 內容的圖案定義好，然後再用 pattern 引用，就可以做出不同的填滿效果，可以參考下面的範例：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;pattern id="r1"&gt;
@@ -187,7 +187,7 @@
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p1)" /&gt;
 &lt;rect width="100" height="100" x="120" y="30" stroke="#000" stroke-width="2" fill="url(#p2)" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140928_1_10.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
-<h2>preserveAspectRatio = "[defer] <align> [<meetorslice>]"</meetorslice></align></h2>
+<h2>preserveAspectRatio = "[defer] <align> [<meetorslice>]"</meetorslice></align></h2> 
 <p>看到 preserveAspectRatio 這個屬性，就表示我們的 pattern 可以使用 viewbox，什麼是 viewbox 呢？請參考 <a href="http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html" target="_blank">SVG 研究之路 (23) - 理解 viewport 與 viewbox</a> 有非常完整的教學，下面是範例，使用 viewbox 來控制圖案的長寬尺寸。</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;pattern id="p1" patternUnits="objectBoundingBox" width=".4" height=".4" viewbox="0,0,22,22"&gt;
@@ -201,7 +201,7 @@
 &lt;rect width="100" height="100" x="10" y="30" stroke="#000" stroke-width="2" fill="url(#p1)" /&gt;
 &lt;rect width="100" height="100" x="120" y="30" stroke="#000" stroke-width="2" fill="url(#p2)" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140928_1_11.png" alt="SVG 研究之路 (26) - 有趣的 Patterns"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是完整的 SVG Patterns 的介紹，心動的話就趕快畫點圖案來填滿吧！喔哈！</p>
 
 

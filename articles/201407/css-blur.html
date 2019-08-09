@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>CSS 模糊效果</h1>
+<h1>CSS 模糊效果</h1> 
 <p><img src="/img/articles/201407/css-blur.jpg" class="preview-img" alt=""></p>
 <p>一直以來 CSS 的效果就受到於瀏覽器的限制，例如超強大的 webkit filter，到了 chrome 以外的瀏覽器幾乎完全沒有用武之地，不過隨著各家瀏覽器對 CSS3 的支援度越來越高，也可以使用一些特殊的技巧來辦到模糊的效果，以下將介紹如何利用這些技巧，完成文字的模糊或是形狀的模糊。( 當然，圖片的模糊就非得借用 webkit filter 或 SVG filter 了 )</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>文字模糊</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>文字模糊</h2> 
 <p>首先看到文字的模糊，先解釋一下文字模糊的原理，第一步將文字本身的顏色設為透明 ( 利用 rgba(0,0,0,0) )，接著設定 text shadow，我們知道 text shadow 具有以下四個屬性：x 偏移、y 偏移、模糊程度、模糊顏色，當我們設定偏移為 0，模糊的程度也為0，就可以發現透明顏色的文字變成了具有 shadow 顏色的文字，從下圖可以看到，原本應該透明的字，變成了紅色的字。  </p>
 <p>html:  </p>
 <pre class="prettyprint"><code>&lt;div class="blur0"&gt;BLUR&lt;/div&gt;
@@ -113,7 +113,7 @@
   text-shadow:0 0 8px rgba(255,0,0,1);
 }  
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_03.png" alt="CSS 模糊效果 "></p>
-<h2>形狀模糊</h2>
+<h2>形狀模糊</h2> 
 <p>學會了文字的效果之後，接下來我們來嘗試形狀的模糊，和文字模糊效果的做法相同，文字使用 text-shadow，形狀則使用 box-shadow，只是對於形狀的模糊，單純使用 CSS 有著先天上的限制，因為我們是使用陰影來偽裝成模糊，所以會導致視覺上形狀越模糊，尺寸也會越大，若要讓形狀不要越來越大，就必須使用 -webkit-transform:scale 來使其變小 ( 或 transform ),至於要變得多小，就自己看當時的情況去去拿捏囉！  </p>
 <p>HTML:</p>
 <pre class="prettyprint"><code>&lt;div class="boxblur0"&gt;&lt;/div&gt;
@@ -165,7 +165,7 @@
   transform:scale(.85);
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_06.png" alt="CSS 模糊效果 "></p>
-<h2>形狀外框模糊</h2>
+<h2>形狀外框模糊</h2> 
 <p>了解了形狀和文字的模糊後，其實我們可以綜合兩者，就能做出 "形狀外框" 模糊的效果 ( 如下圖 )，原理其實就是讓形狀沒有被景色，單靠外陰影與內陰影產生邊框，不過由於只有一組內外陰影所產生的邊框較透明，因此必須使用兩組內外陰影來達成，或使用陰影擴展的屬性來產生邊框。 </p>
 <pre class="prettyprint"><code>.boxblur{
   width:100px;
@@ -184,7 +184,7 @@
   box-shadow:0 0 15px 0 rgba(0,200,150,.5),inset 0 0 15px 0 rgba(0,200,150,.5);
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_08.png" alt="CSS 模糊效果 "></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是使用陰影來實現模糊效果的原理，若能搭配上 CSS3 的 transition 或 animation，就能做出更多有趣的變化和應用，下面的例子就是我利用 text-shadow 和 box-shadow 所做出來的範例，是不是很炫呢！如果大家對於使用 CSS 產生模糊有更高的興致，也可以參考我的這篇文章：<a href="http://www.oxxostudio.tw/articles/201407/css-webkit-filter.html" target="_blank">CSS webkit filter</a>，裏頭有提到 blur 的濾鏡，能夠更輕鬆地辦到模糊的效果，但很可惜的是，從 2012 年我就已經寫過有這個濾鏡的文章，但 firefox 、IE 一直不支援，只有 chrome 和 firefox 可以運行呀！  </p>
 <p><a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=5681894561677312" target="_blank"><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140726_1_08.gif" alt="CSS 模糊效果 "></a></p>
 

@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>建立音樂頻譜 2 ( analyser )  <span class="article-date" tag="web">JAN 3, 2016</span></h1>
+<h1>建立音樂頻譜 2 ( analyser )  <span class="article-date" tag="web">JAN 3, 2016</span></h1> 
 <p>之前寫了一篇了用 createScriptProcessor 來製作音樂頻譜的功能，這裏要來介紹另外一個製作方式，就是使用 analyser 節點，analyser 節點可以針對經過它的音頻做分析 ( 顧名思義咩 )，所以相較 createScriptProcessor 會建立緩衝區來保留音頻訊號，處理速度會較快，但缺點是會失去一些高頻的訊號，不過如果只是要單純顯示音樂頻譜，倒是一個不錯的選擇。( 圖片來源：<a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode</a> ) </p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201601/20160103_1_02.jpg" alt="建立音樂頻譜 2 ( analyser )"></p>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>先看到 HTML 的部分，一開始我們同樣先用 HTML5 的 audio 標籤來載入音樂，然後放入兩個按鈕，來做播放和暫停的動作。</p>

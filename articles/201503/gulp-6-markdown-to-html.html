@@ -71,11 +71,11 @@
     <article>
       <i class="tag"></i>
 
-<h1>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境</h1>
+<h1>Gulp 學習 6 - 架設 Markdown 轉 HTML 環境</h1> 
 <p><img src="/img/articles/201503/gulp-6-markdown-to-html.jpg" class="preview-img" alt=""></p>
 <p>要談到 Markdown 轉 HTML，其實有一大堆的 Markdown 編輯器都做得到，我個人最愛用的不外乎就是 Markdown Pad ( 只有 windows )、Mou ( Mac ) 和 lightPaper ( Mac )，然而不管是怎樣的編輯器，基本上都會具備將 markdown 轉為 HTML 的功能，所以一直以來我都不覺得在編輯器撰寫之後在轉檔有什麼不方便的，我的 blog 文章也一直都是用 markdown 寫的，不過自從用 gitbook 寫書之後，赫然發現 gitbook 的 markdown 自動轉換 html 功能真是太優了，用自己慣用的編輯器，存檔之後，Gitbook 就自動將 markdown 轉換為 HTML，而且還套上 layout 和樣式，真是太讚啦！</p>
 <p>於是，當我發現 Gulp 也有 markdown 轉換的套件之後，就決定可以自己來做一個轉換的環境，如此一來就不用受限於各個編輯器的樣式，也不用受限於 gitbook 只能轉電子書的樣貌，甚至可以搭配之前幾篇介紹過的壓縮打包、html extend...等，做出一個純粹用 markdown 編寫網頁的環境。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2> 
 <p>廢話說太多，開始今天的正題，我使用的套件是：gulp-markdown 這個套件 ( 參考：<a href="https://www.npmjs.com/package/gulp-markdown" target="_blank">gulp-markdown</a> )，這個套件可以將 markdown 純粹轉為 HTML 的格式，但不包含一個網頁應該要有的 head 與 body，它就是一個純粹的 HTML tag 而已，舉例來說，我們來將下面這段 Markdown 進行轉換：</p>
 <pre class="prettyprint"><code>#這是大標題
 ##這是次標題
@@ -87,7 +87,7 @@
 </code></pre><p>也因為不是一個完整的網頁，所以我們使用 gulp-webserver 來做 livereload ( 參考 <a href="http://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html" target="_blank">Gulp 學習 1 - 安裝與執行</a> ) 就會失效，所以變成要搭配 gulp-html-extend，結合一個 layout，組成一個完整的網頁，就可以使用  livereload 的功能囉！</p>
 <p>所以這裡我們要輸入以下的指令安裝四個套件，分別是 gulp、gulp-webserver、gulp-html-extend、gulp-markdown ( mac 可能需要 sudo )：</p>
 <pre class="prettyprint"><code>npm install gulp gulp-webserver gulp-html-extend gulp-markdown
-</code></pre><h2>撰寫 gulpfile.js</h2>
+</code></pre><h2>撰寫 gulpfile.js</h2> 
 <p>安裝之後就來寫 gulpfile.js，第一步當然是要引入這四個套件了。</p>
 <pre class="prettyprint"><code>var gulp = require('gulp'),
       md = require('gulp-markdown'),
@@ -204,7 +204,7 @@ gulp.task('webserver', ['extend'],function() {
 });
 
 gulp.task('default',['watch','webserver']);
-</code></pre><h2>相關連結：</h2>
+</code></pre><h2>相關連結：</h2> 
 <blockquote>
 <ul>
 <li><a href="http://markdownpad.com/" target="_blank">MarkdownPad</a></li>

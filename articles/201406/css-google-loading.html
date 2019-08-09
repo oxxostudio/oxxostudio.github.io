@@ -71,18 +71,18 @@
     <article>
       <i class="tag"></i>
 
-<h1>CSS3動畫 - Google Loading Animation</h1>
+<h1>CSS3動畫 - Google Loading Animation</h1> 
 <p>自從使用了智慧型手機之後，就常常在觀察手機 UI 的設計細節，隨著扁平化設計風格的興起，Google 的載入進度動畫也就變得相當的扁平風且具有設計感，後來發現不只手機的載入進度是用扁平化的風格，連 Google plus、Gmail...等 Google 產品都是使用類似的載入進度動畫，一時興起，使用 CSS3 做了一組 Google 的載入動畫。</p>
 <blockquote>
 <p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>概念架構</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>概念架構</h2> 
 <p>在製作載入動畫之前，我們必須要先有 CSS3 的動畫概念以及立體的概念，不過因為這篇不是介紹 CSS3 動畫與立體，因此這邊就不太過著墨，直接來看成品的程式碼來一步步說明。</p>
 <p>首先看到動畫的架構，主要分為了三個層，一個是<strong>定位層</strong> ( #googleloading )，一個是<strong>底層</strong> ( div、::after )，最後一個是<strong>葉片層</strong> ( ::before )，定位層目的在於讓整個 loading 可以做定位，位置不會影響到內容，底層包含了一個 div 和一個偽元素 ::after，主要是區分兩個顏色，葉片層則是直接使用 ::before 代替。或許有人會問說兩種顏色直接用漸層色代替就好啦，沒錯，我一開始就是使用這個方式，但後來發現<strong>漸層色的動畫在 firefox 是出不來的</strong>，所以必須使用 ::after 來代替。( ::before 和 ::after 是偽元素，可以當作連著主體前後的 div 使用 )</p>
 <pre class="prettyprint"><code>&lt;div id="google_loading"&gt;
    &lt;div&gt;&lt;/div&gt;
 &lt;/div&gt;
-</code></pre><h2>圓形本體</h2>
+</code></pre><h2>圓形本體</h2> 
 <p>讓我們先看看本體的 div ，主要設定 border-radius 讓它變成半圓形，同加上動畫使其顏色每固定一秒就換一次，同時變換角度，然而原本有個<code>transform-style</code>的屬性，因為沒有牽涉到 Z 軸的變化，因此就不需要使用，當中比較特別的，因為圓形的另外一半使用偽元素 ::after 代替，因此中心點必須使用 left 使其往左移，避免到時候是繞著本體的中心點移動。</p>
 <pre class="prettyprint"><code>#google_loading&gt;div{
   left:50px;
@@ -140,7 +140,7 @@
   100% {background: #f52d27;}
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/css-google-loading-02.gif" alt=""></p>
-<h2>翻轉葉片</h2>
+<h2>翻轉葉片</h2> 
 <p>最後看到作為葉片 ::before ，其實並沒有太特別的，主要就是讓正方形的 div 利用<code>border-radius</code>方式變成<strong>半圓形</strong>，接著設定<code>transform-origin</code>讓旋轉時可以固定在直線的邊邊。接著設定好顏色與角度的變化，就可以轉動了，而葉片因為是跟隨主體 ( 主體的偽元素 )，因此就會跟著主體每隔一秒變換 90 度角一次。</p>
 <p>完成這個步驟後，基本上就已經可以看到漂亮的 Google Loading 動畫囉！</p>
 <blockquote>
@@ -182,7 +182,7 @@
   100%  {background: #f52d27;}
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/css-google-loading-03.gif" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>記得，chrome 要加上 -webkit-，firefox 則不用，再補充一次，為什麼要使用 ::after 充當另外一個色塊而不使用漸層，因為 firefox 在漸層的動畫是沒有作用的，所以才必須如此，然而比較早的時候我也用了另外一種作法，就是使用三個 div 來彼此作變化，但若是分成不同的 div，除了程式碼會比較肥大，也會有瀏覽器效能的問題，不同的 div 的時間差不同，會造成閃動的情形，尤其在效能比較差的電腦或是手機上更是常見，現在改用這種作法，除了程式碼更為簡潔，效果也更好！</p>
 
 

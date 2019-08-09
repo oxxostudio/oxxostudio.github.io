@@ -71,14 +71,14 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 形狀 ( 圓形、矩形 )</h1>
+<h1>Google Maps API - 形狀 ( 圓形、矩形 )</h1> 
 <p>圓形和矩形在 Google Maps API 裡的設定比較有固定規則，有別於折線和多邊形，是使用陣列來標記座標點，圓形是用中心點和半徑，矩形則是兩個點 ( 四個邊 )，這篇就來把這兩種形狀放到地圖上。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>起手式</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>起手式</h2> 
 <p><strong>圓形</strong>：的建構函式為 Circle，使用一組 LatLng 座標來指定圓心，半徑則是以公尺為單位表現，下列 CircleOptions 的部分是相關屬性設定。</p>
 <pre class="prettyprint"><code>var circle = new google.maps.Circle(CircleOptions)
 </code></pre><p><strong>矩形</strong>：的建構函式為 Rectangle，使用兩組 LatLng 座標來指定兩個端點 ( 四個邊 )，下列 RectangleOptions 的部分是相關屬性設定。</p>
 <pre class="prettyprint"><code>var rectangle = new google.maps.Rectangle(RectangleOptions)
-</code></pre><h2>圓形設定 Circle Options</h2>
+</code></pre><h2>圓形設定 Circle Options</h2> 
 <ul>
 <li><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把圓形放到地圖裡。</li>
 <li><strong>center</strong>：圓形的圓心，使用一組經緯度座標表示。</li>
@@ -97,7 +97,7 @@
 <li><strong>draggable</strong>：是否可以拖曳邊圓形，預設值為 false，如果設為 true，則可以把整個多邊形拖曳到別的地方 ( 如果是要個別修改形狀邊緣的點，可以使用 editable )。</li>
 <li><strong>editable</strong>：是否可以編輯圓形，預設值為 false，如果設為 true，透過滑鼠就可以更改圓形大小。</li>
 </ul>
-<h2>圓形方法 Circle Methods</h2>
+<h2>圓形方法 Circle Methods</h2> 
 <ul>
 <li><strong>setMap(Map)</strong>：設定地圖，將圓形放到指定的地圖上，如果設定的值為 null，則會移除圓形。</li>
 <li><strong>setDraggable(boolean)</strong>：設定是否可以拖曳圓形，true 可以，false 不可以。</li>
@@ -114,7 +114,7 @@
 <li><strong>getRadius()</strong>：獲取圓形的半徑。</li>
 <li><strong>getVisible()</strong>：獲取圓形是否可見的狀態。</li>
 </ul>
-<h2>圓形事件 Circle Events</h2>
+<h2>圓形事件 Circle Events</h2> 
 <ul>
 <li><strong>click</strong>：滑鼠點擊。</li>
 <li><strong>dblclick</strong>：滑鼠連點兩下。</li>
@@ -175,18 +175,18 @@ function initMap() {
 
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-12-rect-circle-01.jpg" alt=""></p>
-<h2>矩形設定  Rectangle Options</h2>
+<h2>矩形設定  Rectangle Options</h2> 
 <p>矩形和圓形大同小異，扣除圓形的<code>center</code>和<code>radius</code>其他都相同，這邊就僅列出不同的部分。</p>
 <ul>
 <li><strong>bounds</strong>：設定矩形 north、south、east 和 west 的座標，換句話說也就是指定四個邊的線段經緯度。</li>
 </ul>
-<h2>矩形方法 Rectangle Methods</h2>
+<h2>矩形方法 Rectangle Methods</h2> 
 <p>除了圓形的<code>setCenter(center)</code>、<code>setRadius(radius)</code>、<code>getCenter()</code>和<code>getRadius()</code>其他都相同，這邊僅列出不同的部分。</p>
 <ul>
 <li><strong>setBounds(Bounds)</strong>：設定座標。</li>
 <li><strong>getBounds()</strong>：獲得座標。</li>
 </ul>
-<h2>矩形事件 Rectangle Events</h2>
+<h2>矩形事件 Rectangle Events</h2> 
 <p>除了圓形的<code>center_changed</code>和<code>radius_changed</code>其他都相同，這邊僅列出不同的部分。</p>
 <ul>
 <li><strong>bounds_changed</strong>：當矩形的端點發生改變。</li>
@@ -222,7 +222,7 @@ function initMap() {
 
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-12-rect-circle-02.jpg" alt=""></p>
-<h2>參考資料：</h2>
+<h2>參考資料：</h2> 
 <ul>
 <li><a href="https://developers.google.com/maps/documentation/javascript/shapes?hl=zh-tw" target="_blank">Google Maps API 形狀</a></li>
 <li><a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference?hl=zh-tw#Circle" target="_blank">Circle class</a></li>

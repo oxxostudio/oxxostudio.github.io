@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (2) - Layer</h1>
+<h1>SVG 研究之路 (2) - Layer</h1> 
 <p><img src="/img/articles/201406/svg-02-layer.jpg" class="preview-img" alt=""></p>
 <p>許多的設計師談到向量繪圖，總是相當的興奮，但只要一提到向量繪圖裡的程式碼，馬上就暈頭轉向不知所云，由於自己是設計專長，談到向量圖直覺就想到 Illustrator，所以這篇將會以 Illustrator 做為輔助工具出發，帶領大家能夠更了解 SVG 的架構。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>圖層</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>圖層</h2> 
 <p>首先我們看到<strong>「圖層」( Layer )</strong> 這個東西，相信只要是設計師，對於「圖層」的認識一定遠遠高過工程師，但這並不代表在程式領域沒有圖層的概念，在網頁裡頭圖片蓋在圖片上、文字蓋在圖片上、選單疊在內容上方，這些都是圖層的應用，只是往往沒有「圖」，只有「層」。在影像處理軟體中，為了方便理解由上到下的概念，在圖層面版中的圖層都是<strong>由上到下排列</strong> ，上層會蓋住下層，但是在程式裡頭，也因為邏輯規則，圖層則是<strong>由下而上排列</strong>，下層會蓋住上層 ( 除非特別去做設定 )。</p>
 <p>在 Illustrator 裏頭的圖層長這樣：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140609_1_02.png" alt="SVG-Layer"></p>
@@ -82,7 +82,7 @@
 <pre class="prettyprint"><code>  &lt;rect id="a3" ......... /&gt;
   &lt;circle id="a2" .......... /&gt;
   &lt;polygon id="a1" ........... /&gt;
-</code></pre><h2>群組</h2>
+</code></pre><h2>群組</h2> 
 <p>了解圖層的規則後，我們看看下圖的 SVG 程式碼與 Illustrator 裡頭圖層的對照，如果超過一個圖層，就可以發現每一個圖層，就相當於是 SVG 裡頭的<code>&lt;g&gt;&lt;/g&gt;</code>標籤，一個<code>&lt;g&gt;&lt;/g&gt;</code>就代表一個群組，換句話說，雖然在 Illustrator 當中看到了許多圖層，但是實際上每個圖層都可視作一個群組來使用，這也就大概可以了解了為什麼<code>&lt;g&gt;&lt;/g&gt;</code>無法單純利用 x 或 y 來控制位置，因為這是辦不到的，你可以對圖層內的元素調整位置，但卻無法對圖層調整位置。</p>
 <p>在 Illustrator 裏頭的圖層長這樣：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140609_1_03.png" alt="SVG-Layer"></p>

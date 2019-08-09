@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>CSS 偽元素 ( JavaScript 操控 )</h1>
+<h1>CSS 偽元素 ( JavaScript 操控 )</h1> 
 <p>雖然我們能用 CSS 操控由於偽元素，但因為偽元素不存在於網頁元素內，所以無法透過  JavaScript 正規操控 DOM 的方式來修改或控制，不過 JavaScript 身為一個神通廣大的程式語言，仍然是有方法可以辦到的。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>讀取偽元素屬性</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>讀取偽元素屬性</h2> 
 <p>一般來說使用 JavaScript 讀取某個元素 DOM 裡頭的屬性不難，但相對來說要讀取一個不存在網頁裡的元素就不容易，如果要讀取偽元素屬性，可以透過<code>getComputedStyle</code>來獲得，<code>getComputedStyle</code>是個可以獲取當前元素「所有最終使用的 CSS 屬性值」，讀取後會返回一個 Object CSSStyleDeclaration，而這個物件是唯讀的，無法進行修改。</p>
 <blockquote>
 <p>使用方法：<code>window.getComputedStyle('元素', '偽元素')</code></p>
@@ -93,7 +93,7 @@ var b = window.getComputedStyle(d,'::before');
 s.innerHTML = b.content +'&lt;br/&gt;'+b.color;
 </code></pre><p>最後呈現的結果，第一段就是原本的 div 加上紅色的偽元素文字，下方第一段是 content 的內容，緊接著是偽元素的顏色屬性。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-3-01.jpg" alt=""></p>
-<h2>修改偽元素屬性</h2>
+<h2>修改偽元素屬性</h2> 
 <p>可以讀取屬性值也就一定要嘗試修改，不過修改偽元素的屬性其實比想像的不容易，必須透過<code>insertRule</code>這個方法在指定的 style 裡插入「預設的規則」，讓這個規則去影響偽元素的屬性表現。</p>
 <blockquote>
 <p>用法：<code>style 標籤元素.insertRule(樣式規則, 0)</code></p>
@@ -127,7 +127,7 @@ c.insertRule("#d#d::before{content:'我是修改的 content ';}", 0);
 c.insertRule("#d#d::before{color:blue;}", 0);
 </code></pre><p>如此一來，呈現出來的樣貌就會是透過 JavaScript 修改的。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-3-03.jpg" alt=""></p>
-<h2>修改偽元素 content</h2>
+<h2>修改偽元素 content</h2> 
 <p>我們知道 ::before 和 ::after 的 content 可以透過 attr 抓取父元素的舉屬性，因此透過改變這個屬性，就能連帶改變 content 的內容，舉例來說有個 div，我們指定它的<code>data-text="我是預設文字"</code>，然後放兩個按鈕，期望點選不同的按鈕，會更換 content 不同的內容。</p>
 <pre class="prettyprint"><code>&lt;button id="b1"&gt;顯示 ABC&lt;/button&gt;
 &lt;button id="b2"&gt;顯示 123&lt;/button&gt;
@@ -155,7 +155,7 @@ b2.addEventListener('click',function(){
   d.setAttribute('data-text','123');
 });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-3-01.gif" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>雖然說我們可以透過 JavaScript 來操控偽元素，但偽元素終究不是真正的網頁元素，也因此操作起來也不如基本操作網頁元素 DOM 來的簡便，所以如果可以，還是盡量用正常的操控模式吧。</p>
 
 

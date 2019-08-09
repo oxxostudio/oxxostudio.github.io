@@ -71,12 +71,12 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (17) - Stroke-marker</h1>
+<h1>SVG 研究之路 (17) - Stroke-marker</h1> 
 <p>在「SVG 研究之路 (16) - Stroke-miterlimit」和「SVG 研究之路 (6) - stroke 邊框」都有介紹了 stroke 的用法，其實 stroke 還有另外一個特別的功能可以設定，就是「marker」，顧名思義，就是在線段的起點、中間點或結束點，加上我們自訂的符號，就可以讓折線圖更有特色。</p>
 <blockquote>
 <p>參考 <a href="http://www.oxxostudio.tw/articles/201409/svg-16-storke-miterlimit.html" target="_blank">SVG 研究之路 (16) - Stroke-miterlimit</a>、<a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" target="_blank">SVG 研究之路 (6) - stroke 邊框</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 marker</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 marker</h2> 
 <p>不過 marker 並不是寫在 stroke 的屬性裏頭，而是用<code>defs</code>來定義，再使用<code>marker-start</code>、<code>marker-mid</code>和<code>marker-end</code>來將其放入線段當中，原本我想使用 illustrator 來表現，不過在 illustrator 裏頭，是用<code>g</code> ( group ) 把符號和線段組合，並不是使用 marker 的方式，但我們仍然可以使用 illustrator 來繪製圖案。</p>
 <p>例如今天要做一支愛神之箭，必須要有愛心箭頭和羽毛尾巴，利用 illustrator 繪製這兩個形狀之後存成 SVG ( 就可以看到程式碼 )，接著在<code>defs</code>裏頭加入 marker，就可以和線段串接在一起。  </p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="400"&gt;
@@ -92,7 +92,7 @@
   &lt;polyline points="50,20 150,20" fill="none" stroke="black" stroke-width="1" marker-end="url(#a1)" marker-start="url(#a2)"&gt;&lt;/polyline&gt;
 &lt;/svg&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_02.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<h2>marker 的 viewbox</h2>
+<h2>marker 的 viewbox</h2> 
 <p>上述 marker ，必須由某些屬性來進行基本的調控，<code>id</code>的目的在於讓線段可以獲取這個 marker，<code>viewbox</code>是 SVG 裏頭特有的屬性，是一個檢視的區域界限，後方跟隨四個數值，分別是左上起點座標以及長寬：<code>viewbox="x,y,width,height"</code>，以 id="a1" 而言，愛心的大小約為 77x77，若<code>viewbox</code>改為於 0,0,37,77，則愛心會發生被裁切的現象  </p>
 <pre class="prettyprint"><code>&lt;marker id="a1" viewBox="0 0 37 77" refX="20" refY="39" markerWidth="30" markerHeight="30" orient="auto" &gt;
   &lt;path fill="#f00"  d="M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6 C-1.594,77.1-8.594,49.8,12.707,38.6z"&gt;&lt;/path&gt;
@@ -103,13 +103,13 @@
   &lt;path fill="#f00"  d="M12.707,38.6C-8.594,27.4-1.594,0,22.406,0c30.3,0,51.7,38.5,51.7,38.5s-22.7,38.6-51.7,38.6 C-1.594,77.1-8.594,49.8,12.707,38.6z"&gt;&lt;/path&gt;
 &lt;/marker&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_04.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<h2>orient 屬性</h2>
+<h2>orient 屬性</h2> 
 <p>最後一個屬性是<code>orient</code>，這個屬性很特別，是 marker 圖形跟隨線段的方向，單位是<strong>角度</strong>，預設值是 <strong>auto</strong> ，也就是線段怎麼跑，都會自動隨著線段旋轉角度，不過要注意的是，auto 的話，<strong>一律以水平方向作為起始方向</strong>，不是垂直！</p>
 <pre class="prettyprint"><code>orient="auto"  
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_05.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
 <pre class="prettyprint"><code>orient="-45"  
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140908_1_06.png" alt="SVG 研究之路 (17) - Stroke-marker"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>了解了所有 marker 的屬性之後，要做出帶有圖案的折線圖就非常的方便了，下圖我將起點設定為紅色球，中間的折點設定為綠色球，終點設定為藍色球。  </p>
 <pre class="prettyprint"><code>&lt;svg width="300" height="400"&gt;
   &lt;defs&gt;

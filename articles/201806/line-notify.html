@@ -71,12 +71,12 @@
     <article>
       <i class="tag"></i>
 
-<h1>自建 LINE Notify 訊息通知</h1>
+<h1>自建 LINE Notify 訊息通知</h1> 
 <p>之前我們有用過 IFTTT 來實現讓 LINE 發送通知的功能，這篇將要透過 Google Apps Script 搭配 LINE Notify，實作出一個類似 IFTTT 的訊息通知服務，最後甚至還可以透過 LINE Notify 發送圖片或貼圖表情。</p>
 <blockquote>
 <p>延伸閱讀：<a href="/articles/201803/ifttt-line.html">IFTTT 發送 LINE 訊息通知</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>申請 LINE Notify 權杖</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>申請 LINE Notify 權杖</h2> 
 <p>打開 LINE Notify 的網站 ( <a href="https://notify-bot.line.me/zh_TW/" target="_blank">https://notify-bot.line.me/zh_TW/</a> )，使用自己的 LINE 帳號登入。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-01.jpg" alt=""></p>
 <p>登入後滑鼠移至上方個人帳號，選擇「個人頁面」。</p>
@@ -91,7 +91,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-06.jpg" alt=""></p>
 <p>同時，LINE 訊息裡也會收到 LINE Notify 發出「已發行個人存取權杖」的訊息，到這一步 LINE Notify 已經設定完成，再來看看如何發送訊息。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-09.jpg" alt=""></p>
-<h2>使用 Google Apps Script 傳送通知</h2>
+<h2>使用 Google Apps Script 傳送通知</h2> 
 <p>由於 LINE Notify 無法直接透過「純」網頁前端的方式來發送訊息，所以必須在借重 Google Apps Script 簡易後端的能力來傳送通知，進入 Google 雲端硬碟，新增一個 Google Apps Script。</p>
 <blockquote>
 <p>延伸閱讀：<a href="/articles/201805/backend-apps-script.html">簡易後端實作 ( Google Apps Script )</a></p>
@@ -149,7 +149,7 @@
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-13.jpg" alt=""></p>
 <p>做到這個步驟，應該都已經能夠輕鬆傳送訊息、貼圖和圖片了，接著要來看看如何透過「網頁」傳送訊息。</p>
-<h2>網頁傳送 LINE Notify 訊息</h2>
+<h2>網頁傳送 LINE Notify 訊息</h2> 
 <p>如果要透過網頁傳送訊息，基本原理其實是網頁發送 http request 給 Google Apps Script，然後再由 Apps Script 執行發送 LINE Notify 訊息的指令，因此我們要稍微改寫 Apps Script，一開始增加一個 e 的參數，裡頭包含要傳送出去的 msg 訊息。</p>
 <pre class="prettyprint"><code>function doPost(e) {
 
@@ -180,7 +180,7 @@
 });
 </code></pre><p>完成後執行網頁，就能看到 LINE 收到網頁發過來的訊息囉！</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-17.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>LINE Notify 其實是相當方便的一個服務，可以串接在很多前端或後端的應用裡，甚至也可以搭配物聯網的服務，做到類似陌生人開門就開通知、太亮了就發通知...等的應用，對於 LINE 的重度使用者來說應該不失為一個好管道，不過如果單純只是要通知，也滿推薦 Slack 的服務，畢竟 LINE 還是比較偏向個人用戶，Slack 則是針對公司團體。</p>
 <blockquote>
 <p>延伸閱讀：<a href="/articles/201801/slack.html">Slack 自動訊息通知</a></p>

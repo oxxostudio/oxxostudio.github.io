@@ -71,14 +71,14 @@
     <article>
       <i class="tag"></i>
 
-<h1>Mac Dock 實作</h1>
+<h1>Mac Dock 實作</h1> 
 <p><img src="/img/articles/201501/mac-dock.gif" class="preview-img" alt=""></p>
 <p>2015 年的第一篇文章，寫的是我自己在 2012 年的舊作！？隨著這幾年自己技術的提升，總算是運用了一些 HTML5 的技術，來讓當年做的這組 Mac Docker 效果更加完善，這裡將這個效果的製作方式分享給大家，歡迎和期待各路高手和大大能給予一些建議指教。</p>
 <blockquote>
 <p>完成範例：<a href="/demo/201501/mac-dock-demo.html" target="_blank">mac-dock-demo.html</a></p>
 <p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>HTML 結構</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>HTML 結構</h2> 
 <p>Mac Dock 的效果其實不難做，說穿了只用了一點點 CSS3 的 transition 與 transform ，HTML5 的 data-attribute，以及 jQuery 的 animate 而已，真正難的地方在於計算各個 icon 的大小和位置，當初光是想這個演算法就花了整整三天，最後出來只要五行就搞定了，可以參考下圖這個計算草稿：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150103_1_02.jpg" alt="Mac Docker 實作"></p>
 <p>看不懂沒關係，來看一下程式碼的組成，首先看一下 HTML，外圍用一個 div 包著一個清單，清單的<code>li</code>都有一個<code>text</code>的 HTML5 data attribute，這裡的目的是讓 CSS3 的偽元素<code>::before</code>直接讀取，就可以在完全不用 JS 的情況下載入文字。</p>
@@ -99,7 +99,7 @@
       &lt;li text='Yahoo'&gt;&lt;img src='mac_img/13.png' /&gt;&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;
-</code></pre><h2>CSS 結構</h2>
+</code></pre><h2>CSS 結構</h2> 
 <p>接著看一下 CSS，這裡大多都只是基本的 CSS，比較需要注意的是<code>::before</code>這一段，意思是讓每個 li 都有一個偽元素<code>::before</code>，而其內容<code>content</code>會自動讀取對應 li 的 text，也就是<code>attr(text)</code>，如此一來，每個 li 的 text 文字都會自動放到<code>::before</code>裏頭囉！此外，最後面多增加了一個具有 id 的 style 區塊，因為<code>::before</code>這種偽元素，並不是 HTML 的標準元素，也因此 jquery 無法控制這些偽元素，當我想讓偽元素寬度是動態的，就必須要額外將 style 寫入，所以多增加一組 style 讓 jquery 把樣式加進去。</p>
 <pre class="prettyprint"><code>&lt;style&gt;
   #mouse_area {
@@ -150,7 +150,7 @@
   }
 &lt;/style&gt;
 &lt;style id="before-class"&gt;&lt;/style&gt;  &lt;!-- 額外加入樣式 --
-</code></pre><h2>寫寫 jQuery</h2>
+</code></pre><h2>寫寫 jQuery</h2> 
 <p>看完了 HTML 與 CSS，就來進入重點的 jquery code，一開始的這一段，用來定義 icon 的大小，以及整組 icon 的位置，順便把常用的選擇器宣告起來。</p>
 <pre class="prettyprint"><code>var limin = 30,  //icon縮小時候的寬度
     limax = 64,  //icon放大時候的寬度
@@ -262,7 +262,7 @@ $('#mouse_area').css({
     'margin-top': '0'
   });
 }
-</code></pre><h2>小結</h2>
+</code></pre><h2>小結</h2> 
 <p>以上，就是我這個效果的完整程式碼，不是很難，真正難的是要理解變大變小的原理，不過實際上 Mac Dock 好像也不是用這種方式，有興趣的可以參考美國專利局裏頭 Mac Dock 的專利說明：<a href="http://www.google.com/patents/US7434177" target="_blank">http://www.google.com/patents/US7434177</a>。</p>
 <p>( 完成範例：<a href="/demo/201501/mac-dock-demo.html" target="_blank">mac-dock-demo.html</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150103_1_03.gif" alt="Mac Docker 實作"></p>

@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>CSS 偽元素 ( content 與 counter )</h1>
+<h1>CSS 偽元素 ( content 與 counter )</h1> 
 <p>前面介紹過 CSS 裡的 ::before 和 ::after 這兩個偽元素，以及 content 相關的用法，這篇將針對 content 搭配 counter ( 計數器 ) 進行一些有趣的應用，相信熟練之後搞不好很好玩也說不定。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>counter 基本用法</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>counter 基本用法</h2> 
 <p>在 CSS 裏頭，counter 是個很有意思的功能，最常見得就是如果我們使用 list 清單，樣式選擇 decimal 十進位，當清單變多的時候數字也會跟著增加，底層貌似就是使用 counter 來做的，也因為 counter 所產生的數值並不存在於網頁的元素內，所以如果我們要在清單元素之外使用，就必須透過 ::before 或 ::after 的 content 來實現。</p>
 <p>counter 最的基本用法一定要有一個父元素和子元素 ( 類似 list 的原理，使用 ul 包著 li )，所以長相會類似下面這段 html：</p>
 <pre class="prettyprint"><code>&lt;div&gt;
@@ -121,7 +121,7 @@ span::before{
   content:counter(num, georgian) '. ';
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-03.jpg" alt=""></p>
-<h2>counter 進階用法</h2>
+<h2>counter 進階用法</h2> 
 <p>除了指定單一個變數外，counter 也可以同時指定多個變數，例如下面這段 HTML，有三個類別在裡面，我分別用 span、i 和 b 來分類。</p>
 <pre class="prettyprint"><code>&lt;div&gt;
   &lt;span&gt;鋼鐵人&lt;/span&gt;
@@ -255,7 +255,7 @@ div{
   margin-right:5px;
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-2-07.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>原本網頁裡面使用的清單，如果要進行樣式的修改、或是一些編號的設置，往往都要透過 JavaScript 來實現，如果熟練了 counter 的用法，搞不好純粹使用 CSS 就能取代掉大部分 JavaScript 也說不定呢~</p>
 <p>說到 JavaScript，下一篇將會介紹透過 JavaScript 來操控偽元素的用法。</p>
 

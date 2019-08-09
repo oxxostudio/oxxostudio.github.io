@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Gulp 學習 4 - 建立 SCSS/SASS 編輯環境</h1>
+<h1>Gulp 學習 4 - 建立 SCSS/SASS 編輯環境</h1> 
 <p>隨著時代的演進，這一兩年來我都已經是用 SCSS 在編寫 CSS，不過 SCSS/SASS 是建構在 Ruby 的環境之下，通常我們要使用，則必須先安裝 Ruby 以及 compass，或也可以購買安裝 Fire.app 代勞，那麼要如何才能用 gulp ，來建立一個自動執行轉換 SCSS 的環境呢？</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝套件</h2> 
 <p>與 SCSS/SASS 的安裝同樣的前置步驟，我們必須先安裝 Ruby 以及 compass，Ruby 可以直接到 Ruby 的官方網站下載安裝： <a href="http://rubyinstaller.org/downloads/" target="_blank">rubyinstaller</a> 。 </p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150308_1_02.jpg" alt="Gulp 學習 4 - 建立 SCSS/SASS 編輯環境"></p>
 <p>安裝 Ruby 之後就是要繼續安裝 compass，開啟命令提示字元 ( CMD )，輸入以下程式碼，就可以安裝 compass。</p>
@@ -82,7 +82,7 @@
 <pre class="prettyprint"><code>npm install gulp gulp-compass -save-dev
 </code></pre><p>安裝之後先來規劃一下我們的目錄結構，首先建立一個名為 style 的資料夾，內部分別建立兩個名為 SCSS、CSS 的資料夾，我們的目標是要在 SCSS 資料夾內編寫 SCSS，然後自動轉換成 CSS 檔案放在 CSS 的資料夾內。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150308_1_03.jpg" alt="Gulp 學習 4 - 建立 SCSS/SASS 編輯環境"></p>
-<h2>撰寫 gulpfile.js</h2>
+<h2>撰寫 gulpfile.js</h2> 
 <p>資料夾用好之後，來寫一下 gulpfile.js 了，第一步就是先引入套件。(參考：<a href="https://www.npmjs.com/package/gulp-compass" target="_blank">gulp-compass</a>)</p>
 <pre class="prettyprint"><code>var gulp = require('gulp'),
     compass   = require('gulp-compass');
@@ -129,7 +129,7 @@ gulp.task('default',['compass','watch']);
 </code></pre><p>題外話，在 Mac 寫以上的步驟都沒有問題，真正遇到問題是用 windows 才產生，一開始因為我的 compass 版本較舊，導致無法順利轉出 scss 裏頭註解的部分，於是我用<code>gem install compass</code>要更新 compass，沒有到卻又發生<code>SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed</code>這個莫名其妙的問題，因為 gulp-compass 就是必須要用 compass，無法順利升級 compass 就等於宣告 gulp-compass 陣亡，找了很久，終於找到這篇文章：<a href="https://gist.github.com/luislavena/f064211759ee0f806c88" target="_blank">SSL upgrades on rubygems.org and RubyInstaller versions</a>，裏頭詳細描述這個問題的解決方法，就是要先下載 rubygems-update-1.8.30.gem 到本地端，然後升級 gem ( 因為用 update 都升級不了 )，升級之後，就可以順利升級 compass。( 寫這篇的時候 compass 是 1.0.3 )</p>
 <p>不過光是升級還是會有點小問題，就是 compass 預設對於中文的註解會發生錯誤，解決方式有兩種，一種是在專案檔裏頭添加 config.rb，內容添加：<code>Encoding.default_external = 'utf-8'</code>，第二種是在 scss 的檔案開頭，加上<code>@charset "UTF-8";</code>就可以解決。</p>
 <p>沒想到原本在 Mac 上很簡單的步驟，在 windows 我卻花了好幾個小時才搞定，真是莫名其妙呀喔哈！</p>
-<h2>參考資料：</h2>
+<h2>參考資料：</h2> 
 <blockquote>
 <ul>
 <li><a href="http://sass-lang.com/" target="_blank">SCSS/SASS</a></li>

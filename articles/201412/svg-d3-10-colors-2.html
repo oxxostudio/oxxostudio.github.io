@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG D3.js - 定義色彩 - 應用篇 ( colors )</h1>
+<h1>SVG D3.js - 定義色彩 - 應用篇 ( colors )</h1> 
 <p><img src="/img/articles/201412/svg-d3-10-colors-2.jpg" class="preview-img" alt=""></p>
 <p>上一篇我們探討了 d3.js 裏頭色彩的定義與 API 操作方式，其實對於色彩，d3.js 還有不少應用的方法，也因此在官網所介紹的範例，才會如此的色彩豐富生動多姿，因此，這篇將繼續介紹色彩的應用，主要是利用之前介紹過的 scale 來變化色彩，很神奇吧！scale 要怎麼定義色彩？就讓我們繼續看下去吧~</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Linear</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Linear</h2> 
 <p>介紹之前，來回顧一下 scale 的用法，之前介紹過兩種用法，分別是 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html" target="_blank">linear</a> 和 <a href="http://www.oxxostudio.tw/articles/201412/svg-d3-08-ordinal.html" target="_blank">ordinal</a> ( 當然還有其他的，不過最常用的就這兩種 )，而 d3.js 的色彩同樣也可以使用這兩種 API 來進行定義，首先來看看 linear 該如何使用。</p>
 <p>一開始先在 HTML 放入十個 div</p>
 <pre class="prettyprint"><code>&lt;div id="div1"&gt;1&lt;/div&gt;
@@ -126,7 +126,7 @@ div8.style({background:color(8)});
 div9.style({background:color(9)});
 div10.style({background:color(10)});
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141226_1_02.jpg" alt="SVG D3.js - 定義色彩 - 應用篇 ( colors )"></p>
-<h2>category</h2>
+<h2>category</h2> 
 <p>用這種方法，我們就可以定義出一個範圍內的顏色變化，也更能將死板板的數據，對應到各自代表的顏色，例如汙染越高的地方越黑、音量越大越紅、溫度越冷越藍、雨量越多越紫...等之類的圖表，然而除了 scale.linear 這種方法之外，也可以使用之前介紹過的 <a href="http://www.oxxostudio.tw/articles/201412/svg-d3-08-ordinal.html" target="_blank">ordinal</a>，定義出類似陣列概念的顏色陣列，而且其實我們不用自己定義，d3.js 已經幫我們定義好了幾種，分別是以下幾種：</p>
 <blockquote>
 <ul>
@@ -343,7 +343,7 @@ div5.style({
   background:color(5)
 });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141226_1_04.jpg" alt="SVG D3.js - 定義色彩 - 應用篇 ( colors )"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上，就是在 d3.js 裏頭色彩的另外一種應用作法，相信理解了之後，看待一大串的數字，可能都會不由自主地把這些數據給上顏色囉！如果對於色碼與顏色名稱有興趣的，也可以參考：<a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords" target="_blank">Recognized color keyword names</a></p>
 
 

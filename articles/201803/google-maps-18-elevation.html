@@ -71,15 +71,15 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 顯示海拔高度</h1>
+<h1>Google Maps API - 顯示海拔高度</h1> 
 <p>除了基本的地圖使用，Google Maps API 也有提供海拔高度的服務，雖然在地形圖的檢視模式下，可以看到山脈的高低起伏，但海拔高度服務卻能查詢某個位置的高度資料，這個服務目前常見於一些導航或運動類的應用程式 ( 現在其實不少偵測高度的裝置是使用氣壓計來量測 )。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用 Google Maps Elevation API</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用 Google Maps Elevation API</h2> 
 <p>要使用海拔高度服務，首先要啟用 <em>Google Maps Elevation API</em>，前往 <a href="https://console.developers.google.com/" target="_blank">Google Console</a>，選擇和自己的 Google Maps JavaScript API 同樣的專案，進入專案後點選「<em>啟用 API 和服務</em>」。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-01.jpg" alt=""></p>
 <p>進入後搜尋 Google Maps Elevation API，搜尋到了之後就將其啟用。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-02.jpg" alt=""></p>
 <p>依據 Google 的限制規範，Google Maps Elevation API 的標準方案 ( 免費版 ) 每天可以有 2500 個免費 request，每個秒可以有 50 個 request，而每個 request 可以有 512 個位置，此外若使用 ElevationService，Google 也有限制不得用於 Google 地圖以外的地方，如果是開發應用程式服務，也必須標註相關使用條款與隱私權政策。</p>
-<h2>顯示地形圖</h2>
+<h2>顯示地形圖</h2> 
 <p>回顧 <a href="/articles/201707/google-maps-2-map-class.html" target="_blank">Google Maps (2) - 使用地圖與基本設定</a> ，只要將地圖的 mapTypeId 屬性修改為 terrain，就能在地圖上同時顯示街道與地形，接下的範例就會先把地圖變更為地形圖模式。( 其實也不見得要用地形圖，只是覺得如果偵測海拔高度，用地形圖比較應景 )</p>
 <blockquote>
 <p>範例：<a href="/demo/201803/google-maps-18-elevation-demo-01.html" target="_blank">Google 地圖顯示地形</a></p>
@@ -97,7 +97,7 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-03.jpg" alt=""></p>
-<h2>如何使用</h2>
+<h2>如何使用</h2> 
 <p>使用海拔高度前，要先宣告 ElevationService，宣告的方法很簡單，一行程式碼就搞定。</p>
 <pre class="prettyprint"><code>var elevator = new google.maps.ElevationService;
 </code></pre><p>宣告後，就能使用 callback 的方法，這裡有兩種方法可以使用：</p>
@@ -125,7 +125,7 @@ function initMap() {
 <li><em>resolution</em>：以內插計算高度的兩個資料點之間的最大距離 ( 以公尺為單位，如果解析度為未知，則不會有此屬性 )。</li>
 </ul>
 </blockquote>
-<h2>顯示位置上的海拔高度 ( getElevationForLocations() )</h2>
+<h2>顯示位置上的海拔高度 ( getElevationForLocations() )</h2> 
 <p>getElevationForLocations() 的用法：</p>
 <pre class="prettyprint"><code>getElevationForLocations({
   locations[]: LatLng
@@ -200,7 +200,7 @@ function initMap() {
   }
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-05.jpg" alt=""></p>
-<h2>顯示路徑上的海拔高度 ( getElevationAlongPath() )</h2>
+<h2>顯示路徑上的海拔高度 ( getElevationAlongPath() )</h2> 
 <p>getElevationAlongPath() 的用法：</p>
 <pre class="prettyprint"><code>getElevationAlongPath({
   path[]: LatLng,
@@ -284,7 +284,7 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-18-elevation-07.jpg" alt=""></p>
-<h2>參考</h2>
+<h2>參考</h2> 
 <ul>
 <li><a href="https://developers.google.com/maps/documentation/javascript/elevation?hl=zh-tw" target="_blank">Google Maps JavaScript API 高度服務</a></li>
 </ul>

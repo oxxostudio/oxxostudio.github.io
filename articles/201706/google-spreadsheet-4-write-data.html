@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google 試算表 (4) - 寫入資料到儲存格</h1>
+<h1>Google 試算表 (4) - 寫入資料到儲存格</h1> 
 <p>前面我們已經試過從 Google 試算表讀取資料，現在要來把資料寫入試算表，如此一來，在沒有資料庫的輔助下，就可以把試算表當作簡單的資料庫使用，也更大大提升了試算表的能力。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>認識 getRange()</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>認識 getRange()</h2> 
 <p>在 <a href="google-spreadsheet-2-read-data.html" target="_blank">Google 試算表 (2) - 讀取儲存格數值</a> 這篇文章裡有稍微提到了<code>.getRange()</code>這個方法，如果我們要寫入資料到儲存格裡，最主要會使用<code>.getRange()</code>來取得要寫入的儲存格或一個範圍內的所有儲存格，用法有下列幾種：</p>
 <blockquote>
 <p>參考資料：<a href="https://developers.google.com/apps-script/reference/spreadsheet/sheet#getrangerow-column" target="_blank">getRange</a></p>
@@ -110,7 +110,7 @@ var range = SpreadSheet.getRange('工作表名稱!A2:C4'); //要加!
 var range = SpreadSheet.getRange('工作表名稱!A1');
 </code></pre></li>
 </ul>
-<h2>使用 setValue()、setValues() 寫入資料</h2>
+<h2>使用 setValue()、setValues() 寫入資料</h2> 
 <p>已經知道如何抓到某個儲存格或是某個範圍的儲存格之後，就要來把一些數值寫入儲存格，寫入的方法將會使用<code>setValue()</code>和<code>setValues()</code>來實現，從英文的字面意思可以看出，結尾沒有 s 的只能存入「一筆」資料，有 s 的則可以用陣列存入多筆資料。</p>
 <blockquote>
 <p>對於<code>getValue()</code>和 <code>getValues()</code>也是相同的概念，沒有 s 的只能取出一個儲存格的資料，有 s 的則是取出一個二維陣列的資料。</p>
@@ -131,7 +131,7 @@ range.setValues([[1,2,3],[11,22,33],[111,222,333]]);
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-4-write-data-02.jpg" alt=""></p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>到這邊差不多就已經完成了寫入資料到儲存格的步驟，更進一步其實可以撰寫一個 debug.gs 來測試，下一篇將會介紹如何插入列或是插入欄，這樣就更能發揮試算表的功能囉！</p>
 
 

@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG D3.js - 直條圖 ( 以登革熱數據為例 )</h1>
+<h1>SVG D3.js - 直條圖 ( 以登革熱數據為例 )</h1> 
 <p><img src="/img/articles/201509/svg-d3-20-bar-chart-tainan-dengue.jpg" class="preview-img" alt=""> </p>
 <p>上一篇我們介紹了長條圖的畫法，因為之前看過有人做了高雄和台南登革熱病例的長條圖 ( 不過他們不是用 d3.js 做的 )，所以想說自己學了 d3.js 也來試試看，雖然還做不到跟地圖結合，但可以將數字表格轉換成可視的圖形，就更容易理解疫情的變化囉。</p>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>因為要繪圖，就需要資料，我這邊使用的資料是台南的登革熱每日病例 ( 參考 <a href="http://data.tainan.gov.tw/dataset/dengue-dist/resource/fb2e5df8-d5dc-42d6-9fc2-8d638205a7aa" target="_blank">104年臺南市本土登革熱病例數</a>，使用 csv 需要跨域，可以用後端爬一份放在自己的 server 即可，不過覺得台南市政府可以用成英文啦，中文會有編碼的問題呀！ )，我抓了一份 csv 檔，用裡面的「確診日期」以及「編號 ( 加總就變成病例數 )」，就可以得到我們要畫圖的 data。</p>

@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (8) - text 文字</h1>
+<h1>SVG 研究之路 (8) - text 文字</h1> 
 <p><img src="/img/articles/201406/svg-08-text.jpg" class="preview-img" alt=""></p>
 <p>「文字」雖然字面上的解釋很簡單，但深入研究之後，發現 SVG 對於文字的設定，比我想像的複雜得多，但也因為有了這些我所不知道的設定和屬性，讓原本單純樸實的文字，更添加了幾分華麗的色彩和變化，這篇將介紹文字基本的屬性設定，以及一些進階的文字用法，學完之後，也就更能使用程式來控制文字，製作出與眾不同的動畫和特效了。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本用法</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本用法</h2> 
 <p>文字的基本用法很簡單，就是使用<code>&lt;text&gt;&lt;/text&gt;</code>標籤，然後將需要顯示的文字放在裏頭即可，而<code>&lt;text&gt;</code>標籤裡具有 x、y、dx、dy、rotate、textLength、lengthAdjust 屬性，可以進行基本的文字編輯，此外你也可以自行添加 CSS 樣式，讓字體的變化更多元。  </p>
 <pre class="prettyprint"><code>&lt;text x="50" y="20"&gt;TEXT&lt;/text&gt;
 &lt;text x="50" y="40" fill="#09c"&gt;Fill&lt;/text&gt;
@@ -100,7 +100,7 @@
 &lt;text x="0" y="90" textLength="300" lengthAdjust="spacing"&gt;lengthAdjust&lt;/text&gt;
 &lt;text x="0" y="120" textLength="300" lengthAdjust="spacingAndGlyphs"&gt;lengthAdjust&lt;/text&gt;  
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140615_1_02_3.png" alt="SVG-text"></p>
-<h2>TSPAN 元素</h2>
+<h2>TSPAN 元素</h2> 
 <p><code>&lt;tspan&gt;&lt;/tspan&gt;</code>是 SVG 文字裡頭重要的元素，因為它可以塑造出千變萬化的文字表現方式，而看<code>&lt;tspan&gt;</code>的字面，其實可以把它想像成 HTML 裏頭的<code>span</code>也無妨，也可以想像成在<code>&lt;text&gt;</code>裏頭的一個一個文字群組。<code>&lt;tspan&gt;</code>和<code>&lt;text&gt;</code>具有的屬性值幾乎一模一樣，也是 x、y、dx、dy、rotate、textLength。  </p>
 <pre class="prettyprint"><code>&lt;text x="50" y="20"&gt;
   &lt;tspan fill="#000"&gt;The tspan element&lt;/tspan&gt;
@@ -121,7 +121,7 @@
   &lt;tspan x="10" y="60" fill="#f00" rotate="20,30,40,50,60,70,80" style="font-size:24px;"&gt;element&lt;/tspan&gt;
 &lt;/text&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140615_1_05.png" alt="SVG-text"></p>
-<h2>使用路徑</h2>
+<h2>使用路徑</h2> 
 <p>除了以上的文字變化外還不稀奇，使用過 Illustrator 的朋友們都知道，我們可以讓文字跟隨路徑，做出各種形狀的文字，至於寫程式該怎麼寫呢？這時候就要回想起上一篇 <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html" target="_blank">fill 漸層</a> 所提到的定義檔<code>&lt;defs&gt;&lt;/defs&gt;</code>，我們只需要在<code>&lt;defs&gt;&lt;/defs&gt;</code>定義好路徑，讓文字和路徑做連結，就可以讓文字隨著路徑跑囉！</p>
 <p>定義路徑：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
@@ -141,7 +141,7 @@
    &lt;textPath startOffset="30%" xlink:href="#a1"&gt;這是隨著路徑跑的文字，很酷吧&lt;/textPath&gt;
 &lt;/text&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140615_1_07.png" alt="SVG-text"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 SVG 文字的介紹，在 <a href="http://www.w3.org/TR/SVG/text.html" target="_blank">W3C 的 SVG TEXT 文章</a> 裏頭有更完整豐富的說明，真的是比我想像的複雜太多了！不過其實你只要學會以上幾招，對於文字的應用已經相當足夠囉！</p>
 
 

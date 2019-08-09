@@ -71,13 +71,13 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖</h1>
+<h1>SVG 研究之路 (24) - 寫 jquery 產生圓餅圖</h1> 
 <p><img src="/img/articles/201409/svg-24-jquery-pie-chart.jpg" class="preview-img" alt=""> </p>
 <p>之前我們提過了「SVG 研究之路 (12) - pie chart 圓餅圖實作」和「SVG 研究之路 (14) - 控制 SVG 的注意事項」，現在就要來將兩者結合，使用 jquery 來畫出圓餅圖，同時使用 json 的格式來長出特定的角度和顏色，如此一來，在不需要 D3.js 或 C3.js 等 SVG js 框架的輔助下，也可以自己做出一個動態產生的圓餅圖，而且還很好用喔！( 如果對於圓餅圖的產生還不熟悉的人，請點選下面的連結回去再次閱讀一下吧！ )</p>
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html" target="_blank">SVG 研究之路 (12) - pie chart 圓餅圖實作</a>、<a href="http://www.oxxostudio.tw/articles/201406/svg-14-control-SVG.html" target="_blank">SVG 研究之路 (14) - 控制 SVG 的注意事項</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>原理簡介</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>原理簡介</h2> 
 <p>使用 jquery 畫出圓餅圖的原理很簡單，就是要在 SVG 內部放入 path 的路徑，不過由於 SVG 是 xmlns 而非 HTML，因此瀏覽器不認識 rect 或 path 等元素，所以在程式之初必須先加上這段：</p>
 <pre class="prettyprint"><code> function makeSVG(tag, attrs) {
    var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -117,7 +117,7 @@
    num: 7,
    fill: '#c0c'
  }];
-</code></pre><h2>計算角度</h2>
+</code></pre><h2>計算角度</h2> 
 <p>再來進入主程式的部分，一開始的 for 迴圈幫助我們由 data 計算總共有幾個扇形，才可以算出每個扇形的角度，跟著的 for 迴圈一開始先進行 if-else 的判斷，為什麼要這個判斷呢？單純只是因為第一個扇形和最後一個扇形的角度計算方式比較不同，所以必須獨立出來計算，判斷之後有了 path 所需要的數值，再藉由另外一個 if-else 來判斷畫出正確的扇形，最後緊跟著的 path 就是利用 jquery append 的方式畫入 SVG 裏頭。</p>
 <pre class="prettyprint"><code> for (i = 0; i &lt; data.length; i++) {
    all = all + data[i].num;
@@ -170,7 +170,7 @@
    });
  });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140927_1_02.png" alt="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>就這樣，輕鬆愜意地完成了圓餅圖的製作，當然，了解原理之後，也可以做出一些不同的變化，例如半徑越來越大之類的圓餅圖，原理就是在第二個 for 迴圈裡面多個 r=r+5 ，每個扇形的半徑就會越來越大囉！( 範例：<a href="http://jsbin.com/jacugi/2" target="_blank">http://jsbin.com/jacugi/2</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140927_1_03.png" alt="SVG 研究之路 (24) - 寫 jquery 產生圓餅圖"></p>
 

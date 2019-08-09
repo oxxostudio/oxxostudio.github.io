@@ -71,16 +71,16 @@
     <article>
       <i class="tag"></i>
 
-<h1>CSS 偽元素 ( before 與 after )</h1>
+<h1>CSS 偽元素 ( before 與 after )</h1> 
 <p>最近因為一些網頁的需要，比較深入的使用了 CSS 的「偽元素」( Pseudo Element )，發現原來不只是用用 before 或 after 而已，可以玩的東西還真是不少，所以就來篇文章，把這些比較不常玩的用法紀錄一下。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>什麼是「偽元素」？</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>什麼是「偽元素」？</h2> 
 <p>「偽元素」之所以稱作「偽」，除了英文從「Pseudo」翻譯過來之外，就是因為它並不是真正網頁裡的元素，但行為與表現又和真正網頁元素一樣，也可以對其使用 CSS 操控。</p>
 <p>跟偽元素類似的還有「偽類」(  Pseudo classes )，在 W3C 的定義裡總共有五個偽元素 ( 其他仍在測試階段 )，分別是<code>::before</code>、<code>::after</code>、<code>::first-line</code>、<code>::first-letter</code>和<code>::selection</code>，為了和偽類區分，偽元素使用<em>兩個冒號「::」開頭</em>，而偽類使用一個冒號「:」開頭 ( 像是 :hover、:target...等 )。</p>
 <p>雖然現在的瀏覽器就算寫一個冒號也可以正常運作，不過為了方便區分，用兩個冒號還是比較好的， 而且不論瀏覽器是什麼，<code>::selection</code>必須是兩個冒號才能正常運作。</p>
 <blockquote>
 <p>參考：<a href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/Pseudo-elements" target="_blank">MDN Pseudo-elements</a>、<a href="http://www.oxxostudio.tw/articles/201405/css-selector.html" target="_blank">偽類 child 和 of-type</a></p>
 </blockquote>
-<h2>認識 ::before 與 ::after</h2>
+<h2>認識 ::before 與 ::after</h2> 
 <p>::before、::after 大概是最常使用的偽元素，兩者都是以<code>display:inline-block</code>的屬性存在，::before 是在原本的元素「之前」加入內容，::after 則是在原本的元素「之後」加入內容，同時偽元素也會<em>「繼承」原本元素的屬性</em>，如果原本文字是黑色，偽元素的文字也會是黑色。</p>
 <p>舉例來說，下面這段程式碼，有一個 div 內容是「大家好，我是 div」，使用 ::before、::after 之後，會在原本 div 的前後各添加一段文字，並且讓這兩段文字都呈現紅色。</p>
 <pre class="prettyprint"><code>div::before{
@@ -92,7 +92,7 @@ div::after{
     color:red;
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-1-01.jpg" alt=""></p>
-<h2>實用的 content</h2>
+<h2>實用的 content</h2> 
 <p>上述的內容乍看之下很容易理解，比較需要注意的是<em>一定要具備 content 的屬性</em>，就算是只有<code>content:"";</code>都可以，因為沒有 content 的偽元素是不會出現在畫面上的，然而 content 是個很特別的屬性，它可以使用 attr 直接獲取內容元素的屬性值 ( attribute )，舉例來說，在 HTML 裡有一個超連結，點擊後會彈出新視窗並連結至 Google：</p>
 <pre class="prettyprint"><code>&lt;a href="https://www.google.com" target="_blank"&gt;google&lt;/a&gt;
 </code></pre><p>使用下列的程式碼用法，將會把超連結的 href 內容與 target 內容，透過偽元素一前一後的顯示出來。</p>
@@ -129,7 +129,7 @@ a::after{
 <li><a href="http://www.oxxostudio.tw/articles/201503/css-pie-chart.html" target="_blank">純 CSS 繪製圓餅圖</a></li>
 </ul>
 </blockquote>
-<h2>content 搭配 quotes 使用</h2>
+<h2>content 搭配 quotes 使用</h2> 
 <p>在 CSS 裡有個不常用的屬性就是 quotes，這是做為定義「<em>括號格式</em>」的屬性，也就是如果在一段文字被<code>&lt;q&gt;&lt;/q&gt;</code>包住，這段文字的前後就會出現自定義的括號，而且 quotes 支援巢狀的結構，也就是你可以一層層的寫下去，以下面這段 HTML 文字舉例：</p>
 <pre class="prettyprint"><code>最外層&lt;q&gt;第一層&lt;q&gt;第二層&lt;/q&gt;&lt;q&gt;第二層&lt;q&gt;第三層&lt;/q&gt;&lt;/q&gt;&lt;/q&gt;。
 </code></pre><p>quotes 的屬性如果只寫一層，就會看到只出現一種括號，前後括號使用空白區隔，兩組為一個單位，前後可以不同符號。</p>
@@ -157,7 +157,7 @@ span::after{
   color:#aaa;
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/pseudo-element-1-07.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>雖然說偽元素很好用，但偽元素的內容實際上不存在網頁裡 ( 如果打開瀏覽器的開發者工具，是看不到內容的 )，所以如果在裡頭塞了太多的重要的內容，反而會影響到 SEO 的成效，因此對於使用偽元素的定位，還是當作「輔助」性質會比較恰當。</p>
 <p>下一篇會繼續介紹 content 的部份玩些特別 ( 比較少用到 ) 的技法。</p>
 

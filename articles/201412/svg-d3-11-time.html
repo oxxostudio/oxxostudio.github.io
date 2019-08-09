@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG D3.js - 時間格式 ( Time Formatting )</h1>
+<h1>SVG D3.js - 時間格式 ( Time Formatting )</h1> 
 <p><img src="/img/articles/201412/svg-d3-11-time.jpg" class="preview-img" alt=""></p>
 <p>我們都知道在 javascript 裏頭可以抓取電腦的當下的時間 (<code>new date()</code>)，或是在裏頭設定某個時間，但如果要把產生的時間進行格式化，常常要耗費不少字串處理的時間，在 d3.js 裏頭，有提供不少的時間格式的 API ，讓我們可以輕鬆的產生我們所需要的格式。</p>
 <p>來看一下關於定義時間格式，有哪些 API 可以使用：</p>
@@ -85,7 +85,7 @@
 <li>d3.time.format.iso</li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>d3.time.format(specifier)、format(date)</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>d3.time.format(specifier)、format(date)</h2> 
 <p>這兩個 API 要一起看，雖然都是 format ，不過意思卻不相同，time.format 主要是定義時間的格式是什麼，而 format，則是將我們要格式化的時間套入，下面是 d3.js 所有 time.format 的格式：</p>
 <ul>
 <li>%a : 星期幾的縮寫</li>
@@ -170,7 +170,7 @@ var pIM = d3.time.format("(%p)%I:%M");
 
 console.log(Ymd(d)); //2014-12-16
 console.log(pIM(d)); //(PM)12:16
-</code></pre><h2>format.parse(string)</h2>
+</code></pre><h2>format.parse(string)</h2> 
 <p>針對經由 d3.time.format 的物件字串，轉換為原始的時間格式，如果沒有經過 time 格式化，出來可能會報錯獲釋返回 null。( 範例：<a href="/demo/201412/svg-d3-11-time-demo3.html" target="_blank">svg-d3-11-time-demo3.html</a> )</p>
 <pre class="prettyprint"><code>var _x = d3.time.format("%x");
 
@@ -181,7 +181,7 @@ var dd = '2014/12/30 12:05:18';
 console.log(a);            //12/01/2014
 console.log(_x.parse(a));  //Mon Dec 01 2014 00:00:00 GMT+0800 (台北標準時間)
 console.log(_x.parse(dd)); //null
-</code></pre><h2>d3.time.format.multi(formats)</h2>
+</code></pre><h2>d3.time.format.multi(formats)</h2> 
 <p>multi 有多選或複合的意思，這個 API 主要針對時間的尺度而設計，可以讓時間根據不同的尺度，自動從多個格式中挑出最適當的格式 ( 返回 true 即套用該格式 )，因此當從年分逐漸縮減到小時或分鐘，都可以在同一個畫面中呈現，在下方的範例中，time.scale 的用法就像之前提過的 scale 一樣，把一段時間放到一個範圍內顯示，而 customTimeFormat 就是負責要顯示那些時間出來，因為這個範例是一年份，所以左右就變成了年份，中間就是月份。 ( 可以參考 d3 原作者<a href="http://bl.ocks.org/mbostock/4149176" target="_blank">範例</a>，或 <a href="/demo/201412/svg-d3-11-time-demo4.html" target="_blank">svg-d3-11-time-demo4.html</a> )</p>
 <pre class="prettyprint"><code>var customTimeFormat = d3.time.format.multi([
   [".%L", function(d) { return d.getMilliseconds(); }],
@@ -222,9 +222,9 @@ svg.append("g")
 .domain([new Date(2012, 0, 1), new Date(2012, 3, 1)])
 .range([0, width]);
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141229_1_03.jpg" alt="SVG D3.js - 時間格式 ( Time Formatting )"></p>
-<h2>d3.time.format.utc(specifier)</h2>
+<h2>d3.time.format.utc(specifier)</h2> 
 <p>utc 是標準定位時間格式 ( UTC time )，以台灣來說，就是 UTC+8:00，utc 對於跨時區或涉及多個國家地區的時候，設定為 utc 的時間會比較方便，UTC 傳回參數日期的 GMT ( 由 1970年1月1日零時零分計起，以微秒為單位 )</p>
-<h2>d3.time.format.iso</h2>
+<h2>d3.time.format.iso</h2> 
 <p>一個完整的 ISO 8601 UTC 時間格式為 <code>%Y-%m-%dT%H:%M:%S.%LZ</code>。( 範例：<a href="/demo/201412/svg-d3-11-time-demo6.html" target="_blank">svg-d3-11-time-demo6.html</a> )</p>
 <pre class="prettyprint"><code>var d = new Date();
 
@@ -236,7 +236,7 @@ console.log(d);    //Mon Dec 29 2014 23:15:05 GMT+0800 (台北標準時間)
 console.log(f(d)); //Mon Dec 29 23:15:05 2014
 console.log(u);    //Mon Dec 29 23:15:05 2014
 console.log(i);    //2014-12-29T15:15:05.665Z
-</code></pre><h2>小結</h2>
+</code></pre><h2>小結</h2> 
 <p>其實定義時間格式沒有太大難度，因為定義格式，目的其實也是為了在顯示圖表的時候，可以更為清楚，所以在這篇了解時間格式之後，會用其他篇幅來繼續介紹如何運用這些時間格式，創造漂亮的圖表。 </p>
 
 

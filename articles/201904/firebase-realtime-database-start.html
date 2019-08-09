@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>Firebase 教學 - RealTime Database 安裝與使用</h1>
+<h1>Firebase 教學 - RealTime Database 安裝與使用</h1> 
 <p>Firebase RealTime Database 是 Google 的雲端資料庫，透過 JSON 格式儲存資料並即時同步到所連線的用戶端，藉由 RealTime Database 我們可以很輕鬆的實現許多創意與應用，這篇將會介紹一開始的安裝與使用方式，後續會接著介紹進一步的用法。</p>
 <blockquote>
 <p>延伸閱讀：</p>
@@ -80,7 +80,7 @@
 <li><a href="/articles/201907/firebase-nodejs-realtime-database.html">Firebase 教學 - Node.js 操作 Realtime Database</a></li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立資料庫</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立資料庫</h2> 
 <p>首先我們先用 Google 帳號登入 ( <a href="https://firebase.google.com/" target="_blank">https://firebase.google.com/</a> )，接著進入 firebase 的控制台，點選「<em>新增專案</em>」，新增的設定除了給予命名，也可以選擇伺服器所在的位置，這裡我選擇台灣，把相關條款打勾之後就可以新增專案。( 如果名稱和別人重複，就會看到自訂名稱後方多出一串亂碼 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-01.jpg" alt=""></p>
 <p>專案建立後，會自動進入專案的管理畫面，點選左側選單的「<em>Database</em>」，下拉內容看到「<em>Realtime database</em>」，點選建立資料庫，就能建立 Realtime 的資料庫了。( Firestore 請參考：<a href="../201905/firebase-firestore.html" target="_blank">Firebase 教學 - Firestore 安裝與使用</a> )</p>
@@ -89,7 +89,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-03.jpg" alt=""></p>
 <p>點選「<em>建立</em>」後，看到如下方圖片的畫面，就表示資料庫建立完成，準備可以開始寫程式操作了。( 這時你可能會看到警告訊息，不用太在意，因為剛剛選擇了「測試模式」，在沒有安全性規則的保護下，可以任意讀寫資料，所以才會出現警告訊息 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-04.jpg" alt=""></p>
-<h2>初始化</h2>
+<h2>初始化</h2> 
 <p>要使用 RealTime Database 需要載入對應的 js，在這裡我直接使用 google 提供的連結。</p>
 <p><strong><code>&lt;script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"&gt;&lt;/script&gt;</code></strong></p>
 <p>接著在 JavaScript 中撰寫下面這段初始化的程式碼，宣告變數 database 為 firebase 的 realtime database，database 初始化完成後，得透過 <code>ref</code> 指定相對路徑，就能針對相對路徑就可以使用寫入或讀取對應的 api。</p>
@@ -98,9 +98,9 @@
 });
 
 const database = firebase.database();
-</code></pre><h2>寫入資料</h2>
+</code></pre><h2>寫入資料</h2> 
 <p>寫入資料的方式分成四種：設定 ( <code>set</code> )、更新 ( <code>update</code> ) 、添加 ( <code>push</code> ) 和移除 ( <code>remove</code> )，主要都是以 JSON 格式儲存資料，四種方式也都支援 Promise，可以串接 then 監聽是否完成。</p>
-<h3><em>1. 設定 set</em></h3>
+<h3><em>1. 設定 set</em></h3> 
 <p>延續上方的初始化，使用下面這段程式碼，網頁執行後就會在「根節點」( 根目錄 ) 寫入資料，要注意的是，使用 set 會把指定節點下的內容完全覆蓋。( 如果要刪除資料只需 <code>set('')</code> 即可 )</p>
 <pre class="prettyprint"><code>database.ref('/').set({a:123});
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-05.jpg" alt=""></p>
@@ -112,11 +112,11 @@ const database = firebase.database();
 // 上面這段等同於下面這段
 // database.ref('/').child('r1').set({a:123});
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-06.jpg" alt=""></p>
-<h3><em>2. 更新 update</em></h3>
+<h3><em>2. 更新 update</em></h3> 
 <p>update 和 set 不同，update <em>並不會清空整個節點下的內容，而是針對指定的節點做更新</em>，以剛剛做好的資料庫來說，下面這段程式碼可以將 a 更新為 789。( 如果沒有指定節點，update 將沒有作用 )</p>
 <pre class="prettyprint"><code>_root.update({a:789});
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-07.jpg" alt=""></p>
-<h3><em>3. 添加 push</em></h3>
+<h3><em>3. 添加 push</em></h3> 
 <p>push 的方法可以在一個節點裡頭不斷地添加資料，添加資料時 firebase 會自動產生一個節點，下面這段程式碼，會先把根節點的資料清空，接著連續寫入三筆資料，網頁執行後進入資料庫可以看到，隨機出現的三個節點分別紀錄了我們寫入的資料。</p>
 <pre class="prettyprint"><code>database.ref('/').set('');
 database.ref('/').push(123);
@@ -147,12 +147,12 @@ database.ref('/a').push(7);
 database.ref('/b').push(8);
 database.ref('/c').push(9);
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-10.jpg" alt=""></p>
-<h3><em>4. 移除 remove</em></h3>
+<h3><em>4. 移除 remove</em></h3> 
 <p>remove 的方法可以讓我們移除資料庫中某個節點的資料，如果這個節點裡還有子節點，也會一併被移除，移除的寫法很簡單，將要移除的節點寫在 <code>ref</code> 裡頭，後面搭配 <code>.remove()</code>，執行後就可以移除。</p>
 <pre class="prettyprint"><code>database.ref('/c').remove();
-</code></pre><h2>讀取資料</h2>
+</code></pre><h2>讀取資料</h2> 
 <p>讀取資料的方式有兩種，分別是：只讀取一次 ( <code>once</code> ) 和即時讀取 ( <code>on</code> )。</p>
-<h3><em>1.讀取一次 once</em></h3>
+<h3><em>1.讀取一次 once</em></h3> 
 <p>有些情形我們不希望不斷的讀取資料，只希望資料僅在一開始初始化後就載入一次，這時就可以使用這個方法，下面這段程式碼將會在網頁執行時，讀取資料庫的值。</p>
 <pre class="prettyprint"><code>database.ref('/').once('value',e=&gt;{
     console.log(e.val());
@@ -163,12 +163,12 @@ database.ref('/c').push(9);
 });
 </code></pre><p>最後得到的結果：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201904/firebase-realtime-database-start-11.jpg" alt=""></p>
-<h3><em>2. 即時讀取 on</em></h3>
+<h3><em>2. 即時讀取 on</em></h3> 
 <p>Realtime database 資料庫最大的特色就是「即時」，可以<em>在資料庫有變動的情況下，即時將變化發送到所有正在偵測的網頁或應用</em>，使用了 on 之後，除非手動停止，不然執行網頁後就會一直監聽資料庫狀態，並透過 callback 的 function 來執行對應動作，以下方的例子來說，只要資料庫有變動，就會即時在 console 裡看到資料庫的值。</p>
 <pre class="prettyprint"><code>database.ref('/').on('value',e =&gt; {
     console.log(e.val());
 });
-</code></pre><h2>小結</h2>
+</code></pre><h2>小結</h2> 
 <p>Firebase 的 realtime database 真的是前端工程師的一大福音，因為不需要懂太多資料庫的原理或操作技巧，就能輕鬆將簡單的資料庫應用套用到自己的網站裡頭，後續篇幅會繼續介紹 <a href="firebase-realtime-database-rules.html#_self" target="_blank">Realtime Database 的安全性規則</a>。</p>
 
 

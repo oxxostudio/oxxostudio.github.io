@@ -1,0 +1,510 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>JavaScript Array 陣列操作方法大全 ( 含 ES6 ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="陣列的操作是 JavaScript 裡很重要也很常用到的技巧，這篇文章一次整理常用的陣列操作方法 ( 包含 ES6 的 map、forEach、every、some、filter、find、from、of...等 )，熟悉了這些陣列操作的方法，寫起程式也就會更加簡潔俐落呦。">
+  <meta itemprop="description" content="陣列的操作是 JavaScript 裡很重要也很常用到的技巧，這篇文章一次整理常用的陣列操作方法 ( 包含 ES6 的 map、forEach、every、some、filter、find、from、of...等 )，熟悉了這些陣列操作的方法，寫起程式也就會更加簡潔俐落呦。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/201908/js-array.jpg">
+  <meta property="og:description" content="陣列的操作是 JavaScript 裡很重要也很常用到的技巧，這篇文章一次整理常用的陣列操作方法 ( 包含 ES6 的 map、forEach、every、some、filter、find、from、of...等 )，熟悉了這些陣列操作的方法，寫起程式也就會更加簡潔俐落呦。">
+  <meta property="og:title" content="JavaScript Array 陣列操作方法大全 ( 含 ES6 )">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/201908/js-array.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/201908/js-array.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/201908/js-array.html">
+  <style>body{display:none;}</style>
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu"><span></span><span></span><span></span></div>
+      <div class="menu">
+        <a href="/"><i></i>ALL</a>
+        <a href="/index.html?tag-creative"><i></i>Creative</a>
+        <a href="/index.html?tag-ui"><i></i>UI &amp; UX</a>
+        <a href="/index.html?tag-photo"><i></i>PHOTO</a>
+        <a href="/index.html?tag-css"><i></i>CSS</a>
+        <a href="/index.html?tag-web"><i></i>WEB TECH</a>
+        <a href="/index.html?tag-share"><i></i>Share</a>
+        <a href="/index.html?tag-others"><i></i>OTHERS</a>
+        <a href="/list.html"><i></i>ARCHIVE</a>
+      </div>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>JavaScript Array 陣列操作方法大全 ( 含 ES6 )</h1> 
+<p>陣列的操作是 JavaScript 裡很重要也很常用到的技巧，這篇文章一次整理常用的陣列操作方法 ( 包含 ES6 的 map、forEach、every、some、filter、find、from、of...等 )，熟悉了這些陣列操作的方法，寫起程式也就會更加簡潔俐落呦。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>操作方法分類</h2> 
+<p>因為陣列操作的方法有很多，下面是我自己針對這些方法做的簡單分類，點選方法名稱，就能夠跳轉看對應的說明和用法呦～</p>
+<table>
+<thead>
+<tr>
+<th>分類</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>會改變原始陣列</td>
+<td><a href="#array_push">push()</a>、<a href="#array_pop">pop()</a>、<a href="#array_shift">shift()</a>、<a href="#array_shift">unshift()</a>、<a href="#array_reverse">reverse()</a>、<a href="#array_splice">splice()</a>、<a href="#array_sort">sort()</a>、<a href="#array_copywithin">copyWithin()</a>、<a href="#array_fill">fill()</a></td>
+</tr>
+<tr>
+<td>回傳陣列元素資訊或索引值</td>
+<td><a href="#array_length">length</a>、<a href="#array_indexof">indexOf()</a>、<a href="#array_indexof">lastIndexOf()</a>、<a href="#array_find">find()</a>、<a href="#array_findindex">findIndex()</a>、<a href="#array_filter">filter()</a></td>
+</tr>
+<tr>
+<td>針對每個元素處理</td>
+<td><a href="#array_foreach">forEach()</a></td>
+</tr>
+<tr>
+<td>產生新的陣列或新的值</td>
+<td><a href="#array_join">join()</a>、<a href="#array_concat">concat()</a>、<a href="#array_slice">slice()</a>、<a href="#array_map">map()</a>、<a href="#array_reduce">reduce()</a>、<a href="#array_reduce">reduceRight()</a>、<a href="#array_flat">flat()</a>、<a href="#array_flatmap">flatMap()</a>、<a href="#array_from">Array.from()</a>、<a href="#array_of">Array.of()</a>、<a href="#array_tostring">toString()</a></td>
+</tr>
+<tr>
+<td>判斷並回傳布林值</td>
+<td><a href="#array_every">every()</a>、<a href="#array_some">some()</a>、<a href="#array_includes">includes()</a>、<a href="#array_isarray">Array.isArray()</a></td>
+</tr>
+<tr>
+<td>其他用法</td>
+<td><a href="#array_keys">keys()</a>、<a href="#array_valueof">valueOf()</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="array_push">push()</h2> 
+<p><code>push()</code>可以將某些值加入到陣列的最後一個位置，不限制添加數量，欲添加的內容使用逗號隔開即可，加入後陣列長度會增加。</p>
+<blockquote>
+<p>使用<code>push()</code>後會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.push(9, 10);
+console.log(a);  // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre><h2 id="array_pop">pop()</h2> 
+<p><code>pop()</code>會移除陣列的最後一個元素。</p>
+<blockquote>
+<p>使用<code>pop()</code>後會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.pop();
+console.log(a);  // [1, 2, 3, 4, 5, 6, 7]
+</code></pre><h2 id="array_shift">shift()、unshift()</h2> 
+<p><code>shift()</code>會移除陣列的第一個元素。</p>
+<blockquote>
+<p>使用<code>shift()</code>後會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.shift();
+console.log(a);  // [2, 3, 4, 5, 6, 7, 8]
+</code></pre><p><code>unshift()</code>會將指定的元素添加到第一個位置。</p>
+<blockquote>
+<p>使用<code>nushift()</code>後會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.unshift(100,200,300);
+console.log(a);  // [100, 200, 300, 1, 2, 3, 4, 5, 6, 7, 8]
+</code></pre><h2 id="array_reverse">reverse()</h2> 
+<p><code>reverse()</code>會將陣列反轉。</p>
+<blockquote>
+<p>使用<code>push()</code>後會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.reverse();
+console.log(a); // [8, 7, 6, 5, 4, 3, 2, 1]
+</code></pre><h2 id="array_splice">splice()</h2> 
+<p><code>splice()</code>可以移除或新增陣列的元素，它包含了三個參數，第一個是要移除或要添加的序列號碼 ( 必填 )，第二個是要移除的長度 ( 選填，若不填則第一個號碼位置後方的所有元素都會被移除，若設定為 0 則不會有元素被移除 )，第三個是要添加的內容 ( 選填 )</p>
+<blockquote>
+<p>使用<code>splice()</code>後會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.splice(5,1);
+console.log(a);   // [1, 2, 3, 4, 5, 7, 8] ( 6 被移除了 )
+</code></pre><p>設定第三個參數就能夠添加或取代元素。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.splice(5,1,100);
+console.log(a);   // [1, 2, 3, 4, 5, 100, 7, 8] ( 6 被移除，100 加到第 5 個位置  )
+
+let b = [1,2,3,4,5,6,7,8];
+b.splice(5,3,100,200,300);
+console.log(b);   // [1, 2, 3, 4, 5, 100, 200, 300] ( 6,7,8 被移除，100,200,300 加到第 5,6,7 個位置  )
+
+let c = [1,2,3,4,5,6,7,8];
+c.splice(5,0,100);
+console.log(c);   // [1, 2, 3, 4, 5, 100, 6, 7, 8] ( 沒有元素被移除，100 加到第 5 個位置 )
+</code></pre><h2 id="array_sort">sort()</h2> 
+<p><code>sort()</code>可以針對陣列的元素進行排序，裡頭包含了一個排序用的判斷函式，函式內必須包含兩個參數，這兩個參數分別代表陣列裡第 n 個和第 n+1 個元素，透過比較第 n 和第 n+1 個元素的大小來進行排序。</p>
+<blockquote>
+<p>使用<code>sort()</code>後會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,3,8,4,5,7,6,2];
+a.sort((x,y) =&gt; y - x);
+console.log(a);   // [8, 7, 6, 5, 4, 3, 2, 1]
+a.sort((x,y) =&gt; x - y);
+console.log(a);   // [1, 2, 3, 4, 5, 6, 7, 8]
+</code></pre><p>如果不使用判斷函式，預設會將元素轉換成字串，並採用 unicode 來判斷，這也會造成某些數字的排序錯誤。</p>
+<pre class="prettyprint"><code>let a = [1,3,8,4,5,7,6,2,9,10,11];
+a.sort();
+console.log(a);   // [1, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre><h2 id="array_copywithin">copyWithin()</h2> 
+<p><code>copyWithin()</code>能複製陣列中的某些元素，並將它們放到並取同一個陣列指定的位置，<code>copyWithin()</code>有三個參數，第一個是要置換的位置 ( 必填 )，第二個是從什麼位置開始複製 ( 選填，預設 0 )，第三個是停止複製的元素的前一個位置 ( 選填，預設等於陣列長度 )。</p>
+<blockquote>
+<p>使用<code>copyWithin()</code>後會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.copyWithin(2);
+console.log(a); // [1,2,1,2,3,4,5,6] ( 因 7 和 8 超過陣列長度，只出現到 6 )
+
+let b = [1,2,3,4,5,6,7,8];
+b.copyWithin(3,1,3);
+console.log(b); // [1,2,3,2,3,6,7,8] ( 複製 2,3 取代 4,5 )
+</code></pre><h2 id="array_fill">fill()</h2> 
+<p><code>fill()</code>會把陣列中所有元素，置換為指定的值，<code>fill()</code>有三個參數，第一個是準備要置換的內容 ( 必填 )，第二個是從什麼位置開始置換 ( 選填，不設定就全部置換 )，第三個是停止置換的元素的前一個位置 ( 選填，預設等於陣列長度 )。</p>
+<blockquote>
+<p>使用<code>fill()</code>會改變原本的陣列內容。</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+a.fill('a');
+console.log(a); // ['a','a','a','a','a','a','a','a']
+
+let b = [1,2,3,4,5,6,7,8];
+b.fill('b',3,5);
+console.log(b); // [1,2,3,'b','b',6,7,8]
+</code></pre><h2 id="array_length">length()</h2> 
+<p><code>length</code>可以取得陣列的長度 ( 所有元素的數量 )。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+console.log(a.length);  // 8
+</code></pre><h2 id="array_indexof">indexOf()、lastIndexOf()</h2> 
+<p><code>indexOf()</code>會判斷陣列中是否包含某個值，判斷的方式為「由左而右」，如果有包含就回傳這個值在陣列中的索引值，如果沒有就回傳 -1，有兩個參數，第一個參數表示要判斷的值 ( 必填 )，第二個參數表示從陣列的哪個位置開始判斷 ( 選填，預設為 0 )。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+console.log(a.indexOf(4));   // 3
+console.log(a.indexOf(4,5)); // -1 ( 搜尋 5,6,7,8 沒有 4 )
+</code></pre><p><code>lastIndexOf()</code>會判斷陣列中是否包含某個值，判斷的方式為「由右而左」，如果有包含就回傳這個值在陣列中的索引值，如果沒有就回傳 -1，有兩個參數，第一個參數表示要判斷的值 ( 必填 )，第二個參數表示判斷到陣列的哪個位置 ( 選填，預設為整個陣列長度 - 1 )。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+console.log(a.lastIndexOf(3));   // 2
+console.log(a.lastIndexOf(3,1)); // -1 ( 只判斷 1,2，所以沒有 3 )
+</code></pre><h2 id="array_find">find()</h2> 
+<p><code>find()</code>會將陣列中的「每一個」元素帶入指定的函式內做判斷，並會回傳第一個符合判斷條件的元素，如果沒有元素符合則會回傳 undefined。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+console.log(a.find(e =&gt; e &gt; 3)); // 4
+console.log(a.find(e =&gt; e &lt; 0)); // undefined
+</code></pre><h2 id="array_findindex">findIndex()</h2> 
+<p><code>findIndex()</code>會將陣列中的「每一個」元素帶入指定的函式內做判斷，並會回傳第一個符合判斷條件元素的位置號碼，如果沒有元素符合則會回傳 -1。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+console.log(a.findIndex(e =&gt; e &gt; 3)); // 3
+console.log(a.findIndex(e =&gt; e &lt; 0)); // -1
+</code></pre><h2 id="array_filter">filter()</h2> 
+<p><code>filter()</code>會將陣列中的「每一個」元素帶入指定的函式內做判斷，如果元素符合判斷條件則會傳出，成為一個新的陣列元素。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+console.log(a.filter(e =&gt; e &gt; 3));    // [4, 5, 6, 7, 8]
+console.log(a.filter(e =&gt; e%2 == 0)); // [2, 4, 6, 8]
+</code></pre><h2 id="array_foreach">forEach()</h2> 
+<p><code>forEach()</code>會將陣列中每個元素套用到指定的函式裡進行運算，函式有三個參數，第一個參數表示每個元素的值 ( 必填 )，第二個參數為該元素的索引值 ( 選填 )，第三個參數則表示原本的陣列 ( 選填 )。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5];
+let b = 0;
+a.forEach(item =&gt; {
+    b = b + item;
+});
+console.log(b); // 15 ( 1+2+3+4+5 )
+</code></pre><p>如果透過第二和第三個參數搭配，就能做到改變原本陣列的效果。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5];
+a.forEach((item, index, arr) =&gt; {
+    arr[index] = item * 10;
+});
+console.log(a); // [10,20,30,40,50]
+</code></pre><h2 id="array_join">join()</h2> 
+<p><code>join()</code>可以將陣列中所有元素，藉由指定的字符合併在一起變成字串呈現，若沒有指定字符預設會用「逗號」合併。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+console.log(a.join());      // 1,2,3,4,5,6,7,8
+console.log(a.join(''));    // 12345678
+console.log(a.join('@@'));  // 1@@2@@3@@4@@5@@6@@7@@8
+</code></pre><h2 id="array_concat">concat()</h2> 
+<p><code>concat()</code>可以將兩個陣列合併在一起，如果是使用 ES6 語法也可以用擴展運算符<code>...</code>來代替。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5];
+let b = [6,7,8,9];
+
+let c = a.concat(b);
+let d = [...a, ...b]; // 使用 ...
+
+console.log(c); // [1,2,3,4,5,6,7,8,9]
+console.log(d); // [1,2,3,4,5,6,7,8,9]
+</code></pre><h2 id="array_slice">slice()</h2> 
+<p><code>slice()</code>可以截取出陣列某部份的元素為一個新的陣列，有兩個必填的參數，第一個是起始位置，第二個是結束位置 ( 操作時數字減 1 )。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = a.slice(2,4);
+console.log(b); // [3, 4]
+</code></pre><h2 id="array_map">map()</h2> 
+<p><code>map()</code>會處理陣列中每個元素，最後回傳出一個新的陣列，裡頭有一個函式 ( 必填 ) 和一個回傳函式裡的 this 參數 ( 選填 )，函式內又包含三個參數，第一個是每個元素的值 ( 必填 )，第二個是當前元素的索引值 ( 選填 )，第三個是當前的陣列 ( 選填 )。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = a.map(e =&gt; {
+    return e + 10;
+});
+console.log(b); // [11, 12, 13, 14, 15, 16, 17, 18]
+</code></pre><p>套用第二個和第三個參數的變化</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = a.map((e,i,arr) =&gt; {
+    return `${e}${i}${arr.find(e =&gt; e%5 == 1)}`; // 組合成「元素 + 索引值 + 除以五餘數為 1 的元素」
+});
+console.log(b); // ['101', '211', '321', '431', '541', '651', '761', '871']
+</code></pre><p>如果要使用回傳函式裡 this 的參數，則「<em>不能使用」箭頭函式</em>，因為箭頭函式的 this 指向和函式的 this 指向不同，所以要用一般的函式處理。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = a.map(function(e){
+    return e + this; // 此處的 this 為 10
+}, 10);
+console.log(b); // [11, 12, 13, 14, 15, 16, 17, 18]
+</code></pre><h2 id="array_reduce">reduce()、reduceRight()</h2> 
+<p><code>reduce()</code>可以將陣列中每個元素進行計算，每次計算的結果會再與下個元素作計算，直到結束為止，裡頭包含一個函式 ( 必填 ) 和初始計算的數值 ( 選填 )，函式內有四個參數，第一個是計算的值 ( 必填 )，第二個是取得的元素 ( 必填 )，第三個是該元素的索引值 ( 選填 )，第四個是原本的陣列 ( 選填 )。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = a.reduce(function(total, e){
+    return total + e;
+});
+console.log(b); // 36 ( 1+2+3+4+5+6+7+8=36 )
+</code></pre><p><code>reduceRight()</code>和<code>reduce()</code>大同小異，只是其計算方式是由右到左，對於加法來說沒什麼影響，但對於減法而言就有差異。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = a.reduce(function(total, e){
+    return total - e; 
+});
+console.log(b); // -34 ( 1-2-3-4-5-6-7-8 = -34 )
+let c = a.reduceRight(function(total, e){
+    return total - e;
+});
+console.log(c); // -20 ( 8-7-6-5-4-3-2-1 = -20 )
+</code></pre><h2 id="array_flat">flat()</h2> 
+<p><code>flat()</code>可以將一個多維陣列的深度轉成一維 ( 扁平化 )，它有一個選填的參數，代表要轉換的深度數字，預設為 1，如果深度有很多層，可使用<code>Infinity</code>來全部展開成一維陣列。</p>
+<pre class="prettyprint"><code>let a = [1,2,[3],[4,[5,[6]]]];
+let b = a.flat();
+let c = a.flat(2);
+let d = a.flat(Infinity);
+console.log(b);   // [1, 2, 3, 4, [5, [6]]]
+console.log(c);   // [1, 2, 3, 4, 5, [6]]
+console.log(d);   // [1, 2, 3, 4, 5, 6]
+</code></pre><h2 id="array_flatmap">flatMap()</h2> 
+<p><code>flatMap()</code>的方法等於<code>map()</code>和<code>flat()</code>的組合，在運算後直接將陣列扁平化處理。</p>
+<pre class="prettyprint"><code>let a = [1,2,[3],[4,5]];
+let b = a.flatMap(e =&gt; e+1);
+let c = a.map(e =&gt; e+1).flat();
+console.log(b);  // [2, 3, "31", "4,51"] ( 可以看到 b 和 c 得到的結果相同 )
+console.log(c);  // [2, 3, "31", "4,51"]
+</code></pre><h2 id="array_isarray">Array.isArray()</h2> 
+<p><code>Array.isArray()</code>能判斷一個物件是否為陣列，如果是就回傳 true，不然就回傳 false。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = 123;
+let c = 'hello';
+let d = {d1:1,d2:2};
+console.log(Array.isArray(a)); // true
+console.log(Array.isArray(b)); // false
+console.log(Array.isArray(c)); // false
+console.log(Array.isArray(d)); // false
+</code></pre><h2 id="array_from">Array.from()</h2> 
+<p><code>Array.from()</code>會將「類陣列物件」或是「可迭代的物件」轉換成陣列，<code>Array.from()</code>有兩個參數，第一個參數為「類陣列物件」或「可迭代的物件」( 必填 )，第二個參數則是改變轉換成陣列元素的函式 ( 選填 )。</p>
+<blockquote>
+<p>類陣列物件具有 length 屬性以及索引化 index 的元素，可迭代物件表示具有可以利用迭代的方式取得它自己本身的元素，例如 Map 和 Set...等。( 參考 MDN 說法 )</p>
+</blockquote>
+<pre class="prettyprint"><code>let a = 'abcde';
+let b = Array.from(a);
+console.log(b); // ['a','b','c','d','e']
+
+let c = Array.from(a, e =&gt; e + e);
+console.log(c); // ['aa','bb','cc','dd','ee']
+</code></pre><p>類陣列物件寫法必須包含 length 屬性，且物件 key 須為 0 開始的數字，對應轉換後的元素索引。</p>
+<pre class="prettyprint"><code>let a = {
+    '0': 14, 
+    '2': 13,
+    '1': 7,
+    '3': 9,
+    '4': 6,
+    length: 5
+};
+let b = Array.from(a);
+console.log(b);  // [14,7,13,9,6]
+</code></pre><h2 id="array_of">Array.of()</h2> 
+<p><code>Array.of()</code>可以快速將數字、字串等內容，轉換成陣列。</p>
+<pre class="prettyprint"><code>let a = Array.of(1,'a',2,'b',3);
+console.log(a);   // [1, "a", 2, "b", 3]
+</code></pre><h2 id="array_tostring">toString()</h2> 
+<p><code>toString()</code>會把整個陣列轉換成文字。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = a.toString();
+console.log(b);   // 1,2,3,4,5,6,7,8
+</code></pre><h2 id="array_every">every()</h2> 
+<p><code>every()</code>會將陣列中的「每一個」元素帶入指定的函式內做判斷，只要有任何一個元素不符合判斷條件，會回傳 false，如果全部符合，就會回傳 true。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6];
+console.log(a.every(e =&gt; e &gt; 3)); // fasle ( 因為 1、2 小於 3，3 等於 3 )
+console.log(a.every(e =&gt; e &gt; 0)); // true
+</code></pre><h2 id="array_some">some()</h2> 
+<p><code>some()</code>會將陣列中的「每一個」元素帶入指定的函式內做判斷，只要有任何一個元素符合判斷條件，就會回傳 true，如果全都不符合，就會回傳 false。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6];
+console.log(a.some(e =&gt; e &gt; 3)); // 回傳 true，因為 4、5、6 大於 3
+console.log(a.some(e =&gt; e &gt; 6)); // 回傳 fasle，因為全都小於或等於 6
+</code></pre><h2 id="array_includes">includes()</h2> 
+<p><code>includes()</code>會判斷陣列中是否包含某個值，如果有包含就回傳 true，否則回傳 false，有兩個參數，第一個參數表示要判斷的值 ( 必填 )，第二個參數表示從陣列的哪個位置開始判斷 ( 選填 )。</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+console.log(a.includes(2));   // true
+console.log(a.includes(2,2)); // false ( 搜尋 3,4,5,6,7,8 沒有 2 )
+</code></pre><h2 id="array_valueof">valueOf()</h2> 
+<p><code>valueOf()</code>會回傳陣列的原始值，如果原本的陣列有修改，那麼回傳的原始值也會跟著改變</p>
+<pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
+let b = a.valueOf();
+console.log(a);    // [1, 2, 3, 4, 5, 6, 7, 8]
+let c = a.valueOf();
+a.shift();
+console.log(a);    // [2, 3, 4, 5, 6, 7, 8]
+console.log(b);    // [2, 3, 4, 5, 6, 7, 8] ( 因為 a 的原始值更動了，所以 b 也變了 )
+console.log(c);    // [2, 3, 4, 5, 6, 7, 8]
+</code></pre><h2 id="array_keys">keys()</h2> 
+<p><code>keys()</code>會回傳陣列中的每一個索引值 ( key ) 成為一個新的 Array Iterator 物件，因為是 Array Iterator 物件，可以透過<code>for...of</code>來取得。</p>
+<pre class="prettyprint"><code>let a = ['a','b','c','d','e'];
+let b = a.keys(); 
+
+for (let key of b) {
+    console.log(key); // 連續出現 1、2、3、4、5
+}
+</code></pre>
+
+      <div class="social-icon">
+        <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
+        <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
+        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="goto-top"><i></i><span>Back to Top</span></a>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      <span>前一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      <span>下一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="license">Copyright 2019 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <link href="/css/article.css?20190625" rel="stylesheet">
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="/js/layout.js?20190612"></script>
+  <script src="/js/articles.js?20190724"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    document.querySelectorAll('pre code').forEach(e => {
+      hljs.highlightBlock(e);
+    });
+  </script>
+  <script>
+    const showAD = () => {
+      let element = document.createElement("script");
+      element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      document.body.appendChild(element);
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8629612872829139",
+        enable_page_level_ads: true
+      });
+      window.removeEventListener('scroll', showAD);
+    }
+    window.addEventListener('scroll', showAD);
+  </script>
+  <script>
+    const showDisqus = () => {
+      let scrollTop = this.pageYOffset;
+      let bodyHeight = document.body.clientHeight;
+      if (scrollTop > bodyHeight / 2) {
+        let dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//oxxostudio.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        window.removeEventListener('scroll', showDisqus);
+      }
+    };
+    window.addEventListener('scroll', showDisqus);
+  </script>
+
+
+
+</body></html>

@@ -71,13 +71,13 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG D3.js - 陣列數據地圖 ( d3.map )</h1>
+<h1>SVG D3.js - 陣列數據地圖 ( d3.map )</h1> 
 <p><img src="/img/articles/201412/svg-d3-07-data-map.jpg" class="preview-img" alt=""></p>
 <p>d3.map 這個其實我找不到合適的翻譯，只好暫時用我的破英文翻譯成「陣列數據地圖」，雖然有地圖兩個字，但跟實際的地圖卻是沒啥關聯性，主要是利用 d3.map 的 API，可以幫助我們把一連串的數據做轉換，與之前提過的巢狀數據處理有異曲同工之妙，d3.map 會根據我們所下的條件，把特定的值取出成為 key 而成為一個新的陣列，也可藉由 get、has 或 set 的 API 對數據做判斷或重新設定，在許多的 D3.js 圖形與數據的處理中，d3.map 都扮演了相當中要的腳色。</p>
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201412/svg-d3-06-data-nest.html" target="_blank">SVG D3.js - 巢狀數據結構 ( d3.nest ) </a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>範例數據</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>範例數據</h2> 
 <p>要處理數據，就一定要先有數據，以下是這篇文章會用到的範例數據：</p>
 <pre class="prettyprint"><code>var data = [
   {name:'Tom'   , type:['a','b','c']},
@@ -91,7 +91,7 @@
   {name:'Cherry', type:['c','d']},
   {name:'Jean'  , type:['a','c','d']}
 ];
-</code></pre><h2>d3.map API</h2>
+</code></pre><h2>d3.map API</h2> 
 <p>而這篇將會介紹 d3.map 的 API 如下：</p>
 <blockquote>
 <ul>
@@ -195,7 +195,7 @@
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141216_1_08.jpg" alt="SVG D3.js - 陣列數據地圖 ( d3.map )"></p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 d3.map 的相關介紹，當然我們也可以直接對我們的數據下 map，例如以下的範例，就可以直接回傳 key 成為一個陣列，之後撰寫與 d3.js 有關的範例文章，也將會大量地使用 d3.map，這也是學習 d3.js 一定要會的部分喔。( 範例：<a href="/demo/201412/svg-d3-07-data-map-demo11.html" target="_blank">svg-d3-07-data-map-demo11.html</a> )</p>
 <pre class="prettyprint"><code>var i = data.map(function(d){return d.name;});
 

@@ -71,14 +71,14 @@
     <article>
       <i class="tag"></i>
 
-<h1>簡易後端實作 ( Google Apps Script )</h1>
+<h1>簡易後端實作 ( Google Apps Script )</h1> 
 <p>因為我屬於前端工程師 ( 前端設計師？ )，「後端」往往是我開發的罩門所在，有時候想要做些什麼應用，往往都卡在後端部署或要申請個虛擬機器就不了了之，自從接觸了 Google Apps Script 之後，有些簡單的後端功能也就能輕鬆實現了，這篇將會介紹如何使用 Google Apps Script，實現 GET 與 POST 相關的後端功能。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立 Apps Script 專案</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立 Apps Script 專案</h2> 
 <p>登入 Google 後，打開 Google 雲端硬碟，從左側選單中可以新增 Google Apps Script。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-01.jpg" alt=""></p>
 <p>如果沒有看見相關選項，請點選「連結更多應用程式」，搜尋 Google Apps Script 後添加進去，回到主畫面就可以在選單內看到選項。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-02.jpg" alt=""></p>
-<h2>doGet</h2>
+<h2>doGet</h2> 
 <p>建立專案後，先把專案名稱命名為「test http request」。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-03.jpg" alt=""></p>
 <p>先來測試最簡單的 htpp request 例子：「<em>打開一行網址，Server 端就會回應一則訊息</em>」，首先把程式改寫成下面這段代碼，這段代碼等同於接收到客戶端 request 請求之後，伺服器回應 純文字 123 的 response。</p>
@@ -134,7 +134,7 @@ request(options,function(err, res, body){
     console.log(body);
 });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-11.jpg" alt=""></p>
-<h2>doPost</h2>
+<h2>doPost</h2> 
 <p>看完了 doGet 的用法，接著就來看看使用 POST 的方式的 doPost，使用方式很簡單，只需要把 doGet 改成 doPost 即可，內容完全不用更動，改完記得再部署一次。</p>
 <pre class="prettyprint"><code>function doPost(e) {
 
@@ -171,7 +171,7 @@ request(options,function(err, res, body){
     console.log(body);
 });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201805/backend-apps-script-11.jpg" alt=""></p>
-<h2>回傳參數</h2>
+<h2>回傳參數</h2> 
 <p>回傳的參數有以下三種，可以依據不同的需求回傳。</p>
 <ul>
 <li><p><em>字串</em>：</p>
@@ -186,7 +186,7 @@ request(options,function(err, res, body){
       .setMimeType(ContentService.MimeType.JSON);
 </code></pre></li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>透過 Google Apps Script 所建立的簡易後端，讓我這個後端白痴也可以輕鬆實現 http request 的功能，也更能串接更多前端不容易串接的網路服務，像是 LINE BOT 我也是用 Apps Script 來做串接，十分方便好用的啦！</p>
 <blockquote>
 <p>參考：<a href="/articles/201804/line-bot-apps-script.html">實作 LINE 聊天機器人 ( Google Apps Script )</a></p>

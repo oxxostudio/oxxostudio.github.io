@@ -71,10 +71,10 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG 研究之路 (27) - filter - feImage</h1>
+<h1>SVG 研究之路 (27) - filter - feImage</h1> 
 <p><img src="/img/articles/201410/svg-27-filter-feImage.jpg" class="preview-img" alt=""></p>
 <p>feImage 是 SVG filter 裏頭最簡單的濾鏡，不過為什麼要用一篇文章專門介紹它呢？就是因為 feImage 可以幫助我們更實際的了解 filter 的原理，除此之外，這篇文章也會搭配另外一個最簡單的濾鏡 feTile ( 到底有幾個最簡單呀 ) 藉由實際的範例來深入了解 SVG filter 的博大精深吧！</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>feImage</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>feImage</h2> 
 <p>feImage 人如其名的就是把圖片當濾鏡，設定圖片的長寬，搭配 feTitle 就可以把圖片重複運用在我們的圖形當中，有點類似 SVG Patterns，一如往常，先來瞧瞧 feImage 有哪些屬性可以設定：</p>
 <blockquote>
 <ul>
@@ -88,7 +88,7 @@
 </blockquote>
 <p>來解釋一下這些屬性吧，第一個<code>xlink:href</code>，這其實就要我們放上圖片的網址，就有點類似 img 標籤的 src 一樣，而<code>x,y,width,height</code> 則有兩種參數格式，如果我們把 filter 的 primitiveUnits 設為 <strong>objectBoundingBox</strong>，那麼這四個參數的就是和我們形狀的「比例」，如果把 filter 的 primitiveUnits 設為 <strong>userSpaceOnUse</strong>，那麼使用的就是和 SVG 的比例，為什麼會這樣呢？請參考：<a href="http://www.oxxostudio.tw/articles/201409/svg-26-patterns.html" target="_blank">SVG 研究之路 (26) - 有趣的 Patterns</a> 有非常詳細的解釋，而同樣的關鍵在 filter 也是大同小異，objectBoundingBox 是圖形的比例，userSpaceOnUse 是和這個 SVG 的比例，這樣記就沒錯了，而 filter 的 primitiveUnits 是指 filter 內部的濾鏡效果單位，而 filter 另外一個 filterUnits 則是 filter 自己的單位，非常非常重要，使用 filter 就必須要牢牢記住！不過在 feimage 的濾鏡裡，filter 使用 userSpaceOnUse 的單位是像素，primitiveUnits 的單位是比例喔！( 不熟的話也沒關係，發現用起來很怪，可能就是比例和像素上出了問題 )</p>
 <p>然而看到 preserveAspectRatio 這個屬性，第一個念頭一定要想到這篇：<a href="http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html" target="_blank">SVG 研究之路 (23) - 理解 viewport 與 viewbox</a> 主要就是在定義 feImage 我們所使用的 image 自身和自身 viewbox 的位置與填滿定義。</p>
-<h2>效果實作</h2>
+<h2>效果實作</h2> 
 <p>上述的一堆文字就是在介紹屬性，為了避免昏頭，以及為了許多像我這樣喜歡看圖片說明的人，再來就直接用範例解釋，下面的所有範例都將會使用一張 300x300 的圖片作為 feImage 的圖檔 ( 我自己畫的誕生版蒙娜麗莎 )，同時會放上兩個示意的 div 表現 SVG 的外框 ( 黑色 ) 與套用濾鏡形狀的外框 ( 藍色 )。</p>
 <p>首先一定要看看在完全不設定的情況下套用 feImage：</p>
 <pre class="prettyprint"><code>&lt;svg width="360" height="220"&gt;
@@ -169,7 +169,7 @@
 <pre class="prettyprint"><code>&lt;feImage xlink:href="http://www.oxxostudio.tw/img/articles/201410/20141003_1_demo.jpg" width=".2" height="1" preserveAspectRatio="xMidYMax slice"/&gt;
 &lt;feTile/&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201410/20141005_1_12.png" alt="SVG 研究之路 (27) - filter - feImage"></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>以上就是 feImage 和 feTile 的使用方式，連帶也將 filter 的設定做了完整的解釋，不過這篇的重點不在於使用出來的效果，而是在 objectBoundingBox 與 userSpaceOnUse 定位的觀念，非常重要！一定要搞懂呀！</p>
 
 

@@ -71,12 +71,12 @@
     <article>
       <i class="tag"></i>
 
-<h1>SVG D3.js - 繪製線段</h1>
+<h1>SVG D3.js - 繪製線段</h1> 
 <p>在之前的「SVG 研究之路 (4) - Path 基礎篇」裡頭，詳細的列出了 SVG path 的繪製方式，現在我們要來利用 D3.js 的 line() API ，來完成線段 ( line ) 的繪製，且有別於單純的 SVG 產生 path 不容易放入數據，D3.js 可以根據我們的數據，自動產生對應的線條。</p>
 <blockquote>
 <p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 line() 畫線</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 line() 畫線</h2> 
 <p>先來了解一下如何利用 D3.js 的 line() 畫線，一開始一定要有一些 data，而且這些 data 必須要有 x 座標和 y 座標 ( 因為有「點」才有「線」，點是由 x 與 y 構成 )，因此我們的 data 陣列的值，都會是個「具有 x 與 y 屬性的物件」 ( 大括號為物件，內容是屬性 )，第一個點的座標就是<code>data[0].x</code>和<code>data[0].y</code>，依此類推。</p>
 <pre class="prettyprint"><code>var data = [
   {x:10,y:10},
@@ -112,7 +112,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_02.png" alt="SVG D3 - 繪製線段"></p>
 <p>打開開發者工具就可以看到每個點的座標都照 data 畫出來了  ( 範例：<a href="/demo/201411/svg-d3-02-line-demo1.html" target="_blank">svg-d3-02-line-demo1.html</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_03.png" alt="SVG D3 - 繪製線段"></p>
-<h2>.interpolate() 的模式</h2>
+<h2>.interpolate() 的模式</h2> 
 <p>從上面的例子，雖然還看不出有多強大，但如果有一百個點要畫，就可以靠 D3 幫我們省下不少寫座標的功夫，但 line() 特別的地方還不在此，有個很神奇的<code>.interpolate()</code>，可以幫我們算出各種線段的樣式，再來就看一下這個神奇的<code>.interpolate()</code>，<code>.interpolate()</code>總共有 13 個模式可以設定，這是十三個模式分別是：</p>
 <blockquote>
 <ul>
@@ -190,7 +190,7 @@
 <p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_16.png" alt="SVG D3 - 繪製線段"></p>
 </li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>從上面各種模式所產生的線段就可以發現，D3.js 其實已經幫我們解決了很多想像不到的情形，特別是如果今天畫出來的線段希望它 smooth 一些，都可以藉由 D3.js 輕鬆實現，不需要再自己去計算 C 或是 Q ( 參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a> )，最後實現的範例：<a href="/demo/201411/svg-d3-02-line-demo2.html" target="_blank">svg-d3-02-line-demo2.html</a></p>
 <p>不過 D3.js 的 line() 其實還有不少其他的用法，之後研究之後再來慢慢分享。^_^</p>
 

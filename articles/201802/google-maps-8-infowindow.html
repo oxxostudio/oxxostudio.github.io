@@ -71,12 +71,12 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 資訊視窗 ( Infowindow )</h1>
+<h1>Google Maps API - 資訊視窗 ( Infowindow )</h1> 
 <p>資訊視窗 ( InfoWindow ) 是常見於地圖的元素，通常在我們點選某個地點或地圖標記時，就會彈出資訊視窗，上面會標著一些關於這個地點的內容，這篇就來試試看用 Google Maps API 在地圖上加入資訊視窗。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>資訊視窗起手式</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>資訊視窗起手式</h2> 
 <p>資訊視窗也是 Google 地圖疊加層的一種 ( Google 地圖上所有東西都是疊加層 )，所以要加入資訊視窗，可以透過下列的語法加入，InfoWindowOptions 的部分是資訊視窗的內容與屬性設定。</p>
 <pre class="prettyprint"><code>var infowindow = new google.maps.InfoWindow(InfoWindowOptions)
-</code></pre><h2>資訊視窗設定 InfoWindow Options</h2>
+</code></pre><h2>資訊視窗設定 InfoWindow Options</h2> 
 <p>從起手式可以看到 InfoWindowOptions，這是資訊視窗的設定，這些設定有以下幾種：</p>
 <ul>
 <li><strong>content</strong>：資訊視窗的內容，可以是一段 html 或一段文字，內容會自動調整大小，最大不會超過資訊視窗大小，如果需要比較大的資訊視窗顯示，可以改變資訊視窗的 maxWidth 屬性。</li>
@@ -116,7 +116,7 @@ function initMap() {
 
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-8-infowindow-01.jpg" alt=""></p>
-<h2>資訊視窗方法 InfoWindow Methods</h2>
+<h2>資訊視窗方法 InfoWindow Methods</h2> 
 <p>在上面的範例中，看到了一個<code>open()</code>的方法，其實資訊視窗還包含了以下其他的方法：</p>
 <ul>
 <li><strong>open(map)</strong>：開啟資訊視窗，內容包含一個必填參數「map」和一個選填參數「位置」，map 比較容易理解基本上就是這張地圖，位置的話可以指定放在哪個地圖標記 marker，或是直接由經緯度指定位置。</li>
@@ -170,7 +170,7 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-8-infowindow-02.gif" alt=""></p>
-<h2>資訊視窗事件 InfoWindow Events</h2>
+<h2>資訊視窗事件 InfoWindow Events</h2> 
 <p>除了設定和方法，在上面的範例中，資訊視窗也可以透過<code>addListener</code>監聽以下幾種事件：</p>
 <ul>
 <li><strong>closeclick</strong>：當資訊視窗關閉時 ( 通常是點選 x 關閉 )。</li>
@@ -179,7 +179,7 @@ function initMap() {
 <li><strong>position_changed</strong>：當資訊視窗的位置發生改變 ( 可透過<code>setPosition</code>改變 )。</li>
 <li><strong>zindex_changed</strong>：當資訊視窗的階層發生改變 ( 可透過<code>setZIndex</code>改變 )。</li>
 </ul>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>資訊視窗就像是在地圖上多了一個圖層，裡面塞入 html 的內容，不過基本上在 Google 地圖裡，疊上去的東西都是疊加層，資訊視窗也不例外，當熟悉了資訊視窗的用法，就更能為自己的客製化地圖，加入更多豐富的資訊。</p>
 
 

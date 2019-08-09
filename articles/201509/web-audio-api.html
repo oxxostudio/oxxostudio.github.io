@@ -71,18 +71,18 @@
     <article>
       <i class="tag"></i>
 
-<h1>初探 Web Audio API</h1>
+<h1>初探 Web Audio API</h1> 
 <p><img src="/img/articles/201509/web-audio-api.jpg" class="preview-img" alt=""> </p>
 <p>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。</p>
 <blockquote>
 <p>Web Audio API 參考：<a href="http://webaudio.github.io/web-audio-api/" target="_blank">http://webaudio.github.io/web-audio-api/</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Web Audio API 起手式</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Web Audio API 起手式</h2> 
 <p>要使用 Web Audio API，第一步就是要創建一個 AudioContext，AudioContext 是一個聲音的容器，在 AudioContext 裡，我們可以針對聲音做各種的處理，在裡頭，AudioSourceNode 表示音訊來源，而聲音是以節點的方式 ( AudioNode ) 存在，每個節點都有輸入和輸出，只有來源節點沒有輸入，聲音除了可以用外部的輸入 ( wav、mp3、ogg...等 )，也可以使用振盪器 ( Oscillators ) 來產生，原理就有點像我們彈奏弦樂器，也是利用樂器內的弦震盪來發聲。</p>
 <p>既然是初探 Web Audio API，就用一個簡單的例子入手，由於我們在範例裡要用的是 Web Audio API，就一定會用到 AudioContext，所以我們要先來看看瀏覽器有沒有支援 ( 行動裝置目前還不支援 )，一開始先這樣寫，套用有支援的 AudioContext。</p>
 <pre class="prettyprint"><code>var AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new window.AudioContext;
-</code></pre><h2>振盪器的屬性</h2>
+</code></pre><h2>振盪器的屬性</h2> 
 <p>有了裝載聲音的容器之後，接著就用振盪器來發點聲音，先用<code>createOscillator()</code>來產生振盪器，振盪器有四種屬性：</p>
 <ul>
 <li><p><strong>type：</strong></p>
@@ -123,7 +123,7 @@ oscillator3.detune.value = 300;
 oscillator3.connect(context.destination);
 oscillator3.start();
 oscillator3.stop(2);
-</code></pre><h2>控制發出的聲音</h2>
+</code></pre><h2>控制發出的聲音</h2> 
 <p>瞭解怎麼利用 Web Audio Api 發聲之後，接著就是要來控制我們所發出來的聲音，但是在我們要控制聲音之前，必須要先了解「節點 AudioNode」這個概念，在 AudioContext 裡，主要就是音樂節點的處理和控制，換個角度思考，AudioContext 就像是一張畫布，在上頭繪製的圖形，就是我們的音符，把音符串在一起，就變成了一首曲子，整個流程圖如下：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150928_1_02.jpg" alt="初探 Web Audio API"></p>
 <p>簡單來說，source 是我們的音訊來源，不論是用剛剛講的 oscillator 來做，或直接播放音訊，總之音訊來源就都必須轉換為 AudioNode，才能夠做進一步的控制，也就是進入「Processing Nodes」的階段，在這個階段我們就有許多的特殊節點模組 ( Nodes Modules ) 可以進行運算，最後就利用「destination」做輸出的動作，中間的每個步驟，我們都會使用「connect」來做連結，這也是為什麼在使用 Web Audio Api 的程式碼裡頭，都會出現許多 connect，同時也是上面的範例最後用了<code>oscillator3.connect(context.destination);</code>的原因。</p>
@@ -239,7 +239,7 @@ volumeRange.oninput = function(){
 };
 </code></pre><p>最後當然就是要讓聲音啟動：</p>
 <pre class="prettyprint"><code>oscillator.start();
-</code></pre><h2>小結</h2>
+</code></pre><h2>小結</h2> 
 <p>到這邊為止，我們已經完成了一個很簡單的聲音產生器，這也是 Web Audio Api 最基本的起手勢，不嫌棄的話就玩玩看吧！( 範例：<a href="/demo/201509/web-audio-api-demo03.html" target="_blank">web-audio-api-demo03.html</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150928_1_03.jpg" alt="初探 Web Audio API"></p>
 

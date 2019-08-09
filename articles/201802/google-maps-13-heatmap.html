@@ -71,15 +71,15 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 熱度圖 ( Heatmap )</h1>
+<h1>Google Maps API - 熱度圖 ( Heatmap )</h1> 
 <p>前幾篇寫完了一系列的折線圖、多邊形、圓形和矩形，感覺應該可以在地圖上做點和資料密度相關的例子，Google Maps API 除了形狀，也提供了「熱度圖」的圖層方法，這篇就來實作如何在 Google 地圖上顯示熱度圖。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>如何使用熱度圖</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>如何使用熱度圖</h2> 
 <p>熱度圖是一種視覺效果，在地圖上用來描繪某個地理位置的資料強度，啟用 Google 的熱度圖圖層之後，地圖的最上層便會出現一個熱度圖的疊加層，疊加層預設強度較高的區域會顯示紅色，強度較低的區域則會顯示成綠色。</p>
 <p>使用熱度圖之前，要先載入視覺程式庫 google.maps.visualization，這個程式庫預設不會載入，所以需要在引用 Google Maps API 的後方加上對應的 libraries 參數來啟用，</p>
 <pre class="prettyprint"><code>&lt;script src="https://maps.googleapis.com/maps/api/js?key=你的_API_Key&amp;callback=initMap&amp;libraries=visualization" async defer&gt;&lt;/script&gt;
 </code></pre><p>啟用之後，要使用熱度圖的方式如下，HeatmapLayerOptions 的部分是相關屬性設定。</p>
 <pre class="prettyprint"><code>var heatmap = new google.maps.visualization.HeatmapLayer(HeatmapLayerOptions);
-</code></pre><h2>熱度圖設定 HeatmapLayer Options</h2>
+</code></pre><h2>熱度圖設定 HeatmapLayer Options</h2> 
 <ul>
 <li><strong>map</strong>：指定要放在哪個地圖上，如果沒有設定，可以再用 setMap 的方法把熱度圖放到地圖裡。</li>
 <li><p><strong>data</strong>：指定熱度圖的座標點，使用方法如下。</p>
@@ -94,7 +94,7 @@
 <li><strong>opacity</strong>：熱度圖的不透明度，數值為 0~1，0 表示透明，1 表示不透明。</li>
 <li><strong>radius</strong>：個別資料點的影響半徑，以像素為單位。</li>
 </ul>
-<h2>熱度圖方法 HeatmapLayer Methods</h2>
+<h2>熱度圖方法 HeatmapLayer Methods</h2> 
 <ul>
 <li><strong>setData(data)</strong>：設定熱度圖的資料。</li>
 <li><strong>setMap(map)</strong>：設定地圖，將熱度圖放到指定的地圖上。</li>
@@ -102,14 +102,14 @@
 <li><strong>getMap()</strong>：獲取熱度圖所在地圖。</li>
 <li><strong>getData()</strong>：獲取熱度圖資料點。</li>
 </ul>
-<h2>WeightedLocation</h2>
+<h2>WeightedLocation</h2> 
 <p>熱度圖的 data 有兩種，第一種是使用「<em>點的密度 ( LatLng )</em>」，第二種則是「<em>指定資料的權重 ( WeightedLocation )」</em>，在 Google 地圖熱度圖上的每個點 ( LatLng ) 預設的單位權重都是 1，但可以透過 weight 來更改，使其成為 WeightedLocation 物件，兩種 data 可以混用，純粹看使用的情境來決定，混用的方法如下。</p>
 <pre class="prettyprint"><code>var heatMapData = [
   {location: new google.maps.LatLng(經緯度), weight: 0.5},
   new google.maps.LatLng(經緯度),
   {location: new google.maps.LatLng(經緯度), weight: 2}
 ];
-</code></pre><h2>在 Google 地圖上使用熱度圖</h2>
+</code></pre><h2>在 Google 地圖上使用熱度圖</h2> 
 <p>搭配上面所介紹的熱度圖設定與方法，可以很簡單的在地圖上畫出一個熱度圖 ( 還沒有使用 weight )，例如下面的例子，假設知道每台車子的座標，基本上就可以用熱度圖，標示出哪個路口車子很多或是正在塞車。</p>
 <blockquote>
 <p>範例：<a href="/demo/201802/google-maps-13-heatmap-demo-01.html" target="_blank">Google 地圖熱度圖</a></p>
@@ -194,7 +194,7 @@ function initMap() {
 <p>範例：<a href="/demo/201802/google-maps-13-heatmap-demo-02.html" target="_blank">改變 Google 地圖熱度圖的權重與顏色</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-13-heatmap-02.jpg" alt=""></p>
-<h2>參考資料：</h2>
+<h2>參考資料：</h2> 
 <ul>
 <li><a href="https://developers.google.com/maps/documentation/javascript/heatmaplayer?hl=zh-tw" target="_blank">Google Maps API 熱度圖圖層</a></li>
 <li><a href="https://developers.google.com/maps/documentation/javascript/reference?hl=zh-tw#HeatmapLayer" target="_blank">HeatmapLayer</a></li>

@@ -71,7 +71,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>IFTTT 發送 LINE 訊息通知</h1>
+<h1>IFTTT 發送 LINE 訊息通知</h1> 
 <p>去年我寫過兩篇文章介紹如何自己打造 LINE 機器人，不過如果只是要發送訊息通知，實在也沒必要花這麼大功夫去打造聊天機器人，所以這篇將會透過 IFTTT 與 LINE Notify，在不用寫什麼程式的情況下，實現「觸發某件事，就自動發送 LINE 訊息」的功能。</p>
 <blockquote>
 <ul>
@@ -80,7 +80,7 @@
 <li>其他延伸閱讀：<a href="/articles/201806/line-notify.html">自建 LINE Notify 訊息通知</a></li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>在 IFTTT 裡啟用 LINE Notify</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>在 IFTTT 裡啟用 LINE Notify</h2> 
 <p>IFTTT 是個網路服務平台，縮寫的意思是 IF ( if ) T ( this ) T ( then ) T ( that ) ，顧名思義就是「<em>若做了什麼 ( this ) 則 ( then ) 就執行什麼 ( that )</em>」，而在 IFTTT 的服務裡，大概也都是用這種模式在進行，IFTTT 本身沒有太特別的功能，但最厲害的地方就是它串接了許多知名平台的服務，例如 Gmail、Twitter、Facebook...等，也因為如此，你可以透過 IFTTT，用很簡單的方式串接許多社群網站所提供的服務。</p>
 <blockquote>
 <p>連結到 IFTTT 網站：<a href="https://ifttt.com/" target="_blank">https://ifttt.com/</a></p>
@@ -93,7 +93,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-03.jpg" alt=""></p>
 <p>連動完成會自動跳回 IFTTT 剛剛的頁面，這時已經看不到 Connect 的字樣，點選右上方的「Settings」，可以看到服務狀態 status 已經是 active 表示啟用完成也正在運行，如果對於連動有任何疑慮，也可以隨時點選 Disconnect LINE 就能取消。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-04.jpg" alt=""></p>
-<h2>Webhooks + LINE Notify</h2>
+<h2>Webhooks + LINE Notify</h2> 
 <p>建立好 LINE Notify 的連結後，回到 IFTTT 主畫面，點選上方「My Applets」，再點選「New Applet」建立一個新的 Applet。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-05.jpg" alt=""></p>
 <p>點選後會看到畫面上出現一段話：if +this then that，點選前方藍色的 <em>+this</em>。</p>
@@ -114,7 +114,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-13.jpg" alt=""></p>
 <p>其實這時候如果打開 LINE，應該就會看見 Line Notify 已經傳送連動成功的訊息。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-14.jpg" alt=""></p>
-<h2>用網頁傳送 LINE 訊息</h2>
+<h2>用網頁傳送 LINE 訊息</h2> 
 <p>點選 My Applets，選擇 Services，點選下方的 Webhooks。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-15.jpg" alt=""></p>
 <p>打開後點選右上方的 Setting，就可以看到一串很長的網址，這串網址後方的亂碼就是金鑰，這串金鑰很重要，如果外流的話就表示任何人都可以透過你的 LINE Notify 發訊息給你。( 如果有疑慮，其實只要刪除這個 webhooks 服務，重新跑一次建立流程，就能產生新的金鑰 )</p>
@@ -138,7 +138,7 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/ifttt-line-17.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>如果已經會用 IFTTT 發送 LINE 訊息後，就可以來串接許多不同的服務，在觸發某些事件時 ( 例如氣溫太低、行事曆提醒、空氣太差...等 ) 就會自動發送訊息通知，未來有機會會再寫些串接的服務文章。</p>
 
 

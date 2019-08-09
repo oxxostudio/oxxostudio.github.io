@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 顯示台灣縣市 ( GeoJSON )</h1>
+<h1>Google Maps API - 顯示台灣縣市 ( GeoJSON )</h1> 
 <p>前一篇練習了用 Google Maps API 讀取 GeoJSON 資料並在地圖顯示圖案，這篇就更近一步，透過  map.data 讀取台灣縣市的 GeoJSON 並顯示在地圖上，同時讓滑鼠移到各個縣市形狀的時候呈現不同的顏色。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>台灣縣市行政區域 GeoJSON</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>台灣縣市行政區域 GeoJSON</h2> 
 <p>要顯示台灣縣市行政區域，首先要有行政區域的資料，感謝國內熱血的大大們，已經幫大家整理好了相關圖資，讓我們可以透過這些圖資來進行繪製，或是做許多視覺化的應用。</p>
 <blockquote>
 <ul>
@@ -87,7 +87,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-02.jpg" alt=""></p>
 <p>因為下載的是 TopoJSON 格式，所以我再透過一個線上服務 <a href="http://jeffpaine.github.io/geojson-topojson/" target="_blank">GeoJSON-TopoJSON</a> 幫忙把 TopoJSON 轉換為 GeoJSON。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-03.jpg" alt=""></p>
-<h2>在 Google 地圖上繪製台灣縣市行政區域</h2>
+<h2>在 Google 地圖上繪製台灣縣市行政區域</h2> 
 <p>有了資料後，接著就要來繪製了 ( 不清楚如何透過 Google Maps API 讀取 GeoJSON 可以參考<a href="/articles/201803/google-maps-14-geojson.html" target="_blank">Google Maps (14) - 顯示 GeoJSON 資料</a> )，首先我把地圖中心點定位在日月潭 <code>{lat: 23.858987, lng:120.917631}</code>，接著簡單指定載入資料後繪製的線條與填滿顏色。</p>
 <blockquote>
 <p>範例：<a href="/demo/201803/google-maps-15-geojson-taiwan-demo-01.html" target="_blank">在 Google 地圖上繪製台灣縣市行政區域</a></p>
@@ -110,7 +110,7 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-04.jpg" alt=""></p>
-<h2>動態改變外觀</h2>
+<h2>動態改變外觀</h2> 
 <p>我們可以透過<code>addListener</code>來監聽資料圖層事件，資料圖層事件有以下幾種：</p>
 <ul>
 <li><strong>addfeature</strong>：當資料特徵值增加時。</li>
@@ -157,9 +157,9 @@ function initMap() {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-05.gif" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>實作台灣地圖後，感覺 Google 的資料圖層很有趣，但過程裡也遇到了一些同步非同步的問題，我想這部分會稍微複雜點，就留待之後的篇幅繼續介紹。</p>
-<h2>參考</h2>
+<h2>參考</h2> 
 <ul>
 <li><a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference?hl=zh-tw#Data" target="_blank">Google Mpas API Data class</a></li>
 <li><a href="https://developers.google.com/maps/documentation/javascript/datalayer?hl=zh-tw" target="_blank">Google Mpas API 資料圖層</a></li>

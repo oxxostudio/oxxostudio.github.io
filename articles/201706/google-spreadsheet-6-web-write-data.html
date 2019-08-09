@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google 試算表 (6) - 網頁寫入資料</h1>
+<h1>Google 試算表 (6) - 網頁寫入資料</h1> 
 <p>經過上一篇的介紹，要把資料寫入 Google 試算表中應該不困難了，接下來就要來修改 Google App Script，讓我們可以透過網頁，將資料寫入 Google 試算表中，真的把試算表拿來當作資料庫儲存資料使用。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>parameter 資料格式</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>parameter 資料格式</h2> 
 <p>在寫入資料的時候，在 debug.gs 裡面是正常，但要用網頁寫入就會被卡住，追根究底下去發現原來是因為資料格式導致，因為要寫入資料的時候，會向應用程式發送 HTTP GET 的請求，所以必須要按照 Google 所提出的規範來撰寫。</p>
 <blockquote>
 <p>參考：<a href="https://developers.google.com/apps-script/guides/web#url_parameters" target="_blank">URL parameters</a></p>
@@ -86,7 +86,7 @@
 ];
 var parameter = {};
 parameter.data = data.toString();
-</code></pre><h2>Google App Script</h2>
+</code></pre><h2>Google App Script</h2> 
 <p>建立一個 doGet(e) 的流程，裡面放入一些預設的變數來接資料：url 試算表的網址、name 工作表的名稱、d 原始資料字串格式、row 要插入幾列、column 每一列有幾欄、insertType 如果是 top 就是從最上方插入列，不然就是將列插入在最下方、lastRow 是最後一列的列數，如果要插入在最下方將會使用，最後在宣告三個變數 range、data、arr 待會會用到。</p>
 <pre class="prettyprint"><code>function doGet(e) {
   var params = e.parameter;
@@ -185,7 +185,7 @@ parameter.data = data.toString();
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-02.jpg" alt=""></p>
 <p>如果把 insertType 的 bottom 換成 top，就會在上方插入。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-03.jpg" alt=""></p>
-<h2>網頁寫入資料</h2>
+<h2>網頁寫入資料</h2> 
 <p>如果剛剛上面都沒問題，先把寫好的程式碼部署到網路上，將存取權設定為「任何人，甚至是匿名使用者」。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-04.jpg" alt=""></p>
 <p>部署完成之後，就要來看看網頁端怎麼進行，網頁一開始在 HTML 先載入 jQuery，然後放入一些欄位，包含試算表網址、Google App Script 網址、工作表名稱、寫入方式...等，資料的話預設寫入一列三欄 ( 因為用 input 寫入陣列要做一些轉換，這邊就用最簡單的方法展示 )。</p>
@@ -231,7 +231,7 @@ sendBtn.on('click', function() {
   $.get(appUrl.val(), parameter);
 });
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-6-web-write-data-05.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>其實寫入資料到試算表內沒有想像的麻煩，只要了解資料的格式，在對這些格式做點轉換，就可以把試算表拿來當作資料庫使用囉。</p>
 
 

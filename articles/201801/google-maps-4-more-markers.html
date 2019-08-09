@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Maps API - 多個地圖標記</h1>
+<h1>Google Maps API - 多個地圖標記</h1> 
 <p>前一篇介紹了如何在地圖裡放入地圖標記 ( Marker )，這篇將透過 Google Maps API，做出地圖標記、標籤與動畫，甚至實現在地圖上放入多個標記，並且透過簡單的動畫依序載入這些標記。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>放入多個地圖標記</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>放入多個地圖標記</h2> 
 <p>如果有多個地圖標記，可以用個陣列來裝載對應的標籤、經緯度...等資訊，舉例來說，這裡使用一個名為 position 的陣列，將五個地圖標記的資訊用物件的方式放在裡頭，同時建立一個空的 markers 陣列，用這個陣列的內容來宣告一個個新的地圖標記。</p>
 <p>在這裡有個比較需要注意的地方，就是<code>addMarker(e)</code>這個 function，如果把這個 function 放在<code>initMap()</code>的外面，會發生地圖還沒載入就執行<code>addMarker(e)</code>而發生錯誤，所以要放在裡頭。</p>
 <blockquote>
@@ -114,7 +114,7 @@ function addMarker(e) {
   });
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/google-maps-4-more-markers-01.jpg" alt=""></p>
-<h2>點擊按鈕，依序放入地圖標記</h2>
+<h2>點擊按鈕，依序放入地圖標記</h2> 
 <p>已經知道如何放入多個標記後，接著就來試著做個按鈕，搭配地圖標記的 DROP 動畫效果，就能在點擊按鈕的當下，讓地圖標記依序落下並且載入。</p>
 <p>首先在 html 裡放入一個 button，撰寫一點 CSS 讓這個按鈕可以置中並且浮在地圖上方，同時用滑鼠按下去的時候，也可以透過<code>active</code>來設定壓下去的感覺，此外在 HTML 的按鈕標籤裡，增加一個<code>onclick</code>的事件，讓點擊按鈕的時候，執行<code>go()</code>這個 function。</p>
 <p>HTML</p>

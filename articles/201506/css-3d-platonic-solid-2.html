@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>玩轉 CSS 3D - 正八面體與正十二面體</h1>
+<h1>玩轉 CSS 3D - 正八面體與正十二面體</h1> 
 <p>認識了正四面體與正六面體，接著我們要用同樣的方法，來製作正八面體與正十二面體，這兩個正多面體雖然組合的面比較多，不過因為具備了對稱性，所以只需要製作出一半的結構，另外一半再用反轉的方式接在一起即可。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>正八面體</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>正八面體</h2> 
 <p>正八面體可以想像成「兩個金字塔」疊合在一起，為了方便我們後續作整個金字塔旋轉的動作，我們要用另外一個容器來把金字塔包裝起來，可以想像成把金字塔的四個面變成一個群組，就可以針對這個群組做變形或移動，HTML 的結構如下，space 裡面有 box1 和 box2，box1 是上半部的金字塔，box2 是下半部的金字塔：</p>
 <pre class="prettyprint"><code>&lt;div class="camera"&gt;
     &lt;div class="space"&gt;
@@ -171,7 +171,7 @@
     }
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150620_2_07.gif" alt="玩轉 CSS 3D - 正八面體與正十二面體"></p>
-<h2>正十二面體</h2>
+<h2>正十二面體</h2> 
 <p>會作正八面體之後，正十二面體差不多也是同樣的原理，只是正十二面體更加複雜，因為它是由十二個正五邊形組成，不會畫正五邊形的可以參考我之前寫的教學文章：<a href="http://www.oxxostudio.tw/articles/201503/css-regular-polygon-transform.html" target="_blank">單一 div 的正多邊形變換 ( 純 CSS )</a>，不過這裡要從正五邊形的五個邊去長出五個面，每個面的夾角為 116.56 度，180 - 116.56 = 63.44，待會用到的角度大概不會脫離這兩個數值，當然因為有很多小數點，所以屆時還是必須手動微調 ( 因為像素最小單位是 1 )。</p>
 <p>HTML 的結構如下，也是分成兩塊，內容各有六個面。</p>
 <pre class="prettyprint"><code>&lt;div class="camera"&gt;

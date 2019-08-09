@@ -71,9 +71,9 @@
     <article>
       <i class="tag"></i>
 
-<h1>Google Analytics 追蹤 Email 與點擊成效</h1>
+<h1>Google Analytics 追蹤 Email 與點擊成效</h1> 
 <p>在做網路行銷的時候，其中一個最重要的課題就是「追蹤」，這篇就來探討一下，如何透過 Google Analytics，來針對網路行銷常常用 Email 寄送的電子報、 EDM 來進行追蹤，進一步了解「開信率」以及「點閱率」。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>追蹤 Email 開信率</h2>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>追蹤 Email 開信率</h2> 
 <p>Google Analytics 提供了一個非常方便 Email 追蹤方式，就是透過「Measurement Protocol」的協定來產生一個圖片檔，這個圖片檔並不是真的圖片，是把圖檔的 src 換成 GA 追蹤的事件代碼，當使用者把信件打開<strong>且這張圖片被下載</strong>，就會觸發對應的 GA 事件，圖片的範例程式碼如下：</p>
 <p><em><code>http://www.google-analytics.com/collect?v=1&amp;tid=UA-12345678-1&amp;cid=CLIENT_ID_NUMBER&amp;t=event&amp;ec=email&amp;ea=open&amp;el=recipient_id&amp;cs=newsletter&amp;cm=email&amp;cn=Campaign_Name</code></em></p>
 <p>操作的方式還頗簡單的，首先要在 Email 裡頭放張圖片，圖片的程式碼長相如下，如果像是 Gmail 就可以使用「插入圖片」，選擇「網址」，將圖片網址貼上就可以安裝追蹤的圖片了，圖片相關的參數會在下面介紹。</p>
@@ -82,7 +82,7 @@
 <blockquote>
 <p>參考：<a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/email" target="_blank">Email Tracking - Measurement Protocol</a></p>
 </blockquote>
-<h2>Email 追蹤程式碼解析</h2>
+<h2>Email 追蹤程式碼解析</h2> 
 <p>程式碼雖然看起來很長，但拆解出來可以變成下列幾個部分：</p>
 <ul>
 <li><em>GA 網址</em>：開頭會有一段網址<code>http://www.google-analytics.com/collect?v=1</code>，這段是不能做更動的，直接複製貼上就可以。</li>
@@ -101,7 +101,7 @@
 <p>將這張帶有追蹤圖片的 Email 寄出，當使用者打開這封信，GA 就會收到對應的事件，我們也就可以進行後續的分析。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-analytics-tracking-email-02.jpg" alt=""></p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-analytics-tracking-email-03.jpg" alt=""></p>
-<h2>使用 UTM 追蹤連結點擊</h2>
+<h2>使用 UTM 追蹤連結點擊</h2> 
 <p>除了可以透過追蹤圖片來追蹤開信率，第二個要追蹤的就是「點擊率」，追蹤的方式就要用我們常聽到的「UTM，Urchin Tracking Module」，方法就是使用 Google 的 Campaign URL Builder 產生廣告專用的追蹤網址，並將連結導向有安裝 GA 追蹤碼的網頁，如果使用者點擊了追蹤網址，就能分析各種廣告管道的成效，在這部分 Google 提供了很完整的說明手冊，可以參考下方的相關連結：</p>
 <blockquote>
 <ul>
@@ -137,14 +137,14 @@
 </ul>
 <p>產生網址之後，只要使用者點擊了這段網址，在 GA 內就可以看到分析數據，舉例來說只要有使用者透過追蹤連結到我的測試頁面，就會在 GA 裡面看到相關資訊 ( 客戶開發 &gt; 廣告活動 )。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-analytics-tracking-email-05.jpg" alt=""></p>
-<h2>使用 Google 短網址追蹤點擊狀況</h2>
+<h2>使用 Google 短網址追蹤點擊狀況</h2> 
 <p>不過有時候不見得網頁都有埋入自己的追蹤代碼，甚至有時候是透過一些線上活動網站舉辦活動，這時候要如何進行追蹤呢？這時候我們可以使用「Google 短網址」來做簡單的追蹤，雖然說短網址打開後還是會跑到另外一個網頁，但短網址本身會記錄點擊資訊，透過這些資訊亦可做些簡單的分析。</p>
 <p>舉例來說 <a href="https://goo.gl/CydUus" target="_blank">https://goo.gl/CydUus</a> 這是一個連到我的部落格的短網址，複製這串短網址 ( 不要點選 )，在瀏覽器的網址列貼上，並在後方輸入一個「+」號，按下 enter 連結，就可以看到短網址偵測到的資訊，雖然說沒有辦法像 GA 一般的詳盡，但對於一些無法加入 GA 追蹤碼的頁面來說，也不失為一個觀察的好方法。</p>
 <blockquote>
 <p>觀察連結：<a href="https://goo.gl/CydUus+" target="_blank">https://goo.gl/CydUus+</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-analytics-tracking-email-06.jpg" alt=""></p>
-<h2>小結</h2>
+<h2>小結</h2> 
 <p>在做網路行銷或是網路廣告的時候，最重要的不只是要賣出產品，還有包含後續的追蹤分析，因為透過追蹤分析才能知道顧客真正的回饋，也才能及時的修正廣告與行銷策略，並且掌握真正的客群與使用動線，也才能把手上有限的資源做最大化的利用喔。</p>
 
 
