@@ -1,23 +1,28 @@
 [{
   "tag": "tag-web",
+  "title": "JavaScript Fetch API 使用教學",
+  "site": "/articles/201908/js-fetch.html",
+  "date": "AUG 16, 2019"
+},{
+  "tag": "tag-web",
   "title": "JavaScript Array 陣列操作方法大全 ( 含 ES6 )",
   "site": "/articles/201908/js-array.html",
-  "date": "AUG 10 2019"
+  "date": "AUG 10, 2019"
 },{
   "tag": "tag-web",
   "title": "一些 Javascript 的小技巧筆記",
   "site": "/articles/201908/js-skill-tips.html",
-  "date": "AUG 6 2019"
+  "date": "AUG 6, 2019"
 },{
   "tag": "tag-web",
   "title": "Firebase 教學 - Node.js 操作 Firestore",
   "site": "/articles/201907/firebase-nodejs-firestore.html",
-  "date": "JUL 31 2019"
+  "date": "JUL 31, 2019"
 },{
   "tag": "tag-web",
   "title": "Firebase 教學 - Node.js 操作 Realtime Database",
   "site": "/articles/201907/firebase-nodejs-realtime-database.html",
-  "date": "JUL 30 2019"
+  "date": "JUL 30, 2019"
 },{
   "tag": "tag-web",
   "title": "Firebase 教學 - Firestore Rules 安全規則",
