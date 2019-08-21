@@ -1,5 +1,10 @@
 [{
   "tag": "tag-web",
+  "title": "簡單理解 JavaScript Async 和 Await",
+  "site": "/articles/201908/js-async-await.html",
+  "date": "AUG 26, 2019"
+},{
+  "tag": "tag-web",
   "title": "JavaScript Fetch API 使用教學",
   "site": "/articles/201908/js-fetch.html",
   "date": "AUG 16, 2019"
