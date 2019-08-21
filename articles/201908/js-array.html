@@ -118,21 +118,23 @@
 a.push(9, 10);
 console.log(a);  // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 </code></pre><h2 id="array_pop">pop()</h2> 
-<p><code>pop()</code>會移除陣列的最後一個元素。</p>
+<p><code>pop()</code>會移除 ( 取出 ) 陣列的最後一個元素。</p>
 <blockquote>
 <p>使用<code>pop()</code>後會改變原本的陣列內容。</p>
 </blockquote>
 <pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
-a.pop();
+let b = a.pop();
 console.log(a);  // [1, 2, 3, 4, 5, 6, 7]
+console.log(b);  // 8
 </code></pre><h2 id="array_shift">shift()、unshift()</h2> 
-<p><code>shift()</code>會移除陣列的第一個元素。</p>
+<p><code>shift()</code>會移除 ( 取出) 陣列的第一個元素。</p>
 <blockquote>
 <p>使用<code>shift()</code>後會改變原本的陣列內容。</p>
 </blockquote>
 <pre class="prettyprint"><code>let a = [1,2,3,4,5,6,7,8];
-a.shift();
+let b = a.shift();
 console.log(a);  // [2, 3, 4, 5, 6, 7, 8]
+console.log(b);  // 1
 </code></pre><p><code>unshift()</code>會將指定的元素添加到第一個位置。</p>
 <blockquote>
 <p>使用<code>nushift()</code>後會改變原本的陣列內容。</p>
