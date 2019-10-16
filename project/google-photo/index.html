@@ -219,6 +219,9 @@
             color: #000;
             font-size: 16px;
         }
+        #showContent{
+            width:100%;
+        }
 
         #show.show {
             display: table;
@@ -229,8 +232,8 @@
             max-width: 100%;
         }
 
-        #copy{
-            padding:0 0 15px 0;
+        #copy {
+            padding: 0 0 15px 0;
         }
 
         #show .copy {
@@ -281,7 +284,12 @@
         <h2>使用 Google 相簿作為免費圖片空間吧！</h2>
         <input id="shareUrl" placeholder="輸入已共享的圖片網址">
         <div id="send">轉換</div>
-        <div id="show"></div>
+        <div id="show">
+            <div id="showContent"></div>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
+                data-ad-slot="5795166672" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
     </div>
     <div class="note">
         <section>
@@ -320,6 +328,7 @@
     const shareUrl = document.getElementById('shareUrl');
     const send = document.getElementById('send');
     const show = document.getElementById('show');
+    const showContent = document.getElementById('showContent');
     if (sessionStorage.googleImgPath) {
         shareUrl.value = sessionStorage.googleImgPath;
     }
@@ -346,14 +355,12 @@
         });
         send.innerHTML = '轉換';
         send.classList.remove('disable');
-        show.innerHTML = `<img id="googlePhoto" src="${imgUrl}=w2400"/>
+        showContent.innerHTML = `<img id="googlePhoto" src="${imgUrl}=w2400"/>
         <div id="copy">點擊複製圖片網址：
             <div class="copy" uri="${imgUrl}=w2400">大尺寸</div>
             <div class="copy" uri="${imgUrl}=w1200">中尺寸</div>
             <div class="copy" uri="${imgUrl}=w640">小尺寸</div>
-        </div>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>`;
+        </div>`;
 
         show.classList.add('show');
 
