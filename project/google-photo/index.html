@@ -99,10 +99,10 @@
             margin: 70px 0 30px;
         }
 
-        @media (max-width:1024px){
+        @media (max-width:1024px) {
             .main h2 {
                 font-size: 30px;
-                margin:40px 0 30px;
+                margin: 40px 0 30px;
             }
         }
 
@@ -121,7 +121,7 @@
             transition: .3s;
         }
 
-        @media (max-width:1024px){
+        @media (max-width:1024px) {
             .main input {
                 width: calc(100% - 30px);
             }
@@ -147,12 +147,17 @@
             transition: .2s;
         }
 
-        @media (max-width:1024px){
+        #send.disable {
+            opacity: .4;
+            pointer-events: none;
+        }
+
+        @media (max-width:1024px) {
             #send {
                 max-width: 600px;
                 display: block;
-                margin:10px auto 0;
-                width:calc(100% - 30px);
+                margin: 10px auto 0;
+                width: calc(100% - 30px);
             }
         }
 
@@ -174,7 +179,7 @@
             vertical-align: top;
         }
 
-        @media (max-width:1024px){
+        @media (max-width:1024px) {
             section {
                 width: 100%;
             }
@@ -207,10 +212,12 @@
         #show {
             display: none;
             max-width: 800px;
-            padding: 30px;
+            padding: 30px 30px 15px 30px;
             background: #fff;
             border-radius: 5px;
             box-shadow: rgba(0, 0, 0, .2) 6px 6px 0;
+            color: #000;
+            font-size: 16px;
         }
 
         #show.show {
@@ -222,35 +229,45 @@
             max-width: 100%;
         }
 
+        #copy{
+            padding:0 0 15px 0;
+        }
+
         #show .copy {
-            width: 100%;
-            max-width: 300px;
-            padding: 10px 20px;
+            display: inline-block;
+            width: max-content;
+            padding: 5px 10px;
             color: #000;
             background: #eee;
             cursor: pointer;
-            font-size: 17px;
             margin: 10px auto 0;
             transition: .3s;
             border-radius: 5px;
+        }
+
+        #show .copy.ok {
+            opacity: .3;
+            pointer-events: none;
         }
 
         #show .copy:hover {
             background: #ddd;
         }
 
-        .tutorials{
-            border-top:1px solid #ccc;
-            padding:30px 0 30px;
+        .tutorials {
+            border-top: 1px solid #ccc;
+            padding: 30px 0 30px;
             text-align: center;
-            font-size:20px;
+            font-size: 20px;
         }
-        .tutorials a{
-            color:#09c;
-            transition:.3s;
+
+        .tutorials a {
+            color: #09c;
+            transition: .3s;
         }
-        .tutorials a:hover{
-            color:#0bf;
+
+        .tutorials a:hover {
+            color: #0bf;
         }
     </style>
 </head>
@@ -286,41 +303,69 @@
         </section>
     </div>
     <div class="tutorials">
-        教學參考：<a href="https://www.oxxostudio.tw/articles/201809/google-photo.html" target="_blank">使用 Google Photo 作為免費圖片空間</a>
-        <br/><br/>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
+        教學參考：<a href="https://www.oxxostudio.tw/articles/201809/google-photo.html" target="_blank">使用 Google Photo
+            作為免費圖片空間</a>
+        <br /><br />
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
+            data-ad-slot="5795166672" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </div>
 
 </body>
-<script src="jquery-3.0.0.js"></script>
 <script src="clipboard.min.js"></script>
 
 <script>
-    const $shareUrl = $('#shareUrl');
-    const $send = $('#send');
-    const $d = $('#show');
-    if (localStorage.googleImgPath) {
-        $shareUrl.val(localStorage.googleImgPath);
+    const shareUrl = document.getElementById('shareUrl');
+    const send = document.getElementById('send');
+    const show = document.getElementById('show');
+    if (sessionStorage.googleImgPath) {
+        shareUrl.value = sessionStorage.googleImgPath;
     }
     const appuri = 'https://script.google.com/macros/s/AKfycbxDAJN26VIKr9jLmeeTc0CwkOPINEnRf8J3Bu0ima_Ir5LYvBfB/exec';
-    $send.on('click', function () {
-        let imgPath = $shareUrl.val();
+    send.addEventListener('click', async function () {
+        let imgPath = shareUrl.value;
         let imgUrl;
-        localStorage.googleImgPath = imgPath;
-        $.post(appuri, { image: imgPath }, function (e) {
-            imgUrl = e;
-            $('.default').addClass('selected');
-            $d.html('<img id="googlePhoto" src="' + imgUrl + '=w2400"/><div class="copy" uri="' + imgUrl + '=w2400">複製圖片網址</div>').addClass('show');
+        sessionStorage.googleImgPath = imgPath;
+        send.innerHTML = '轉換中...';
+        send.classList.add('disable');
+        show.classList.remove('show');
+        await fetch(appuri, {
+            method: 'POST',
+            body: encodeURI(JSON.stringify({
+                image: imgPath
+            })),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+            }
+        }).then(res => {
+            return res.text();
+        }).then(result => {
+            imgUrl = result;
         });
+        send.innerHTML = '轉換';
+        send.classList.remove('disable');
+        show.innerHTML = `<img id="googlePhoto" src="${imgUrl}=w2400"/>
+        <div id="copy">點擊複製圖片網址：
+            <div class="copy" uri="${imgUrl}=w2400">大尺寸</div>
+            <div class="copy" uri="${imgUrl}=w1200">中尺寸</div>
+            <div class="copy" uri="${imgUrl}=w640">小尺寸</div>
+        </div>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5795166672" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>`;
+
+        show.classList.add('show');
 
         new ClipboardJS('.copy', {
             text: function (trigger) {
-                $('.copy').text('已複製');
-                setTimeout(() => { $('.copy').text('複製圖片網址'); }, 2000);
+                let text = trigger.innerHTML;
+                trigger.innerHTML = `已複製`;
+                trigger.classList.add('ok');
+                setTimeout(() => {
+                    trigger.innerHTML = text;
+                    trigger.classList.remove('ok');
+                }, 2000);
                 return trigger.getAttribute('uri');
             }
         });
