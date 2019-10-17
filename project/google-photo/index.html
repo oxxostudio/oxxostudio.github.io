@@ -210,11 +210,9 @@
         }
 
         #show {
-            display:none;
-            margin: 40px auto 60px;
-            left:-9999px;
+            display: none;
             max-width: 800px;
-            width: max-content;
+            width:max-content;
             padding: 30px 30px 15px 30px;
             background: #fff;
             border-radius: 5px;
@@ -222,21 +220,22 @@
             color: #000;
             font-size: 16px;
         }
-
-        #showContent {
-            width: 100%;
+        #show span{
+            font-size:13px;
+            color:#aaa;         
         }
 
         #show.show {
             display: table;
+            margin: 40px auto;
         }
 
         #show img {
             max-width: 100%;
         }
 
-        #copy {
-            padding: 0 0 15px 0;
+        #copy{
+            padding:0 0 15px 0;
         }
 
         #show .copy {
@@ -258,10 +257,6 @@
 
         #show .copy:hover {
             background: #ddd;
-        }
-
-        #show .adsbygoogle {
-            margin: 0 auto;
         }
 
         .tutorials {
@@ -291,17 +286,7 @@
         <h2>使用 Google 相簿作為免費圖片空間吧！</h2>
         <input id="shareUrl" placeholder="輸入已共享的圖片網址">
         <div id="send">轉換</div>
-        <div id="show">
-            <img id="googlePhoto"/>
-            <div id="copy">點擊複製圖片網址：
-                <div class="copy" uri="${imgUrl}=w2400">大尺寸</div>
-                <div class="copy" uri="${imgUrl}=w1200">中尺寸</div>
-                <div class="copy" uri="${imgUrl}=w640">小尺寸</div>
-            </div>
-            <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
-                data-ad-slot="5795166672" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
-        </div>
+        <div id="show"></div>
     </div>
     <div class="note">
         <section>
@@ -366,7 +351,17 @@
         });
         send.innerHTML = '轉換';
         send.classList.remove('disable');
-        googlePhoto.setAttribute('src',`${imgUrl}=w2400`);
+        show.innerHTML = `<img id="googlePhoto" src="${imgUrl}=w2400"/>
+        <div id="copy">點擊複製圖片網址：
+            <div class="copy" uri="${imgUrl}=w2400">XL</div>
+            <div class="copy" uri="${imgUrl}=w1800">L</div>
+            <div class="copy" uri="${imgUrl}=w1200">M</div>
+            <div class="copy" uri="${imgUrl}=w800">S</div>
+            <div class="copy" uri="${imgUrl}=w600">XS</div>
+            <div class="copy" uri="${imgUrl}=w400">XXS</div>
+        </div>
+        <span>註 1：XL (2400)，L (1800)、M (1200)、S (800)、XS (600)、XXS (400)。<br/>
+            註 2：尺寸為最大邊長 ( 像素 )，若原圖最大邊長小於該數值，則顯示原圖。</span>`;
         show.classList.add('show');
 
         new ClipboardJS('.copy', {
