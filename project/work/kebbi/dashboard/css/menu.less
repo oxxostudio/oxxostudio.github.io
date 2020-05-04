@@ -1,0 +1,212 @@
+#service-blockly {
+  z-index: 2;
+  position: absolute;
+  width: 25%;
+  left: 42%;
+  bottom: 7%;
+  height: max-content;
+  animation-name: blockly-move;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  @keyframes blockly-move {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(1rem);
+    }
+  }
+  @media (max-width: 1366px) {
+    width: 32%;
+    left: 40%;
+    bottom: 7%;
+  }
+  @media (max-width: 1280px) {
+    width: 25%;
+    left: 42%;
+    bottom: 7%;
+  }
+  @media (max-width: 1024px) {
+    width: 32%;
+    left: 38%;
+    bottom: 7%;
+    @media (max-aspect-ratio: ~"1/1") {
+      width: 45%;
+      left: 5%;
+      bottom: 20%;
+    }
+  }
+  @media (max-width: 768px) {
+    left: 10%;
+    width: 40%;
+    bottom: 15%;
+  }
+  h2 {
+    font-weight: lighter;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    text-shadow: #023 0 3px 4px;
+    margin-top: -8%;
+    pointer-events: none;
+    -webkit-user-select: none;
+  }
+}
+
+#service-camera {
+  z-index: 2;
+  position: absolute;
+  width: 25%;
+  right: 10%;
+  top: 8%;
+  height:max-content;
+  animation-name: camera-move;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  @keyframes camera-move {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(1rem);
+    }
+  }
+  @media (max-width: 1366px) {
+  width: 32%;
+  right: 5%;
+  top: 8%;
+  }
+  @media (max-width: 1280px) {
+  width: 25%;
+  right: 10%;
+  top: 8%;
+  }
+  @media (max-width: 1024px) {
+    right: 5%;
+    width: 32%;
+    top: 10%;
+    @media (max-aspect-ratio: ~"1/1") {
+      right: 5%;
+      width: 45%;
+      top: auto;
+      bottom:25%
+    }
+  }
+  @media (max-width: 768px) {
+    top:auto;
+    right: 10%;
+    width: 40%;
+    bottom: 25%;
+  }
+  h2 {
+    font-weight: lighter;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    text-shadow: #023 0 3px 4px;
+    margin-top: -8%;
+    pointer-events: none;
+    -webkit-user-select: none;
+  }
+}
+
+#svg-menu-blockly {
+  width: 100%;
+  * {
+    pointer-events: none;
+  }
+}
+
+#svg-menu-blockly-select-path {
+  pointer-events: auto;
+  cursor: pointer;
+  &:hover {
+    ~ #svg-menu-blockly-kebbi #svg-menu-blockly-hand-right {
+      transform: translate(-1%, -1%);
+    }
+    ~ #svg-menu-blockly-kebbi #svg-menu-blockly-hand-left {
+      transform: translate(1%, -1%);
+    }
+    ~ #svg-menu-blockly-puzzle-red {
+      animation-play-state: running;
+    }
+    ~ #svg-menu-blockly-puzzle-blue {
+      animation-play-state: running;
+    }
+  }
+}
+#svg-menu-blockly-hand-right,
+#svg-menu-blockly-hand-left {
+  transition: 0.3s;
+}
+#svg-menu-blockly-puzzle-red {
+  transform: rotate(0);
+  transform-origin: 87% 25%;
+  animation-name: svg-menu-blockly-puzzle-red;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  @keyframes svg-menu-blockly-puzzle-red {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+#svg-menu-blockly-puzzle-blue {
+  transform: rotate(0);
+  transform-origin: 13% 23%;
+  animation-name: svg-menu-blockly-puzzle-blue;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  @keyframes svg-menu-blockly-puzzle-blue {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+
+#svg-menu-camera {
+  width: 100%;
+  * {
+    pointer-events: none;
+  }
+}
+#svg-menu-camera-select-path {
+  pointer-events: auto;
+  cursor: pointer;
+  &:hover {
+    ~ #svg-menu-camera-camera {
+      transform: translate(2%, 8%);
+    }
+  }
+}
+#svg-menu-camera-camera {
+  transition: 0.3s;
+}
+
+
+#svg-submenu-icon-logo{
+	h3{
+		left:-2rem;
+	}
+}
+
+#svg-submenu-icon-signout {
+  h3 {
+    left: 0;
+  }
+}

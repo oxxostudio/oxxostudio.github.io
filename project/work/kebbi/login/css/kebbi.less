@@ -1,0 +1,107 @@
+@kebbi-blue: #00b5e2;
+@kebbi-black: #2b2b2b;
+
+.kebbi {
+  width: 50%;
+  height: 80vh;
+  margin: 0 auto;
+  z-index: 2;
+  padding-top: 4.5%;
+  @media (max-width: 1024px) {
+    height: 70vh;
+    width: 55%;
+  }
+  @media (min-width: 1440px) {
+    padding-top: 5%;
+    width: 45%;
+  }
+  @media (max-aspect-ratio: ~"1/1") {
+    width: 70%;
+  	height: 60vh;
+  }
+  * {
+    z-index: 13;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    color: @kebbi-blue;
+    font-size: 1.1rem;
+  }
+  h2,
+  input,
+  button {
+    width: 40%;
+    padding: 8px 10px;
+    border-radius: 20px;
+  }
+  h2 {
+    margin-bottom: 5px;
+  }
+  input {
+    color: @kebbi-blue;
+    margin-bottom: 10px;
+    box-shadow: @kebbi-blue 0 0 0 0;
+    transition: 0.3s;
+    background: @kebbi-black;
+    border: 2px dotted @kebbi-blue;
+    border-radius: 30px;
+    &:focus {
+      box-shadow: @kebbi-blue 0 0 5px 3px;
+    }
+  }
+  button {
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 12px;
+    background: @kebbi-blue;
+    text-shadow: #069 0 3px 10px;
+    cursor: pointer;
+    border-radius: 30px;
+  }
+  .hint {
+    font-size: 0.8rem;
+  }
+}
+
+
+#kebbi-robot {
+  width: 100%;
+	position: absolute;
+	top:0;
+	left: 0;
+	bottom:auto;
+	z-index: 1;
+}
+#kebbi-hand-left {
+  position: absolute;
+  transform-origin: 70% 60%;
+  animation-name: hand-left;
+  animation-duration: 0.4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  @keyframes hand-left {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-5deg);
+    }
+  }
+}
+#kebbi-hand-right {
+  position: absolute;
+  transform-origin: 30% 60%;
+  animation-name: hand-right;
+  animation-duration: 0.4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  @keyframes hand-right {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(5deg);
+    }
+  }
+}

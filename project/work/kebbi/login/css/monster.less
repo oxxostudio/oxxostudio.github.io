@@ -1,0 +1,251 @@
+#svg-monster-blue {
+  z-index: 3;
+  position: absolute;
+  bottom: -3%;
+  right: 4%;
+  transform: rotate(20deg);
+  width: 18%;
+  @media (max-width: 768px), (max-aspect-ratio: ~"1/1") {
+    display: none;
+  }
+  @media (min-width: 1025px) {
+    width: 14%;
+  }
+}
+#blue-hand-left,
+#blue-hand-right {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#blue-hand-left {
+  animation-name: red-hand-left;
+  transform-origin: 70% 70%;
+  @keyframes red-hand-left {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-10deg);
+    }
+  }
+}
+#blue-hand-right {
+  animation-name: red-hand-right;
+  transform-origin: 30% 70%;
+  @keyframes red-hand-right {
+    from {
+      transform: rotate(5deg);
+    }
+    to {
+      transform: rotate(15deg);
+    }
+  }
+}
+#blue-eye {
+  animation-name: red-eye;
+  transform-origin: 50% 40%;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  @keyframes red-eye {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.2);
+    }
+  }
+}
+
+
+#svg-monster-green {
+  z-index: 3;
+  position: absolute;
+  bottom: -4%;
+  left: 4%;
+  width: 18%;
+  transform: rotate(-30deg);
+  @media (max-width: 768px), (max-aspect-ratio: ~"1/1") {
+    display: none;
+  }
+  @media (min-width: 1025px) {
+    left: 6%;
+    width: 14%;
+  }
+}
+#green-hand-left,
+#green-hand-right {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#green-hand-left {
+  animation-name: red-hand-left;
+  transform-origin: 70% 70%;
+  @keyframes red-hand-left {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-3deg);
+    }
+  }
+}
+#green-hand-right {
+  animation-name: red-hand-right;
+  transform-origin: 50% 50%;
+  @keyframes red-hand-right {
+    from {
+      transform: rotate(5deg);
+    }
+    to {
+      transform: rotate(10deg);
+    }
+  }
+}
+.green-eye {
+  animation-name: green-eye;
+  transform-origin: 50% 50%;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  @keyframes green-eye {
+    0% {
+      transform: translate(4px, 3px);
+    }
+    100% {
+      transform: translate(-4px, 3px);
+    }
+  }
+}
+
+
+#svg-monster-red {
+  z-index: 1;
+  position: absolute;
+  bottom: 5%;
+  left: 15%;
+  width: 16%;
+  transform: rotate(-20deg);
+  @media (max-width: 768px), (max-aspect-ratio: ~"1/1") {
+    display: none;
+  }
+  @media (min-width: 1025px) {
+    bottom: 7%;
+    left: 17%;
+    width: 13%;
+  }
+}
+#red-hand-left,
+#red-hand-right {
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#red-hand-left {
+  animation-name: red-hand-left;
+  transform-origin: 50% 50%;
+  @keyframes red-hand-left {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-10deg);
+    }
+  }
+}
+#red-hand-right {
+  animation-name: red-hand-right;
+  transform-origin: 50% 50%;
+  @keyframes red-hand-right {
+    from {
+      transform: rotate(5deg);
+    }
+    to {
+      transform: rotate(15deg);
+    }
+  }
+}
+#red-eye {
+  animation-name: red-eye;
+  transform-origin: 50% 50%;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  @keyframes red-eye {
+    0% {
+      transform: translate(7px, 0px);
+    }
+    50% {
+      transform: translate(-7px, 5px);
+    }
+    100% {
+      transform: translate(-7px, 5px);
+    }
+  }
+}
+
+#svg-monster-yellow {
+  z-index: 1;
+  position: absolute;
+  bottom: 4%;
+  right: 14%;
+  width: 17%;
+  transform: rotate(20deg);
+  @media (max-width: 768px), (max-aspect-ratio: ~"1/1") {
+    display: none;
+  }
+  @media (min-width: 1025px) {
+    bottom: 6%;
+    right: 16%;
+    width: 14%;
+  }
+}
+#yellow-hand-left,
+#yellow-hand-right {
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#yellow-hand-left {
+  animation-name: red-hand-left;
+  transform-origin: 70% 70%;
+  @keyframes red-hand-left {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-10deg);
+    }
+  }
+}
+#yellow-hand-right {
+  animation-name: red-hand-right;
+  transform-origin: 30% 70%;
+  @keyframes red-hand-right {
+    from {
+      transform: rotate(5deg);
+    }
+    to {
+      transform: rotate(15deg);
+    }
+  }
+}
+.yellow-eye {
+  animation-name: yellow-eye-01;
+  transform-origin: 50% 50%;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  @keyframes yellow-eye-01 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(15deg);
+    }
+  }
+}

@@ -1,0 +1,90 @@
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  background: -webkit-radial-gradient(
+    50% 150%,
+    #00a5bc 0%,
+    #206b81 10%,
+    #21687e 35%,
+    #031b31 70%,
+    #000 100%
+  );
+}
+.title {
+  position: fixed;
+  top: 16%;
+  left: 12%;
+  z-index: 3;
+  @media (max-width: 1024px) {
+    top: 13%;
+    left: 10%;
+  }
+}
+h1,
+h2 {
+  color: #fff;
+  -webkit-user-select: none;
+}
+h1 {
+  font-size: 4.2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-bottom: 1.6rem;
+}
+.submenu {
+  height: 2.1rem;
+  div {
+    margin-right: 5px;
+    cursor: pointer;
+    vertical-align: top;
+    display: inline-block;
+    height: 100%;
+    svg {
+      height: 100%;
+      path {
+        opacity: 0.7;
+        fill: #fff;
+        transition: 0.3s;
+      }
+    }
+    h3 {
+      pointer-events: none;
+      opacity: 0;
+      position: absolute;
+      bottom: -0.5rem;
+      left: -1rem;
+      color: #fff;
+      width: max-content;
+      transition: 0.3s;
+      font-weight: lighter;
+    }
+    &:hover {
+      h3 {
+        bottom: -1.5rem;
+        opacity: 1;
+      }
+      svg {
+        path {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+#svg-bg-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index:1;
+}

@@ -1,0 +1,162 @@
+body{
+  overflow:hidden;
+  &[dashboard]{
+    overflow:auto;
+  }
+}
+
+h1 {
+  z-index: 2;
+  height: 20vh;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1%;
+  @media (max-width: 1024px) {
+    height: 30vh;
+  }
+  @media (max-aspect-ratio: ~"1/1") {
+  	height: 40vh;
+  }
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    vertical-align: middle;
+  }
+  svg {
+    display: inline-block;
+    height: 50%;
+    vertical-align: middle;
+    @media (max-width: 1024px) {
+      height: 30%;
+    }
+		@media (max-aspect-ratio: ~"1/1") {
+			height:  25%;
+		}
+  }
+}
+
+
+
+.bg {
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index:1;
+  background: -webkit-radial-gradient(
+    50% 150%,
+    #00a5bc 0%,
+    #206b81 10%,
+    #21687e 35%,
+    #031b31 70%,
+    #000 100%
+  );
+  .bg-star1 {
+    position: absolute;
+    top: 5%;
+    left: 15%;
+    width: 1.5%;
+    animation-duration: 1s;
+  }
+  .bg-star2 {
+    position: absolute;
+    top: 12%;
+    right: 15%;
+    width: 3%;
+    animation-duration: 1.5s;
+  }
+  .bg-star3 {
+    position: absolute;
+    top: 45%;
+    left: 8%;
+    width: 3%;
+    animation-duration: 1.2s;
+  }
+  .bg-star4 {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    width: 1.5%;
+    animation-duration: 0.8s;
+  }
+  .blink {
+    animation-name: start-blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    @keyframes start-blink {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+    }
+  }
+}
+
+
+#svg-bg-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.svg-bg-star {
+  width: 100%;
+		@media (max-width: 768px), (max-aspect-ratio: ~"1/1")  {
+    	display: none;
+		}
+}
+
+#bg-earth {
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  z-index: 2;
+  width: 70%;
+  @media (max-width: 768px), (max-aspect-ratio: ~"1/1")  {
+    display: none;
+  }
+}
+
+
+#svg-rocket {
+  position: absolute;
+  left: -8%;
+  bottom: 30%;
+  width: 12%;
+  transform: rotate(-30deg);
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-name: svg-rocket;
+  animation-timing-function: linear;
+  @keyframes svg-rocket {
+    0% {
+      left: -8%;
+      bottom: 20%;
+      transform: rotate(-40deg);
+    }
+    50% {
+      bottom: 65%;
+      transform: rotate(0deg);
+    }
+    100% {
+      left: 100%;
+      bottom: 20%;
+      transform: rotate(40deg);
+    }
+  }
+  @media (max-width: 768px), (max-aspect-ratio: ~"1/1") {
+    display: none;
+  }
+  @media (min-width: 1025px) {
+    width: 7%;
+  }
+}
