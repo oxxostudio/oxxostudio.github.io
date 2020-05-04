@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Setting</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div class="bg"></div>
+  <img class="logo" src="media/img/webduino-logo.png">
+
+  <!-- 下方頁籤按鈕 -->
+  <nav>
+    <!-- 加入 "actived" 的 attribute 表示正在該頁籤 -->
+    <div id="b1" class="btn" attr-show="k01" actived>基本資訊</div>
+    <div id="b2" class="btn" attr-show="k02">歷史紀錄</div>
+    <div id="b3" class="btn" attr-show="k03">進階設定</div>
+  </nav>
+
+  <!-- 基本資料區塊 -->
+  <div class="content k01">
+    <img src="media/img/kebbi-01.png">
+    <div class="msg">
+      <h3>我的 Device ID 是</h3>
+      <h2 id="deviceId">...</h2>
+    </div>
+    <div class="info">
+      <i id="ver"></i><b id="date"></b>
+    </div>
+  </div>
+
+  <!-- 歷史紀錄區塊 -->
+  <div class="content k02 fadeOut">
+    <div>
+      <h2 hidden>清潔溜溜，沒有歷史紀錄呦～</h2>
+      <ul></ul>
+    </div>
+  </div>
+
+  <!-- 進階設定區塊 -->
+  <div class="content k03 fadeOut">
+    <div>
+      <h3>部署密碼</h3>
+      <div class="password"><input id="pinCode" type="text"></div>
+
+      <h3>部署設定</h3>
+      <!-- 加入 "selected" 的 attribute 表示當下選擇的模式 -->
+      <div class="btn-type"><b attr-val="1">隨時允許</b><b attr-val="0">閒置時允許</b><b attr-val="-1">不允許</b></div>
+
+      <!-- 加入 "disabled" 的 attribute 可禁止點選 -->
+      <button class="btn-save" id="saveBtn"><i class="b1">儲存設定</i><i class="b2">儲存中...</i></button>
+    </div>
+  </div>
+
+  <!-- 更新授權碼 popup window，一開始如果有 new 的 class 表示全新的 -->
+  <div class="pop-window new" id="registerView">
+    <!-- 加上 hidden 的 attribute 可以隱藏元素 -->
+    <div>
+      <h2 class="new">請輸入授權碼，啟用 Kebbi AIoT</h2> <!-- 最開始啟動顯示 -->
+      <h2 class="update">請輸入授權碼，更新 Kebbi AIoT 啟用狀態</h2> <!-- 更新時顯示 -->
+      <input type="text" id="AuthCode">
+      <button id="registerBtn"><i>送出確認</i><i>確認中...</i></button>
+      <div class="close-btn"></div>
+    </div>
+  </div>
+
+  <!-- 載入歷史專案 popup window -->
+  <div class="pop-window" id="historyView" hidden>
+    <!-- 加上 hidden 的 attribute 可以隱藏元素 -->
+    <div>
+      <h2></h2>
+      <button id="runBtn">執行專案</button>
+      <button id="deleteBtn">刪除</button> <!-- 加上 disabled 的 arrtibute 表示處於鎖定狀態 -->
+      <button id="lockBtn" class="lock"><i>鎖定</i><i>解除鎖定</i></button>
+      <span hidden>你點了刪除，再點一次就真的要刪除囉～</span>
+      <div class="close-btn"></div>
+    </div>
+  </div>
+
+  <!-- Error popup window -->
+  <div class="pop-window" id="errorView" hidden>
+    <!-- 加上 hidden 的 attribute 可以隱藏元素 -->
+    <div>
+      <h2>發生錯誤啦</h2>
+      <div class="close-btn"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
