@@ -86,7 +86,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-02.jpg" alt=""></p>
 <p>這個 json 的網址有固定的格式，<code>date=20170621</code>表示日期，<code>stockNo=2330</code>表示這支股票編號，後面那串 &amp;_ 不知道做什麼用的 ( 刪掉好像沒影響所以就刪掉吧 :p )，了解格式之後待會我們就會把想要抓取的股票代碼，動態的塞入網址內，就可以取得對應的資料了。</p>
 <blockquote>
-<p><em>www.tse.com.tw/exchangeReport/STOCK<em>DAY?response=json&amp;date=20170621&amp;stockNo=2330&amp;</em>=1498059436321</em></p>
+<p><em><a href="http://www.tse.com.tw/exchangeReport/STOCK_DAY?response=json&amp;date=20170621&amp;stockNo=2330&amp;_=1498059436321" target="_blank">www.tse.com.tw/exchangeReport/STOCK_DAY?response=json&amp;date=20170621&amp;stockNo=2330&amp;_=1498059436321</a></em></p>
 </blockquote>
 <h2>Google App Script</h2> 
 <p>有了資料來源之後，接著 Google App Script 儲存資料的部分，一開始放入五個變數，分別是試算表網址、工作表名稱、股票代碼、股票名、收盤價，因為傳進去的只能是字串，所以要用逗號分割成陣列，然後透過<code>getRange</code>指定寫入的範圍，並用<code>setValues</code>寫入資料。。</p>
