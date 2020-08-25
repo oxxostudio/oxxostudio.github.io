@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="max-age" content="864000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <script>
+      let uri = window.location.href;
+      if(uri.indexOf('https')<0 && uri.indexOf('localhost')<0){
+          window.location.replace(uri.replace('http','https'));
+      }
+  </script>
+
+  <title>徹底理解 CSS Box Model ( 盒子模型 ) - OXXO.STUDIO</title>
+
+  <meta name="description" content="CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。">
+  <meta itemprop="description" content="CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/202008/css-box-model.jpg">
+  <meta property="og:description" content="CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。">
+  <meta property="og:title" content="徹底理解 CSS Box Model ( 盒子模型 )">
+  <meta property="og:url" content="https://www.oxxostudio.tw/articles/202008/css-box-model.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/202008/css-box-model.jpg">
+  <link rel="canonical" href="https://www.oxxostudio.tw/articles/202008/css-box-model.html">
+  <style>body{display:none;}</style>
+</head>
+
+<body>
+  <div id="header">
+    <div id="top-menu">
+      <ul class="top-menu-left">
+        <li class="list" title="文章列表"><i></i><a href="/list.html">ARCHIVE</a></li>
+        <li class="about" title="關於我"><i></i><a href="/articles/201405/about-me.html">ABOUT</a></li>
+        <li class="contact" title="聯絡方式"><i></i><a href="/articles/201405/contact.html">CONTACT</a></li>
+      </ul>
+      <a href="/sitemap.xml" title="Sitemap" target="_blank">
+        <div class="rss"><i></i></div>
+      </a>
+      <div class="search" title="站內搜尋">
+        <div id="cse-search-form" style="width: 100%;">
+          <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+      </div>
+    </div>
+    <div id="banner">
+      <a href="/">
+        <i class="bubble"></i>
+        <i class="hihi"></i>
+        <img src="/img/layout/banner.png">
+        <h2>Design thinking is everywhere</h2>
+      </a>
+    </div>
+    <div id="main-menu">
+      <div class="mobile-menu"><span></span><span></span><span></span></div>
+      <div class="menu">
+        <a href="/"><i></i>ALL</a>
+        <a href="/index.html?tag-creative"><i></i>Creative</a>
+        <a href="/index.html?tag-ui"><i></i>UI &amp; UX</a>
+        <a href="/index.html?tag-photo"><i></i>PHOTO</a>
+        <a href="/index.html?tag-css"><i></i>CSS</a>
+        <a href="/index.html?tag-web"><i></i>WEB TECH</a>
+        <a href="/index.html?tag-share"><i></i>Share</a>
+        <a href="/index.html?tag-others"><i></i>OTHERS</a>
+        <a href="/list.html"><i></i>ARCHIVE</a>
+      </div>
+    </div>
+    <div class="body-line"></div>
+  </div>
+
+  <main>
+    <article>
+      <i class="tag"></i>
+
+<h1>徹底理解 CSS Box Model ( 盒子模型 )</h1> 
+<p>CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。</p>
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Box Model 的定義</h2> 
+<p>Box Model 主要由四個部分主成，由內而外分別是 <em>Content ( 內容 )</em>、<em>Padding ( 內邊距 )</em>、<em>Border ( 邊框 )</em> 和 <em>Margin ( 外邊距 )</em>。( 圖片來源 <a href="https://drafts.csswg.org/css2/box.html" target="_blank">csswg.org</a> )</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-01.jpg" alt=""></p>
+<h2>撰寫語法</h2> 
+<p>除了 Content，Padding、Border 和 Margin 都有相同定義寬度的撰寫語法，撰寫的方法可分為下列幾種，單位可以設定為像素 px、百分比 % 或 em、rem 等。</p>
+<blockquote>
+<ul>
+<li>四個值：<em>上、右、下、左</em></li>
+<li>三個值：<em>上、左右、下</em></li>
+<li>兩個值：<em>上下、左右</em></li>
+<li>一個值：<em>上下左右</em></li>
+</ul>
+</blockquote>
+<h2>Margin</h2> 
+<p>margin 是 box model 的外邊距，用法上有幾個重點：</p>
+<blockquote>
+<ul>
+<li>margin 的背景永遠是透明的。</li>
+<li>如果是 <em>inline 元素，margin 的垂直方向 ( 上、下 ) 沒有效果</em>。</li>
+<li>大小可使用 px rem...等單位，也可以設定 auto 讓網頁自動計算。</li>
+<li>大小若設定 %，則是以以 <strong>父元素的寬度</strong> 作為計算標準。</li>
+<li>大小可以是負值，設定負值會依據排版的方式，而有位置上的變化。</li>
+</ul>
+</blockquote>
+<p>舉例來說，在一個寬度為 200px 的 div 裡放入兩個 div，設定第二個 div 的<code>margin-top</code>為 -10%，則第二個 div 就會向上移動 <em>20px</em> ( <code>200x(-0.1)=-20</code> )。</p>
+<blockquote>
+<p>範例：<a href="/demo/202008/css-box-model-demo-01.html" target="_blank">margin 設定負值以及 %</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-02.jpg" alt=""></p>
+<h2>Margin 邊距重疊 ( Collapsing margins )</h2> 
+<p>margin 有一個很重要的特性，叫做「邊距重疊 Collapsing margins」，意思是兩個或多個元素 ( 父子、兄弟 ) 的「<em>垂直邊距，會自動組合成單個邊距</em>」，以這種方式組合成的邊距稱為重疊，生成的邊距稱為重疊邊距，重疊邊距 <strong>採用最大的 margin 值</strong>，此外，<strong>如果元素本身高度為 0 或 auto，則會發生上下 margin 重疊狀況</strong>。</p>
+<p>不過在下列的情形中，元素「<em>不會</em>」發生邊距重疊：</p>
+<blockquote>
+<ul>
+<li>「<em>父元素</em>」有設定 padding 或 border 的寬度。</li>
+<li>水平邊距不會重疊。</li>
+<li>屬於「<em>不同的 BFC 內</em>」的元素 ( <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context" target="_blank">什麼是 BFC？</a> )，例如：<ul>
+<li>position 使用 absolute、fixed 的元素。</li>
+<li>元素間穿插了 BFC 元素，例如 inline、table...等。</li>
+<li>display 屬性為 inline-block、table-cell、table-caption 的元素。</li>
+<li>display 屬性為 flex、inline-flex、grid、inline-grid 的元素</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>下面幾個例子，會充分展示邊距重疊和不會邊距重疊的情形。</p>
+<ul>
+<li><p><em>範例 1、父子元素邊距重疊</em></p>
+<p>在這個例子中，兩個 div 為父子元素，在沒有設定 border 的狀態下，可以看到兩個 div 之間的垂直 margin 失去作用，發生邊距重疊現象，只剩下水平的 margin 有效果，但如果設定了 border，margin 的效果就會正常顯示。</p>
+<blockquote>
+<p>範例：<a href="/demo/202008/css-box-model-demo-02.html" target="_blank">父子元素邊距重疊</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-03.jpg" alt=""></p>
+</li>
+<li><p><em>範例 2、兄弟元素邊距重疊</em></p>
+<p>在這個例子裡，如果是兩個兄弟階層的 div，他們是屬於同一個 BFC 內的元素，因此會發生邊距重疊現象 ( margin 都設定 20px，預期應該要是 40px，但呈現出來卻只有 20px )，不過如果將其中一個的 <em>display 設定為 inline-block</em>，就會創建一個 BFC，也因此就不會發生邊距重疊，同理，如果在<em>兩個 div 中間穿插一個 span</em>，也不會發生邊距重疊。</p>
+<blockquote>
+<p>範例：<a href="/demo/202008/css-box-model-demo-02.html" target="_blank">兄弟元素邊距重疊</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-04.jpg" alt=""></p>
+</li>
+</ul>
+<h2>Padding</h2> 
+<p>padding 是 box model 的內邊距，用法上有幾個重點：</p>
+<blockquote>
+<ul>
+<li>屬於填充區域，背景色依據元素的背景色而定。</li>
+<li>會受到 <code>box-sizing</code> 影響 ( 設定 <code>border-box</code> 時表示內邊距包含在寬度內 )。</li>
+<li>大小可使用 px rem...等單位，也可以設定 auto 讓網頁自動計算。</li>
+<li>大小若設定 %，則是以以<strong>父元素的寬度</strong>作為計算標準。</li>
+<li>不可設定為負值。</li>
+</ul>
+</blockquote>
+<p>舉例來說，有兩個寬度同樣為 200px 的 div，padding 都設定為 20px，有設定 box-sizing 為 border-box 的寬度仍舊是 200px，沒有設定的則是 240px ( 200 + 20 + 20 )。</p>
+<blockquote>
+<p>範例：<a href="/demo/202008/css-box-model-demo-04.html" target="_blank">padding 和 box-sizing</a></p>
+</blockquote>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-05.jpg" alt=""></p>
+<h2>Border</h2> 
+<p>border 是 box model 的邊框，用法上有幾個重點：</p>
+<blockquote>
+<ul>
+<li>會受到 <code>box-sizing</code> 影響 ( 設定 <code>border-box</code> 時表示邊框包含在寬度內 )。</li>
+<li>大小可使用 px rem...等單位，也可以設定 auto 讓網頁自動計算。</li>
+</ul>
+</blockquote>
+<p>border 的寬度是從 padding 的邊界往延伸，下圖可以清楚看出有 box-sizing 為 border-box 和 content-box ( 預設值 ) 的影響，如果是 content-box，則內容 content 寬度不變，<em>padding 和 border 往外延伸</em>，如果設定為 border-box，<em>則 border 和 padding 會往內延伸</em>，border 的邊界會和原本的 content 邊界 ( 沒有設定 padding 和 border  ) 相同。</p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-06.jpg" alt=""></p>
+<h2>參考</h2> 
+<blockquote>
+<ul>
+<li><a href="https://drafts.csswg.org/css2/box.html" target="_blank">https://drafts.csswg.org/css2/box.html</a></li>
+<li><a href="https://drafts.csswg.org/css2/box.html" target="_blank">https://www.w3.org/TR/css-box-3/</a></li>
+</ul>
+</blockquote>
+
+
+      <div class="social-icon">
+        <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
+        <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
+        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="goto-top"><i></i><span>Back to Top</span></a>
+      </div>
+      <a class="arrow arrow-left">
+        <i></i>
+      </a>
+      <a class="arrow arrow-right">
+        <i></i>
+      </a>
+
+    </article>
+  </main>
+  <div class="recommend">
+      <div class="closeBtn"></div>
+      <h4>有興趣瞧瞧其他新文章嗎？</h4>
+      <ul></ul>
+  </div>
+  <div id="other-articles">
+    <div class="previous-next previous-article">
+      <span>前一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <div class="previous-next next-article">
+      <span>下一篇文章：</span>
+      <br>
+      <h4></h4>
+    </div>
+    <h3>您可以閱讀其他相關文章，或瀏覽 <a href="/list.html">所有文章</a></h3>
+  </div>
+  <div id="google-adsense">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="8489880299" data-matched-content-ui-type="image_card_stacked" data-matched-content-rows-num="1" data-matched-content-columns-num="4" data-ad-format="autorelaxed"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+  </div>
+  <div id="footer">
+    <div class="footer-line"></div>
+    <div class="license">Copyright 2019 | All Rights Reserved. Designed by <a href="/">OXXO.STUDIO</a></div>
+  </div>
+
+  <link href="/css/article.css?20190821" rel="stylesheet">
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2708968-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="/js/layout.js?20190612"></script>
+  <script src="/js/articles.js?20190724"></script>
+  <!-- highlight -->
+  <style>
+  .hljs{display:block;overflow-x:auto;padding:20px;background:#232323;color:#e9e9e9}.hljs-comment,.hljs-quote{color:#bc9458;font-style:italic}.hljs-keyword,.hljs-selector-tag{color:#c26230}.hljs-string,.hljs-number,.hljs-regexp,.hljs-variable,.hljs-template-variable{color:#a5c261}.hljs-subst{color:#519f50}.hljs-tag,.hljs-name{color:#e8bf6a}.hljs-type{color:#da4939}.hljs-symbol,.hljs-bullet,.hljs-built_in,.hljs-builtin-name,.hljs-attr,.hljs-link{color:#6dacde;}.hljs-params{color:#d0d0ff}.hljs-attribute{color:#cda869}.hljs-meta{color:#9b859d}.hljs-title,.hljs-section{color:#ffc66d}.hljs-addition{background-color:#144212;color:#e6e1dc;display:inline-block;width:100%}.hljs-deletion{background-color:#600;color:#e6e1dc;display:inline-block;width:100%}.hljs-selector-class{color:#9b703f}.hljs-selector-id{color:#8b98ab}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}
+  </style>
+  <script src="/js/lib/highlight.pack.js"></script>
+  <script>
+    document.querySelectorAll('pre code').forEach(e => {
+      hljs.highlightBlock(e);
+    });
+  </script>
+  <script>
+    const showAD = () => {
+      let element = document.createElement("script");
+      element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      document.body.appendChild(element);
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8629612872829139",
+        enable_page_level_ads: true
+      });
+      window.removeEventListener('scroll', showAD);
+    }
+    window.addEventListener('scroll', showAD);
+  </script>
+  <script>
+    const showDisqus = () => {
+      let scrollTop = this.pageYOffset;
+      let bodyHeight = document.body.clientHeight;
+      if (scrollTop > bodyHeight / 2) {
+        let dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//oxxostudio.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        window.removeEventListener('scroll', showDisqus);
+      }
+    };
+    window.addEventListener('scroll', showDisqus);
+  </script>
+
+
+
+</body></html>
