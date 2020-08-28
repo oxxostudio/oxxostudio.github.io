@@ -80,7 +80,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-1-05.jpg" alt=""></p>
 <p>接著點選「程式碼.gs」開始編輯，裡頭預設有一個名為 myFunction 的流程，將其改為 doGet，一定要是這個名稱，因為這是 Google Apps Script 規定的。doGet 包含一個 e 的參數作為傳值使用，屆時我們只要把要儲存的資料提交給 e，就可以儲存，然後我們在 goGet(e) 裡設一個區域變數 data 來接收 e.parameter 所解析出來的值，最後由<code>Logger.log()</code>顯示出來。</p>
 <blockquote>
-<p>參考：<a href="https://developers.google.com/apps-script/guides/web#requirements_for_web_apps" target="_blank">Requirements for web apps</a>、<a href="https://developers.google.com/apps-script/guides/web#url_parameters" target="_blank">URL parameters</a>、<a href="https://developers.google.com/apps-script/reference/base/logger" target="_blank">Class Logger</a></p>
+<p>參考：<a href="https://developers.google.com/apps-script/guides/web#requirements_for_web_apps" rel="noreferrer noopener" target="_blank">Requirements for web apps</a>、<a href="https://developers.google.com/apps-script/guides/web#url_parameters" rel="noreferrer noopener" target="_blank">URL parameters</a>、<a href="https://developers.google.com/apps-script/reference/base/logger" rel="noreferrer noopener" target="_blank">Class Logger</a></p>
 </blockquote>
 <pre class="prettyprint"><code>function doGet(e) {
   var params = e.parameter;
@@ -132,7 +132,7 @@
 <h2>小結</h2> 
 <p>以上只是先小試身手，先獲得試算表的文件名稱與試算表名稱，在 Google 官方網站的 Reference 裡有非常豐富的操控方法可以讓我們使用，如果有興趣的一定要詳細閱讀，接下來會繼續介紹更多有趣的用法。</p>
 <blockquote>
-<p>參考資源：<a href="https://developers.google.com/apps-script/reference/spreadsheet/" target="_blank">Spreadsheet Service</a></p>
+<p>參考資源：<a href="https://developers.google.com/apps-script/reference/spreadsheet/" rel="noreferrer noopener" target="_blank">Spreadsheet Service</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-1-01.jpg" alt=""></p>
 
@@ -140,9 +140,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

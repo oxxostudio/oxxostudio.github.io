@@ -73,11 +73,11 @@
 <p>取得使用者所在的經緯度除了可以使用 Google Maps 的 Geolocation API
 ，也可以透過網頁瀏覽器來實現，這篇文章將會介紹兩種取得所在位置經緯度的方法，接著使用地圖標記 Marker 標示在地圖上。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Geolocation API</h2> 
-<p>前往 <a href="https://console.developers.google.com/project/_/apiui/apis/enabled?hl=zh-tw" target="_blank">Google Cloud Platform Console</a>，建立新的專案或是選擇現有的專案 ( 不知道怎麼做可以參考 <a href="http://www.oxxostudio.tw/articles/201707/google-maps-1.html" target="_blank">Google Maps API - 網頁載入地圖 ( 起手式 )</a> )，接著點選上方「<em>啟用 API 和服務</em>」，在搜尋欄位搜尋「<em>Directions API</em>」，找到後點選並且啟用。</p>
+<p>前往 <a href="https://console.developers.google.com/project/_/apiui/apis/enabled?hl=zh-tw" rel="noreferrer noopener" target="_blank">Google Cloud Platform Console</a>，建立新的專案或是選擇現有的專案 ( 不知道怎麼做可以參考 <a href="http://www.oxxostudio.tw/articles/201707/google-maps-1.html" rel="noreferrer noopener" target="_blank">Google Maps API - 網頁載入地圖 ( 起手式 )</a> )，接著點選上方「<em>啟用 API 和服務</em>」，在搜尋欄位搜尋「<em>Directions API</em>」，找到後點選並且啟用。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-20-get-current-position-01.jpg" alt=""></p>
 <p>接著我們簡單寫個 JavaScript，利用<code>XMLHttpRequest</code>的方法呼叫 Geolocation API，就能從 console 裡得到準確度 accuracy ( 公尺 ) 和經緯度資訊。( 至於準不準，看到文章最後你就知道了 )</p>
 <blockquote>
-<p>範例：<a href="/demo/201810/google-maps-20-get-current-position-demo-01.html" target="_blank">Geolocation API 取得所在位置經緯度</a></p>
+<p>範例：<a href="/demo/201810/google-maps-20-get-current-position-demo-01.html" rel="noreferrer noopener" target="_blank">Geolocation API 取得所在位置經緯度</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var geolocation = 'https://www.googleapis.com/geolocation/v1/geolocate?key=你的 API Key';
 (function() {
@@ -132,7 +132,7 @@
 </table>
 <p>然而要取得這些數值，可以透過<code>getCurrentPosition()</code>或<code>watchPosition()</code>來取得，兩個的差別在於<code>getCurrentPosition()</code>僅會執行一次，而<code>watchPosition()</code>則會隨著裝置的位置移動而持續監測，舉例來說，當使用者打開具備下面這段程式碼的網頁，網頁就會不斷偵測使用者位置，並在 Google 地圖上標記一個 marker。</p>
 <blockquote>
-<p>範例：<a href="/demo/201810/google-maps-20-get-current-position-demo-02.html" target="_blank">navigator.geolocation 取得所在位置經緯度</a></p>
+<p>範例：<a href="/demo/201810/google-maps-20-get-current-position-demo-02.html" rel="noreferrer noopener" target="_blank">navigator.geolocation 取得所在位置經緯度</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map, marker, lat, lng;
 function initMap() {
@@ -155,7 +155,7 @@ function initMap() {
 <h2>兩者差異</h2> 
 <p>目前我自己實測起來，navigator.geolocation 比 Geolocation API 還來得準確，畢竟 navigator.geolocation 是把瀏覽器所有可用的資訊拿出來用 ( WiFi 位置、GPS、陀螺儀...等 )，然而 Geolocation API 看起來就只是透過 WiFi 的三角定位來判斷，下面的例子是同時用 navigator.geolocation 和 Geolocation API 在地圖上標記，相差真是十萬八千里...</p>
 <blockquote>
-<p>範例：<a href="/demo/201810/google-maps-20-get-current-position-demo-03.html" target="_blank">navigator.geolocation 取得所在位置經緯度</a></p>
+<p>範例：<a href="/demo/201810/google-maps-20-get-current-position-demo-03.html" rel="noreferrer noopener" target="_blank">navigator.geolocation 取得所在位置經緯度</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201810/google-maps-20-get-current-position-04.jpg" alt=""></p>
 <h2>小結</h2> 
@@ -165,9 +165,9 @@ function initMap() {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

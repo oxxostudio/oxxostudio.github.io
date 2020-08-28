@@ -78,9 +78,9 @@
 div span{
     text-decoration: none;
 }
-</code></pre><p>理論上應該前一段會有底線，後一段會沒有底線，但是實際上卻是一條底線通到底.....( 範例：<a href="/demo/201501/css-text-decoration-demo1.html" target="_blank">css-text-decoration-demo1.html</a> )</p>
+</code></pre><p>理論上應該前一段會有底線，後一段會沒有底線，但是實際上卻是一條底線通到底.....( 範例：<a href="/demo/201501/css-text-decoration-demo1.html" rel="noreferrer noopener" target="_blank">css-text-decoration-demo1.html</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150113_2_02.jpg" alt="CSS 搞怪的 text-decoration"></p>
-<p>不過我不信邪，怕是哪裡 CSS 權重出了問題 ( 參考 <a href="http://www.oxxostudio.tw/articles/201405/css-specificity.html" target="_blank">CSS Specificity</a> )，直接加上萬惡的 important 試試看，結果發現結果還是一模一樣！天呀！是見到鬼了嗎！( 範例：<a href="/demo/201501/css-text-decoration-demo2.html" target="_blank">css-text-decoration-demo2.html</a> )</p>
+<p>不過我不信邪，怕是哪裡 CSS 權重出了問題 ( 參考 <a href="http://www.oxxostudio.tw/articles/201405/css-specificity.html" rel="noreferrer noopener" target="_blank">CSS Specificity</a> )，直接加上萬惡的 important 試試看，結果發現結果還是一模一樣！天呀！是見到鬼了嗎！( 範例：<a href="/demo/201501/css-text-decoration-demo2.html" rel="noreferrer noopener" target="_blank">css-text-decoration-demo2.html</a> )</p>
 <pre class="prettyprint"><code>div{
     font-size:20px;
     text-decoration: underline;
@@ -89,7 +89,7 @@ div span{
     text-decoration: none!important;
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150113_2_02.jpg" alt="CSS 搞怪的 text-decoration"></p>
-<p>由於實在是太詭異了，必須要查明原因，於是我換個角度思考，來改一下顏色試試看吧！一改才發現不得了，為什麼底線會是紅色的呀？！( 範例：<a href="/demo/201501/css-text-decoration-demo3.html" target="_blank">css-text-decoration-demo3.html</a> )</p>
+<p>由於實在是太詭異了，必須要查明原因，於是我換個角度思考，來改一下顏色試試看吧！一改才發現不得了，為什麼底線會是紅色的呀？！( 範例：<a href="/demo/201501/css-text-decoration-demo3.html" rel="noreferrer noopener" target="_blank">css-text-decoration-demo3.html</a> )</p>
 <pre class="prettyprint"><code>div{
     font-size:20px;
     color:#f00;
@@ -101,7 +101,7 @@ div span{
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150113_2_03.jpg" alt="CSS 搞怪的 text-decoration"></p>
 <h2>text-decoration 屬性定義</h2> 
-<p>看到這邊我已經大概知道原因了，最有可能的原因應該就是出在 text-decoration 這個屬性的定義，經過一番追根究柢，總算看到 <a href="http://www.w3.org/TR/CSS21/text.html#lining-striking-props" target="_blank">W3C 的說法</a>，主要是因為 text-decoration 會把<strong>整個父元素加上底線</strong>，而整個父元素，當然就包含了子元素，因為同樣顏色的緣故，就以為子元素也被加上底線了，( 實際上子元素沒有被加上底線 )，不過後來又看了這個專門分析兼容性問題的網站 <a href="http://w3help.org/zh-cn/causes/RT3002" target="_blank">說明</a>，其實 text-decoration 會根據不同的 display 屬性，而決定父元素的底線是否延伸，舉例來說吧！如果今天我把 span 的 display 改成 inline-block，就會得到不同的結果：( 範例：<a href="/demo/201501/css-text-decoration-demo4.html" target="_blank">css-text-decoration-demo4.html</a> )</p>
+<p>看到這邊我已經大概知道原因了，最有可能的原因應該就是出在 text-decoration 這個屬性的定義，經過一番追根究柢，總算看到 <a href="http://www.w3.org/TR/CSS21/text.html#lining-striking-props" rel="noreferrer noopener" target="_blank">W3C 的說法</a>，主要是因為 text-decoration 會把<strong>整個父元素加上底線</strong>，而整個父元素，當然就包含了子元素，因為同樣顏色的緣故，就以為子元素也被加上底線了，( 實際上子元素沒有被加上底線 )，不過後來又看了這個專門分析兼容性問題的網站 <a href="http://w3help.org/zh-cn/causes/RT3002" rel="noreferrer noopener" target="_blank">說明</a>，其實 text-decoration 會根據不同的 display 屬性，而決定父元素的底線是否延伸，舉例來說吧！如果今天我把 span 的 display 改成 inline-block，就會得到不同的結果：( 範例：<a href="/demo/201501/css-text-decoration-demo4.html" rel="noreferrer noopener" target="_blank">css-text-decoration-demo4.html</a> )</p>
 <pre class="prettyprint"><code>div{
     font-size:20px;
     color:#f00;
@@ -114,7 +114,7 @@ div span{
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201501/20150113_2_04.jpg" alt="CSS 搞怪的 text-decoration"></p>
 <h2>小結</h2> 
-<p>不過由於各家瀏覽器的渲染不同，加上已經明白了箇中原理，這裡就不做太多的測試，只要記得下次如果又遇到這種問題，可能就是父元素和子元素互相干擾所造成，自己也要特別留心。最後，好像也可以利用這種方法，做出莫名其妙的效果...( 範例：<a href="/demo/201501/css-text-decoration-demo5.html" target="_blank">css-text-decoration-demo5.html</a> )</p>
+<p>不過由於各家瀏覽器的渲染不同，加上已經明白了箇中原理，這裡就不做太多的測試，只要記得下次如果又遇到這種問題，可能就是父元素和子元素互相干擾所造成，自己也要特別留心。最後，好像也可以利用這種方法，做出莫名其妙的效果...( 範例：<a href="/demo/201501/css-text-decoration-demo5.html" rel="noreferrer noopener" target="_blank">css-text-decoration-demo5.html</a> )</p>
 <p>HTML</p>
 <pre class="prettyprint"><code>&lt;div&gt;
     &lt;span&gt;&lt;span&gt;&lt;span&gt;真是很莫名其妙的效果&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
@@ -143,9 +143,9 @@ div span span span{
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

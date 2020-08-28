@@ -72,7 +72,7 @@
 <p>延伸閱讀：<a href="/articles/201803/ifttt-line.html">IFTTT 發送 LINE 訊息通知</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>申請 LINE Notify 權杖</h2> 
-<p>打開 LINE Notify 的網站 ( <a href="https://notify-bot.line.me/zh_TW/" target="_blank">https://notify-bot.line.me/zh_TW/</a> )，使用自己的 LINE 帳號登入。</p>
+<p>打開 LINE Notify 的網站 ( <a href="https://notify-bot.line.me/zh_TW/" rel="noreferrer noopener" target="_blank">https://notify-bot.line.me/zh_TW/</a> )，使用自己的 LINE 帳號登入。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-01.jpg" alt=""></p>
 <p>登入後滑鼠移至上方個人帳號，選擇「個人頁面」。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-02.jpg" alt=""></p>
@@ -112,7 +112,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201806/line-notify-11.jpg" alt=""></p>
 <p>LINE Notify 也可以發送表情貼圖，語法只要將<code>payload</code>內容稍做修改，寫入「貼圖包類別號碼 stickerPackageId」和「貼圖號碼 stickerId」就能發送貼圖，不過有別於 LINE Bot 可以單獨發送貼圖，<em>LINE Notify 必須具備 message，所以不能把 message 拿掉</em>。</p>
 <blockquote>
-<p>貼圖類別參考：<a href="https://devdocs.line.me/files/sticker_list.pdf" target="_blank">LINE Notify 預設貼圖清單</a></p>
+<p>貼圖類別參考：<a href="https://devdocs.line.me/files/sticker_list.pdf" rel="noreferrer noopener" target="_blank">LINE Notify 預設貼圖清單</a></p>
 </blockquote>
 <pre class="prettyprint"><code>function doPost() {
     UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
@@ -179,16 +179,16 @@
 <p>LINE Notify 其實是相當方便的一個服務，可以串接在很多前端或後端的應用裡，甚至也可以搭配物聯網的服務，做到類似陌生人開門就開通知、太亮了就發通知...等的應用，對於 LINE 的重度使用者來說應該不失為一個好管道，不過如果單純只是要通知，也滿推薦 Slack 的服務，畢竟 LINE 還是比較偏向個人用戶，Slack 則是針對公司團體。</p>
 <blockquote>
 <p>延伸閱讀：<a href="/articles/201801/slack.html">Slack 自動訊息通知</a></p>
-<p>相關參考：<a href="https://notify-bot.line.me/doc/en/" target="_blank">LINE Notify API Document</a></p>
+<p>相關參考：<a href="https://notify-bot.line.me/doc/en/" rel="noreferrer noopener" target="_blank">LINE Notify API Document</a></p>
 </blockquote>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

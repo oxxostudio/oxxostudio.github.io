@@ -88,7 +88,7 @@
 &lt;use xlink:href="#rect1" x="110"/&gt;
 &lt;use xlink:href="#circle1" x="210"/&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140916_1_03.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
-<p>定義漸層色 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html" target="_blank">SVG 研究之路 (7) - fill 填色</a> )：</p>
+<p>定義漸層色 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (7) - fill 填色</a> )：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
    &lt;linearGradient id="a1"&gt;
      &lt;stop offset="5%" stop-color="#F00" /&gt;
@@ -99,7 +99,7 @@
 &lt;circle cx="220" cy="300" r="50" stroke="#000" stroke-width="5" fill="url(#a1)"&gt;&lt;/circle&gt;
 &lt;rect x="290" y="250" width="100" height="100" stroke="url(#a1)" stroke-width="5" fill="none"&gt;&lt;/rect&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140916_1_04.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
-<p>定義文字路徑 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-08-text.html" target="_blank">SVG 研究之路 (8) - text 文字</a> )：</p>
+<p>定義文字路徑 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-08-text.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (8) - text 文字</a> )：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;path id="a1" d="M0 50 C150 150 100 -50 300 50" stroke="#000" fill="none"/&gt;
 &lt;/defs&gt;
@@ -108,7 +108,7 @@
   &lt;/textPath&gt;
 &lt;/text&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140916_1_05.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
-<p>定義剪裁 Cliping ( <a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html" target="_blank">SVG 研究之路 (9) - Clipping and Masking</a> )：</p>
+<p>定義剪裁 Cliping ( <a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (9) - Clipping and Masking</a> )：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;  
   &lt;clipPath id="a1"&gt;
   &lt;rect x="0" y="0" width="200" height="100" /&gt;
@@ -116,7 +116,7 @@
 &lt;/defs&gt;
 &lt;circle cx="100" cy="100" r="100" clip-path="url(#a1)" fill="#000" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140916_1_06.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
-<p>定義剪裁 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html" target="_blank">SVG 研究之路 (9) - Clipping and Masking</a> )：</p>
+<p>定義剪裁 ( <a href="http://www.oxxostudio.tw/articles/201406/svg-09-clipping-masking.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (9) - Clipping and Masking</a> )：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;mask id="mask1"&gt; 
     &lt;rect  x="50" y="50" width="100" height="100" fill="#ccc"/&gt;
@@ -126,7 +126,7 @@
   &lt;rect id="box1" x="50" y="50" width="150" height="150" fill="#0f0"/&gt;
   &lt;rect id="box2" x="50" y="50" width="150" height="150" fill="#f00" mask="url(#mask1)"/&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140916_1_09.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
-<p>定義線段 marker ( <a href="http://www.oxxostudio.tw/articles/201409/svg-17-storke-marker.html" target="_blank">SVG 研究之路 (17) - Stroke-marker</a> )：</p>
+<p>定義線段 marker ( <a href="http://www.oxxostudio.tw/articles/201409/svg-17-storke-marker.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (17) - Stroke-marker</a> )：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
   &lt;marker id="r" viewBox="-10 -10 70 70" refX="25" refY="25" markerWidth="15" markerHeight="15" orient="auto" &gt;
       &lt;circle fill="#fff" stroke="#000" stroke-width="10" cx="25" cy="25" r="25"/&gt;
@@ -140,7 +140,7 @@
 &lt;/defs&gt;
 &lt;polyline points="20,100 50,100 80,20 110,80 140,30 170,100 200,100" fill="none" stroke="black" stroke-width="1" marker-end="url(#b)" marker-start="url(#r)" marker-mid="url(#g)"&gt;&lt;/polyline&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140916_1_07.png" alt="SVG 研究之路 (18) - 再談 defs"></p>
-<p>使用 defs 定義 filter ( <a href="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html" target="_blank">SVG 研究之路 (13) - filter - feGaussianBlur</a> )：</p>
+<p>使用 defs 定義 filter ( <a href="http://www.oxxostudio.tw/articles/201406/svg-13-filter-feGaussianBlur.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (13) - filter - feGaussianBlur</a> )：</p>
 <pre class="prettyprint"><code>&lt;defs&gt;
 &lt;filter width="200" height="200" x="0" y="0" id="blur" filterUnits="userSpaceOnUse"&gt;
   &lt;feGaussianBlur stdDeviation="5" /&gt;
@@ -153,9 +153,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

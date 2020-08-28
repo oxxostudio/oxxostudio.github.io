@@ -102,7 +102,7 @@ var polygonPath = []; // 繪製後的多邊形陣列
 <li><em>第二種：兩塊以上</em>：一組陣列中有兩組以上的子陣列，例如台東縣、金門縣...等。</li>
 <li><em>第三種：三塊以上</em>：一組陣列中有另外一個子陣列，同時子陣列中又包含一個以上的孫陣列，例如嘉義縣包著嘉義市 ( 嘉義市屬於第一種 )、新北市包著台北市...等。</li>
 </ul>
-<p>面對這三種資料，就得分別用邏輯判斷將其獨立出來，<em>特別是第三種</em>，回想在 <a href="/articles/201802/google-maps-11-polygon.html" target="_blank">Google Maps (11) - 形狀 ( 多邊形 Polygon )</a> 這篇文章有介紹，多邊形如果是有 A 包著 B 的狀況，會由其座標點繪製的順時針或逆時針方向，取決其交集或聯集的呈現結果，幸好 GeoJSON 原始資料已經有處理，只要正常載入就不會有問題 ( 像是嘉義縣，如果只載入外框，那麼最後產生的形狀，就會和嘉義市互相重疊 )，完成後就可以透過<code>new google.maps.Polygon</code>依序在地圖上畫出行政區域形狀。</p>
+<p>面對這三種資料，就得分別用邏輯判斷將其獨立出來，<em>特別是第三種</em>，回想在 <a href="/articles/201802/google-maps-11-polygon.html" rel="noreferrer noopener" target="_blank">Google Maps (11) - 形狀 ( 多邊形 Polygon )</a> 這篇文章有介紹，多邊形如果是有 A 包著 B 的狀況，會由其座標點繪製的順時針或逆時針方向，取決其交集或聯集的呈現結果，幸好 GeoJSON 原始資料已經有處理，只要正常載入就不會有問題 ( 像是嘉義縣，如果只載入外框，那麼最後產生的形狀，就會和嘉義市互相重疊 )，完成後就可以透過<code>new google.maps.Polygon</code>依序在地圖上畫出行政區域形狀。</p>
 <pre class="prettyprint"><code>features.forEach(function(i, index) {
   name.push(i.properties.name); // 將各個行政區的名字記錄到 name 陣列中
   if (i.geometry.coordinates.length == 1) {
@@ -160,7 +160,7 @@ var polygonPath = []; // 繪製後的多邊形陣列
 </code></pre><h2>畫完行政區域要做的事：加入滑鼠事件、打開資訊視窗</h2> 
 <p>畫完行政區後要做的事情就簡單了，就是為每個行政區的多邊形，加入滑鼠 <em>click</em> 事件，在點擊行政區時會抓取滑鼠的經緯度座標，接著把這個座標丟給資訊視窗，讓資訊視窗在這個座標開啟，同時顯示對應的行政區域名稱，此外也可以使用 <em>mouseover</em> 和 <em>mouseout</em> 事件，在滑鼠移到行政區上方會改變顏色，移出行政區又會恢復顏色。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-16-taiwan-infowindow-demo-01.html" target="_blank">點擊台灣行政區域，出現資訊視窗</a></p>
+<p>範例：<a href="/demo/201803/google-maps-16-taiwan-infowindow-demo-01.html" rel="noreferrer noopener" target="_blank">點擊台灣行政區域，出現資訊視窗</a></p>
 </blockquote>
 <pre class="prettyprint"><code>// 為每個多邊形加上滑鼠點擊事件
 polygonPath[index].addListener('click', function(e) {
@@ -192,18 +192,18 @@ polygonPath[index].addListener('mouseout', function(e) {
 <p>如果已經熟悉多邊形 Polygon 和資訊視窗 infowindow 的用法，其實只要了解資料格式，就能夠很簡單的在地圖上做出想要的效果，之後應該還會再找篇幅，應用更多不同的資料在地圖上呈現。。</p>
 <h2>參考</h2> 
 <ul>
-<li><a href="/articles/201802/google-maps-8-infowindow.html" target="_blank">Google Maps (8) - 資訊視窗 ( Infowindow )
+<li><a href="/articles/201802/google-maps-8-infowindow.html" rel="noreferrer noopener" target="_blank">Google Maps (8) - 資訊視窗 ( Infowindow )
 </a></li>
-<li><a href="/articles/201802/google-maps-11-polygon.html" target="_blank">Google Maps (11) - 形狀 ( 多邊形 Polygon )</a></li>
+<li><a href="/articles/201802/google-maps-11-polygon.html" rel="noreferrer noopener" target="_blank">Google Maps (11) - 形狀 ( 多邊形 Polygon )</a></li>
 </ul>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

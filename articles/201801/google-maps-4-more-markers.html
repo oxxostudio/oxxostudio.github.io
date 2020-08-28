@@ -72,7 +72,7 @@
 <p>如果有多個地圖標記，可以用個陣列來裝載對應的標籤、經緯度...等資訊，舉例來說，這裡使用一個名為 position 的陣列，將五個地圖標記的資訊用物件的方式放在裡頭，同時建立一個空的 markers 陣列，用這個陣列的內容來宣告一個個新的地圖標記。</p>
 <p>在這裡有個比較需要注意的地方，就是<code>addMarker(e)</code>這個 function，如果把這個 function 放在<code>initMap()</code>的外面，會發生地圖還沒載入就執行<code>addMarker(e)</code>而發生錯誤，所以要放在裡頭。</p>
 <blockquote>
-<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-01.html" target="_blank">放入多個地圖標記</a></p>
+<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-01.html" rel="noreferrer noopener" target="_blank">放入多個地圖標記</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 var markers = [];
@@ -189,12 +189,12 @@ function clearMarkers() {
 }
 </code></pre><p>雖然到這邊好像完成，但是<strong>實際上操作起來會有問題！實際上操作起來會有問題！實際上操作起來會有問題！</strong>( 很重要所以說三次 ) 因為使用順序宣告的關係，可能會造成點擊按鈕清空標記的時候，還沒有宣告完成標記，結果就造成快速連點按鈕時，會出現地圖標記卡在地圖上的狀況。</p>
 <blockquote>
-<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-02.html" target="_blank">連點會有問題的地圖標記</a></p>
+<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-02.html" rel="noreferrer noopener" target="_blank">連點會有問題的地圖標記</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201801/google-maps-4-more-markers-03.gif" alt=""></p>
 <p>所以如果要解決這個狀況，就變成要把 marker 的部分改成用<code>push</code>的，就可以一勞永逸地解決這問題。</p>
 <blockquote>
-<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-03.html" target="_blank">點擊按鈕，依序放入地圖標記</a></p>
+<p>範例：<a href="/demo/201801/google-maps-4-more-markers-demo-03.html" rel="noreferrer noopener" target="_blank">點擊按鈕，依序放入地圖標記</a></p>
 </blockquote>
 <pre class="prettyprint"><code>function addMarker(e) {
   setTimeout(function() {
@@ -215,9 +215,9 @@ function clearMarkers() {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

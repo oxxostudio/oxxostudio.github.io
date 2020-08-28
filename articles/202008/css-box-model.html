@@ -69,7 +69,7 @@
 <h1>深入理解 CSS Box Model ( 盒子模型 )</h1> 
 <p>CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Box Model 的定義</h2> 
-<p>Box Model 主要由四個部分主成，由內而外分別是 <em>Content ( 內容 )</em>、<em>Padding ( 內邊距 )</em>、<em>Border ( 邊框 )</em> 和 <em>Margin ( 外邊距 )</em>。( 圖片來源 <a href="https://drafts.csswg.org/css2/box.html" target="_blank">csswg.org</a> )</p>
+<p>Box Model 主要由四個部分主成，由內而外分別是 <em>Content ( 內容 )</em>、<em>Padding ( 內邊距 )</em>、<em>Border ( 邊框 )</em> 和 <em>Margin ( 外邊距 )</em>。( 圖片來源 <a href="https://drafts.csswg.org/css2/box.html" rel="noreferrer noopener" target="_blank">csswg.org</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-01.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
 <h2>撰寫語法</h2> 
 <p>除了 Content，Padding、Border 和 Margin 都有相同定義寬度的撰寫語法，撰寫的方法可分為下列幾種，單位可以設定為像素 px、百分比 % 或 em、rem 等。</p>
@@ -94,7 +94,7 @@
 </blockquote>
 <p>舉例來說，在一個寬度為 200px 的 div 裡放入兩個 div，設定第二個 div 的<code>margin-top</code>為 -10%，則第二個 div 就會向上移動 <em>20px</em> ( <code>200x(-0.1)=-20</code> )。</p>
 <blockquote>
-<p>範例：<a href="/demo/202008/css-box-model-demo-01.html" target="_blank">margin 設定負值以及 %</a></p>
+<p>範例：<a href="/demo/202008/css-box-model-demo-01.html" rel="noreferrer noopener" target="_blank">margin 設定負值以及 %</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-02.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
 <h2>Margin 邊距重疊 ( Collapsing margins )</h2> 
@@ -104,7 +104,7 @@
 <ul>
 <li>「<em>父元素</em>」有設定 padding 或 border 的寬度。</li>
 <li>水平邊距不會重疊。</li>
-<li>屬於「<em>不同的 BFC 內</em>」的元素 ( <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context" target="_blank">什麼是 BFC？</a> )，例如：<ul>
+<li>屬於「<em>不同的 BFC 內</em>」的元素 ( <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context" rel="noreferrer noopener" target="_blank">什麼是 BFC？</a> )，例如：<ul>
 <li>position 使用 absolute、fixed 的元素。</li>
 <li>元素間穿插了 BFC 元素，例如 inline、table...等。</li>
 <li>display 屬性為 inline-block、table-cell、table-caption 的元素。</li>
@@ -118,14 +118,14 @@
 <li><p><em>範例 1、父子元素邊距重疊</em></p>
 <p>在這個例子中，兩個 div 為父子元素，在沒有設定 border 的狀態下，可以看到兩個 div 之間的垂直 margin 失去作用，發生邊距重疊現象，只剩下水平的 margin 有效果，但如果設定了 border，margin 的效果就會正常顯示。</p>
 <blockquote>
-<p>範例：<a href="/demo/202008/css-box-model-demo-02.html" target="_blank">父子元素邊距重疊</a></p>
+<p>範例：<a href="/demo/202008/css-box-model-demo-02.html" rel="noreferrer noopener" target="_blank">父子元素邊距重疊</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-03.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
 </li>
 <li><p><em>範例 2、兄弟元素邊距重疊</em></p>
 <p>在這個例子裡，如果是兩個兄弟階層的 div，他們是屬於同一個 BFC 內的元素，因此會發生邊距重疊現象 ( margin 都設定 20px，預期應該要是 40px，但呈現出來卻只有 20px )，不過如果將其中一個的 <em>display 設定為 inline-block</em>，就會創建一個 BFC，也因此就不會發生邊距重疊，同理，如果在<em>兩個 div 中間穿插一個 span</em>，也不會發生邊距重疊。</p>
 <blockquote>
-<p>範例：<a href="/demo/202008/css-box-model-demo-02.html" target="_blank">兄弟元素邊距重疊</a></p>
+<p>範例：<a href="/demo/202008/css-box-model-demo-02.html" rel="noreferrer noopener" target="_blank">兄弟元素邊距重疊</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-04.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
 </li>
@@ -143,7 +143,7 @@
 </blockquote>
 <p>舉例來說，有兩個寬度同樣為 200px 的 div，padding 都設定為 20px，有設定 box-sizing 為 border-box 的寬度仍舊是 200px，沒有設定的則是 240px ( 200 + 20 + 20 )。</p>
 <blockquote>
-<p>範例：<a href="/demo/202008/css-box-model-demo-04.html" target="_blank">padding 和 box-sizing</a></p>
+<p>範例：<a href="/demo/202008/css-box-model-demo-04.html" rel="noreferrer noopener" target="_blank">padding 和 box-sizing</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-05.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
 <h2>Border</h2> 
@@ -159,8 +159,8 @@
 <h2>參考</h2> 
 <blockquote>
 <ul>
-<li><a href="https://drafts.csswg.org/css2/box.html" target="_blank">https://drafts.csswg.org/css2/box.html</a></li>
-<li><a href="https://drafts.csswg.org/css2/box.html" target="_blank">https://www.w3.org/TR/css-box-3/</a></li>
+<li><a href="https://drafts.csswg.org/css2/box.html" rel="noreferrer noopener" target="_blank">https://drafts.csswg.org/css2/box.html</a></li>
+<li><a href="https://drafts.csswg.org/css2/box.html" rel="noreferrer noopener" target="_blank">https://www.w3.org/TR/css-box-3/</a></li>
 </ul>
 </blockquote>
 
@@ -168,9 +168,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

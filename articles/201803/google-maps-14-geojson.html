@@ -145,7 +145,7 @@
 <h2>產生 GeoJSON</h2> 
 <p>雖然說已經知道了 GeoJSON 的格式，但要產生 GeoJSON 最麻煩的仍然是那些小數點好多位數的「座標」，這時候就要透過 geojson.io 這個線上服務，來幫我們產生標準又漂亮的 GeoJSON。</p>
 <blockquote>
-<p>參考連結：<a href="http://geojson.io/" target="_blank">http://geojson.io/</a></p>
+<p>參考連結：<a href="http://geojson.io/" rel="noreferrer noopener" target="_blank">http://geojson.io/</a></p>
 </blockquote>
 <p>打開網頁後，映入眼簾的是左右兩個視窗，左邊的視窗是地圖，右上角有繪圖的工具，右邊的視窗會根據所繪製的圖案，自動產生 GroJSON。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-03.jpg" alt=""></p>
@@ -159,7 +159,7 @@
 <pre class="prettyprint"><code>map.data.loadGeoJson('GeoJSON.json');
 </code></pre><p>舉例來說，下面這段程式碼，就會在地圖上載入上面我們所畫好的台北世貿中心。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-01.html" target="_blank">Google 地圖顯示 GeoJSON 資料</a></p>
+<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-01.html" rel="noreferrer noopener" target="_blank">Google 地圖顯示 GeoJSON 資料</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 function initMap() {
@@ -173,7 +173,7 @@ function initMap() {
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-06.jpg" alt=""></p>
 <p>不過很神奇的，載入之後我們原本設定的樣式反而不見了，這時候就得使用<code>Data.setStyle()</code>方法來指定資料外觀，以剛剛的例子來說，只要改寫成下面這樣，就能讓原本的形狀多了些色彩。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-02.html" target="_blank">Google 地圖顯示 GeoJSON 資料 - 改變樣式 1</a></p>
+<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-02.html" rel="noreferrer noopener" target="_blank">Google 地圖顯示 GeoJSON 資料 - 改變樣式 1</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 function initMap() {
@@ -195,7 +195,7 @@ function initMap() {
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-07.jpg" alt=""></p>
 <p>如果還是想使用我們自定義的 GeoJSON 樣式該怎麼做呢？這時就得用到<code>map.data.setStyle(function(feature)){}</code>來取的每筆資料的屬性，下面的例子將會把我們自定義的 properties 的樣式取出，套用到 Google 地圖上。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-03.html" target="_blank">Google 地圖顯示 GeoJSON 資料 - 改變樣式 2</a></p>
+<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-03.html" rel="noreferrer noopener" target="_blank">Google 地圖顯示 GeoJSON 資料 - 改變樣式 2</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 function initMap() {
@@ -219,7 +219,7 @@ function initMap() {
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-14-geojson-08.jpg" alt=""></p>
 <p>同樣道理，如果我們手動在 properties 內定義一個名為 name 的屬性，就可以在「多個形狀」的資料下，指定每筆資料產生的形狀樣式，以下面的例子來說，透過 name 的屬性，就能指定紅色和綠色的區塊按照 GeoJSON 的配置顯示色彩，而另外一個區塊就用預設的 Google 形狀來顯示。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-04.html" target="_blank">Google 地圖顯示 GeoJSON 資料 - 多個形狀</a></p>
+<p>範例：<a href="/demo/201803/google-maps-14-geojson-demo-04.html" rel="noreferrer noopener" target="_blank">Google 地圖顯示 GeoJSON 資料 - 多個形狀</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 function initMap() {
@@ -247,19 +247,19 @@ function initMap() {
 <p>基本上透過 Google 地圖來顯示 GeoJSON 資料沒有太大的難度，比較難的是讀取資料後要怎麼用視覺化呈現，讓使用者可以一目瞭然，接下來會再嘗試讀取資料後再做一些變化，敬請期待囉~ ^_^</p>
 <h2>參考</h2> 
 <ul>
-<li><a href="http://geojson.io/" target="_blank">http://geojson.io/</a></li>
-<li><a href="https://github.com/g0v/twgeojson/" target="_blank">g0v twgeojson</a></li>
-<li><a href="https://developers.google.com/maps/documentation/javascript/datalayer?hl=zh-tw" target="_blank">Google Mpas API 資料圖層</a></li>
-<li><a href="https://kuro.tw/posts/2015/04/28/through-the-google-maps-api-geojson-data/" target="_blank">透過 Google Maps API 處理 GeoJSON 資料</a></li>
+<li><a href="http://geojson.io/" rel="noreferrer noopener" target="_blank">http://geojson.io/</a></li>
+<li><a href="https://github.com/g0v/twgeojson/" rel="noreferrer noopener" target="_blank">g0v twgeojson</a></li>
+<li><a href="https://developers.google.com/maps/documentation/javascript/datalayer?hl=zh-tw" rel="noreferrer noopener" target="_blank">Google Mpas API 資料圖層</a></li>
+<li><a href="https://kuro.tw/posts/2015/04/28/through-the-google-maps-api-geojson-data/" rel="noreferrer noopener" target="_blank">透過 Google Maps API 處理 GeoJSON 資料</a></li>
 </ul>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

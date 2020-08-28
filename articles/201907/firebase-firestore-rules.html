@@ -124,7 +124,7 @@
   }
 }
 </code></pre><h2>定義規則</h2> 
-<p>以下規則將使用「<a href="https://www.oxxostudio.tw/articles/201905/firebase-firestore.html" target="_blank">Firebase 教學 - Firestore 安裝、寫入和讀取</a>」裡的專案作為範例，專案結構如下圖為一個包含五種水果名字文件的 fruit 集合。</p>
+<p>以下規則將使用「<a href="https://www.oxxostudio.tw/articles/201905/firebase-firestore.html" rel="noreferrer noopener" target="_blank">Firebase 教學 - Firestore 安裝、寫入和讀取</a>」裡的專案作為範例，專案結構如下圖為一個包含五種水果名字文件的 fruit 集合。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-firestore-rules-01.jpg" alt=""></p>
 <p>如果我們把規則寫成<code>match /fruit/{document}</code>，因為只有單一個集合，那麼它的效果幾乎等同於<code>match /{document=**}</code>，使用模擬工具測試可以看到，針對 fruit 裡的 orange 文件，可以允許寫入資料。</p>
 <pre class="prettyprint"><code>service cloud.firestore {
@@ -218,7 +218,7 @@
 }
 </code></pre><p>規則也可以強制使用者登入後才能讀取或寫入，下方的規則使用了<code>request.auth.uid</code>的方法，取得註冊用戶的 uid，<em>如果沒有 uid 則禁止讀取或寫入</em>。</p>
 <blockquote>
-<p>註冊使用者的方法和 RealTime Database 一模一樣，只需把資料庫的部分換成 Firestore 即可，請參考：<a href="https://www.oxxostudio.tw/articles/201905/firebase-simple-signup.html" target="_blank">Firebase 教學 - 簡單的使用者註冊功能</a></p>
+<p>註冊使用者的方法和 RealTime Database 一模一樣，只需把資料庫的部分換成 Firestore 即可，請參考：<a href="https://www.oxxostudio.tw/articles/201905/firebase-simple-signup.html" rel="noreferrer noopener" target="_blank">Firebase 教學 - 簡單的使用者註冊功能</a></p>
 </blockquote>
 <pre class="prettyprint"><code>service cloud.firestore {
   match /databases/{database}/documents {
@@ -239,16 +239,16 @@
 </code></pre><h2>小結</h2> 
 <p>整體來說，我覺得 Firestore 的規則比 RealTime Database 的規則還要有彈性，實作起來在理解上也差不多，本篇文章所介紹的規則應該可以滿足大多數的使用情境，不過如果有更複雜的流程，就得在規則上多加琢磨了。</p>
 <blockquote>
-<p>參考：<a href="https://firebase.google.com/docs/reference/rules/rules#properties" target="_blank">Cloud Firestore Rules</a></p>
+<p>參考：<a href="https://firebase.google.com/docs/reference/rules/rules#properties" rel="noreferrer noopener" target="_blank">Cloud Firestore Rules</a></p>
 </blockquote>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

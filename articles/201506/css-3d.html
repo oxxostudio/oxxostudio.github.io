@@ -70,9 +70,9 @@
 <p><img src="/img/articles/201506/css-3d.jpg" class="preview-img" alt=""></p>
 <p>這篇 CSS 3D 的文章，其實醞釀已久，從 CSS 3D 出來的時候就已經在關注，只是要寫 CSS 3D 真的很費工，裏頭太多東西要講，加上最近在做 Webduino 這個可以改變世界的事業 ( Webduino 超讚呀！ )，所以就一直擱著了，趁著端午連假，一口氣把它搞定吧！</p>
 <p>雖然 CSS 3D 並非真的 3D，CSS 3D 坦白說就是純粹利用計算的方法，藉由瀏覽器的高效能，在 2D 的空間繪製一個 3D 的圖形，就像我們拿張紙，用鉛筆在上頭畫個正立方體之類的，也因為是藉用了瀏覽器來運算，自然而然非常地耗效能，往往只要有過多的形狀轉換為 3D 呈現，就會發現電腦的風扇開始狂轉，這也是使用 CSS 3D 必須要注意的地方，畢竟 CSS 原本就不是拿來做 3D 應用的技術，可以畫 3D，只是可以加強 CSS 呈現的美感和能力，但用在精細的 3D 動畫或轉場效果，還是交給專業的 3D 繪圖軟體來進行。</p>
-<p>從這篇開始以及再來的一兩篇，將會深入介紹 CSS 3D 的繪圖以及直接做些應用，如果你已經會了 CSS 3D，不妨也可以看看正多面體該如何製作，可以參考這兩篇：<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html" target="_blank">玩轉 CSS 3D - 正四面體與正六面體</a>、<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-2.html" target="_blank">玩轉 CSS 3D - 正八面體與正十二面體</a>。</p>
+<p>從這篇開始以及再來的一兩篇，將會深入介紹 CSS 3D 的繪圖以及直接做些應用，如果你已經會了 CSS 3D，不妨也可以看看正多面體該如何製作，可以參考這兩篇：<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html" rel="noreferrer noopener" target="_blank">玩轉 CSS 3D - 正四面體與正六面體</a>、<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-2.html" rel="noreferrer noopener" target="_blank">玩轉 CSS 3D - 正八面體與正十二面體</a>。</p>
 <blockquote>
-<p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
+<p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" rel="noreferrer noopener" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>3D 起手式</h2> 
 <p>我們這邊先來用 Google SketchUp 這個免費的 3D 建模軟體，看一下最普通的 3D 繪圖的介面，從裏頭最基本的會有三個元素，第一個：攝影鏡頭，第二個：立體空間，第三個：立體物件。</p>
@@ -104,7 +104,7 @@
     -webkit-perspective:500px;
 }
 </code></pre><h2>設定 space</h2> 
-<p>攝影機完成後，就是要設定一個立體空間 space，這個空間設定的方式很簡單，只要設定一個屬性：transform-style，這個屬性預設為 flat，也就是只要是這個 div 內的子元素，一律都是以扁平 ( flat ) 的方式呈現，所屬的變換 transform 也一律都是用 flat 的方式變換，換句話說就是沒有 Z 軸的存在，為了讓內容元素都是立體元素，所以我們要將 transform-style 設為 3D，如此一來內容元素就全部都可以用 3D 進行變換，為了方便區隔，下面我將 space 外圍多一個 boder 做識別。( 範例：<a href="/demo/201506/css-3d-demo01.html" target="_blank">css-3d-demo01.html</a> )</p>
+<p>攝影機完成後，就是要設定一個立體空間 space，這個空間設定的方式很簡單，只要設定一個屬性：transform-style，這個屬性預設為 flat，也就是只要是這個 div 內的子元素，一律都是以扁平 ( flat ) 的方式呈現，所屬的變換 transform 也一律都是用 flat 的方式變換，換句話說就是沒有 Z 軸的存在，為了讓內容元素都是立體元素，所以我們要將 transform-style 設為 3D，如此一來內容元素就全部都可以用 3D 進行變換，為了方便區隔，下面我將 space 外圍多一個 boder 做識別。( 範例：<a href="/demo/201506/css-3d-demo01.html" rel="noreferrer noopener" target="_blank">css-3d-demo01.html</a> )</p>
 <pre class="prettyprint"><code>.space{
     width:100%;
     height:100%;
@@ -115,7 +115,7 @@
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_07.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
 <h2>設定 box</h2> 
-<p>最後就是內容元素 box 了，我們可以添加一個 100px x 100px 的 box 進去，接著，用這個 box 來複習一下前面講的觀念，在<strong>沒有設定 box 的 traslateZ、rotate 的情形下，不論我們如何去修改 camera 的 perspective-origin 和 perspective，box 的大小和位置都不會有變化</strong>，為什麼呢？因為在沒有設定 box 的 translateZ 或 rotate，讓 Z 的深度有所變化，攝影機透過 perspective 看出去的位置都是相同的，也造成不論怎麼去看這個 box 都是一樣的大小。( 範例：<a href="/demo/201506/css-3d-demo02.html" target="_blank">css-3d-demo02.html</a> )</p>
+<p>最後就是內容元素 box 了，我們可以添加一個 100px x 100px 的 box 進去，接著，用這個 box 來複習一下前面講的觀念，在<strong>沒有設定 box 的 traslateZ、rotate 的情形下，不論我們如何去修改 camera 的 perspective-origin 和 perspective，box 的大小和位置都不會有變化</strong>，為什麼呢？因為在沒有設定 box 的 translateZ 或 rotate，讓 Z 的深度有所變化，攝影機透過 perspective 看出去的位置都是相同的，也造成不論怎麼去看這個 box 都是一樣的大小。( 範例：<a href="/demo/201506/css-3d-demo02.html" rel="noreferrer noopener" target="_blank">css-3d-demo02.html</a> )</p>
 <pre class="prettyprint"><code>.box{
     width:100px;
     height:100px;
@@ -125,7 +125,7 @@
     -webkit-transform:translateX(50px) translateY(50px);
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_08.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
-<p>不過當我們給 box     改變 Z 軸的深度之後 ( 這裡我先把 translateZ 設定為 150px )，再去改變 camera 的 perspective-origin 和 perspective，一切彷彿就有了變化。( 範例：<a href="/demo/201506/css-3d-demo03.html" target="_blank">css-3d-demo03.html</a> )</p>
+<p>不過當我們給 box     改變 Z 軸的深度之後 ( 這裡我先把 translateZ 設定為 150px )，再去改變 camera 的 perspective-origin 和 perspective，一切彷彿就有了變化。( 範例：<a href="/demo/201506/css-3d-demo03.html" rel="noreferrer noopener" target="_blank">css-3d-demo03.html</a> )</p>
 <pre class="prettyprint"><code>.box{
     width:100px;
     height:100px;
@@ -135,7 +135,7 @@
     -webkit-transform:translateX(50px) translateY(50px) translateZ(150px);
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_09.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
-<p>大概了解之後，來把 box 旋轉一下角度，看得應該就會更清楚，當攝影機的變成廣角，也就是 perspective 變短，整個旋轉後變形也會更加明顯，大家可以用開發者工具修改 camera 的 perspective 就會明白。( 範例：<a href="/demo/201506/css-3d-demo04.html" target="_blank">css-3d-demo04.html</a> )</p>
+<p>大概了解之後，來把 box 旋轉一下角度，看得應該就會更清楚，當攝影機的變成廣角，也就是 perspective 變短，整個旋轉後變形也會更加明顯，大家可以用開發者工具修改 camera 的 perspective 就會明白。( 範例：<a href="/demo/201506/css-3d-demo04.html" rel="noreferrer noopener" target="_blank">css-3d-demo04.html</a> )</p>
 <pre class="prettyprint"><code>.box{
     width:100px;
     height:100px;
@@ -147,7 +147,7 @@
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_10.gif" alt="玩轉 CSS 3D - 原理篇"></p>
 <p>改變一下 perspective-origin 也會很有意思。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_11.gif" alt="玩轉 CSS 3D - 原理篇"></p>
-<p>再來我們加入多一點的 box，並且讓這些 box 的位置改變或旋轉，看看效果如何，這裡比較需要注意的地方，是我們必須要額外在每個 box 加入 position:absolute 的屬性，因為 div 本身為 block 屬性，會互相擠壓，要設定位置為絕對位置，才會正確地放在 space 裏頭。( 範例：<a href="/demo/201506/css-3d-demo05.html" target="_blank">css-3d-demo05.html</a> )</p>
+<p>再來我們加入多一點的 box，並且讓這些 box 的位置改變或旋轉，看看效果如何，這裡比較需要注意的地方，是我們必須要額外在每個 box 加入 position:absolute 的屬性，因為 div 本身為 block 屬性，會互相擠壓，要設定位置為絕對位置，才會正確地放在 space 裏頭。( 範例：<a href="/demo/201506/css-3d-demo05.html" rel="noreferrer noopener" target="_blank">css-3d-demo05.html</a> )</p>
 <pre class="prettyprint"><code>.space div{
     position:absolute;
     width:100px;
@@ -179,7 +179,7 @@
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_12.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
 <p>藉由上述的三個 3D 元素，我們就可以輕鬆的繪製 CSS 3D 圖形，不過除了 camera、space 和 box 之外，還有一個<strong>最重要最重要最重要</strong>的撰寫規律在裏頭 ( 因為很重要所以要講三次 )，這個規律就是 tramsform 裏頭是有順序的，因為 CSS 3D 完全是藉由 2D 演算而來，並不是真的像 3D 軟體是真的有 3D 的空間，所以就變成會「按照順序」進行演算，而且又因為 transform 會造成物體的整個座標軸變換，在順序的編排上就格外重要。</p>
-<p>例如今天我先讓 box 在 X 軸上水平位移 100px 再繞著 Y 軸順時針轉 60 度，和先繞 Y 軸順時針轉 60 度，再在 X 軸上頭水平位移 100px 的結果會<strong>完全不同</strong>，因為當我先繞了 Y 軸轉動，整個 X 軸也會跟著轉動，這時候再做水平位移，位置就會像是在深度做變換。( 範例：<a href="/demo/201506/css-3d-demo06.html" target="_blank">css-3d-demo06.html</a> )</p>
+<p>例如今天我先讓 box 在 X 軸上水平位移 100px 再繞著 Y 軸順時針轉 60 度，和先繞 Y 軸順時針轉 60 度，再在 X 軸上頭水平位移 100px 的結果會<strong>完全不同</strong>，因為當我先繞了 Y 軸轉動，整個 X 軸也會跟著轉動，這時候再做水平位移，位置就會像是在深度做變換。( 範例：<a href="/demo/201506/css-3d-demo06.html" rel="noreferrer noopener" target="_blank">css-3d-demo06.html</a> )</p>
 <pre class="prettyprint"><code>.space div{
     position:absolute;
     width:100px;
@@ -198,7 +198,7 @@
     -webkit-transform:translateY(50px) rotateY(60deg) translateX(100px);
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150619_1_13.jpg" alt="玩轉 CSS 3D - 原理篇"></p>
-<p>transform 的數量少還比較看不出來，當今天 transform 裏頭數量一多，造成的差異就更加明顯，這也是在玩 CSS 3D 最最最最最需要注意的重點所在，一定要注意，一定要注意，一定要注意，非常重要所以再講三次呀！( 範例：<a href="/demo/201506/css-3d-demo07.html" target="_blank">css-3d-demo07.html</a> )</p>
+<p>transform 的數量少還比較看不出來，當今天 transform 裏頭數量一多，造成的差異就更加明顯，這也是在玩 CSS 3D 最最最最最需要注意的重點所在，一定要注意，一定要注意，一定要注意，非常重要所以再講三次呀！( 範例：<a href="/demo/201506/css-3d-demo07.html" rel="noreferrer noopener" target="_blank">css-3d-demo07.html</a> )</p>
 <pre class="prettyprint"><code>.space div{
     position:absolute;
     width:100px;
@@ -224,9 +224,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

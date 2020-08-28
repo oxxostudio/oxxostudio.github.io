@@ -169,7 +169,7 @@
 <pre class="prettyprint"><code>animation:name duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;
 </code></pre><p>縮寫除了在代碼上簡短許多，更可以讓「<em>同一個元素套用多組動畫</em>」，用法只需要在後方用逗點分隔即可，如果有興趣可以參考我在 2014 年寫的文章，熟練 CSS 動畫以後所做的效果真的很不賴呀！</p>
 <blockquote>
-<p>教學文章：<a href="/articles/201406/css-google-loading.html" target="_blank">CSS3動畫 - Google Loading Animation</a></p>
+<p>教學文章：<a href="/articles/201406/css-google-loading.html" rel="noreferrer noopener" target="_blank">CSS3動畫 - Google Loading Animation</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/css-google-loading-03.gif" alt=""></p>
 <h2>(屬性) animation-name 動畫名稱</h2> 
@@ -209,7 +209,7 @@
 <p>以下面的例子來說，三種顏色的方塊都是 5 秒動畫，而藍色的 animation-delay 設為 2s，紅色的
 animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會得到這個結果：<em>藍色：慢兩秒移動，紅色：直接跳到已經移動兩秒的地方開始移動，綠色：一開始就移動</em>。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-01.html" target="_blank">animation-delay 動畫延遲播放時間</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-01.html" rel="noreferrer noopener" target="_blank">animation-delay 動畫延遲播放時間</a></p>
 </blockquote>
 <pre class="prettyprint"><code>div {
   width:50px;
@@ -244,7 +244,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-02.gif" alt=""></p>
 <h2>(屬性) animation-timing-function 動畫加速度函式</h2> 
-<p>如果你對我的這篇文章 <a href="/articles/201406/css-cubic-bezier.html" target="_blank">CSS3 Cubic Bezier</a> 有印象，裡頭就有提到 CSS 動畫加速度函式裡的 Cubic Bezier，不過 animation-timing-function 不只有 Cubic Bezier，還有其他幾個設定選項：</p>
+<p>如果你對我的這篇文章 <a href="/articles/201406/css-cubic-bezier.html" rel="noreferrer noopener" target="_blank">CSS3 Cubic Bezier</a> 有印象，裡頭就有提到 CSS 動畫加速度函式裡的 Cubic Bezier，不過 animation-timing-function 不只有 Cubic Bezier，還有其他幾個設定選項：</p>
 <ul>
 <li><p><strong>linear</strong></p>
 <p>  線性，沒有任何加速減速，在 Cubic Bezier 的圖形表現為斜率 1 的直線。</p>
@@ -260,7 +260,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
 <p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-05.jpg" alt=""></p>
 <p>  舉例來說，下面這個動畫，第一格是紅色，最後一格是黑色，如果我們設定 step-start，看到形狀的會是略過第一格，從綠色開始往左移動四次，每次 50px，若設定為 step-end，則形狀會往左移動四次，每次 50px，但不會有最後一格黑色。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-02.html" target="_blank">step-start、step-end</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-02.html" rel="noreferrer noopener" target="_blank">step-start、step-end</a></p>
 </blockquote>
 <pre class="prettyprint"><code>  @keyframes oxxo{
       0%{
@@ -290,14 +290,14 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
 <p>  steps(int,start|end) 算是剛剛 step-start 和 step-end 的進化型，換句話說 step-start 等同於 <em>steps(1,start)</em>，而 step-end 等同於 <em>steps(1,end)</em>，因為都只走了「<em>一步</em>」，如果我們把 int 步數增加，就會看到每個關鍵影格之間多了一些演算出來的影格，當然如果步數設定越多，看到的動畫也會越流暢 ( 但如果要這麼做，只要不用 step 就好了 )</p>
 <p>  舉例來說，如果把上面的 step-start 改為 <code>steps(3,start)</code>，step-end 改為 <code>steps(3,end)</code>，就會得到下圖的結果。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-03.html" target="_blank">steps(int,start|end)</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-03.html" rel="noreferrer noopener" target="_blank">steps(int,start|end)</a></p>
 </blockquote>
 <p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-07.gif" alt=""></p>
 <p>  如果熟練 steps 的用法，就能夠很簡單的使用 sprite 圖片來做動畫，什麼是 sprite 圖片 呢？就是將許多圖案集合成一張圖，接著透過 CSS 的語法使這些圖案分別呈現在網頁裡，這樣就能大幅減少多張圖片載入的 request 數量。</p>
 <p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-09.jpg" alt=""></p>
 <p>  上圖是一張經典的 sprite 圖片 ( Leland Stanford 所拍攝 )，只要透過 CSS 動畫的 steps，我們也能很簡單的讓圖片中的馬兒跑起來。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-05.html" target="_blank">steps(int,start|end) 製作跑馬動畫</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-05.html" rel="noreferrer noopener" target="_blank">steps(int,start|end) 製作跑馬動畫</a></p>
 </blockquote>
 <pre class="prettyprint"><code>  #hourse {
     width:186px;
@@ -325,7 +325,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-10.gif" alt=""></p>
 </li>
 <li><p><strong>cubic-bezier(n,n,n,n)</strong>：</p>
-<p>  cubic-bezier 表示動畫開始與結束速度的貝茲曲線，詳細可以參考我的這篇 <a href="/articles/201406/css-cubic-bezier.html" target="_blank">CSS3 Cubic Bezier</a> 教學，或是直接到「<a href="http://cubic-bezier.com/" target="_blank">cubic-bezier</a>」這個網站實際操作看看，不過 CSS 動畫說穿了，單純靠 CSS 仍然無法製作很複雜的動畫效果，雖然 cubic-bezier 很強大，但真的拿來實戰的機會卻沒有很高，只要知道用法，需要用到的時候可以用就相當足夠囉！</p>
+<p>  cubic-bezier 表示動畫開始與結束速度的貝茲曲線，詳細可以參考我的這篇 <a href="/articles/201406/css-cubic-bezier.html" rel="noreferrer noopener" target="_blank">CSS3 Cubic Bezier</a> 教學，或是直接到「<a href="http://cubic-bezier.com/" rel="noreferrer noopener" target="_blank">cubic-bezier</a>」這個網站實際操作看看，不過 CSS 動畫說穿了，單純靠 CSS 仍然無法製作很複雜的動畫效果，雖然 cubic-bezier 很強大，但真的拿來實戰的機會卻沒有很高，只要知道用法，需要用到的時候可以用就相當足夠囉！</p>
 </li>
 </ul>
 <h2>(屬性) animation-direction 動畫播放方向</h2> 
@@ -337,7 +337,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
 </ul>
 <p>下面這段程式碼所產生的效果：正方形從左邊跑到右邊，然後再從右邊跑到左邊，無限次數的一直動作。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-04.html" target="_blank">animation-direction</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-04.html" rel="noreferrer noopener" target="_blank">animation-direction</a></p>
 </blockquote>
 <pre class="prettyprint"><code>div {
   width:50px;
@@ -358,7 +358,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
 </ul>
 <p>下面這段程式碼所產生的效果：正方形會一起往左移，動畫停止後紅色正方形留在後方、藍色正方形跳回前方。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-06.html" target="_blank">animation-fill-mode</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-06.html" rel="noreferrer noopener" target="_blank">animation-fill-mode</a></p>
 </blockquote>
 <pre class="prettyprint"><code>.test {
   width:50px;
@@ -392,7 +392,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
 </ul>
 <p>以剛剛提到的「跑馬動畫」為例，透過動畫播放或暫停的屬性，搭配滑鼠 hover 的效果，就能很輕鬆地實現「滑鼠移到區塊上才出現動畫」的效果。( 範例使用剛剛的跑馬動畫修改 )</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-07.html" target="_blank">animation-fill-mode</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-07.html" rel="noreferrer noopener" target="_blank">animation-fill-mode</a></p>
 </blockquote>
 <pre class="prettyprint"><code>#hourse {
   width:186px;
@@ -420,7 +420,7 @@ background-position:-15px -13px;
 </ul>
 <p>單就字面上其實還滿容易理解的，下面的例子會讓動畫播放兩次後停止，並會在動畫下面放上一個字串，用 JavaScript 偵測並顯示現在動畫的狀態。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-08.html" target="_blank">偵測並顯示 Animation Events</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-08.html" rel="noreferrer noopener" target="_blank">偵測並顯示 Animation Events</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var hourse = document.getElementById('hourse');
 var text = document.getElementById('text');
@@ -442,7 +442,7 @@ hourse.addEventListener('animationcancel',function(){
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-14.jpg" alt=""></p>
 <p>如果你覺得上面的例子 CSS 太複雜，可以打開下面這個範例頁面，一樣在 console 輸入<code>document.styleSheets</code>，把呈現出來的結果打開，會看到在 rules 裡包含兩個規則，分別是 id 是 test 的 div，以及名為 oxxo 的動畫規則：<em>CSSKeyframesRules</em>。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-09.html" target="_blank">顯示 CSSKeyframesRules</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-09.html" rel="noreferrer noopener" target="_blank">顯示 CSSKeyframesRules</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/css-animation-15.jpg" alt=""></p>
 <p>再把 CSSKeyframesRule 展開，就能夠看到 cssRules 裡有三個 CSSKeyframesRule，為什麼要看這個呢？因為如果我們想用 JavaScript 操控 CSS 動畫，通常都是直接更換動畫名稱，不然就是修改、添加或刪除 class 來實現，然而如果知道 CSSKeyframesRule，就能夠直接修改動畫內容。</p>
@@ -455,7 +455,7 @@ hourse.addEventListener('animationcancel',function(){
 </ul>
 <p>舉例來說，下面這段程式碼，會在網頁打開的時候，在 console 裡呈現動畫的規則，接著點選按鈕後會出現原本 50% 的 keyframe 規則，同時會移除這個 keyframe 並添加新的 50% keyframe，最後呈現的結果，就可以在「動畫不中斷」的情況下，修改動畫樣式。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/css-animation-demo-10.html" target="_blank">在動畫不中斷的情形下更換動畫樣式</a></p>
+<p>範例：<a href="/demo/201803/css-animation-demo-10.html" rel="noreferrer noopener" target="_blank">在動畫不中斷的情形下更換動畫樣式</a></p>
 </blockquote>
 <p>HTML</p>
 <pre class="prettyprint"><code>&lt;div id="test"&gt;&lt;/div&gt;
@@ -502,15 +502,15 @@ btn.addEventListener('click',function(){
 <h2>小結</h2> 
 <p>當熟練了 CSS 動畫之後，其實不少原本覺得有點複雜的效果都能迎刃而解，甚至也可以因為 CSS 動畫的輔助，大幅減少 JavaScript 程式碼，也能更快速的提高網頁效能，原本自己只是想寫個紀錄的文章，結果反而把 CSS 動畫給徹底研究了一下，也有不少網頁設計改善的想法迸出，CSS 動畫真是太神奇啦！</p>
 <h2>參考</h2> 
-<p>只需要看這篇就夠囉：<a href="https://www.w3.org/TR/css-animations-1/" target="_blank">CSS Animations Level 1</a></p>
+<p>只需要看這篇就夠囉：<a href="https://www.w3.org/TR/css-animations-1/" rel="noreferrer noopener" target="_blank">CSS Animations Level 1</a></p>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

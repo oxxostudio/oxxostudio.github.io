@@ -70,7 +70,7 @@
 <p><img src="/img/articles/201412/svg-d3-06-data-nest.jpg" class="preview-img" alt=""></p>
 <p>之前在「SVG D3.js - 淺談 D3.js 的資料處理」提過基本的數據處理方法，這陣子又研究了一下 d3.js 的 nest，這篇就來介紹一下這個很有意思的數據處理方法：d3.nest。</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html" target="_blank">SVG D3.js - 淺談 D3.js 的資料處理</a></p>
+<p>參考：<a href="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 淺談 D3.js 的資料處理</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>什麼是 nest</h2> 
 <p>nest 就是「巢」的意思 ( 不是潮喔~ 雖然 d3.js 好像有點潮 )，透過 d3.nest 的轉換，可以將原本的數據變成以 key 和 value 為主的巢狀結構，並且可以針對巢狀結構的每個節點進行排序，而所得到的巢狀結構數據，可以在程式裡重複使用而不會影響到原本的數據。</p>
@@ -87,14 +87,14 @@
   {name:'Cherry', score:53, type:'class1' , sex:'woman'},
   {name:'Jean'  , score:68, type:'class4' , sex:'woman'}
 ];
-</code></pre><p>這時候利用 d3.nest，把 type 設為 key，這時候 value 就會以 type 為樹狀結構的節點往下長，這裡我們先使用了 d3.nest 的 key 和 entries 這兩個 API，key 主要讓我們作為節點使用，把要做為節點的值以 key 的方法長出來，最後用 entries 把 data 丟進去。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo1.html" target="_blank">svg-d3-06-data-nest-demo1.html</a>，打開開發者工具看 console 喔~ )</p>
+</code></pre><p>這時候利用 d3.nest，把 type 設為 key，這時候 value 就會以 type 為樹狀結構的節點往下長，這裡我們先使用了 d3.nest 的 key 和 entries 這兩個 API，key 主要讓我們作為節點使用，把要做為節點的值以 key 的方法長出來，最後用 entries 把 data 丟進去。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo1.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo1.html</a>，打開開發者工具看 console 喔~ )</p>
 <pre class="prettyprint"><code>var a = d3.nest()
           .key(function(d){return d.type;})
           .entries(data); 
 
 console.log(a);
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_02.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
-<p>同樣的道理，如果再把 sex 設為第二層 key，就會再依據 sex 長出一層。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo2.html" target="_blank">svg-d3-06-data-nest-demo2.html</a> )</p>
+<p>同樣的道理，如果再把 sex 設為第二層 key，就會再依據 sex 長出一層。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo2.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo2.html</a> )</p>
 <pre class="prettyprint"><code>var a = d3.nest()
         .key(function(d){return d.type;})
         .key(function(d){return d.sex;})
@@ -114,7 +114,7 @@ console.log(a);
 </blockquote>
 <ul>
 <li><p><strong>nest.sortKeys(comparator)</strong></p>
-<p>  這是進行排序的 API，在 sortKeys 內是放入排序的比較函式，不過這裡可以先使用<code>d3.descending</code>降冪或<code>d3.aescending</code>升冪來進行簡單的判斷。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo3.html" target="_blank">svg-d3-06-data-nest-demo3.html</a> )</p>
+<p>  這是進行排序的 API，在 sortKeys 內是放入排序的比較函式，不過這裡可以先使用<code>d3.descending</code>降冪或<code>d3.aescending</code>升冪來進行簡單的判斷。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo3.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo3.html</a> )</p>
 <pre class="prettyprint"><code>  var a = d3.nest()
           .key(function(d){return d.score;})
           .sortKeys(d3.descending)  //降冪
@@ -125,7 +125,7 @@ console.log(a);
           .sortKeys(d3.ascending)  //升冪
               .entries(data); 
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_04.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
-<p>  而 sortKeys 是針對所連接的值進行排序作業，以下面的例子來說，並不會把 type 排序，而是會把 type 內的 score 排序。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo4.html" target="_blank">svg-d3-06-data-nest-demo4.html</a> )</p>
+<p>  而 sortKeys 是針對所連接的值進行排序作業，以下面的例子來說，並不會把 type 排序，而是會把 type 內的 score 排序。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo4.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo4.html</a> )</p>
 <pre class="prettyprint"><code>var a = d3.nest()
         .key(function(d){return d.type;})
         .key(function(d){return d.score;})
@@ -138,7 +138,7 @@ var b = d3.nest()
         .sortKeys(d3.ascending)
             .entries(data); 
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_05.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
-<p>  當然如果不使用 d3 本身的升冪與降冪，也可以使用自定義的方式進行排序，例如下面的範例，就會把分數大於六十的排在上面或排在下面。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo5.html" target="_blank">svg-d3-06-data-nest-demo5.html</a> )</p>
+<p>  當然如果不使用 d3 本身的升冪與降冪，也可以使用自定義的方式進行排序，例如下面的範例，就會把分數大於六十的排在上面或排在下面。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo5.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo5.html</a> )</p>
 <pre class="prettyprint"><code>  var a = d3.nest()
           .key(function(d){return d.score;})
           .sortKeys(function(a){return a&lt;60;})
@@ -151,7 +151,7 @@ var b = d3.nest()
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_06.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
 </li>
 <li><p><strong>nest.sortValues(comparator)</strong></p>
-<p>  sortValues 與 sortKeys 的差異就在於 sortValues 是針對 values 進行排序，而 sortKeys 是針對 key 進行排序 ( 光看名稱應該就很容易理解 )，下面的範例是先用班級分類，然後再進行分數的排序。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo6.html" target="_blank">svg-d3-06-data-nest-demo6.html</a> )</p>
+<p>  sortValues 與 sortKeys 的差異就在於 sortValues 是針對 values 進行排序，而 sortKeys 是針對 key 進行排序 ( 光看名稱應該就很容易理解 )，下面的範例是先用班級分類，然後再進行分數的排序。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo6.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo6.html</a> )</p>
 <pre class="prettyprint"><code>  var a = d3.nest()
           .key(function(d){return d.type;})
           .sortValues(function(i,j) { 
@@ -167,13 +167,13 @@ var b = d3.nest()
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_07.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
 </li>
 <li><p><strong>nest.rollup(function)</strong></p>
-<p>  rollup 翻譯起來是「彙總」的意思，不過這裡翻譯成彙總容易與「sum」有所混淆，rollup 其實是將 value 內的所有東西,根據我們所下的條件，彙總成一個 value，而不是像 sum 一樣，可以把內容的所有數字相加起來得到一個總和，必須要有所區隔，舉例來說，如果我們寫成下面的範例這樣，彙總的 value 就會得到陣列的長度。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo7.html" target="_blank">svg-d3-06-data-nest-demo7.html</a> )</p>
+<p>  rollup 翻譯起來是「彙總」的意思，不過這裡翻譯成彙總容易與「sum」有所混淆，rollup 其實是將 value 內的所有東西,根據我們所下的條件，彙總成一個 value，而不是像 sum 一樣，可以把內容的所有數字相加起來得到一個總和，必須要有所區隔，舉例來說，如果我們寫成下面的範例這樣，彙總的 value 就會得到陣列的長度。( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo7.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo7.html</a> )</p>
 <pre class="prettyprint"><code>  var a = d3.nest()
           .key(function(d){return d.type;})
           .rollup(function(d){return d.length;})
           .entries(data);
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_08.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
-<p>  換個寫法，也可以得到內容所有分數的總和 ( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo8.html" target="_blank">svg-d3-06-data-nest-demo8.html</a> )：</p>
+<p>  換個寫法，也可以得到內容所有分數的總和 ( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo8.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo8.html</a> )：</p>
 <pre class="prettyprint"><code>  var a = d3.nest()
           .key(function(d){return d.type;})
           .rollup(function(d){return d3.sum(d,function(dd){return dd.score;});})
@@ -181,7 +181,7 @@ var b = d3.nest()
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201412/20141206_1_09.jpg" alt="SVG D3.js - 巢狀數據結構 ( d3.nest )"></p>
 </li>
 <li><p><strong>nest.map(array[, mapType])</strong></p>
-<p>  map 與 entries 其實有點類似，就是把 data 的值丟進去 nest 裏頭處理，不過 map 丟進去的出來會變成物件，entries 丟進去的出來會變成陣列，這其實從 console 裏頭可以很明顯的看出來，至於要用 map 還是 entries ，就看這份 data 的使用情境來決定囉。 ( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo9.html" target="_blank">svg-d3-06-data-nest-demo9.html</a> )</p>
+<p>  map 與 entries 其實有點類似，就是把 data 的值丟進去 nest 裏頭處理，不過 map 丟進去的出來會變成物件，entries 丟進去的出來會變成陣列，這其實從 console 裏頭可以很明顯的看出來，至於要用 map 還是 entries ，就看這份 data 的使用情境來決定囉。 ( 範例：<a href="/demo/201412/svg-d3-06-data-nest-demo9.html" rel="noreferrer noopener" target="_blank">svg-d3-06-data-nest-demo9.html</a> )</p>
 <pre class="prettyprint"><code>  var a = d3.nest()
           .key(function(d){return d.sex;})
           .key(function(d){return d.type;})
@@ -201,9 +201,9 @@ var b = d3.nest()
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

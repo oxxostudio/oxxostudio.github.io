@@ -70,13 +70,13 @@
 <p><img src="/img/articles/201406/css-web-font.jpg" class="preview-img" alt=""></p>
 <p>隨著雲端的越來越普及，許多字體的使用也逐漸躍上雲端，「Google Fonts」是我很喜歡使用的一個雲端字體工具，最主要是因為完全免費，加上 Google 的空間和速度，讓許多有特色的英文字體可以在網頁上良好的展現，通常 web font 的格式不外乎就是 woff 這種格式 ( Web Open Font Format )，檔案大小會比一般的 TTF 來得小，但隨著瀏覽器的進步，也越來越多的字體使用 svg 的圖形格式，也可以做出 icon font，至於如何製作，會在另外的篇幅介紹。</p>
 <blockquote>
-<p>參考：<a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> </p>
+<p>參考：<a href="https://www.google.com/fonts" rel="noreferrer noopener" target="_blank">Google Fonts</a> </p>
 </blockquote>
-<p>英文字體除了 Google fonts 之外，其實也有像 <a href="http://html.adobe.com/edge/webfonts/" target="_blank">Adobe Edge Web Fonts</a> 、<a href="http://www.fonts.com/web-fonts" target="_blank">Fonts.com</a>...等這些選擇，至於中文字體，也有像 <a href="http://webfont.arphic.com/" target="_blank">iFontCloud</a>、<a href="http://www.justfont.com" target="_blank">justfont</a> 的服務，不過很可惜都要收費就是了，但後面會介紹如何自己製作中文的字體，不過雖然可以自己製作，但還是比較推薦使用預設的新細明體或正黑體，畢竟中文字體一組通常高達 10 MB 以上，對於網頁瀏覽的負擔實在太重了。</p>
+<p>英文字體除了 Google fonts 之外，其實也有像 <a href="http://html.adobe.com/edge/webfonts/" rel="noreferrer noopener" target="_blank">Adobe Edge Web Fonts</a> 、<a href="http://www.fonts.com/web-fonts" rel="noreferrer noopener" target="_blank">Fonts.com</a>...等這些選擇，至於中文字體，也有像 <a href="http://webfont.arphic.com/" rel="noreferrer noopener" target="_blank">iFontCloud</a>、<a href="http://www.justfont.com" rel="noreferrer noopener" target="_blank">justfont</a> 的服務，不過很可惜都要收費就是了，但後面會介紹如何自己製作中文的字體，不過雖然可以自己製作，但還是比較推薦使用預設的新細明體或正黑體，畢竟中文字體一組通常高達 10 MB 以上，對於網頁瀏覽的負擔實在太重了。</p>
 <p><br>
 首先介紹 Google Fonts 的使用方式：</p>
 <ol>
-<li>進入 Google Fonts 網站 ： <a href="https://www.google.com/fonts" target="_blank">https://www.google.com/fonts</a></li>
+<li>進入 Google Fonts 網站 ： <a href="https://www.google.com/fonts" rel="noreferrer noopener" target="_blank">https://www.google.com/fonts</a></li>
 <li>瀏覽所需要的字體。</li>
 <li><p>點選選擇的字體後方 quick-use 的按鈕。</p>
 <p> <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140606_1_02.png" alt="Google Fonts"></p>
@@ -92,7 +92,7 @@
 以上就是英文字體的使用方式，基本上在 Google Fonts 都可以找到所需的字體，而且英文字體的素材和資源也較為豐富，不太需要擔心英文字體的使用，我們要擔心的反而是中文字體該如何用，以下介紹如何製作自己的中文字體。</p>
 <ol>
 <li>先準備一組自己愛用的字體，例如<em>娃娃體</em> ( 也可以去電腦的控制台，把「字型」資料夾打開，直接複製出來即可 )</li>
-<li>上傳到這個網站：<a href="http://onlinefontconverter.com/" target="_blank">http://onlinefontconverter.com/</a>，可以將字體轉換成 Web font 的格式 (woff) ，當然這個網站不僅可以轉中文，各種語言都能轉啦！</li>
+<li>上傳到這個網站：<a href="http://onlinefontconverter.com/" rel="noreferrer noopener" target="_blank">http://onlinefontconverter.com/</a>，可以將字體轉換成 Web font 的格式 (woff) ，當然這個網站不僅可以轉中文，各種語言都能轉啦！</li>
 <li><p>轉檔好了之後，使用以下的程式碼載入我們的字體檔 ( 請把字體檔放在你的網站空間上 )，就可以利用<code>font-family</code>來控制字體囉！</p>
 <pre class="prettyprint"><code> @font-face {
      font-family: 字體名稱;
@@ -110,9 +110,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

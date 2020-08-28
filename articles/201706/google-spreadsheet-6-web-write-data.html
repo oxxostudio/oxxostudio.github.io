@@ -71,9 +71,9 @@
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>parameter 資料格式</h2> 
 <p>在寫入資料的時候，在 debug.gs 裡面是正常，但要用網頁寫入就會被卡住，追根究底下去發現原來是因為資料格式導致，因為要寫入資料的時候，會向應用程式發送 HTTP GET 的請求，所以必須要按照 Google 所提出的規範來撰寫。</p>
 <blockquote>
-<p>參考：<a href="https://developers.google.com/apps-script/guides/web#url_parameters" target="_blank">URL parameters</a></p>
+<p>參考：<a href="https://developers.google.com/apps-script/guides/web#url_parameters" rel="noreferrer noopener" target="_blank">URL parameters</a></p>
 </blockquote>
-<p>回想一下在 <a href="/articles/201706/google-spreadsheet-4-write-data.html" target="_blank">Google 試算表 (4) - 寫入資料到儲存格</a> 裡面有提到<code>setValues()</code>是用二維陣列儲存，但透過網頁傳值如果真的傳陣列，反而是收不到資料的，因此在傳值的時候要把資料變成「字串」傳遞，接收到資料之後再把字串轉換成陣列。</p>
+<p>回想一下在 <a href="/articles/201706/google-spreadsheet-4-write-data.html" rel="noreferrer noopener" target="_blank">Google 試算表 (4) - 寫入資料到儲存格</a> 裡面有提到<code>setValues()</code>是用二維陣列儲存，但透過網頁傳值如果真的傳陣列，反而是收不到資料的，因此在傳值的時候要把資料變成「字串」傳遞，接收到資料之後再把字串轉換成陣列。</p>
 <p>舉例來說，如果要傳二維陣列的資料進到試算表內，就可以先用<code>.toString()</code>把陣列變成字串，進到 Google App Script 的時候再用<code>.split(',')</code>變成陣列丟給試算表就可以，後面會詳細介紹。</p>
 <pre class="prettyprint"><code>var data = [
   ['123', '456', '789'],
@@ -204,7 +204,7 @@ parameter.data = data.toString();
 &lt;button id="sendBtn"&gt;寫入&lt;/button&gt;
 </code></pre><p>JavaScript 和剛剛的 debug.gs 大同小異，主要就是把欄位的資料帶入 parameter，最後用<code>$.get</code>的方法送出，完成後，填入對應的網址，點選送出，應該就可以看到資料出現在試算表內了。</p>
 <blockquote>
-<p>範例：<a href="/demo/201706/google-spreadsheet-6-web-write-data-demo-01.html" target="_blank">demo-01.html</a></p>
+<p>範例：<a href="/demo/201706/google-spreadsheet-6-web-write-data-demo-01.html" rel="noreferrer noopener" target="_blank">demo-01.html</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var appUrl = $('#appUrl'),
   sheetsUrl = $('#sheetsUrl'),
@@ -233,9 +233,9 @@ sendBtn.on('click', function() {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

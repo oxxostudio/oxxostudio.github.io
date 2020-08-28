@@ -95,7 +95,7 @@ a().then(()=&gt;{
   .....       // 等 a() 完成後接著執行
 });
 </code></pre><h2>利用 async 和 await 做個「漂亮的等待」</h2> 
-<p>比較了解 async 和 await 的意思之後，就來試試看做個「<em>漂亮的等待</em>」，過去我在 <a href="/articles/201706/javascript-promise-settimeout.html#_self" target="_blank">JavaScript 同步延遲 ( Promise + setTimeout )</a> 一文裡，有使用 ES6 的 promise 來實現 delay ( 如同下方的程式範例 )，這個 delay 透過<code>.then</code>來完成一步一步的串接，雖然邏輯上很清楚，但若要實作比較複雜的流程，就得把每個程式寫在對應的 callback 裏，也就沒有想像的容易，這就是「不太漂亮的等待」 ( 使用 setTimeout 的做法就是不漂亮的等待 )。</p>
+<p>比較了解 async 和 await 的意思之後，就來試試看做個「<em>漂亮的等待</em>」，過去我在 <a href="/articles/201706/javascript-promise-settimeout.html#_self" rel="noreferrer noopener" target="_blank">JavaScript 同步延遲 ( Promise + setTimeout )</a> 一文裡，有使用 ES6 的 promise 來實現 delay ( 如同下方的程式範例 )，這個 delay 透過<code>.then</code>來完成一步一步的串接，雖然邏輯上很清楚，但若要實作比較複雜的流程，就得把每個程式寫在對應的 callback 裏，也就沒有想像的容易，這就是「不太漂亮的等待」 ( 使用 setTimeout 的做法就是不漂亮的等待 )。</p>
 <pre class="prettyprint"><code>const delay = (s) =&gt; {
   return new Promise(resolve =&gt; {
     setTimeout(resolve,s); 
@@ -192,8 +192,8 @@ console.log(2);
 }();
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-03.gif" alt=""></p>
 <h2>搭配 Fetch</h2> 
-<p>在我之前的文章<a href="/articles/201908/js-fetch.html#_self" target="_blank">JavaScript Fetch API 使用教學</a>已經有提到<code>fetch</code>的用法，因為<code>fetch</code>最後回傳的是 promise，理所當然的透過 async 和 await 操作是最恰當不過的。</p>
-<p>舉例來說，先前往 <a href="https://opendata.cwb.gov.tw/index" target="_blank">中央氣象局開放資料平台</a>可以取得許多氣象資料，找到 <a href="https://opendata.cwb.gov.tw/dataset/observation/O-A0003-001" target="_blank">局屬氣象站-現在天氣觀測報告</a>，複製 JSON 格式的連結 ( 需要註冊登入才能看得到連結 )，透過<code>fetch</code>的<code>json()</code>方法處理檔案，目標顯示出「高雄市的即時氣溫」。</p>
+<p>在我之前的文章<a href="/articles/201908/js-fetch.html#_self" rel="noreferrer noopener" target="_blank">JavaScript Fetch API 使用教學</a>已經有提到<code>fetch</code>的用法，因為<code>fetch</code>最後回傳的是 promise，理所當然的透過 async 和 await 操作是最恰當不過的。</p>
+<p>舉例來說，先前往 <a href="https://opendata.cwb.gov.tw/index" rel="noreferrer noopener" target="_blank">中央氣象局開放資料平台</a>可以取得許多氣象資料，找到 <a href="https://opendata.cwb.gov.tw/dataset/observation/O-A0003-001" rel="noreferrer noopener" target="_blank">局屬氣象站-現在天氣觀測報告</a>，複製 JSON 格式的連結 ( 需要註冊登入才能看得到連結 )，透過<code>fetch</code>的<code>json()</code>方法處理檔案，目標顯示出「高雄市的即時氣溫」。</p>
 <p>透過 async 和 await 的美化程式碼，得到的結果完全不需要 callback 的輔助，就能按照我們所期望的順序進行。( 先顯示「開始抓氣象」，接著顯示「高雄市的氣溫」，最後顯示「總算結束了」 )</p>
 <pre class="prettyprint"><code>~async function(){
     console.log('開始抓氣象');       // 先顯示「開始抓氣象」
@@ -243,9 +243,9 @@ const timer = setInterval(()=&gt;{
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

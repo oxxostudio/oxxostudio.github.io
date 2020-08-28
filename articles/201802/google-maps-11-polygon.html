@@ -94,7 +94,7 @@
 </ul>
 <p>舉例來說，下面這段程式碼執行後，會看到一個紅色的愛心框住台北 101，在邊緣上的點都可以用滑鼠去拖曳修改位置，如果仔細看，因為多邊形的 strokePosition 設為 CENTER，所以會看到邊緣重疊在多邊形上。</p>
 <blockquote>
-<p>範例：<a href="/demo/201802/google-maps-11-polygon-demo-01.html" target="_blank">在 Google 地圖繪製愛心多邊形</a></p>
+<p>範例：<a href="/demo/201802/google-maps-11-polygon-demo-01.html" rel="noreferrer noopener" target="_blank">在 Google 地圖繪製愛心多邊形</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 
@@ -135,7 +135,7 @@ function initMap() {
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201802/google-maps-11-polygon-01.jpg" alt=""></p>
 <p>會畫愛心之後，回頭看一下剛剛提到 path 和 paths 的差異，如果使用 paths，表示我們可以使用多個多邊形，而多邊形外框的方向，決定了多邊形是否會做「交集」，如果順時針的多邊形在外，逆時針的多邊形在內，就可以繪製出「甜甜圈」外觀的造型，下面的例子，是使用三組多邊形來做交集，可以看到框住 101 的愛心中間多了個正方形的洞，然後還有另外一個三角形貫穿其中。</p>
 <blockquote>
-<p>範例：<a href="/demo/201802/google-maps-11-polygon-demo-02.html" target="_blank">在 Google 地圖繪製愛心多邊形，中間還有個洞</a></p>
+<p>範例：<a href="/demo/201802/google-maps-11-polygon-demo-02.html" rel="noreferrer noopener" target="_blank">在 Google 地圖繪製愛心多邊形，中間還有個洞</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 
@@ -222,7 +222,7 @@ function initMap() {
 </ul>
 <p>透過 Polygon 的方法與事件，可以簡單做出「當滑鼠移到多邊形上就變綠色，按下滑鼠就變藍色」的效果。</p>
 <blockquote>
-<p>範例：<a href="/demo/201802/google-maps-11-polygon-demo-03.html" target="_blank">在 Google 地圖繪製愛心多邊形，滑鼠點擊會變色</a></p>
+<p>範例：<a href="/demo/201802/google-maps-11-polygon-demo-03.html" rel="noreferrer noopener" target="_blank">在 Google 地圖繪製愛心多邊形，滑鼠點擊會變色</a></p>
 </blockquote>
 <pre class="prettyprint"><code>polygonPath.addListener('mouseover',function(){
   this.setOptions({
@@ -253,9 +253,9 @@ polygonPath.addListener('mouseup',function(){
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

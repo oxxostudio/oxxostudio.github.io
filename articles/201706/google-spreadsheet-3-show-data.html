@@ -69,7 +69,7 @@
 <h1>Google 試算表 (3) - 網頁顯示儲存格數值</h1> 
 <p>只有在 Google App Script 裡讀取到數值是不夠的，能夠透過網頁顯示數值，或是把這些數值做視覺化的呈現，才能夠發揮這些數值的價值，所以在這篇要來介紹如何透過網頁，讀取並呈現 Google 試算表內儲存格的數值。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 debug 來測試</h2> 
-<p>回想一下，在 <a href="google-spreadsheet-1.html" target="_blank">Google 試算表 (1) - 讀取試算表資訊</a> 有介紹 debug 的用法，這裡我們把前一篇的程式碼做點小修改，變數的部分全部由 debug.gs 提供，這樣也才可以比較有彈性的指定不同儲存格或是指定不同試算表。</p>
+<p>回想一下，在 <a href="google-spreadsheet-1.html" rel="noreferrer noopener" target="_blank">Google 試算表 (1) - 讀取試算表資訊</a> 有介紹 debug 的用法，這裡我們把前一篇的程式碼做點小修改，變數的部分全部由 debug.gs 提供，這樣也才可以比較有彈性的指定不同儲存格或是指定不同試算表。</p>
 <p>先看到 debug.gs，把要抓取的儲存格 row 與 column 號碼變成 parameter 的屬性，網址和工作表名稱也變成變數，執行後把 parameter 傳給 doGet 即可。</p>
 <pre class="prettyprint"><code>function debug() {
   doGet(
@@ -86,7 +86,7 @@
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-3-show-data-01.jpg" alt=""></p>
 <p>因為把網址和儲存格都改成變數了，程式碼.gs 理所當然也要做點修改，除了把網址、名稱和儲存格設為變數外，也把結束的儲存格設成變數，同時用個三元運算子判斷，如果我們提供的 parameter 沒有這個屬性，就自動將其設為 1，最後又因為我們要在外面的網頁去接資料，所以必須要利用<code>ContentService.createTextOutput</code>把資料拋出。</p>
 <blockquote>
-<p>參考：<a href="https://developers.google.com/apps-script/reference/content/content-service" target="_blank">Class ContentService</a></p>
+<p>參考：<a href="https://developers.google.com/apps-script/reference/content/content-service" rel="noreferrer noopener" target="_blank">Class ContentService</a></p>
 </blockquote>
 <pre class="prettyprint"><code>function doGet(e) {
   var params = e.parameter;
@@ -108,7 +108,7 @@
 <h2>部署 Google App Script</h2> 
 <p>要在外部的網頁透過 Google App Script 讀取資料，就得先把程式部署到網路上，第一個步驟是點選上方的「<em>發佈 &gt; 部署為網路應用程式</em>」。</p>
 <blockquote>
-<p>注意，如果要透過外部網頁操控，Google App Script 有規範<strong>名稱一定要是 doGet(e) 或 doPost(e)</strong>，如果名稱不是這兩個請返回修改。參考：<a href="https://developers.google.com/apps-script/guides/web#url_parameters" target="_blank">URL parameters</a></p>
+<p>注意，如果要透過外部網頁操控，Google App Script 有規範<strong>名稱一定要是 doGet(e) 或 doPost(e)</strong>，如果名稱不是這兩個請返回修改。參考：<a href="https://developers.google.com/apps-script/guides/web#url_parameters" rel="noreferrer noopener" target="_blank">URL parameters</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-3-show-data-04.jpg" alt=""></p>
 <p>開啟部署畫面後，將具有應用程式存取權的使用者，設定為「<strong>任何人，甚至是匿名使用者</strong>」。</p>
@@ -166,7 +166,7 @@ sendBtn.on('click',function() {
 });
 </code></pre><p>沒有意外的話，執行網頁，填入對應的網址、欄位數字之後，按下查詢按鈕，就可以看到資料顯示在網頁裡了。</p>
 <blockquote>
-<p>範例：<a href="/demo/201706/google-spreadsheet-3-show-data-demo-01.html" target="_blank">demo-01.html</a></p>
+<p>範例：<a href="/demo/201706/google-spreadsheet-3-show-data-demo-01.html" rel="noreferrer noopener" target="_blank">demo-01.html</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-3-show-data-08.jpg" alt=""></p>
 <h2>小結</h2> 
@@ -176,9 +176,9 @@ sendBtn.on('click',function() {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

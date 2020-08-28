@@ -75,7 +75,7 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-analytics-tracking-email-01.jpg" alt=""></p>
 <p>雖然說可以用這種方式追蹤，但如果遇到使用者的收信軟體會阻擋圖片，也就無法進行偵測了，但在這個大家幾乎都有 Gmail 的年代，大致上應該沒有問題。</p>
 <blockquote>
-<p>參考：<a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/email" target="_blank">Email Tracking - Measurement Protocol</a></p>
+<p>參考：<a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/email" rel="noreferrer noopener" target="_blank">Email Tracking - Measurement Protocol</a></p>
 </blockquote>
 <h2>Email 追蹤程式碼解析</h2> 
 <p>程式碼雖然看起來很長，但拆解出來可以變成下列幾個部分：</p>
@@ -86,7 +86,7 @@
 <li><em>t</em>：事件類型，因為要追蹤事件，所以設定為「event」。</li>
 <li><em>ec</em>：事件類別，設定為「email」。</li>
 <li><em>ea</em>：事件活動，設定為「open」。</li>
-<li><em>el</em>：事件標籤，設定為「<a href="mailto:test@test.test" target="_blank">test@test.test</a>」( 可以輸入收件人的 email 之類的 )</li>
+<li><em>el</em>：事件標籤，設定為「<a href="mailto:test@test.test" rel="noreferrer noopener" target="_blank">test@test.test</a>」( 可以輸入收件人的 email 之類的 )</li>
 <li><em>cs</em>：廣告活動來源，設定為「電子報」</li>
 <li><em>cm</em>：廣告活動媒介，設定為「email」</li>
 <li><em>cn</em>：廣告活動名稱，設定為「我的第一個廣告活動」</li>
@@ -100,8 +100,8 @@
 <p>除了可以透過追蹤圖片來追蹤開信率，第二個要追蹤的就是「點擊率」，追蹤的方式就要用我們常聽到的「UTM，Urchin Tracking Module」，方法就是使用 Google 的 Campaign URL Builder 產生廣告專用的追蹤網址，並將連結導向有安裝 GA 追蹤碼的網頁，如果使用者點擊了追蹤網址，就能分析各種廣告管道的成效，在這部分 Google 提供了很完整的說明手冊，可以參考下方的相關連結：</p>
 <blockquote>
 <ul>
-<li><a href="https://support.google.com/analytics/answer/1033867?hl=zh-Hant" target="_blank">為廣告網址產生自訂廣告活動參數</a>、<a href="https://support.google.com/analytics/answer/1033863" target="_blank">自訂廣告活動</a></li>
-<li><a href="https://ga-dev-tools.appspot.com/campaign-url-builder/" target="_blank">Campaign URL Builder</a></li>
+<li><a href="https://support.google.com/analytics/answer/1033867?hl=zh-Hant" rel="noreferrer noopener" target="_blank">為廣告網址產生自訂廣告活動參數</a>、<a href="https://support.google.com/analytics/answer/1033863" rel="noreferrer noopener" target="_blank">自訂廣告活動</a></li>
+<li><a href="https://ga-dev-tools.appspot.com/campaign-url-builder/" rel="noreferrer noopener" target="_blank">Campaign URL Builder</a></li>
 </ul>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-analytics-tracking-email-04.jpg" alt=""></p>
@@ -134,9 +134,9 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-analytics-tracking-email-05.jpg" alt=""></p>
 <h2>使用 Google 短網址追蹤點擊狀況</h2> 
 <p>不過有時候不見得網頁都有埋入自己的追蹤代碼，甚至有時候是透過一些線上活動網站舉辦活動，這時候要如何進行追蹤呢？這時候我們可以使用「Google 短網址」來做簡單的追蹤，雖然說短網址打開後還是會跑到另外一個網頁，但短網址本身會記錄點擊資訊，透過這些資訊亦可做些簡單的分析。</p>
-<p>舉例來說 <a href="https://goo.gl/CydUus" target="_blank">https://goo.gl/CydUus</a> 這是一個連到我的部落格的短網址，複製這串短網址 ( 不要點選 )，在瀏覽器的網址列貼上，並在後方輸入一個「+」號，按下 enter 連結，就可以看到短網址偵測到的資訊，雖然說沒有辦法像 GA 一般的詳盡，但對於一些無法加入 GA 追蹤碼的頁面來說，也不失為一個觀察的好方法。</p>
+<p>舉例來說 <a href="https://goo.gl/CydUus" rel="noreferrer noopener" target="_blank">https://goo.gl/CydUus</a> 這是一個連到我的部落格的短網址，複製這串短網址 ( 不要點選 )，在瀏覽器的網址列貼上，並在後方輸入一個「+」號，按下 enter 連結，就可以看到短網址偵測到的資訊，雖然說沒有辦法像 GA 一般的詳盡，但對於一些無法加入 GA 追蹤碼的頁面來說，也不失為一個觀察的好方法。</p>
 <blockquote>
-<p>觀察連結：<a href="https://goo.gl/CydUus+" target="_blank">https://goo.gl/CydUus+</a></p>
+<p>觀察連結：<a href="https://goo.gl/CydUus+" rel="noreferrer noopener" target="_blank">https://goo.gl/CydUus+</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-analytics-tracking-email-06.jpg" alt=""></p>
 <h2>小結</h2> 
@@ -146,9 +146,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

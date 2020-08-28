@@ -69,7 +69,7 @@
 <h1>立體聲 ( PannerNode,StereoPannerNode )</h1> 
 <p><img src="/img/articles/201509/web-audio-api-stereo-pannernode.jpg" class="preview-img" alt=""> </p>
 <p>通常我們在電影院看電影時，高檔一點的電影院會有立體音響 ( 特別是 iMax3D )，讓我們有置身在電影場景裡的感受，然而在 Web Audio API 裡也有類似的功能，讓我們可以模擬出立體的聲音，而這項技術雖然還沒有被廣泛應用，但根據現有的資訊，未來應該將會與 WebGL 結合，廣泛用於 360 度影片、Web 遊戲...等需要有立體聲音的技術領域，這篇將會做一些簡單的介紹。</p>
-<div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>先看到比較簡單的 StereoPannerNode，這只是針對在 2D 平面上的左右移動，它也只有一個屬性叫做「pan」，數值為 -1 到 1，如果越接近 -1，左邊的聲音就會越大聲，右邊就越小聲，越接近 1 則反之，預設值為 0 也就是左右均等，在下面的範例我們利用<code>context.createStereoPanner()</code>產生 StereoPannerNode，賦予值，就可以控制左右聲道。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo01.html" target="_blank">web-audio-api-stereo-pannernode-demo01.html</a> )</p>
+<div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>先看到比較簡單的 StereoPannerNode，這只是針對在 2D 平面上的左右移動，它也只有一個屬性叫做「pan」，數值為 -1 到 1，如果越接近 -1，左邊的聲音就會越大聲，右邊就越小聲，越接近 1 則反之，預設值為 0 也就是左右均等，在下面的範例我們利用<code>context.createStereoPanner()</code>產生 StereoPannerNode，賦予值，就可以控制左右聲道。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo01.html" rel="noreferrer noopener" target="_blank">web-audio-api-stereo-pannernode-demo01.html</a> )</p>
 <pre class="prettyprint"><code>var AudioContext = AudioContext || webkitAudioContext;
 var context      = new AudioContext;
 var oscillator   = context.createOscillator();
@@ -139,8 +139,8 @@ oscillator.start();
 </ul>
 </blockquote>
 <p><br></p>
-<p>前面兩個<code>panningModel</code>和<code>distanceModel</code>基本上就是聲音在 3D 空間和衰減的演算法，如果對於數學有興趣的可以參考<a href="http://webaudio.github.io/web-audio-api/#idl-def-PanningModelType" target="_blank">這篇</a>和<a href="http://webaudio.github.io/web-audio-api/#idl-def-DistanceModelType" target="_blank">這篇</a>，在這邊就不多作解釋，<code>maxDistance</code>也很好理解，就是聲音最多可以傳送到哪邊，而<code>rolloffFactor</code>就是在傳送過程中衰減的速度，數值愈大衰減的越快 ( 雖然還是會傳遞到我們設定的最大距離，但一開始衰減太快的話，其實就會很快就聽不到了 )。</p>
-<p>比較有趣的是後面三個屬性<code>coneInnerAngle</code>、<code>coneOuterAngle</code>和<code>coneOuterGain</code>，要理解這三個屬性必須由下面這張示意圖著手，圖片來源：<a href="http://curtaincall.weblike.jp/portfolio-web-sounder/" target="_blank">http://curtaincall.weblike.jp/portfolio-web-sounder/</a></p>
+<p>前面兩個<code>panningModel</code>和<code>distanceModel</code>基本上就是聲音在 3D 空間和衰減的演算法，如果對於數學有興趣的可以參考<a href="http://webaudio.github.io/web-audio-api/#idl-def-PanningModelType" rel="noreferrer noopener" target="_blank">這篇</a>和<a href="http://webaudio.github.io/web-audio-api/#idl-def-DistanceModelType" rel="noreferrer noopener" target="_blank">這篇</a>，在這邊就不多作解釋，<code>maxDistance</code>也很好理解，就是聲音最多可以傳送到哪邊，而<code>rolloffFactor</code>就是在傳送過程中衰減的速度，數值愈大衰減的越快 ( 雖然還是會傳遞到我們設定的最大距離，但一開始衰減太快的話，其實就會很快就聽不到了 )。</p>
+<p>比較有趣的是後面三個屬性<code>coneInnerAngle</code>、<code>coneOuterAngle</code>和<code>coneOuterGain</code>，要理解這三個屬性必須由下面這張示意圖著手，圖片來源：<a href="http://curtaincall.weblike.jp/portfolio-web-sounder/" rel="noreferrer noopener" target="_blank">http://curtaincall.weblike.jp/portfolio-web-sounder/</a></p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150930_1_02.jpg" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
 <p>因為聲音在我們日常生活中，可以看成一個「點」在發聲，例如一個爆炸聲響，一定朝四面八方擴散出去
 ，除非有某個地方擋住，然而這三個屬性顧名思義 cone 就是「圓錐」的意思，可以想像成聲音透過一個大聲公發出，就會類似圓錐一樣，inner 是指主要圓錐展出的角度，而 outer 可以想像成圓錐外延伸出去的聲音 ( 有點像是手電筒發光，主要光束的周圍還是會有飄出去的光 )，當我們直接面對聲音，圓錐越窄可以聽到聲音的範圍就越小。</p>
@@ -153,7 +153,7 @@ oscillator.start();
 </ul>
 </blockquote>
 <p><br></p>
-<p><code>setPosition</code>是設定音源在 3D 空間的哪個位置，而<code>setOrientation</code>是告訴我們聲音往哪個方向發聲，有點像在繪製 3D 圖形的時候，探照燈或是攝影機，都會有自己的中心點，以及朝向哪個方向的點座標一樣，<code>setVelocity</code>指的是聲音的速度，也就是這個聲音朝哪個方向移動，下面的範例是利用 PannerNode 來做一個空間裡的聲音，有別於剛剛的左聲道右聲道，利用 PannerNode 還會發現聲音越來越小聲，彷彿真的有個聲音在移動的感覺，由於程式碼比較多，這裏就只列出主要修改的部分。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo02.html" target="_blank">web-audio-api-stereo-pannernode-demo02.html</a> )</p>
+<p><code>setPosition</code>是設定音源在 3D 空間的哪個位置，而<code>setOrientation</code>是告訴我們聲音往哪個方向發聲，有點像在繪製 3D 圖形的時候，探照燈或是攝影機，都會有自己的中心點，以及朝向哪個方向的點座標一樣，<code>setVelocity</code>指的是聲音的速度，也就是這個聲音朝哪個方向移動，下面的範例是利用 PannerNode 來做一個空間裡的聲音，有別於剛剛的左聲道右聲道，利用 PannerNode 還會發現聲音越來越小聲，彷彿真的有個聲音在移動的感覺，由於程式碼比較多，這裏就只列出主要修改的部分。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo02.html" rel="noreferrer noopener" target="_blank">web-audio-api-stereo-pannernode-demo02.html</a> )</p>
 <pre class="prettyprint"><code>oscillator.type = 'square';
 oscillator.frequency.value = 440;
 oscillator.detune.value = 0;
@@ -181,25 +181,25 @@ oscillator.connect(panNodes);
 </ul>
 </blockquote>
 <p><br>
-<code>dopplerFactor</code>代表都卜勒效應，如果不了解都卜勒效應，可以參考<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94" target="_blank">維基百科</a>，舉例來說，今天有輛鳴笛的警車朝我們駛過來，聽到的鳴笛聲會比較尖銳，當警車遠離我們時，鳴笛聲會比較低沈，這就是因為鳴笛的音速和車速的關聯，導致我們聽到的聲音頻率不同，這通常也是我們要在 Web 裏頭模擬真實的聲音會用到的。</p>
+<code>dopplerFactor</code>代表都卜勒效應，如果不了解都卜勒效應，可以參考<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%99%AE%E5%8B%92%E6%95%88%E5%BA%94" rel="noreferrer noopener" target="_blank">維基百科</a>，舉例來說，今天有輛鳴笛的警車朝我們駛過來，聽到的鳴笛聲會比較尖銳，當警車遠離我們時，鳴笛聲會比較低沈，這就是因為鳴笛的音速和車速的關聯，導致我們聽到的聲音頻率不同，這通常也是我們要在 Web 裏頭模擬真實的聲音會用到的。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150930_1_03.gif" alt="立體聲道 ( PannerNode,StereoPannerNode )"></p>
-<p>此外雖然說用法類似，但 AudioListener 並不是 AudioNode，udioListener 是創立一個「聽者」，如果沒有創建，預設就以 (0,0,0) 為主，創建的話就可以設定由創建的聽者為主，也因此不會有 connect 的事件在它身上發生，創建的方法很簡單，一行程式就建立了，然後就可以使用上面的屬性和方法，在範例當中可以調整最後的 ax、ay 和 az，看看效果。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo03.html" target="_blank">web-audio-api-stereo-pannernode-demo03.html</a> )</p>
+<p>此外雖然說用法類似，但 AudioListener 並不是 AudioNode，udioListener 是創立一個「聽者」，如果沒有創建，預設就以 (0,0,0) 為主，創建的話就可以設定由創建的聽者為主，也因此不會有 connect 的事件在它身上發生，創建的方法很簡單，一行程式就建立了，然後就可以使用上面的屬性和方法，在範例當中可以調整最後的 ax、ay 和 az，看看效果。( 範例：<a href="/demo/201509/web-audio-api-stereo-pannernode-demo03.html" rel="noreferrer noopener" target="_blank">web-audio-api-stereo-pannernode-demo03.html</a> )</p>
 <pre class="prettyprint"><code>var listener = context.listener;
 </code></pre><p><br></p>
 <p>以上就是利用 Web Audio API 創建立體聲，如果把聲音想像成 3D 的繪圖，就會容易理解得多，雖然目前感覺起來，純粹使用感覺用處不大，但搭配一些 WebGL 的遊戲或立體空間，應該就會頗有看頭的啦！</p>
 <p>參考資料：</p>
 <ul>
-<li><a href="http://curtaincall.weblike.jp/portfolio-web-sounder/webaudioapi-effectors/auto-panner" target="_blank">http://curtaincall.weblike.jp/portfolio-web-sounder/webaudioapi-effectors/auto-panner</a></li>
-<li><a href="http://www.g200kg.com/jp/docs/webaudio/panner.html" target="_blank">http://www.g200kg.com/jp/docs/webaudio/panner.html</a></li>
+<li><a href="http://curtaincall.weblike.jp/portfolio-web-sounder/webaudioapi-effectors/auto-panner" rel="noreferrer noopener" target="_blank">http://curtaincall.weblike.jp/portfolio-web-sounder/webaudioapi-effectors/auto-panner</a></li>
+<li><a href="http://www.g200kg.com/jp/docs/webaudio/panner.html" rel="noreferrer noopener" target="_blank">http://www.g200kg.com/jp/docs/webaudio/panner.html</a></li>
 </ul>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

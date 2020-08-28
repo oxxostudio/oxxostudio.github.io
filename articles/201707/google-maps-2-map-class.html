@@ -69,11 +69,11 @@
 <h1>Google Maps API - 使用地圖與基本設定</h1> 
 <p>有別於 Embed API，如果要開始使用 Google Map 的功能，就必須透過 JavaScript API 才能實現，這篇將會記錄相關的用法以及做些範例展示。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Google Maps JavaScript API</h2> 
-<p>要使用 JavaScript API 得先到 <a href="https://console.developers.google.com/" target="_blank">Google API Console</a> 裡啟用。</p>
+<p>要使用 JavaScript API 得先到 <a href="https://console.developers.google.com/" rel="noreferrer noopener" target="_blank">Google API Console</a> 裡啟用。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201707/google-maps-2-map-class-01.jpg" alt=""></p>
 <p>雖然和 Embed API 類似，但 JavaScript API 不能免費無限次數使用，免費的版本一天有 25,000 次的使用限制，超過之後當天就無法使用，所以必須善用金鑰的保護限制，避免金鑰外流。</p>
 <blockquote>
-<p>收費規範參考：<a href="https://developers.google.com/maps/documentation/javascript/usage" target="_blank">Google Maps JavaScript API 使用限制</a>。</p>
+<p>收費規範參考：<a href="https://developers.google.com/maps/documentation/javascript/usage" rel="noreferrer noopener" target="_blank">Google Maps JavaScript API 使用限制</a>。</p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201707/google-maps-2-map-class-02.jpg" alt=""></p>
 <h2>載入地圖</h2> 
@@ -92,7 +92,7 @@
 }
 </code></pre><p>JavaScript 的部分透<code>new google.maps.Map</code>將地圖載入指定的 div 內，地圖包含兩個<strong>必要</strong>的屬性：<strong>center 中心點經緯度</strong>、<strong>zoom 縮放層級</strong>，以下方的例子來說，網頁打開就會看到一個滿版的地圖，中心點位在紐約自由女神像。</p>
 <blockquote>
-<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-01.html" target="_blank">demo01.html</a></p>
+<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-01.html" rel="noreferrer noopener" target="_blank">demo01.html</a></p>
 </blockquote>
 <pre class="prettyprint"><code>&lt;script&gt;
   var map;
@@ -109,7 +109,7 @@ async defer&gt;&lt;/script&gt;
 <h2>MapOptions 必要屬性</h2> 
 <p>在上面的 JavaScript 裡，使用了<code>new google.maps.Map</code>將地圖載入，這段可以直接看 Google 參考文件中的 Map class，當中包含兩個參數，第一個是指定的地圖 div 區塊，第二個則是地圖設定，使用時會 new 一個地圖物件，針對當中的 Map 屬性去做修改設定。</p>
 <blockquote>
-<p>參考：<a href="https://developers.google.com/maps/documentation/javascript/reference#Map" target="_blank">Map class</a></p>
+<p>參考：<a href="https://developers.google.com/maps/documentation/javascript/reference#Map" rel="noreferrer noopener" target="_blank">Map class</a></p>
 </blockquote>
 <pre class="prettyprint"><code>new google.maps.Map(mapDiv:Element, opts?:MapOptions)
 </code></pre><p>當中比較重要的是地圖的 MapOptions，MapOptions 的<em>必要屬性</em>有兩個：</p>
@@ -167,7 +167,7 @@ async defer&gt;&lt;/script&gt;
 </tr>
 </tbody>
 </table>
-<p>這些控制項也有另外的屬性可以進行 UI 位置與樣式的設定，位置設定內容可以參考 <a href="https://developers.google.com/maps/documentation/javascript/controls#ControlPositioning" target="_blank">控制項定位</a>，樣式可以參考 <a href="https://developers.google.com/maps/documentation/javascript/controls#ControlOptions" target="_blank">控制項選項</a>，這些設定的分別是：</p>
+<p>這些控制項也有另外的屬性可以進行 UI 位置與樣式的設定，位置設定內容可以參考 <a href="https://developers.google.com/maps/documentation/javascript/controls#ControlPositioning" rel="noreferrer noopener" target="_blank">控制項定位</a>，樣式可以參考 <a href="https://developers.google.com/maps/documentation/javascript/controls#ControlOptions" rel="noreferrer noopener" target="_blank">控制項選項</a>，這些設定的分別是：</p>
 <table>
 <thead>
 <tr>
@@ -204,7 +204,7 @@ async defer&gt;&lt;/script&gt;
 </table>
 <p>以下面的例子來說，打開地圖後，切換為衛星檢視，放大到一定程度可以看到一個 45 度角的自由女神衛星地圖，而中間正上方是地圖與衛星圖的切換，右邊中間為旋轉的按鈕，右下方是放大縮小按鈕，右上方為全螢幕按鈕，左上方是街景圖按鈕，左下方則是比例尺。</p>
 <blockquote>
-<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-02.html" target="_blank">demo02.html</a></p>
+<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-02.html" rel="noreferrer noopener" target="_blank">demo02.html</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 function initMap() {
@@ -269,7 +269,7 @@ function initMap() {
 </tr>
 <tr>
 <td><em>mapTypeId</em></td>
-<td>地圖類型，共有四種：<em>hybrid、roadmap、satellite 和 terrain</em>，hybrid 是地圖與衛星空照圖合在一起，roadmap 則是純粹地圖，satellite 是純粹衛星空照圖，terrain 則是地圖與地形圖合在一起 ( 參考 <a href="/img/articles/201707/google-maps-2-map-class-05.jpg" target="_blank">範例圖片</a> )。</td>
+<td>地圖類型，共有四種：<em>hybrid、roadmap、satellite 和 terrain</em>，hybrid 是地圖與衛星空照圖合在一起，roadmap 則是純粹地圖，satellite 是純粹衛星空照圖，terrain 則是地圖與地形圖合在一起 ( 參考 <a href="/img/articles/201707/google-maps-2-map-class-05.jpg" rel="noreferrer noopener" target="_blank">範例圖片</a> )。</td>
 </tr>
 <tr>
 <td><em>noClear</em></td>
@@ -303,7 +303,7 @@ function initMap() {
 </table>
 <p>舉例來說，將 mapTypeId 設定為 terrain，就可以得到一個帶有地形圖地圖了。</p>
 <blockquote>
-<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-03.html" target="_blank">demo03.html</a></p>
+<p>範例：<a href="/demo/201707/google-maps-2-map-class-demo-03.html" rel="noreferrer noopener" target="_blank">demo03.html</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201707/google-maps-2-map-class-06.jpg" alt=""></p>
 <h2>小結</h2> 
@@ -313,9 +313,9 @@ function initMap() {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

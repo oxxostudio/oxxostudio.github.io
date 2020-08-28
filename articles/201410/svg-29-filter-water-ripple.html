@@ -68,7 +68,7 @@
 
 <h1>SVG 研究之路 (29) - filter - 水波效果</h1> 
 <p>在上一篇我們深入的認識了 feDisplacementMap 這個濾鏡，也做出了水波和國旗皺褶的效果，這篇將繼續針對 feDisplacementMap 做一些補充，同時也利用 SVG 的 animte 來做出水波的動畫，畢竟水波就是要會動才逼真呀！</p>
-<p>說是補充其實也只是上一篇少講了這個 <a href="http://www.w3.org/Graphics/SVG/Test/20030813/htmlframe/full-filters-displace-01-f.html" target="_blank">W3C 的範例</a> ( 看下圖 )，裏頭同樣是使用黑白的棋盤圖來做移置，不過作為移置的參考漸層圖是有設計過的漸層，可以讓整體的移置剛好旋轉 20 度，而且如果是以 png 作為漸層移置參考，就不會有鋸齒狀的效果。</p>
+<p>說是補充其實也只是上一篇少講了這個 <a href="http://www.w3.org/Graphics/SVG/Test/20030813/htmlframe/full-filters-displace-01-f.html" rel="noreferrer noopener" target="_blank">W3C 的範例</a> ( 看下圖 )，裏頭同樣是使用黑白的棋盤圖來做移置，不過作為移置的參考漸層圖是有設計過的漸層，可以讓整體的移置剛好旋轉 20 度，而且如果是以 png 作為漸層移置參考，就不會有鋸齒狀的效果。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201410/20141010_1_02.png" alt="SVG 研究之路 (29) - filter - 水波效果"></p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>漸層 + 動畫</h2> 
 <p>OK 補充完了，繼續來看一下這篇的主題：水波效果，在上一篇我使用的漸層，是利用漸層本身的重複性 spreadMethod="reflect" 來做重複的漸層，但如果應用在漸層的動畫上，就會有些問題了，因為漸層的重複性很多層面取決於 r 的大小，所以無法做出由內而外不斷重複的動畫，於是換個角度思考，直接從製作的漸層顏色 stop-offset 著手，製作出許多的漸層環，搭配動畫的時間差，就可以讓漸層看起來完全連接在一起。</p>
@@ -111,7 +111,7 @@
   &lt;rect x="0" y="0" width="340" height="231" fill="url(#r)"&gt;&lt;/rect&gt;
 &lt;/svg&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201410/20141010_1_03.gif" alt="SVG 研究之路 (29) - filter - 水波效果"></p>
-<p>套用移置率鏡後的效果，這樣的 gif 動畫只有一兩秒，檔案大小高達 600KB，SVG 只有 2KB，你也可以直接打開 <a href="/img/articles/201410/20141010_1_demo.svg" target="_blank">SVG 預覽</a>，看不到就表示你的瀏覽器不支援喔~：</p>
+<p>套用移置率鏡後的效果，這樣的 gif 動畫只有一兩秒，檔案大小高達 600KB，SVG 只有 2KB，你也可以直接打開 <a href="/img/articles/201410/20141010_1_demo.svg" rel="noreferrer noopener" target="_blank">SVG 預覽</a>，看不到就表示你的瀏覽器不支援喔~：</p>
 <pre class="prettyprint"><code>&lt;svg width="340" height="231"&gt;
   &lt;defs&gt;
     &lt;filter id="f" filterUnits="objectBoundingBox" x="20" y="20" width="390" height="280"&gt;
@@ -158,15 +158,15 @@
 &lt;/svg&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201410/svg-29-filter-water-ripple.gif" alt="SVG 研究之路 (29) - filter - 水波效果"></p>
 <h2>小結</h2> 
-<p>如果你需要線上編輯測試看看，可以點選 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=4811103238356992" target="_blank">這個網址</a> 來測試，這是 EZoApp 線上開發工具，右邊可以編輯，編輯之後按下上面的 preview 就可以預覽囉~ ^_^</p>
+<p>如果你需要線上編輯測試看看，可以點選 <a href="http://jqmdesigner.appspot.com/designer.html#&amp;ref=4811103238356992" rel="noreferrer noopener" target="_blank">這個網址</a> 來測試，這是 EZoApp 線上開發工具，右邊可以編輯，編輯之後按下上面的 preview 就可以預覽囉~ ^_^</p>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

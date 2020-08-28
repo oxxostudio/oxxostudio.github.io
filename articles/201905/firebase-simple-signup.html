@@ -69,7 +69,7 @@
 <h1>Firebase 教學 - 簡單的使用者註冊功能</h1> 
 <p>Firebase 提供了很強大又簡單的後端功能，其中一項就是「註冊使用者」，這篇文章將會使用 RealTime Database 實作一個簡單的使用者註冊畫面，註冊後會紀錄使用者所儲存的相關資訊。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用使用者功能</h2> 
-<p>延續「<a href="../201904/firebase-realtime-database-start.html" target="_blank">Firebase 教學 - RealTime Database 安裝與使用</a> 」裡建立的專案，進入管理畫面後，點選左側選單 Authentication 可以看到使用者認證相關選項，點選上方「登入方式」頁籤，這裡採用「電子郵件/密碼」作為登入的依據。</p>
+<p>延續「<a href="../201904/firebase-realtime-database-start.html" rel="noreferrer noopener" target="_blank">Firebase 教學 - RealTime Database 安裝與使用</a> 」裡建立的專案，進入管理畫面後，點選左側選單 Authentication 可以看到使用者認證相關選項，點選上方「登入方式」頁籤，這裡採用「電子郵件/密碼」作為登入的依據。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-01.jpg" alt=""></p>
 <p>點選後方的鉛筆圖示，啟用「使用者能夠透過電子郵件和密碼註冊」。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-02.jpg" alt=""></p>
@@ -88,7 +88,7 @@
 const database = firebase.database();
 </code></pre><p>在初始化裡的<code>apiKey</code>和<code>authDomain</code>兩個屬性，<code>authDomain</code>為專案的名稱，<code>apiKey</code>就是 Authentication 「一般」頁籤裡的「<em>網路 API 金鑰</em>」。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-04.jpg" alt=""></p>
-<p>萬一這組網路金鑰被別人知道了，可以進入 <a href="https://console.cloud.google.com" target="_blank">Google Cloud Platform</a>，選擇專案，展開左側選單後點選「API 和服務」進行修改。</p>
+<p>萬一這組網路金鑰被別人知道了，可以進入 <a href="https://console.cloud.google.com" rel="noreferrer noopener" target="_blank">Google Cloud Platform</a>，選擇專案，展開左側選單後點選「API 和服務」進行修改。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-05.jpg" alt=""></p>
 <p>點選「API 和服務」後，左側點選「憑證」，再點選「憑證頁籤」，按下「建立憑證」，選擇「API」金鑰即可建立新的網路金鑰。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-simple-signup-06.jpg" alt=""></p>
@@ -143,7 +143,7 @@ submit.addEventListener('click', () =&gt; {
 });
 </code></pre><p>進入 Firebase Realtime database 的專案，設定規則如下，這個規則會禁止整份資料的讀取，但如果知道節點名稱就可讀取，如果使用者是登入狀態 ( 具備 uid ) 就可以寫入。</p>
 <blockquote>
-<p>可參考 <a href="../201904/firebase-realtime-database-rules.html" target="_blank">Firebase 教學 - RealTime Database Rules ( 規則 )</a></p>
+<p>可參考 <a href="../201904/firebase-realtime-database-rules.html" rel="noreferrer noopener" target="_blank">Firebase 教學 - RealTime Database Rules ( 規則 )</a></p>
 </blockquote>
 <pre class="prettyprint"><code>{
   "rules": {
@@ -163,16 +163,16 @@ submit.addEventListener('click', () =&gt; {
 <h2>小結</h2> 
 <p>透過 Firebase，要實現簡單的註冊機制是相當容易的，搭配 Firebase RealTiem Database 更是可以做到許多基本後端功能，就能繼續實現更多登入後的應用囉！</p>
 <blockquote>
-<p>更多參考：<a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0" target="_blank">firebase.auth.Auth</a></p>
+<p>更多參考：<a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0" rel="noreferrer noopener" target="_blank">firebase.auth.Auth</a></p>
 </blockquote>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

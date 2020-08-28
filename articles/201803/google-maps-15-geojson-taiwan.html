@@ -72,20 +72,20 @@
 <p>要顯示台灣縣市行政區域，首先要有行政區域的資料，感謝國內熱血的大大們，已經幫大家整理好了相關圖資，讓我們可以透過這些圖資來進行繪製，或是做許多視覺化的應用。</p>
 <blockquote>
 <ul>
-<li><a href="https://sheethub.com/" target="_blank">sheethub</a></li>
-<li><a href="https://github.com/g0v/twgeojson" target="_blank">g0v/twgeojson</a></li>
+<li><a href="https://sheethub.com/" rel="noreferrer noopener" target="_blank">sheethub</a></li>
+<li><a href="https://github.com/g0v/twgeojson" rel="noreferrer noopener" target="_blank">g0v/twgeojson</a></li>
 </ul>
 </blockquote>
-<p>如果單純要取得縣市行政界線，可以用 sheethub 所提供的 <a href="https://sheethub.com/ronnywang/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E7%B8%A3%E5%B8%82" target="_blank">中華民國縣市</a>，打開後選擇下載「GeoJSON」，就可以相關資料，完整的縣市行政界線資料點比較多，整份下載大約有 9~10 MB。</p>
+<p>如果單純要取得縣市行政界線，可以用 sheethub 所提供的 <a href="https://sheethub.com/ronnywang/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E7%B8%A3%E5%B8%82" rel="noreferrer noopener" target="_blank">中華民國縣市</a>，打開後選擇下載「GeoJSON」，就可以相關資料，完整的縣市行政界線資料點比較多，整份下載大約有 9~10 MB。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-01.jpg" alt=""></p>
-<p>如果覺得資料太大，可以使用 g0v 的 <a href="https://github.com/g0v/twgeojson/tree/master/json" target="_blank">twCounty2010merge.topo.json</a>，雖然精細度不如完整的資料，不過大致上仍看得出完整的縣市分界，因為資料大小只有 450 KB 左右，所以待會的範例會先用這份資料來呈現。</p>
+<p>如果覺得資料太大，可以使用 g0v 的 <a href="https://github.com/g0v/twgeojson/tree/master/json" rel="noreferrer noopener" target="_blank">twCounty2010merge.topo.json</a>，雖然精細度不如完整的資料，不過大致上仍看得出完整的縣市分界，因為資料大小只有 450 KB 左右，所以待會的範例會先用這份資料來呈現。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-02.jpg" alt=""></p>
-<p>因為下載的是 TopoJSON 格式，所以我再透過一個線上服務 <a href="http://jeffpaine.github.io/geojson-topojson/" target="_blank">GeoJSON-TopoJSON</a> 幫忙把 TopoJSON 轉換為 GeoJSON。</p>
+<p>因為下載的是 TopoJSON 格式，所以我再透過一個線上服務 <a href="http://jeffpaine.github.io/geojson-topojson/" rel="noreferrer noopener" target="_blank">GeoJSON-TopoJSON</a> 幫忙把 TopoJSON 轉換為 GeoJSON。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-15-geojson-taiwan-03.jpg" alt=""></p>
 <h2>在 Google 地圖上繪製台灣縣市行政區域</h2> 
-<p>有了資料後，接著就要來繪製了 ( 不清楚如何透過 Google Maps API 讀取 GeoJSON 可以參考<a href="/articles/201803/google-maps-14-geojson.html" target="_blank">Google Maps (14) - 顯示 GeoJSON 資料</a> )，首先我把地圖中心點定位在日月潭 <code>{lat: 23.858987, lng:120.917631}</code>，接著簡單指定載入資料後繪製的線條與填滿顏色。</p>
+<p>有了資料後，接著就要來繪製了 ( 不清楚如何透過 Google Maps API 讀取 GeoJSON 可以參考<a href="/articles/201803/google-maps-14-geojson.html" rel="noreferrer noopener" target="_blank">Google Maps (14) - 顯示 GeoJSON 資料</a> )，首先我把地圖中心點定位在日月潭 <code>{lat: 23.858987, lng:120.917631}</code>，接著簡單指定載入資料後繪製的線條與填滿顏色。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-15-geojson-taiwan-demo-01.html" target="_blank">在 Google 地圖上繪製台灣縣市行政區域</a></p>
+<p>範例：<a href="/demo/201803/google-maps-15-geojson-taiwan-demo-01.html" rel="noreferrer noopener" target="_blank">在 Google 地圖上繪製台灣縣市行政區域</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 function initMap() {
@@ -123,7 +123,7 @@ function initMap() {
 </ul>
 <p>透過這些資料圖層事件，搭配<code>setStyle</code>與<code>revertStyle</code>的方法，就能夠做到當滑鼠移到不同的縣市，該縣市的區域顏色就會變化的效果。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-15-geojson-taiwan-demo-02.html" target="_blank">滑鼠移到縣市的區塊上，該區塊會變色</a></p>
+<p>範例：<a href="/demo/201803/google-maps-15-geojson-taiwan-demo-02.html" rel="noreferrer noopener" target="_blank">滑鼠移到縣市的區塊上，該區塊會變色</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 function initMap() {
@@ -156,17 +156,17 @@ function initMap() {
 <p>實作台灣地圖後，感覺 Google 的資料圖層很有趣，但過程裡也遇到了一些同步非同步的問題，我想這部分會稍微複雜點，就留待之後的篇幅繼續介紹。</p>
 <h2>參考</h2> 
 <ul>
-<li><a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference?hl=zh-tw#Data" target="_blank">Google Mpas API Data class</a></li>
-<li><a href="https://developers.google.com/maps/documentation/javascript/datalayer?hl=zh-tw" target="_blank">Google Mpas API 資料圖層</a></li>
+<li><a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference?hl=zh-tw#Data" rel="noreferrer noopener" target="_blank">Google Mpas API Data class</a></li>
+<li><a href="https://developers.google.com/maps/documentation/javascript/datalayer?hl=zh-tw" rel="noreferrer noopener" target="_blank">Google Mpas API 資料圖層</a></li>
 </ul>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

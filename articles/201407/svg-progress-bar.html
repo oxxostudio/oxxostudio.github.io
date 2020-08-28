@@ -80,7 +80,7 @@
 </svg>
 </div>
 
-<p>首先看到 SVG 的結構，第一個 SVG 名為 loading-bg-red ，內容的 Circle 是背景的大圈圈，因此它的背景是半透明的<code>rgba(255,100,120,.2)</code>,因為我是使用虛線的外框 ( stroke )，至於為什麼<code>stroke-width</code>設為 0 呢？因為一開始是沒有大圈圈的，所以設為 0，再使用 CSS 進行漸變，再來看到第二個 SVG，就是內容旋轉的進度條，最重要的是<code>stroke-dasharray</code>和<code>stroke-dashoffset</code>兩個屬性，主要掌管了這個虛線的長度以及虛線要跑去哪裡。 ( 可以參考我之前的 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" target="_blank">SVG 研究之路 (6) - stroke 邊框</a> )</p>
+<p>首先看到 SVG 的結構，第一個 SVG 名為 loading-bg-red ，內容的 Circle 是背景的大圈圈，因此它的背景是半透明的<code>rgba(255,100,120,.2)</code>,因為我是使用虛線的外框 ( stroke )，至於為什麼<code>stroke-width</code>設為 0 呢？因為一開始是沒有大圈圈的，所以設為 0，再使用 CSS 進行漸變，再來看到第二個 SVG，就是內容旋轉的進度條，最重要的是<code>stroke-dasharray</code>和<code>stroke-dashoffset</code>兩個屬性，主要掌管了這個虛線的長度以及虛線要跑去哪裡。 ( 可以參考我之前的 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (6) - stroke 邊框</a> )</p>
 <pre class="prettyprint"><code>&lt;svg class="loading-bg-red" width="100" height="100" x="0" y="0" style="position:absolute; top:0; left:0;"&gt;
     &lt;circle cx="50" cy="50" r="25" stroke="rgba(255,100,120,.2)" stroke-width="0" fill="none" stroke-dasharray="156,156" stroke-dashoffset="0" stroke-linecap="round"&gt;&lt;/circle&gt;
 &lt;/svg&gt;
@@ -185,16 +185,16 @@
   }
 }
 </code></pre><p><br></p>
-<p>完整的程式碼可以參考下列的 <a href="http://goo.gl/adm32D" target="_blank">EZoApp 範例連結</a> ( 看不到效果可以點選 preview )，或 <a href="http://jsbin.com/moyiyi/12" target="_blank">jsbin 範例連結</a>。  </p>
+<p>完整的程式碼可以參考下列的 <a href="http://goo.gl/adm32D" rel="noreferrer noopener" target="_blank">EZoApp 範例連結</a> ( 看不到效果可以點選 preview )，或 <a href="http://jsbin.com/moyiyi/12" rel="noreferrer noopener" target="_blank">jsbin 範例連結</a>。  </p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201407/20140710_1_03.gif" alt="Material Design - Progress and Activity"></p>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

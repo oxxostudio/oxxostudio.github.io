@@ -73,16 +73,16 @@
 <p>簡單來說，可以分成四個區塊，從左而右分別是寫在 DOM 內的行內樣式，ID 的樣式，Class、CSS選擇器以及偽類的樣式，元素與偽元素樣式，這裡可以像 ip 一樣表示成四個數字：<strong>0-0-0-0</strong> ，越往左邊權重越大，而數字越大權重也越大，舉例來說，如果今天樣式表只有寫：<code>div { color:red; }</code>，所產生的數字就是：<strong>0-0-0-1</strong> ，如果今天寫成：<code>body div div { color:red; }</code>，那麼數字就可以表示為：<strong>0-0-0-3</strong> ，如果今天寫成：<code>#header div { color:red }</code>，那麼數字就要表示為：<strong>0-1-0-1</strong> ，而 <strong>0-0-0-3</strong> 一定會覆蓋過 <strong>0-0-0-1</strong> ，<strong>0-1-0-1</strong> 會覆蓋過 <strong>0-0-0-3</strong> ，當然，如果兩個數字完全相同的，就是樣式擺放的比先後順序了，依此類推，這也可以很容易的幫助我們理解 CSS 的權重問題，如果還是不了解的，可以參考以下這兩張圖片：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201405/20140530_1_04.png" alt="CSS Specificity"></p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201405/20140530_1_05.png" alt="CSS Specificity"></p>
-<p>或許有人會問說，為什麼一定要用這些數字來表示呢？答案其實很簡單，這是 CSS 的規則，也是這麼久以來 CSS 設計師們的經驗心得，畢竟 CSS 這麼容易上手，卻也非常容易出錯，理解這些邏輯，也更能幫助我們在使用 CSS 上能得心應手。最後，可以參考這個網站： <a href="http://cssspecificity.com/" target="_blank">CSS Specificity</a>，裏頭就只有一張圖，將 CSS 的權重非常清楚的表列出來，由這張圖可以看到，<code>!important</code> 真是無敵呀！ ( 不過也不能亂用就是了 )</p>
+<p>或許有人會問說，為什麼一定要用這些數字來表示呢？答案其實很簡單，這是 CSS 的規則，也是這麼久以來 CSS 設計師們的經驗心得，畢竟 CSS 這麼容易上手，卻也非常容易出錯，理解這些邏輯，也更能幫助我們在使用 CSS 上能得心應手。最後，可以參考這個網站： <a href="http://cssspecificity.com/" rel="noreferrer noopener" target="_blank">CSS Specificity</a>，裏頭就只有一張圖，將 CSS 的權重非常清楚的表列出來，由這張圖可以看到，<code>!important</code> 真是無敵呀！ ( 不過也不能亂用就是了 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201405/20140530_1_02.jpg" alt="CSS Specificity"></p>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

@@ -69,7 +69,7 @@
 <h1>SVG D3.js - 繪製線段</h1> 
 <p>在之前的「SVG 研究之路 (4) - Path 基礎篇」裡頭，詳細的列出了 SVG path 的繪製方式，現在我們要來利用 D3.js 的 line() API ，來完成線段 ( line ) 的繪製，且有別於單純的 SVG 產生 path 不容易放入數據，D3.js 可以根據我們的數據，自動產生對應的線條。</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a></p>
+<p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>使用 line() 畫線</h2> 
 <p>先來了解一下如何利用 D3.js 的 line() 畫線，一開始一定要有一些 data，而且這些 data 必須要有 x 座標和 y 座標 ( 因為有「點」才有「線」，點是由 x 與 y 構成 )，因此我們的 data 陣列的值，都會是個「具有 x 與 y 屬性的物件」 ( 大括號為物件，內容是屬性 )，第一個點的座標就是<code>data[0].x</code>和<code>data[0].y</code>，依此類推。</p>
@@ -105,7 +105,7 @@
     });
 </code></pre><p>結果就會像下圖這樣：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_02.png" alt="SVG D3 - 繪製線段"></p>
-<p>打開開發者工具就可以看到每個點的座標都照 data 畫出來了  ( 範例：<a href="/demo/201411/svg-d3-02-line-demo1.html" target="_blank">svg-d3-02-line-demo1.html</a> )</p>
+<p>打開開發者工具就可以看到每個點的座標都照 data 畫出來了  ( 範例：<a href="/demo/201411/svg-d3-02-line-demo1.html" rel="noreferrer noopener" target="_blank">svg-d3-02-line-demo1.html</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201411/20141103_1_03.png" alt="SVG D3 - 繪製線段"></p>
 <h2>.interpolate() 的模式</h2> 
 <p>從上面的例子，雖然還看不出有多強大，但如果有一百個點要畫，就可以靠 D3 幫我們省下不少寫座標的功夫，但 line() 特別的地方還不在此，有個很神奇的<code>.interpolate()</code>，可以幫我們算出各種線段的樣式，再來就看一下這個神奇的<code>.interpolate()</code>，<code>.interpolate()</code>總共有 13 個模式可以設定，這是十三個模式分別是：</p>
@@ -116,14 +116,14 @@
 <li><em>step</em>：一律以水平線段或垂直線段顯示，採中間點的方式做連接。 </li>
 <li><em>step-before</em>：以起始點垂直畫線方式開始。 </li>
 <li><em>step-after</em>：以終點垂直畫線方式結束。 </li>
-<li><em>basis</em>：基於 <a href="http://en.wikipedia.org/wiki/B-spline" target="_blank">B-spline</a> 的定義長出曲線。 </li>
+<li><em>basis</em>：基於 <a href="http://en.wikipedia.org/wiki/B-spline" rel="noreferrer noopener" target="_blank">B-spline</a> 的定義長出曲線。 </li>
 <li><em>basis-open</em>：開放的 B-spline，不包含起點與終點 ( 大於三個點 )。 </li>
 <li><em>basis-closed</em>：封閉的 B-spline。 </li>
 <li><em>bundle</em>：基於 B-spline 之上，但包含了 tension 參數。 </li>
-<li><em>cardinal</em>：基於 <a href="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline" target="_blank">Cardinal spline</a> 的線段。</li>
+<li><em>cardinal</em>：基於 <a href="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline" rel="noreferrer noopener" target="_blank">Cardinal spline</a> 的線段。</li>
 <li><em>cardinal-open</em>：開放的 Cardinal spline，不包含起點與終點 ( 大於三個點 )。</li>
 <li><em>cardinal-closed</em>：封閉的 Cardinal spline。</li>
-<li><em>monotone</em>：基於 <a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#line_x" target="_blank">cubic interpolation</a> 的線段。</li>
+<li><em>monotone</em>：基於 <a href="https://github.com/mbostock/d3/wiki/SVG-Shapes#line_x" rel="noreferrer noopener" target="_blank">cubic interpolation</a> 的線段。</li>
 </ul>
 </blockquote>
 <p>很好，看完上面的十三個模式應該已經暈頭轉向，完全搞不懂字面上的意思是啥，我也是一模一樣的情形，所以這時候就要直接實作看看，應該就能明白箇中道理，因為 linear 剛剛是預設值，也就是剛剛的範例所以就不介紹，直接從 linear-closed 開始  ( data 還是剛剛那一組喔~ )：</p>
@@ -186,16 +186,16 @@
 </li>
 </ul>
 <h2>小結</h2> 
-<p>從上面各種模式所產生的線段就可以發現，D3.js 其實已經幫我們解決了很多想像不到的情形，特別是如果今天畫出來的線段希望它 smooth 一些，都可以藉由 D3.js 輕鬆實現，不需要再自己去計算 C 或是 Q ( 參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a> )，最後實現的範例：<a href="/demo/201411/svg-d3-02-line-demo2.html" target="_blank">svg-d3-02-line-demo2.html</a></p>
+<p>從上面各種模式所產生的線段就可以發現，D3.js 其實已經幫我們解決了很多想像不到的情形，特別是如果今天畫出來的線段希望它 smooth 一些，都可以藉由 D3.js 輕鬆實現，不需要再自己去計算 C 或是 Q ( 參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a> )，最後實現的範例：<a href="/demo/201411/svg-d3-02-line-demo2.html" rel="noreferrer noopener" target="_blank">svg-d3-02-line-demo2.html</a></p>
 <p>不過 D3.js 的 line() 其實還有不少其他的用法，之後研究之後再來慢慢分享。^_^</p>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

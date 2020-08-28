@@ -117,11 +117,11 @@ gamma:&lt;span id="gamma"&gt;&lt;/span&gt;&lt;br/&gt;
 }else{
     document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
 }
-</code></pre><p>完成後，用手機打開旋轉一下，應該就可以看到數值的變化了。( 範例：<a href="/demo/201506/html5-device-orientation-demo01.html" target="_blank">html5-device-orientation-demo01.html</a>，也可以掃描下方的 qrcode )</p>
+</code></pre><p>完成後，用手機打開旋轉一下，應該就可以看到數值的變化了。( 範例：<a href="/demo/201506/html5-device-orientation-demo01.html" rel="noreferrer noopener" target="_blank">html5-device-orientation-demo01.html</a>，也可以掃描下方的 qrcode )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_05.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_06.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <h2>CSS 3D 的應用</h2> 
-<p>既然有了這麼好玩又好用的 Web API，就一定要拿之前玩的 CSS 3D 來試試看，這裡我們用最簡單的正立方體來測試 ( 正立方體的製作請參考：<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html" target="_blank">玩轉 CSS 3D - 正四面體與正六面體</a> )，基本上就是把上面 alpha、beta 和 gamma 的數值，提供給正立方體的 space。</p>
+<p>既然有了這麼好玩又好用的 Web API，就一定要拿之前玩的 CSS 3D 來試試看，這裡我們用最簡單的正立方體來測試 ( 正立方體的製作請參考：<a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html" rel="noreferrer noopener" target="_blank">玩轉 CSS 3D - 正四面體與正六面體</a> )，基本上就是把上面 alpha、beta 和 gamma 的數值，提供給正立方體的 space。</p>
 <p>HTML 的部分就放上 camera、space 和 box。</p>
 <pre class="prettyprint"><code>&lt;div class="camera"&gt;
     &lt;div class="space"&gt;
@@ -133,7 +133,7 @@ gamma:&lt;span id="gamma"&gt;&lt;/span&gt;&lt;br/&gt;
         &lt;div class="box6"&gt;6&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><p>CSS 就比較複雜，不過因為不是這篇的重點所以就略過，有興趣的就去 <a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html" target="_blank">玩轉 CSS 3D - 正四面體與正六面體</a> 這篇閱讀，直接看到 js 的部分，沒有太特別，跟上一個範例幾乎相同，不過因為這裡我用了<code>document.querySelectorAll</code>，回傳的是一個陣列，所以要用<code>space[0]</code>。</p>
+</code></pre><p>CSS 就比較複雜，不過因為不是這篇的重點所以就略過，有興趣的就去 <a href="http://www.oxxostudio.tw/articles/201506/css-3d-platonic-solid-1.html" rel="noreferrer noopener" target="_blank">玩轉 CSS 3D - 正四面體與正六面體</a> 這篇閱讀，直接看到 js 的部分，沒有太特別，跟上一個範例幾乎相同，不過因為這裡我用了<code>document.querySelectorAll</code>，回傳的是一個陣列，所以要用<code>space[0]</code>。</p>
 <pre class="prettyprint"><code>var space = document.querySelectorAll('.space');
 if(window.DeviceOrientationEvent) {
 
@@ -150,7 +150,7 @@ if(window.DeviceOrientationEvent) {
 }else{
   document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
 }
-</code></pre><p>完成後，用手機打開旋轉一下，應該就可以看到一個正立方體在旋轉囉。( 範例：<a href="/demo/201506/html5-device-orientation-demo02.html" target="_blank">html5-device-orientation-demo02.html</a>，也可以掃描下方的 qrcode )</p>
+</code></pre><p>完成後，用手機打開旋轉一下，應該就可以看到一個正立方體在旋轉囉。( 範例：<a href="/demo/201506/html5-device-orientation-demo02.html" rel="noreferrer noopener" target="_blank">html5-device-orientation-demo02.html</a>，也可以掃描下方的 qrcode )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_07.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_08.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <h2>手機網頁指南針的應用</h2> 
@@ -198,11 +198,11 @@ if(window.DeviceOrientationEvent) {
 }else{
   document.querySelector('body').innerHTML = '你的瀏覽器不支援喔';
 }
-</code></pre><p>完成後，用手機打開旋轉一下，一個網頁指南針就順利誕生囉！( 範例：<a href="/demo/201506/html5-device-orientation-demo03.html" target="_blank">html5-device-orientation-demo03.html</a>，也可以掃描下方的 qrcode )</p>
+</code></pre><p>完成後，用手機打開旋轉一下，一個網頁指南針就順利誕生囉！( 範例：<a href="/demo/201506/html5-device-orientation-demo03.html" rel="noreferrer noopener" target="_blank">html5-device-orientation-demo03.html</a>，也可以掃描下方的 qrcode )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_09.jpg" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201506/20150630_1_10.gif" alt="HTML5 控制裝置陀螺儀 ( 三軸 )"></p>
 <h2>結合實物的應用 ( Webduino )</h2> 
-<p>為什麼會寫這篇文章呢？最主要是 Webduino 的教學範例裏頭有用到，下面這個影片，就是利用手機的陀螺儀，讓伺服馬達可以左右擺動，輕鬆完成網頁與實物的結合。( 對於 Webduino 有興趣的可以參考：<a href="https://webduino.io" target="_blank">https://webduino.io</a> )</p>
+<p>為什麼會寫這篇文章呢？最主要是 Webduino 的教學範例裏頭有用到，下面這個影片，就是利用手機的陀螺儀，讓伺服馬達可以左右擺動，輕鬆完成網頁與實物的結合。( 對於 Webduino 有興趣的可以參考：<a href="https://webduino.io" rel="noreferrer noopener" target="_blank">https://webduino.io</a> )</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/P1xOpSO10qw" frameborder="0" allowfullscreen=""></iframe>
 
 <p>此外還有 Webduino 的前段工程師同好，用陀螺儀做了一個操控夾娃娃機的裝置，也是很不賴！</p>
@@ -213,9 +213,9 @@ if(window.DeviceOrientationEvent) {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

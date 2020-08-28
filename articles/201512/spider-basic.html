@@ -69,7 +69,7 @@
 <h1>做個簡單的爬蟲 ( 幣值、空污 PM2.5 )</h1> 
 <p>幾個月前聽了一場用 NodeJS 做爬蟲的分享，大致上就是用純前端的技術，來爬靜態網頁的資料，聽完一直很想做個爬蟲看看，剛好最近因為「空氣污染」( PM2.5 ) 正夯，公司也正在研發 PM2.5 的感測器，於是就想說自己先來試試看，用爬蟲去中央氣象局爬爬 PM2.5 的數據。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>資料從哪裡找？</h2> 
-<p>爬空污數據除了直接爬網頁資料外，也可以從「<a href="http://data.gov.tw/node/6074" target="_blank">空氣品質即時污染指標</a>」這個政府開放資料平台來撈，這裏有提供 CSV、JSON 和 XML 的格式，不過因為這篇在爬蟲，所以我要爬的網站是這個：「<a href="http://taqm.epa.gov.tw/taqm/tw/Pm25Index.aspx" target="_blank">即時細懸浮微粒指標</a>」，加上這個網站更新的速度比開放資料的速度快 ( 雖然都是一小時更新一次，不過還是快樂十幾分鐘左右 )，所以就直接爬數據囉！</p>
+<p>爬空污數據除了直接爬網頁資料外，也可以從「<a href="http://data.gov.tw/node/6074" rel="noreferrer noopener" target="_blank">空氣品質即時污染指標</a>」這個政府開放資料平台來撈，這裏有提供 CSV、JSON 和 XML 的格式，不過因為這篇在爬蟲，所以我要爬的網站是這個：「<a href="http://taqm.epa.gov.tw/taqm/tw/Pm25Index.aspx" rel="noreferrer noopener" target="_blank">即時細懸浮微粒指標</a>」，加上這個網站更新的速度比開放資料的速度快 ( 雖然都是一小時更新一次，不過還是快樂十幾分鐘左右 )，所以就直接爬數據囉！</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201512/20151223_1_02.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
 <p>既然要爬，就要先來看看他的網頁原始碼，才知道要從何爬起，看了原始碼才發現他不是用什麼 json 資料的載入，而是把數據直接寫在原始碼內，意思就是只要爬出來 class 為 jTip 的 area，就可以獲得資料。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201512/20151223_1_03.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
@@ -113,7 +113,7 @@ fs.writeFile("result.json", result, function() {
 <pre class="prettyprint"><code>pm25();
 setInterval(pm25,30*60*1000);
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201512/20151223_1_04.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
-<p>會抓空污資料之後，我又異想天開的想說因為過一陣子要去日本玩，因為要兌換日幣，不如做一個自動抓取幣值的爬蟲好了，這樣就可以掌握幣值的變化，當幣值匯率到多少的時候，還會自動發個通知該多好，所以我就拿台灣銀行的幣值牌告匯率網頁來練習：<a href="http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm" target="_blank">http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm</a>。</p>
+<p>會抓空污資料之後，我又異想天開的想說因為過一陣子要去日本玩，因為要兌換日幣，不如做一個自動抓取幣值的爬蟲好了，這樣就可以掌握幣值的變化，當幣值匯率到多少的時候，還會自動發個通知該多好，所以我就拿台灣銀行的幣值牌告匯率網頁來練習：<a href="http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm" rel="noreferrer noopener" target="_blank">http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm</a>。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201512/20151223_1_05.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
 <p>不看原始碼還好，看了快昏倒，發現架構就是一堆 table 組成，很多還沒有 class，寫了很多行內的 style，所以爬進來之後還得費一番功夫來解析一下。 ( 經過這幾次的爬蟲經驗，發現架構做得越好的網站越好爬 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201512/20151223_1_06.jpg" alt="做個簡單的爬蟲 ( 幣值、空污 PM2.5 )"></p>
@@ -135,7 +135,7 @@ fs.writeFile("result.json", result, function() {
   console.log(varTime.toLocaleTimeString()+': '+a[' 日圓 (JPY)'][1]);
 
 });
-</code></pre><p>最後一樣使用<code>setInterval</code>五分鐘撈一次資料，就可以囉！( Github：<a href="https://github.com/oxxostudio/pm25" target="_blank">https://github.com/oxxostudio/pm25</a> )</p>
+</code></pre><p>最後一樣使用<code>setInterval</code>五分鐘撈一次資料，就可以囉！( Github：<a href="https://github.com/oxxostudio/pm25" rel="noreferrer noopener" target="_blank">https://github.com/oxxostudio/pm25</a> )</p>
 <pre class="prettyprint"><code>pm();
 setInterval(pm,5*60*1000);
 </code></pre><p>不過這裡如果發通知要怎麼做呢？我原本使用了 firebase 來串接，當數據改變時，就會透過瀏覽器發一個 alert 通知，但還有一個更快的方法，就是我使用了自家研發的 Webduino 產品，當匯率改變時，就透過蜂鳴器發出聲音，或透過 LED 閃爍來提醒，就更方便囉！範例程式就像下面這樣，當匯率小於 0.27 就把 led 燈點亮。</p>
@@ -155,9 +155,9 @@ boardReady('35PQ', function(board) {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

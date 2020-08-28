@@ -70,15 +70,15 @@
 <p>最近剛撰寫完 IT 鐵人賽的「實戰智慧插座」系列文章，原本最後兩篇想用個 LINE BOT 來完美收尾，但天不從人願 ( 自己後端的能力太弱 ），沒辦法順利完成，但趁著這個週末，總算是搞定了 LINE BOT ( LINE 聊天機器人 )。</p>
 <blockquote>
 <ul>
-<li>實戰智慧插座：<a href="https://goo.gl/hI1mEa" target="_blank">https://goo.gl/hI1mEa</a></li>
+<li>實戰智慧插座：<a href="https://goo.gl/hI1mEa" rel="noreferrer noopener" target="_blank">https://goo.gl/hI1mEa</a></li>
 <li>2018 LINE 機器人新文章：<a href="/articles/201804/line-bot-apps-script.html">實作 LINE 聊天機器人 ( Google Apps Script )</a></li>
 <li>如果不太會寫程式，可以參考我這篇 <a href="/articles/201803/ifttt-line.html">IFTTT 發送 LINE 訊息通知</a>，只需要簡單地設定加上幾行程式，就能在觸發某些事件時，自動發送 LINE 訊息通知。</li>
 </ul>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>1. LINE BOT 設定</h2> 
-<p>因為要使用 LINE 的機器人，一定要先到 「LINE Business Center」 建立 「BOT 帳號」( <a href="https://business.line.me/zh-hant/" target="_blank">https://business.line.me/zh-hant/</a> )。</p>
+<p>因為要使用 LINE 的機器人，一定要先到 「LINE Business Center」 建立 「BOT 帳號」( <a href="https://business.line.me/zh-hant/" rel="noreferrer noopener" target="_blank">https://business.line.me/zh-hant/</a> )。</p>
 <blockquote>
-<p>如果連結會導向 LINE@，可前往：<a href="https://developers.line.me/en/" target="_blank">https://developers.line.me/en/</a></p>
+<p>如果連結會導向 LINE@，可前往：<a href="https://developers.line.me/en/" rel="noreferrer noopener" target="_blank">https://developers.line.me/en/</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201701/20170115_1_02.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>登入當然就是用自己的 LINE 帳號登入，登入會要求要手機輸入驗證碼，反正如果帳號是自己的應該都可以順利登入 ( 咦？XD )，登入之後點選右上方帳號旁邊的「尚未選擇公司/經營者」，然後新增「公司/經營者」。</p>
@@ -100,8 +100,8 @@
 <p>開發者頁面第一個選項「Basic information」是最重要的，在這邊我們要記住「Channel ID」、「Channel Secret」( 點選 SHOW 會出現 ) 和「Channel Access Token」( 點選 ISSUE 會產生 )，而「Webhook URL」則是一個要放在「https」的網址，用作和 LINE BOT 溝通使用，到這邊基本上我們已經完成了 LINE BOT 的設定，接著就來看看 Webhook URL 要怎麼做。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201701/20170115_1_11.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <h2>2. 製作 Webhook URL ( Node.js )</h2> 
-<p>我這邊使用 Node.js 來建構我的 Webhook 頁面，首先我們要使用 「<strong>linebot</strong>」這個 Node.js 模組 ( 參考 <a href="https://www.npmjs.com/package/linebot" target="_blank">https://www.npmjs.com/package/linebot</a> )，然後伺服器端使用「<strong>express</strong>」這個模組。</p>
-<p>因為 LINE BOT 要求要「https」，所以我選擇了「<strong>heroku</strong>」( <a href="https://www.heroku.com/" target="_blank">https://www.heroku.com/</a> ) 作為我的伺服器，也因為要部署到上面去，所以必須要有一個 package.json 檔案，所以一開始我到我的資料夾，輸入<code>npm init</code>。( 安裝 Ｎode.js 在這邊就不提了，建議安裝 4.2 版本以上的 Node.js )</p>
+<p>我這邊使用 Node.js 來建構我的 Webhook 頁面，首先我們要使用 「<strong>linebot</strong>」這個 Node.js 模組 ( 參考 <a href="https://www.npmjs.com/package/linebot" rel="noreferrer noopener" target="_blank">https://www.npmjs.com/package/linebot</a> )，然後伺服器端使用「<strong>express</strong>」這個模組。</p>
+<p>因為 LINE BOT 要求要「https」，所以我選擇了「<strong>heroku</strong>」( <a href="https://www.heroku.com/" rel="noreferrer noopener" target="_blank">https://www.heroku.com/</a> ) 作為我的伺服器，也因為要部署到上面去，所以必須要有一個 package.json 檔案，所以一開始我到我的資料夾，輸入<code>npm init</code>。( 安裝 Ｎode.js 在這邊就不提了，建議安裝 4.2 版本以上的 Node.js )</p>
 <p>然後比較重要的是部署上去之後，要告訴 heroku 啟動的命令，所以我們手動在 package.json 裡面增加<code>"start": "node ."</code>。</p>
 <pre class="prettyprint"><code>{
   "name": "linechat",
@@ -123,7 +123,7 @@ var bot = linebot({
   channelSecret: channel Secret,
   channelAccessToken: channel Access Token
 });
-</code></pre><p>鍵入下列程式碼，這會在我們部署到 heroku 上頭之後，在收到 LINE 的訊息的時候把 <code>event</code> 印出，然後因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過另外一段程式碼作轉換。( 參考：<a href="http://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000" target="_blank">http://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000</a> )。</p>
+</code></pre><p>鍵入下列程式碼，這會在我們部署到 heroku 上頭之後，在收到 LINE 的訊息的時候把 <code>event</code> 印出，然後因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過另外一段程式碼作轉換。( 參考：<a href="http://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000" rel="noreferrer noopener" target="_blank">http://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000</a> )。</p>
 <pre class="prettyprint"><code>bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
 });
@@ -138,7 +138,7 @@ var server = app.listen(process.env.PORT || 8080, function() {
   console.log("App now running on port", port);
 });
 </code></pre><h2>3. 部署到 Heroku</h2> 
-<p>程式都寫好之後，就可以部署到 Heroku 上面看看狀況 ( 先看看能否順利收到 LINE 的訊息 )，要部署上去，首先要有 Heroku 的帳號，然後就是登入 Heroku ( <a href="https://www.heroku.com/" target="_blank">https://www.heroku.com/</a> )，登入之後右上角點選「New」，選擇「Create new app」。</p>
+<p>程式都寫好之後，就可以部署到 Heroku 上面看看狀況 ( 先看看能否順利收到 LINE 的訊息 )，要部署上去，首先要有 Heroku 的帳號，然後就是登入 Heroku ( <a href="https://www.heroku.com/" rel="noreferrer noopener" target="_blank">https://www.heroku.com/</a> )，登入之後右上角點選「New」，選擇「Create new app」。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201701/20170115_1_12.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
 <p>建立完成後，在「Settings」的頁面，就可以看到對應的 git 網址，待會我們只要把程式透過 git push 到這邊，就會自動完成安裝。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201701/20170115_1_13.jpg" alt="LINE BOT 實戰 ( 原理篇 )"></p>
@@ -179,9 +179,9 @@ var server = app.listen(process.env.PORT || 8080, function() {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

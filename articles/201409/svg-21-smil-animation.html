@@ -70,7 +70,7 @@
 <p><img src="/img/articles/201409/svg-21-smil-animation.jpg" class="preview-img" alt=""> </p>
 <p>SVG 的動畫元素是由 W3C Synchronized Multimedia (SYMM) Working Group 由 Synchronized Multimedia Integration Language (SMIL，同步多媒體集成語言) 所規範開發，SMIL 規劃具有許多的參數與設定值，也因為有了這些設定，我們便可以輕鬆的控制 SVG 圖形，這篇將介紹 SVG 基本的動畫，進階動畫控制的部分會在下一篇文章進行分享。</p>
 <blockquote>
-<p>參考：<a href="http://www.w3.org/TR/SVG/animate.html" target="_blank">W3C 的規範</a></p>
+<p>參考：<a href="http://www.w3.org/TR/SVG/animate.html" rel="noreferrer noopener" target="_blank">W3C 的規範</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>SVG 動畫起手式</h2> 
 <p>SVG 動畫其實跟 CSS3 的動畫很類似，都是必須要手動寫程式控制動畫時間、延遲時間與影格...等的數值，不過 SVG 動畫勝過 CSS3 動畫的地方，就在於 SVG 動畫可以讓圖形跟隨路徑移動、旋轉，還可以將動畫影格與時間做更精準的搭配，甚至在不需要撰寫 javascript 的情形下，就讓動畫具有一些互動效果，真的是非常神奇！</p>
@@ -109,7 +109,7 @@
 &lt;rect width="50" height="50" x="10" y="10" fill="none" stroke="#000"/&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140921_1_03.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
 <h2>animateMotion</h2> 
-<p>這個屬性是讓我們的圖形，可以跟隨路徑移動，甚至可以設定跟隨路徑自動旋轉，如果對於路徑 path 還不熟悉的，可以參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html" target="_blank">SVG 研究之路 (5) - Path 進階篇</a>，比較需要注意的是，當我們設定了 animateMotion，則圖形位置以 path 的起點 M 開始計算，也就是會把 M 當作圖形的 (0,0) 的座標，因此下面的範例將 x 設為 0，y 設為 -10。</p>
+<p>這個屬性是讓我們的圖形，可以跟隨路徑移動，甚至可以設定跟隨路徑自動旋轉，如果對於路徑 path 還不熟悉的，可以參考 <a href="http://www.oxxostudio.tw/articles/201406/svg-04-path-1.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (4) - Path 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (5) - Path 進階篇</a>，比較需要注意的是，當我們設定了 animateMotion，則圖形位置以 path 的起點 M 開始計算，也就是會把 M 當作圖形的 (0,0) 的座標，因此下面的範例將 x 設為 0，y 設為 -10。</p>
 <pre class="prettyprint"><code>&lt;rect width="20" height="10" x="0" y="-10" fill="#09c"&gt;
   &lt;animateMotion dur="5s" path="M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3" repeatCount="indefinite" rotate="auto" /&gt; 
 &lt;/rect&gt;
@@ -122,7 +122,7 @@
 &lt;path fill="none" stroke="#000" d="M7.4,15.3c17,20.4,48.8,38,91.6,27.8c79.5-18.9,107.4,48.2,69.4,48.2c-33.9,0-15.2-58.1,65.4-41.7c26.2,5.3,63.2-19.1,79.1-34.3"/&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201409/20140921_1_05.gif" alt="SVG 研究之路 (21) - 初探 SMIL Animation"></p>
 <h2>animateTransform</h2> 
-<p>這是控制圖形 transform 動畫的屬性，要使用這個屬性，就非得掌握 SVG transform 的基礎知識，可以參考之前的文章：<a href="http://www.oxxostudio.tw/articles/201409/svg-19-transform.html" target="_blank">SVG 研究之路 (19) - transform 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html" target="_blank">SVG 研究之路 (20) - transform Matrix</a>，下面的範例可以看到我們設定 type 是 scale，從 1 的比例變成 1.5 的比例。</p>
+<p>這是控制圖形 transform 動畫的屬性，要使用這個屬性，就非得掌握 SVG transform 的基礎知識，可以參考之前的文章：<a href="http://www.oxxostudio.tw/articles/201409/svg-19-transform.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (19) - transform 基礎篇</a> 與 <a href="http://www.oxxostudio.tw/articles/201409/svg-20-transform-matrix.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (20) - transform Matrix</a>，下面的範例可以看到我們設定 type 是 scale，從 1 的比例變成 1.5 的比例。</p>
 <pre class="prettyprint"><code>&lt;rect width="60" height="60" x="10" y="10" fill="#0c0"&gt;
   &lt;animateTransform dur="2s" attributeName="transform" repeatCount="indefinite" type="scale" from="1" to="1.5"/&gt; 
 &lt;/rect&gt;
@@ -141,9 +141,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

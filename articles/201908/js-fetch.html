@@ -77,7 +77,7 @@
 }).catch(function(err) {
     // 錯誤處理
 });
-</code></pre><p>舉例來說，前往 <a href="https://opendata.cwb.gov.tw/index" target="_blank">中央氣象局開放資料平台</a>可以取得許多氣象資料，下面的範例使用 <a href="https://opendata.cwb.gov.tw/dataset/observation/O-A0003-001" target="_blank">局屬氣象站-現在天氣觀測報告</a>，複製 JSON 格式的連結 ( 需要註冊登入才能看得到連結 )，因為檔案為 json 格式，所以在 fetch 取得檔案之後，透過<code>json()</code>的方法處理檔案，接著傳遞到下一層，就能顯示出「高雄市的即時氣溫」。</p>
+</code></pre><p>舉例來說，前往 <a href="https://opendata.cwb.gov.tw/index" rel="noreferrer noopener" target="_blank">中央氣象局開放資料平台</a>可以取得許多氣象資料，下面的範例使用 <a href="https://opendata.cwb.gov.tw/dataset/observation/O-A0003-001" rel="noreferrer noopener" target="_blank">局屬氣象站-現在天氣觀測報告</a>，複製 JSON 格式的連結 ( 需要註冊登入才能看得到連結 )，因為檔案為 json 格式，所以在 fetch 取得檔案之後，透過<code>json()</code>的方法處理檔案，接著傳遞到下一層，就能顯示出「高雄市的即時氣溫」。</p>
 <pre class="prettyprint"><code>fetch('局屬氣象站-現在天氣觀測報告網址')
 .then(res =&gt; {
     return res.json();
@@ -87,7 +87,7 @@
     console.log(`${city}的氣溫為 ${temp} 度 C`); // 得到 高雄市的氣溫為 29.30 度 C
 });
 </code></pre><h2>Fetch 的 Request 屬性</h2> 
-<p>以下列出 Fetch 常用的的 Request 屬性。( 更多屬性請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Request" target="_blank">fetch Request</a> )</p>
+<p>以下列出 Fetch 常用的的 Request 屬性。( 更多屬性請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Request" rel="noreferrer noopener" target="_blank">fetch Request</a> )</p>
 <table>
 <thead>
 <tr>
@@ -135,7 +135,7 @@
 </tbody>
 </table>
 <h2>Fetch 的 Response 屬性</h2> 
-<p>以下列出 Fetch 常用的 Response 屬性。( 更多屬性和方法請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Response" target="_blank">fetch Response</a> )</p>
+<p>以下列出 Fetch 常用的 Response 屬性。( 更多屬性和方法請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Response" rel="noreferrer noopener" target="_blank">fetch Response</a> )</p>
 <table>
 <thead>
 <tr>
@@ -171,7 +171,7 @@
 </tbody>
 </table>
 <h2>Fetch 的 Response 方法</h2> 
-<p>以下列出 Fetch 常用的 Response 方法。( 更多屬性和方法請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Response" target="_blank">fetch Response</a> )</p>
+<p>以下列出 Fetch 常用的 Response 方法。( 更多屬性和方法請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Response" rel="noreferrer noopener" target="_blank">fetch Response</a> )</p>
 <table>
 <thead>
 <tr>
@@ -302,14 +302,14 @@ console.log('hello!!!');
 <blockquote>
 <p>更多參考資源：</p>
 <ul>
-<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">MDN：Using Fetch</a></li>
-<li><a href="https://eyesofkids.gitbooks.io/javascript-start-from-es6/content/part4/ajax_fetch.html" target="_blank">AJAX 與 Fetch API</a></li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch" rel="noreferrer noopener" target="_blank">MDN：Using Fetch</a></li>
+<li><a href="https://eyesofkids.gitbooks.io/javascript-start-from-es6/content/part4/ajax_fetch.html" rel="noreferrer noopener" target="_blank">AJAX 與 Fetch API</a></li>
 </ul>
 </blockquote>
 <h2>備註</h2> 
 <p>上面的範例我都是使用 Google Apps Script 做簡易後端，但在接收 Fetch POST 方法松出的資料時，接收的內容卻跟以往不太相同，因此在 Apps Script 的取值要改成下面的寫法，出來的結果才會是正常的～</p>
 <blockquote>
-<p>詳細介紹請參考我之前的文章：<a href="/articles/201805/backend-apps-script.html#_self" target="_blank">簡易後端實作 ( Google Apps Script )</a></p>
+<p>詳細介紹請參考我之前的文章：<a href="/articles/201805/backend-apps-script.html#_self" rel="noreferrer noopener" target="_blank">簡易後端實作 ( Google Apps Script )</a></p>
 </blockquote>
 <pre class="prettyprint"><code>function doPost(e) {
     var param = JSON.parse(Object.keys(e.parameter)[0]); // 這段是重點！！！！
@@ -328,9 +328,9 @@ console.log('hello!!!');
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

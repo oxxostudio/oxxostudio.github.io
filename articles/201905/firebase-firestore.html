@@ -73,11 +73,11 @@
 <ul>
 <li><a href="/articles/201907/firebase-firestore-rules.html">Firebase 教學 - Firestore Rules 安全規則</a></li>
 <li><a href="/articles/201907/firebase-nodejs-firestore.html">Firebase 教學 - Node.js 操作 Firestore</a></li>
-<li><a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore?hl=zh-cn" target="_blank">Firestore 和 Realtime Database 的差異對比</a></li>
+<li><a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore?hl=zh-cn" rel="noreferrer noopener" target="_blank">Firestore 和 Realtime Database 的差異對比</a></li>
 </ul>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立資料庫</h2> 
-<p>首先我們先用 Google 帳號登入 ( <a href="https://firebase.google.com/" target="_blank">https://firebase.google.com/</a> )，接著進入 firebase 的控制台，點選「<em>新增專案</em>」，伺服器所在的位置選擇台灣，Cloud Firestore 選擇 asia-east2 ( 單純只是選擇距離台灣比較近的 )，相關條款打勾後即可新增專案。( 如果名稱和別人重複，自訂名稱後方多出一串亂碼 )</p>
+<p>首先我們先用 Google 帳號登入 ( <a href="https://firebase.google.com/" rel="noreferrer noopener" target="_blank">https://firebase.google.com/</a> )，接著進入 firebase 的控制台，點選「<em>新增專案</em>」，伺服器所在的位置選擇台灣，Cloud Firestore 選擇 asia-east2 ( 單純只是選擇距離台灣比較近的 )，相關條款打勾後即可新增專案。( 如果名稱和別人重複，自訂名稱後方多出一串亂碼 )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-01.jpg" alt=""></p>
 <p>專案建立後，會自動進入專案的管理畫面，點選左側選單的「<em>Database</em>」，點選右側 Cloud Firestore 建立資料庫。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-02.jpg" alt=""></p>
@@ -179,7 +179,7 @@ ref.update({
 <p>在讀取資料前，我先在 firestore 裡建立了一個名為 fruit 的集合，裡面放入 apple、mango、banana 和 orange 四個文件，每個文件都有 total 和 good 的屬性，有些則有 recommend 或 eat 的屬性，待會就會用這份資料來操作。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201905/firebase-firestore-11.jpg" alt=""></p>
 <h3><em>1. 一次性讀取 get</em></h3> 
-<p><code>get</code>的方法可以取得某個集合裡，所有文件的資料 ( 子集合只能在後端讀取，無法在前端或 App 段實現 )，下面的程式碼，執行後可以取得 fruit 裡頭四種水果的名稱和屬性，如果<code>get</code>的<em>對象為集合 collection</em>，取得資料後可使用<code>forEach</code>個別取出文件內容，詳細 API 可以參考：<a href="https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot" target="_blank">firebase. firestore. QuerySnapshot</a></p>
+<p><code>get</code>的方法可以取得某個集合裡，所有文件的資料 ( 子集合只能在後端讀取，無法在前端或 App 段實現 )，下面的程式碼，執行後可以取得 fruit 裡頭四種水果的名稱和屬性，如果<code>get</code>的<em>對象為集合 collection</em>，取得資料後可使用<code>forEach</code>個別取出文件內容，詳細 API 可以參考：<a href="https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot" rel="noreferrer noopener" target="_blank">firebase. firestore. QuerySnapshot</a></p>
 <pre class="prettyprint"><code>var db = firebase.firestore();
 var ref = db.collection('fruit');
 
@@ -257,9 +257,9 @@ ref.orderBy('total','desc').limit(3).get().then(querySnapshot =&gt; {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

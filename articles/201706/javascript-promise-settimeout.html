@@ -72,7 +72,7 @@
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>同步非同步</h2> 
 <p>一般來說 JavaScript 裡面有分成同步 sync 和非同步 async，在同步模式下，每個任務必須按照順序執行，後面的任務必須等待前面的任務執行完成，非同步模式則相反，後面的任務不用等前面的，各自執行各自的任務，例如<code>setTimeout</code>、<code>setInterval</code>都是這種模式。</p>
 <blockquote>
-<p>延伸閱讀：<a href="https://goo.gl/l8mN6W" target="_blank">非同步(Asynchronous)與同步(Synchronous)的差異</a></p>
+<p>延伸閱讀：<a href="https://goo.gl/l8mN6W" rel="noreferrer noopener" target="_blank">非同步(Asynchronous)與同步(Synchronous)的差異</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/javascript-promise-settimeout-1.jpg" alt=""></p>
 <p>如果 JavaScript 撰寫成下面這樣，結果並不會如果們預期的「等待一秒後出現 A，出現 A 後等待一秒再出現 B」，反而是等待一秒後 A、B 同時出現，所以變成傳統在實作的時候，就要寫很多的 callback 來滿足同步的情況。</p>
@@ -87,8 +87,8 @@ setTimeout(function(){
 <p>為了解決同步非同步的問題，我開始學習 Promise，剛接觸 Promise 的時候實在是有點頭昏腦脹，因為網路上的資料很多，但總找不到一個合適的範例展示，導致一直沒辦法深入理解，後來找到了下面這兩篇相當完整且豐富的教學，也讓我終於踏入了 Promise 的世界，由於這兩篇文章已經相當完整，就不在這邊做描述，有興趣的可以點進去看看。</p>
 <blockquote>
 <ul>
-<li><a href="https://eyesofkids.gitbooks.io/javascript-start-es6-promise/content/" target="_blank">從 Promise 開始的 JavaScript 異步生活</a></li>
-<li><a href="http://liubin.org/promises-book/#how-to-write-promise" target="_blank">JavaScript Promise 迷你書（ 中文版 )</a></li>
+<li><a href="https://eyesofkids.gitbooks.io/javascript-start-es6-promise/content/" rel="noreferrer noopener" target="_blank">從 Promise 開始的 JavaScript 異步生活</a></li>
+<li><a href="http://liubin.org/promises-book/#how-to-write-promise" rel="noreferrer noopener" target="_blank">JavaScript Promise 迷你書（ 中文版 )</a></li>
 </ul>
 </blockquote>
 <p>簡單來說，Promise 就是「承諾」，可以想像成 A 承諾 B 要去辦事，辦完之後才會回報結果，而這個結果只有兩種狀況：成功與失敗，不會有處於成功失敗不明的中間狀況。</p>
@@ -138,7 +138,7 @@ function b(v){
 }
 </code></pre><p>如果換成 Promise 的做法，就可以把 setTimeout 放到 Promise 裡面，同時可以設定一個變數作為延遲的毫秒數，接下來就可以使用<code>.then</code>來做串接，在每一個 then 裡頭，再 return 一個 Promise 物件，就可以繼續使用<code>.then</code>串接下去，實際完成之後，應該就會看到 123 依序隔一秒才出現，寫法上也就更為清楚簡潔。</p>
 <blockquote>
-<p>範例展示：<a href="/demo/201706/javascript-promise-settimeout-demo-01.html" target="_blank">demo-01.html</a></p>
+<p>範例展示：<a href="/demo/201706/javascript-promise-settimeout-demo-01.html" rel="noreferrer noopener" target="_blank">demo-01.html</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var delay = function(s){
   return new Promise(function(resolve,reject){
@@ -158,7 +158,7 @@ delay().then(function(){
 </code></pre><h2>resolve 回傳值</h2> 
 <p>當 resolve 有合法值的時候，可將這個值傳遞下去使用，但 resolve 只能有一個回傳值 (<code>resolve(value)</code>)，所以如果有兩個以上，則必須透過陣列或是物件來傳遞，舉例來說 delay 有兩個變數，第一個變數是顯示的文字，第二個則是延遲的秒數，透過<code>resolve([r,s]);</code>就能不斷地將值傳遞下去，結果就會是先顯示「a 0」，延遲一秒後顯示「b 1000」，延遲兩秒後顯示「c 2000」。</p>
 <blockquote>
-<p>範例展示：<a href="/demo/201706/javascript-promise-settimeout-demo-02.html" target="_blank">demo-02.html</a></p>
+<p>範例展示：<a href="/demo/201706/javascript-promise-settimeout-demo-02.html" rel="noreferrer noopener" target="_blank">demo-02.html</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var delay = function(r,s){
   return new Promise(function(resolve,reject){
@@ -184,9 +184,9 @@ delay('a',0).then(function(v){
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

@@ -70,7 +70,7 @@
 <p><img src="/img/articles/201503/css-pie-chart.gif" class="preview-img" alt=""></p>
 <p>當初我玩 SVG 的初衷，一部分就是因為當時的瀏覽器無法支援 CSS3 的動畫效果，當年為了一個圓餅圖 ( pie chart )，做不出來簡直快抓狂啦，但是近年來瀏覽器的效能大幅躍進，基本上使用純粹的 CSS 也可以做到圓餅圖的效果 ( 甚至是動畫 )，所以就用一篇文章來記錄一下純 CSS 繪製圓餅圖的過程吧！</p>
 <blockquote>
-<p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
+<p>如果對 CSS 動畫有興趣，可以參考 <a href="/articles/201803/css-animation.html" rel="noreferrer noopener" target="_blank">完整解析 CSS 動畫 ( CSS Animation )</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>原理介紹</h2> 
 <p>利用 CSS 做圓餅圖不如 SVG 來的直覺，畢竟在 CSS 裡頭要做成圓形，只能利用<code>border-radius</code>的方法進行，因此純粹的 CSS 圓餅圖，勢必得用一個以上的 div 來組合產生，那麼，啾竟需要多少個 div 才有辦法做出一個漂亮的圓餅圖呢？目前我的做法「只需要用一個 div 搭配自身兩個偽元素」即可，換句話說，就是用 div 本身作為遮罩，內容的兩個偽元素互相旋轉搭配，就可以做出逼真的圓餅圖。</p>
@@ -163,12 +163,12 @@
     border-radius:0;
   }
 }
-</code></pre><p>完成之後的長相就會是這樣囉！( 範例：<a href="/demo/201503/css-pie-chart-demo1.html" target="_blank">css-pie-chart-demo1.html</a>)</p>
+</code></pre><p>完成之後的長相就會是這樣囉！( 範例：<a href="/demo/201503/css-pie-chart-demo1.html" rel="noreferrer noopener" target="_blank">css-pie-chart-demo1.html</a>)</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_2_04.gif" alt="純 CSS 繪製圓餅圖"></p>
-<p>其實如果你把遮罩拿掉，圓角移除，再用個透明度，看到的就會是真實的長相，所以，利用 before 和 after 的變化，就可以輕鬆地純粹利用 CSS 來做圓餅圖了。( 範例：<a href="/demo/201503/css-pie-chart-demo2.html" target="_blank">css-pie-chart-demo2.html</a>)</p>
+<p>其實如果你把遮罩拿掉，圓角移除，再用個透明度，看到的就會是真實的長相，所以，利用 before 和 after 的變化，就可以輕鬆地純粹利用 CSS 來做圓餅圖了。( 範例：<a href="/demo/201503/css-pie-chart-demo2.html" rel="noreferrer noopener" target="_blank">css-pie-chart-demo2.html</a>)</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/20150324_2_05.gif" alt="純 CSS 繪製圓餅圖"></p>
 <h2>網頁元素和圓餅圖互動</h2> 
-<p>最後，如果搭配 jQuery 的應用，就可以做出不同角度的圓餅圖，甚至你也可以利用 range slider 來實現一些簡單的互動，不過用 jquery 有個要注意的地方，就是偽元素 after 和 before 並不是 HTML 的 DOM，所以無法正常的用 jQuery 獲取，因此要直接用 append 添加樣式才可以囉。( 範例：<a href="/demo/201503/css-pie-chart-demo3.html" target="_blank">css-pie-chart-demo3.html</a>)</p>
+<p>最後，如果搭配 jQuery 的應用，就可以做出不同角度的圓餅圖，甚至你也可以利用 range slider 來實現一些簡單的互動，不過用 jquery 有個要注意的地方，就是偽元素 after 和 before 並不是 HTML 的 DOM，所以無法正常的用 jQuery 獲取，因此要直接用 append 添加樣式才可以囉。( 範例：<a href="/demo/201503/css-pie-chart-demo3.html" rel="noreferrer noopener" target="_blank">css-pie-chart-demo3.html</a>)</p>
 <pre class="prettyprint"><code>$(function(){
   var deg;
 
@@ -205,17 +205,17 @@
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201503/css-pie-chart.gif" alt="純 CSS 繪製圓餅圖"></p>
 <p>圓餅圖相關連結：</p>
 <ul>
-<li><a href="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html" target="_blank">SVG 研究之路 (12) - pie chart 圓餅圖實作</a></li>
-<li><a href="http://www.oxxostudio.tw/articles/201409/svg-24-jquery-pie-chart.html" target="_blank">SVG 研究之路 (24) - 寫 jquery 產生圓餅圖</a></li>
+<li><a href="http://www.oxxostudio.tw/articles/201406/svg-12-pie-chart.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (12) - pie chart 圓餅圖實作</a></li>
+<li><a href="http://www.oxxostudio.tw/articles/201409/svg-24-jquery-pie-chart.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (24) - 寫 jquery 產生圓餅圖</a></li>
 </ul>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

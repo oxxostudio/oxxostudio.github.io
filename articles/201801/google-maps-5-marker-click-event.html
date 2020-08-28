@@ -72,7 +72,7 @@
 <p>地圖標記的事件，可以透過<code>addListener</code>來完成，可監聽的事件有 click、dblclick、mouseup、mousedown、mouseover 和 mouseout，這裡我透過 click 和地圖標記的動作效果，做出點擊地圖標記時標記會彈跳，再點一下它就會停止的效果。</p>
 <p>要實現這個效果還要加上<code>getAnimation()</code>，來判斷現在地圖標記是否正在進行動畫效果，如果是 null 就是沒有進行動畫，最後使用<code>setAnimation</code>來將動畫效果設定到地圖標記上。</p>
 <blockquote>
-<p>範例：<a href="/demo/201801/google-maps-5-marker-click-event-demo-01.html" target="_blank">點擊事件 AddListener</a></p>
+<p>範例：<a href="/demo/201801/google-maps-5-marker-click-event-demo-01.html" rel="noreferrer noopener" target="_blank">點擊事件 AddListener</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 
@@ -105,7 +105,7 @@ function initMap() {
 <h2>點擊後更換地圖標記圖片</h2> 
 <p>除了動畫之外，也可以透過<code>setIcon</code>的方法，更換地圖標記的顯示圖片，這裏設定當滑鼠事件發生 click 的時候，圖片就會改變。</p>
 <blockquote>
-<p>範例：<a href="/demo/201801/google-maps-5-marker-click-event-demo-02.html" target="_blank">點擊後更換地圖標記圖片</a></p>
+<p>範例：<a href="/demo/201801/google-maps-5-marker-click-event-demo-02.html" rel="noreferrer noopener" target="_blank">點擊後更換地圖標記圖片</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 var a = -1;
@@ -141,7 +141,7 @@ function initMap() {
 <h2>點擊後開啟資訊視窗</h2> 
 <p>在 Google 地圖裡，「資訊視窗 InfoWindow」常常會出現和地圖標記搭配，資訊視窗會在之後再找篇幅介紹，這裏先實作當我們點擊地圖標記時，就會把資訊視窗打開，然後再點一下，就可以把資訊視窗關閉的效果。</p>
 <blockquote>
-<p>範例：<a href="/demo/201801/google-maps-5-marker-click-event-demo-03.html" target="_blank">點擊後開啟資訊視窗</a></p>
+<p>範例：<a href="/demo/201801/google-maps-5-marker-click-event-demo-03.html" rel="noreferrer noopener" target="_blank">點擊後開啟資訊視窗</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var map;
 var a = -1;
@@ -188,9 +188,9 @@ function initMap() {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

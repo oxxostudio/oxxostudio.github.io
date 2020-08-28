@@ -81,8 +81,8 @@
 <li><em>preserveAspectRatio</em></li>
 </ul>
 </blockquote>
-<p>來解釋一下這些屬性吧，第一個<code>xlink:href</code>，這其實就要我們放上圖片的網址，就有點類似 img 標籤的 src 一樣，而<code>x,y,width,height</code> 則有兩種參數格式，如果我們把 filter 的 primitiveUnits 設為 <strong>objectBoundingBox</strong>，那麼這四個參數的就是和我們形狀的「比例」，如果把 filter 的 primitiveUnits 設為 <strong>userSpaceOnUse</strong>，那麼使用的就是和 SVG 的比例，為什麼會這樣呢？請參考：<a href="http://www.oxxostudio.tw/articles/201409/svg-26-patterns.html" target="_blank">SVG 研究之路 (26) - 有趣的 Patterns</a> 有非常詳細的解釋，而同樣的關鍵在 filter 也是大同小異，objectBoundingBox 是圖形的比例，userSpaceOnUse 是和這個 SVG 的比例，這樣記就沒錯了，而 filter 的 primitiveUnits 是指 filter 內部的濾鏡效果單位，而 filter 另外一個 filterUnits 則是 filter 自己的單位，非常非常重要，使用 filter 就必須要牢牢記住！不過在 feimage 的濾鏡裡，filter 使用 userSpaceOnUse 的單位是像素，primitiveUnits 的單位是比例喔！( 不熟的話也沒關係，發現用起來很怪，可能就是比例和像素上出了問題 )</p>
-<p>然而看到 preserveAspectRatio 這個屬性，第一個念頭一定要想到這篇：<a href="http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html" target="_blank">SVG 研究之路 (23) - 理解 viewport 與 viewbox</a> 主要就是在定義 feImage 我們所使用的 image 自身和自身 viewbox 的位置與填滿定義。</p>
+<p>來解釋一下這些屬性吧，第一個<code>xlink:href</code>，這其實就要我們放上圖片的網址，就有點類似 img 標籤的 src 一樣，而<code>x,y,width,height</code> 則有兩種參數格式，如果我們把 filter 的 primitiveUnits 設為 <strong>objectBoundingBox</strong>，那麼這四個參數的就是和我們形狀的「比例」，如果把 filter 的 primitiveUnits 設為 <strong>userSpaceOnUse</strong>，那麼使用的就是和 SVG 的比例，為什麼會這樣呢？請參考：<a href="http://www.oxxostudio.tw/articles/201409/svg-26-patterns.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (26) - 有趣的 Patterns</a> 有非常詳細的解釋，而同樣的關鍵在 filter 也是大同小異，objectBoundingBox 是圖形的比例，userSpaceOnUse 是和這個 SVG 的比例，這樣記就沒錯了，而 filter 的 primitiveUnits 是指 filter 內部的濾鏡效果單位，而 filter 另外一個 filterUnits 則是 filter 自己的單位，非常非常重要，使用 filter 就必須要牢牢記住！不過在 feimage 的濾鏡裡，filter 使用 userSpaceOnUse 的單位是像素，primitiveUnits 的單位是比例喔！( 不熟的話也沒關係，發現用起來很怪，可能就是比例和像素上出了問題 )</p>
+<p>然而看到 preserveAspectRatio 這個屬性，第一個念頭一定要想到這篇：<a href="http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (23) - 理解 viewport 與 viewbox</a> 主要就是在定義 feImage 我們所使用的 image 自身和自身 viewbox 的位置與填滿定義。</p>
 <h2>效果實作</h2> 
 <p>上述的一堆文字就是在介紹屬性，為了避免昏頭，以及為了許多像我這樣喜歡看圖片說明的人，再來就直接用範例解釋，下面的所有範例都將會使用一張 300x300 的圖片作為 feImage 的圖檔 ( 我自己畫的誕生版蒙娜麗莎 )，同時會放上兩個示意的 div 表現 SVG 的外框 ( 黑色 ) 與套用濾鏡形狀的外框 ( 藍色 )。</p>
 <p>首先一定要看看在完全不設定的情況下套用 feImage：</p>
@@ -138,7 +138,7 @@
 <p>也因此我們也可以不用填滿，縮小也沒問題</p>
 <pre class="prettyprint"><code>&lt;feImage xlink:href="http://www.oxxostudio.tw/img/articles/201410/20141003_1_demo.jpg" x="0" y="0" width=".5" height=".5" /&gt;
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201410/20141005_1_08.png" alt="SVG 研究之路 (27) - filter - feImage"></p>
-<p>然後縮小之後，我們就可以使用 preserveAspectRatio 這個對齊的指令，忘記的話趕快回去看一下這篇 <a href="http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html" target="_blank">SVG 研究之路 (23) - 理解 viewport 與 viewbox</a> 這個屬性如果沒有設定，預設值為：xMidYMid meet，不過這裡比較特別的地方，如果我們將長寬設為同比例，看起來就不會有影響，因為這個屬性主導的是對齊和填滿，如果比例不同，就會以比較大的數值為主，例如下面的範例，設為 xMidYMax slice，圖片就對齊形狀底部，超過的範圍就裁切掉。</p>
+<p>然後縮小之後，我們就可以使用 preserveAspectRatio 這個對齊的指令，忘記的話趕快回去看一下這篇 <a href="http://www.oxxostudio.tw/articles/201409/svg-23-viewpoint-viewBox.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (23) - 理解 viewport 與 viewbox</a> 這個屬性如果沒有設定，預設值為：xMidYMid meet，不過這裡比較特別的地方，如果我們將長寬設為同比例，看起來就不會有影響，因為這個屬性主導的是對齊和填滿，如果比例不同，就會以比較大的數值為主，例如下面的範例，設為 xMidYMax slice，圖片就對齊形狀底部，超過的範圍就裁切掉。</p>
 <pre class="prettyprint"><code>  &lt;defs&gt;
     &lt;filter id="f" primitiveUnits="objectBoundingBox" x="0" y="0" width="1" height="1"&gt;
       &lt;feImage xlink:href="http://www.oxxostudio.tw/img/articles/201410/20141003_1_demo.jpg" width="1" height="1" preserveAspectRatio="xMidYMax slice" /&gt;
@@ -171,9 +171,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

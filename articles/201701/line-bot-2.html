@@ -76,7 +76,7 @@
 </ul>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>1. LINE Message Type</h2> 
-<p>如果我們傳訊息給我們建立的 LINE BOT，可以看到 Message 裡面有個「type」的屬性，透過這個屬性我們可以作出對應的動作，以下就列出 LINE Message 的 type 種類。( 參考 <a href="https://www.npmjs.com/package/linebot" target="_blank">https://www.npmjs.com/package/linebot</a>、<a href="https://devdocs.line.me/en/" target="_blank">https://devdocs.line.me/</a> )</p>
+<p>如果我們傳訊息給我們建立的 LINE BOT，可以看到 Message 裡面有個「type」的屬性，透過這個屬性我們可以作出對應的動作，以下就列出 LINE Message 的 type 種類。( 參考 <a href="https://www.npmjs.com/package/linebot" rel="noreferrer noopener" target="_blank">https://www.npmjs.com/package/linebot</a>、<a href="https://devdocs.line.me/en/" rel="noreferrer noopener" target="_blank">https://devdocs.line.me/</a> )</p>
 <ul>
 <li><em>text</em>：純文字。</li>
 <li><em>image</em>：圖片。</li>
@@ -112,7 +112,7 @@
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201701/20170115_2_03.jpg" alt="LINE BOT 實戰 ( 聊天篇 )"></p>
 <h2>4. 詢問 PM2.5 空氣污染數值</h2> 
 <p>最近空氣污染越來越嚴重，因此我們可以透過氣象局的 Opendata 來獲取每個小時所在區域的 PM2.5 數值，然後我們也可以用聊天的方式，詢問 PM2.5 數值，當然如果搭配剛剛的 push 方式，就可以讓 LINE BOT 發訊息讓我們知道囉！。</p>
-<p>我這邊要使用的數值是「<a href="http://data.gov.tw/node/6074" target="_blank">空氣污染即時指標</a>」裡面的 json 資料，所以後端我要先<code>npm install get-json --save</code>安裝這個「get-json」套件來抓取資料，完整程式寫法如下，先判斷一段文字裡面有沒有 PM2.5，然後接著判斷地點，如果在條件之外就用其他訊息來呈現。</p>
+<p>我這邊要使用的數值是「<a href="http://data.gov.tw/node/6074" rel="noreferrer noopener" target="_blank">空氣污染即時指標</a>」裡面的 json 資料，所以後端我要先<code>npm install get-json --save</code>安裝這個「get-json」套件來抓取資料，完整程式寫法如下，先判斷一段文字裡面有沒有 PM2.5，然後接著判斷地點，如果在條件之外就用其他訊息來呈現。</p>
 <pre class="prettyprint"><code>var linebot = require('linebot');
 var express = require('express');
 var getJSON = require('get-json');
@@ -181,7 +181,7 @@ function _getJSON() {
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201701/20170115_2_04.jpg" alt="LINE BOT 實戰 ( 聊天篇 )"></p>
 <h2>5. 主動通知日幣匯率</h2> 
-<p>關於日幣爬蟲的技術，可以參考我之前寫的 <a href="http://ithelp.ithome.com.tw/articles/10188884" target="_blank">實戰智慧插座 29 - 用日幣匯率開關燈 ( Node.js 爬蟲應用篇 )</a> 裡面有很完整的說明，這邊我就只貼出關鍵的程式碼，下面的程式表示當日幣小於 0.28 的時候，就會主動發送 LINE 的訊息通知。</p>
+<p>關於日幣爬蟲的技術，可以參考我之前寫的 <a href="http://ithelp.ithome.com.tw/articles/10188884" rel="noreferrer noopener" target="_blank">實戰智慧插座 29 - 用日幣匯率開關燈 ( Node.js 爬蟲應用篇 )</a> 裡面有很完整的說明，這邊我就只貼出關鍵的程式碼，下面的程式表示當日幣小於 0.28 的時候，就會主動發送 LINE 的訊息通知。</p>
 <pre class="prettyprint"><code>function _japan() {
   clearTimeout(timer2);
   request({
@@ -204,7 +204,7 @@ function _getJSON() {
 }
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201701/20170115_2_05.jpg" alt="LINE BOT 實戰 ( 聊天篇 )"></p>
 <p>以上就是我們把 LINE BOT 拿來和各種網頁技術結合產生的應用，其實還可以做到一大堆事情呀！舉例來說，下面這個影片就是我把 LINE BOT 和 Webduino 結合，就可以用 LINE 來開關燈！真的是很酷呀！</p>
-<p>如果你對 Webduino 有興趣，可以參考我最近寫完的三十篇「實戰智慧插座」( 連結：<a href="https://goo.gl/UtaUss" target="_blank">https://goo.gl/UtaUss</a> )，或是前往 Webduino 官方網站瞧瞧 ( 連結：<a href="https://webduino.io" target="_blank">https://webduino.io</a> )</p>
+<p>如果你對 Webduino 有興趣，可以參考我最近寫完的三十篇「實戰智慧插座」( 連結：<a href="https://goo.gl/UtaUss" rel="noreferrer noopener" target="_blank">https://goo.gl/UtaUss</a> )，或是前往 Webduino 官方網站瞧瞧 ( 連結：<a href="https://webduino.io" rel="noreferrer noopener" target="_blank">https://webduino.io</a> )</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cK3calqizTs" frameborder="0" allowfullscreen=""></iframe>
 
 
@@ -216,9 +216,9 @@ function _getJSON() {
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

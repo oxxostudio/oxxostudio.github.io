@@ -70,7 +70,7 @@
 <p><img src="/img/articles/201509/web-audio-api.jpg" class="preview-img" alt=""> </p>
 <p>隨著 web 技術的蓬勃發展，在網頁裡播放音樂已經可以不需要透過 flash 或 quicktime 等外掛程式輔助，純粹使用 HTML5 的 audio tag 就可以播放音樂，甚至可以透過 W3C 所規範的 Web Audio API 就可以做許多進階的聲音控制和應用，接觸到的時候覺得實在太有趣，一定要寫一些文章在記錄一下。</p>
 <blockquote>
-<p>Web Audio API 參考：<a href="http://webaudio.github.io/web-audio-api/" target="_blank">http://webaudio.github.io/web-audio-api/</a></p>
+<p>Web Audio API 參考：<a href="http://webaudio.github.io/web-audio-api/" rel="noreferrer noopener" target="_blank">http://webaudio.github.io/web-audio-api/</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Web Audio API 起手式</h2> 
 <p>要使用 Web Audio API，第一步就是要創建一個 AudioContext，AudioContext 是一個聲音的容器，在 AudioContext 裡，我們可以針對聲音做各種的處理，在裡頭，AudioSourceNode 表示音訊來源，而聲音是以節點的方式 ( AudioNode ) 存在，每個節點都有輸入和輸出，只有來源節點沒有輸入，聲音除了可以用外部的輸入 ( wav、mp3、ogg...等 )，也可以使用振盪器 ( Oscillators ) 來產生，原理就有點像我們彈奏弦樂器，也是利用樂器內的弦震盪來發聲。</p>
@@ -84,16 +84,16 @@ var context = new window.AudioContext;
 <p>  <code>type</code>選擇震盪的波形，波形共有五種 type，分別是 sine ( 正弦波 )、square ( 方波 )、sawtooth ( 鋸齒波 )、triangle ( 三角波 )    和 custom ( 自訂 )，每種波形在同樣的頻率下，會產生不同的聲音。</p>
 </li>
 <li><p><strong>frequency：</strong></p>
-<p>  震盪的頻率，在音樂裡面也稱作「音高」( 可以參考<a href="https://zh.wikipedia.org/wiki/%E9%9F%B3%E9%AB%98" target="_blank">維基百科</a> )，頻率越高聲音就越高，基本預設的聲音頻率座落在 440 赫茲，因為任何樂器演奏中央 C 上的 A 音符基頻皆為 440 赫茲。</p>
+<p>  震盪的頻率，在音樂裡面也稱作「音高」( 可以參考<a href="https://zh.wikipedia.org/wiki/%E9%9F%B3%E9%AB%98" rel="noreferrer noopener" target="_blank">維基百科</a> )，頻率越高聲音就越高，基本預設的聲音頻率座落在 440 赫茲，因為任何樂器演奏中央 C 上的 A 音符基頻皆為 440 赫茲。</p>
 </li>
 <li><p><strong>detune：</strong></p>
-<p>  音高偏移微調，將原音的音分做些微移調，造成重疊的音色效果，也就是雖然是同一個音，但經過 detune 偏移，就變成了不同的聲音。( 音分可以參考<a href="https://zh.wikipedia.org/wiki/%E9%9F%B3%E5%88%86" target="_blank">維基百科</a> )</p>
+<p>  音高偏移微調，將原音的音分做些微移調，造成重疊的音色效果，也就是雖然是同一個音，但經過 detune 偏移，就變成了不同的聲音。( 音分可以參考<a href="https://zh.wikipedia.org/wiki/%E9%9F%B3%E5%88%86" rel="noreferrer noopener" target="_blank">維基百科</a> )</p>
 </li>
 <li><p><strong>onended：</strong></p>
 <p>  結束時會發生的事件，寫法為：<code>oscillator.onended = function(){發生什麼事};</code>。</p>
 </li>
 </ul>
-<p>利用這四個屬性，我們就可以這樣做，建立三個音節，讓這三個音節做 detune 偏移，並且只播放兩秒後停止 ( 直接寫在 stop 裡面，要延後播放就寫在 start 裡 )，停止後會彈出一個 alert 告訴我們音樂停了。( 範例：<a href="/demo/201509/web-audio-api-demo01.html" target="_blank">web-audio-api-demo01.html</a> )</p>
+<p>利用這四個屬性，我們就可以這樣做，建立三個音節，讓這三個音節做 detune 偏移，並且只播放兩秒後停止 ( 直接寫在 stop 裡面，要延後播放就寫在 start 裡 )，停止後會彈出一個 alert 告訴我們音樂停了。( 範例：<a href="/demo/201509/web-audio-api-demo01.html" rel="noreferrer noopener" target="_blank">web-audio-api-demo01.html</a> )</p>
 <pre class="prettyprint"><code>var oscillator1 = context.createOscillator();
 oscillator1.type = "square";
 oscillator1.frequency.value = 440;
@@ -122,7 +122,7 @@ oscillator3.stop(2);
 <p>瞭解怎麼利用 Web Audio Api 發聲之後，接著就是要來控制我們所發出來的聲音，但是在我們要控制聲音之前，必須要先了解「節點 AudioNode」這個概念，在 AudioContext 裡，主要就是音樂節點的處理和控制，換個角度思考，AudioContext 就像是一張畫布，在上頭繪製的圖形，就是我們的音符，把音符串在一起，就變成了一首曲子，整個流程圖如下：</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150928_1_02.jpg" alt="初探 Web Audio API"></p>
 <p>簡單來說，source 是我們的音訊來源，不論是用剛剛講的 oscillator 來做，或直接播放音訊，總之音訊來源就都必須轉換為 AudioNode，才能夠做進一步的控制，也就是進入「Processing Nodes」的階段，在這個階段我們就有許多的特殊節點模組 ( Nodes Modules ) 可以進行運算，最後就利用「destination」做輸出的動作，中間的每個步驟，我們都會使用「connect」來做連結，這也是為什麼在使用 Web Audio Api 的程式碼裡頭，都會出現許多 connect，同時也是上面的範例最後用了<code>oscillator3.connect(context.destination);</code>的原因。</p>
-<p>詳細的 Nodes Modules 會在之後的篇幅介紹，這裏我先用到一個最簡單也是最容易理解的 Nodes Modules：「GainNode 音量節點」，顧名思義這就是拿來控制音量使用的，因為我們已經進入 AudioNode 的階段，所以寫法上就要做點小更動，剛剛我們是直接用 oscillator 去連結 context.destination，這裏因為 oscillator 先連結了 gainNode，所以再來我們是要用 gainNode 去連結 context.destination，下面的範例打開以後，就會先聽到兩秒的標準音量，再來又會聽到兩秒變成原本音量 0.3 倍的聲音。( 範例：<a href="/demo/201509/web-audio-api-demo02.html" target="_blank">web-audio-api-demo02.html</a> )</p>
+<p>詳細的 Nodes Modules 會在之後的篇幅介紹，這裏我先用到一個最簡單也是最容易理解的 Nodes Modules：「GainNode 音量節點」，顧名思義這就是拿來控制音量使用的，因為我們已經進入 AudioNode 的階段，所以寫法上就要做點小更動，剛剛我們是直接用 oscillator 去連結 context.destination，這裏因為 oscillator 先連結了 gainNode，所以再來我們是要用 gainNode 去連結 context.destination，下面的範例打開以後，就會先聽到兩秒的標準音量，再來又會聽到兩秒變成原本音量 0.3 倍的聲音。( 範例：<a href="/demo/201509/web-audio-api-demo02.html" rel="noreferrer noopener" target="_blank">web-audio-api-demo02.html</a> )</p>
 <pre class="prettyprint"><code>var AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new window.AudioContext;
 
@@ -235,16 +235,16 @@ volumeRange.oninput = function(){
 </code></pre><p>最後當然就是要讓聲音啟動：</p>
 <pre class="prettyprint"><code>oscillator.start();
 </code></pre><h2>小結</h2> 
-<p>到這邊為止，我們已經完成了一個很簡單的聲音產生器，這也是 Web Audio Api 最基本的起手勢，不嫌棄的話就玩玩看吧！( 範例：<a href="/demo/201509/web-audio-api-demo03.html" target="_blank">web-audio-api-demo03.html</a> )</p>
+<p>到這邊為止，我們已經完成了一個很簡單的聲音產生器，這也是 Web Audio Api 最基本的起手勢，不嫌棄的話就玩玩看吧！( 範例：<a href="/demo/201509/web-audio-api-demo03.html" rel="noreferrer noopener" target="_blank">web-audio-api-demo03.html</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201509/20150928_1_03.jpg" alt="初探 Web Audio API"></p>
 
 
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

@@ -69,7 +69,7 @@
 <h1>Google Maps API - 自訂地圖樣式風格</h1> 
 <p>你是否已經看膩了千篇一律的 Google 地圖風格呢？現在只要透過 Google Maps API，就可以按照我們自己喜歡的風格，將地圖修改為我們自訂的樣式，甚至顯示或隱藏地圖上特徵的視覺顯示 ( 例如道路、公園、商家與其他搜尋點 )。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>如何修改地圖樣式風格</h2> 
-<p>回顧一下 <a href="/articles/201707/google-maps-2-map-class.html" target="_blank">Google Maps (2) - 使用地圖與基本設定</a> 這篇文章的內容，後半段有提及 <em>MapOptions</em> 的「其他屬性」，當中有個屬性叫做「<em>styles</em>」，要改變地圖的樣式風格，就需要使用這個 styles，寫法大概會向下方的程式碼這樣，除了宣告 zoom 和 center，可以看到多了一個 styles 的屬性，它的內容是一個 json 物件的樣式宣告。</p>
+<p>回顧一下 <a href="/articles/201707/google-maps-2-map-class.html" rel="noreferrer noopener" target="_blank">Google Maps (2) - 使用地圖與基本設定</a> 這篇文章的內容，後半段有提及 <em>MapOptions</em> 的「其他屬性」，當中有個屬性叫做「<em>styles</em>」，要改變地圖的樣式風格，就需要使用這個 styles，寫法大概會向下方的程式碼這樣，除了宣告 zoom 和 center，可以看到多了一個 styles 的屬性，它的內容是一個 json 物件的樣式宣告。</p>
 <pre class="prettyprint"><code>function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
@@ -94,9 +94,9 @@
 <li><strong>elementType</strong>：可不填，這個元素主要是特徵的子部分，包括標籤和幾何形狀。如果不指定元素，則會選取該特徵的全部元素。</li>
 <li><strong>stylers</strong>：必填，要套用到所選特徵與元素的規則。樣式工具指的是特徵的色彩、能見度和粗細。</li>
 </ul>
-<p>由於 Google 官方的資料：<a href="https://developers.google.com/maps/documentation/javascript/style-reference?hl=zh-tw" target="_blank">樣式參考資料</a> 已經很詳細，在這裡就不列出內容的特徵，直接寫個範例來試試看，下方的程式碼，會把地圖裡所有的道路 road 變成紅色的。</p>
+<p>由於 Google 官方的資料：<a href="https://developers.google.com/maps/documentation/javascript/style-reference?hl=zh-tw" rel="noreferrer noopener" target="_blank">樣式參考資料</a> 已經很詳細，在這裡就不列出內容的特徵，直接寫個範例來試試看，下方的程式碼，會把地圖裡所有的道路 road 變成紅色的。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-01.html" target="_blank">修改地圖樣式風格，把道路都變成紅色</a></p>
+<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-01.html" rel="noreferrer noopener" target="_blank">修改地圖樣式風格，把道路都變成紅色</a></p>
 </blockquote>
 <pre class="prettyprint"><code>function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -117,7 +117,7 @@
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-01.jpg" alt=""></p>
 <p>如果上面的例子，多添加一組 transit.station 的 style，就可以把所有大眾運輸車站 ( 機場、火車站、捷運站...等 ) 全部變成黑色。( 不過要注意的是，color 一定要填入六碼的色碼，例如紅色要填 #ff0000 不能只填 #f00。 )</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-02.html" target="_blank">把道路都變成紅色，車站變成黑色</a></p>
+<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-02.html" rel="noreferrer noopener" target="_blank">把道路都變成紅色，車站變成黑色</a></p>
 </blockquote>
 <pre class="prettyprint"><code>function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -145,7 +145,7 @@
 <h2>線上建立 Google Maps API 的自訂樣式</h2> 
 <p>雖然我們透過 Google Maps API 已經可以修改地圖樣式風格，但每次都要手動改程式碼，甚至要明白地圖上每個元件的配色實在很不容易，所以這時就得透過 Google 官方推薦的「Google 線上地圖樣式編輯器」，直接在線上建立樣式風格。</p>
 <blockquote>
-<p>線上地圖樣式編輯器：<a href="https://mapstyle.withgoogle.com/" target="_blank">Google Maps APIs Styling Wizard</a></p>
+<p>線上地圖樣式編輯器：<a href="https://mapstyle.withgoogle.com/" rel="noreferrer noopener" target="_blank">Google Maps APIs Styling Wizard</a></p>
 </blockquote>
 <p>打開編輯器後，可以先點選左側預設的樣式，就可以馬上看到右側的地圖變成不同的風格，舉例來說這是夜晚 Night 的風格，也比剛剛自己手動畫的漂亮多了。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-03.jpg" alt=""></p>
@@ -155,17 +155,17 @@
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-05.jpg" alt=""></p>
 <p>複製 json，貼到剛剛的 Styles 裏頭，執行後就會看到我們自己的地圖，已經變成了漂亮的樣式。</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-03.html" target="_blank">線上建立 Google Maps API 的自訂樣式</a></p>
+<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-03.html" rel="noreferrer noopener" target="_blank">線上建立 Google Maps API 的自訂樣式</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-06.jpg" alt=""></p>
 <h2>Snazzy Maps</h2> 
-<p>如果覺得預設的地圖樣式不夠，也可以 Google 搜尋地圖樣式，這時候通常出現在第一筆的，會是一個叫做「Snazzy Maps」的網站。( <a href="https://snazzymaps.com" target="_blank">https://snazzymaps.com</a> )</p>
+<p>如果覺得預設的地圖樣式不夠，也可以 Google 搜尋地圖樣式，這時候通常出現在第一筆的，會是一個叫做「Snazzy Maps」的網站。( <a href="https://snazzymaps.com" rel="noreferrer noopener" target="_blank">https://snazzymaps.com</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-07.jpg" alt=""></p>
 <p>點選上方的 Explore styles，就可以看到全世界上神人們所設計的地圖樣式，上頭除了有瀏覽數量，也有評價的星星數，可以盡情挑選自己中意的樣式，如果想要挑選最多人使用的。</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-08.jpg" alt=""></p>
 <p>挑選完成後，同樣會產生 JSON 樣式參考資料，複製並貼到自己的地圖程式碼，就會看到自己的地圖變成特別的樣式囉！下面的例子我是挑選最多人喜歡的樣式，感覺還真是挺特別的...一片慘白 XD</p>
 <blockquote>
-<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-04.html" target="_blank">線上建立 Google Maps API 的自訂樣式</a></p>
+<p>範例：<a href="/demo/201803/google-maps-17-edit-style-demo-04.html" rel="noreferrer noopener" target="_blank">線上建立 Google Maps API 的自訂樣式</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201803/google-maps-17-edit-style-09.jpg" alt=""></p>
 <h2>小結</h2> 
@@ -175,9 +175,9 @@
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

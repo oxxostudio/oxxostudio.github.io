@@ -69,12 +69,12 @@
 <h1>Google 試算表 (7) - 簡單的股票爬蟲 ( Node.js )</h1> 
 <p>當我們已經熟練了寫入資料到試算表，接著就可以用 Node.js 玩點好玩的東西，過去有寫過網路爬蟲的文章，但並沒有一個妥善的資料儲存空間，現在有了 Google 試算表後，理所當然的可以用它來記錄爬到的資料，這裡就用 Node.js 抓取當天的股票收盤資料，並及時存到 Google 試算表裡頭。</p>
 <blockquote>
-<p>之前寫的文章：<a href="/articles/201512/spider-basic.html" target="_blank">做個簡單的爬蟲 ( 幣值、空污 PM2.5 )</a></p>
+<p>之前寫的文章：<a href="/articles/201512/spider-basic.html" rel="noreferrer noopener" target="_blank">做個簡單的爬蟲 ( 幣值、空污 PM2.5 )</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>股票資料來源</h2> 
 <p>股票資料來源最好的地方就是「台灣證卷交易所」，當中提供了非常多的資料讓我們使用，因為是用 Node.js 來抓，所以也就不用考慮瀏覽器跨域的問題。打開台灣證卷交易所的網頁之後，選擇「交易資訊 &gt; 盤後資訊 &gt; 個股日成交資訊」。</p>
 <blockquote>
-<p>連結：<a href="http://www.tse.com.tw/zh/page/trading/exchange/STOCK_DAY.html" target="_blank">台灣證卷交易所 個股日成交資訊</a></p>
+<p>連結：<a href="http://www.tse.com.tw/zh/page/trading/exchange/STOCK_DAY.html" rel="noreferrer noopener" target="_blank">台灣證卷交易所 個股日成交資訊</a></p>
 </blockquote>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/google-spreadsheet-7-nodejs-stock-spider-01.jpg" alt=""></p>
 <p>打開網頁開發者工具，頁籤選擇 Network，在上方股票代碼處，填入對應的股票代碼，按下查詢，這時候應該可以看到 Network 的資訊中出現了一個 json 的資料格式，這就是這支股票的成交資訊，也是待會我們會用到的。</p>
@@ -88,7 +88,7 @@
 <blockquote>
 <p>完成後記得部署到網路上，權限設定為「<em>任何人，甚至是匿名使用者</em>」</p>
 <hr>
-<p>參考：<a href="/articles/201706/google-spreadsheet-5-insert-delete.html" target="_blank">Google 試算表 (5) - 欄和列的插入與刪除</a></p>
+<p>參考：<a href="/articles/201706/google-spreadsheet-5-insert-delete.html" rel="noreferrer noopener" target="_blank">Google 試算表 (5) - 欄和列的插入與刪除</a></p>
 </blockquote>
 <pre class="prettyprint"><code>function doGet(e) {
   var params = e.parameter;
@@ -132,7 +132,7 @@
 <h2>Node.js</h2> 
 <p>開始之前要先用命令輸入視窗，進入程式的資料夾，用 npm 安裝 request 模組，透過這個模組來載入網頁、json 或 xml 檔案，並且也可以發送 GET 或 POST 的指令。</p>
 <blockquote>
-<p>參考：<a href="https://www.npmjs.com/package/request" target="_blank">request npm</a></p>
+<p>參考：<a href="https://www.npmjs.com/package/request" rel="noreferrer noopener" target="_blank">request npm</a></p>
 </blockquote>
 <pre class="prettyprint"><code>var request = require("request");
 </code></pre><p>接著因為股票的 JSON 網址裡面有日期，所以直接用當前的日期轉換即可，不過因為網址的日期如果是個位數都會補零，所以要多做個判斷式來補零。</p>
@@ -221,9 +221,9 @@ run();
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">

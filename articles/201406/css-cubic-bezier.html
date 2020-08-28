@@ -85,9 +85,9 @@ anumation:影格名稱 動畫時間 延遲時間 cubic-bezier(x1,y1,x2,y2);
 -moz-animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 -o-animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
 animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
-</code></pre><p>Cubic Bezier 的原理很簡單，總共有四個參數，分別是第一個貝茲曲線控制點的 x1 和 座標 y1，第二個貝茲曲線控制點的 x2 和 y2 座標，可以參考下面這張 W3C 對於 cubic-bezier 參數設置的圖片，往上為 1，往下為 0。( 參考 <a href="http://www.w3.org/TR/css3-transitions/#transition-timing-function-property" target="_blank">W3C 文章</a> )</p>
+</code></pre><p>Cubic Bezier 的原理很簡單，總共有四個參數，分別是第一個貝茲曲線控制點的 x1 和 座標 y1，第二個貝茲曲線控制點的 x2 和 y2 座標，可以參考下面這張 W3C 對於 cubic-bezier 參數設置的圖片，往上為 1，往下為 0。( 參考 <a href="http://www.w3.org/TR/css3-transitions/#transition-timing-function-property" rel="noreferrer noopener" target="_blank">W3C 文章</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140628_1_04.png" alt="CSS Cubic Bezier"></p>
-<p>藉由控制 Cubic Bezier，我們便可以很容易地做出加減速的效果， ( 可以參考 <a href="http://cubic-bezier.com/" target="_blank">cubic-bezier.com</a> )</p>
+<p>藉由控制 Cubic Bezier，我們便可以很容易地做出加減速的效果， ( 可以參考 <a href="http://cubic-bezier.com/" rel="noreferrer noopener" target="_blank">cubic-bezier.com</a> )</p>
 <pre class="prettyprint"><code>  -webkit-animation:testkeyframes 2s infinite cubic-bezier(.89,-0.93,.2,1.58);
 </code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201406/20140628_1_05.png" alt="CSS Cubic Bezier"></p>
 <p>此外，若我們把貝茲曲線上下超過了 0 和 1，就會產生很有意思的一個特效，就是有點皮球反彈的效果。</p>
@@ -98,9 +98,9 @@ animation-timing-function:cubic-beziercubic-bezier(x1,y1,x2,y2);
       <div class="social-icon">
         <a class="icon-home" href="/index.html"><i></i><span>Back Home</span></a>
         <a class="icon-list" href="/list.html"><i></i><span>Article List</span></a>
-        <a class="icon-facebook" target="_blank"><i></i><span>Share on Facebook</span></a>
-        <a class="icon-google" target="_blank"><i></i><span>Share on Google+</span></a>
-        <a class="icon-twitter" target="_blank"><i></i><span>Share on Twitter</span></a>
+        <a class="icon-facebook" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Facebook</span></a>
+        <a class="icon-google" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Google+</span></a>
+        <a class="icon-twitter" target="_blank" rel="noreferrer noopener"><i></i><span>Share on Twitter</span></a>
         <a class="goto-top"><i></i><span>Back to Top</span></a>
       </div>
       <a class="arrow arrow-left">
