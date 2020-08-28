@@ -67,7 +67,7 @@
       <i class="tag"></i>
 
 <h1>簡單理解 JavaScript Async 和 Await</h1> 
-<p><img src="/img/articles/201908/js-async-await-s.jpg" class="preview-img" alt=""></p>
+<p><img src="/img/articles/201908/js-async-await-s.jpg" class="preview-img" alt="簡單理解 JavaScript Async 和 Await"></p>
 <p>自從 Async 和 Await 出現後，大幅簡化 JavaScript 同步和非同步的複雜糾葛，這篇文章將會分享我自己理解的歷程，實作 await 等待、連續輸入文字、fetch 和迴圈應用，讓這些過去需要層層 callback 才能完成的流程，透過 Async 和 Await 輕鬆的進行扁平化處理吧！</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>什麼是 async？什麼是 await？</h2> 
 <p>在 JavaScript 的世界，同步 sync 和非同步 async 的愛恨情仇，就如同偶像劇一般的剪不斷理還亂，特別像是<code>setTimeout</code>、<code>setInterval</code>、<code>MLHttpRequest</code>或<code>fetch</code>這些同步非同步混雜的用法，都會讓人一個頭兩個大，幸好 ES6 出現了 promise，ES7 出現了 async、await，幫助我們可以更容易的進行程式邏輯的撰寫。</p>
@@ -78,7 +78,7 @@
 <li>非同步：在「<em>不 ( 非 ) 同步道</em>」比賽「賽跑」，誰都不等誰，只要輪到我跑，我就開始跑。</li>
 </ul>
 </blockquote>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/javascript-promise-settimeout-1.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201706/javascript-promise-settimeout-1.jpg" alt="簡單理解 JavaScript Async 和 Await"></p>
 <p>在 ES7 裡頭 async 的本質是 promise 的語法糖 ( 包裝得甜甜的比較好吃下肚 )，<em>只要 function 標記為 async，就表示裡頭可以撰寫 await 的同步語法</em>，而 await 顧名思義就是「等待」，它會確保一個 promise 物件都解決 ( resolve ) 或出錯 ( reject ) 後才會進行下一步，當 async function 的內容全都結束後，會返回一個 promise，這表示後方可以使用<code>.then</code>語法來做連接，基本的程式長相就像下面這樣：</p>
 <pre class="prettyprint"><code>async function a(){
   await b();
@@ -144,7 +144,7 @@ delay().then(() =&gt; {
 console.log(1); 
 count('haha', 100);
 console.log(2);
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-01.jpg" alt="簡單理解 JavaScript Async 和 Await"></p>
 <p>這時我們可以透過 async、await 和 promise 進行修正，在顯示 1 之後，會「<em>等待</em>」count function 結束後再顯示 2。</p>
 <pre class="prettyprint"><code>~async function(){  
   const count = (t,s) =&gt; {
@@ -165,7 +165,7 @@ console.log(2);
   await count('haha', 100);
   console.log(2);
 }();
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-02.jpg" alt="簡單理解 JavaScript Async 和 Await"></p>
 <p>除了<code>setTimeout</code>和<code>setInterval</code>，這也可以用於像是「<em>輸入文字</em>」的情境，過去我們要做到「<em>連續輸入</em>」文字，可能要層層疊疊寫個好幾個 callback，現在如果使用 async 和 await，就能夠很簡單的實現連續輸入的情境，程式碼看起來也更乾淨簡潔。</p>
 <pre class="prettyprint"><code>// HTML 為一個輸入框、一個按鈕和一個 h1 標籤
 // &lt;input id="a"&gt;&lt;/input&gt;&lt;button id="b"&gt;send&lt;/button&gt;
@@ -190,7 +190,7 @@ console.log(2);
   await input();
   h.insertAdjacentHTML('beforeend', '結束');
 }();
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-03.gif" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-03.gif" alt="簡單理解 JavaScript Async 和 Await"></p>
 <h2>搭配 Fetch</h2> 
 <p>在我之前的文章<a href="/articles/201908/js-fetch.html#_self" rel="noreferrer noopener" target="_blank">JavaScript Fetch API 使用教學</a>已經有提到<code>fetch</code>的用法，因為<code>fetch</code>最後回傳的是 promise，理所當然的透過 async 和 await 操作是最恰當不過的。</p>
 <p>舉例來說，先前往 <a href="https://opendata.cwb.gov.tw/index" rel="noreferrer noopener" target="_blank">中央氣象局開放資料平台</a>可以取得許多氣象資料，找到 <a href="https://opendata.cwb.gov.tw/dataset/observation/O-A0003-001" rel="noreferrer noopener" target="_blank">局屬氣象站-現在天氣觀測報告</a>，複製 JSON 格式的連結 ( 需要註冊登入才能看得到連結 )，透過<code>fetch</code>的<code>json()</code>方法處理檔案，目標顯示出「高雄市的即時氣溫」。</p>
@@ -207,7 +207,7 @@ console.log(2);
     });
     console.log('總算結束了');       // 抓完氣象之後再顯示「總算結束了」
 }();
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-04.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-04.jpg" alt="簡單理解 JavaScript Async 和 Await"></p>
 <h2>搭配 迴圈</h2> 
 <p>如果要透過 JavaScript 實現「文字慢慢變大」的效果，除了透過 CSS 的 transition 設定之外，通常就是直接使用<code>setInterval</code>來完成，就像下面的程式碼這樣：</p>
 <pre class="prettyprint"><code>let size = 30;
@@ -234,7 +234,7 @@ const timer = setInterval(()=&gt;{
     await delay(10);    // 迴圈每次執行時，都會在這裡等待 10ms
   }
 }();
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-05.gif" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-async-await-05.gif" alt="簡單理解 JavaScript Async 和 Await"></p>
 <p>同樣的，上面提到的 fetch 或是輸入文字，只要做成 await 的方式，都可以放在迴圈裡面使用，例如透過迴圈不斷的 fetch 資料、透過迴圈不斷的輸入文字...等，這些就不是 callback 方法能容易辦到的囉～</p>
 <h2>小結</h2> 
 <p>坦白說只要你一但熟悉了 async 和 await，就真的回不去了，雖然說 callback 仍然是程式開發裡必備的功能，但對於同步和非同步之間的轉換，以後就交給 async 和 await 來處理吧！</p>

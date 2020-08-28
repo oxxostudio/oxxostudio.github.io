@@ -67,7 +67,7 @@
       <i class="tag"></i>
 
 <h1>一些 Javascript 的小技巧筆記</h1> 
-<p><img src="/img/articles/201908/js-skill-tips-s.jpg" class="preview-img" alt=""></p>
+<p><img src="/img/articles/201908/js-skill-tips-s.jpg" class="preview-img" alt="一些 Javascript 的小技巧筆記"></p>
 <p>這篇文章是一些我自己最近用到的小技巧，包含「產生隨機不重複 id」、「取出並置換一段文字中的某些值」、「字串與 xml 的轉換」和「快速取整數」，雖然都是基礎技術，不過在某些特殊時刻還滿有用的，用篇文章記錄一下。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>產生隨機不重複的 id</h2> 
 <p>有時候在沒有資料庫輔助的情況下，希望產生隨機且不重複的 id，這時我會使用「隨機數」搭配「時間戳」的方式，首先使用<code>Math.random()</code>產生 0～1 之間約 16～17 位數的隨機浮點數，再透過<code>toString(36)</code>的方法縮短其位數，並轉換為 36 進位 ( 0～9、a～z )，若嫌太長還可用<code>substr</code>擷取自己要的片段。</p>

@@ -67,7 +67,7 @@
       <i class="tag"></i>
 
 <h1>JavaScript Fetch API 使用教學</h1> 
-<p><img src="/img/articles/201908/js-fetch-s.jpg" class="preview-img" alt=""></p>
+<p><img src="/img/articles/201908/js-fetch-s.jpg" class="preview-img" alt="JavaScript Fetch API 使用教學"></p>
 <p>自從 Fetch API 問世以來，我們就能使用漂亮的語法發送 HTTP Request 或取得網路資料，這篇文章將會分享我自己常用的 Fetch 方法 ( GET、POST、搭配 await 或 promise.all...等 )，隨著瀏覽器的普遍支援，也就不太需要使用 XMLHttpRequest 或 jQuery AJAX，程式碼也就更加簡潔乾淨囉～</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Fetch 基本用法</h2> 
 <p><code>fetch()</code>是一個全域的方法，包含了需要 fetch 的網址和對應的屬性設定 ( 例如 method、headers、mode、body...等，最基本的寫法屬性不一定要填 )，執行之後會送出 Request，如果得到回應就會回傳帶有 Response 的 Promise 物件，使用 then 將回傳值傳遞下去。</p>
@@ -266,7 +266,7 @@ fetch(uri, {
 postURL('oxxo',18);
 console.log('hello!!!');
 postURL('tom',18);
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-fetch-01.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-fetch-01.jpg" alt="JavaScript Fetch API 使用教學"></p>
 <p>因為 fetch 的特性，可以改成 async 和 await 的寫法，執行後也就能按照我們要的順序進行。</p>
 <pre class="prettyprint"><code>~async function(){  // 開頭設定為 async
     const postURL = (name,age) =&gt; {
@@ -292,11 +292,11 @@ postURL('tom',18);
     console.log('hello!!!');
     await postURL('tom',18);  // 使用 await
 }();
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-fetch-02.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-fetch-02.jpg" alt="JavaScript Fetch API 使用教學"></p>
 <p>最後那段 await 的程式碼，也可以改成 promise.all 的作法，就會先 fetch，然後再出現 hello 的文字，不過也因為 promise.all 無法保證其載入順序，就可能會發生 tom 在 oxxo 之前出現的狀況呦。</p>
 <pre class="prettyprint"><code>await Promise.all([postURL('oxxo',18), postURL('tom',18)]);
 console.log('hello!!!');
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-fetch-03.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201908/js-fetch-03.jpg" alt="JavaScript Fetch API 使用教學"></p>
 <h2>小結</h2> 
 <p>Fetch API 的神奇，簡化了許多原本較為複雜的用法，也讓程式碼寫起來更加乾淨易讀好維護，我的 Blog 現在也是使用 Fetch 呦～ 推薦給大家～～</p>
 <blockquote>

@@ -89,11 +89,11 @@ const firestore = new Firestore({
     projectId: 'XXXXXXX'
 });
 </code></pre><p>然而 Firestore 並沒有像 Realtime Database 那樣的方便 ( 換句話說就是安全性較低 )，如果要使用 Node.js 操作，還<em>得具備指定的金鑰才能正常運行</em>，申請金鑰很簡單，進入 Google Cloud Platform，選擇 Firestore 的專案 ( 專案名稱就是建立 Firestore 時的專案名稱 )，左側選單選擇「<em>API 和服務 &gt; 憑證 &gt; 建立憑證</em>」，點選 「<em>服務帳戶金鑰</em>」。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-01.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-01.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <p>進入後下拉選單選擇「App Engine default service account」，金鑰類型選擇「json」。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-02.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-02.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <p>點選建立後會下載一個 json 檔案，將這個 json 檔案和操控 Firestore 的 Node.js 放在相同目錄下，基本的 Firestore 設定就差不多完成了，可以開始撰寫 Node.js 程式。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-03.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-03.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <h2>透過 http request 操作 RealTime Database</h2> 
 <p>透過 Node.js 內建的<code>http 模組</code>，可以建立個接收 http request 的 server，搭配內建的<code>url 模組</code>，就能將收到的資料訊息轉換為物件格式，比較需要注意的地方有兩個：</p>
 <ul>
@@ -154,9 +154,9 @@ server.listen(5000);
 <blockquote>
 <p>請先參考我的這篇文章：<a href="https://www.oxxostudio.tw/articles/201805/backend-google-cloud-functions.html" rel="noreferrer noopener" target="_blank">簡易後端實作 ( Google Cloud Functions )</a></p>
 </blockquote>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-01.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-01.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <p>建立一個專案，專案建立後就新建一組函式，輸入函式名稱以及選擇 128 MB 記憶體。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-04.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-04.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <p>Firestore 因為有一個金鑰的 json 檔案，因此無法像 Realtime Database 一樣直接在 Cloud functions 裡頭撰寫程式碼，所以這邊選擇「<em>zip 檔</em>」的方式上傳壓縮檔，並選擇 Node.js 10 ( Beta 版 )，又因為得上傳程式碼，所以先將剛剛我們在本地端運行的 Node.js 程式修改成下面這樣以符合 Cloud Functions 的撰寫原則。</p>
 <pre class="prettyprint"><code>const url = require('url');
 const Firestore = require('@google-cloud/firestore');
@@ -217,13 +217,13 @@ exports.helloWorld = (req, res) =&gt; {
     }
 }
 </code></pre><p>最後將 index.js、package.json 和 key.json 放在同一個資料夾，並用加縮軟體壓縮成 zip 檔。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-05.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-05.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <p>因為要上傳 zip 檔案到 GCP，所以要額外設定 Bucket 的資料夾名稱，這也是 GCP 的雲端儲存空間的服務之一，設定好 Bucket 的名稱後就可以上傳。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-06.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-06.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <p>上傳完成後按下「建立」，就會開始部署程式，部署成功會看見函式前方出現綠色的勾勾圖示，在觸發條件的頁籤裡也會看見最終部署的網址。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-07.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-07.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <p>在瀏覽器輸入網址並後方加上參數，執行後就會寫入資料到資料庫，或是從資料庫讀取資料囉～</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-08.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-firestore-08.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <h2>小結</h2> 
 <p>透過 Node.js 搭配 Google Cloud Functions，就能輕鬆實現透過 http request 存取 Firestore 的功能囉～</p>
 

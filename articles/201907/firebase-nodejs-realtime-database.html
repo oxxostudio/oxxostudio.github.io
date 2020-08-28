@@ -148,9 +148,9 @@ server.listen(5000);
 <blockquote>
 <p>對於 Google Cloud Functions 不了解的可以參考我的這篇文章：<a href="https://www.oxxostudio.tw/articles/201805/backend-google-cloud-functions.html" rel="noreferrer noopener" target="_blank">簡易後端實作 ( Google Cloud Functions )</a></p>
 </blockquote>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-01.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-01.jpg" alt="Firebase 教學 - Node.js 操作 Realtime Database"></p>
 <p>如果第一次使用會要求輸入信用卡資訊 ( 不用太擔心，像我們這種小咖用戶非常不容易超過免費的額度 )，輸入完成後就可以建立一個專案，專案建立後就新建一組函式，輸入函式名稱以及選擇 128 MB 記憶體。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-02.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-02.jpg" alt="Firebase 教學 - Node.js 操作 Realtime Database"></p>
 <p>設定時選擇 Node.js 版本為 8，並開始編輯程式，在 index.js 的區域輸入下方程式碼，程式碼和上面介紹的大同小異，差別在於執行函示改成 helloWorld，並在一開始的時候使用<code>setHeader</code>做跨域設定。</p>
 <pre class="prettyprint"><code>const url = require('url');
 const firebase = require('firebase/app');
@@ -207,11 +207,11 @@ if (req.url !== '/favicon.ico') {
         "firebase": "^6.3.0"
     }
 }
-</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-03.jpg" alt=""></p>
+</code></pre><p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-03.jpg" alt="Firebase 教學 - Node.js 操作 Realtime Database"></p>
 <p>完成後按下「建立」，就會開始部署程式，部署成功會看見函式前方出現綠色的勾勾圖示，在觸發條件的頁籤裡也會看見最終部署的網址。</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-04.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-04.jpg" alt="Firebase 教學 - Node.js 操作 Realtime Database"></p>
 <p>在瀏覽器輸入網址並後方加上參數，執行後就會寫入資料到資料庫，或是從資料庫讀取資料囉～</p>
-<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-05.jpg" alt=""></p>
+<p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/201907/firebase-nodejs-realtime-database-05.jpg" alt="Firebase 教學 - Node.js 操作 Realtime Database"></p>
 <h2>小結</h2> 
 <p>透過 Node.js 搭配 Google Cloud Functions，就能輕鬆實現透過 http request 存取 Firebase Realtime database 的功能，也就更加方便實用囉～</p>
 <blockquote>
