@@ -8,10 +8,10 @@
 
   <title>深入理解 CSS Box Model ( 盒子模型 ) - OXXO.STUDIO</title>
 
-  <meta name="description" content="CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。">
-  <meta itemprop="description" content="CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。">
+  <meta name="description" content="CSS Box Model 盒子模型是 CSS 的基礎，也是操控網頁非常重要的觀念，這篇文章將會深入理解 CSS Box Model，除了基本的認識，更會介紹網頁排版容易遇到的「邊距重疊 ( Collapsing margins ) 」問題，希望透過這篇文章，能對盒子模型有更深一層的認識。">
+  <meta itemprop="description" content="CSS Box Model 盒子模型是 CSS 的基礎，也是操控網頁非常重要的觀念，這篇文章將會深入理解 CSS Box Model，除了基本的認識，更會介紹網頁排版容易遇到的「邊距重疊 ( Collapsing margins ) 」問題，希望透過這篇文章，能對盒子模型有更深一層的認識。">
   <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/202008/css-box-model.jpg">
-  <meta property="og:description" content="CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。">
+  <meta property="og:description" content="CSS Box Model 盒子模型是 CSS 的基礎，也是操控網頁非常重要的觀念，這篇文章將會深入理解 CSS Box Model，除了基本的認識，更會介紹網頁排版容易遇到的「邊距重疊 ( Collapsing margins ) 」問題，希望透過這篇文章，能對盒子模型有更深一層的認識。">
   <meta property="og:title" content="深入理解 CSS Box Model ( 盒子模型 )">
   <meta property="og:url" content="https://www.oxxostudio.tw/articles/202008/css-box-model.html">
   <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/202008/css-box-model.jpg">
@@ -67,7 +67,7 @@
       <i class="tag"></i>
 
 <h1>深入理解 CSS Box Model ( 盒子模型 )</h1> 
-<p>CSS Box Model 盒子模型是 CSS 的基礎之一，也是操控網頁非常重要的觀念，不過由於網頁元素太容易透過 CSS 控制，所以就很容易忽略他的箇中奧妙，這篇文章將會深入理解 CSS Box Model，並將常見的問題一次做個整理。</p>
+<p>CSS Box Model 盒子模型是 CSS 的基礎，也是操控網頁非常重要的觀念，這篇文章將會深入理解 CSS Box Model，除了基本的認識，更會介紹網頁排版容易遇到的「邊距重疊 ( Collapsing margins ) 」問題，希望透過這篇文章，能對盒子模型有更深一層的認識。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Box Model 的定義</h2> 
 <p>Box Model 主要由四個部分主成，由內而外分別是 <em>Content ( 內容 )</em>、<em>Padding ( 內邊距 )</em>、<em>Border ( 邊框 )</em> 和 <em>Margin ( 外邊距 )</em>。( 圖片來源 <a href="https://drafts.csswg.org/css2/box.html" rel="noreferrer noopener" target="_blank">csswg.org</a> )</p>
 <p><img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-box-model-01.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
