@@ -311,6 +311,20 @@ background:radial-gradient(circle farthest-corner at left,yellow,red);
       );
   }
 </code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-gradient-22.jpg" alt="深入理解 CSS 漸層 ( CSS Gradient )"></p>
+<p>  搭配<code>background-size</code>，能做出賽車旗的效果。</p>
+<pre class="prettyprint"><code>  div{
+      width:200px;
+      height:200px;
+      position:relative;
+      background:repeating-conic-gradient(
+          #fff 0, 
+          #fff 90deg,
+          #000 90deg,
+          #000 180deg
+      );
+      background-size:20% 20%
+  }
+</code></pre><p>  <img class="lazy" src="/img/layout/loading.gif" data-src="/img/articles/202008/css-gradient-24.jpg" alt="深入理解 CSS 漸層 ( CSS Gradient )"></p>
 </li>
 </ul>
 <h2>參考</h2> 
