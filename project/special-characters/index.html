@@ -70,10 +70,9 @@
             background: #fff;
         }
 
-        .ad.fixed {
-            position: fixed;
-            top: 0;
-            right: 0;
+        .ad-content {
+            width: 100%;
+            display: none;
         }
 
         @media (max-width:1024px) {
@@ -84,10 +83,11 @@
             }
 
             .ad {
-                width: 100%;
-                height: 100px;
-                margin: 0 0 30px;
-                overflow: hidden;
+                display: none;
+            }
+
+            .ad-content {
+                display: block;
             }
 
             .ad.fixed {
@@ -222,6 +222,12 @@
     <div class="ad">
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
             data-ad-slot="5795166672" data-ad-format="auto"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
+            data-ad-slot="5795166672" data-ad-format="auto"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
+            data-ad-slot="5795166672" data-ad-format="auto"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
+            data-ad-slot="5795166672" data-ad-format="auto"></ins>
     </div>
     <div class="content">
         <h2 class="description">特殊符號、特殊字元收集了上千個特殊文字、特殊符號與特殊字元列表，可使用在各種文章、留言或 FB 貼文，只要
@@ -231,6 +237,10 @@
             逛逛~ ^_^ ( 如果要使用 Facebook 表情，請前往：<a
                 href="http://www.oxxostudio.tw/facebook-emoji/index.html?utm_source=characters&utm_medium=click"
                 target="_blank" rel="noreferrer noopener">Facebook 表情符號大全</a> )</h3>
+            <div class="ad-content">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
+                    data-ad-slot="5795166672" data-ad-format="auto"></ins>
+            </div>
             <div class="list"></div>
     </div>
 </body>
@@ -263,16 +273,6 @@
         }
         list.innerHTML = content;
         copyToClipBoard('.copy');
-
-        document.addEventListener('scroll', function () {
-            let scrollTop = window.pageYOffset;
-            let ad = document.querySelector('.ad');
-            if (scrollTop >= 75) {
-                ad.classList.add('fixed');
-            } else {
-                ad.classList.remove('fixed');
-            }
-        });
 
         document.addEventListener('scroll', more);
 
@@ -320,7 +320,9 @@
     }
 </script>
 <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    document.querySelectorAll('.adsbygoogle').forEach(e => {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    });
 </script>
 <script>
     (function (i, s, o, g, r, a, m) {
