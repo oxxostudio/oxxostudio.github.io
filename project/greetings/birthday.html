@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="UTF-8">
@@ -85,6 +85,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: .3s;
+      margin-bottom:15px;
     }
 
     aside a:hover {
@@ -92,10 +93,10 @@
     }
 
     main {
+      display:inline-block;
       width: calc(100% - 580px);
-      position: absolute;
-      top: 20px;
-      left: 240px;
+      margin-left:240px;
+      margin-top:15px;
       padding: 10px;
     }
 
@@ -223,6 +224,22 @@
       transform: rotate(-45deg);
     }
 
+    footer{
+      width:100%;
+      background:#345;
+      color:#fff;
+      text-align: center;
+      padding:40px 10px 50px;
+    }
+
+    footer a{
+      color:#fff;
+    }
+
+    footer a:hover{
+      color:#fc0;
+    }
+
     @media (max-width:1024px) {
       main {
         width: calc(100% - 300px);
@@ -257,7 +274,7 @@
 
       main {
         width: calc(100% - 30px);
-        left: 10px;
+        margin-left:10px;
       }
 
       aside {
@@ -309,7 +326,8 @@
   <div class="content">
     <aside>
       <h3>吉祥話分類</h3>
-      <a href="#">生日祝福</a>
+      <a href="birthday.html">生日祝福</a>
+      <a href="engaged.html">訂婚 ( 文定 ) 祝福</a>
     </aside>
     <main>
       <h4>生日祝福分類</h4>
@@ -435,6 +453,9 @@
         data-ad-format="auto"></ins>
     </div>
   </div>
+  <footer>
+    Copyright © 2020 <a href="https://www.oxxostudio.tw" target="_blank">OXXO.STUDIO</a>
+  </footer>
 
 </body>
 <script>
