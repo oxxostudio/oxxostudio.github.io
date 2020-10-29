@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>生日祝福</title>
+  <meta name="keywords" content="生日祝福,生日祝賀,生日吉祥話,生日開場白" />
+  <meta name="description" content="各種生日祝賀詞、生日祝福語、生日吉祥話、生日成語、生日開場白">
+  <meta itemprop="name" content="生日祝福">
+  <meta itemprop="image" content="https://www.oxxostudio.tw/project/greetings/birthday.jpg">
+  <meta itemprop="description" content="各種生日祝賀詞、生日祝福語、生日吉祥話、生日成語、生日開場白">
+  <meta property="og:title" content="生日祝福">
+  <meta property="og:url" content="https://www.oxxostudio.tw/project/greetings/birthday.html">
+  <meta property="og:image" content="https://www.oxxostudio.tw/project/greetings/birthday.jpg">
+  <meta property="og:description" content="各種生日祝賀詞、生日祝福語、生日吉祥話、生日成語、生日開場白">
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 18px;
+    }
+
+    body * {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-size: 1rem;
+      line-height: 1.2;
+      font-weight: normal;
+    }
+
+    [hidden] {
+      display: none;
+    }
+
+    header {
+      text-align: center;
+      width: 100%;
+      background: #345;
+      color: #fff;
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .content {
+      width: 100%;
+    }
+
+    aside {
+      width: 200px;
+      height: auto;
+      padding: 20px;
+      border: 1px solid #aaa;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      border-radius: 20px;
+    }
+
+    aside h3 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    aside a {
+      width: 100%;
+      display: block;
+      color: #05a;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    aside a:hover {
+      color: #f50;
+    }
+
+    main {
+      width: calc(100% - 580px);
+      position: absolute;
+      top: 20px;
+      left: 240px;
+      padding: 10px;
+    }
+
+    main h4 {
+      width: 100%;
+      font-size: 1.5rem;
+      padding-left: 8px;
+      border-left: 7px solid #ccc;
+    }
+
+    main p {
+      width: 100%;
+      padding-left: 15px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ddd;
+      line-height: 1.8;
+      margin-bottom: 50px;
+    }
+
+    main a {
+      color: #05a;
+      cursor: pointer;
+      transition: .3s;
+      text-decoration: none;
+    }
+
+    main a:hover {
+      color: #f50;
+    }
+
+    main ul {
+      width: 100%;
+      padding-left: 18px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 50px;
+      list-style: none;
+    }
+
+    main ul li {
+      width: 100%;
+      line-height: 1.8;
+      padding-left: 10px;
+      border-left: 7px solid #e5e5e5;
+      margin-bottom: 35px;
+      margin-top: 5px;
+    }
+
+    main ul li:after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      border-bottom: 2px dashed #ddd;
+    }
+
+    main ul li:last-child:after {
+      border-bottom: none;
+    }
+
+    .ad {
+      width: 300px;
+      height: auto;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .ad-content {
+      width: 100%;
+      height: auto;
+    }
+
+    .ad.hidden,
+    .ad-content.hidden {
+      display: none;
+    }
+
+    #menu {
+      position: fixed;
+      top: 34px;
+      left: 20px;
+      width: 30px;
+      height: 4px;
+      background: #fff;
+      z-index: 3;
+      cursor: pointer;
+    }
+
+    #menu::before,
+    #menu::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 20px;
+      top: -10px;
+      left: 0;
+    }
+
+    #menu::before {
+      border-top: 4px solid #fff;
+      transform-origin: top left;
+    }
+
+    #menu::after {
+      border-bottom: 4px solid #fff;
+      transform-origin: bottom left;
+    }
+
+    #menu.open {
+      left: 24px;
+      background: transparent;
+    }
+
+    #menu.open::before {
+      transform: rotate(45deg);
+    }
+
+    #menu.open::after {
+      transform: rotate(-45deg);
+    }
+
+    @media (max-width:1024px) {
+      main {
+        width: calc(100% - 300px);
+      }
+
+      .ad {
+        display: none;
+      }
+    }
+
+    @media(max-width:800px) {
+      body {
+        padding-top: 80px;
+      }
+
+      header {
+        top: 0;
+        left: 0;
+        position: fixed;
+        z-index: 2;
+      }
+
+      header h1 {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        position: absolute;
+        top: -200px;
+      }
+
+      main {
+        width: calc(100% - 30px);
+        left: 10px;
+      }
+
+      aside {
+        width: 90%;
+        height: 100vh;
+        padding: 20px;
+        border: none;
+        border-right: 2px solid #ccc;
+        box-shadow: #000 0 0 0;
+        position: fixed;
+        top: 0;
+        left: -90%;
+        border-radius: 0;
+        background: #333;
+        z-index: 2;
+        color: #fff;
+      }
+
+      aside.show {
+        left: 0;
+        box-shadow: #000 0 0 20px;
+      }
+
+      aside h3 {
+        padding: 5px 0 25px;
+        margin: 0 0 25px;
+      }
+
+      aside a {
+        margin: 20px 0;
+        color: #fff;
+      }
+    }
+
+    @media(min-width:800px) {
+      #menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>生日祝福</h1>
+    <h2>各種生日祝福語、生日吉祥話、生日祝賀詞、生日成語、生日開場白</h2>
+  </header>
+  <div id="menu"></div>
+  <div class="content">
+    <aside>
+      <h3>吉祥話分類</h3>
+      <a href="#">生日祝福</a>
+    </aside>
+    <main>
+      <h4>生日祝福分類</h4>
+      <p>
+        <a href="#a1">祝福話 ( 四字 )</a>、
+        <a href="#a5">祝福話 ( 多字 )</a>、
+        <a href="#a2">成語 ( 祝男壽 )</a>、
+        <a href="#a3">成語 ( 祝女壽 )</a>、
+        <a href="#a4">成語 ( 男女雙壽 )</a>、
+        <a href="#a6">開場白</a>
+      </p>
+      <h4 id="a1">生日祝福話 ( 四字 )</h4>
+      <p>一帆風順、人見人愛、工作順利、天天快樂、心想事成、平安快樂、平安是福、永遠年輕、
+        生日快樂、吉祥如意、吉祥康樂、好事連連、年年好運、百事可樂、似錦如織、壯如氂牛、
+        快快樂樂、步步高升、身健如牛、身強力壯、事事順心、幸福快樂、長命百歲、姿色如花、
+        時時開心、登峰造極、開開心心、歲歲平安、萬事如意、壽與天齊、福祿壽喜、福壽安康
+      </p>
+      <div class="ad-content hidden">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
+          data-ad-slot="5795166672" data-ad-format="auto"></ins>
+      </div>
+      <h4 id="a2">生日成語 ( 祝男壽 )</h4>
+      <p>大德有年、天保九如、天賜純嘏、天賜遐齡、以介眉壽、名高元老、如岡如陵、百齡眉壽、
+        松柏之壽、松柏長春、松鶴遐齡、南山同壽、南山無疆、南極星輝、南極壽昌、封人三祝、
+        海屋添壽、耆英望重、麥丘老人、喬松之壽、華封三祝、嵩嶽長春、椿庭日永、椿樹長榮、
+        義方垂範、壽山福海、壽比南山、福如東海、福壽康寧、福壽雙全、箕疇五福、德徵上壽、
+        慶衍桑弧、慶溢懸弧、齒德俱尊、樽開北海、積善徵壽、龜鶴遐年、觴詠香山、疇陳五福
+      </p>
+      <h4 id="a3">生日成語 ( 祝女壽 )</h4>
+      <p>天錫純嘏、兕觥晉酒、花燦金萱、宴啟瑤池、帨彩增華、彩帨延齡、婺星月耀、婺宿騰輝、
+        婺彩星輝、婺耀常昭、媊星煥彩、瑞凝萱室、萱庭春永、萱庭集慶、萱草永茂、萱草長春、
+        慈竹長春、慈竹風和、瑤池春永、慶溢蘭閨、璇閣長春、蟠桃獻壽、寶帨生光、寶婺騰輝、靈娥不老
+      </p>
+      <h4 id="a4">生日成語 ( 男女雙壽 )</h4>
+      <p>天生雙星、天錫純嘏、百年偕老、松柏同春、南山獻頌、弧帨齊輝、弧帨增華、酒介齊眉、
+        琴瑟百年、極婺聯輝、雙星並耀、華堂偕老、華髮齊眉、椿萱並茂、椿榮萱茂、鳳凰娛志、
+        徽揚鴻案、鴻案德徵、鶴算同添
+      </p>
+      <div class="ad-content hidden">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139"
+          data-ad-slot="5795166672" data-ad-format="auto"></ins>
+      </div>
+      <h4 id="a5">生日祝福話 ( 多字 )</h4>
+      <ul>
+        <li>在你生日來臨之即，祝你百事可樂，萬事芬達，天天哇哈哈，月月樂百事，年年高樂高，心情似雪碧，永遠都醒目！</li>
+        <li>在這個充滿喜悅的日子裡，我衷心祝福你青春長存，願將一份寧靜和喜悅，悄悄帶給你，生日快樂!</li>
+        <li>獻上我對你的愛，祝你生日充滿溫馨！</li>
+        <li>正如玫瑰逗人喜愛，願你的生日帶給你愉快，祝你生日快樂！</li>
+        <li>願你今天的夢甜在心，願你這一年歡歡喜喜，祝你生日美好無比！</li>
+        <li>祝你吃飯大魚大肉，唱歌美女伴奏，日進斗金不夠，敢與烏龜比壽，生日快樂！</li>
+        <li>一句問候，一聲祝福，一切如願，一生幸福，一世平安。祝生日快樂！</li>
+        <li>在你生日的這一天，將快樂的音符作為禮物送給你，願你擁有 365 個美好的日子，衷心地祝福你生日快樂！</li>
+        <li>在你的生的這一天，誠摯地獻上我的三個祝願：一願你身體健康，二願你幸福快樂，三願你萬事如意！</li>
+        <li>又是一個美好的開始，願我虔誠的祝福，帶給你成功的一年，祝你生日快樂！</li>
+        <li>在這無比溫馨的時刻，向你敬上一杯酒，連同我的衷心祝福，生日快樂，我的朋友！</li>
+        <li>現在生日不送禮，寫句祝福送給你，如果你嫌禮不夠，再把我也往上湊，祝你生日快樂！</li>
+        <li>生命是一種喜悅，願你的生活，永遠充滿喜悅，祝生日快樂！</li>
+        <li>禮不貴，情珍貴，祝福你擁有一個甜蜜溫馨，快快樂樂的生日！</li>
+        <li>在這美好的日子裡，緊握屬於你的幸福，祝你生日快樂！</li>
+        <li>送你一份禮物，表我一曲心聲，年年長新知，歲歲更進步，祝你生日快樂！</li>
+        <li>生日快樂！又老了歲一囉！祝你年年有今日，歲歲有今朝，凡是事事順心！</li>
+        <li>為你的今年歡呼，為你的今天喝彩，為你的明天祈福，永保青春的容顏和美麗的心情！生日快樂！</li>
+        <li>今天是你的生日，願所有的快樂，所有的幸福，所有的溫馨，所有的好運圍繞在您身邊。生日快樂！健康！幸福！</li>
+        <li>長長的距離，長長的線，長長的時間抹不斷，今天是你的生日，遠方的我一直在惦念著你，祝你生日快樂！</li>
+        <li>祝你生日快樂！願生日帶給你的歡樂中蘊涵著一切美好！</li>
+        <li>祝福你好花常開，好景常在，好運永遠盈滿胸懷!生日快樂！</li>
+      </ul>
+      <h4 id="a6">生日開場白</h4>
+      <ul>
+        <li>各位長官、同事們大家好！在這天高氣爽、丹桂飄香撲鼻的季節裡，我們舉辦了 XXX 的生日會，
+          首先對大家的踴躍參與表示感激，並給予本次壽星深深的祝福！<br />
+          祝福 XXX 生日快樂、祥和安然、永恆年青、高興永恆！並祝福 XXX 在事業和生活上一帆風順，好運連連！
+          相信大家的歌聲和笑語，將伴你度過這個難忘的生日之夜！
+        </li>
+        <li>尊敬的各位長輩、各位親朋好友、先生們、女士們，大家中午好！<br />
+          老天為這個特別的日子送來和煦的微風，送來了醉人的花香，暖暖的喜氣更帶來了五彩的光芒。
+          在這風景如畫的季節，非常有幸能擔任今天的主持。首先對各位來賓的蒞臨表示最熱烈的歡迎，
+          感謝各位來賓帶着情，帶着意，帶着真誠，帶着友誼，帶着微笑，帶着祝福，雲集在 OOOO，參加 XXX 的生日宴會。<br />
+          有請我們今天宴會的主角： XXX 閃亮登場！大家用真心回答我一個問題：咱們的壽星帥不帥！
+        </li>
+        <li>N 年前的今天，伴隨着一聲響亮的啼哭，一個新生命來到我們中間，
+          XX 的父母懷着喜悅的心情迎來了他們愛情的結晶。時光飛逝，歲月如梭，
+          如今，XX 已從當初襁褓中的嬰兒成長為今天英俊帥氣的男子漢！<br />
+          這期間，所給予的希望，所付出的辛勞，所享受的幸福，所承擔的責任，都是沉澱在 XX 父母心中的美好。
+          此時此刻，我想他們一定百感交集！下面，就請 XX 的父親 XX 先生為壽星致生日賀詞。掌聲有請！
+        </li>
+        <li>尊敬的各位來賓，親愛的夥伴們，大家好！
+          在這美麗的夜晚，在這歡聚的時刻，迎來我們公司 X 月份的員工生日。<br />
+          首先請允許我代表 XXX 的全體員工，對大家的到來表示熱烈的歡迎和衷心的感謝。
+          同時要對 X 月份的壽星們表示深深的祝福。<br />
+          今天我們大家一起慶祝壽星們的生日，讓我們點燃生日的蠟燭，唱起生日的讚歌，
+          讓壽星們在歌聲中許下來年的願望！
+        </li>
+        <li>
+          年年歲歲花相似，歲歲年年人不同。醒來驚覺不是夢，眉間皺紋又一重。<br />
+          在這特別的一天，希望 XXX 能快樂、健康、美麗，大家一起祝福 XXX 生日快樂！
+        </li>
+        <li>
+          今天有了 XXX 讓世界更精彩，今天有了 XXX 讓星空更燦爛，<br />
+          今天因為 XXX 讓人間更溫暖，今天因為 XXX 讓我覺得更幸福！<br/>
+          感謝上蒼在今天給了我們一個特別的禮物，就是 XXX。<br/>
+          長長的人生旅程，有 XXX 的相伴是我們的幸福。祝福 XXX 生日快樂！  </li>
+      </ul>
+    </main>
+    <div class="ad hidden">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5374659189"
+        data-ad-format="auto"></ins>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5374659189"
+        data-ad-format="auto"></ins>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5374659189"
+        data-ad-format="auto"></ins>
+    </div>
+  </div>
+
+</body>
+<script>
+  const site = location.href;
+  const menu = document.getElementById('menu');
+  const aside = document.querySelector('aside');
+  menu.addEventListener('click', function () {
+    let self = this;
+    if (self.classList.contains('open')) {
+      self.classList.remove('open');
+      aside.classList.remove('show');
+    } else {
+      self.classList.add('open');
+      aside.classList.add('show');
+    }
+  });
+  document.addEventListener('scroll', showAD);
+  document.addEventListener('mousemove', showAD);
+  function showAD() {
+    let ad = document.querySelector('.ad');
+    let adContent = document.querySelector('.ad-content');
+    ad.classList.remove('hidden');
+    adContent.classList.remove('hidden');
+    let element = document.createElement("script");
+    element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+    document.body.appendChild(element);
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-8629612872829139",
+      enable_page_level_ads: true
+    });
+    document.removeEventListener('scroll', showAD);
+    document.removeEventListener('mousemove', showAD);
+  }
+  document.addEventListener('copy', function (e) {
+    const selection = document.getSelection();
+    const copyLength = selection.toString().length;
+    if (copyLength > 20) {
+      event.clipboardData.setData('text/plain', `${selection.toString().toUpperCase()} ( 原文出處：${site} )`);
+      event.preventDefault();
+    }
+  });
+</script>
+<script>
+  document.querySelectorAll('.adsbygoogle').forEach(e => {
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  });
+</script>
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-2708968-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</html>
