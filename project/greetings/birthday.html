@@ -465,11 +465,13 @@
   }
   document.addEventListener('copy', function (e) {
     const selection = document.getSelection();
-    const copyLength = selection.toString().length;
+    const copyContent = selection.toString();
+    const copyLength = copyContent.toString().length;
     if (copyLength > 20) {
-      event.clipboardData.setData('text/plain', `${selection.toString().toUpperCase()} ( 原文出處：${site} )`);
+      event.clipboardData.setData('text/plain', `${copyContent} ( 原文出處：${site} )`);
       event.preventDefault();
     }
+    ga("send", "event", copyContent, "copy");
   });
 </script>
 <script>
