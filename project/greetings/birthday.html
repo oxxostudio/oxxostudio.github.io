@@ -450,9 +450,11 @@
   document.addEventListener('mousemove', showAD);
   function showAD() {
     let ad = document.querySelector('.ad');
-    let adContent = document.querySelector('.ad-content');
+    let adContent = document.querySelectorAll('.ad-content');
     ad.classList.remove('hidden');
-    adContent.classList.remove('hidden');
+    adContent.forEach(e => {
+      e.classList.remove('hidden');
+    })
     let element = document.createElement("script");
     element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
     document.body.appendChild(element);
@@ -471,7 +473,9 @@
       event.clipboardData.setData('text/plain', `${copyContent} ( 原文出處：${site} )`);
       event.preventDefault();
     }
-    ga("send", "event", copyContent, "copy");
+    gtag('event', 'copy', {
+      'value': copyContent
+    });
   });
 </script>
 <script>
@@ -479,21 +483,12 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
   });
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBS6NJ8VR6"></script>
 <script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-  ga('create', 'UA-2708968-7', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-HBS6NJ8VR6');
 </script>
 
 </html>
