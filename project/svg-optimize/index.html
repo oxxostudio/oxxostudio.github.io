@@ -12,11 +12,13 @@
   <meta name="description" content="針對 SVG 進行最佳化 ( 優化 ) 和基本壓縮，不論是 Illustrator、Sketch 或其他軟體繪製的 SVG檔案，都可以使用這個功能進行最佳化處理。">
   <meta itemprop="name" content="SVG 最佳化、SVG 優化、SVG 壓縮">
   <meta itemprop="image" content="https://www.oxxostudio.tw/project/svg-optimize/svg.jpg">
-  <meta itemprop="description" content="針對 SVG 進行最佳化 ( 優化 ) 和基本壓縮，不論是 Illustrator、Sketch 或其他軟體繪製的 SVG檔案，都可以使用這個功能進行最佳化處理。">
+  <meta itemprop="description"
+    content="針對 SVG 進行最佳化 ( 優化 ) 和基本壓縮，不論是 Illustrator、Sketch 或其他軟體繪製的 SVG檔案，都可以使用這個功能進行最佳化處理。">
   <meta property="og:title" content="SVG 最佳化、SVG 優化、SVG 壓縮">
   <meta property="og:url" content="https://www.oxxostudio.tw/project/svg-optimize/index.html">
   <meta property="og:image" content="https://www.oxxostudio.tw/project/svg-optimize/svg.jpg">
-  <meta property="og:description" content="針對 SVG 進行最佳化 ( 優化 ) 和基本壓縮，不論是 Illustrator、Sketch 或其他軟體繪製的 SVG檔案，都可以使用這個功能進行最佳化處理。">
+  <meta property="og:description"
+    content="針對 SVG 進行最佳化 ( 優化 ) 和基本壓縮，不論是 Illustrator、Sketch 或其他軟體繪製的 SVG檔案，都可以使用這個功能進行最佳化處理。">
   <style>
     html,
     body {
@@ -196,7 +198,6 @@
     }
 
     .ad {
-      background: #f00;
       width: 300px;
       height: auto;
       position: absolute;
@@ -250,10 +251,10 @@
       <h3>SVG 最佳化完成</h3>
       <div id="output"></div>
       <div id="SVGpreview"></div>
-      <a id="download">下載 SVG 檔案</a>
+      <span id="download">下載 SVG 檔案</span>
       <a id="copy" data-clipboard-target="#output">複製 SVG 程式碼</a>
     </div>
-    <div class="ad-content">
+    <div class="ad-content hidden">
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="3285263846"
         data-ad-format="auto"></ins>
     </div>
@@ -347,8 +348,8 @@
       download.setAttribute('download', name);
       download.setAttribute('href', `data:image/svg+xml;charset=utf-8,${svg}`);
     }
-
-
+  </script>
+  <script>
     document.addEventListener('scroll', showAD);
     document.addEventListener('mousemove', showAD);
 
@@ -369,6 +370,9 @@
       document.removeEventListener('scroll', showAD);
       document.removeEventListener('mousemove', showAD);
     }
+    document.querySelectorAll('.adsbygoogle').forEach(e => {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    });
   </script>
 </body>
 
