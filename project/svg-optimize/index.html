@@ -156,9 +156,9 @@
       overflow: hidden;
     }
 
-    label{
-      position:fixed;
-      top:-999px;
+    label {
+      position: fixed;
+      top: -999px;
     }
 
     #download,
@@ -302,10 +302,20 @@
         reader.onload = function () {
           input.value = reader.result;
           let svg = optimizeSVG(reader.result);
-          SVGpreview.innerHTML = svg;
-          output.innerText = svg;
-          preview.removeAttribute('hidden', '');
-          downloadSVG(fileName, svg);
+          if (svg) {
+            gtag('event', 'uploadBtn', {
+              'value': fileName
+            });
+            SVGpreview.innerHTML = svg;
+            output.innerText = svg;
+            preview.removeAttribute('hidden', '');
+            downloadSVG(fileName, svg);
+          } else {
+            gtag('event', 'uploadBtn', {
+              'value': 'error'
+            });
+            preview.setAttribute('hidden', '');
+          }
         };
         reader.readAsText(file);
       } else {
@@ -315,6 +325,24 @@
 
     uploadBtn.addEventListener('click', () => {
       upload.click();
+    });
+
+    input.addEventListener('input', function () {
+      let svg = optimizeSVG(this.value);
+      if (svg) {
+        gtag('event', 'inputCode', {
+          'value': 'svg'
+        });
+        SVGpreview.innerHTML = svg;
+        output.innerText = svg;
+        preview.removeAttribute('hidden', '');
+        downloadSVG('default.svg', svg);
+      } else {
+        gtag('event', 'inputCode', {
+          'value': 'error'
+        });
+        preview.setAttribute('hidden', '');
+      }
     });
 
     copy.addEventListener('click', function () {
@@ -328,30 +356,39 @@
 
     function optimizeSVG(val) {
       let result = val;
-      const idArr = result.match(/id="(.*?)"/g); // 取得 id
-      if (idArr) {
-        idArr.forEach((e, i) => {
-          const oldid = e.replace(/\"|id=/g, '');
-          const newid = `_${i}`;
-          if (result.match(`#${oldid}`)) {
-            result = result.replace(e, `id="${newid}"`);  // 如果有用到這個 id 則保留
-            result = result.replace(`#${oldid}`, `#${newid}`);
-          } else {
-            result = result.replace(e, '');
-          }
-        });
+      try {
+        const idArr = result.match(/id="(.*?)"/g); // 取得 id
+        if (idArr) {
+          idArr.forEach((e, i) => {
+            const oldid = e.replace(/\"|id=/g, '');
+            const newid = `_${i}`;
+            if (result.match(`#${oldid}`)) {
+              result = result.replace(e, `id="${newid}"`);  // 如果有用到這個 id 則保留
+              result = result.replace(`#${oldid}`, `#${newid}`);
+            } else {
+              result = result.replace(e, '');
+            }
+          });
+        }
+        result = result.replace(/\u0009|\n/g, ''); // 取代全形空白和換行
+        result = result.replace(/[\s]+/g, ' ');    // 合併連續空白
+        const svgHead = result.match(/.*<svg/)[0];   // 置換 svg 頭
+        result = result.replace(`${svgHead}`, `<svg`);
+        return result;
+
+      } catch (e) {
+        console.log('SVG 格式錯誤！');
       }
-      result = result.replace(/\u0009|\n/g, ''); // 取代全形空白和換行
-      result = result.replace(/[\s]+/g, ' ');    // 合併連續空白
-      const svgHead = result.match(/.*<svg/)[0];   // 置換 svg 頭
-      result = result.replace(`${svgHead}`, `<svg`);
-      return result;
     }
 
     function downloadSVG(name, source) {
-      const svg = encodeURIComponent(`<?xml version="1.0" encoding="utf-8"?>\r\n${source}`);
-      download.setAttribute('download', name);
-      download.setAttribute('href', `data:image/svg+xml;charset=utf-8,${svg}`);
+      try {
+        const svg = encodeURIComponent(`<?xml version="1.0" encoding="utf-8"?>\r\n${source}`);
+        download.setAttribute('download', name);
+        download.setAttribute('href', `data:image/svg+xml;charset=utf-8,${svg}`);
+      } catch (e) {
+        console.log('SVG 格式錯誤！');
+      }
     }
   </script>
   <script>
@@ -378,6 +415,13 @@
     document.querySelectorAll('.adsbygoogle').forEach(e => {
       (adsbygoogle = window.adsbygoogle || []).push({});
     });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QBNWW7XD08"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-QBNWW7XD08');
   </script>
 </body>
 
