@@ -156,6 +156,11 @@
       overflow: hidden;
     }
 
+    label{
+      position:fixed;
+      top:-999px;
+    }
+
     #download,
     #copy {
       display: inline-block;
@@ -240,19 +245,19 @@
       <div class="uploadFile">
         <h3>上傳 SVG</h3>
         <div id="uploadBtn">選擇檔案</div>
-        <input id="upload" type="file" name="myfile">
+        <label for="upload"></label><input id="upload" type="file" name="myfile">
       </div>
       <div class="textArea">
         <h3>原始 SVG 程式碼</h3>
-        <textarea id="input"></textarea>
+        <label for="input"></label><textarea id="input"></textarea>
       </div>
     </div>
     <div id="preview" hidden>
       <h3>SVG 最佳化完成</h3>
       <div id="output"></div>
       <div id="SVGpreview"></div>
-      <span id="download">下載 SVG 檔案</span>
-      <a id="copy" data-clipboard-target="#output">複製 SVG 程式碼</a>
+      <a id="download" rel="noreferrer">下載 SVG 檔案</a>
+      <a id="copy" data-clipboard-target="#output" rel="noreferrer">複製 SVG 程式碼</a>
     </div>
     <div class="ad-content hidden">
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="3285263846"
@@ -264,7 +269,7 @@
       data-ad-format="auto"></ins>
   </div>
   <footer>
-    Copyright © 2020 <a href="https://www.oxxostudio.tw" target="_blank">OXXO.STUDIO</a>
+    Copyright © 2020 <a href="https://www.oxxostudio.tw" target="_blank" rel="noreferrer">OXXO.STUDIO</a>
   </footer>
 
   <script>
