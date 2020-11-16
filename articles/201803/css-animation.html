@@ -68,7 +68,7 @@
 
 <h1>完整解析 CSS 動畫 ( CSS Animation )</h1> 
 <p>隨著 CSS3 的普及，過去許多看似酷炫的效果，逐漸也都能透過 CSS 來實作，這篇文章將會針對 CSS 動畫進行完整的使用探討，從基礎的使用，一直到 JavaScript 的操作方法都會介紹，希望能讓大家 ( 其實是自己 ) 在使用上更加得心應手。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>CSS 動畫起手式</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">CSS 動畫起手式</h2> 
 <p>不論是使用什麼軟體，只要是製作動畫，一定少不了「關鍵影格 keyframe」，透過許多關鍵影格的組合，加上瀏覽器自動運算當中的漸變過程，就成為我們熟知的 CSS 動畫。假設有個 div 要加入 CSS 動畫效果，只需要按照下面的寫法，就能套用名為 oxxo 的動畫 ( <em>以下將統稱 @keyframes 為「動畫」</em> )，執行後就會花兩秒的時間，往右移動到 100px 的位置，動畫結束後會再跳回 0px 停止不動。</p>
 <pre class="prettyprint"><code>div{
     position:absolute;
@@ -121,7 +121,7 @@
   }
 </code></pre></li>
 </ul>
-<h2>CSS 動畫屬性總覽 ( CSS Animation Properties )</h2> 
+<h2 id="t2">CSS 動畫屬性總覽 ( CSS Animation Properties )</h2> 
 <p>了解如何使用之後，就要來看看有哪些屬性可以設定，CSS 動畫共有八種屬性和一個八種屬性集合的簡短屬性縮寫，這邊先把屬性一次列出，下面會繼續詳細介紹用法。</p>
 <table>
 <thead>
@@ -172,7 +172,7 @@
 <p>教學文章：<a href="/articles/201406/css-google-loading.html" rel="noreferrer noopener" target="_blank">CSS3動畫 - Google Loading Animation</a></p>
 </blockquote>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201406/css-google-loading-03.gif" alt="完整解析 CSS 動畫 ( CSS Animation )"></p>
-<h2>(屬性) animation-name 動畫名稱</h2> 
+<h2 id="t3">(屬性) animation-name 動畫名稱</h2> 
 <p>animation-name 表示動畫名稱，既然要做動畫就得先對這個動畫命名，由於 CSS 骨子裡也是程式語言，仍保有著程式碼的邏輯思維，所以命名上須遵照以下幾點原則，使用上也比較不會發生問題，幾個命名原則如下：</p>
 <ul>
 <li><p><strong>名稱可以加引號、亦可不加引號</strong></p>
@@ -198,13 +198,13 @@
   @keyframes "None" { ... }    /* 可以用 */
 </code></pre></li>
 </ul>
-<h2>(屬性) animation-duration 動畫持續時間</h2> 
+<h2 id="t4">(屬性) animation-duration 動畫持續時間</h2> 
 <p>animation-duration 指的是「播放一次」動畫需要的時間，單位為 秒 ( s ) 或毫秒 ( ms )，預設值 0s，如果沒有設定或將其設為 0s，就不會播放動畫，基本上和 animation-name 動畫名稱都是屬於<em>一定要有</em>的屬性。</p>
 <pre class="prettyprint"><code>animation-duration:5s;
-</code></pre><h2>(屬性) animation-iteration-count 動畫播放次數</h2> 
+</code></pre><h2 id="t5">(屬性) animation-iteration-count 動畫播放次數</h2> 
 <p>animation-iteration-count 表示動畫播放的次數，預設值為 1 次，如果設定為 infinite 動畫就會無止盡的播放下去。</p>
 <pre class="prettyprint"><code>animation-iteration-count:infinite;
-</code></pre><h2>(屬性) animation-delay 動畫延遲播放時間</h2> 
+</code></pre><h2 id="t6">(屬性) animation-delay 動畫延遲播放時間</h2> 
 <p>animation-delay 代表的是動畫要延後多久才開始播放，單位為 秒 ( s ) 或毫秒 ( ms )，預設值 0s，如果沒有設定或將其設為 0s，動畫就會直接播放不會延遲，但比較特別的是，如果將延遲播放時間設定為「<em>負值</em>」，例如 -1s、-2s，得到的結果就「<em>不會延遲，而是快轉</em>」，假設一段動畫要 5 秒，animation-delay 設定為 -2s，那麼動畫將會直接從第二秒的位置開始播放，播放三秒後停止 ( 類似 5-2=3 的概念 )。</p>
 <p>以下面的例子來說，三種顏色的方塊都是 5 秒動畫，而藍色的 animation-delay 設為 2s，紅色的
 animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會得到這個結果：<em>藍色：慢兩秒移動，紅色：直接跳到已經移動兩秒的地方開始移動，綠色：一開始就移動</em>。</p>
@@ -243,7 +243,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
   }
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201803/css-animation-02.gif" alt="完整解析 CSS 動畫 ( CSS Animation )"></p>
-<h2>(屬性) animation-timing-function 動畫加速度函式</h2> 
+<h2 id="t7">(屬性) animation-timing-function 動畫加速度函式</h2> 
 <p>如果你對我的這篇文章 <a href="/articles/201406/css-cubic-bezier.html" rel="noreferrer noopener" target="_blank">CSS3 Cubic Bezier</a> 有印象，裡頭就有提到 CSS 動畫加速度函式裡的 Cubic Bezier，不過 animation-timing-function 不只有 Cubic Bezier，還有其他幾個設定選項：</p>
 <ul>
 <li><p><strong>linear</strong></p>
@@ -328,7 +328,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
 <p>  cubic-bezier 表示動畫開始與結束速度的貝茲曲線，詳細可以參考我的這篇 <a href="/articles/201406/css-cubic-bezier.html" rel="noreferrer noopener" target="_blank">CSS3 Cubic Bezier</a> 教學，或是直接到「<a href="http://cubic-bezier.com/" rel="noreferrer noopener" target="_blank">cubic-bezier</a>」這個網站實際操作看看，不過 CSS 動畫說穿了，單純靠 CSS 仍然無法製作很複雜的動畫效果，雖然 cubic-bezier 很強大，但真的拿來實戰的機會卻沒有很高，只要知道用法，需要用到的時候可以用就相當足夠囉！</p>
 </li>
 </ul>
-<h2>(屬性) animation-direction 動畫播放方向</h2> 
+<h2 id="t8">(屬性) animation-direction 動畫播放方向</h2> 
 <ul>
 <li><strong>normal</strong>：正常播放，從 0% 到 100% ( 預設值 )。</li>
 <li><strong>reverse</strong>：反轉播放，從 100% 到 0%。</li>
@@ -349,7 +349,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
   animation-direction:alternate;
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201803/css-animation-08.gif" alt="完整解析 CSS 動畫 ( CSS Animation )"></p>
-<h2>(屬性) animation-fill-mode 動畫播放前後模式</h2> 
+<h2 id="t9">(屬性) animation-fill-mode 動畫播放前後模式</h2> 
 <ul>
 <li><strong>none</strong>：預設值，不論動畫播放次數，結束後一律返回<em>原始狀態</em>。</li>
 <li><strong>forwards</strong>：動畫結束後，保持在最後一個影格狀態。</li>
@@ -385,7 +385,7 @@ animation-delay 設為 -2s，綠色則完全不設定 animation-delay，就會�
   }
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201803/css-animation-11.gif" alt="完整解析 CSS 動畫 ( CSS Animation )"></p>
-<h2>(屬性) animation-play-state 動畫播放或暫停狀態</h2> 
+<h2 id="t10">(屬性) animation-play-state 動畫播放或暫停狀態</h2> 
 <ul>
 <li><strong>running</strong>：預設值，表示動畫運行。</li>
 <li><strong>paused</strong>：表示動畫暫停。</li>
@@ -410,7 +410,7 @@ background-position:-15px -13px;
   animation-play-state:running;
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201803/css-animation-12.gif" alt="完整解析 CSS 動畫 ( CSS Animation )"></p>
-<h2>Animation Events</h2> 
+<h2 id="t11">Animation Events</h2> 
 <p>Animation Events CSS 動畫行為是玩 CSS 動畫比較容易忽略的部分，但其實如果熟悉他的行為指令，許多動態效果，在 JavaScript 的部份就可以寫得更為簡潔，也更容易玩一些網頁的動畫特效，Animation Events 有以下四種：</p>
 <ul>
 <li><strong>animationstart</strong>：當動畫開始。</li>
@@ -437,7 +437,7 @@ hourse.addEventListener('animationcancel',function(){
   text.innerHTML = '動畫暫停';
 });
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201803/css-animation-13.gif" alt="完整解析 CSS 動畫 ( CSS Animation )"></p>
-<h2>CSSKeyframesRule</h2> 
+<h2 id="t12">CSSKeyframesRule</h2> 
 <p>在網頁的 document 裡有個屬性叫做 styleSheets，這個屬性會將一個網頁裡所有用到的樣式列出，舉例來說如果你正在瀏覽我的這個網頁 ( 就是正在閱讀的這頁 )，你可以把網頁開發者工具打開，在 console 輸入<code>document.styleSheets</code>，就會看到網站所有使用到的 CSS 依序列出。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201803/css-animation-14.jpg" alt="完整解析 CSS 動畫 ( CSS Animation )"></p>
 <p>如果你覺得上面的例子 CSS 太複雜，可以打開下面這個範例頁面，一樣在 console 輸入<code>document.styleSheets</code>，把呈現出來的結果打開，會看到在 rules 裡包含兩個規則，分別是 id 是 test 的 div，以及名為 oxxo 的動畫規則：<em>CSSKeyframesRules</em>。</p>

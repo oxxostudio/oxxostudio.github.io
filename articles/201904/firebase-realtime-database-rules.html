@@ -75,7 +75,7 @@
 <li><a href="/articles/201907/firebase-nodejs-realtime-database.html">Firebase 教學 - Node.js 操作 Realtime Database</a></li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本寫法</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">基本寫法</h2> 
 <p>RealTime Database Rules 使用類似 JSON 格式的寫法，根據定義 <code>.read</code>、<code>.write</code> 和 <code>.validate</code>( <code>.indexOn</code> 也是屬性之一，但主要用途作為排序，在資料量不大時發揮不了作用，就不在此處介紹 )</p>
 <table>
 <thead>
@@ -113,7 +113,7 @@
     ".write": "auth.uid != null"
   }
 }
-</code></pre><h2>定義規則順序</h2> 
+</code></pre><h2 id="t2">定義規則順序</h2> 
 <p>Firebase 的規則採用「<strong>淺層判斷至深層</strong>」的做法，只要是存取資料，規則的 true 與 false 一律由淺層 ( root 根節點 ) 開始判斷起，舉例來說，下列規則的寫法，你以為在 a 節點的層級寫了 false 擋住了寫入，但實際上在 root 節點卻允許寫入，這也會造成 a 節點仍然可以寫入資料的情形。</p>
 <pre class="prettyprint"><code>{
   "rules": {
@@ -170,7 +170,7 @@
   }
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201904/firebase-realtime-database-rules-03.jpg" alt="Firebase 教學 - RealTime Database Rules"></p>
-<h2>預設變數 predefined variables</h2> 
+<h2 id="t3">預設變數 predefined variables</h2> 
 <p>在安全規則裡頭，除了單純的撰寫節點名稱外，還有以下幾種預設的變數，每個變數都有其特定用法，因此在「節點」的命名上，都應該要避開這些名稱。</p>
 <table>
 <thead>
@@ -307,7 +307,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201904/firebase-realtime-database-rules-14.jpg" alt="Firebase 教學 - RealTime Database Rules"></p>
 </li>
 </ul>
-<h2>保護已存在的資料</h2> 
+<h2 id="t4">保護已存在的資料</h2> 
 <p>透過使用者 auth 的規則，可以定義較為妥善的資料保護方法，但針對「匿名」的使用者，是否能讓「彈性」和「保護」都能兼具呢？針對匿名的使用者，大致上可以定義以下的保護條件：</p>
 <blockquote>
 <ul>

@@ -76,7 +76,7 @@
 </li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立 LINE Messaging API</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">建立 LINE Messaging API</h2> 
 <p>前往 LINE developers 網站，點選右上方的 login，使用自己的 LINE 帳號登入，登入後點選「    <em>Start using Messaging API</em>」，就會開始進行建立 Messaging API 的步驟。</p>
 <blockquote>
 <p>LINE developers：<a href="https://developers.line.me/" rel="noreferrer noopener" target="_blank">https://developers.line.me/</a></p>
@@ -90,7 +90,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201804/line-bot-apps-script-04.jpg" alt="實作 LINE 聊天機器人 ( Google Apps Script )"></p>
 <p>點選 Confirm 後就要勾選相關的規範，勾選完成後就能按下 <em>Create</em> 建立 Messaging API。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201804/line-bot-apps-script-05.jpg" alt="實作 LINE 聊天機器人 ( Google Apps Script )"></p>
-<h2>設定 LINE Messaging API</h2> 
+<h2 id="t2">設定 LINE Messaging API</h2> 
 <p>回到個人 console 的 <a href="https://developers.line.me/console/" rel="noreferrer noopener" target="_blank">頁面</a>，應該就能看到剛剛建立的 API 出現在畫面中，點擊圖示進入設定頁面。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201804/line-bot-apps-script-06.jpg" alt="實作 LINE 聊天機器人 ( Google Apps Script )"></p>
 <p>設定畫面往下拉，重點放在 Messaging setting 的部分，這裡有幾個重點需要設定：</p>
@@ -109,7 +109,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201804/line-bot-apps-script-10.jpg" alt="實作 LINE 聊天機器人 ( Google Apps Script )"></p>
 <p>點選「帳號設定 &gt; 基本設定」，可以看到該機器人的 QRCode，<em>使用手機掃描添加為好友</em>，才能開始測試聊天機器人的功能。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201804/line-bot-apps-script-11.jpg" alt="實作 LINE 聊天機器人 ( Google Apps Script )"></p>
-<h2>Google Apps Script 接收 LINE 訊息</h2> 
+<h2 id="t3">Google Apps Script 接收 LINE 訊息</h2> 
 <p>Google Apps Script 是一個基於 JavaScript 的程式語言，主要用來開發或串接 Google 的各種服務與應用，然而透過將程式部署到網路上，就等同產生一組 webhook 網址，透過這個網址就能讓訊息與 LINE 機器人互相溝通，點選下方的連結，用 Google 帳號登入，點選右上方的「<em>+ 新增指令碼</em>」就可以開始撰寫 Google Apps Script。</p>
 <blockquote>
 <p>Google Apps Script Dashboard：<a href="https://script.google.com/" rel="noreferrer noopener" target="_blank">https://script.google.com/</a></p>
@@ -135,7 +135,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201804/line-bot-apps-script-16.jpg" alt="實作 LINE 聊天機器人 ( Google Apps Script )"></p>
 <p>發送訊息後，因為剛剛有寫了 console.log 來顯示訊息，所以需要前往 Google Cloud Platform 的 Stackdriver 查看訊息記錄，上方選擇我們建立的 linebot 程式，在記錄區就能夠看到剛剛的訊息「測試訊息是否收到」以及一些對應的內容。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201804/line-bot-apps-script-17.jpg" alt="實作 LINE 聊天機器人 ( Google Apps Script )"></p>
-<h2>Google Apps Script 發送 LINE 訊息</h2> 
+<h2 id="t4">Google Apps Script 發送 LINE 訊息</h2> 
 <p>已經能夠順利接收 LINE 訊息後，接著就是要來發送 LINE 訊息，首先看到 LINE Messaging API 的 reference，裏頭 Send Reply Message 有針對回傳的訊息格式做了定義，因此我們也必須遵照定義回傳。</p>
 <blockquote>
 <p>參考：<a href="https://developers.line.me/en/docs/messaging-api/reference/#send-reply-message" rel="noreferrer noopener" target="_blank">Send reply message</a></p>

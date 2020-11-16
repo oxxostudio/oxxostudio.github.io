@@ -68,7 +68,7 @@
 
 <h1>一次搞懂 CSS 字體單位：px、em、rem 和 %</h1> 
 <p>對於繪圖和印刷而言，「單位」很相當重要的，然而在網頁排版裡，單位也是同樣具有重要性，在 CSS3 普及以來，更支援了一些方便好用的單位 ( px、em、rem...等 )，這篇文章將整理這些常用的 CSS 單位，也幫助自己未來在使用上能更加得心應手。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>「網頁」和「印刷」的單位</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">「網頁」和「印刷」的單位</h2> 
 <p>若要把單位做區隔，最簡單可以分為「網頁」和「印刷」兩大類，通常對於 CSS 來說只會應用到網頁的樣式，畢竟真正要做印刷，還是會傾向透過排版軟體來進行設計。</p>
 <h3>網頁 ( 單位 )</h3> 
 <blockquote>
@@ -102,7 +102,7 @@
 <li><em>mm</em>：公釐，在 96 dpi 的系統上 1 cm = 3.7795275593333 px。</li>
 </ul>
 </blockquote>
-<h2>範例展示</h2> 
+<h2 id="t2">範例展示</h2> 
 <p>以下將展示四種不同單位的範例，為公平起見，四個範例都套用預設的 div 格式，純粹改變<code>font-size</code>看看有何不同，由於子元素若沒有設定 font-size，會自動繼承父元素的 font-size，使用上就應該要預先初始化字體大小，下面這兩段 CSS 可以將所有的元素字體大小預設為 16px，爾後亦可個別進行調整。</p>
 <pre class="prettyprint"><code>html{
     font-size:16px;

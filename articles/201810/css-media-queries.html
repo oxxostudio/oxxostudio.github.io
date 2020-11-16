@@ -68,7 +68,7 @@
 
 <h1>CSS Media Queries 詳細介紹</h1> 
 <p>在製作 RWD 響應式網頁時，一定會用到的 CSS 語法就是 media，代表的就是針對指定的「媒體」設定樣式，這篇將會對 CSS 的 Media Queries 做個詳細介紹，也幫助自己未來撰寫時，更有個方向與參考。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>CSS Media Queries 是什麼？</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">CSS Media Queries 是什麼？</h2> 
 <p>Media Queries 代表網頁會先「詢問 query」「媒體 media」的屬性，再針對這些屬性定義樣式，通常在 CSS 裡並沒有大多都是權重大小「覆蓋」的方式，但 media 本身卻帶有些「邏輯」的概念，透過邏輯的寫法，如果媒體條件符合為 true，就會套用樣式，反之為 false 就不會套用樣式。</p>
 <p>如果要使用 media queries，共有下列三種使用方式：</p>
 <ul>
@@ -92,7 +92,7 @@
 @import "print.css" print;
 </code></pre></li>
 </ul>
-<h2>Media 的類型 ( Media Types )</h2> 
+<h2 id="t2">Media 的類型 ( Media Types )</h2> 
 <p>在 CSS Level 4 普及後 ( 沒錯，寫這篇文章時，Level 4 即將是主流了 )，主要的 Media 類型有以下四種。( tty、tv、projection、handheld、braille、embossed 和 aural 因為在 Level 4 已經描述未來不支援，就不再多做介紹。)</p>
 <table>
 <thead>
@@ -230,7 +230,7 @@
 </tr>
 </tbody>
 </table>
-<h2>CSS Media Queries 應用實例</h2> 
+<h2 id="t3">CSS Media Queries 應用實例</h2> 
 <p>Queries 有四種使用方式，分別是 <em>or</em>、<em>and</em>、<em>not</em> 和 <em>only</em>，除了 or 使用逗號「,」表現，其他的就直接寫出英文字，下列應用實例分別使用這四種方式來表現。</p>
 <ul>
 <li><p><strong>OR</strong></p>
