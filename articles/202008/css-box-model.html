@@ -68,10 +68,10 @@
 
 <h1>深入理解 CSS Box Model ( 盒子模型 )</h1> 
 <p>CSS Box Model 盒子模型是 CSS 的基礎，也是操控網頁非常重要的觀念，這篇文章將會深入理解 CSS Box Model，除了基本的認識，更會介紹網頁排版容易遇到的「邊距重疊 ( Collapsing margins ) 」問題，希望透過這篇文章，能對盒子模型有更深一層的認識。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Box Model 的定義</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="b1">Box Model 的定義</h2> 
 <p>Box Model 主要由四個部分主成，由內而外分別是 <em>Content ( 內容 )</em>、<em>Padding ( 內邊距 )</em>、<em>Border ( 邊框 )</em> 和 <em>Margin ( 外邊距 )</em>。( 圖片來源 <a href="https://drafts.csswg.org/css2/box.html" rel="noreferrer noopener" target="_blank">csswg.org</a> )</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/202008/css-box-model-01.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
-<h2>撰寫語法</h2> 
+<h2 id="b2">撰寫語法</h2> 
 <p>除了 Content，Padding、Border 和 Margin 都有相同定義寬度的撰寫語法，撰寫的方法可分為下列幾種，單位可以設定為像素 px、百分比 % 或 em、rem 等。</p>
 <blockquote>
 <ul>
@@ -81,7 +81,7 @@
 <li>一個值：<em>上下左右</em></li>
 </ul>
 </blockquote>
-<h2>Margin</h2> 
+<h2 id="b3">Margin</h2> 
 <p>margin 是 box model 的外邊距，用法上有幾個重點：</p>
 <blockquote>
 <ul>
@@ -97,7 +97,7 @@
 <p>範例：<a href="/demo/202008/css-box-model-demo-01.html" rel="noreferrer noopener" target="_blank">margin 設定負值以及 %</a></p>
 </blockquote>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/202008/css-box-model-02.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
-<h2>Margin 邊距重疊 ( Collapsing margins )</h2> 
+<h2 id="b4">Margin 邊距重疊 ( Collapsing margins )</h2> 
 <p>margin 有一個很重要的特性，叫做「邊距重疊 Collapsing margins」，意思是兩個或多個元素 ( 父子、兄弟 ) 的「<em>垂直邊距，會自動組合成單個邊距</em>」，以這種方式組合成的邊距稱為重疊，生成的邊距稱為重疊邊距，重疊邊距 <strong>採用最大的 margin 值</strong>，此外，<strong>如果元素本身高度為 0 或 auto，則會發生上下 margin 重疊狀況</strong>。</p>
 <p>不過在下列的情形中，元素「<em>不會</em>」發生邊距重疊：</p>
 <blockquote>
@@ -130,7 +130,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/202008/css-box-model-04.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
 </li>
 </ul>
-<h2>Padding</h2> 
+<h2 id="b5">Padding</h2> 
 <p>padding 是 box model 的內邊距，用法上有幾個重點：</p>
 <blockquote>
 <ul>
@@ -146,7 +146,7 @@
 <p>範例：<a href="/demo/202008/css-box-model-demo-04.html" rel="noreferrer noopener" target="_blank">padding 和 box-sizing</a></p>
 </blockquote>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/202008/css-box-model-05.jpg" alt="深入理解 CSS Box Model ( 盒子模型 )"></p>
-<h2>Border</h2> 
+<h2 id="b6">Border</h2> 
 <p>border 是 box model 的邊框，用法上有幾個重點：</p>
 <blockquote>
 <ul>

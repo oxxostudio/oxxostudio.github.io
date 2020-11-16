@@ -68,14 +68,14 @@
 
 <h1>Firebase 教學 - 簡單的使用者註冊功能</h1> 
 <p>Firebase 提供了很強大又簡單的後端功能，其中一項就是「註冊使用者」，這篇文章將會使用 RealTime Database 實作一個簡單的使用者註冊畫面，註冊後會紀錄使用者所儲存的相關資訊。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>啟用使用者功能</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">啟用使用者功能</h2> 
 <p>延續「<a href="../201904/firebase-realtime-database-start.html" rel="noreferrer noopener" target="_blank">Firebase 教學 - RealTime Database 安裝與使用</a> 」裡建立的專案，進入管理畫面後，點選左側選單 Authentication 可以看到使用者認證相關選項，點選上方「登入方式」頁籤，這裡採用「電子郵件/密碼」作為登入的依據。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-simple-signup-01.jpg" alt="Firebase 教學 - 簡單的使用者註冊功能"></p>
 <p>點選後方的鉛筆圖示，啟用「使用者能夠透過電子郵件和密碼註冊」。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-simple-signup-02.jpg" alt="Firebase 教學 - 簡單的使用者註冊功能"></p>
 <p>啟用後，除了可以讓使用者自行創建帳號密碼外，也可以點選上方「使用者」頁籤，手動添加使用者，這裡我添加了一個帳號為 test<span>@test.com 的使用者，添加後亦可看到使用者的 uid。</span></p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-simple-signup-03.jpg" alt="Firebase 教學 - 簡單的使用者註冊功能"></p>
-<h2>網頁初始化 auth 功能</h2> 
+<h2 id="t2">網頁初始化 auth 功能</h2> 
 <p>要使用 RealTime Database auth 功能需要載入對應的 js，這裡直接使用 google 提供的連結。</p>
 <p><em><code>&lt;script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"&gt;&lt;/script&gt;</code></em></p>
 <p>接著在 JavaScript 中撰寫下面這段初始化的程式碼，並宣告變數 database 為 firebase 的 realtime database。</p>
@@ -92,7 +92,7 @@ const database = firebase.database();
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-simple-signup-05.jpg" alt="Firebase 教學 - 簡單的使用者註冊功能"></p>
 <p>點選「API 和服務」後，左側點選「憑證」，再點選「憑證頁籤」，按下「建立憑證」，選擇「API」金鑰即可建立新的網路金鑰。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-simple-signup-06.jpg" alt="Firebase 教學 - 簡單的使用者註冊功能"></p>
-<h2>使用者註冊帳號</h2> 
+<h2 id="t3">使用者註冊帳號</h2> 
 <p>初始化完成後，就來透過 auth 實作一個簡單的註冊功能：「當使用者註冊時會透過 firebase 將 uid 當作節點，紀錄註冊的時間與 email」，首先設計一下註冊畫面的 HTML，裡頭只需要一個帳號和密碼的輸入欄位、一個送出的按鈕、和一個顯示訊息的文字區域。</p>
 <pre class="prettyprint"><code>&lt;h2&gt;註冊新帳號&lt;/h2&gt;
 帳號：&lt;input id="email"&gt;

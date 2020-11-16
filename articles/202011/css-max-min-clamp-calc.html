@@ -68,7 +68,7 @@
 
 <h1>深入理解 CSS max()、min()、clamp()、calc()</h1> 
 <p>隨著 CSS 的進化，出現了許多和數學函數相關的功能，這篇文章會介紹 max()、min()、clamp() 和 calc() 這四個好用的功能符號 ( Functional Notations )，可以應用在長度、角度...等各種屬性，進行動態的數學函數運算，讓網頁設計更加靈活以及具有彈性。</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>CSS 的功能符號 ( Functional Notations )</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="m1">CSS 的功能符號 ( Functional Notations )</h2> 
 <p>功能符號是一種藉由數學函數計算而產生的數值，可以使用在較為複雜的類型或版面設計，功能符號的語法是以「<em>數學函數名稱開頭，緊隨其後是左右括號</em> ( 例如<code>max()</code>、<code>calc()</code> )，<em>括號內可以採用多個參數</em>」，格式和單位和 CSS 屬性值相同，各個參數採用逗號分隔。</p>
 <p>除了這篇文章要介紹的四個功能符號，CSS 還定義了其他特別的功能，例如<code>toggle()</code>( 抓取 toggle 事件 )、<code>attr()</code>( 抓取元素屬性 )、<code>round()</code>、<code>mod()</code>、<code>rem()</code>、<code>sin()</code>、<code>cos()</code>、<code>tan()</code>、<code>asin()</code>、<code>acos()</code>、<code>atan()</code>、<code>atan2()</code>...等，不過截至這篇文章寫完的時候，上述這些都還沒有支援，所以只好等待之後支援的時候再來測試了。</p>
 <blockquote>
@@ -79,7 +79,7 @@
 </li>
 </ul>
 </blockquote>
-<h2>max()</h2> 
+<h2 id="m2">max()</h2> 
 <p><code>max()</code>定義了一個數學運算最大值，括號內可以包含多個數值，使用逗號分隔，計算後得到的值就是多個數值的「<em>最大值</em>」。舉例來說，如果有個 div 寬度是 80vw，但鎖定最小寬度為 200px。</p>
 <p>過去的寫法：</p>
 <pre class="prettyprint"><code>div{
@@ -96,7 +96,7 @@
   font-size:max(10 * (1vw + 1vh) / 2, 12px);
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/202011/css-max-min-clamp-calc-02.gif" alt="深入理解 CSS max()、min()、clamp()、calc()"></p>
-<h2>min()</h2> 
+<h2 id="m3">min()</h2> 
 <p><code>min()</code>定義了一個數學運算的最小值，括號內可以包含多個數值，使用逗號分隔，計算後得到的值就是多個數值的「<em>最小值</em>」。舉例來說，如果有個 div 寬度是 80vw，但鎖定最最大寬度為 200px。</p>
 <p>過去的寫法：</p>
 <pre class="prettyprint"><code>div{
@@ -108,7 +108,7 @@
   width:min(80vw, 200px);
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/202011/css-max-min-clamp-calc-03.gif" alt="深入理解 CSS max()、min()、clamp()、calc()"></p>
-<h2>clamp()</h2> 
+<h2 id="m4">clamp()</h2> 
 <p><code>clamp()</code>包含三個數值，定義「<em>最大值、最小值以及中間的數值</em>」，效果等同於：</p>
 <pre class="prettyprint"><code>max(最小值, min(val, 最大值));
 </code></pre><p>舉例來說，要把某個寬度 100vw 的 div，鎖定在 100px 到 300px 之間。</p>
@@ -123,7 +123,7 @@
   clamp(200px, 100%, 300px);
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/202011/css-max-min-clamp-calc-04.gif" alt="深入理解 CSS max()、min()、clamp()、calc()"></p>
-<h2>calc()</h2> 
+<h2 id="m5">calc()</h2> 
 <p><code>calc()</code>主要作為計算使用，可以和<code>max()</code>、<code>min()</code>、<code>clamp</code>或是 CSS 的變數互相搭配，例如有一個 div，最大寬度是 80vw - 50px 或 150px，可以採用搭配變數的寫法：</p>
 <pre class="prettyprint"><code>:root{
   --w:min(200px, 80vw);

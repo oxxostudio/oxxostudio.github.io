@@ -75,7 +75,7 @@
 <li><a href="/articles/201907/firebase-nodejs-firestore.html">Firebase 教學 - Node.js 操作 Firestore</a></li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本寫法</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">基本寫法</h2> 
 <p>所有 Firestore 的安全規則都包含了<code>match</code>和<code>allow</code>的語法，<code>match</code>負責識別哪些文件與資料夾，<code>allow</code>則負責相對應的權限，又分為<code>read</code>( 讀取 ) 和<code>write</code>( 寫入 ) 兩種，<code>read</code>可再細分為<code>get</code>和<code>list</code>，<code>wrtie</code>也可再細分為<code>create</code>、<code>update</code> 和 <code>delete</code>，如果單純指定<code>read</code>或<code>wrtie</code>的權限，則細分的規則就會全部按照父層的定義進行，透過這些規則的交互搭配，就能提高資料庫的彈性與安全性。</p>
 <table>
 <thead>
@@ -123,7 +123,7 @@
     }
   }
 }
-</code></pre><h2>定義規則</h2> 
+</code></pre><h2 id="t2">定義規則</h2> 
 <p>以下規則將使用「<a href="https://www.oxxostudio.tw/articles/201905/firebase-firestore.html" rel="noreferrer noopener" target="_blank">Firebase 教學 - Firestore 安裝、寫入和讀取</a>」裡的專案作為範例，專案結構如下圖為一個包含五種水果名字文件的 fruit 集合。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201907/firebase-firestore-rules-01.jpg" alt="Firebase 教學 - Firestore Rules 安全規則"></p>
 <p>如果我們把規則寫成<code>match /fruit/{document}</code>，因為只有單一個集合，那麼它的效果幾乎等同於<code>match /{document=**}</code>，使用模擬工具測試可以看到，針對 fruit 裡的 orange 文件，可以允許寫入資料。</p>
@@ -153,7 +153,7 @@
   }
 }
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201907/firebase-firestore-rules-04.jpg" alt="Firebase 教學 - Firestore Rules 安全規則"></p>
-<h2>規則的分層與交集</h2> 
+<h2 id="t3">規則的分層與交集</h2> 
 <p>撰寫規則不限有幾個<code>match</code>，但若匹配到同一個文件，<em>只要任何一個<code>allow</code>的判斷回傳 true，就擁有權限可以允許讀取或寫入</em>，以下方的規則來說，雖然我們定義了 /fruit/apple 不可以寫入，但因為 /fruit/{document} 回傳了 true，所以 apple 文件仍然保有寫入的權限。</p>
 <pre class="prettyprint"><code>service cloud.firestore {
   match /databases/{database}/documents {
@@ -185,7 +185,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201907/firebase-firestore-rules-07.jpg" alt="Firebase 教學 - Firestore Rules 安全規則"></p>
 <p>不過如果我們把萬用字元改成<code>{document=**}</code>，表示該層以下所有的文件，也因此後方的判斷就會無效，變成可以寫入資料了。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201907/firebase-firestore-rules-08.jpg" alt="Firebase 教學 - Firestore Rules 安全規則"></p>
-<h2>簡單實現資料的保護</h2> 
+<h2 id="t4">簡單實現資料的保護</h2> 
 <p>最基本保護資料的方法有兩種，一種是不能修改已有的檔案，一種就是透過簡單的使用者認證來保護，首先看到第一種「不能修改已有的檔案」，在 firestore 裡要實作還滿簡單的，只要把 read 和 write 再細分規範，就能實現對應的保護，下面的規則會<em>限制不能更新與刪除已存在的檔案，但仍然可以新建檔案</em>。</p>
 <pre class="prettyprint"><code>service cloud.firestore {
   match /databases/{database}/documents {

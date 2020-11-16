@@ -76,7 +76,7 @@
 <li><a href="https://firebase.google.com/docs/firestore/rtdb-vs-firestore?hl=zh-cn" rel="noreferrer noopener" target="_blank">Firestore 和 Realtime Database 的差異對比</a></li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>建立資料庫</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">建立資料庫</h2> 
 <p>首先我們先用 Google 帳號登入 ( <a href="https://firebase.google.com/" rel="noreferrer noopener" target="_blank">https://firebase.google.com/</a> )，接著進入 firebase 的控制台，點選「<em>新增專案</em>」，伺服器所在的位置選擇台灣，Cloud Firestore 選擇 asia-east2 ( 單純只是選擇距離台灣比較近的 )，相關條款打勾後即可新增專案。( 如果名稱和別人重複，自訂名稱後方多出一串亂碼 )</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-firestore-01.jpg" alt="Firebase 教學 - Firestore 安裝、寫入和讀取"></p>
 <p>專案建立後，會自動進入專案的管理畫面，點選左側選單的「<em>Database</em>」，點選右側 Cloud Firestore 建立資料庫。</p>
@@ -85,7 +85,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-firestore-03.jpg" alt="Firebase 教學 - Firestore 安裝、寫入和讀取"></p>
 <p>完成後就會看見類似下圖的畫面，表示資料庫建立完成，可以開始使用囉！</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-firestore-04.jpg" alt="Firebase 教學 - Firestore 安裝、寫入和讀取"></p>
-<h2>初始化</h2> 
+<h2 id="t2">初始化</h2> 
 <p>首先載入對應的 Javascript 函式庫 ( 我使用 Google 所提供的連結 )</p>
 <p><em><code>&lt;script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"&gt;&lt;/script&gt;</code></em></p>
 <p><em><code>&lt;script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"&gt;&lt;/script&gt;</code></em></p>
@@ -96,7 +96,7 @@
 var db = firebase.firestore();
 </code></pre><p>雖然有別於 Realtime Database 是使用 json 節點的形式，Firestore 採用<em>集合 ( collection )</em> 與<em>文件 ( doc )</em> 的概念，集合內會包含文件，文件內也可以包含集合，資料只能存在文件內，整體來說，本質上仍然是 json 格式，但又更靈活有彈性。( 可以把集合想像成 A4 資料夾，文件就是 A4 紙張，資料是寫在 A4 紙上而不是寫在資料夾上 )</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-firestore-05.jpg" alt="Firebase 教學 - Firestore 安裝、寫入和讀取"></p>
-<h2>寫入資料</h2> 
+<h2 id="t3">寫入資料</h2> 
 <p>Firestore 寫入資料的方式有設定 ( <code>set</code> )、更新 ( <code>update</code> )、添加 ( <code>add</code> ) 和刪除 ( <code>delete</code> )，四種方式都支援 Promise，可以串接 then 監聽是否完成。</p>
 <h3><em>1. 設定 set</em></h3> 
 <p>透過<code>set</code>的方法，可以設定某個資料夾的內容，下面的程式範例執行後，會在 fruit 水果的集合裡，添加 apple 蘋果的文件，並在文件內寫入資料。</p>
@@ -174,7 +174,7 @@ ref.update({
 }).then(() =&gt; {
   console.log('set data successful');
 });
-</code></pre><h2>讀取資料</h2> 
+</code></pre><h2 id="t4">讀取資料</h2> 
 <p>Firestore 讀取資料的方式有一次性讀取 ( <code>get</code> ) 和即時監聽變化 ( <code>onSnapshot</code> ) 兩種方法，兩種方法可以搭配篩選 ( <code>where</code> ) 和排序 ( <code>orderBy</code> ) 兩種進一步的篩選，進行更精準的資料取得和比對的前置動作。</p>
 <p>在讀取資料前，我先在 firestore 裡建立了一個名為 fruit 的集合，裡面放入 apple、mango、banana 和 orange 四個文件，每個文件都有 total 和 good 的屬性，有些則有 recommend 或 eat 的屬性，待會就會用這份資料來操作。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201905/firebase-firestore-11.jpg" alt="Firebase 教學 - Firestore 安裝、寫入和讀取"></p>

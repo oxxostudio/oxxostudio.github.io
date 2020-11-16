@@ -75,7 +75,7 @@
 <li><a href="/articles/201907/firebase-firestore-rules.html">Firebase 教學 - Firestore Rules 安全規則</a></li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝 Node.js 相關模組</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">安裝 Node.js 相關模組</h2> 
 <p>Firestore 在 Node.js 裡的用法跟網頁前端大同小異，在網頁前端僅需載入對應的 JavaScript，而 Node.js 裏頭僅需引用對應的模組即可，安裝套件的指令如下，首先建立並初始化一個 Node.js 專案。</p>
 <pre class="prettyprint"><code>$ npm init
 </code></pre><p>接著安裝 firebase 模組以及 firestore 模組。</p>
@@ -94,7 +94,7 @@ const firestore = new Firestore({
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201907/firebase-nodejs-firestore-02.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
 <p>點選建立後會下載一個 json 檔案，將這個 json 檔案和操控 Firestore 的 Node.js 放在相同目錄下，基本的 Firestore 設定就差不多完成了，可以開始撰寫 Node.js 程式。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201907/firebase-nodejs-firestore-03.jpg" alt="Firebase 教學 - Node.js 操作 Firestore"></p>
-<h2>透過 http request 操作 RealTime Database</h2> 
+<h2 id="t2">透過 http request 操作 RealTime Database</h2> 
 <p>透過 Node.js 內建的<code>http 模組</code>，可以建立個接收 http request 的 server，搭配內建的<code>url 模組</code>，就能將收到的資料訊息轉換為物件格式，比較需要注意的地方有兩個：</p>
 <ul>
 <li>第一、<em>排除 favicon.ico</em>：實作的過程中發現接收 http request 會包含 favicon.ico，為了避免後續的問題，使用簡單的邏輯判斷排除。</li>
@@ -149,7 +149,7 @@ if (req.url !== '/favicon.ico') {  // 因接收時會一併取得 undefined 的 
 }
 });
 server.listen(5000);
-</code></pre><h2>部署到 Google Cloud Functions</h2> 
+</code></pre><h2 id="t3">部署到 Google Cloud Functions</h2> 
 <p>已經能在本地端運行 Node.js 服務並操作 Firestore 之後，下一步就是將這組程式部署到 Google Cloud Functions 裡，登入 Google 並進入 GCP ( Google Cloud Platform ) 後，在右方選單選擇 Cloud Functions。</p>
 <blockquote>
 <p>請先參考我的這篇文章：<a href="https://www.oxxostudio.tw/articles/201805/backend-google-cloud-functions.html" rel="noreferrer noopener" target="_blank">簡易後端實作 ( Google Cloud Functions )</a></p>

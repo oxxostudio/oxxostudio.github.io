@@ -69,9 +69,9 @@
 <h1>提升網站品質，擁抱 Javascript ES6</h1> 
 <p>隨著網頁技術的演進，其實這一年來，我在工作上已經都使用 Javascript ES6，越來越少接觸 jQuery，因此最近就花了一些時間，將部落格的 js 重構改成 ES6 的寫法，也把網站速度分數提升到 滿分一百分 ( PageSpeed Insights )，用篇文章稍微紀錄一下，象徵正式告別 jQuery 的時代開始。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201906/use-js-es6-01.jpg" alt="提升網站品質，擁抱 Javascript ES6"></p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>有用到 ES6 的地方</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">有用到 ES6 的地方</h2> 
 <p>坦白說我很感謝 jQuery，它開啟了我對 Javascript 熱情，不過或許這就是科技吧，當下熱門的技術通常不到幾年就會迭代更換，也因此反而激起了我回頭練習基礎語法的動力，當你的基礎夠扎實，就如同武林高手一般，內功越深練甚麼武功都快，下面幾個項目是我在這個 Blog 裡有用到 ES6 語法的地方，沒有很多但挺實用，分享給大家～</p>
-<h3>1. 改用 fetch</h3> 
+<h3 id="t2">1. 改用 fetch</h3> 
 <p>過去在讀取外部檔案，或發送 http request，如果是用 jQuery 還滿方便的，只要透過<code>$.getJSON</code>、<code>$.ajax</code>或<code>$.POST</code>都可以輕鬆完成，但相對要付出許多層層疊疊的 callback，但 ES6 提供了 fetch 這個 promise 的方法，透過 fetch 就能輕鬆實現從或外部取得資料或發送 http request 的功能。</p>
 <pre class="prettyprint"><code>fetch('XXXX.json')
 .then(response =&gt; {
@@ -79,7 +79,7 @@
 }).then(result =&gt; {
   return result;
 });
-</code></pre><h3>2. 使用 async、 await</h3> 
+</code></pre><h3 id="t3">2. 使用 async、 await</h3> 
 <p>async 和 await 是 promise 的語法糖，在主流瀏覽器已經全部支援的狀況下，沒道理不採用這麼好用的新語法，由於上述 fetch 是 promise 物件，所以透過 async 和 await，就能再確認資料載入後，再進行後續的事情 ( 在畫面上產生 DOM、隨機取出文章...等 )。</p>
 <pre class="prettyprint"><code>!async function(){
   const list = () =&gt; {
@@ -93,14 +93,14 @@
   const data = await list();
   // do something...
 }();
-</code></pre><h3>3. 使用 const、let 和箭頭函數</h3> 
+</code></pre><h3 id="t4">3. 使用 const、let 和箭頭函數</h3> 
 <p>變數宣告 const、let 以及箭頭函式，都是 ES6 裡頭滿好用的新功能，重點除了可以大幅減少程式碼，更可以明確定義某個範圍內的變數，不過由於 jQuery 在某些狀況並不支援 const、let 和箭頭函式，也加深了要移除 jQuery 的決心。( 並非所有的函式都要換成箭頭函式，在某些情境下箭頭函式的確很好用 )</p>
 <pre class="prettyprint"><code>// 原本寫法
 var a =  function(){ ... }
 
 // 改成箭頭函式
 const a = () =&gt; { ... }
-</code></pre><h3>4. 使用 every 處理陣列</h3> 
+</code></pre><h3 id="t5">4. 使用 every 處理陣列</h3> 
 <p>every 是 ES6 語法裡處理陣列的好方法，有別於 forEach 無法停止 ( 迴圈一定得跑完才會停 )，every 可以撰寫邏輯判斷，只要 return false 就會停止迴圈，加速，加快陣列的操作和運算。</p>
 <pre class="prettyprint"><code>const arr = [...];
 arr.every(e =&gt; {
@@ -110,7 +110,7 @@ arr.every(e =&gt; {
     return true;
   }
 });
-</code></pre><h3>5. 使用模板字符串 Template Literal</h3> 
+</code></pre><h3 id="t6">5. 使用模板字符串 Template Literal</h3> 
 <p>過去要透過 Javascript 在 HTML 顯示字串或是產生 HTML tag，都得使用一般的字串搭配 + 號來實現，在 ES6 裡可以直接使用模板字符串來完成，甚至是換行也不用像過去得添加<code>\n</code>才能夠換行，直接換行即可，相當的方便實用。</p>
 <pre class="prettyprint"><code>// 原本寫法
 var a = 'oxxo';

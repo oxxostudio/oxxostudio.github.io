@@ -69,7 +69,7 @@
 <h1>JavaScript Fetch API 使用教學</h1> 
 <p><img src="/img/articles/201908/js-fetch-s.jpg" class="preview-img" alt="JavaScript Fetch API 使用教學"></p>
 <p>自從 Fetch API 問世以來，我們就能使用漂亮的語法發送 HTTP Request 或取得網路資料，這篇文章將會分享我自己常用的 Fetch 方法 ( GET、POST、搭配 await 或 promise.all...等 )，隨著瀏覽器的普遍支援，也就不太需要使用 XMLHttpRequest 或 jQuery AJAX，程式碼也就更加簡潔乾淨囉～</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Fetch 基本用法</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">Fetch 基本用法</h2> 
 <p><code>fetch()</code>是一個全域的方法，包含了需要 fetch 的網址和對應的屬性設定 ( 例如 method、headers、mode、body...等，最基本的寫法屬性不一定要填 )，執行之後會送出 Request，如果得到回應就會回傳帶有 Response 的 Promise 物件，使用 then 將回傳值傳遞下去。</p>
 <pre class="prettyprint"><code>fetch('網址')
 .then(function(response) {
@@ -86,7 +86,7 @@
     let temp = result.cwbopendata.location[14].weatherElement[3].elementValue.value;
     console.log(`${city}的氣溫為 ${temp} 度 C`); // 得到 高雄市的氣溫為 29.30 度 C
 });
-</code></pre><h2>Fetch 的 Request 屬性</h2> 
+</code></pre><h2 id="t2">Fetch 的 Request 屬性</h2> 
 <p>以下列出 Fetch 常用的的 Request 屬性。( 更多屬性請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Request" rel="noreferrer noopener" target="_blank">fetch Request</a> )</p>
 <table>
 <thead>
@@ -134,7 +134,7 @@
 </tr>
 </tbody>
 </table>
-<h2>Fetch 的 Response 屬性</h2> 
+<h2 id="t3">Fetch 的 Response 屬性</h2> 
 <p>以下列出 Fetch 常用的 Response 屬性。( 更多屬性和方法請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Response" rel="noreferrer noopener" target="_blank">fetch Response</a> )</p>
 <table>
 <thead>
@@ -170,7 +170,7 @@
 </tr>
 </tbody>
 </table>
-<h2>Fetch 的 Response 方法</h2> 
+<h2 id="t4">Fetch 的 Response 方法</h2> 
 <p>以下列出 Fetch 常用的 Response 方法。( 更多屬性和方法請參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Response" rel="noreferrer noopener" target="_blank">fetch Response</a> )</p>
 <table>
 <thead>
@@ -210,7 +210,7 @@
 </tr>
 </tbody>
 </table>
-<h2>Fetch 的 Get 用法</h2> 
+<h2 id="t5">Fetch 的 Get 用法</h2> 
 <p>Get 是 Fetch 最簡單的方法，使用 Get 必須要將 fetch 第二個參數裡的 method 設定為 get，如果遇到跨域問題，就搭配其他屬性例如 mode、credentials 來進行細部設定 ( 但針對非跨域的資料就沒用了 )，下方的範例我做了一個簡單的後端程式，透過 fetch 傳遞姓名和年紀的參數，就會看到後端回應一串文字。</p>
 <pre class="prettyprint"><code>const name = 'oxxo';
 const age = 18;
@@ -223,7 +223,7 @@ fetch(uri, {method:'GET'})
 }).then(result =&gt; {
     console.log(result); // 得到「你的名字是：oxxo，年紀：18 歲。」
 });
-</code></pre><h2>Fetch 的 Post 用法</h2> 
+</code></pre><h2 id="t6">Fetch 的 Post 用法</h2> 
 <p>使用 POST 方法可以搭配 body 屬性設定傳遞參數，下方的測試網址，可以接收 name 和 age 所組成的物件，當網址接收到要求後，就會回應一個 json 物件，比較需要注意的是，如果是傳遞「中文」可能會出現亂碼，這時可以使用<code>encodeURI</code>來做轉碼，且要透過<code>JSON.stringify</code>來轉換成 string 方式傳遞。</p>
 <pre class="prettyprint"><code>const uri = 'https://script.google.com/macros/s/AKfycbxXH6aPsldTBeS41WRMnJEA5Xstc7cYMj6YimDO2Al7H6DkJZiz/exec';
 fetch(uri, {
@@ -241,7 +241,7 @@ fetch(uri, {
 }).then(result =&gt; {
     console.log(result); // 得到 {name: "oxxo", age: 18, text: "你的名字是 oxxo，年紀 18 歲～"}
 });
-</code></pre><h2>Fetch 搭配 async、await、promise.all</h2> 
+</code></pre><h2 id="t7">Fetch 搭配 async、await、promise.all</h2> 
 <p>過去在 XMLHttpRequest 或 jQuery AJAX 的全盛時期，如果要確保每個 GET 或 POST 的要求，都要按照指定的順序進行，往往會用上一連串的 callback 輔助，但是當 callback 越來越多，程式碼也就越來越難管理，然而 fetch 回傳的是一個 Promise，我們也就能直接利用 await 或 promise.all 的作法，輕鬆掌握同步與非同步之間的轉換。</p>
 <p>下方的例子是一個非同步的程式碼，因為沒有進行任何的同步處理，所以執行之後，會「先出現 hello 的文字，接著才是透過 fetch 得到的結果。</p>
 <pre class="prettyprint"><code>const postURL = (name,age) =&gt; {

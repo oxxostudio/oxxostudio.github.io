@@ -69,7 +69,7 @@
 <h1>簡單理解 JavaScript Async 和 Await</h1> 
 <p><img src="/img/articles/201908/js-async-await-s.jpg" class="preview-img" alt="簡單理解 JavaScript Async 和 Await"></p>
 <p>自從 Async 和 Await 出現後，大幅簡化 JavaScript 同步和非同步的複雜糾葛，這篇文章將會分享我自己理解的歷程，實作 await 等待、連續輸入文字、fetch 和迴圈應用，讓這些過去需要層層 callback 才能完成的流程，透過 Async 和 Await 輕鬆的進行扁平化處理吧！</p>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>什麼是 async？什麼是 await？</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">什麼是 async？什麼是 await？</h2> 
 <p>在 JavaScript 的世界，同步 sync 和非同步 async 的愛恨情仇，就如同偶像劇一般的剪不斷理還亂，特別像是<code>setTimeout</code>、<code>setInterval</code>、<code>MLHttpRequest</code>或<code>fetch</code>這些同步非同步混雜的用法，都會讓人一個頭兩個大，幸好 ES6 出現了 promise，ES7 出現了 async、await，幫助我們可以更容易的進行程式邏輯的撰寫。</p>
 <p>對於同步和非同步，最常見的說法是「<em>同步模式下，每個任務必須按照順序執行，後面的任務必須等待前面的任務執行完成，非同步模式則相反，後面的任務不用等前面的，各自執行各自的任務</em>」，但我覺得這樣實在不容易理解，不容易理解的地方在於「中文」的同步和非同步，可能和實際上的解釋剛好相反了 ( 同步的中文字面意思是「一起走」，非同步的中文意思是「不要一起走」，超容易搞錯的 )，因此如果你跟我一樣也很容易搞錯，可以使用我覺得比較好理解的方法：「<strong>同一個步道 vs 不同步道</strong>」，透過步道的方式，就更容易明白同步和非同步。</p>
 <blockquote>
@@ -94,7 +94,7 @@ a();
 a().then(()=&gt;{
   .....       // 等 a() 完成後接著執行
 });
-</code></pre><h2>利用 async 和 await 做個「漂亮的等待」</h2> 
+</code></pre><h2 id="t2">利用 async 和 await 做個「漂亮的等待」</h2> 
 <p>比較了解 async 和 await 的意思之後，就來試試看做個「<em>漂亮的等待</em>」，過去我在 <a href="/articles/201706/javascript-promise-settimeout.html#_self" rel="noreferrer noopener" target="_blank">JavaScript 同步延遲 ( Promise + setTimeout )</a> 一文裡，有使用 ES6 的 promise 來實現 delay ( 如同下方的程式範例 )，這個 delay 透過<code>.then</code>來完成一步一步的串接，雖然邏輯上很清楚，但若要實作比較複雜的流程，就得把每個程式寫在對應的 callback 裏，也就沒有想像的容易，這就是「不太漂亮的等待」 ( 使用 setTimeout 的做法就是不漂亮的等待 )。</p>
 <pre class="prettyprint"><code>const delay = (s) =&gt; {
   return new Promise(resolve =&gt; {
@@ -128,7 +128,7 @@ delay().then(() =&gt; {
   await delay(2000);   // 延遲二秒
   console.log(3);      // 顯示 3
 }();
-</code></pre><h2>搭配 Promise</h2> 
+</code></pre><h2 id="t3">搭配 Promise</h2> 
 <p>基本上只要有 async 和 await 的地方，就一定有 promise 的存在，promise 顧名思義就是「保證執行之後才會做什麼事情」，剛剛使用了 async、await 和 promise 改善<code>setTimeout</code>這個容易出錯的非同步等待，針對<code>setInterval</code>，也能用同樣的做法修改，舉例來說，下面的程式碼執行之後，並「<em>不會</em>」如我們預期的「<em>先顯示 1，再顯示 haha0...haha5，最後再顯示 2</em>」，而是「<em>先顯示 1 和 2，然後再出現 haha0...haha5</em>」，因為雖然程式邏輯是從上往下，但在 count function 裏頭是非同步的語法，導致自己走自己的路，也造成了結果的不如預期。</p>
 <pre class="prettyprint"><code>const count = (t,s) =&gt; {
   let a = 0;
@@ -191,7 +191,7 @@ console.log(2);
   h.insertAdjacentHTML('beforeend', '結束');
 }();
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201908/js-async-await-03.gif" alt="簡單理解 JavaScript Async 和 Await"></p>
-<h2>搭配 Fetch</h2> 
+<h2 id="t4">搭配 Fetch</h2> 
 <p>在我之前的文章<a href="/articles/201908/js-fetch.html#_self" rel="noreferrer noopener" target="_blank">JavaScript Fetch API 使用教學</a>已經有提到<code>fetch</code>的用法，因為<code>fetch</code>最後回傳的是 promise，理所當然的透過 async 和 await 操作是最恰當不過的。</p>
 <p>舉例來說，先前往 <a href="https://opendata.cwb.gov.tw/index" rel="noreferrer noopener" target="_blank">中央氣象局開放資料平台</a>可以取得許多氣象資料，找到 <a href="https://opendata.cwb.gov.tw/dataset/observation/O-A0003-001" rel="noreferrer noopener" target="_blank">局屬氣象站-現在天氣觀測報告</a>，複製 JSON 格式的連結 ( 需要註冊登入才能看得到連結 )，透過<code>fetch</code>的<code>json()</code>方法處理檔案，目標顯示出「高雄市的即時氣溫」。</p>
 <p>透過 async 和 await 的美化程式碼，得到的結果完全不需要 callback 的輔助，就能按照我們所期望的順序進行。( 先顯示「開始抓氣象」，接著顯示「高雄市的氣溫」，最後顯示「總算結束了」 )</p>
@@ -208,7 +208,7 @@ console.log(2);
     console.log('總算結束了');       // 抓完氣象之後再顯示「總算結束了」
 }();
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201908/js-async-await-04.jpg" alt="簡單理解 JavaScript Async 和 Await"></p>
-<h2>搭配 迴圈</h2> 
+<h2 id="t5">搭配 迴圈</h2> 
 <p>如果要透過 JavaScript 實現「文字慢慢變大」的效果，除了透過 CSS 的 transition 設定之外，通常就是直接使用<code>setInterval</code>來完成，就像下面的程式碼這樣：</p>
 <pre class="prettyprint"><code>let size = 30;
 h.style.lineHeight = 0;

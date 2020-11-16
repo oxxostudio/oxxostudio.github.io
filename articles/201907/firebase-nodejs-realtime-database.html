@@ -75,7 +75,7 @@
 <li><a href="/articles/201904/firebase-realtime-database-rules.html">Firebase 教學 - RealTime Database Rules 安全規則</a></li>
 </ul>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>安裝 Node.js 相關模組</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">安裝 Node.js 相關模組</h2> 
 <p>使用 Node.js 操作 Firebase 就跟網頁前端一樣簡單，在網頁前端僅需載入對應的 JavaScript，而 Node.js 裏頭僅需引用對應的模組即可，安裝套件的指令如下，首先建立並初始化一個 Node.js 專案。</p>
 <pre class="prettyprint"><code>$ npm init
 </code></pre><p>接著安裝 firebase 模組</p>
@@ -85,7 +85,7 @@
 var app = firebase.initializeApp({
     databaseURL: 'https://XXXXX.firebaseio.com/'
 });
-</code></pre><h2>透過 http request 操作 RealTime Database</h2> 
+</code></pre><h2 id="t2">透過 http request 操作 RealTime Database</h2> 
 <p>透過 Node.js 內建的<code>http 模組</code>，可以建立個接收 http request 的 server，搭配內建的<code>url 模組</code>，就能將收到的資料訊息轉換為物件格式，比較需要注意的地方有兩個：</p>
 <ul>
 <li>第一、<em>排除 favicon.ico</em>：實作的過程中發現接收 http request 會包含 favicon.ico，為了避免後續的問題，使用簡單的邏輯判斷排除。</li>
@@ -143,7 +143,7 @@ const server = http.createServer((req, res) =&gt; {
     }
 });
 server.listen(5000);
-</code></pre><h2>部署到 Google Cloud Functions</h2> 
+</code></pre><h2 id="t3">部署到 Google Cloud Functions</h2> 
 <p>已經能在本地端運行 Node.js 服務並操作 Realtime database 之後，下一步就是將這組程式部署到 Google Cloud Functions 裡，登入 Google 並進入 GCP ( Google Cloud Platform ) 後，在右方選單選擇 Cloud Functions。</p>
 <blockquote>
 <p>對於 Google Cloud Functions 不了解的可以參考我的這篇文章：<a href="https://www.oxxostudio.tw/articles/201805/backend-google-cloud-functions.html" rel="noreferrer noopener" target="_blank">簡易後端實作 ( Google Cloud Functions )</a></p>

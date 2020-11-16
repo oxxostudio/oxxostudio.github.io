@@ -71,13 +71,13 @@
 <blockquote>
 <p>如果對字體的單位有興趣，可以參考：<a href="https://www.oxxostudio.tw/articles/201809/css-font-size.html" rel="noreferrer noopener" target="_blank">一次搞懂 CSS 字體單位：px、em、rem 和 %</a></p>
 </blockquote>
-<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>基本用法</h2> 
+<div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="t1">基本用法</h2> 
 <p>使用 font-family 很簡單，只需要設定 family-name ( 字體名稱 ) 和 generic-family ( 通用字體 )，<em>font-family 可以設定一種字體或多種不同的字體</em>，<strong>每種字體間用半形逗號「,」隔開</strong>，當瀏覽器載入網頁樣式時，會從左邊第一個字體開始判斷，如果沒有對應的字體，就直接採用下一種字體，如果到最後都沒有可用的字體，就採用電腦預設字體，這時就可以透過 generic-family 來指定哪種預設字體。</p>
 <p>舉例來說，下面這行 CSS，會先找第一種字體，若不支援或沒有該字體，則採用第二種字體，依此類推，最後使用通用字，從下方例子亦可以看到，字體名稱時<em>不用加上雙引號</em>，但<strong>如果你的字體名稱中間空格，就一定要加上雙引號</strong>。</p>
 <pre class="prettyprint"><code>body{
   font-family:第一種字體, 第二種字體, "第三種 字體", "通用字";
 } 
-</code></pre><h2>generic-family 通用字</h2> 
+</code></pre><h2 id="t2">generic-family 通用字</h2> 
 <p>上面提到了 generic-family 這個專有名詞，翻譯成中文就是「通用字」，也就是在作業系統中完全找不到對應字體預設會顯示的字體，因此通用字<strong>會寫在 font-family 的最後面</strong>，作為最終的選項，當然不設定通用字也是可以，屆時將自動採用系統預設字體，也會導致不同作業系統顯示的結果有所不同。</p>
 <p>常用的通用字有五種，分別是 <em>sans-serif ( 無襯線體 )、serif ( 襯線體 )、monospace ( 等寬體 )、cursive ( 手寫體 ) 和 fantasy ( 幻想體 )</em>，其他還有 system-ui、emoji、math 和 fangsong，但因目前支援度與用途不廣，就不在這裡做介紹。</p>
 <ul>
@@ -97,7 +97,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201811/css-font-family-08.jpg" alt="CSS font-family 詳細介紹"></p>
 </li>
 </ul>
-<h2>Windows 和 Mac 都支援的英文字體</h2> 
+<h2 id="t3">Windows 和 Mac 都支援的英文字體</h2> 
 <p>如果不喜歡預設字體，也可以直接寫出自行名稱套用，下列英文字體通常在我們的電腦中預設都有安裝，不論是Mac 還是 Windows 都通用，支援度都在 90% 以上，使用起來比較不會有問題。</p>
 <blockquote>
 <p>範例：<a href="/demo/201811/css-font-family-demo-01.html" rel="noreferrer noopener" target="_blank">Windows 和 Mac 都支援的英文字體</a></p>
@@ -119,7 +119,7 @@
 <p><a href="/demo/201811/css-font-family-demo-01.html" rel="noreferrer noopener" target="_blank"><img class="lazy" height="1" width="1" data-src="/img/articles/201811/css-font-family-05.jpg" alt="CSS font-family 詳細介紹"></a></p>
 </li>
 </ul>
-<h2>常用的中文字體</h2> 
+<h2 id="t4">常用的中文字體</h2> 
 <p>英文字體因為字母少，所以預設支援的也比較多，中文字就不同了，一款中文字的字數遠大於英文，所以在跨平台的顯示也會有所不同，這也是在製作網頁常見的困擾 ( 在 Mac 設計得很好看，到 Windows 就走樣了 )，以下列出常用的中文字體名稱，部分瀏覽器使用上可以用中文，但保險起見，最好是使用英文名稱或是中英文一起使用。</p>
 <blockquote>
 <p>範例：<a href="/demo/201811/css-font-family-demo-02.html" rel="noreferrer noopener" target="_blank">常用的中文字體</a></p>
@@ -144,7 +144,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201811/css-font-family-10.jpg" alt="CSS font-family 詳細介紹"></p>
 </li>
 </ul>
-<h2>如何使用外部字體</h2> 
+<h2 id="t5">如何使用外部字體</h2> 
 <p>如果預設的字體都無法滿足精心設計的版面，這時就需要使用外部的字體，要使用外部字體有下列三種方式：</p>
 <ul>
 <li><p><em>使用 CSS link</em></p>
@@ -167,7 +167,7 @@
 &lt;/style&gt;
 </code></pre></li>
 </ul>
-<h2>好用又免費的外部字體</h2> 
+<h2 id="t6">好用又免費的外部字體</h2> 
 <p>既然知道了可以使用外部字體，就來看看有哪些好用的外部字體可以用，基本上英文字體免費版本沒有第二選擇，首推 <a href="https://fonts.google.com/" rel="noreferrer noopener" target="_blank">Google Fonts</a>，進入網頁後在左側字體清單可以預覽字體，右側選單則可以篩選字體。</p>
 <p><a href="https://fonts.google.com/" rel="noreferrer noopener" target="_blank"><img class="lazy" height="1" width="1" data-src="/img/articles/201811/css-font-family-11.jpg" alt="CSS font-family 詳細介紹"></a></p>
 <p>如果是中文字體，可以前往 <a href="https://www.justfont.com/" rel="noreferrer noopener" target="_blank">justfont</a> 購買，或也可使用 Google 提供的一些免費中文字體，目前除了 Noto Sans TC 這組，其他在 Google Fonts 上頭找不到，但相關連結還是可以用，範例與連結如下：</p>
@@ -188,7 +188,7 @@
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201811/css-font-family-16.jpg" alt="CSS font-family 詳細介紹"></p>
 </li>
 </ul>
-<h2>@font-face</h2> 
+<h2 id="t7">@font-face</h2> 
 <p><code>@font-face</code>算是 font-family 裡比較進階但又頗重要的用法，<code>@font-face</code>可以讓我們使用電腦裡的字體檔 ( 字體檔是像 woff、ttf 之類的檔案 )，或和網路上的字體檔互相搭配使用，亦可一併指定粗體、斜體等樣式，如果透過<code>unicode-range</code>的方法，更能指定某些字元套用特定字體，讓網頁的設計更具備靈活的彈性。</p>
 <p>下方的 CSS 是<code>@font-face</code>的基本用法，定義了一個客製化的字體名稱 oxxo，當 h1 套用了這個字體，會優先使用本地端的 Arial 字體檔，如果沒有該字體檔，則會使用第二組 aaaa.woff，如果又沒有，則會使用第三組 bbbb.ttf。</p>
 <pre class="prettyprint"><code>@font-face {
@@ -235,7 +235,7 @@ h1{
   font-weight: normal;
   font-style: normal;
 }
-</code></pre><h2>使用 @font-face 的 unicode-range 設定某些字的特定字體</h2> 
+</code></pre><h2 id="t8">使用 @font-face 的 unicode-range 設定某些字的特定字體</h2> 
 <p>有時在進行網頁版面編排時，會遇到中英文混雜的狀況，如果只是要讓中文和英文用不同字體呈現，作法其實很簡單，<strong>只要在 font-family 把英文字體寫在中文字體前面</strong>，就可以將中文與英文的字體區分開，以下面的例子來說，一開始的「我愛吃」三個中文字，Arial 字體並沒有支援，所以就會套用後方的 PingFang，接著遇到了「Apple」這個英文字，Arial 字體就支援，就會以 Arial 字體呈現，最後的「啦」也是中文字，所以又會套用 PingFang 體，依此類推。</p>
 <pre class="prettyprint"><code>&lt;style&gt;
   h1{
