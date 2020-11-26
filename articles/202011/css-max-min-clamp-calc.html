@@ -6,13 +6,13 @@
   <meta name="author" content="oxxo.studio">
   <meta name="copyright" content="oxxo.studio">
 
-  <title>深入理解 CSS max()、min()、clamp()、calc() - OXXO.STUDIO</title>
+  <title>深入理解 CSS 的 max、min、clamp、calc - OXXO.STUDIO</title>
 
   <meta name="description" content="隨著 CSS 的進化，出現了許多和數學函數相關的功能，這篇文章會介紹 max()、min()、clamp() 和 calc() 這四個好用的功能符號 ( Functional Notations )，可以應用在長度、角度...等各種屬性，進行動態的數學函數運算，讓網頁設計更加靈活以及具有彈性。">
   <meta itemprop="description" content="隨著 CSS 的進化，出現了許多和數學函數相關的功能，這篇文章會介紹 max()、min()、clamp() 和 calc() 這四個好用的功能符號 ( Functional Notations )，可以應用在長度、角度...等各種屬性，進行動態的數學函數運算，讓網頁設計更加靈活以及具有彈性。">
   <meta itemprop="image" content="https://www.oxxostudio.tw/img/articles/202011/css-max-min-clamp-calc.jpg">
   <meta property="og:description" content="隨著 CSS 的進化，出現了許多和數學函數相關的功能，這篇文章會介紹 max()、min()、clamp() 和 calc() 這四個好用的功能符號 ( Functional Notations )，可以應用在長度、角度...等各種屬性，進行動態的數學函數運算，讓網頁設計更加靈活以及具有彈性。">
-  <meta property="og:title" content="深入理解 CSS max()、min()、clamp()、calc()">
+  <meta property="og:title" content="深入理解 CSS 的 max、min、clamp、calc">
   <meta property="og:url" content="https://www.oxxostudio.tw/articles/202011/css-max-min-clamp-calc.html">
   <meta property="og:image" content="https://www.oxxostudio.tw/img/articles/202011/css-max-min-clamp-calc.jpg">
   <link rel="canonical" href="https://www.oxxostudio.tw/articles/202011/css-max-min-clamp-calc.html">
@@ -66,7 +66,7 @@
     <article>
       <i class="tag"></i>
 
-<h1>深入理解 CSS max()、min()、clamp()、calc()</h1> 
+<h1>深入理解 CSS 的 max、min、clamp、calc</h1> 
 <p>隨著 CSS 的進化，出現了許多和數學函數相關的功能，這篇文章會介紹 max()、min()、clamp() 和 calc() 這四個好用的功能符號 ( Functional Notations )，可以應用在長度、角度...等各種屬性，進行動態的數學函數運算，讓網頁設計更加靈活以及具有彈性。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="2613902930" data-matched-content-ui-type="image_card_stacked" data-matched-content-columns-num="3" data-matched-content-rows-num="1" data-ad-format="autorelaxed"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2 id="m1">CSS 的功能符號 ( Functional Notations )</h2> 
 <p>功能符號是一種藉由數學函數計算而產生的數值，可以使用在較為複雜的類型或版面設計，功能符號的語法是以「<em>數學函數名稱開頭，緊隨其後是左右括號</em> ( 例如<code>max()</code>、<code>calc()</code> )，<em>括號內可以採用多個參數</em>」，格式和單位和 CSS 屬性值相同，各個參數採用逗號分隔。</p>
