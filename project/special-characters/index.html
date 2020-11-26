@@ -504,9 +504,11 @@
 
         document.addEventListener('scroll', more);
         document.addEventListener('scroll', showAD);
+        document.addEventListener('mousemove', more);
         document.addEventListener('mousemove', showAD);
 
         function more() {
+            document.removeEventListener('mousemove', more);
             document.removeEventListener('scroll', more);
             const list = document.querySelector('.list');
             let content = '';
