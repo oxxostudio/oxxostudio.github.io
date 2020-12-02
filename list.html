@@ -107,7 +107,6 @@
 
   <script>!async function(){const e=await(()=>fetch("/json/pageList.json").then(e=>e.json()).then(e=>e))();document.querySelector(".content h1 span").innerHTML=e.length;const t=document.querySelector(".content ul");e.forEach(e=>{t.innerHTML=t.innerHTML+`<li class="${e.tag}" data-title="${e.title.toLowerCase()}">\n    <i></i><h3>${e.date}</h3><a href="${e.site}"><h2>${e.title}</h2></a>\n    </li>`});const n=document.querySelectorAll(".tag-list i");n.forEach(e=>{e.addEventListener("click",e=>{let t=e.target;n.forEach(e=>{e.classList.add("not-this")}),t.classList.remove("not-this"),(e=>{document.querySelectorAll(".content ul li").forEach(t=>{t.style.display="block",-1==t.className.indexOf(e)&&"tag-all"!=e&&(t.style.display="none")})})(t.className),ga("send","event","filter","click",t.className)})});const l=document.querySelector(".list-search input");l.addEventListener("keyup",e=>{(e=>{document.querySelectorAll(".content ul li").forEach(t=>{let n=t.getAttribute("data-title");t.style.display="none",(-1!=n.indexOf(e)||e.length<1)&&(t.style.display="block")})})(e.target.value),ga("send","event","listSearch","input",e.target.value)})}();</script>
 
-  <script src="https://www.google.com/jsapi"></script>
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
