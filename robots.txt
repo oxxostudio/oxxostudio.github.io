@@ -1,1 +1,6 @@
 User-agent: *
+Disallow: /404.html
+Disallow: /demo/*
+Disallow: /project/edm-assistant/*
+Disallow: /project/work/*
+Disallow: /project/markdown-converter/*
