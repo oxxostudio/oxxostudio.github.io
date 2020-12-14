@@ -1,0 +1,223 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    background: #345;
+    color: #fff;
+    margin: 0;
+    padding: 20px 0;
+    font-size: 26px;
+}
+
+@media (max-width:640px) {
+    h1 {
+        font-size: 22px;
+    }
+}
+
+h1 span {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 10px 0;
+    box-sizing: border-box;
+}
+
+.content {
+    width: calc(100% - 330px);
+    padding: 0 50px;
+    float: left;
+}
+
+.list {
+    width: 100%;
+}
+
+.ad {
+    width: 300px;
+    height: auto;
+    margin: 30px 30px 0 0;
+    display: inline-block;
+    background: #fff;
+    overflow: hidden;
+}
+
+.ad .adsbygoogle {
+    margin-bottom: 20px;
+}
+
+
+.ad-content {
+    width: 100%;
+    height: auto;
+}
+
+.ad.hidden,
+.ad-content.hidden {
+    display: none;
+}
+
+/* .ad.hidden,
+.ad-content.hidden{
+    display:none;
+} */
+
+@media (max-width:1024px) {
+    .content {
+        width: 100%;
+        padding: 0 20px;
+        float: none;
+    }
+
+    .ad {
+        display: none;
+    }
+}
+
+@media (max-width:640px) {
+    .content {
+        padding: 0;
+        text-align: center;
+    }
+}
+
+h3 {
+    text-align: center;
+    width: 100%;
+    margin: 30px 0 20px;
+    padding-top: 30px;
+    border-top: 3px solid #eee;
+    font-size: 20px;
+}
+
+h2 {
+    width: 100%;
+    margin: 30px auto;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h2 b {
+    color: #f50;
+    font-weight: bold;
+}
+
+.contentAD {
+    width: 100%;
+    margin: 0 auto 10px;
+    padding: 0 0 30px;
+    height: 100px;
+}
+.adsbygoogle.top{
+    width:100%;
+    height:90px;
+}
+.adsbygoogle.in{
+    width:100%;
+    height:280px;
+}
+
+@media (max-width:1024px) {
+    h2 {
+        padding: 0 30px;
+    }
+
+    .contentAD {
+        display: none;
+        padding: 0 30px 30px;
+    }
+    .adsbygoogle.top{
+        width:100%;
+        height:280px;
+    }
+}
+
+@media (max-width:640px) {
+    h2 {
+        padding: 0 20px;
+    }
+}
+
+.copy {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px 15px 0;
+    display: inline-block;
+    cursor: pointer;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    line-height: 26px;
+    text-align: center;
+    font-size: 24px;
+}
+
+@media (max-width:640px) {
+    .copy {
+        margin: 0 10px 15px;
+        width: 32px;
+        height: 32px;
+        font-size: 28px;
+    }
+}
+
+.copy::before {
+    content: "已複製";
+    position: absolute;
+    top: -25px;
+    left: -13px;
+    width: 40px;
+    background: #000;
+    display: inline-block;
+    padding: 2px 5px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: .3s;
+    z-index: 99;
+    pointer-events: none;
+}
+
+.copy.now {
+    border-color: #a00;
+}
+
+.copy.now::before {
+    top: -30px;
+    opacity: .7;
+}
+
+.copy.selected {
+    border-color: #ccc;
+}
+
+a {
+    color: #05a;
+}
+
+a:hover {
+    color: #f50;
+}
+.lazydom{
+    width:100%;
+    word-break:break-all;
+    font-size:24px;
+    letter-spacing: 26px;
+    line-height:45px;
+}
