@@ -54,6 +54,13 @@ h1 span {
     overflow: hidden;
 }
 
+.ad.fixed {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    margin:0;
+}
+
 .ad .adsbygoogle {
     margin-bottom: 20px;
 }
@@ -123,13 +130,15 @@ h2 b {
     padding: 0 0 30px;
     height: 100px;
 }
-.adsbygoogle.top{
-    width:100%;
-    height:90px;
+
+.adsbygoogle.top {
+    width: 100%;
+    height: 90px;
 }
-.adsbygoogle.in{
-    width:100%;
-    height:280px;
+
+.adsbygoogle.in {
+    width: 100%;
+    height: 280px;
 }
 
 @media (max-width:1024px) {
@@ -141,9 +150,10 @@ h2 b {
         display: none;
         padding: 0 30px 30px;
     }
-    .adsbygoogle.top{
-        width:100%;
-        height:280px;
+
+    .adsbygoogle.top {
+        width: 100%;
+        height: 280px;
     }
 }
 
@@ -214,10 +224,11 @@ a {
 a:hover {
     color: #f50;
 }
-.lazydom{
-    width:100%;
-    word-break:break-all;
-    font-size:24px;
+
+.lazydom {
+    width: 100%;
+    word-break: break-all;
+    font-size: 24px;
     letter-spacing: 26px;
-    line-height:45px;
+    line-height: 45px;
 }

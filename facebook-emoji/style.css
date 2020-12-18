@@ -53,6 +53,7 @@ h1 span {
     position:fixed;
     top:30px;
     right:30px;
+    margin:0;
 }
 
 .ad .adsbygoogle {
