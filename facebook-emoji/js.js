@@ -145,7 +145,7 @@
   const ad = document.querySelector(".ad");
   function adPos() {
     let windowScrollTop = window.scrollY;
-    if (windowScrollTop >= 105) {
+    if (windowScrollTop >= 75) {
       ad.classList.add("fixed");
     } else {
       ad.classList.remove("fixed");
