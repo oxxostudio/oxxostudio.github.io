@@ -72,6 +72,10 @@ aside a:hover {
   color: #f50;
 }
 
+aside.fixed{
+  position:fixed;
+}
+
 main {
   display: inline-block;
   width: calc(100% - 600px);
@@ -172,6 +176,10 @@ main ul li:last-child:after {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.ad.fixed{
+  position:fixed;
 }
 
 .ad-content {
@@ -312,7 +320,7 @@ footer a:hover {
     padding: 5px 0 25px;
     margin: 0 0 25px;
   }
-  
+
   main h4{
     margin-top:-100px;
     padding-top:100px;
