@@ -49,6 +49,12 @@ h1 span {
     overflow: hidden;
 }
 
+.ad.fixed{
+    position:absolute;
+    top:20px;
+    right:30px;
+}
+
 .ad .adsbygoogle {
     margin-bottom: 20px;
 }
