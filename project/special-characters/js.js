@@ -18,9 +18,14 @@
     document.removeEventListener("mousemove", more);
     document.removeEventListener("scroll", more);
     const lazydom = document.querySelectorAll(".lazydom");
-    lazydom.forEach((ele) => {
+    lazydom.forEach((ele, i) => {
       let cc = "";
-      const lazydomArr = ele.innerText.split("");
+      let lazydomArr;
+      if (i == 16) {
+        lazydomArr = ele.innerText.split(" ");
+      } else {
+        lazydomArr = ele.innerText.split("");
+      }
       lazydomArr.forEach((e) => {
         cc = cc + `<span class="copy" data-character="${e}">${e}</span> `;
       });
