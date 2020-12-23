@@ -112,6 +112,10 @@ main p {
   margin-bottom: 50px;
 }
 
+main .tag{
+  margin-bottom:20px;
+}
+
 main .tag a{
   color:#fff;
   background:#09c;
@@ -203,6 +207,7 @@ main ul li:last-child:after {
   min-height:60px;
   height:auto;
   max-height:90px;
+  margin-bottom:10px;
 }
 
 #menu {
