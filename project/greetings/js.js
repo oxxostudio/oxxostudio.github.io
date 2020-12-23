@@ -12,6 +12,7 @@ menu.addEventListener("click", function () {
   let self = this;
   localStorage.reddot = true;
   reddot.classList.add('hidden');
+  gtag("event", "menu-click");
   if (self.classList.contains("open")) {
     self.classList.remove("open");
     aside.classList.remove("show");
@@ -36,6 +37,7 @@ function showAD() {
     google_ad_client: "ca-pub-8629612872829139",
     enable_page_level_ads: true,
   });
+  gtag("event", "scroll");
   document.removeEventListener("scroll", showAD);
   document.removeEventListener("mousemove", showAD);
 }
