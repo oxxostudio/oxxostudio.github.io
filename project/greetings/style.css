@@ -204,25 +204,20 @@ main ul li:last-child:after {
   height: 280px;
 }
 
-.ad-content.top{
-  overflow:hidden;
-  max-height: 100px;
-}
-
 .adsbygoogle.top {
   width: 100%;
   height: 100px;
 }
 @media(max-width:500px){
-  .ad-content.top{
-    max-height: 120px;
+  .adsbygoogle.top {
+    height: 60px;
   }
 }
 
 #menu {
   position: fixed;
   top: 34px;
-  left: 20px;
+  right: 20px;
   width: 30px;
   height: 4px;
   background: #fff;
@@ -251,7 +246,7 @@ main ul li:last-child:after {
 }
 
 #menu.open {
-  left: 24px;
+  right: 15px;
   background: transparent;
 }
 
@@ -325,7 +320,8 @@ footer a:hover {
     box-shadow: #000 0 0 0;
     position: fixed;
     top: 0;
-    left: -90%;
+    left:auto;
+    right: -90%;
     border-radius: 0;
     background: #333;
     z-index: 10001;
@@ -333,13 +329,14 @@ footer a:hover {
   }
 
   aside.show {
-    left: 0;
+    right: 0;
     box-shadow: #000 0 0 20px;
   }
 
   aside h3 {
     padding: 5px 0 25px;
     margin: 0 0 25px;
+    font-size:1.2rem;
   }
 
   main h4 {
@@ -355,6 +352,7 @@ footer a:hover {
   aside a {
     margin: 20px 0;
     color: #fff;
+    font-size:1.2rem;
   }
 }
 
