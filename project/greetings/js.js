@@ -2,9 +2,16 @@ const site = location.href;
 const menu = document.getElementById("menu");
 const aside = document.querySelector("aside");
 const ad = document.querySelector(".ad");
+const reddot = document.getElementById("reddot");
+
+if(!localStorage.reddot){
+  reddot.classList.remove('hidden');
+}
 
 menu.addEventListener("click", function () {
   let self = this;
+  localStorage.reddot = true;
+  reddot.classList.add('hidden');
   if (self.classList.contains("open")) {
     self.classList.remove("open");
     aside.classList.remove("show");

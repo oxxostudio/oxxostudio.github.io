@@ -245,6 +245,33 @@ main ul li:last-child:after {
   transform-origin: bottom left;
 }
 
+#menu #reddot{
+  position:absolute;
+  right:-10px;
+  top:-20px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:red;
+  z-index:10004;
+  color:#fff;
+  animation-name:reddot;
+  animation-duration:.3s;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+}
+#menu #reddot.hidden{
+  display:none;
+}
+@keyframes reddot{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(.8);
+  }
+}
+
 #menu.open {
   right: 15px;
   background: transparent;
