@@ -190,6 +190,7 @@ main ul li:last-child:after {
   width: 100%;
   height: auto;
   padding-bottom: 20px;
+  margin-bottom:10px;
 }
 
 .ad.hidden,
@@ -207,7 +208,6 @@ main ul li:last-child:after {
   min-height:60px;
   height:auto;
   max-height:90px;
-  margin-bottom:10px;
 }
 
 #menu {
