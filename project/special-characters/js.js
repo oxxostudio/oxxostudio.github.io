@@ -6,6 +6,33 @@
   // });
 
   //const list = document.querySelector('.list');
+  const menu = document.getElementById("menu");
+  const reddot = document.getElementById("reddot");
+  const aside = document.querySelector("aside");
+
+  if (!localStorage.reddot) {
+    reddot.classList.remove("hidden");
+  }
+
+  menu.addEventListener("click", function () {
+    let self = this;
+    localStorage.reddot = true;
+    reddot.classList.add("hidden");
+    if (self.classList.contains("open")) {
+      self.classList.remove("open");
+      aside.classList.remove("show");
+    } else {
+      self.classList.add("open");
+      aside.classList.add("show");
+    }
+  });
+  const aside_a = document.querySelectorAll('aside a');
+  aside_a.forEach(e => {
+    e.addEventListener('click',()=>{
+      aside.classList.remove('show');
+      menu.classList.remove('open');
+    });
+  });
 
   document.addEventListener("scroll", more);
   document.addEventListener("scroll", showAD);
@@ -95,12 +122,15 @@ function showAD() {
 }
 
 document.addEventListener("scroll", adPos);
+const aside = document.querySelector("aside");
 const ad = document.querySelector(".ad");
 function adPos() {
   let windowScrollTop = window.scrollY;
   if (windowScrollTop >= 75) {
     ad.classList.add("fixed");
+    aside.classList.add("fixed");
   } else {
     ad.classList.remove("fixed");
+    aside.classList.remove("fixed");
   }
 }
