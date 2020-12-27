@@ -90,6 +90,7 @@ main h4 {
   padding-left: 15px;
   margin-top: -30px;
   padding-top: 30px;
+  pointer-events: none;
 }
 
 main h4::before {
@@ -101,6 +102,7 @@ main h4::before {
   top: 31px;
   left: 0;
   border-radius: 20px;
+  pointer-events: none;
 }
 
 main p {
@@ -369,11 +371,13 @@ footer a:hover {
   main h4 {
     margin-top: -100px;
     padding-top: 100px;
+    pointer-events: none;
   }
 
   main h4::before {
     top: 101px;
     left: -3px;
+    pointer-events: none;
   }
 
   aside a {

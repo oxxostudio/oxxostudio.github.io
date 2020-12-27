@@ -101,6 +101,7 @@ h3 {
     padding-top: 30px;
     border-top: 3px solid #eee;
     font-size: 20px;
+    pointer-events: none;
 }
 
 h2 {
@@ -393,6 +394,7 @@ a:hover {
         margin-top:-80px;
         border:none;
         position:relative;
+        pointer-events: none;
     }
     h3#a1:before{
         content:"";
@@ -402,5 +404,6 @@ a:hover {
         width:100%;
         height:3px;
         background:#ddd;
+        pointer-events: none;
     }
 }
