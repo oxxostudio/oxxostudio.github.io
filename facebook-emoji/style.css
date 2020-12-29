@@ -18,6 +18,7 @@ h1 {
     margin: 0;
     padding: 20px 0;
     font-size: 26px;
+    z-index:9999;
 }
 
 @media (max-width:640px) {
@@ -26,18 +27,41 @@ h1 {
     }
 }
 
-h1 span {
-    display: block;
-    font-size: 16px;
-    font-weight: normal;
-    padding: 5px 10px 0;
-    box-sizing: border-box;
+
+aside {
+    width: 140px;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    z-index: 1000;
+    background: #fff;
+    position: absolute;
+    top: 90px;
+    left: 15px;
+    z-index: 10000;
+}
+
+aside.fixed {
+    position: fixed;
+    top: 15px;
+}
+
+aside h2 {
+    margin: 0 0 5px;
+}
+
+aside a {
+    display: inline-block;
+    padding: 3px 0;
+    margin-right: 5px;
 }
 
 .content {
-    width: calc(100% - 330px);
-    padding: 0 50px;
-    float: left;
+    width: calc(100% - 540px);
+    position: absolute;
+    top: 95px;
+    left: 200px;
 }
 
 .ad {
@@ -58,6 +82,11 @@ h1 span {
 
 .ad .adsbygoogle {
     margin-bottom: 20px;
+}
+
+.adsbygoogle.in {
+    width: 100%;
+    height: 280px;
 }
 
 .ad-content {
@@ -99,9 +128,9 @@ h3 {
 
 h2 {
     width: 100%;
-    margin: 30px auto;
+    margin: 0 0 30px;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 32px;
     padding: 0;
     box-sizing: border-box;
@@ -137,7 +166,7 @@ h2 b {
     .box,
     .contentAD {
         display: inline-block;
-        padding: 0 30px 30px;
+        padding: 0 10px 30px;
     }
 
     .contentAD .emoji2 {
@@ -153,7 +182,7 @@ h2 b {
     .box,
     .contentAD {
         display: inline-block;
-        padding: 0 20px 30px;
+        padding: 0 9px 30px;
         text-align: center;
     }
     .adsbygoogle.top{
@@ -177,6 +206,13 @@ h2 b {
 .face .copy,
 .recommend .copy {
     background-image: url(facebook-emoji-first-s.jpg);
+}
+
+.lazydom{
+    word-break: break-all;
+    font-size:24px;
+    letter-spacing: 12px;
+    line-height: 42px;;
 }
 
 @media (max-width:640px) {
@@ -222,4 +258,158 @@ a {
 
 a:hover {
     color: #f50;
+}
+
+
+#menu {
+    position: fixed;
+    top: 34px;
+    right: 20px;
+    width: 30px;
+    height: 4px;
+    background: #fff;
+    z-index: 10002;
+    cursor: pointer;
+    display: none;
+}
+
+#menu::before,
+#menu::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    top: -10px;
+    left: 0;
+}
+
+#menu::before {
+    border-top: 4px solid #fff;
+    transform-origin: top left;
+}
+
+#menu::after {
+    border-bottom: 4px solid #fff;
+    transform-origin: bottom left;
+}
+
+#menu #reddot {
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: red;
+    z-index: 10004;
+    color: #fff;
+    animation-name: reddot;
+    animation-duration: .3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#menu #reddot.hidden {
+    display: none;
+}
+
+@keyframes reddot {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(.8);
+    }
+}
+
+#menu.open {
+    right: 15px;
+    background: transparent;
+}
+
+#menu.open::before {
+    transform: rotate(45deg);
+}
+
+#menu.open::after {
+    transform: rotate(-45deg);
+}
+
+@media(max-width:640px) {
+    h1{
+        position:fixed;
+        top:0;
+        left:0;
+    }
+    aside {
+        width: 90%;
+        height: 100vh;
+        padding: 25px;
+        border: none;
+        border-right: 2px solid #ccc;
+        box-shadow: #000 0 0 0;
+        position: fixed;
+        top: 0;
+        left:auto;
+        right: -110%;
+        border-radius: 0;
+        background: #333;
+        z-index: 10001;
+        color: #fff;
+    }
+    aside.fixed{
+        top:0;
+    }
+    aside h2{
+        font-size:24px;
+        margin:0 0 20px;
+        padding:0;
+    }
+
+    aside a{
+        color:#fff;
+        font-size:20px;
+        margin:0 15px 5px 0;
+    }
+
+    aside.show{
+        right: -30px;
+    }
+
+    .content {
+        width: calc(100% - 20px);
+        left: 10px;
+    }
+
+    .content h2 {
+        padding: 0 10px;
+        text-align: left;
+    }
+
+    #menu {
+        display: block;
+    }
+
+    h1 span{
+        display:none;
+    }
+
+    h3{
+        padding-top:100px;
+        margin-top:-80px;
+        border:none;
+        position:relative;
+        pointer-events: none;
+    }
+    h3#a1:before{
+        content:"";
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        height:3px;
+        background:#ddd;
+        pointer-events: none;
+    }
 }
