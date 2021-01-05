@@ -1,5 +1,3 @@
-
-alert(456);
 const site = location.href;
 const menu = document.getElementById("menu");
 const aside = document.querySelector("aside");
@@ -10,10 +8,8 @@ const reddot = document.getElementById("reddot");
 //   reddot.classList.remove('hidden');
 // }
 
-alert(123);
 menu.addEventListener("click", menuClick);
 function menuClick(){
-  alert(123);
   reddot.classList.add('hidden');
   gtag("event", "menu-click");
   menu.classList.toggle('open');
