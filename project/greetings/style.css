@@ -304,7 +304,8 @@ footer a:hover {
 }
 
 .ad-footer{
-  display:none;
+  opacity:0;
+  pointer-events: none;
   position:fixed;
   z-index:999;
   background:#000;
@@ -314,6 +315,10 @@ footer a:hover {
   height:50px;
   border-top:1px solid #000;
   transition:.3s;
+}
+.ad-footer.hidden{
+  display:block;
+  bottom:-50px;
 }
 .ad-footer .adsbygoogle{
   min-width:300px;
@@ -406,7 +411,8 @@ footer a:hover {
     font-size:1.2rem;
   }
   .ad-footer{
-    display:block;
+    opacity:1;
+    pointer-events: auto;
     bottom:0;
   }
 }
