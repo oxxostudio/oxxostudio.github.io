@@ -10,21 +10,11 @@
   const reddot = document.getElementById("reddot");
   const aside = document.querySelector("aside");
 
-  // if (!localStorage.reddot) {
-  //   reddot.classList.remove("hidden");
-  // }
 
   menu.addEventListener("click", function () {
-    let self = this;
-    //localStorage.reddot = true;
     reddot.classList.add("hidden");
-    if (self.classList.contains("open")) {
-      self.classList.remove("open");
-      aside.classList.remove("show");
-    } else {
-      self.classList.add("open");
-      aside.classList.add("show");
-    }
+    menu.classList.toggle('open');
+    aside.classList.toggle("show");
   });
   const aside_a = document.querySelectorAll('aside a');
   aside_a.forEach(e => {
