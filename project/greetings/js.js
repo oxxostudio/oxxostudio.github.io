@@ -11,13 +11,6 @@ function menuClick(){
   gtag("event", "menu-click");
   menu.classList.toggle('open');
   aside.classList.toggle("show");
-  // if (menu.classList.contains("open")) {
-  //   menu.classList.remove("open");
-  //   aside.classList.remove("show");
-  // } else {
-  //   menu.classList.add("open");
-  //   aside.classList.add("show");
-  // }
 }
 document.addEventListener("scroll", showAD);
 document.addEventListener("mousemove", showAD);

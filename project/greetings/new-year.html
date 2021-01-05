@@ -130,7 +130,7 @@
     </div>
   </div>
   <footer>
-    Copyright © 2020 <a href="https://www.oxxostudio.tw" target="_blank">OXXO.STUDIO</a>
+    Copyright © 2021 <a href="https://www.oxxostudio.tw" target="_blank">OXXO.STUDIO</a>
   </footer>
 
 <script>const site=location.href,menu=document.getElementById("menu"),aside=document.querySelector("aside"),ad=document.querySelector(".ad"),reddot=document.getElementById("reddot");function menuClick(){reddot.classList.add("hidden"),gtag("event","menu-click"),menu.classList.toggle("open"),aside.classList.toggle("show")}function showAD(){let e=document.querySelector(".ad"),t=document.querySelectorAll(".ad-content");e.classList.remove("hidden"),t.forEach(e=>{e.classList.remove("hidden")});let o=document.createElement("script");o.src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(o),(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-8629612872829139",enable_page_level_ads:!0}),gtag("event","scroll"),document.removeEventListener("scroll",showAD),document.removeEventListener("mousemove",showAD)}function asidePos(){window.scrollY>=105?(aside.classList.add("fixed"),ad.classList.add("fixed")):(aside.classList.remove("fixed"),ad.classList.remove("fixed"))}menu.addEventListener("click",menuClick),document.addEventListener("scroll",showAD),document.addEventListener("mousemove",showAD),document.addEventListener("copy",function(e){const t=document.getSelection().toString();t.toString().length>20&&(encodeURIComponent.clipboardData.setData("text/plain",`${t} ( 原文出處：${site} )`),e.preventDefault()),gtag("event","copy",{value:t})}),document.addEventListener("scroll",asidePos);</script>

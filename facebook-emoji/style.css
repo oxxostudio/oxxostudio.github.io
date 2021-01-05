@@ -103,9 +103,12 @@ aside a {
 
 @media (max-width:1024px) {
     .content {
-        width: 100%;
-        padding: 0 20px;
-        float: none;
+        width: calc(100% - 250px);
+        padding: 0;
+    }
+
+    .content h2{
+        padding:0 20px 0 10px;
     }
 
     .ad {
@@ -213,7 +216,7 @@ h2 b {
 .lazydom{
     word-break: break-all;
     font-size:24px;
-    letter-spacing: 12px;
+    letter-spacing: 15px;
     line-height: 42px;;
 }
 

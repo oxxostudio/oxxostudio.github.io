@@ -74,7 +74,7 @@
       const w = 45;
       let x = w * datas[i].x * -1 - 8;
       let y = w * datas[i].y * -1 - 8;
-      let inner = `<div class="copy" data-i="${i}" data-x="${datas[i].x}" data-y="${datas[i].y}" data-unicode="${datas[i].unicode}" data-emoji="${datas[i].emoji}" style="background-position:${x}px ${y}px;"></div>`;
+      let inner = `<div class="copy" data-i="${i}" data-x="${datas[i].x}" data-y="${datas[i].y}" data-unicode="${datas[i].unicode}" data-emoji="${datas[i].emoji}" style="background-position:${x}px ${y}px;"></div> `;
       if (i >= 1004 && i <= 1235) {
         content.sport.content = `${content.sport.content}${inner}`;
       } else if (i >= 1291 && i <= 1483) {
