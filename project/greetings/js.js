@@ -8,19 +8,21 @@ if(!localStorage.reddot){
   reddot.classList.remove('hidden');
 }
 
-menu.addEventListener("click", function () {
-  let self = this;
-  localStorage.reddot = true;
+//menu.addEventListener("click", menuClick);
+function menuClick(){
   reddot.classList.add('hidden');
   gtag("event", "menu-click");
-  if (self.classList.contains("open")) {
-    self.classList.remove("open");
-    aside.classList.remove("show");
-  } else {
-    self.classList.add("open");
-    aside.classList.add("show");
-  }
-});
+  menu.classList.toggle('open');
+  aside.classList.toggle("show");
+  lcalStorage.reddot = true;
+  // if (menu.classList.contains("open")) {
+  //   menu.classList.remove("open");
+  //   aside.classList.remove("show");
+  // } else {
+  //   menu.classList.add("open");
+  //   aside.classList.add("show");
+  // }
+}
 document.addEventListener("scroll", showAD);
 document.addEventListener("mousemove", showAD);
 function showAD() {

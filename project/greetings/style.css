@@ -122,7 +122,7 @@ main .tag {
 main .tag a {
   color: #fff;
   background: #09c;
-  padding: 5px 15px;
+  padding: 5px 10px;
   margin: 3px 0;
   border-radius: 20px;
   display: inline-block;
@@ -217,13 +217,15 @@ main ul li:last-child:after {
 }
 
 #menu {
+  display:table;
   position: fixed;
-  top: 34px;
+  top: 22px;
   right: 20px;
   width: 30px;
-  height: 4px;
-  background: #fff;
+  height: 26px;
   z-index: 10002;
+  border-top:4px solid #fff;
+  border-bottom:4px solid #fff;
   cursor: pointer;
 }
 
@@ -232,18 +234,17 @@ main ul li:last-child:after {
   content: "";
   position: absolute;
   width: 30px;
-  height: 20px;
-  top: -10px;
+  height: 4px;
+  top: 7px;
+  background:#fff;
   left: 0;
 }
 
 #menu::before {
-  border-top: 4px solid #fff;
   transform-origin: top left;
 }
 
 #menu::after {
-  border-bottom: 4px solid #fff;
   transform-origin: bottom left;
 }
 
@@ -277,14 +278,15 @@ main ul li:last-child:after {
 #menu.open {
   right: 15px;
   background: transparent;
+  border-color:transparent;
 }
 
 #menu.open::before {
-  transform: rotate(45deg);
+  transform: translateY(-10px) rotate(45deg);
 }
 
 #menu.open::after {
-  transform: rotate(-45deg);
+  transform: translateY(10px) rotate(-45deg);
 }
 
 footer {
@@ -407,10 +409,6 @@ footer a:hover {
   }
   .ad-footer{
     display:block;
-  }
-
-  .ad-content.top{
-    height:100px;
   }
 }
 
