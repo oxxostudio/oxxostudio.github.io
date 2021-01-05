@@ -308,17 +308,18 @@ footer a:hover {
   position:fixed;
   z-index:999;
   background:#000;
-  bottom:0;
+  bottom:-50px;
   left:0;
   width:100%;
-  height:60px;
+  height:50px;
   border-top:1px solid #000;
+  transition:.3s;
 }
 .ad-footer .adsbygoogle{
   min-width:300px;
   max-width:100%;
   width:auto;
-  height:60px;
+  height:50px;
   margin:0 auto;
 }
 
@@ -406,6 +407,7 @@ footer a:hover {
   }
   .ad-footer{
     display:block;
+    bottom:0;
   }
 }
 
