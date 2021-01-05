@@ -1,20 +1,24 @@
+
+alert(456);
 const site = location.href;
 const menu = document.getElementById("menu");
 const aside = document.querySelector("aside");
 const ad = document.querySelector(".ad");
 const reddot = document.getElementById("reddot");
 
-if(!localStorage.reddot){
-  reddot.classList.remove('hidden');
-}
+// if(!localStorage.reddot){
+//   reddot.classList.remove('hidden');
+// }
 
-//menu.addEventListener("click", menuClick);
+alert(123);
+menu.addEventListener("click", menuClick);
 function menuClick(){
+  alert(123);
   reddot.classList.add('hidden');
   gtag("event", "menu-click");
   menu.classList.toggle('open');
   aside.classList.toggle("show");
-  lcalStorage.reddot = true;
+  //lcalStorage.reddot = true;
   // if (menu.classList.contains("open")) {
   //   menu.classList.remove("open");
   //   aside.classList.remove("show");

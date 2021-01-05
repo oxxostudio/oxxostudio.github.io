@@ -10,13 +10,13 @@
   const reddot = document.getElementById("reddot");
   const aside = document.querySelector("aside");
 
-  if (!localStorage.reddot) {
-    reddot.classList.remove("hidden");
-  }
+  // if (!localStorage.reddot) {
+  //   reddot.classList.remove("hidden");
+  // }
 
   menu.addEventListener("click", function () {
     let self = this;
-    localStorage.reddot = true;
+    //localStorage.reddot = true;
     reddot.classList.add("hidden");
     if (self.classList.contains("open")) {
       self.classList.remove("open");
