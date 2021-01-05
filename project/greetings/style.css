@@ -408,6 +408,10 @@ footer a:hover {
   .ad-footer{
     display:block;
   }
+
+  .ad-content.top{
+    height:100px;
+  }
 }
 
 @media(min-width:800px) {
