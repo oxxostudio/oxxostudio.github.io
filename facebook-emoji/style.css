@@ -66,7 +66,7 @@ aside a {
 
 .ad {
     width: 300px;
-    height: auto;
+    height: 600px;
     margin: 0;
     display: inline-block;
     background: #fff;
@@ -93,7 +93,11 @@ aside a {
 
 .ad-content {
     width: 100%;
-    height: auto;
+    height: 280px;
+}
+
+.ad-content.top{
+    height: 90px;
 }
 
 .ad.hidden,

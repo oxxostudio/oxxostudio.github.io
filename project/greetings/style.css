@@ -179,7 +179,7 @@ main ul li:last-child:after {
 
 .ad {
   width: 300px;
-  height: auto;
+  height: 600px;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -191,9 +191,12 @@ main ul li:last-child:after {
 
 .ad-content {
   width: 100%;
-  height: auto;
+  height: 300px;
   padding-bottom: 20px;
   margin-bottom: 20px;
+}
+.ad-content.top{
+  height:120px;
 }
 
 .ad.hidden,
@@ -211,6 +214,9 @@ main ul li:last-child:after {
   height: 100px;
 }
 @media(max-width:500px){
+  .ad-content.top{
+    height:80px;
+  }
   .adsbygoogle.top {
     height: 60px;
   }
