@@ -12,15 +12,16 @@ function menuClick(){
   menu.classList.toggle('open');
   aside.classList.toggle("show");
 }
-document.addEventListener("scroll", showAD);
-document.addEventListener("mousemove", showAD);
+showAD();
+//document.addEventListener("scroll", showAD);
+//document.addEventListener("mousemove", showAD);
 function showAD() {
-  let ad = document.querySelector(".ad");
-  let adContent = document.querySelectorAll(".ad-content");
-  ad.classList.remove("hidden");
-  adContent.forEach((e) => {
-    e.classList.remove("hidden");
-  });
+  //let ad = document.querySelector(".ad");
+  //let adContent = document.querySelectorAll(".ad-content");
+  // ad.classList.remove("hidden");
+  // adContent.forEach((e) => {
+  //   e.classList.remove("hidden");
+  // });
   let element = document.createElement("script");
   element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
   document.body.appendChild(element);
@@ -28,9 +29,8 @@ function showAD() {
     google_ad_client: "ca-pub-8629612872829139",
     enable_page_level_ads: true,
   });
-  gtag("event", "scroll");
-  document.removeEventListener("scroll", showAD);
-  document.removeEventListener("mousemove", showAD);
+  //document.removeEventListener("scroll", showAD);
+  //document.removeEventListener("mousemove", showAD);
 }
 document.addEventListener("copy", function (e) {
   const selection = document.getSelection();
@@ -54,6 +54,7 @@ function asidePos() {
   if (windowScrollTop >= 105) {
     aside.classList.add('fixed');
     ad.classList.add('fixed');
+    gtag("event", "scroll");
   }else{
     aside.classList.remove('fixed');
     ad.classList.remove('fixed');
