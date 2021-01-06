@@ -91,6 +91,11 @@ aside a {
     height: 280px;
 }
 
+.adsbygoogle.top{
+    width:100%;
+    height:90px;
+}
+
 .ad-content {
     width: 100%;
     height: 280px;
@@ -162,11 +167,6 @@ h2 b {
     display: none;
 }
 
-.adsbygoogle.top{
-    width:100%;
-    height:90px;
-}
-
 @media (max-width:1024px) {
     h2 {
         padding: 0 30px;
@@ -193,10 +193,6 @@ h2 b {
         display: inline-block;
         padding: 0 9px 30px;
         text-align: center;
-    }
-    .adsbygoogle.top{
-        width:100%;
-        height:240px;
     }
 }
 
@@ -427,5 +423,13 @@ a:hover {
     .copy::before{
         font-size:15px;
         width: 50px;
+    }
+
+    .adsbygoogle.top{
+        height:280px;
+    }
+
+    .ad-content.top{
+        height:280px;
     }
 }

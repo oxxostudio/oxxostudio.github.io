@@ -38,6 +38,7 @@
       });
       ele.innerHTML = cc;
       ele.classList.remove("lazydom");
+      ele.style = "";
     });
     copyToClipBoard(".copy");
   }

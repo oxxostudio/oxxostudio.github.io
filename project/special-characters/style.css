@@ -61,6 +61,16 @@ h1 {
     margin-bottom: 20px;
 }
 
+.adsbygoogle.top {
+    width: 100%;
+    height: 90px;
+}
+
+.adsbygoogle.in {
+    width: 100%;
+    height: 280px;
+}
+
 
 .ad-content {
     width: 100%;
@@ -157,16 +167,6 @@ aside a {
     margin: 0 auto 10px;
     padding: 0 0 30px;
     height: 100px;
-}
-
-.adsbygoogle.top {
-    width: 100%;
-    height: 90px;
-}
-
-.adsbygoogle.in {
-    width: 100%;
-    height: 280px;
 }
 
 @media (max-width:1024px) {
@@ -416,5 +416,13 @@ a:hover {
     .copy::before{
         font-size:15px;
         width: 50px;
+    }
+
+    .adsbygoogle.top{
+        height:280px;
+    }
+
+    .ad-content.top{
+        height:280px;
     }
 }
