@@ -351,6 +351,9 @@ a:hover {
         top:0;
         left:0;
     }
+    h2{
+        line-height: 28px;
+    }
     aside {
         width: 90%;
         height: 100vh;
@@ -420,5 +423,9 @@ a:hover {
         height:3px;
         background:#ddd;
         pointer-events: none;
+    }
+    .copy::before{
+        font-size:15px;
+        width: 50px;
     }
 }

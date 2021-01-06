@@ -41,7 +41,7 @@ h1 {
 
 .ad {
     width: 300px;
-    height: auto;
+    height: 600px;
     margin: 0;
     display: inline-block;
     background: #fff;
@@ -64,7 +64,11 @@ h1 {
 
 .ad-content {
     width: 100%;
-    height: auto;
+    height: 280px;
+}
+
+.ad-content.top{
+    height: 90px;
 }
 
 .ad.hidden,
@@ -217,7 +221,7 @@ aside a {
     display: inline-block;
     padding: 2px 5px;
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
     border-radius: 3px;
     opacity: 0;
     transition: .3s;
@@ -249,8 +253,8 @@ a:hover {
 .lazydom {
     width: 100%;
     word-break: break-all;
-    font-size: 24px;
-    letter-spacing: 26px;
+    font-size: 23px;
+    letter-spacing: 23px;
     line-height: 45px;
 }
 
@@ -336,6 +340,9 @@ a:hover {
         top:0;
         left:0;
     }
+    h2{
+        line-height: 28px;
+    }
     aside {
         width: 90%;
         height: 100vh;
@@ -405,5 +412,9 @@ a:hover {
         height:3px;
         background:#ddd;
         pointer-events: none;
+    }
+    .copy::before{
+        font-size:15px;
+        width: 50px;
     }
 }

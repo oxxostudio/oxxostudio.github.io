@@ -1,10 +1,8 @@
 ~(async function () {
   const menu = document.getElementById("menu");
-  const reddot = document.getElementById("reddot");
   const aside = document.querySelector("aside");
 
   menu.addEventListener("click", function () {
-    reddot.classList.add("hidden");
     menu.classList.toggle('open');
     aside.classList.toggle("show");
   });
