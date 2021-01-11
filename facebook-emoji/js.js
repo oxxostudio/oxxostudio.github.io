@@ -1,19 +1,20 @@
 ~(async function () {
+  //setTimeout(optCLS,0);
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
+  const ad = document.querySelector(".ad");
 
   menu.addEventListener("click", function () {
-    menu.classList.toggle('open');
+    menu.classList.toggle("open");
     aside.classList.toggle("show");
   });
-  const aside_a = document.querySelectorAll('aside a');
-  aside_a.forEach(e => {
-    e.addEventListener('click',()=>{
-      aside.classList.remove('show');
-      menu.classList.remove('open');
+  const aside_a = document.querySelectorAll("aside a");
+  aside_a.forEach((e) => {
+    e.addEventListener("click", () => {
+      aside.classList.remove("show");
+      menu.classList.remove("open");
     });
   });
-
 
   let datas = await fetch("list.json")
     .then((res) => {
@@ -49,20 +50,15 @@
 
   copyToClipBoard(".copy");
 
-  document.addEventListener("scroll", function () {
-    let scrollTop = window.pageYOffset;
-    let ad = document.querySelector(".ad");
-    if (scrollTop >= 75) {
-      ad.classList.add("fixed");
-    } else {
-      ad.classList.remove("fixed");
-    }
-  });
-
   document.addEventListener("scroll", more);
   document.addEventListener("scroll", showAD);
   document.addEventListener("mousemove", more);
   document.addEventListener("mousemove", showAD);
+
+  if(window.scrollY>0){
+    more();
+    showAD();
+  }
 
   function more() {
     document.removeEventListener("mousemove", more);
@@ -112,7 +108,7 @@
     for (let i in content) {
       content[i].ele.innerHTML = content[i].content;
     }
-    lazydom.forEach(e => {
+    lazydom.forEach((e) => {
       e.classList.remove("lazydom");
     });
     copyToClipBoard(".copy");
@@ -146,10 +142,6 @@
   }
 
   function showAD() {
-    let ad = document.querySelector(".ad");
-    let adContent = document.querySelector(".ad-content");
-    ad.classList.remove("hidden");
-    adContent.classList.remove("hidden");
     let element = document.createElement("script");
     element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
     document.body.appendChild(element);
@@ -162,8 +154,6 @@
     adPos();
   }
   document.addEventListener("scroll", adPos);
-  //const aside = document.querySelector("aside");
-  const ad = document.querySelector(".ad");
   function adPos() {
     let windowScrollTop = window.scrollY;
     if (windowScrollTop >= 75) {
@@ -174,4 +164,26 @@
       aside.classList.remove("fixed");
     }
   }
+
+  function optCLS() {
+      const content = document.querySelector(".content");
+      const content_width = content.offsetWidth;
+      const box = document.querySelectorAll(".box");
+      const h3 = document.querySelectorAll("h3");
+      h3.forEach((e) => {
+          e.setAttribute('hidden','');
+      });
+      box.forEach((e) => {
+        e.setAttribute('hidden','');
+        const n = e.getAttribute("num");
+        const h = Math.ceil((n * 36)/content_width) + 1;
+        e.style.height = `${h * 36 + 40}px`;
+      });
+      box.forEach((e) => {
+          e.removeAttribute('hidden');
+      });
+      h3.forEach((e) => {
+          e.removeAttribute('hidden');
+      });
+    }
 })();
