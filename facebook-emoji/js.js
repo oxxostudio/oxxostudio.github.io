@@ -170,7 +170,13 @@
     const content_width = content.offsetWidth;
     const box = document.querySelectorAll(".box");
     const h3 = document.querySelectorAll("h3");
-    const wn = ~~(content_width / 42);
+    let wn;
+    console.log(content_width);
+    if(content_width>640){
+      wn = ~~(content_width / 40);
+    }else{
+      wn = ~~((content_width-18) / 46);
+    }
     h3.forEach((e) => {
       e.setAttribute("hidden", "");
     });
@@ -178,7 +184,8 @@
       e.setAttribute("hidden", "");
       const n = e.getAttribute("num");
       const h = Math.floor(n / wn) + 1;
-      e.style.height = `${h * 42 + 40}px`;
+      console.log(n,n / wn,h);
+      e.style.height = `${h * 40 + 40}px`;
     });
     box.forEach((e) => {
       e.removeAttribute("hidden");
