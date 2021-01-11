@@ -1,5 +1,5 @@
 ~(async function () {
-  //setTimeout(optCLS,0);
+  //setTimeout(optCLS, 0);
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
@@ -55,7 +55,7 @@
   document.addEventListener("mousemove", more);
   document.addEventListener("mousemove", showAD);
 
-  if(window.scrollY>0){
+  if (window.scrollY > 0) {
     more();
     showAD();
   }
@@ -166,24 +166,25 @@
   }
 
   function optCLS() {
-      const content = document.querySelector(".content");
-      const content_width = content.offsetWidth;
-      const box = document.querySelectorAll(".box");
-      const h3 = document.querySelectorAll("h3");
-      h3.forEach((e) => {
-          e.setAttribute('hidden','');
-      });
-      box.forEach((e) => {
-        e.setAttribute('hidden','');
-        const n = e.getAttribute("num");
-        const h = Math.ceil((n * 36)/content_width) + 1;
-        e.style.height = `${h * 36 + 40}px`;
-      });
-      box.forEach((e) => {
-          e.removeAttribute('hidden');
-      });
-      h3.forEach((e) => {
-          e.removeAttribute('hidden');
-      });
-    }
+    const content = document.querySelector(".content");
+    const content_width = content.offsetWidth;
+    const box = document.querySelectorAll(".box");
+    const h3 = document.querySelectorAll("h3");
+    const wn = ~~(content_width / 42);
+    h3.forEach((e) => {
+      e.setAttribute("hidden", "");
+    });
+    box.forEach((e) => {
+      e.setAttribute("hidden", "");
+      const n = e.getAttribute("num");
+      const h = Math.floor(n / wn) + 1;
+      e.style.height = `${h * 42 + 40}px`;
+    });
+    box.forEach((e) => {
+      e.removeAttribute("hidden");
+    });
+    h3.forEach((e) => {
+      e.removeAttribute("hidden");
+    });
+  }
 })();
