@@ -34,10 +34,16 @@
       let symbol;
       let dom = document.querySelector(`.${i}`);
       let domHTML = "";
-      if (i != "s19") {
-        symbol = list[i].split("");
-      } else {
-        symbol = list[i].split(" ");
+      switch (i) {
+        case "s19":
+        case "s20":
+        case "s21":
+        case "s22":
+          symbol = list[i].split(" ");
+          break;
+        default:
+          symbol = list[i].split("");
+          break;
       }
       symbol.forEach((e) => {
         domHTML =
@@ -111,7 +117,6 @@ function optCLS() {
   } else {
     wn = ~~((content_width - 18) / 50);
   }
-  console.log(wn);
   h3.forEach((e) => {
     e.setAttribute("hidden", "");
   });

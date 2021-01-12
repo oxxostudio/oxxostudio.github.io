@@ -134,7 +134,7 @@ h2 b {
 }
 
 aside {
-    width: 140px;
+    width: 145px;
     height: auto;
     padding: 10px;
     border: 1px solid #aaa;
@@ -159,7 +159,7 @@ aside h2 {
 aside a {
     display: inline-block;
     padding: 3px 0;
-    margin-right: 5px;
+    margin-right: 2px;
 }
 
 .contentAD {
