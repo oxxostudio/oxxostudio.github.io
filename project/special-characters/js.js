@@ -3,16 +3,15 @@
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
 
-
   menu.addEventListener("click", function () {
-    menu.classList.toggle('open');
+    menu.classList.toggle("open");
     aside.classList.toggle("show");
   });
-  const aside_a = document.querySelectorAll('aside a');
-  aside_a.forEach(e => {
-    e.addEventListener('click',()=>{
-      aside.classList.remove('show');
-      menu.classList.remove('open');
+  const aside_a = document.querySelectorAll("aside a");
+  aside_a.forEach((e) => {
+    e.addEventListener("click", () => {
+      aside.classList.remove("show");
+      menu.classList.remove("open");
     });
   });
 
@@ -24,29 +23,30 @@
   async function more() {
     document.removeEventListener("mousemove", more);
     document.removeEventListener("scroll", more);
-    const list = await fetch('list.json')
-    .then(res => {
-      return res.json();
-    }).then(result =>{
-      return result;
-    });
-    for(let i in list){
+    const list = await fetch("list.json")
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        return result;
+      });
+    for (let i in list) {
       let symbol;
       let dom = document.querySelector(`.${i}`);
-      let domHTML = '';
-      if(i != 's19'){
-        symbol = list[i].split('');
-      }else{
-        symbol = list[i].split(' ');
+      let domHTML = "";
+      if (i != "s19") {
+        symbol = list[i].split("");
+      } else {
+        symbol = list[i].split(" ");
       }
-      symbol.forEach(e => {
-        domHTML = domHTML + `<span class="copy" data-character="${e}">${e}</span> `;
+      symbol.forEach((e) => {
+        domHTML =
+          domHTML + `<span class="copy" data-character="${e}">${e}</span> `;
       });
       dom.innerHTML = domHTML;
     }
     copyToClipBoard(".copy");
   }
-
 })();
 
 function copyToClipBoard(className) {
@@ -79,7 +79,7 @@ function showAD() {
   let element = document.createElement("script");
   element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
   document.body.appendChild(element);
-  document.querySelectorAll('.adsbygoogle').forEach(e => {
+  document.querySelectorAll(".adsbygoogle").forEach((e) => {
     (adsbygoogle = window.adsbygoogle || []).push({});
   });
   document.removeEventListener("scroll", showAD);
@@ -106,11 +106,12 @@ function optCLS() {
   const box = document.querySelectorAll(".box");
   const h3 = document.querySelectorAll("h3");
   let wn;
-  if(content_width>640){
+  if (content_width > 640) {
     wn = ~~(content_width / 44);
-  }else{
-    wn = ~~((content_width-18) / 40);
+  } else {
+    wn = ~~((content_width - 18) / 50);
   }
+  console.log(wn);
   h3.forEach((e) => {
     e.setAttribute("hidden", "");
   });
@@ -118,7 +119,12 @@ function optCLS() {
     e.setAttribute("hidden", "");
     const n = e.getAttribute("num");
     const h = Math.floor(n / wn) + 1;
-    e.style.height = `${h * 45}px`;
+
+    if (content_width > 640) {
+      e.style.height = `${h * 45}px`;
+    } else {
+      e.style.height = `${h * 50}px`;
+    }
   });
   box.forEach((e) => {
     e.removeAttribute("hidden");
