@@ -1,5 +1,5 @@
 ~(async function () {
-
+  //setTimeout(optCLS, 0);
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
 
@@ -21,25 +21,29 @@
   document.addEventListener("mousemove", more);
   document.addEventListener("mousemove", showAD);
 
-  function more() {
+  async function more() {
     document.removeEventListener("mousemove", more);
     document.removeEventListener("scroll", more);
-    const lazydom = document.querySelectorAll(".lazydom");
-    lazydom.forEach((ele, i) => {
-      let cc = "";
-      let lazydomArr;
-      if (i == 16) {
-        lazydomArr = ele.innerText.split(" ");
-      } else {
-        lazydomArr = ele.innerText.split("");
-      }
-      lazydomArr.forEach((e) => {
-        cc = cc + `<span class="copy" data-character="${e}">${e}</span> `;
-      });
-      ele.innerHTML = cc;
-      ele.classList.remove("lazydom");
-      ele.style = "";
+    const list = await fetch('list.json')
+    .then(res => {
+      return res.json();
+    }).then(result =>{
+      return result;
     });
+    for(let i in list){
+      let symbol;
+      let dom = document.querySelector(`.${i}`);
+      let domHTML = '';
+      if(i != 's19'){
+        symbol = list[i].split('');
+      }else{
+        symbol = list[i].split(' ');
+      }
+      symbol.forEach(e => {
+        domHTML = domHTML + `<span class="copy" data-character="${e}">${e}</span> `;
+      });
+      dom.innerHTML = domHTML;
+    }
     copyToClipBoard(".copy");
   }
 
@@ -94,4 +98,32 @@ function adPos() {
     ad.classList.remove("fixed");
     aside.classList.remove("fixed");
   }
+}
+
+function optCLS() {
+  const content = document.querySelector(".content");
+  const content_width = content.offsetWidth;
+  const box = document.querySelectorAll(".box");
+  const h3 = document.querySelectorAll("h3");
+  let wn;
+  if(content_width>640){
+    wn = ~~(content_width / 44);
+  }else{
+    wn = ~~((content_width-18) / 40);
+  }
+  h3.forEach((e) => {
+    e.setAttribute("hidden", "");
+  });
+  box.forEach((e) => {
+    e.setAttribute("hidden", "");
+    const n = e.getAttribute("num");
+    const h = Math.floor(n / wn) + 1;
+    e.style.height = `${h * 45}px`;
+  });
+  box.forEach((e) => {
+    e.removeAttribute("hidden");
+  });
+  h3.forEach((e) => {
+    e.removeAttribute("hidden");
+  });
 }
