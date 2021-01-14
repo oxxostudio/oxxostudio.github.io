@@ -201,8 +201,8 @@ h2 b {
 h3 {
     text-align: center;
     width: 100%;
-    margin: 30px 0 20px;
-    padding-top: 30px;
+    margin: 0 0 20px;
+    padding-top: 20px;
     font-size: 1.2rem;
     pointer-events: none;
 }
@@ -214,6 +214,9 @@ h3 {
         position: relative;
         pointer-events: none;
     }
+}
+.box{
+    margin-bottom:20px;
 }
 
 .copy {

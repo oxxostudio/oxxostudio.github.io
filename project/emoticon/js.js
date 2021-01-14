@@ -43,7 +43,7 @@
           self.classList.add("now");
         }
         gtag("event", "click", {
-          'event_label': self.getAttribute("data-character"),
+          'event_label': self.getAttribute("data-character")
         });
       });
     });
