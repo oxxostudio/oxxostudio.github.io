@@ -18,10 +18,6 @@ function showAD() {
   document.querySelectorAll('.adsbygoogle').forEach(e => {
     (adsbygoogle = window.adsbygoogle || []).push({});
   });
-  // (adsbygoogle = window.adsbygoogle || []).push({
-  //   google_ad_client: "ca-pub-8629612872829139",
-  //   enable_page_level_ads: true,
-  // });
   gtag("event", "scroll");
   document.removeEventListener("scroll", showAD);
   document.removeEventListener("mousemove", showAD);
@@ -38,7 +34,7 @@ document.addEventListener("copy", function (e) {
     e.preventDefault();
   }
   gtag("event", "copy", {
-    value: copyContent,
+    'event_label': copyContent,
   });
 });
 

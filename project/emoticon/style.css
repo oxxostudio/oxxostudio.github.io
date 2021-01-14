@@ -26,7 +26,7 @@ h1 {
     padding: 13px 0 0;
     font-size: 1.5rem;
     z-index: 9999;
-    height:70px;
+    height: 70px;
 }
 
 @media (max-width:640px) {
@@ -161,8 +161,12 @@ h2 {
     width: 100%;
     margin: 0 0 30px;
     font-weight: normal;
-    font-size: 1rem;
     padding: 0;
+    font-size: 1rem;
+}
+
+h2 * {
+    font-size: 1rem;
 }
 
 h2 b {
@@ -174,6 +178,18 @@ h2 b {
     h2 {
         padding: 0 20px;
         line-height: 28px;
+        font-size: 1.1rem;
+    }
+
+    h2 * {
+        font-size: 1.1rem;
+    }
+
+    h2 span {
+        margin-top: 12px;
+        border-top: 2px solid #ddd;
+        padding-top: 8px;
+        display: block;
     }
 }
 
@@ -186,7 +202,6 @@ h2 b {
     display: inline-block;
     padding: 0 15px;
     border-radius: 20px;
-    margin-right: 0;
 }
 
 .toplink:hover {
@@ -206,6 +221,7 @@ h3 {
     font-size: 1.2rem;
     pointer-events: none;
 }
+
 @media (max-width:1024px) {
     h3 {
         padding-top: 100px;
@@ -215,14 +231,15 @@ h3 {
         pointer-events: none;
     }
 }
-.box{
-    margin-bottom:20px;
+
+.box {
+    margin-bottom: 20px;
 }
 
 .copy {
     position: relative;
-    width:31%;
-    max-width:136px;
+    width: 31%;
+    max-width: 136px;
     height: 42px;
     padding: 5px 0;
     margin: 0 0 8px 0;
@@ -374,7 +391,7 @@ h3 {
     background: #fff;
     overflow: hidden;
     position: absolute;
-    top: 100px;
+    top: 15px;
     right: 15px;
 }
 
@@ -440,5 +457,31 @@ h3 {
     .adsbygoogle.top {
         width: 100%;
         height: 280px;
+    }
+}
+
+.ad-footer {
+    display: none;
+    position: fixed;
+    z-index: 10003;
+    background: #000;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 -4px 0 #000;
+}
+
+.ad-footer .adsbygoogle {
+    min-width: 300px;
+    max-width: 100%;
+    width: auto;
+    height: 50px;
+    margin: 0 auto;
+}
+
+@media(max-width:800px) {
+    .ad-footer {
+        display: block;
     }
 }
