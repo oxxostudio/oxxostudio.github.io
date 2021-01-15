@@ -23,7 +23,7 @@
   function copyToClipBoard(className) {
     new ClipboardJS(className, {
       text: function (trigger) {
-        return trigger.getAttribute("data-character");
+        return trigger.innerText;
       },
     });
 
