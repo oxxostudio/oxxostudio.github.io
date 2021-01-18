@@ -4,6 +4,9 @@
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
   const main = document.querySelector("main");
+  const windowWidth = window.innerWidth;
+  const asideX = aside.offsetLeft + main.offsetLeft;
+  const adX = ad.offsetLeft + main.offsetLeft;
 
   menu.addEventListener("click", function () {
     menu.classList.toggle("open");
@@ -154,10 +157,6 @@
     document.removeEventListener("mousemove", showAD);
     adPos();
   }
-
-  const windowWidth = window.innerWidth;
-  const asideX = aside.offsetLeft + main.offsetLeft;
-  const adX = ad.offsetLeft + main.offsetLeft;
   document.addEventListener("scroll", adPos);
   function adPos() {
     let windowScrollTop = window.scrollY;
@@ -189,7 +188,7 @@
     const h3 = document.querySelectorAll("h3");
     let wn;
     if(content_width>640){
-      wn = ~~(content_width / 40);
+      wn = ~~(content_width / 46);
     }else{
       wn = ~~((content_width-18) / 46);
     }

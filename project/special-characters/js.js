@@ -4,6 +4,9 @@
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
   const main = document.querySelector("main");
+  const windowWidth = window.innerWidth;
+  const asideX = aside.offsetLeft + main.offsetLeft;
+  const adX = ad.offsetLeft + main.offsetLeft;
 
   menu.addEventListener("click", function () {
     menu.classList.toggle("open");
@@ -93,9 +96,6 @@ function showAD() {
   document.removeEventListener("mousemove", showAD);
 }
 
-const windowWidth = window.innerWidth;
-const asideX = aside.offsetLeft + main.offsetLeft;
-const adX = ad.offsetLeft + main.offsetLeft;
 document.addEventListener("scroll", adPos);
 function adPos() {
   let windowScrollTop = window.scrollY;
