@@ -3,6 +3,7 @@
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
+  const main = document.querySelector("main");
 
   menu.addEventListener("click", function () {
     menu.classList.toggle("open");
@@ -153,15 +154,31 @@
     document.removeEventListener("mousemove", showAD);
     adPos();
   }
+
+  const windowWidth = window.innerWidth;
+  const asideX = aside.offsetLeft + main.offsetLeft;
+  const adX = ad.offsetLeft + main.offsetLeft;
   document.addEventListener("scroll", adPos);
   function adPos() {
     let windowScrollTop = window.scrollY;
     if (windowScrollTop >= 75) {
       ad.classList.add("fixed");
       aside.classList.add("fixed");
+      if(windowWidth > 640){
+        ad.style.left = adX + 'px';
+        ad.style.right = 'auto';
+        aside.style.left = asideX + 'px';
+        aside.style.right = 'auto';
+      }
     } else {
       ad.classList.remove("fixed");
       aside.classList.remove("fixed");
+      if(windowWidth > 640){
+        ad.style.removeProperty('left');
+        ad.style.removeProperty('right');
+        aside.style.removeProperty('left');
+        aside.style.removeProperty('right');
+      }
     }
   }
 
@@ -171,7 +188,6 @@
     const box = document.querySelectorAll(".box");
     const h3 = document.querySelectorAll("h3");
     let wn;
-    console.log(content_width);
     if(content_width>640){
       wn = ~~(content_width / 40);
     }else{
@@ -184,7 +200,6 @@
       e.setAttribute("hidden", "");
       const n = e.getAttribute("num");
       const h = Math.floor(n / wn) + 1;
-      console.log(n,n / wn,h);
       e.style.height = `${h * 40 + 40}px`;
     });
     box.forEach((e) => {
