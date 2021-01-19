@@ -60,7 +60,7 @@
 
   function showAD() {
     let scrollY = window.scrollY;
-    if (scrollY > 250) {
+    if (scrollY > 300) {
       document.removeEventListener("scroll", showAD);
       document.querySelectorAll(".adsbygoogle.in").forEach((e) => {
         (adsbygoogle = window.adsbygoogle || []).push({});
