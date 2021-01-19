@@ -16,8 +16,9 @@
     });
   });
 
+  document.addEventListener("scroll", ADinit);
+  document.addEventListener("mousemove", ADinit);
   document.addEventListener("scroll", showAD);
-  document.addEventListener("mousemove", showAD);
 
   copyToClipBoard(".copy");
 
@@ -49,15 +50,22 @@
       });
     });
   }
-  function showAD() {
+  function ADinit() {
     let element = document.createElement("script");
     element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
     document.body.appendChild(element);
-    document.querySelectorAll(".adsbygoogle").forEach((e) => {
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    });
-    document.removeEventListener("scroll", showAD);
-    document.removeEventListener("mousemove", showAD);
+    document.removeEventListener("scroll", ADinit);
+    document.removeEventListener("mousemove", ADinit);
+  }
+
+  function showAD() {
+    let scrollY = window.scrollY;
+    if (scrollY > 250) {
+      document.removeEventListener("scroll", showAD);
+      document.querySelectorAll(".adsbygoogle.in").forEach((e) => {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      });
+    }
   }
 
 
