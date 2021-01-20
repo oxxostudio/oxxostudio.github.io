@@ -16,8 +16,8 @@
     });
   });
 
-  document.addEventListener("scroll", ADinit);
-  document.addEventListener("mousemove", ADinit);
+  //document.addEventListener("scroll", ADinit);
+  //document.addEventListener("mousemove", ADinit);
   document.addEventListener("scroll", showAD);
 
   copyToClipBoard(".copy");
@@ -51,8 +51,6 @@
     });
   }
   function ADinit() {
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    (adsbygoogle = window.adsbygoogle || []).push({});
     document.removeEventListener("scroll", ADinit);
     document.removeEventListener("mousemove", ADinit);
   }
@@ -61,7 +59,7 @@
     let scrollY = window.scrollY;
     if (scrollY > 300) {
       document.removeEventListener("scroll", showAD);
-      document.querySelectorAll(".adsbygoogle.in").forEach((e) => {
+      document.querySelectorAll("[lazyload]").forEach((e) => {
         (adsbygoogle = window.adsbygoogle || []).push({});
       });
     }
