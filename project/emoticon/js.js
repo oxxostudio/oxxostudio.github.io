@@ -16,8 +16,8 @@
     });
   });
 
-  //document.addEventListener("scroll", ADinit);
-  //document.addEventListener("mousemove", ADinit);
+  document.addEventListener("scroll", ADinit);
+  document.addEventListener("mousemove", ADinit);
   document.addEventListener("scroll", showAD);
 
   copyToClipBoard(".copy");
@@ -51,6 +51,9 @@
     });
   }
   function ADinit() {
+    (adsbygoogle = window.adsbygoogle || []).push({
+      params: { google_ad_slot: '4731510363' }
+    });
     document.removeEventListener("scroll", ADinit);
     document.removeEventListener("mousemove", ADinit);
   }
