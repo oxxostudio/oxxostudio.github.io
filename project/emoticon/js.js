@@ -51,9 +51,8 @@
     });
   }
   function ADinit() {
-    (adsbygoogle = window.adsbygoogle || []).push({
-      params: { google_ad_slot: '4731510363' }
-    });
+    ad.innerHTML = `<ins class="adsbygoogle" style="display: block; height: 600px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4731510363" data-full-width-responsive="true" data-ad-format="auto"></ins>`;
+    (adsbygoogle = window.adsbygoogle || []).push({});
     document.removeEventListener("scroll", ADinit);
     document.removeEventListener("mousemove", ADinit);
   }
