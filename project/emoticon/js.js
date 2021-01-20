@@ -51,9 +51,8 @@
     });
   }
   function ADinit() {
-    let element = document.createElement("script");
-    element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    document.body.appendChild(element);
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
     document.removeEventListener("scroll", ADinit);
     document.removeEventListener("mousemove", ADinit);
   }
