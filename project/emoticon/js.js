@@ -61,7 +61,8 @@
     let scrollY = window.scrollY;
     if (scrollY > 300) {
       document.removeEventListener("scroll", showAD);
-      document.querySelectorAll("[lazyload]").forEach((e) => {
+      document.querySelectorAll(".ad-content.in").forEach((e) => {
+        e.innerHTML = `<ins class="adsbygoogle in" style="display: block; height: 280px" data-ad-client="ca-pub-8629612872829139" data-ad-format="auto" data-ad-slot="4731510363" data-full-width-responsive="true"></ins>`;
         (adsbygoogle = window.adsbygoogle || []).push({});
       });
     }
