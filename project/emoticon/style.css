@@ -402,22 +402,23 @@ h3 {
 }
 
 .ad .adsbygoogle {
-    width:auto;
+    width: 100%;
     margin-bottom: 20px;
 }
 
 .adsbygoogle.top {
-    width: 100%;
     height: 90px;
 }
 
 .adsbygoogle.in {
-    width: 100%;
     height: 280px;
 }
 
 .ad-content {
     width: 100%;
+}
+
+.ad-content.in{
     height: 280px;
 }
 

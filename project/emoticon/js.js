@@ -2,6 +2,8 @@
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
+  const adFooter = document.querySelector(".ad-footer");
+  const adIn = document.querySelectorAll(".ad-content.in")
   const main = document.querySelector("main");
 
   menu.addEventListener("click", function () {
@@ -16,8 +18,8 @@
     });
   });
 
-  document.addEventListener("scroll", ADinit);
-  document.addEventListener("mousemove", ADinit);
+  document.addEventListener("scroll", ADStart);
+  document.addEventListener("mousemove", ADStart);
   document.addEventListener("scroll", showAD);
 
   copyToClipBoard(".copy");
@@ -50,18 +52,20 @@
       });
     });
   }
-  function ADinit() {
+  function ADStart() {
     ad.innerHTML = `<ins class="adsbygoogle" style="display: block; height: 600px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4731510363" data-full-width-responsive="true" data-ad-format="auto"></ins>`;
     (adsbygoogle = window.adsbygoogle || []).push({});
-    document.removeEventListener("scroll", ADinit);
-    document.removeEventListener("mousemove", ADinit);
+    adFooter.innerHTML = `<ins class="adsbygoogle" style="display:block; height:50px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="6337054312"></ins>`;
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    document.removeEventListener("scroll", ADStart);
+    document.removeEventListener("mousemove", ADStart);
   }
 
   function showAD() {
     let scrollY = window.scrollY;
     if (scrollY > 300) {
       document.removeEventListener("scroll", showAD);
-      document.querySelectorAll(".ad-content.in").forEach((e) => {
+      adIn.forEach((e) => {
         e.innerHTML = `<ins class="adsbygoogle in" style="display: block; height: 280px" data-ad-client="ca-pub-8629612872829139" data-ad-format="auto" data-ad-slot="4731510363" data-full-width-responsive="true"></ins>`;
         (adsbygoogle = window.adsbygoogle || []).push({});
       });
