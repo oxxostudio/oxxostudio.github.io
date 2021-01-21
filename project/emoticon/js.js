@@ -3,7 +3,7 @@
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
   const adFooter = document.querySelector(".ad-footer");
-  const adIn = document.querySelectorAll(".ad-content.in")
+  const adIn = document.querySelectorAll(".ad-content.in");
   const main = document.querySelector("main");
   const box = document.querySelectorAll('.box');
 

@@ -3,7 +3,10 @@
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
+  const adFooter = document.querySelector(".ad-footer");
+  const adIn = document.querySelectorAll(".ad-content.in");
   const main = document.querySelector("main");
+
   const windowWidth = window.innerWidth;
   const asideX = aside.offsetLeft + main.offsetLeft;
   const adX = ad.offsetLeft + main.offsetLeft;
@@ -82,23 +85,30 @@ function copyToClipBoard(className) {
       } else {
         self.classList.add("now");
       }
-      ga("send", "event", self.getAttribute("data-character"), "click");
+      gtag("event", "click", {
+        'event_label': self.getAttribute("data-character")
+      });
     });
   });
 }
 function ADinit() {
-  let element = document.createElement("script");
-  element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-  document.body.appendChild(element);
   document.removeEventListener("scroll", ADinit);
   document.removeEventListener("mousemove", ADinit);
+  if(window.innerWidth>800){
+    ad.innerHTML = `<ins class="adsbygoogle" style="display: block; height: 600px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4731510363" data-full-width-responsive="true" data-ad-format="auto"></ins>`;
+  }else{
+    adFooter.style.display = 'block';
+    adFooter.innerHTML = `<ins class="adsbygoogle" style="display:block; height:50px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="6337054312"></ins>`;
+  }
+  (adsbygoogle = window.adsbygoogle || []).push({});
 }
 
 function showAD() {
   let scrollY = window.scrollY;
   if (scrollY > 300) {
     document.removeEventListener("scroll", showAD);
-    document.querySelectorAll(".adsbygoogle.in").forEach((e) => {
+    adIn.forEach((e) => {
+      e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
       (adsbygoogle = window.adsbygoogle || []).push({});
     });
   }

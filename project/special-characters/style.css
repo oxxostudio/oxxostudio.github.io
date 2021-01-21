@@ -128,6 +128,7 @@ main {
 }
 
 .ad .adsbygoogle {
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -141,9 +142,11 @@ main {
     height: 280px;
 }
 
-
 .ad-content {
     width: 100%;
+}
+
+.ad-content.in{
     height: 280px;
 }
 
@@ -163,20 +166,37 @@ main {
     }
 }
 
+@media (max-width:640px) {
+    .ad-content.top {
+        margin-bottom:-40px;
+    }
+}
+
 h3 {
     text-align: center;
     width: 100%;
-    margin: 30px 0 20px;
-    padding-top: 30px;
+    margin: 0;
+    padding-top: 20px;
     border-top: 3px solid #eee;
     font-size: 20px;
     pointer-events: none;
 }
+h3#a1{
+    margin:0 0 20px;
+}
+h3+span{
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    color:#888;
+    font-size:0.9rem;
+    margin:5px 0 15px;
+}
 
 @media (max-width:640px) {
     h3{
-        padding-top:100px;
-        margin-top:-80px;
+        padding-top:80px;
+        margin-top:-60px;
         border:none;
         position:relative;
         pointer-events: none;
@@ -184,7 +204,7 @@ h3 {
     h3#a1:before{
         content:"";
         position:absolute;
-        top:80px;
+        top:60px;
         left:0;
         width:100%;
         height:3px;
@@ -192,8 +212,6 @@ h3 {
         pointer-events: none;
     }
 }
-
-
 
 h2 {
     width: 100%;
@@ -287,26 +305,6 @@ aside a {
 
     aside.show{
         right: -30px;
-    }
-}
-
-.contentAD {
-    width: 100%;
-    margin: 0 auto 10px;
-    padding: 0 0 30px;
-    height: 100px;
-}
-
-@media (max-width:1024px) {
-
-    .contentAD {
-        display: none;
-        padding: 0 30px 30px;
-    }
-
-    .adsbygoogle.top {
-        width: 100%;
-        height: 280px;
     }
 }
 
@@ -467,4 +465,24 @@ a:hover {
     #menu {
         display: block;
     }
+}
+
+.ad-footer {
+    display: none;
+    position: fixed;
+    z-index: 10003;
+    background: #000;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 -4px 0 #000;
+}
+
+.ad-footer .adsbygoogle {
+    min-width: 300px;
+    max-width: 100%;
+    width: auto;
+    height: 50px;
+    margin: 0 auto;
 }

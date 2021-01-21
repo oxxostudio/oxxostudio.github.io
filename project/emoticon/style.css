@@ -216,7 +216,7 @@ h2 b {
 h3 {
     text-align: center;
     width: 100%;
-    margin: 0 0 0;
+    margin: 0;
     padding-top: 20px;
     font-size: 1.2rem;
     pointer-events: none;
@@ -415,10 +415,12 @@ h3+span{
 }
 
 .adsbygoogle.top {
+    width: 100%;
     height: 90px;
 }
 
 .adsbygoogle.in {
+    width: 100%;
     height: 280px;
 }
 
