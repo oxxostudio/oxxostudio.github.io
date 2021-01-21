@@ -216,10 +216,18 @@ h2 b {
 h3 {
     text-align: center;
     width: 100%;
-    margin: 0 0 20px;
+    margin: 0 0 0;
     padding-top: 20px;
     font-size: 1.2rem;
     pointer-events: none;
+}
+h3+span{
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    color:#888;
+    font-size:0.9rem;
+    margin:5px 0 15px;
 }
 
 @media (max-width:1024px) {
@@ -482,8 +490,8 @@ h3 {
     margin: 0 auto;
 }
 
-@media(max-width:800px) {
+/* @media(max-width:800px) {
     .ad-footer {
         display: block;
     }
-}
+} */
