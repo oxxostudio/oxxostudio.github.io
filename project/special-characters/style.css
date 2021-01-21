@@ -175,7 +175,7 @@ main {
 h3 {
     text-align: center;
     width: 100%;
-    margin: 0;
+    margin: 20px 0 0;
     padding-top: 20px;
     border-top: 3px solid #eee;
     font-size: 20px;
@@ -189,7 +189,7 @@ h3+span{
     width:100%;
     text-align:center;
     color:#888;
-    font-size:0.9rem;
+    font-size:1rem;
     margin:5px 0 15px;
 }
 
