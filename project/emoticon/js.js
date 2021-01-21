@@ -5,6 +5,7 @@
   const adFooter = document.querySelector(".ad-footer");
   const adIn = document.querySelectorAll(".ad-content.in")
   const main = document.querySelector("main");
+  const box = document.querySelectorAll('.box');
 
   menu.addEventListener("click", function () {
     menu.classList.toggle("open");
@@ -21,8 +22,6 @@
   document.addEventListener("scroll", ADStart);
   document.addEventListener("mousemove", ADStart);
   document.addEventListener("scroll", showAD);
-
-  copyToClipBoard(".copy");
 
   function copyToClipBoard(className) {
     new ClipboardJS(className, {
@@ -53,12 +52,18 @@
     });
   }
   function ADStart() {
-    ad.innerHTML = `<ins class="adsbygoogle" style="display: block; height: 600px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4731510363" data-full-width-responsive="true" data-ad-format="auto"></ins>`;
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    adFooter.innerHTML = `<ins class="adsbygoogle" style="display:block; height:50px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="6337054312"></ins>`;
-    (adsbygoogle = window.adsbygoogle || []).push({});
     document.removeEventListener("scroll", ADStart);
     document.removeEventListener("mousemove", ADStart);
+    box.forEach(e => {
+      e.innerHTML = e.innerHTML.replace(/<!--|-->/g,'');
+    });
+    copyToClipBoard(".copy");
+    if(window.innerWidth>800){
+      ad.innerHTML = `<ins class="adsbygoogle" style="display: block; height: 600px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4731510363" data-full-width-responsive="true" data-ad-format="auto"></ins>`;
+    }else{
+      adFooter.innerHTML = `<ins class="adsbygoogle" style="display:block; height:50px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="6337054312"></ins>`;
+    }
+    (adsbygoogle = window.adsbygoogle || []).push({});
   }
 
   function showAD() {
