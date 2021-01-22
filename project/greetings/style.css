@@ -365,6 +365,7 @@ footer a:hover {
   aside {
     width: 90%;
     height: 100vh;
+    max-height:100vh;
     padding: 20px;
     border: none;
     border-right: 2px solid #ccc;
