@@ -37,17 +37,21 @@ header h1 {
 
 .content {
   width: 100%;
+  max-width:1560px;
+  margin:0 auto;
 }
 
 aside {
   width: 200px;
   height: auto;
+  max-height:calc(100vh - 200px);
   padding: 20px;
   border: 1px solid #aaa;
   position: absolute;
   top: 20px;
   left: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
+  overflow-y: scroll;
 }
 
 aside h3 {
@@ -408,9 +412,6 @@ footer a:hover {
     margin: 15px 0;
     color: #fff;
     font-size:1.2rem;
-  }
-  .ad-footer{
-    display:block;
   }
 
   footer {
