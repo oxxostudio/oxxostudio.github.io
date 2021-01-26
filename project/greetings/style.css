@@ -44,14 +44,14 @@ header h1 {
 aside {
   width: 200px;
   height: auto;
-  max-height:calc(100vh - 200px);
+  max-height:calc(100vh - 150px);
   padding: 20px;
   border: 1px solid #aaa;
   position: absolute;
   top: 20px;
   left: 20px;
-  border-radius: 10px;
-  overflow-y: scroll;
+  border-radius: 3px;
+  overflow-y: auto;
 }
 
 aside h3 {
@@ -363,6 +363,9 @@ footer a:hover {
   }
 
   aside {
+    position: fixed;
+    top: 0;
+    left:auto;
     width: 90%;
     height: 100vh;
     max-height:100vh;
@@ -370,9 +373,6 @@ footer a:hover {
     border: none;
     border-right: 2px solid #ccc;
     box-shadow: #000 0 0 0;
-    position: fixed;
-    top: 0;
-    left:auto;
     right: -90%;
     border-radius: 0;
     background: #333;

@@ -11,6 +11,25 @@ const windowWidth = window.innerWidth;
 const asideX = aside.offsetLeft + content.offsetLeft;
 const adX = ad.offsetLeft + content.offsetLeft;
 
+const menuLink = [
+  ['新春/拜年吉祥話','new-year.html'],
+  ['牛年吉祥話/春聯','year-ox.html'],
+  ['生日祝福','birthday.html'],
+  ['情人節祝福','love.html'],
+  ['結婚賀詞','marry.html'],
+  ['聖誕祝福','xmas.html'],
+  ['早安祝福話','good-morning.html'],
+  ['晚安祝福話','good-night.html'],
+  ['收涎/抓周吉祥話','give-birth.html'],
+  ['喬遷/入厝賀詞','new-house.html'],
+  ['榮升/升官賀詞','work-raise.html'],
+  ['退休/榮退賀詞','work-retire.html']
+];
+
+menuLink.forEach(e => {
+  aside.innerHTML = aside.innerHTML + `<a href="${e[1]}">${e[0]}</a>`;
+});
+
 menu.addEventListener("click", menuClick);
 function menuClick() {
   gtag("event", "menu-click");
