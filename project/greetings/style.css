@@ -30,7 +30,7 @@ header {
   padding: 20px 0;
 }
 
-header h1 {
+header h1, header h1 span {
   font-size: 1.7rem;
   margin-bottom: 10px;
 }
@@ -45,7 +45,7 @@ aside {
   width: 200px;
   height: auto;
   max-height:calc(100vh - 150px);
-  padding: 20px;
+  padding: 20px 15px;
   border: 1px solid #aaa;
   position: absolute;
   top: 20px;
@@ -58,18 +58,39 @@ aside h3 {
   border-bottom: 2px solid #ddd;
   padding-bottom: 15px;
   margin-bottom: 15px;
-  text-align: center;
 }
 
 aside a {
   width: 100%;
   display: block;
   color: #05a;
-  text-align: center;
   cursor: pointer;
   text-decoration: none;
   transition: .3s;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  line-height: 1.1;
+  border-color:rgba(0,0,0,0);
+  border-style:solid;
+  border-width:1px;
+}
+
+aside a i{
+  font-size:12px;
+  color:#fff;
+  display:inline-block;
+  padding:1px 3px;
+  border-radius:5px;
+  line-height: 1;
+  top:-2px;
+  font-style: normal;
+  margin-left:5px;
+}
+aside a .new{
+  background:#f90;
+}
+aside a .hot{
+  padding:1px 5px;
+  background:#f00;
 }
 
 aside a:hover {
@@ -180,6 +201,34 @@ main ul li:after {
 main ul li:last-child:after {
   border-bottom: none;
 }
+
+main table{
+  width: calc(100% - 40px);
+  margin: 25px 18px;
+  border-collapse: collapse;
+}
+main table th{
+  font-weight:bold;
+  background:#ddd;
+}
+main table th, main table td{
+  text-align:left;
+  border: 1px solid #333;
+  padding:5px;
+  line-height: 1.5;
+}
+/* main table td:nth-child(1){
+  width:80%;
+} */
+
+@media(max-width:640px) {
+  main table{
+    width: calc(100% - 20px);
+    margin: 25px 0 25px 18px;
+    border-collapse: collapse;
+  }
+}
+
 
 .ad {
   width: 300px;
@@ -355,6 +404,10 @@ footer a:hover {
   header h1 {
     margin-bottom: 0;
     font-size: 1.3rem;
+  }  
+  
+  header h1 span{
+    display:none;
   }
 
   h2 {
