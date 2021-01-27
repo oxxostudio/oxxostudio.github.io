@@ -45,7 +45,7 @@ aside {
   width: 200px;
   height: auto;
   max-height:calc(100vh - 150px);
-  padding: 20px 15px;
+  padding: 15px 12px;
   border: 1px solid #aaa;
   position: absolute;
   top: 20px;
@@ -56,8 +56,8 @@ aside {
 
 aside h3 {
   border-bottom: 2px solid #ddd;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 aside a {
@@ -72,6 +72,7 @@ aside a {
   border-color:rgba(0,0,0,0);
   border-style:solid;
   border-width:1px;
+  font-size:15px;
 }
 
 aside a i{
@@ -99,6 +100,16 @@ aside a:hover {
 
 aside.fixed {
   position: fixed;
+  max-height:calc(100vh - 50px);
+}
+
+aside::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f1f1f1;
+}
+
+aside::-webkit-scrollbar-thumb {
+  background-color: #e1e1e1;
 }
 
 main {
@@ -204,12 +215,12 @@ main ul li:last-child:after {
 
 main table{
   width: calc(100% - 40px);
-  margin: 25px 18px;
+  margin: 20px 18px;
   border-collapse: collapse;
 }
 main table th{
   font-weight:bold;
-  background:#ddd;
+  background:#cde;
 }
 main table th, main table td{
   text-align:left;
