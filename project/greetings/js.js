@@ -70,10 +70,17 @@ document.addEventListener("copy", function (e) {
   const copyContent = selection.toString();
   const copyLength = copyContent.toString().length;
   if (copyLength > 20) {
-    encodeURIComponent.clipboardData.setData(
-      "text/plain",
-      `${copyContent} ( 原文出處：${site} )`
-    );
+    if(copyLength > 120){
+      e.clipboardData.setData(
+        "text/plain",
+        `${copyContent.slice(0,120)} ( ${site} )`
+      );
+    }else{
+      e.clipboardData.setData(
+        "text/plain",
+        `${copyContent} ( ${site} )`
+      );
+    }
     e.preventDefault();
   }
   gtag("event", "copy", {
