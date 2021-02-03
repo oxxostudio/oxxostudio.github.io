@@ -186,7 +186,7 @@
     .orient("left")
     .ticks(10);
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201411/20141113_1_03.png" alt="SVG D3 - 座標軸 ( Axis )"></p>
-<p>不過只有修改標籤位置還是不構，接著要利用 transform 修改 g 的位置參數 ( 不知道 SVG transform 的請參考 <a href="http://www.oxxostudio.tw/articles/201409/svg-19-transform.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (19) - transform 基礎篇</a> )，同時設定一下 fill 與 stroke 的屬性，看起來就真有座標軸的樣子。( 範例：<a href="/demo/201411/svg-d3-04-axis-demo2.html" rel="noreferrer noopener" target="_blank">svg-d3-04-axis-demo2.html</a> )</p>
+<p>不過只有修改標籤位置還是不構，接著要利用 transform 修改 g 的位置參數 ( 不知道 SVG transform 的請參考 <a href="https://www.oxxostudio.tw/articles/201409/svg-19-transform.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (19) - transform 基礎篇</a> )，同時設定一下 fill 與 stroke 的屬性，看起來就真有座標軸的樣子。( 範例：<a href="/demo/201411/svg-d3-04-axis-demo2.html" rel="noreferrer noopener" target="_blank">svg-d3-04-axis-demo2.html</a> )</p>
 <pre class="prettyprint"><code>  s.append('path')
     .attr({
       'd': line(data),

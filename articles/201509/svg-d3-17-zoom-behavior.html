@@ -97,7 +97,7 @@
 <p><img src="/img/articles/201509/svg-d3-17-zoom-behavior.jpg" class="preview-img" alt=""> </p>
 <p>上一篇我們提到了「拖拉行為 Drag Behavior」，但在視覺化圖表的世界裡，如果只有拖拉好像還是不夠的，因此 d3.js 也很貼心的設計了「縮放行為」( Zoom Behavior )，讓我們可以透過例如滑鼠滾輪滾動或手指的手勢，就可以進行圖表的縮放，這篇也將要來探討是如何實作的，畢竟縮放的效果在 web 領域是比較少見也比較不容易實做，而 d3.js 與 svg 的結合，讓這個效果可以輕鬆愜意的展現。</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html" rel="noreferrer noopener" target="_blank">拖拉行為 Drag Behavior</a></p>
+<p>參考：<a href="https://www.oxxostudio.tw/articles/201509/svg-d3-16-drag-behavior.html" rel="noreferrer noopener" target="_blank">拖拉行為 Drag Behavior</a></p>
 </blockquote>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>zoom 的用法和 drag 滿類似的，都是一開始要先用<code>d3.behavior.zoom();</code>宣告行為，然後再使用<code>call</code>來呼叫，不過 zoom 相對又稍微複雜了些，因為又多了一些參數需要設定，讓我們先來看一下它提供了哪些 api：</p>
 <blockquote>
@@ -114,7 +114,7 @@
 </blockquote>
 <p><br></p>
 <p>雖然都列出來，不過預設值為 null 的 center、x 和 y 看了許多範例也沒有看到相關的用法，難怪會預設為 null 了，可能之後做得比較複雜會用到也不一定，所以這三個就不在這篇介紹，這篇主要來介紹「基本的縮放」、「點選放大」以及「reset 回原本尺寸」的實作。</p>
-<p>首先我們先用 d3.js 來放入 svg，設定長寬，並給予一個邊框。( 如果不知道怎麼使用的，可以參考我之前的<a href="http://www.oxxostudio.tw/list.html" rel="noreferrer noopener" target="_blank">文章</a>，在標題搜尋輸入「d3」 )</p>
+<p>首先我們先用 d3.js 來放入 svg，設定長寬，並給予一個邊框。( 如果不知道怎麼使用的，可以參考我之前的<a href="https://www.oxxostudio.tw/list.html" rel="noreferrer noopener" target="_blank">文章</a>，在標題搜尋輸入「d3」 )</p>
 <pre class="prettyprint"><code>var w = 800;
 var h = 400;
 
@@ -211,7 +211,7 @@ var svg = d3.select('body')
 })
 .call(zoom);
 </code></pre><p><br></p>
-<p>接著，我在畫面裡頭放上一個 id 為 reset 的按鈕，目的在於點選這個按鈕的時候，不論今天我把畫面縮放到如何，都會恢復為預設的大小和位置，當然因為是按鈕，會有「click」事件，直接用 d3.js 提供的 on api 就可以，不過如果只有恢復原本的大小，畫面就會是跳動的，不會有中間的補間動畫，因此這裡我利用之前提過的「<a href="http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html" rel="noreferrer noopener" target="_blank">tween</a>」，來加入補間動畫，由於要從現在縮放的大小跑到預設值，就必須要用到一開始的全域變數 s、x 和 y，最後呼叫<code>zoom.event</code>，就可以很流暢的恢復到原本的大小。</p>
+<p>接著，我在畫面裡頭放上一個 id 為 reset 的按鈕，目的在於點選這個按鈕的時候，不論今天我把畫面縮放到如何，都會恢復為預設的大小和位置，當然因為是按鈕，會有「click」事件，直接用 d3.js 提供的 on api 就可以，不過如果只有恢復原本的大小，畫面就會是跳動的，不會有中間的補間動畫，因此這裡我利用之前提過的「<a href="https://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html" rel="noreferrer noopener" target="_blank">tween</a>」，來加入補間動畫，由於要從現在縮放的大小跑到預設值，就必須要用到一開始的全域變數 s、x 和 y，最後呼叫<code>zoom.event</code>，就可以很流暢的恢復到原本的大小。</p>
 <pre class="prettyprint"><code>d3.select('#reset').on('click',function(){
   d3.transition().duration(250).tween("zoom", function() {
     var si = d3.interpolate(s, 1);

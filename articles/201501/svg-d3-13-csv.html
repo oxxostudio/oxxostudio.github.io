@@ -115,13 +115,13 @@ male,Peter,86
 <p>打開開關就會變成綠色的，這時候就是把瀏覽器的安全性關閉，可以跨域了。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201501/20150113_1_04.jpg" alt="CSV 數據處理"></p>
 <p>可以跨域之後，我們就可以拿這個 CSV 格式的檔案 ( <a href="/demo/201501/svg-d3-13-csv.csv" rel="noreferrer noopener" target="_blank">svg-d3-13-csv.csv</a> ) 來練習，首先我們要先把這個 CSV 載入，然後用 console 就看看載入的數據，會發現載入的數據經過 d3.js 的處理，已經變成了 JSON 的格式了。( 範例：<a href="/demo/201501/svg-d3-13-csv-demo1.html" rel="noreferrer noopener" target="_blank">svg-d3-13-csv-demo1.html</a>，如果 console 出現<code>No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.</code>就是沒有跨域，跨域成功就會出現以下數據 )</p>
-<pre class="prettyprint"><code>d3.csv("http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.csv", function(data) {
+<pre class="prettyprint"><code>d3.csv("https://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.csv", function(data) {
     console.log(data);
 });
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201501/20150113_1_05.jpg" alt="CSV 數據處理"></p>
 <h2>使用 d3.js 讀取 CSV</h2> 
 <p>然而 d3.js 的 CSV 也具有像 ajax 一樣的 callback 機制，裏頭也具有 error 和 success 的方法，要測試 error 的話可以把跨域關起來，就會看到 console 出現 oh no 的字樣，範例裏頭將 CSV 的資料指定給另外一個陣列變成另外一個 JSON 資料，同時將分數的部分由字串轉換為數字。( 範例：<a href="/demo/201501/svg-d3-13-csv-demo2.html" rel="noreferrer noopener" target="_blank">svg-d3-13-csv-demo2.html</a>)</p>
-<pre class="prettyprint"><code>d3.csv("http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.csv", function(d) {
+<pre class="prettyprint"><code>d3.csv("https://www.oxxostudio.tw/articles/201501/svg-d3-13-csv.csv", function(d) {
   return {
     '性別': d.sex,
     '姓名': d.name,
@@ -141,7 +141,7 @@ male,Peter,86
 name,Jean,score,78,sex,female
 name,Owen,score,92,sex,male
 </code></pre><p>針對這類型的數據，d3.js 提供了我們<code>d3.csv.parseRows(string[, accessor])</code>的方法來處理，下面的範例是利用 d3.text 將載入的 CSV 變成了字串的形式，接著利用<code>d3.csv.parseRows</code>把每一列變成物件，接著再利用<code>d3.map</code>把數據變成我們理想中的格式。( 範例：<a href="/demo/201501/svg-d3-13-csv-demo3.html" rel="noreferrer noopener" target="_blank">svg-d3-13-csv-demo3.html</a>)</p>
-<pre class="prettyprint"><code>d3.text("http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv2.csv", function(data) {
+<pre class="prettyprint"><code>d3.text("https://www.oxxostudio.tw/articles/201501/svg-d3-13-csv2.csv", function(data) {
   console.log(data);
   var parsedCSV = d3.csv.parseRows(data);
   console.log(parsedCSV);
@@ -177,7 +177,7 @@ console.log(d3.csv.formatRows([
 //Jean,78,female
 //Owen,92,male
 </code></pre><p>知道用法之後，如果剛剛 d3.text 不明白的，就可以用 d3.csv.format 來轉換，結果會是一樣的。( 範例：<a href="/demo/201501/svg-d3-13-csv-demo5.html" rel="noreferrer noopener" target="_blank">svg-d3-13-csv-demo5.html</a>)</p>
-<pre class="prettyprint"><code>d3.csv("http://www.oxxostudio.tw/articles/201501/svg-d3-13-csv2.csv", function(data) {
+<pre class="prettyprint"><code>d3.csv("https://www.oxxostudio.tw/articles/201501/svg-d3-13-csv2.csv", function(data) {
   var f = d3.csv.format(data);
   console.log(f);
   var parsedCSV = d3.csv.parseRows(f);

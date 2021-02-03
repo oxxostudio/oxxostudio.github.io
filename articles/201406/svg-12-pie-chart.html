@@ -96,7 +96,7 @@
 <h1>SVG 研究之路 (12) - pie chart 圓餅圖實作</h1> 
 <p>在之前我所撰寫的 SVG path 的文章當中，詳細介紹了關於 path 的 A 參數用法，回想一下，A 參數是拿來繪製弧形，因此這篇就藉由 A 參數的精妙之處，來繪製圓餅圖；什麼是圓餅圖呢？圓餅圖 ( pie chart ) 是在各式各樣的圖表中，常見且最基本的圖表類型，雖然我們常常使用 Excel 等試算表工具來繪製，但往往在轉成網頁的時候，就必須轉換成圖檔，無法動態的產生圓餅圖，不過在瀏覽器進步的今天，我們就可以藉由程式來繪製出相當精緻的圖表。</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-05-path-2.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (5) - Path 進階篇</a></p>
+<p>參考：<a href="https://www.oxxostudio.tw/articles/201406/svg-05-path-2.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (5) - Path 進階篇</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block; height:90px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>繪製幾分之幾的圓形</h2> 
 <p>要繪製圓餅圖的第一步，我們先來使用 SVG path 的 A 參數繪製一個四分之一圓    ，四分之一圓的原理很簡單，就是將 A 參數的兩軸設為相等 ( 也就是圓形 )，接著只要知道頂點和側邊頂點的座標，就能夠畫出四分之一圓。  </p>

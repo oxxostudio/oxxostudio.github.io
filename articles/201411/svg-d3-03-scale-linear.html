@@ -208,7 +208,7 @@
       return scaleY(d.y);
     });
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201411/20141112_1_09.png" alt="SVG D3 - 定義比例 ( scale.linear() )"></p>
-<p>從上面的例子可以看出 scale 其實相當的好用，利用 range 與 domain 的搭配，就可以讓圖形在指定的範圍內顯示，但如果每次都要手動計算 domain 的數值大小其實有點麻煩，這時候就可以使用 D3.js 的 <strong>min</strong> 與 <strong>max</strong> 功能 ( 回想一下，在 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html" rel="noreferrer noopener" target="_blank">SVG D3 - 淺談 D3.js 的資料處理</a> 有介紹過 )，就可以讓 D3.js 自動去抓取陣列裏頭的最大值和最小值，此外，在 range 的設定，如果把 [0,height] 改為 [height,0]，折線圖就會上下顛倒，畢竟 SVG 的座標系統是越往下數值越大，反過來才比較直覺。  ( 範例：<a href="/demo/201411/svg-d3-03-scale-linear-demo5.html" rel="noreferrer noopener" target="_blank">svg-d3-03-scale-linear-demo5.html</a> )</p>
+<p>從上面的例子可以看出 scale 其實相當的好用，利用 range 與 domain 的搭配，就可以讓圖形在指定的範圍內顯示，但如果每次都要手動計算 domain 的數值大小其實有點麻煩，這時候就可以使用 D3.js 的 <strong>min</strong> 與 <strong>max</strong> 功能 ( 回想一下，在 <a href="https://www.oxxostudio.tw/articles/201411/svg-d3-01-data.html" rel="noreferrer noopener" target="_blank">SVG D3 - 淺談 D3.js 的資料處理</a> 有介紹過 )，就可以讓 D3.js 自動去抓取陣列裏頭的最大值和最小值，此外，在 range 的設定，如果把 [0,height] 改為 [height,0]，折線圖就會上下顛倒，畢竟 SVG 的座標系統是越往下數值越大，反過來才比較直覺。  ( 範例：<a href="/demo/201411/svg-d3-03-scale-linear-demo5.html" rel="noreferrer noopener" target="_blank">svg-d3-03-scale-linear-demo5.html</a> )</p>
 <pre class="prettyprint"><code>  var data = [
   {x:0, y:1.89}, 
   {x:1, y:2.77}, 
@@ -384,7 +384,7 @@ console.log(
     });
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201411/20141112_1_17.png" alt="SVG D3 - 定義比例 ( scale.linear() )"></p>
 <h2>linear.interpolate([factory])</h2> 
-<p>還記得在 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" rel="noreferrer noopener" target="_blank">SVG D3 - 繪製線段</a> 有提過 .interpolate() ，在 linear.interpolate 其實和之前提過的不太一樣，主要是內容的 factory 是使用以下的 API 進行 ( <a href="https://github.com/mbostock/d3/wiki/API-Reference" rel="noreferrer noopener" target="_blank">參考 D3 API Reference</a> )，詳細的用法之後用到了再進行介紹 。</p>
+<p>還記得在 <a href="https://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" rel="noreferrer noopener" target="_blank">SVG D3 - 繪製線段</a> 有提過 .interpolate() ，在 linear.interpolate 其實和之前提過的不太一樣，主要是內容的 factory 是使用以下的 API 進行 ( <a href="https://github.com/mbostock/d3/wiki/API-Reference" rel="noreferrer noopener" target="_blank">參考 D3 API Reference</a> )，詳細的用法之後用到了再進行介紹 。</p>
 <ul>
 <li>d3.interpolateNumber</li>
 <li>d3.interpolateRound</li>

@@ -97,7 +97,7 @@
 <p><img src="/img/articles/201509/svg-d3-15-transition-tween.gif" class="preview-img" alt=""> </p>
 <p>之前有介紹過「d3.js 基本的 transition」( 好像是一月份的事情了，真是好久以前啦... )，這篇要來談談比較難的 tween ( 補間動畫 )，在之前的 transition 都是使用 d3.js 預設的補間動畫，而 tween 可以透過一個函式，指定中間過場的行為，這個方式其實很好用，因為我們除了基本的長、寬、位置、顏色，更可以做出文字、數字...等電腦不知道如何做補間動作的效果 ( 例如 1~10 的數字變換 )，而 tween 通常會搭配 interpolate 一起服用，所以這篇就一起來介紹。</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html" rel="noreferrer noopener" target="_blank">d3.js 基本的 transition</a></p>
+<p>參考：<a href="https://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html" rel="noreferrer noopener" target="_blank">d3.js 基本的 transition</a></p>
 </blockquote>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>tween 的用法其實滿容易的，就是<code>tween(name,factory)</code>，當中的 name 是我們自訂這個補間動畫的名稱，不過這個 name 實際上沒有太大的用處，彷彿是識別用的 ( 可以參考 stackoverflow 的<a href="http://stackoverflow.com/questions/25002417/d3-use-of-the-name-argument-in-transition-tween" rel="noreferrer noopener" target="_blank">這篇</a>，也是有人對這個 name 有同樣的困惑 )，至於第二個參數 factory 就十分重要了，裏頭主要會放上我們需要進行補間動畫的程式，以下面的這個例子來看，透過<code>interpolateRound</code>，可以計算 0 到 100 之間的補間數字，然後再透過 tween 本身的 return，就可以非常簡單的做出一個 0 到 100 跳動的效果。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo1.html" rel="noreferrer noopener" target="_blank">svg-d3-15-transition-tween-demo1.html</a> ) </p>
 <pre class="prettyprint"><code>var show = d3.select('#show');
@@ -120,7 +120,7 @@ show.transition()
   };
 });
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201509/20150912_1_02.gif" alt="SVG D3.js - transition ( tween、interpolate )"></p>
-<p>比較清楚 tween 在幹嘛之後，接著要先來看一下 interpolate 的用法，畢竟 tween 的精髓還是在 interpolate，其實在之前已經有出現過 interpolate ( <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 繪製線段</a> )，是幫我們自動去計算線段之間的插值，而 interpolate 主要有以下這幾種：</p>
+<p>比較清楚 tween 在幹嘛之後，接著要先來看一下 interpolate 的用法，畢竟 tween 的精髓還是在 interpolate，其實在之前已經有出現過 interpolate ( <a href="https://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 繪製線段</a> )，是幫我們自動去計算線段之間的插值，而 interpolate 主要有以下這幾種：</p>
 <ul>
 <li><p><strong>d3.interpolate(a, b)</strong></p>
 <p>回傳一個 a 到 b 之間的 ( 插 ) 值，會根據 a 和 b 的型別或屬性去做自動判斷，如果是顏色，則會回傳顏色的值，如果是數字，則會回傳數字的值，舉例來說，我們可以算出 0 到 200 之間從 0 數過來 30% 的數字，也可以換成顏色紅到青之間從紅色算過來 30% 的顏色是什麼，只要使用 d3.interpolate 就很容易搞定。( 範例：<a href="/demo/201509/svg-d3-15-transition-tween-demo3.html" rel="noreferrer noopener" target="_blank">svg-d3-15-transition-tween-demo3.html</a> )</p>

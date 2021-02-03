@@ -96,7 +96,7 @@
 <h1>SVG D3.js - 直條圖 ( Bar Chart )</h1> 
 <p>在之前一系列的 d3.js 介紹之後，終於要來發揮 d3.js 的強項「畫圖表」了 ( 其實之前已經有畫過折線圖了，這篇要來繪製的圖表是「長條圖 bar chart」，長條圖大概也是最簡單的圖表了，雖然可以直接用 CSS 和 div 來做，不過為了之後更複雜的圖表設計，這裏就直接用 SVG 進行。</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 區域 ( area )</a> )</p>
+<p>參考：<a href="https://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 區域 ( area )</a> )</p>
 </blockquote>
 <div id="google-adsense-content" style="margin-bottom:30px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5895423206" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><p>一開始先熟悉一下長條圖的畫法，用一個簡單的資料數據來畫，這裏的數據我用 random 的方式產生，接著在畫面中用 d3.js 放入一個 SVG，接著利用 data 產生對應的矩形，矩形的位置和寬度，就根據數據的數值自動產生 (<code>data(data</code>和<code>enter()</code>)，很簡單的就可以完成一個 SVG 的長條圖。( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo01.html" rel="noreferrer noopener" target="_blank">svg-d3-19-bar-chart-demo01.html</a> )</p>
 <pre class="prettyprint"><code>var data=[
@@ -148,7 +148,7 @@ s.selectAll('rect')
   }
  });
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201509/20150919_1_03.jpg" alt="SVG D3.js - 直條圖 ( Bar Chart )"></p>
-<p>如果今天要在長條圖加上動畫也是很容易的，這裏我們要用到 transition 來讓長條圖可以用動畫的方式變長，而數字的增加可以搭配 tween 來做增加的效果，如果不會的可以參考我之前寫的這兩篇文章：<a href="http://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html" rel="noreferrer noopener" target="_blank">SVG D3.js - transition 基本篇</a> 和     <a href="http://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html" rel="noreferrer noopener" target="_blank">SVG D3.js - transition ( tween、interpolate )</a>，不過因為要進行漸變的動畫，所以一開始我都先把寬度和數值都設為 0，漸變的時間用 duration 設為 1500 毫秒。( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo03.html" rel="noreferrer noopener" target="_blank">svg-d3-19-bar-chart-demo03.html</a> )</p>
+<p>如果今天要在長條圖加上動畫也是很容易的，這裏我們要用到 transition 來讓長條圖可以用動畫的方式變長，而數字的增加可以搭配 tween 來做增加的效果，如果不會的可以參考我之前寫的這兩篇文章：<a href="https://www.oxxostudio.tw/articles/201501/svg-d3-14-transition-1.html" rel="noreferrer noopener" target="_blank">SVG D3.js - transition 基本篇</a> 和     <a href="https://www.oxxostudio.tw/articles/201509/svg-d3-15-transition-tween.html" rel="noreferrer noopener" target="_blank">SVG D3.js - transition ( tween、interpolate )</a>，不過因為要進行漸變的動畫，所以一開始我都先把寬度和數值都設為 0，漸變的時間用 duration 設為 1500 毫秒。( 範例：<a href="/demo/201509/svg-d3-19-bar-chart-demo03.html" rel="noreferrer noopener" target="_blank">svg-d3-19-bar-chart-demo03.html</a> )</p>
 <pre class="prettyprint"><code>s.selectAll('rect')
  .data(data)
  .enter()

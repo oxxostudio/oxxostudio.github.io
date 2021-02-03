@@ -173,7 +173,7 @@
       .y1(function(d) { return d.y1; });
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201411/20141116_1_04.png" alt="SVG D3 - 區域 ( area )"></p>
 <h2>area.interpolate([interpolate])、area.tension([tension])</h2> 
-<p>這兩個 API 和 line() 的用法其實一模一樣，可以參考 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" rel="noreferrer noopener" target="_blank">SVG D3 - 繪製線段</a>，這兩者的目的在於根據我們的數據，描繪出有 B-spline 或 Cardinal spline  或 cubic interpolation 的邊緣線段，這裡我們拿剛剛範例 1 來做比較，實驗組套用了<code>.interpolate('bundle')</code>。( <a href="/demo/201411/svg-d3-05-area-demo4.html" rel="noreferrer noopener" target="_blank">svg-d3-05-area-demo4.html</a> )</p>
+<p>這兩個 API 和 line() 的用法其實一模一樣，可以參考 <a href="https://www.oxxostudio.tw/articles/201411/svg-d3-02-line.html" rel="noreferrer noopener" target="_blank">SVG D3 - 繪製線段</a>，這兩者的目的在於根據我們的數據，描繪出有 B-spline 或 Cardinal spline  或 cubic interpolation 的邊緣線段，這裡我們拿剛剛範例 1 來做比較，實驗組套用了<code>.interpolate('bundle')</code>。( <a href="/demo/201411/svg-d3-05-area-demo4.html" rel="noreferrer noopener" target="_blank">svg-d3-05-area-demo4.html</a> )</p>
 <pre class="prettyprint"><code> //對照組
   var area1 = d3.svg.area()
       .x(function(d) { return d.x; })
@@ -218,7 +218,7 @@
       .defined(function(d) { return d.x%3 != 0; });
 </code></pre><p><img class="lazy" height="1" width="1" data-src="/img/articles/201411/20141116_1_06.png" alt="SVG D3 - 區域 ( area )">    </p>
 <h2>製作圖表</h2> 
-<p>理解了 area 的用法之後，現在要來把之前的 line()、scale()、Axis() 和 area() 全部結合在一起，做一個票漂亮亮的圖表，第一步，直接參考上一篇的 <a href="http://www.oxxostudio.tw/demo/201411/svg-d3-04-axis-demo5.html" rel="noreferrer noopener" target="_blank">範例</a> 拿來用，然後我們直接多新增 area 進去，就可以做出具有區域的折線圖表，程式碼有點多，不過都是之前介紹過的，所以直接點開範例看看吧。( <a href="/demo/201411/svg-d3-05-area-demo6.html" rel="noreferrer noopener" target="_blank">svg-d3-05-area-demo6.html</a> )</p>
+<p>理解了 area 的用法之後，現在要來把之前的 line()、scale()、Axis() 和 area() 全部結合在一起，做一個票漂亮亮的圖表，第一步，直接參考上一篇的 <a href="https://www.oxxostudio.tw/demo/201411/svg-d3-04-axis-demo5.html" rel="noreferrer noopener" target="_blank">範例</a> 拿來用，然後我們直接多新增 area 進去，就可以做出具有區域的折線圖表，程式碼有點多，不過都是之前介紹過的，所以直接點開範例看看吧。( <a href="/demo/201411/svg-d3-05-area-demo6.html" rel="noreferrer noopener" target="_blank">svg-d3-05-area-demo6.html</a> )</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201411/20141116_1_07.png" alt="SVG D3 - 區域 ( area )">    </p>
 <p>只有一個折線圖不稀奇，可以放超過一個折線圖，看起來整個圖表的樣貌就更為完善囉！( <a href="/demo/201411/svg-d3-05-area-demo7.html" rel="noreferrer noopener" target="_blank">svg-d3-05-area-demo7.html</a> )</p>
 <p>資料長這樣：</p>

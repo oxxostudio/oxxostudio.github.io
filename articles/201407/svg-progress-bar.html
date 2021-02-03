@@ -107,7 +107,7 @@
 </svg>
 </div>
 
-<p>首先看到 SVG 的結構，第一個 SVG 名為 loading-bg-red ，內容的 Circle 是背景的大圈圈，因此它的背景是半透明的<code>rgba(255,100,120,.2)</code>,因為我是使用虛線的外框 ( stroke )，至於為什麼<code>stroke-width</code>設為 0 呢？因為一開始是沒有大圈圈的，所以設為 0，再使用 CSS 進行漸變，再來看到第二個 SVG，就是內容旋轉的進度條，最重要的是<code>stroke-dasharray</code>和<code>stroke-dashoffset</code>兩個屬性，主要掌管了這個虛線的長度以及虛線要跑去哪裡。 ( 可以參考我之前的 <a href="http://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (6) - stroke 邊框</a> )</p>
+<p>首先看到 SVG 的結構，第一個 SVG 名為 loading-bg-red ，內容的 Circle 是背景的大圈圈，因此它的背景是半透明的<code>rgba(255,100,120,.2)</code>,因為我是使用虛線的外框 ( stroke )，至於為什麼<code>stroke-width</code>設為 0 呢？因為一開始是沒有大圈圈的，所以設為 0，再使用 CSS 進行漸變，再來看到第二個 SVG，就是內容旋轉的進度條，最重要的是<code>stroke-dasharray</code>和<code>stroke-dashoffset</code>兩個屬性，主要掌管了這個虛線的長度以及虛線要跑去哪裡。 ( 可以參考我之前的 <a href="https://www.oxxostudio.tw/articles/201406/svg-06-stroke.html" rel="noreferrer noopener" target="_blank">SVG 研究之路 (6) - stroke 邊框</a> )</p>
 <pre class="prettyprint"><code>&lt;svg class="loading-bg-red" width="100" height="100" x="0" y="0" style="position:absolute; top:0; left:0;"&gt;
     &lt;circle cx="50" cy="50" r="25" stroke="rgba(255,100,120,.2)" stroke-width="0" fill="none" stroke-dasharray="156,156" stroke-dashoffset="0" stroke-linecap="round"&gt;&lt;/circle&gt;
 &lt;/svg&gt;

@@ -101,7 +101,7 @@
 <p>取得使用者所在的經緯度除了可以使用 Google Maps 的 Geolocation API
 ，也可以透過網頁瀏覽器來實現，這篇文章將會介紹兩種取得所在位置經緯度的方法，接著使用地圖標記 Marker 標示在地圖上。</p>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block; height:90px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Geolocation API</h2> 
-<p>前往 <a href="https://console.developers.google.com/project/_/apiui/apis/enabled?hl=zh-tw" rel="noreferrer noopener" target="_blank">Google Cloud Platform Console</a>，建立新的專案或是選擇現有的專案 ( 不知道怎麼做可以參考 <a href="http://www.oxxostudio.tw/articles/201707/google-maps-1.html" rel="noreferrer noopener" target="_blank">Google Maps API - 網頁載入地圖 ( 起手式 )</a> )，接著點選上方「<em>啟用 API 和服務</em>」，在搜尋欄位搜尋「<em>Directions API</em>」，找到後點選並且啟用。</p>
+<p>前往 <a href="https://console.developers.google.com/project/_/apiui/apis/enabled?hl=zh-tw" rel="noreferrer noopener" target="_blank">Google Cloud Platform Console</a>，建立新的專案或是選擇現有的專案 ( 不知道怎麼做可以參考 <a href="https://www.oxxostudio.tw/articles/201707/google-maps-1.html" rel="noreferrer noopener" target="_blank">Google Maps API - 網頁載入地圖 ( 起手式 )</a> )，接著點選上方「<em>啟用 API 和服務</em>」，在搜尋欄位搜尋「<em>Directions API</em>」，找到後點選並且啟用。</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201810/google-maps-20-get-current-position-01.jpg" alt="Google Maps API - 取得目前經緯度並標記"></p>
 <p>接著我們簡單寫個 JavaScript，利用<code>XMLHttpRequest</code>的方法呼叫 Geolocation API，就能從 console 裡得到準確度 accuracy ( 公尺 ) 和經緯度資訊。( 至於準不準，看到文章最後你就知道了 )</p>
 <blockquote>

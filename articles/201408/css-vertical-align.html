@@ -97,7 +97,7 @@
 <p><img src="/img/articles/201408/css-vertical-align.jpg" class="preview-img" alt=""></p>
 <p>我們在編輯一個版面，通常都會用到水平置中和垂直置中來設計，而水平置中很好處理，不外乎就是設定<code>margin:0 auto;</code>或是<code>text-align:center;</code>,就可以輕鬆解決掉水平置中的問題，但一直以來最麻煩對齊問題，都是「垂直置中」這個討人厭的設定，以下將介紹三種單純利用 CSS 垂直置中的方式：「設定行高」、「添加偽元素」、「calc 動態計算」，其實一點也不難 ( 當然跟水平置中比起來難了一點 )，只需要觀念正確就可以解決。</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html" rel="noreferrer noopener" target="_blank"> CSS 垂直置中的七個方法</a></p>
+<p>參考：<a href="https://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html" rel="noreferrer noopener" target="_blank"> CSS 垂直置中的七個方法</a></p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block; height:90px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>設定行高 ( line-height )</h2> 
 <p>設定行高是垂直置中最簡單的方式，適用於「單行」的「行內元素」 ( inline、inline-block )，例如單行的標題，或是已經設為 inline-block 屬性的 div，若將 line-height 設成和高度一樣的數值，則內容的行內元素就會被垂直置中，<strong>因為是行高，所以會在行內元素的上下都加上行高的 1/2</strong>，所以就垂直置中了！不過由此就可以看出，為什麼必須要單行的行內元素，因為<strong>如果多行，第二行與第一行的間距會變超大</strong>，就不是我們所期望的效果了。
@@ -196,7 +196,7 @@
   float:left;
   top:calc(50% - 20px);
 }
-</code></pre><p>以上就是三種垂直置中的方法，沒有想像的困難，但往往在需要的時候都會忘記，做個筆記也分享一下。( 新增文章參考：<a href="http://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html" rel="noreferrer noopener" target="_blank"> CSS 垂直置中的七個方法</a> )</p>
+</code></pre><p>以上就是三種垂直置中的方法，沒有想像的困難，但往往在需要的時候都會忘記，做個筆記也分享一下。( 新增文章參考：<a href="https://www.oxxostudio.tw/articles/201502/css-vertical-align-7methods.html" rel="noreferrer noopener" target="_blank"> CSS 垂直置中的七個方法</a> )</p>
 
 
       <div class="social-icon">

@@ -97,7 +97,7 @@
 <p><img src="/img/articles/201412/svg-d3-08-ordinal.jpg" class="preview-img" alt=""></p>
 <p>之前我在「SVG D3.js - 定義比例 ( scale.linear() )」有介紹過比例尺的用法，當中有提到 ordinal，ordinal 與 linear 最大的差別，可以不一定要使用數字，可以使用非定量的值作為比例尺 ( 序數：非定量的值依序排列 )，因為可以使用非數字的值，畫出來的座標，也就更能朝理想的座標長相邁進了。</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 定義比例 ( scale.linear() )</a></p>
+<p>參考：<a href="https://www.oxxostudio.tw/articles/201411/svg-d3-03-scale-linear.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 定義比例 ( scale.linear() )</a></p>
 </blockquote>
 <p>其實 ordinal 的用法和 linear 的用法幾乎一模一樣，不過仍然先來看一下 ordinal 有哪些 API ，然後再介紹一下吧！</p>
 <blockquote>
@@ -138,7 +138,7 @@ s.attr({
 </code></pre><div id="google-adsense-content"><ins class="adsbygoogle" style="display:block; height:90px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>ordinal.domain([values])</h2> 
 <p>ordinal 的 domain 內所帶入的值，與 linear 有所不同，linear 帶入的是一個數字範圍，而 ordinal.domain 內所帶入的是一串陣列值，陣列的第一個值會對應到第一個元素的的輸出範圍，第二個則會對應到第二個範圍，依此類推。</p>
 <h2>ordinal.range([values])</h2> 
-<p>在 ordinal.range 裏頭同樣是帶入陣列，換句話說，domain 有幾個，範圍也要有幾個，這裡與 linear 是不太相同的，如果照著 linear 的設定方式，出來的結果可能就會出乎意料，範例裏頭藍色的線就是按照 linear 的 range 設定，整個就是非常的詭異呀！範例的 domain 使用之前介紹過的 <a href="http://www.oxxostudio.tw/articles/201412/svg-d3-07-data-map.html" rel="noreferrer noopener" target="_blank">d3.map</a>，很容易的產生一個陣列放進去。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo1.html" rel="noreferrer noopener" target="_blank">svg-d3-08-ordinal-demo1.html</a> )</p>
+<p>在 ordinal.range 裏頭同樣是帶入陣列，換句話說，domain 有幾個，範圍也要有幾個，這裡與 linear 是不太相同的，如果照著 linear 的設定方式，出來的結果可能就會出乎意料，範例裏頭藍色的線就是按照 linear 的 range 設定，整個就是非常的詭異呀！範例的 domain 使用之前介紹過的 <a href="https://www.oxxostudio.tw/articles/201412/svg-d3-07-data-map.html" rel="noreferrer noopener" target="_blank">d3.map</a>，很容易的產生一個陣列放進去。( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo1.html" rel="noreferrer noopener" target="_blank">svg-d3-08-ordinal-demo1.html</a> )</p>
 <pre class="prettyprint"><code>var height = 120,
     width = 200;
 
@@ -248,7 +248,7 @@ var scaleX2 = d3.scale
 </code></pre><h2>ordinal.copy</h2> 
 <p>複製一份出來，而不會影響到原本的。</p>
 <h2>小結</h2> 
-<p>以上大概就是 ordinal 的 API 介紹，最後，當然要結合 Axis 坐標軸，做一個與 ordinal 有關的座標來瞧瞧，如果忘記座標軸怎麼做的，請參考 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 座標軸 ( Axis )</a> 還有 <a href="http://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 區域 ( area )</a>：( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo12.html" rel="noreferrer noopener" target="_blank">svg-d3-08-ordinal-demo12.html</a> )</p>
+<p>以上大概就是 ordinal 的 API 介紹，最後，當然要結合 Axis 坐標軸，做一個與 ordinal 有關的座標來瞧瞧，如果忘記座標軸怎麼做的，請參考 <a href="https://www.oxxostudio.tw/articles/201411/svg-d3-04-axis.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 座標軸 ( Axis )</a> 還有 <a href="https://www.oxxostudio.tw/articles/201411/svg-d3-05-area.html" rel="noreferrer noopener" target="_blank">SVG D3.js - 區域 ( area )</a>：( 範例：<a href="/demo/201412/svg-d3-08-ordinal-demo12.html" rel="noreferrer noopener" target="_blank">svg-d3-08-ordinal-demo12.html</a> )</p>
 <p><img class="lazy" height="1" width="1" data-src="/img/articles/201412/20141223_1_13.jpg" alt="SVG D3.js - 序數比例尺 ( ordinal )"></p>
 
 

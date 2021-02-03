@@ -106,7 +106,7 @@
 <pre class="prettyprint"><code>&lt;h1 id="-"&gt;這是大標題&lt;/h1&gt;
 &lt;h2 id="-"&gt;這是次標題&lt;/h2&gt;
 &lt;p&gt;我是內文，我是&lt;strong&gt;粗體&lt;/strong&gt;&lt;/p&gt;
-</code></pre><p>也因為不是一個完整的網頁，所以我們使用 gulp-webserver 來做 livereload ( 參考 <a href="http://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html" rel="noreferrer noopener" target="_blank">Gulp 學習 1 - 安裝與執行</a> ) 就會失效，所以變成要搭配 gulp-html-extend，結合一個 layout，組成一個完整的網頁，就可以使用  livereload 的功能囉！</p>
+</code></pre><p>也因為不是一個完整的網頁，所以我們使用 gulp-webserver 來做 livereload ( 參考 <a href="https://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html" rel="noreferrer noopener" target="_blank">Gulp 學習 1 - 安裝與執行</a> ) 就會失效，所以變成要搭配 gulp-html-extend，結合一個 layout，組成一個完整的網頁，就可以使用  livereload 的功能囉！</p>
 <p>所以這裡我們要輸入以下的指令安裝四個套件，分別是 gulp、gulp-webserver、gulp-html-extend、gulp-markdown ( mac 可能需要 sudo )：</p>
 <pre class="prettyprint"><code>npm install gulp gulp-webserver gulp-html-extend gulp-markdown
 </code></pre><h2>撰寫 gulpfile.js</h2> 
@@ -167,7 +167,7 @@
     &lt;p&gt;我是內文，我是&lt;strong&gt;粗體&lt;/strong&gt;&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>接著就來建立 html 合併的任務，記得合併任務要在 md 任務完成之後再執行，可以參考上一篇所講的 <a href="http://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html" rel="noreferrer noopener" target="_blank">Gulp 學習 5 - 建立 HTML 模板</a>。</p>
+</code></pre><p>接著就來建立 html 合併的任務，記得合併任務要在 md 任務完成之後再執行，可以參考上一篇所講的 <a href="https://www.oxxostudio.tw/articles/201503/gulp-5-html-extend.html" rel="noreferrer noopener" target="_blank">Gulp 學習 5 - 建立 HTML 模板</a>。</p>
 <pre class="prettyprint"><code>gulp.task('extend', ['md'], function () {
     return gulp.src('./md/md2html/**/*.html')
         .pipe(extender({annotations:true,verbose:false}))

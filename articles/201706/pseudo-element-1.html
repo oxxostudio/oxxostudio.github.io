@@ -100,7 +100,7 @@
 <p>跟偽元素類似的還有「偽類」(  Pseudo classes )，在 W3C 的定義裡總共有五個偽元素 ( 其他仍在測試階段 )，分別是<code>::before</code>、<code>::after</code>、<code>::first-line</code>、<code>::first-letter</code>和<code>::selection</code>，為了和偽類區分，偽元素使用<em>兩個冒號「::」開頭</em>，而偽類使用一個冒號「:」開頭 ( 像是 :hover、:target...等 )。</p>
 <p>雖然現在的瀏覽器就算寫一個冒號也可以正常運作，不過為了方便區分，用兩個冒號還是比較好的， 而且不論瀏覽器是什麼，<code>::selection</code>必須是兩個冒號才能正常運作。</p>
 <blockquote>
-<p>參考：<a href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/Pseudo-elements" rel="noreferrer noopener" target="_blank">MDN Pseudo-elements</a>、<a href="http://www.oxxostudio.tw/articles/201405/css-selector.html" rel="noreferrer noopener" target="_blank">偽類 child 和 of-type</a></p>
+<p>參考：<a href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/Pseudo-elements" rel="noreferrer noopener" target="_blank">MDN Pseudo-elements</a>、<a href="https://www.oxxostudio.tw/articles/201405/css-selector.html" rel="noreferrer noopener" target="_blank">偽類 child 和 of-type</a></p>
 </blockquote>
 <h2>認識 ::before 與 ::after</h2> 
 <p>::before、::after 大概是最常使用的偽元素，兩者都是以<code>display:inline-block</code>的屬性存在，::before 是在原本的元素「之前」加入內容，::after 則是在原本的元素「之後」加入內容，同時偽元素也會<em>「繼承」原本元素的屬性</em>，如果原本文字是黑色，偽元素的文字也會是黑色。</p>
@@ -145,10 +145,10 @@ a::after{
 <p>透過 border 的變化，我們可以實現上下左右的三角形，而這個變化同樣也適用於 content，由於我之前已經寫過好幾篇類似的文章，所以在這邊就不多作介紹，有興趣的可以直接參考下面這些文章：</p>
 <blockquote>
 <ul>
-<li><a href="http://www.oxxostudio.tw/articles/201407/css-clock.html" rel="noreferrer noopener" target="_blank">電子時鐘效果 ( CSS 偽元素的應用 )</a></li>
-<li><a href="http://www.oxxostudio.tw/articles/201412/css-click-loading.html" rel="noreferrer noopener" target="_blank">點擊後的 CSS 載入效果</a></li>
-<li><a href="http://www.oxxostudio.tw/articles/201502/css-bounce.html" rel="noreferrer noopener" target="_blank">有趣的 CSS 彈跳動畫</a></li>
-<li><a href="http://www.oxxostudio.tw/articles/201503/css-pie-chart.html" rel="noreferrer noopener" target="_blank">純 CSS 繪製圓餅圖</a></li>
+<li><a href="https://www.oxxostudio.tw/articles/201407/css-clock.html" rel="noreferrer noopener" target="_blank">電子時鐘效果 ( CSS 偽元素的應用 )</a></li>
+<li><a href="https://www.oxxostudio.tw/articles/201412/css-click-loading.html" rel="noreferrer noopener" target="_blank">點擊後的 CSS 載入效果</a></li>
+<li><a href="https://www.oxxostudio.tw/articles/201502/css-bounce.html" rel="noreferrer noopener" target="_blank">有趣的 CSS 彈跳動畫</a></li>
+<li><a href="https://www.oxxostudio.tw/articles/201503/css-pie-chart.html" rel="noreferrer noopener" target="_blank">純 CSS 繪製圓餅圖</a></li>
 </ul>
 </blockquote>
 <h2>content 搭配 quotes 使用</h2> 

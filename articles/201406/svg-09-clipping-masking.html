@@ -97,7 +97,7 @@
 <p><img src="/img/articles/201406/svg-09-clipping-masking.jpg" class="preview-img" alt=""></p>
 <p>使用過 Illustrator 的朋友應該都會知道，裏頭有一個重要的繪圖功能，就是剪裁和遮色片，這也是在圖形處理上頗為重要的兩個功能，而在 SVG 裏頭這兩個功能也沒有缺席，和之前製作文字跟隨路徑以及漸層填色相同的做法，在製作剪裁或遮色片的時候，我們也必須先建立定義檔<code>defs</code>，就可以輕鬆做出 Clipping ( 剪裁 ) 和 Masking ( 遮色片 ) 的效果囉！</p>
 <blockquote>
-<p>參考：<a href="http://www.oxxostudio.tw/articles/201406/svg-08-text.html" rel="noreferrer noopener" target="_blank">製作文字跟隨路徑</a>、<a href="http://www.oxxostudio.tw/articles/201406/svg-07-fill.html" rel="noreferrer noopener" target="_blank">漸層填色</a> </p>
+<p>參考：<a href="https://www.oxxostudio.tw/articles/201406/svg-08-text.html" rel="noreferrer noopener" target="_blank">製作文字跟隨路徑</a>、<a href="https://www.oxxostudio.tw/articles/201406/svg-07-fill.html" rel="noreferrer noopener" target="_blank">漸層填色</a> </p>
 </blockquote>
 <div id="google-adsense-content"><ins class="adsbygoogle" style="display:block; height:90px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4044542673"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><h2>Cliping</h2> 
 <p>要建立一個 Clipping 的圖形，首先要在定義檔內放入<code>&lt;clipPath&gt;&lt;/clipPath&gt;</code>的標籤，記得要放入 id，這樣要被剪裁的圖形才能夠對應，接著在<code>&lt;clipPath&gt;&lt;/clipPath&gt;</code>裏頭放入一些圖形，這些圖形代表的是：<strong>這些圖形以外的都會被剪裁</strong>，可以看看下面的範例，圓形原本還有黃色線的面積，但是因為被藍色的矩形剪裁了，所以藍色區域以外的圓形都消失了。  </p>
