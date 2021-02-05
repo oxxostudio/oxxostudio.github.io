@@ -77,10 +77,10 @@ document.addEventListener("copy", function (e) {
   const copyContent = selection.toString();
   const copyLength = copyContent.toString().length;
   if (copyLength > 20) {
-    if(copyLength > 50){
+    if(copyLength > 100){
       e.clipboardData.setData(
         "text/plain",
-        `${copyContent.slice(0,50)} ( ${site} )`
+        `${copyContent.slice(0,100)} ( ${site} )`
       );
     }else{
       e.clipboardData.setData(
