@@ -76,7 +76,7 @@ document.addEventListener("copy", function (e) {
   const selection = document.getSelection();
   const copyContent = selection.toString();
   const copyLength = copyContent.toString().length;
-  if (copyLength > 20) {
+  if (copyLength > 30) {
     if(copyLength > 100){
       e.clipboardData.setData(
         "text/plain",
