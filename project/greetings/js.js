@@ -1,4 +1,4 @@
-const site = location.href;
+const site = location.href.split('.html')[0]+'.html';
 const menu = document.getElementById("menu");
 const aside = document.querySelector("aside");
 const ad = document.querySelector(".ad");
