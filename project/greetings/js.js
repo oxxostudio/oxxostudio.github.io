@@ -25,7 +25,7 @@ const menuLink = [
   ['退休/榮退賀詞','work-retire.html'],
   ['新春/拜年吉祥話','new-year.html'],
   ['牛年吉祥話/春聯','year-ox.html'],
-  ['情人節祝福','love.html']
+  ['情人節祝福','love.html'],
   ['聖誕祝福','xmas.html']
 ];
 
