@@ -20,6 +20,7 @@ const menuLink = [
   ['下午祝福話','good-afternoon.html','new'],
   ['晚安祝福話','good-night.html','new'],
   ['收涎/抓周吉祥話','give-birth.html'],
+  ['生病/康復祝福','recover.html','new'],
   ['喬遷/入厝賀詞','new-house.html'],
   ['榮升/升官賀詞','work-raise.html'],
   ['退休/榮退賀詞','work-retire.html'],
@@ -76,7 +77,7 @@ document.addEventListener("copy", function (e) {
   const selection = document.getSelection();
   const copyContent = selection.toString();
   const copyLength = copyContent.toString().length;
-  if (copyLength > 30) {
+  if (copyLength > 50) {
     if(copyLength > 100){
       e.clipboardData.setData(
         "text/plain",
