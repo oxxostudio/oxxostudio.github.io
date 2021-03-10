@@ -12,22 +12,23 @@ const asideX = aside.offsetLeft + content.offsetLeft;
 const adX = ad.offsetLeft + content.offsetLeft;
 
 const menuLink = [
-  ['元宵燈謎 (1)','riddle-1.html','hot'],
-  ['元宵燈謎 (2)','riddle-2.html','hot'],
+  ['母親節祝福','mothers-day.html','new'],
+  ['早安祝福話','good-morning.html'],
+  ['下午祝福話','good-afternoon.html'],
+  ['晚安祝福話','good-night.html'],
   ['生日祝福','birthday.html'],
   ['結婚賀詞','marry.html'],
-  ['早安祝福話','good-morning.html','new'],
-  ['下午祝福話','good-afternoon.html','new'],
-  ['晚安祝福話','good-night.html','new'],
   ['收涎/抓周吉祥話','give-birth.html'],
-  ['生病/康復祝福','recover.html','new'],
+  ['生病/康復祝福','recover.html'],
   ['喬遷/入厝賀詞','new-house.html'],
   ['榮升/升官賀詞','work-raise.html'],
   ['退休/榮退賀詞','work-retire.html'],
   ['新春/拜年吉祥話','new-year.html'],
   ['牛年吉祥話/春聯','year-ox.html'],
   ['情人節祝福','love.html'],
-  ['聖誕祝福','xmas.html']
+  ['聖誕祝福','xmas.html'],
+  ['元宵燈謎 (1)','riddle-1.html'],
+  ['元宵燈謎 (2)','riddle-2.html']
 ];
 
 menuLink.forEach(e => {
