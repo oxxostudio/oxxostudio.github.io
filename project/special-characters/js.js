@@ -24,6 +24,7 @@
   });
 
   document.addEventListener("scroll", more);
+  document.addEventListener("scroll", more2);
   document.addEventListener("scroll", ADinit);
   document.addEventListener("scroll", showAD);
   document.addEventListener("mousemove", more);
@@ -44,8 +45,6 @@
       let dom = document.querySelector(`.${i}`);
       let domHTML = "";
       switch (i) {
-        case "s19":
-        case "s20":
         case "s21":
         case "s22":
           symbol = list[i].split(" ");
@@ -61,6 +60,40 @@
       dom.innerHTML = domHTML;
     }
     copyToClipBoard(".copy");
+  }
+
+  async function more2() {
+    console.log(123);
+    if(window.scrollY>5000){
+      document.removeEventListener("scroll", more2);
+      const list2 = await fetch("list2.json")
+        .then((res) => {
+          return res.json();
+        })
+        .then((result) => {
+          return result;
+        });
+      for (let i in list2) {
+        let symbol;
+        let dom = document.querySelector(`.${i}`);
+        let domHTML = "";
+        switch (i) {
+          case "s19":
+          case "s20":
+            symbol = list2[i].split(" ");
+            break;
+          default:
+            symbol = list2[i].split("");
+            break;
+        }
+        symbol.forEach((e) => {
+          domHTML =
+            domHTML + `<span class="copy" data-character="${e}">${e}</span> `;
+        });
+        dom.innerHTML = domHTML;
+      }
+      copyToClipBoard(".copy");
+    }
   }
 
 function copyToClipBoard(className) {
@@ -92,6 +125,9 @@ function copyToClipBoard(className) {
   });
 }
 function ADinit() {
+  let element = document.createElement("script");
+  element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  document.body.appendChild(element);
   document.removeEventListener("scroll", ADinit);
   document.removeEventListener("mousemove", ADinit);
   if(window.innerWidth>800){
