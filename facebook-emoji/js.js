@@ -20,14 +20,6 @@
     });
   });
 
-  let datas = await fetch("list.json")
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      return result;
-    });
-
   let content = {};
   let contentArr = [
     "sport",
@@ -65,7 +57,7 @@
     ADinit();
   }
 
-  function more() {
+  async function more() {
     document.removeEventListener("mousemove", more);
     document.removeEventListener("scroll", more);
     const lazydom = document.querySelectorAll(".lazydom");
@@ -73,6 +65,13 @@
     let styleContent = document.createTextNode('.copy { background-image: url(facebook-emoji-list-s.webp); }');
     style.appendChild(styleContent);
     document.head.appendChild(style);
+    let datas = await fetch("list.json")
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        return result;
+      });
     for (let i in datas) {
       const w = 45;
       let x = w * datas[i].x * -1 - 8;
