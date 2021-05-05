@@ -335,7 +335,7 @@ a:hover {
 
 .copy {
     position: relative;
-    background-image: url(facebook-emoji-list-s.jpg);
+    /* background-image: url(facebook-emoji-list-s.jpg); */
     width: 36px;
     height: 36px;
     margin: 0;
@@ -358,7 +358,7 @@ a:hover {
 
 .face .copy,
 .recommend .copy {
-    background-image: url(facebook-emoji-first-s.jpg);
+    background-image: url(facebook-emoji-first-s.webp);
 }
 
 .lazydom {
