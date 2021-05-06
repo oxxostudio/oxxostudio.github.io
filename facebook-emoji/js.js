@@ -46,20 +46,34 @@
 
   copyToClipBoard(".copy");
 
-  document.addEventListener("scroll", more);
+  document.addEventListener("scroll", showMore);
   document.addEventListener("scroll", ADinit);
   document.addEventListener("scroll", showAD);
-  document.addEventListener("mousemove", more);
+  document.addEventListener("mousemove", showMore);
   document.addEventListener("mousemove", ADinit);
 
   if (window.scrollY > 0) {
-    more();
+    showMore();
     ADinit();
   }
 
+  async function showMore(){
+    console.log(window.scrollY);
+    if(window.innerWidth>800){
+      document.removeEventListener("mousemove", showMore);
+      document.removeEventListener("scroll", showMore);
+      more();
+    }
+    else{
+      if(window.scrollY>600){
+        document.removeEventListener("mousemove", showMore);
+        document.removeEventListener("scroll", showMore);
+        more();
+      }
+    }
+  }
+
   async function more() {
-    document.removeEventListener("mousemove", more);
-    document.removeEventListener("scroll", more);
     const lazydom = document.querySelectorAll(".lazydom");
     let style = document.createElement('style');
     let styleContent = document.createTextNode('.copy { background-image: url(facebook-emoji-list-s.webp); }');

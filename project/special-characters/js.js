@@ -10,6 +10,8 @@
   const windowWidth = window.innerWidth;
   const asideX = aside.offsetLeft + main.offsetLeft;
   const adX = ad.offsetLeft + main.offsetLeft;
+  
+  copyToClipBoard(".copy");
 
   menu.addEventListener("click", function () {
     menu.classList.toggle("open");
@@ -23,16 +25,31 @@
     });
   });
 
-  document.addEventListener("scroll", more);
+  document.addEventListener("scroll", showMore);
   document.addEventListener("scroll", more2);
   document.addEventListener("scroll", ADinit);
   document.addEventListener("scroll", showAD);
-  document.addEventListener("mousemove", more);
+  document.addEventListener("mousemove", showMore);
   document.addEventListener("mousemove", ADinit);
 
+
+  async function showMore(){
+    console.log(window.scrollY);
+    if(window.innerWidth>800){
+      document.removeEventListener("mousemove", showMore);
+      document.removeEventListener("scroll", showMore);
+      more();
+    }
+    else{
+      if(window.scrollY>600){
+        document.removeEventListener("mousemove", showMore);
+        document.removeEventListener("scroll", showMore);
+        more();
+      }
+    }
+  }
+
   async function more() {
-    document.removeEventListener("mousemove", more);
-    document.removeEventListener("scroll", more);
     const list = await fetch("list.json")
       .then((res) => {
         return res.json();
@@ -63,7 +80,6 @@
   }
 
   async function more2() {
-    console.log(123);
     if(window.scrollY>5000){
       document.removeEventListener("scroll", more2);
       const list2 = await fetch("list2.json")
