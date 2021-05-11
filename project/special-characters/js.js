@@ -64,6 +64,7 @@
       switch (i) {
         case "s21":
         case "s22":
+        case "s23":
           symbol = list[i].split(" ");
           break;
         default:
