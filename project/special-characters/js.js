@@ -10,7 +10,7 @@
   const windowWidth = window.innerWidth;
   const asideX = aside.offsetLeft + main.offsetLeft;
   const adX = ad.offsetLeft + main.offsetLeft;
-  
+
   copyToClipBoard(".copy");
 
   menu.addEventListener("click", function () {
@@ -25,22 +25,27 @@
     });
   });
 
+  let adShow = false;
   document.addEventListener("scroll", showMore);
   document.addEventListener("scroll", more2);
-  document.addEventListener("scroll", ADinit);
-  document.addEventListener("scroll", showAD);
   document.addEventListener("mousemove", showMore);
-  document.addEventListener("mousemove", ADinit);
 
 
   async function showMore(){
-    console.log(window.scrollY);
     if(window.innerWidth>800){
       document.removeEventListener("mousemove", showMore);
       document.removeEventListener("scroll", showMore);
+      if(!adShow){
+        ADinit();
+      }
       more();
     }
     else{
+      if(window.scrollY>250){
+        if(!adShow){
+          ADinit();
+        }
+      }
       if(window.scrollY>600){
         document.removeEventListener("mousemove", showMore);
         document.removeEventListener("scroll", showMore);
@@ -124,6 +129,9 @@ function copyToClipBoard(className) {
   copy.forEach((ele) => {
     let self = ele;
     self.addEventListener("click", function () {
+      if(!adShow){
+        setTimeout(ADinit, 500);
+      }
       let now = document.querySelector(".now");
       if (now) {
         now.classList.add("selected");
@@ -142,11 +150,10 @@ function copyToClipBoard(className) {
   });
 }
 function ADinit() {
+  adShow  = true;
   let element = document.createElement("script");
   element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
   document.body.appendChild(element);
-  document.removeEventListener("scroll", ADinit);
-  document.removeEventListener("mousemove", ADinit);
   if(window.innerWidth>800){
     ad.innerHTML = `<ins class="adsbygoogle" style="display: block; height: 600px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-full-width-responsive="true" data-ad-format="auto"></ins>`;
   }else{
@@ -154,18 +161,23 @@ function ADinit() {
     adFooter.innerHTML = `<ins class="adsbygoogle" style="display:block; height:50px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="3027578274"></ins>`;
   }
   (adsbygoogle = window.adsbygoogle || []).push({});
+  
+  adIn.forEach((e) => {
+    e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  });
 }
 
-function showAD() {
-  let scrollY = window.scrollY;
-  if (scrollY > 300) {
-    document.removeEventListener("scroll", showAD);
-    adIn.forEach((e) => {
-      e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    });
-  }
-}
+// function showAD() {
+//   let scrollY = window.scrollY;
+//   if (scrollY > 300) {
+//     document.removeEventListener("scroll", showAD);
+//     adIn.forEach((e) => {
+//       e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+//       (adsbygoogle = window.adsbygoogle || []).push({});
+//     });
+//   }
+// }
 
 document.addEventListener("scroll", adPos);
 function adPos() {
@@ -191,7 +203,7 @@ function adPos() {
   }
 }
 
-function optCLS() {
+/* function optCLS() {
   const content = document.querySelector(".content");
   const content_width = content.offsetWidth;
   const box = document.querySelectorAll(".box");
@@ -222,6 +234,6 @@ function optCLS() {
   h3.forEach((e) => {
     e.removeAttribute("hidden");
   });
-}
+} */
 
 })();

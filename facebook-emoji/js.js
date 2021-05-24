@@ -3,6 +3,7 @@
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
+  const adIn = document.querySelectorAll(".ad-content.in");
   const main = document.querySelector("main");
   const windowWidth = window.innerWidth;
   const asideX = aside.offsetLeft + main.offsetLeft;
@@ -46,25 +47,26 @@
 
   copyToClipBoard(".copy");
 
-  document.addEventListener("scroll", showMore);
-  document.addEventListener("scroll", ADinit);
-  document.addEventListener("scroll", showAD);
-  document.addEventListener("mousemove", showMore);
-  document.addEventListener("mousemove", ADinit);
+  let adShow = false;
 
-  if (window.scrollY > 0) {
-    showMore();
-    ADinit();
-  }
+  document.addEventListener("scroll", showMore);
+  document.addEventListener("mousemove", showMore);
 
   async function showMore(){
-    console.log(window.scrollY);
     if(window.innerWidth>800){
       document.removeEventListener("mousemove", showMore);
       document.removeEventListener("scroll", showMore);
+      if(!adShow){
+        ADinit()
+      }
       more();
     }
     else{
+      if(window.scrollY>250){
+        if(!adShow){
+          ADinit()
+        }
+      }
       if(window.scrollY>600){
         document.removeEventListener("mousemove", showMore);
         document.removeEventListener("scroll", showMore);
@@ -164,23 +166,26 @@
   }
 
   function ADinit() {
+    adShow  = true;
     let element = document.createElement("script");
     element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
     document.body.appendChild(element);
-    document.removeEventListener("scroll", ADinit);
-    document.removeEventListener("mousemove", ADinit);
-    adPos();
+  
+    adIn.forEach((e) => {
+      e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    });
   }
 
-  function showAD() {
-    let scrollY = window.scrollY;
-    if (scrollY > 300) {
-      document.removeEventListener("scroll", showAD);
-      document.querySelectorAll(".adsbygoogle.in").forEach((e) => {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      });
-    }
-  }
+  // function showAD() {
+  //   let scrollY = window.scrollY;
+  //   if (scrollY > 300) {
+  //     document.removeEventListener("scroll", showAD);
+  //     document.querySelectorAll(".adsbygoogle.in").forEach((e) => {
+  //       (adsbygoogle = window.adsbygoogle || []).push({});
+  //     });
+  //   }
+  // }
 
   document.addEventListener("scroll", adPos);
   function adPos() {
@@ -206,7 +211,7 @@
     }
   }
 
-  function optCLS() {
+/*   function optCLS() {
     const content = document.querySelector(".content");
     const content_width = content.offsetWidth;
     const box = document.querySelectorAll(".box");
@@ -232,5 +237,5 @@
     h3.forEach((e) => {
       e.removeAttribute("hidden");
     });
-  }
+  } */
 })();
