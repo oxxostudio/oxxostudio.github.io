@@ -60,7 +60,7 @@
       let self = ele;
       self.addEventListener("click", function () {
         if(!adShow){
-          ADinit()
+          setTimeout(ADinit, 500);
         }
         let now = document.querySelector(".now");
         if (now) {
@@ -85,7 +85,7 @@
     let element = document.createElement("script");
     element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
     document.body.appendChild(element);
-    
+
     if(window.innerWidth>800){
       ad.innerHTML = `<ins class="adsbygoogle" style="display: block; height: 600px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="4731510363" data-full-width-responsive="true" data-ad-format="auto"></ins>`;
     }else{

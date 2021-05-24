@@ -150,7 +150,7 @@
       let self = ele;
       self.addEventListener("click", function () {
         if(!adShow){
-          ADinit();
+          setTimeout(ADinit, 500);
         }
         let now = document.querySelector(".now");
         if (now) {
