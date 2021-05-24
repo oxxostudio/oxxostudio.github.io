@@ -3,7 +3,7 @@
   const menu = document.getElementById("menu");
   const aside = document.querySelector("aside");
   const ad = document.querySelector(".ad");
-  const adIn = document.querySelectorAll(".ad-content.in");
+  const adIn = document.querySelectorAll(".adsbygoogle.in");
   const main = document.querySelector("main");
   const windowWidth = window.innerWidth;
   const asideX = aside.offsetLeft + main.offsetLeft;
@@ -149,6 +149,9 @@
     copy.forEach((ele) => {
       let self = ele;
       self.addEventListener("click", function () {
+        if(!adShow){
+          ADinit();
+        }
         let now = document.querySelector(".now");
         if (now) {
           now.classList.add("selected");
