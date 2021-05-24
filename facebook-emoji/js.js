@@ -45,9 +45,9 @@
     content[i].ele = document.querySelector(`.${i}`);
   });
 
-  copyToClipBoard(".copy");
-
   let adShow = false;
+
+  copyToClipBoard(".copy");
 
   document.addEventListener("scroll", showMore);
   document.addEventListener("mousemove", showMore);

@@ -10,6 +10,8 @@
   const windowWidth = window.innerWidth;
   const asideX = aside.offsetLeft + main.offsetLeft;
   const adX = ad.offsetLeft + main.offsetLeft;
+  
+  let adShow = false;
 
   copyToClipBoard(".copy");
 
@@ -25,7 +27,6 @@
     });
   });
 
-  let adShow = false;
   document.addEventListener("scroll", showMore);
   document.addEventListener("scroll", more2);
   document.addEventListener("mousemove", showMore);
@@ -161,7 +162,7 @@ function ADinit() {
     adFooter.innerHTML = `<ins class="adsbygoogle" style="display:block; height:50px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="3027578274"></ins>`;
   }
   (adsbygoogle = window.adsbygoogle || []).push({});
-  
+
   adIn.forEach((e) => {
     e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
     (adsbygoogle = window.adsbygoogle || []).push({});
