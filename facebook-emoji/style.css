@@ -369,6 +369,13 @@ a:hover {
     ;
 }
 
+.temp{
+    font-size:14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    color:#fff;
+}
+
 .copy::before {
     content: "已複製";
     position: absolute;
@@ -399,6 +406,7 @@ a:hover {
 .copy.selected {
     border-color: #ccc;
 }
+
 
 
 #menu {
