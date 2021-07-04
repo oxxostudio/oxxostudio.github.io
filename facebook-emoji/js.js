@@ -92,7 +92,12 @@
       const w = 45;
       let x = w * datas[i].x * -1 - 8;
       let y = w * datas[i].y * -1 - 8;
-      let inner = `<div class="copy" data-i="${i}" data-x="${datas[i].x}" data-y="${datas[i].y}" data-unicode="${datas[i].unicode}" data-emoji="${datas[i].emoji}" style="background-position:${x}px ${y}px;"></div> `;
+      let inner;
+      if(datas[i].t){
+        inner = `<div class="copy" title="${datas[i].t}" unicode="${datas[i].unicode}" emoji="${datas[i].emoji}" style="background-position:${x}px ${y}px;"></div> `;
+      }else{
+        inner = `<div class="copy" unicode="${datas[i].unicode}" emoji="${datas[i].emoji}" style="background-position:${x}px ${y}px;"></div> `;
+      }
       if (i >= 1004 && i <= 1235) {
         content.sport.content = `${content.sport.content}${inner}`;
       } else if (i >= 1291 && i <= 1483) {
@@ -141,7 +146,7 @@
   function copyToClipBoard(className) {
     new ClipboardJS(className, {
       text: function (trigger) {
-        return trigger.getAttribute("data-emoji");
+        return trigger.getAttribute("emoji");
       },
     });
 
@@ -163,7 +168,7 @@
         } else {
           self.classList.add("now");
         }
-        ga("send", "event", self.getAttribute("data-unicode"), "click");
+        ga("send", "event", self.getAttribute("unicode"), "click");
       });
     });
   }
@@ -173,7 +178,7 @@
     let element = document.createElement("script");
     element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
     document.body.appendChild(element);
-  
+
     adIn.forEach((e) => {
       e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
       (adsbygoogle = window.adsbygoogle || []).push({});
