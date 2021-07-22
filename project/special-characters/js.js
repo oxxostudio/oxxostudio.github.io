@@ -13,7 +13,7 @@
   
   let adShow = false;
 
-  copyToClipBoard(".copy");
+  copyToClipBoard(".box span");
 
   menu.addEventListener("click", function () {
     menu.classList.toggle("open");
@@ -79,11 +79,11 @@
       }
       symbol.forEach((e) => {
         domHTML =
-          domHTML + `<span class="copy" data-character="${e}">${e}</span> `;
+          domHTML + `<span>${e}</span> `;
       });
       dom.innerHTML = domHTML;
     }
-    copyToClipBoard(".copy");
+    copyToClipBoard(".box span");
   }
 
   async function more2() {
@@ -111,18 +111,18 @@
         }
         symbol.forEach((e) => {
           domHTML =
-            domHTML + `<span class="copy" data-character="${e}">${e}</span> `;
+            domHTML + `<span>${e}</span> `;
         });
         dom.innerHTML = domHTML;
       }
-      copyToClipBoard(".copy");
+      copyToClipBoard(".box span");
     }
   }
 
 function copyToClipBoard(className) {
   new ClipboardJS(className, {
     text: function (trigger) {
-      return trigger.getAttribute("data-character");
+      return trigger.innerText;
     },
   });
 
@@ -145,7 +145,7 @@ function copyToClipBoard(className) {
         self.classList.add("now");
       }
       gtag("event", "click", {
-        'event_label': self.getAttribute("data-character")
+        'event_label': self.innerText
       });
     });
   });

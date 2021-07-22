@@ -31,6 +31,10 @@
       if(!adShow){
         ADinit();
       }
+      box.forEach(e => {
+        e.innerHTML = e.innerHTML.replace(/<!--|-->/g,'');
+      });
+      copyToClipBoard(".box span");
     }
     else{
       if(window.scrollY>250){
@@ -39,14 +43,15 @@
         if(!adShow){
           ADinit()
         }
+        box.forEach(e => {
+          e.innerHTML = e.innerHTML.replace(/<!--|-->/g,'');
+        });
+        copyToClipBoard(".box span");
       }
     }
   }
+  copyToClipBoard(".box span");
 
-  box.forEach(e => {
-    e.innerHTML = e.innerHTML.replace(/<!--|-->/g,'');
-  });
-  copyToClipBoard(".copy");
 
   function copyToClipBoard(className) {
     new ClipboardJS(className, {
@@ -74,7 +79,7 @@
           self.classList.add("now");
         }
         gtag("event", "click", {
-          'event_label': self.getAttribute("data-character")
+          'event_label': self.innerHTML
         });
       });
     });

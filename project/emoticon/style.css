@@ -244,7 +244,7 @@ h3+span{
     margin-bottom: 20px;
 }
 
-.copy {
+.box span {
     position: relative;
     width: 31%;
     max-width: 136px;
@@ -261,12 +261,12 @@ h3+span{
 }
 
 @media (max-width:640px) {
-    .copy {
+    .box span {
         font-size: 0.9rem;
     }
 }
 
-.copy::before {
+.box span::before {
     content: "已複製";
     position: absolute;
     top: -26px;
@@ -286,24 +286,24 @@ h3+span{
 }
 
 @media (max-width:640px) {
-    .copy::before {
+    .box span::before {
         font-size: 15px;
         width: 50px;
     }
 }
 
-.copy.now {
+.box span.now {
     border-style: solid;
     border-color: #c00;
     background: #ffeeee;
 }
 
-.copy.now::before {
+.box span.now::before {
     top: -35px;
     opacity: .7;
 }
 
-.copy.selected {
+.box span.selected {
     border-style: solid;
     border-color: #aaa;
     background: #eee;

@@ -308,7 +308,7 @@ aside a {
     }
 }
 
-.copy {
+.box span {
     position: relative;
     width: 30px;
     height: 30px;
@@ -326,19 +326,19 @@ aside a {
     .box{
         text-align:center;
     }
-    .copy {
+    .box span {
         margin: 0 6px 10px;
         width: 38px;
         height: 38px;
         font-size: 26px;
     }
-    .copy::before{
+    .box span::before{
         font-size:15px;
         width: 50px;
     }
 }
 
-.copy::before {
+.box span::before {
     content: "已複製";
     position: absolute;
     top: -25px;
@@ -356,16 +356,16 @@ aside a {
     pointer-events: none;
 }
 
-.copy.now {
+.box span.now {
     border-color: #a00;
 }
 
-.copy.now::before {
+.box span.now::before {
     top: -30px;
     opacity: .7;
 }
 
-.copy.selected {
+.box span.selected {
     border-color: #ccc;
 }
 
