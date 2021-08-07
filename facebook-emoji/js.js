@@ -8,6 +8,24 @@
   const windowWidth = window.innerWidth;
   const asideX = aside.offsetLeft + main.offsetLeft;
   const adX = ad.offsetLeft + main.offsetLeft;
+  let webp;
+
+  function creatBG(uri){
+    let style = document.createElement("style");
+    let styleContent = document.createTextNode(`.copy { background-image: url(${uri}); }`);
+    style.appendChild(styleContent);
+    document.head.appendChild(style);
+  }
+
+  Modernizr.on('webp', function(result) {
+    if (result) {
+      webp = true;
+      creatBG('facebook-emoji-first-s.webp');
+    } else {
+      webp = false;
+      creatBG('facebook-emoji-first-s.jpg');
+    }
+  });
 
   menu.addEventListener("click", function () {
     menu.classList.toggle("open");
@@ -22,23 +40,7 @@
   });
 
   let content = {};
-  let contentArr = [
-    "sport",
-    "hand",
-    "clothes",
-    "animal",
-    "plants",
-    "food",
-    "world",
-    "car",
-    "time",
-    "weather",
-    "music",
-    "tool",
-    "flag",
-    "symbol",
-    "other",
-  ];
+  let contentArr = ["sport", "hand", "clothes", "animal", "plants", "food", "world", "car", "time", "weather", "music", "tool", "flag", "symbol", "other"];
   contentArr.forEach((i) => {
     content[i] = {};
     content[i].content = "";
@@ -52,22 +54,21 @@
   document.addEventListener("scroll", showMore);
   document.addEventListener("mousemove", showMore);
 
-  async function showMore(){
-    if(window.innerWidth>800){
+  async function showMore() {
+    if (window.innerWidth > 800) {
       document.removeEventListener("mousemove", showMore);
       document.removeEventListener("scroll", showMore);
-      if(!adShow){
-        ADinit()
+      if (!adShow) {
+        ADinit();
       }
       more();
-    }
-    else{
-      if(window.scrollY>250){
-        if(!adShow){
-          ADinit()
+    } else {
+      if (window.scrollY > 250) {
+        if (!adShow) {
+          ADinit();
         }
       }
-      if(window.scrollY>600){
+      if (window.scrollY > 600) {
         document.removeEventListener("mousemove", showMore);
         document.removeEventListener("scroll", showMore);
         more();
@@ -77,10 +78,11 @@
 
   async function more() {
     const lazydom = document.querySelectorAll(".lazydom");
-    let style = document.createElement('style');
-    let styleContent = document.createTextNode('.copy { background-image: url(facebook-emoji-list-s.webp); }');
-    style.appendChild(styleContent);
-    document.head.appendChild(style);
+    if(webp){
+      creatBG('facebook-emoji-first-s.webp');
+    }else{
+      creatBG('facebook-emoji-first-s.jpg');
+    }
     let datas = await fetch("list.json")
       .then((res) => {
         return res.json();
@@ -93,9 +95,9 @@
       let x = w * datas[i].x * -1 - 8;
       let y = w * datas[i].y * -1 - 8;
       let inner;
-      if(datas[i].t){
+      if (datas[i].t) {
         inner = `<div class="copy" title="${datas[i].t}" unicode="${datas[i].unicode}" emoji="${datas[i].emoji}" style="background-position:${x}px ${y}px;"></div> `;
-      }else{
+      } else {
         inner = `<div class="copy" unicode="${datas[i].unicode}" emoji="${datas[i].emoji}" style="background-position:${x}px ${y}px;"></div> `;
       }
       if (i >= 1004 && i <= 1235) {
@@ -154,7 +156,7 @@
     copy.forEach((ele) => {
       let self = ele;
       self.addEventListener("click", function () {
-        if(!adShow){
+        if (!adShow) {
           setTimeout(ADinit, 500);
         }
         let now = document.querySelector(".now");
@@ -174,7 +176,7 @@
   }
 
   function ADinit() {
-    adShow  = true;
+    adShow = true;
     let element = document.createElement("script");
     element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
     document.body.appendChild(element);
@@ -219,7 +221,7 @@
     }
   }
 
-/*   function optCLS() {
+  /*   function optCLS() {
     const content = document.querySelector(".content");
     const content_width = content.offsetWidth;
     const box = document.querySelectorAll(".box");
