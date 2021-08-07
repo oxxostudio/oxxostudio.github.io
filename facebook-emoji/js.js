@@ -79,9 +79,9 @@
   async function more() {
     const lazydom = document.querySelectorAll(".lazydom");
     if(webp){
-      creatBG('facebook-emoji-first-s.webp');
+      creatBG('facebook-emoji-list-s.webp');
     }else{
-      creatBG('facebook-emoji-first-s.jpg');
+      creatBG('facebook-emoji-list-s.jpg');
     }
     let datas = await fetch("list.json")
       .then((res) => {
