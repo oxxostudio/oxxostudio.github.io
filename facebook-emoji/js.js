@@ -10,9 +10,14 @@
   const adX = ad.offsetLeft + main.offsetLeft;
   let webp;
 
-  function creatBG(uri){
+  function creatBG(uri, r){
     let style = document.createElement("style");
-    let styleContent = document.createTextNode(`.copy { background-image: url(${uri}); }`);
+    let styleContent;
+    if(r){
+      styleContent = document.createTextNode(`.recommend .copy { background-image: url(${uri}); }`);
+    }else{
+      styleContent = document.createTextNode(`.copy { background: url(${uri}); }`);
+    }
     style.appendChild(styleContent);
     document.head.appendChild(style);
   }
@@ -20,10 +25,10 @@
   Modernizr.on('webp', function(result) {
     if (result) {
       webp = true;
-      creatBG('facebook-emoji-first-s.webp');
+      creatBG('facebook-emoji-first-s.webp', true);
     } else {
       webp = false;
-      creatBG('facebook-emoji-first-s.jpg');
+      creatBG('facebook-emoji-first-s.jpg', true);
     }
   });
 
