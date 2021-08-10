@@ -68,15 +68,13 @@
       }
       more();
     } else {
-      if (window.scrollY > 250) {
-        if (!adShow) {
-          ADinit();
-        }
-      }
-      if (window.scrollY > 600) {
+      if (window.scrollY > 50) {
         document.removeEventListener("mousemove", showMore);
         document.removeEventListener("scroll", showMore);
         more();
+        if (!adShow) {
+          ADinit();
+        }
       }
     }
   }
