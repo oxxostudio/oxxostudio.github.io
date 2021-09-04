@@ -183,9 +183,13 @@
     let element = document.createElement("script");
     element.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
     document.body.appendChild(element);
-
+    if(window.innerWidth>800){
+      ad.innerHTML = `<ins class="adsbygoogle" style="display: block; height: 600px" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5997943274" data-full-width-responsive="true" data-ad-format="auto"></ins>`;
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  
     adIn.forEach((e) => {
-      e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="1963329493" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+      e.innerHTML = `<ins class="adsbygoogle in" style="display:block; height:280px;" data-ad-client="ca-pub-8629612872829139" data-ad-slot="5997943274" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
       (adsbygoogle = window.adsbygoogle || []).push({});
     });
   }

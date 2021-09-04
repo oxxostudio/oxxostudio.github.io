@@ -281,6 +281,7 @@ a:hover {
 .ad-content {
     width: 100%;
     height: 280px;
+    overflow:hidden;
 }
 
 .ad-content.top {
