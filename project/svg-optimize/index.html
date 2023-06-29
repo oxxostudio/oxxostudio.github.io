@@ -303,17 +303,11 @@
           input.value = reader.result;
           let svg = optimizeSVG(reader.result);
           if (svg) {
-            gtag('event', 'uploadBtn', {
-              'value': fileName
-            });
             SVGpreview.innerHTML = svg;
             output.innerText = svg;
             preview.removeAttribute('hidden', '');
             downloadSVG(fileName, svg);
           } else {
-            gtag('event', 'uploadBtn', {
-              'value': 'error'
-            });
             preview.setAttribute('hidden', '');
           }
         };
@@ -330,17 +324,11 @@
     input.addEventListener('input', function () {
       let svg = optimizeSVG(this.value);
       if (svg) {
-        gtag('event', 'inputCode', {
-          'value': 'svg'
-        });
         SVGpreview.innerHTML = svg;
         output.innerText = svg;
         preview.removeAttribute('hidden', '');
         downloadSVG('default.svg', svg);
       } else {
-        gtag('event', 'inputCode', {
-          'value': 'error'
-        });
         preview.setAttribute('hidden', '');
       }
     });
@@ -416,13 +404,12 @@
       (adsbygoogle = window.adsbygoogle || []).push({});
     });
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QBNWW7XD08"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-QBNWW7XD08');
-  </script>
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5R4QNLF');</script>
 </body>
 
 </html>

@@ -345,7 +345,7 @@ function initMap() {
     }
   </script>
 
-  <script>!function(){const e=document.title,t=document.querySelector("#header"),s=document.querySelector(".menu");window.addEventListener("scroll",()=>{let o=this.pageYOffset;o>150?(t.classList.add("scroll"),s.classList.add("scroll")):(t.classList.remove("scroll"),s.classList.remove("scroll")),ga("send","event","scroll",e,o)});const o=["Design thinking is everywhere","Good design is innovative","I express myself with design","Stay hungry, stay foolish",":::::: www.oxxostudio.tw ::::::"];document.querySelector("#banner h2").innerHTML=o[Math.floor(Math.random()*o.length)];const c=document.querySelector(".mobile-menu"),n=document.querySelector(".menu");c.addEventListener("click",()=>{n.classList.toggle("show")});let r=!1;const l=()=>{if(!r){r=!0;let e="018175492205832613185:g5mvl2qoy5a",t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://cse.google.com/cse.js?cx="+e;let s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s),document.querySelector(".search").removeEventListener("click",l)}};document.querySelector(".search").addEventListener("click",l)}();</script>
+  <script>!function(){document.title,document.querySelector("#header"),document.querySelector(".menu");const e=["Design thinking is everywhere","Good design is innovative","I express myself with design","Stay hungry, stay foolish",":::::: www.oxxostudio.tw ::::::"];document.querySelector("#banner h2").innerHTML=e[Math.floor(Math.random()*e.length)];const t=document.querySelector(".mobile-menu"),n=document.querySelector(".menu");t.addEventListener("click",()=>{n.classList.toggle("show")});let o=!1;const c=()=>{if(!o){o=!0;let e="018175492205832613185:g5mvl2qoy5a",t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://cse.google.com/cse.js?cx="+e;let n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n),document.querySelector(".search").removeEventListener("click",c)}};document.querySelector(".search").addEventListener("click",c)}();</script>
 
   <script>!async function(){const e=location.href,t=location.origin,r=location.pathname,i=await(()=>fetch("/json/pageList.json").then(e=>e.json()).then(e=>e))();let o;const s=document.querySelector(".arrow-left"),n=document.querySelector(".arrow-right"),l=document.querySelector(".previous-article span"),c=document.querySelector(".previous-article b"),a=document.querySelector(".next-article span"),u=document.querySelector(".next-article b");i.every((e,t)=>e.site!=r||(document.querySelector(".tag").classList.add(e.tag),document.querySelector("h1").setAttribute("data-date",e.date),o=(e=>{let t;return t="page"!=e?i.filter(t=>{if(t.tag==e)return t}):i})(e.tag),0==t?(s.setAttribute("href",i[1].site),s.setAttribute("title",i[1].title),n.setAttribute("href","/"),a.innerHTML="這是最新的文章",c.innerHTML=`<a href="${i[1].site}">${i[1].title}</a>`):t==i.length-1?(n.setAttribute("href",i[t-1].site),n.setAttribute("title",i[t-1].title),l.innerHTML="這是第一篇文章",u.innerHTML=`<a href="${i[t-1].site}">${i[t-1].title}</a>`):(s.setAttribute("href","/"),n.setAttribute("href",i[t-1].site),n.setAttribute("title",i[t-1].title),u.innerHTML=`<a href="${i[t-1].site}">${i[t-1].title}</a>`,s.setAttribute("href",i[t+1].site),s.setAttribute("title",i[t+1].title),c.innerHTML=`<a href="${i[t+1].site}">${i[t+1].title}</a>`),!1));const d=document.getElementById("other-articles");for(let e=0;e<5;e++){let r=o.length;if(r<=e)break;let i=Math.floor(Math.random()*r),s=o.splice(i,1)[0],n=s.img||s.site.replace(".html",".jpg").replace("articles","img/articles");d.innerHTML=d.innerHTML+`<a href="${s.site}" title="${s.title}">\n    <div><img class="lazy" height="1" width="1" data-src="${t}${n}" alt="${s.title}">\n    <b>${s.title}</b>\n    </div></a>`}document.querySelector(".icon-facebook").setAttribute("href",`http://www.facebook.com/share.php?u=${e}`),document.querySelector(".icon-google").setAttribute("href",`https://plus.google.com/share?url=${e}`),document.querySelector(".icon-twitter").setAttribute("href",`http://twitter.com/home/?status=${e}`),document.querySelector(".goto-top").addEventListener("click",()=>{document.documentElement.scrollTop=0});const h=document.querySelector(".social-icon");window.addEventListener("scroll",()=>{this.pageYOffset>150?(n.classList.add("show"),s.classList.add("show"),h.classList.add("show")):(n.classList.remove("show"),s.classList.remove("show"),h.classList.remove("show"))});const m=document.querySelector(".recommend"),f=document.querySelector(".recommend ul");for(let e=0;e<3;e++)f.innerHTML=f.innerHTML+`<li><a href="${i[e].site}?utm_source=recommend">${i[e].title}</a></li>`;const g=()=>{this.pageYOffset>document.body.clientHeight/2?m.classList.add("show"):m.classList.remove("show")};window.addEventListener("scroll",g),document.querySelector(".closeBtn").addEventListener("click",()=>{m.classList.remove("show"),window.removeEventListener("scroll",g)});const L=()=>{let e=this.pageYOffset,t=this.innerHeight,r=document.querySelectorAll(".lazy");r.length>0?r.forEach(r=>{let i=r.getBoundingClientRect().top;if(e+t-i>0){let e=r.getAttribute("data-src");r.setAttribute("src",e),r.removeAttribute("data-src"),r.classList.remove("lazy")}}):window.removeEventListener("scroll",L)};L(),window.addEventListener("scroll",L)}();</script>
 
@@ -372,22 +372,11 @@ function initMap() {
     window.addEventListener('scroll', prettyCode);
   </script>
 
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-2708968-3', 'auto');
-    ga('send', 'pageview');
-  </script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N6HT8KS');</script>
   <script>
     const showAD = () => {
       let element = document.createElement("script");

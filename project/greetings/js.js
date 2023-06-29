@@ -44,7 +44,6 @@ menuLink.forEach(e => {
 
 menu.addEventListener("click", menuClick);
 function menuClick() {
-  gtag("event", "menu-click");
   menu.classList.toggle("open");
   aside.classList.toggle("show");
 }
@@ -75,7 +74,6 @@ function showAD() {
     document.removeEventListener("scroll", showAD);
     document.removeEventListener("mousemove", showAD);
   }
-  gtag("event", "scroll");
 }
 document.addEventListener("copy", function (e) {
   const selection = document.getSelection();
@@ -95,9 +93,6 @@ document.addEventListener("copy", function (e) {
     }
     e.preventDefault();
   }
-  gtag("event", "copy", {
-    'event_label': copyContent,
-  });
 });
 
 document.addEventListener("scroll", asidePos);

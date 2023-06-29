@@ -173,7 +173,6 @@
         } else {
           self.classList.add("now");
         }
-        ga("send", "event", self.getAttribute("unicode"), "click");
       });
     });
   }

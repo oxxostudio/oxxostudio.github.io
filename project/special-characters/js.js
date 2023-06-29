@@ -144,9 +144,6 @@ function copyToClipBoard(className) {
       } else {
         self.classList.add("now");
       }
-      gtag("event", "click", {
-        'event_label': self.innerText
-      });
     });
   });
 }
