@@ -360,6 +360,7 @@
         }
         result = result.replace(/\u0009|\n/g, ''); // 取代全形空白和換行
         result = result.replace(/[\s]+/g, ' ');    // 合併連續空白
+        result = result.replace(/style="mix-blend-mode: normal"/g, '');    // 處理 Scratch
         const svgHead = result.match(/.*<svg/)[0];   // 置換 svg 頭
         result = result.replace(`${svgHead}`, `<svg`);
         return result;
